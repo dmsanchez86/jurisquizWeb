@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Metas -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Jurisquiz -- Zopp</title>
+        
+        <!-- Librarys CSS -->
+        <link rel="stylesheet" href="css/materialize.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/animate.css">
+        
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        
+        <!-- Librarys JavaScript -->
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery.mobile.router.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/jquery.stellar.js"></script>
+        <script src="js/materialize.min.js"></script>
+    </head>
+    <body>
+        
+        <!-- Page Home -->
+        <div data-role="page" id="home" class="home" data-title="Jurizquiz - Juego de Preguntas">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="container_logo">
+                        <div class="content">
+                            <a href="#home" class="waves-effect waves-logo btn-flat btn_logo">
+                                <img src="img/logo.png" alt="logo" title="Jurizquiz" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="container_btn">
+                        <button type="button" class="waves-effect waves-btn-start btn btn_start">Comienza con las Preguntas</button>
+                    </div>
+                    <div class="container_register">
+                        <span>Aún No Tienes Cuenta? Crear Una <a href="#register" data-transition="pop">Aqui</a></span>
+                    </div>
+                    <div class="container_login">
+                        <div class="content">
+                            <form class="col s12">
+                                <div class="input-field col s12">
+                                  <input id="email" type="email" class="validate" placeholder="Correo">
+                                </div>
+                                <div class="input-field col s12">
+                                  <input id="password" type="password" class="validate" placeholder="Contraseña">
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_login">Acceder</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container_terms">
+                        <span><a href="#terms">Políticas de Uso</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Register -->
+        <div data-role="page" id="register" class="register" data-title="Jurizquiz - Registro">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="container_logo">
+                        <div class="content">
+                            <a href="#home" class="waves-effect waves-logo btn-flat btn_logo" data-transition="flip">
+                                <img src="img/logo.png" alt="logo" title="Jurizquiz" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="container_btn">
+                        <button type="button" class="waves-effect waves-btn-start btn btn_start">Comienza con las Preguntas</button>
+                    </div>
+                    <div class="container_login">
+                        <div class="content">
+                            <form class="col s12">
+                                <div class="input-field col s12">
+                                  <input id="email_r" type="email" class="validate" placeholder="Correo Eléctronico">
+                                </div>
+                                <div class="input-field col s12">
+                                  <input id="password_r" type="password" class="validate" placeholder="Contraseña">
+                                </div>
+                                <div class="input-field col s12">
+                                  <input id="password_c" type="password" class="validate" placeholder="Confirmar Contraseña">
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_register">Registrarse</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container_terms">
+                        <span><a href="#terms">Políticas de Uso</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Terms -->
+        <div data-role="page" id="terms" class="terms" data-title="Términos y Condiciones" >
+    		<div data-role="content">   
+        		<div class="container_terms">
+        		    <div class="container_logo">
+                        <div class="content">
+                            <a href="#home" class="waves-effect waves-logo btn-flat btn_logo" data-transition="flip">
+                                <img src="img/logo.png" alt="logo" title="Jurizquiz" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+        			<h1 class="title">Políticas de Uso</h1>
+        			<p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+            			sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+            			magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+            			quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+            			ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+            			dolor in hendrerit in vulputate velit esse molestie consequat,
+            			vel illum dolore eu feugiat nulla facilisis at vero eros et
+            			accumsan et iusto odio dignissim qui blandit praesent luptatum
+            			zzril delenit augue duis dolore te feugait nulla facilisi.
+        			</p>
+        			<div class="container_btn">
+        			    <a href="#home">Iniciar Sesión</a>
+        			    <a href="#register">Registrarse</a>
+        			</div>
+        		</div>
+    		</div>
+        </div>
+        
+        <!-- Page Dashboard -->
+        <div data-role="page" id="dashboard" class="dashboard" data-title="Jurisquiz - Dashboard" >
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="status">
+                    <div class="points">
+                        <em>55</em> puntos
+                    </div>
+                    <div class="icon_level">
+                        <img src="img/level1.png" class="responsive-img"></img>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="games">
+                        <hgroup>
+                            <h1 class="question">¿ Como quieres jugar ?</h1>
+                            <h2 class="title">Prueba una de nuestras 5 opciones</h2>
+                        </hgroup>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#race">Carrera</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#duel">Duelo</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#test">Examen</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#specialty">Especialidad</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Litigio</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Friends -->
+        <div id="friends" class="friends" data-role="page" data-title="Friends - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="status">
+                    <div class="points">
+                        <em>55</em> puntos
+                    </div>
+                    <div class="icon_level">
+                        <img src="img/level1.png" class="responsive-img"></img>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_friends">
+                        <div class="friend">
+                            <div class="row" style="margin:0">
+                                <div class="col s3">
+                                    <div class="image_friend">
+                                        <img src="img/level.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="name_friend">
+                                        <em>1.</em> David Ortegon
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div class="score_friend">
+                                        567
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="friend">
+                            <div class="row" style="margin:0">
+                                <div class="col s3">
+                                    <div class="image_friend">
+                                        <img src="img/level_w.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="name_friend">
+                                        <em>2.</em> Camila Giraldo
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div class="score_friend">
+                                        544
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="friend">
+                            <div class="row" style="margin:0">
+                                <div class="col s3">
+                                    <div class="image_friend">
+                                        <img src="img/level.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="name_friend">
+                                        <em>3.</em> Carlos Marco
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div class="score_friend">
+                                        467
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="friend">
+                            <div class="row" style="margin:0">
+                                <div class="col s3">
+                                    <div class="image_friend">
+                                        <img src="img/level_w.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="name_friend">
+                                        <em>4.</em> Mariana Lopez
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div class="score_friend">
+                                        316
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="friend">
+                            <div class="row" style="margin:0">
+                                <div class="col s3">
+                                    <div class="image_friend">
+                                        <img src="img/level.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s6">
+                                    <div class="name_friend">
+                                        <em>5.</em> Andres Perez
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div class="score_friend">
+                                        36
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Race -->
+        <div id="race" class="race" data-role="page" data-title="Race Mode - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_race.png" class="responsive-img">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        Este es el texto descriptivo para cada modo de juego,
+                                        donde se le explica en que consiste el juego.
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Iniciar en Ejecutivo</button>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Iniciar en Legislativo</button>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Iniciar en Judicial</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Star Race -->
+        <div id="start_race" class="start_race" data-role="page" data-title="Start Race - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="levels_content">
+                    <div class="level active">
+                        <div class="top">
+                            <span class="name">Alcalde</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Gobernador</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Presidente</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_start_game">
+                        <div class="question">
+                            La sanción legal no es solo pena sino tambien la recompensa
+                        </div>
+                        <div class="answers_options">
+                            <div class="answer">
+                                <input id="answer1" type="radio" name="answer"/>
+                                <label for="answer1" data-role="none">
+                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer2" type="radio" name="answer"/>
+                                <label for="answer2">
+                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer3" type="radio" name="answer"/>
+                                <label for="answer3">
+                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer4" type="radio" name="answer"/>
+                                <label for="answer4">
+                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Duel -->
+        <div id="duel" class="duel" data-role="page" data-title="Duel Mode - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_race.png" class="responsive-img">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        Este es el texto descriptivo para cada modo de juego,
+                                        donde se le explica en que consiste el juego.
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#search_duel">Buscar Duelo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Search Duel -->
+        <div id="search_duel" class="search_duel" data-role="page" data-title="Search Duel - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_list_users">
+                        <h1 class="title">Colegas conectados</h1>
+                        <div class="list_users">
+                            <div class="user">
+                                <div class="row" style="margin:0">
+                                    <div class="col s2" style="padding: 0">
+                                        <div class="image_user">
+                                            <img src="img/level.png" class="responsive-img">
+                                        </div>
+                                    </div>
+                                    <div class="col s5">
+                                        <div class="name_user">
+                                            <em>1.</em> David Ortegon
+                                        </div>
+                                    </div>
+                                    <div class="col s5" style="padding: 0">
+                                        <div class="duel_link">
+                                            <a href="#duel_users?id=8">Duelo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user">
+                                <div class="row" style="margin:0">
+                                    <div class="col s2" style="padding: 0">
+                                        <div class="image_user">
+                                            <img src="img/level_w.png" class="responsive-img">
+                                        </div>
+                                    </div>
+                                    <div class="col s5">
+                                        <div class="name_user">
+                                            <em>2.</em> Tatiana Delgado
+                                        </div>
+                                    </div>
+                                    <div class="col s5" style="padding: 0">
+                                        <div class="duel_link">
+                                            <a href="#duel_users?id=7">Duelo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user">
+                                <div class="row" style="margin:0">
+                                    <div class="col s2" style="padding: 0">
+                                        <div class="image_user">
+                                            <img src="img/level_w.png" class="responsive-img">
+                                        </div>
+                                    </div>
+                                    <div class="col s5">
+                                        <div class="name_user">
+                                            <em>3.</em> Estefania Chalarca
+                                        </div>
+                                    </div>
+                                    <div class="col s5" style="padding: 0">
+                                        <div class="duel_link">
+                                            <a href="#duel_users?id=128">Duelo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user">
+                                <div class="row" style="margin:0">
+                                    <div class="col s2" style="padding: 0">
+                                        <div class="image_user">
+                                            <img src="img/level.png" class="responsive-img">
+                                        </div>
+                                    </div>
+                                    <div class="col s5">
+                                        <div class="name_user">
+                                            <em>4.</em> Cristian Arias
+                                        </div>
+                                    </div>
+                                    <div class="col s5" style="padding: 0">
+                                        <div class="duel_link">
+                                            <a href="#duel_users?id=78">Duelo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user">
+                                <div class="row" style="margin:0">
+                                    <div class="col s2" style="padding: 0">
+                                        <div class="image_user">
+                                            <img src="img/level.png" class="responsive-img">
+                                        </div>
+                                    </div>
+                                    <div class="col s5">
+                                        <div class="name_user">
+                                            <em>5.</em> Alejandro Arias
+                                        </div>
+                                    </div>
+                                    <div class="col s5" style="padding: 0">
+                                        <div class="duel_link">
+                                            <a href="#duel_users?id=11">Duelo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Duel Users -->
+        <div id="duel_users" class="duel_users" data-role="page" data-title="Duel Users - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_start_game">
+                        <div class="number_questions">
+                            <span>| 4 / 10</span>
+                        </div>
+                        <div class="question">
+                            La sanción legal no es solo pena sino tambien la recompensa
+                        </div>
+                        <div class="answers_options">
+                            <div class="answer">
+                                <input id="answer_1" type="radio" name="answer"/>
+                                <label for="answer_1" data-role="none">
+                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer_2" type="radio" name="answer"/>
+                                <label for="answer_2">
+                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer_3" type="radio" name="answer"/>
+                                <label for="answer_3">
+                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer_4" type="radio" name="answer"/>
+                                <label for="answer_4">
+                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                        </div>
+                        <div class="opponent">
+                            <div class="row" style="margin: 0">
+                                <div class="col s3">
+                                    <div class="image">
+                                        <img src="img/level1.png" class="responsive-img">
+                                    </div>
+                                    <div class="name">
+                                        <span>Andres Martinez</span>
+                                    </div>
+                                </div>
+                                <div class="col s5">
+                                    <div class="arrow">
+                                        <img src="img/arrow_big.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s4" style="padding: 0">
+                                    <div class="number_answers">
+                                        <span>8 / 10</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Win Duel  -->
+        <div id="win_duel" class="win_duel" data-role="page" data-title="Win Duel - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_win_duel">
+                        <h1 class="title">Resultados</h1>
+                        <div class="winner">
+                            <div class="row" style="margin: 0">
+                                <div class="col s3">
+                                    <div class="image">
+                                        <img src="img/level1.png" class="responsive-img">
+                                    </div>
+                                    <div class="name">
+                                        <span>Andres Martinez</span>
+                                    </div>
+                                </div>
+                                <div class="col s5">
+                                    <div class="arrow">
+                                        <img src="img/arrow_big.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s4" style="padding: 0">
+                                    <div class="number_answers">
+                                        <span>8 / 10</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 0">
+                                <div class="message">
+                                    Haz Ganado <em>8</em> puntos
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loser">
+                            <div class="row" style="margin: 0">
+                                <div class="col s3">
+                                    <div class="image">
+                                        <img src="img/level1.png" class="responsive-img">
+                                    </div>
+                                    <div class="name">
+                                        <span>Carlos Aguirre</span>
+                                    </div>
+                                </div>
+                                <div class="col s5">
+                                    <div class="arrow">
+                                        <img src="img/arrow_big.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s4" style="padding: 0">
+                                    <div class="number_answers">
+                                        <span>2 / 10</span>
+                                        <div>Buenas</div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Profile -->
+        <div id="profile" class="profile" data-role="page" data-title="Profile User - Jurizquiz">
+            Profile
+        </div>
+        
+        <!-- Panel Notification -->
+        <div class="panel_notification">
+            <div class="content_panel">
+                <div class="image_user">
+                    <img src="img/level1.png" class="responsive-img">
+                </div>
+                <div class="message">
+                    <span class="name">Andres Martinez te reta a un duelo</span>
+                </div>
+                <div class="time">
+                    <span>( 10 seg )</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Preloader -->
+        <div class="loader">
+            <div class="content_loader">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                </div>
+                <div class="message"></div>
+            </div>
+        </div>
+        
+        <!-- Nav-Menu -->
+        <div>
+          <div id="slide-out" class="side-nav panel">
+            <header class="panel_header">
+                    <div class="btn_close">
+                        <a data-rel="close" data-role="none" class="btn_panel toggle">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </a>
+                    </div>
+                    <div class="information_user">
+                        <div class="row" style="margin: 0">
+                            <div class="col m4 s4" style="padding:0">
+                                <div class="image_user">
+                                    <img src="media/profile_users/default_user.png" class="responsive-img">
+                                </div>
+                            </div>
+                            <div class="col m8 s8" style="padding: 0 ">
+                                <div class="data_user">
+                                    <span class="name">Name</span>
+                                    <span class="email">Email</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <section class="panel_content">
+                    <article>
+                        <div class="row">
+                            <div class="col m7 s7" style="padding: 0">
+                                <div class="status">
+                                    <div class="points">
+                                        <em>0</em> puntos
+                                    </div>
+                                    <div class="icon_level">
+                                        <img src="img/level1.png" class="responsive-img"></img>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col m5 s5" style="padding: 0">
+                                <div class="friends">
+                                    <h4 class=title"">Colegas</h4>
+                                    <ul>
+                                        <li>Camila 567</li>
+                                        <li>Herman 390</li>
+                                        <li>Mariana 57</li>
+                                    </ul>
+                                    <a href="#friends">Ver Todos...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="levels">
+                        <div class="row">
+                            <div class="col m4 s4">
+                                <div class="current_level">
+                                    <img src="img/level1.png" class="responsive-img"></img>
+                                    <span>Nivel 1</span>
+                                </div>
+                            </div>
+                            <div class="col m4 s4">
+                                <div class="arrow">
+                                    <img src="img/arrow.png" class="responsive-img"></img>
+                                </div>
+                            </div>
+                            <div class="col m4 s4">
+                                <div class="next_level">
+                                    <img src="img/level2.png" class="responsive-img"></img>
+                                    <span>Nivel 2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_logout">Salir</button>
+                        </div>
+                    </article>
+                </section>
+          </div>
+        </div>
+        
+        <!-- Nav-Button -->
+        <div class="nav_button">
+            <div class="nav">
+    			<a href="#profile" class="nav-item nav-count-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Perfil"><i class="material-icons">perm_identity</i><span class="invisible"></span></a>
+    			<a href="#notifications" class="nav-item nav-count-2 tooltipped" data-position="left" data-delay="50" data-tooltip="Mensajes"><i class="material-icons">chat_bubble_outline</i><span class="invisible"></span></a>
+    			<a href="#friends" class="nav-item nav-count-3 tooltipped" data-position="left" data-delay="50" data-tooltip="Colegas"><i class="material-icons">supervisor_account</i><span class="invisible"></span></a>
+    			<a href="#config" class="nav-item nav-count-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Configuración"><i class="material-icons">settings</i><span class="invisible"></span></a>
+    			<a href="#" class="mask"><i class="material-icons">add</i></a>
+    		</div>
+        </div>
+        
+        <!-- Scripts -->
+        <script>
+            $(document).bind("mobileinit", function(){
+              $.mobile.touchOverflowEnabled = true;
+            });
+            $(document).ready(function(){
+                $('.tooltipped').tooltip({delay: 10});
+            });
+        </script>
+        <script type="text/javascript" src="js/nav.js"></script>
+        <script type="text/javascript" src="js/routes.js"></script>
+    </body>
+</html>

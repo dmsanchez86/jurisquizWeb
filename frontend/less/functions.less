@@ -1,0 +1,74 @@
+/*
+* Todas las Etiquetas Navegadores
+*/
+.property_(@property, @value) {
+    -webkit-@{property}: @value;
+     -khtml-@{property}: @value;
+       -moz-@{property}: @value;
+        -ms-@{property}: @value;
+         -o-@{property}: @value;
+            @{property}: @value;
+}
+
+//Box-sizing
+.box_sizing(@param:border-box;){
+    .property_(box-sizing, @param);
+}
+
+// Border-Radius
+.border_radius(@param:50%){
+    .property_(border-radius,@param);
+}
+
+// Box-Shadow
+.box_shadow(@x: 0, @y: 0, @blur: 2px, @anchura_sombra: 0, @color: black){
+    .property_(box-shadow, @x @y @blur @anchura_sombra @color);
+}
+
+
+// Box-Shadow Inset
+.box_shadow_inset(@x: 0, @y: 0, @blur: 2px, @anchura_sombra: 0, @color: black,@form: inset){
+    .property_(box-shadow, @x @y @blur @anchura_sombra @color @form);
+}
+
+// Text-Shadow
+.text_shadow(@x: 0,@y: 0,@blur: 2px,@color: rgba(255,255,255,.5)){
+    .property_(text-shadow,@x @y @blur @color);
+}
+
+
+// Center-Box
+.center_box(@position: absolute){
+    position: @position;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+// Display-Flex
+.flex_content(){
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: flex;
+}
+
+// Display-Flex-Item
+.flex_item(@grow: 1,@shrink: 1,@basis: 0%){
+    -webkit-flex:@grow @shrink @basis;
+    -moz-flex:@grow @shrink @basis;
+    -o-flex:@grow @shrink @basis;
+    flex:@grow @shrink @basis;
+}
+
+// Tranforms
+.transform(@param){
+    .property_(transform,@param);
+}
+
+// Transitions
+.transition(@param:all .5s ease){
+    .property_(transition,@param);
+}
