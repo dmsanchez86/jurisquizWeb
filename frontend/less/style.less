@@ -47,17 +47,28 @@
 /* ----------------------------------------- */
 
 /* Home */
-.home,.register,.dashboard,.race,.start_race,.duel,.search_duel,.duel_users,.terms{
+.home,.register,.dashboard,.race,.start_race,.duel,.search_duel,.duel_users,.terms,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation{
     .container_logo{padding: 1.5rem 0;
          .content{width: @width_relative;margin: 0 auto;max-width: 100%;
             .btn_logo{.btn_logo(); 
-                img{max-height: 400px;}
+                // img{max-height: 400px;}
+                div{background-image: url(../img/logo.png);width: 100%;min-height: 300px;background-size: cover;}
             }   
          }
     }
     .container_btn{text-align:center;
         button{.button();
-            &:hover{background-image: @btn_start_gradient;text-shadow: none;}
+            &:hover{background-color: @btn_start;text-shadow: none;}
+        }
+        &:nth-child(even){
+            button{
+                &:after{left: 0;right: inherit;}
+            }
+        }
+        &:nth-child(odd){
+            button{
+                &:after{right: 0;left: inherit;}
+            }
         }
     }
     .container_register{text-align: center;margin-top: 1.5rem;margin-bottom: 1.3rem;
@@ -81,7 +92,7 @@
 }
 
 /* Dashboard */
-.dashboard,.friends,.race,.start_race,.duel,.search_duel,.duel_users,.win_duel{
+.dashboard,.friends,.race,.start_race,.duel,.search_duel,.duel_users,.win_duel,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.profile{
     .btn_panel{display: inline-block;width: 35px;margin-left: 1rem;margin-top: 1rem;position: relative;.box_sizing(content-box);padding-right: 1.2rem;
         &:after{position: absolute; right: 0; width: 2.5px; height: 88%; background-color: #fff; content:''; margin: auto; top: 8px;bottom: 0;}
         > div{border-top: 3.3px solid white;margin-bottom: .5rem;.transition(all .4s ease);
@@ -139,8 +150,8 @@
 }
 
 /* Friends */
-.friends{
-    .content_friends{background-color: @btn_start;.border_radius(10px);margin: 3rem auto 2rem;position: relative;padding: 1.5rem .5rem; max-width: 100%; width: 580px; 
+.friends,.profile{
+    .content_friends,.content_profile{background-color: @btn_start;.border_radius(10px);margin: 3rem auto 2rem;position: relative;padding: 1.5rem .5rem; max-width: 100%; width: 580px; 
         &:after{position:absolute;top: -46px; right: 3rem; border: 23px solid @btn_start;content:'';border-top-color: transparent;border-left-color: transparent;border-right-color: transparent;}
         .friend{max-width: 100%; width: 350px; margin: 0 auto .5rem; padding-top: .35rem; border-bottom: thin solid #fff;color: #fff;
             &:last-child{border-color: transparent;}
@@ -160,7 +171,7 @@
 }
 
 /* Mode-Race */ 
-.race,.duel{
+.race,.duel,.test,.specialty,.litigation{
     .content_game{margin-top: 5rem;
         .icon_game{width: 230px;max-width: 100%;margin: 0 auto;}
         .message_game{background-color: @btn_start;padding: 1rem 2rem; .border_radius(5px);max-width: 100%;width: 380px; margin: .8rem auto;position: relative;
@@ -171,7 +182,7 @@
 }
 
 /* Start-Race */
-.start_race,.search_duel,.duel_users{
+.start_race,.search_duel,.duel_users,.start_test,.start_specialty,.start_litigation{
     .content_start_game{ margin-top: 2.7rem;
         .question,.answers_options{background-color: @btn_start;.border_radius(15px); font-family: 'DK Mango'; padding: 1rem 2rem; color: white;max-width: 100%; width: 580px; margin-left: auto; margin-right: auto;}
         .question{margin-bottom: 1rem;font-size: 2.3rem;text-align: center;text-shadow: none;position:relative;
@@ -287,83 +298,8 @@
     }
 }
 
-/* Panel Notifications */
-.panel_notification{display:none;position: absolute;margin: auto; top: 1.5rem; left: 0; right: 0; max-width: 100%; width: 380px; background-color: @notification; padding: 0rem .4rem 0;z-index: 9999; .border_radius(5px); .transition(all .8s ease); .transform(translatey(-100px));
-    &:before{position: absolute; left: 1.5rem; top: -29px; border: 15px solid @notification; border-color: transparent transparent @notification transparent; content: '';}
-    .content_panel{ .flex_content();
-        > div{ padding: .1rem .4rem;.flex_item();}
-        .image_user{ text-align: center;
-            img{max-height: 38px;}
-        }
-        .message,.time{ text-align: center;
-            span{color: white; text-shadow: none; font-family: 'DK Mango'; }
-        }
-        .message{ .flex_item(1, 1, 47%); padding-top: 13px; text-align: left;
-            .name{}
-        }
-        .time{text-align: center; padding-top: 13px; position: relative;
-            &:before{position: absolute; left: -15px; top: 0; margin: auto; height: 70%; width: 1px; bottom: 0; content: '';background-color: #fff;}
-            span{}
-        }
-    }
-}
-
-/* Loader */
-.loader{background-color: rgba(58, 102, 103, 0.44);display: none;.center_box(fixed);z-index: 999999;
-    .content_loader{.center_box();height: 64px;width: 64px;
-        .message{color: rgba(238, 98, 0,.8);.text_shadow(0 0 2px #fff);margin-top: .8rem; font-family: 'Waiting for the Sunrise', cursive; font-size: 1.7rem;margin-left: -.8rem; font-weight: bold;}
-    }
-}
-
-/* Materialize Custom */
-.waves-effect.waves-logo .waves-ripple {background-color: @btn_ripple_orange;}
-
-.waves-effect.waves-btn-start{background-image: @btn_start_gradient;}
-
-.waves-effect.waves-btn-start .waves-ripple{background-color: @btn_ripple;}
-
-.waves-effect.waves-btn-login{background-color: @btn_login;}
-
-.waves-effect.waves-btn-login .waves-ripple{background-color: @btn_ripple;}
-
-.side-nav a{line-height: 1;padding: 0;height: auto;}
-
-.material-icons {font-family: 'Material Icons';font-weight: normal;font-style: normal;font-size: 24px;line-height: 1.75;letter-spacing: normal;text-transform: none;display: inline-block;word-wrap: normal;-webkit-font-feature-settings: 'liga';-webkit-font-smoothing: antialiased;}
-
-input[type="email"],
-input[type="text"],
-input[type="password"]{background-color: @txt;border-color: transparent;padding: .25rem 1rem;&:focus::-webkit-input-placeholder,
-    &:focus::input-placeholder{color: red!important;}
-    &:focus:not([readonly]){border-color: transparent;box-shadow: 0 0 0 0 transparent;
-        +label{opacity: 0;}
-    }
-    &:focus{box-shadow: 0}
-}
-
-.input-field label{left: 2rem;}
-
-.container{width:100%;padding:0 1rem;}
-
-/* Custom Toast Materialize */
-.toast{height: auto;line-height: 2;padding: 1rem 1.5rem 2rem;
-    *{.text_shadow();font-family: 'DK Mango'; font-style: normal;}
-    h3{font-size: 1.7rem; margin: 0;text-decoration: underline;text-align: center;}
-    .error{
-        h2{color: #fff; .text_shadow(0,0,0,#fff);font-size: 1.4rem;}
-    }
-    .no-register,.error,.success{text-align: center; width: 100%;
-        h2,h4{font-family: 'Waiting for the Sunrise', cursive; text-align: center; font-size: 2rem;}
-    }
-}
-
-/* Custom Spinner Background */
-.spinner-blue, .spinner-blue-only {border-color: #EE6200;}
-
-/* Custom container inputs */
-.input-field{margin-bottom: 1rem;}
-
 /* Panel */
-.panel {border: 1px solid #000;border-right: none;background: @background_menu;margin: -1px 0;
+.panel,.profile {border: 1px solid #000;border-right: none;background: @background_menu;margin: -1px 0;
     .ui-panel-inner{padding: 0;}
     .panel_header{min-height: 200px; background-color: @background_menu_header;position: relative; background-size: cover; background-position: center;
         .btn_close{float: right;
@@ -382,9 +318,9 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
         }
         .information_user{position: absolute; bottom: 3%; width: 100%; min-height: 100px;
             .row{padding: .5rem .35rem;}
-            .image_user{width: 75px;height: 74px; .border_radius(50%); background-color: @txt;margin: 0 auto;.box_shadow(0,0,7px,1px,#737373); max-width: 100%;}
+            .image_user{width: 75px;height: 74px; .border_radius(50%); background-color: @txt;margin: 0 auto;.box_shadow(0,0,7px,1px,#737373); max-width: 100%;overflow: hidden;}
             .data_user{ word-wrap: break-word;margin-top: 1rem;
-                span{color: white;text-shadow: 0 0 1px #323232;font-size: .84rem;}
+                span{color: white;text-shadow: 0 0 1px #323232;font-size: .84rem;display: block; }
             }
         }
     }
@@ -425,6 +361,120 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
         }
     }
 }
+
+/* Profile */
+.profile{
+    .content_profile{ padding: 0; background-color: rgba(130,130,130,.5); margin: .45rem auto 1.8rem; .box_shadow(0,0,1px,0,@btn_start); overflow: hidden; .border_radius(2px);
+        &:after{border-color: transparent;}
+        .panel_header{
+            .information_user{
+                .image_user{
+                    + span{color: white;display: block; text-align: center;font-size: .75rem;.short_word();}
+                }
+            }
+        }
+        .panel_content{ background-color: #fff; padding: 2rem 3.5rem 2rem;
+            article{ margin-bottom: 0;
+                &:nth-child(2){padding-top: 0; padding-bottom: 0;
+                    .row{margin: 0;}
+                }
+                &:last-child{padding-top: 0;margin-top: 0;}
+            }
+        }
+    }
+    .container_btn{
+        button{
+            &:hover{background-color: #ee6200;}
+            &:last-child:hover{background-color: #3a6667;}
+        }
+        .waves-effect.waves-btn-login:after{
+            left: 0;
+        }
+    }
+    .form{text-align: center;}
+    input[type=file]{display: none;}
+}
+
+/* Panel Notifications */
+.panel_notification{display:none;position: absolute;margin: auto; top: 1.5rem; left: 0; right: 0; max-width: 100%; width: 380px; background-color: @notification; padding: 0rem .4rem 0;z-index: 9999; .border_radius(5px); .transition(all .8s ease); .transform(translatey(-100px));
+    &:before{position: absolute; left: 1.5rem; top: -29px; border: 15px solid @notification; border-color: transparent transparent @notification transparent; content: '';}
+    .content_panel{ .flex_content();
+        > div{ padding: .1rem .4rem;.flex_item();}
+        .image_user{ text-align: center;
+            img{max-height: 38px;}
+        }
+        .message,.time{ text-align: center;
+            span{color: white; text-shadow: none; font-family: 'DK Mango'; }
+        }
+        .message{ .flex_item(1, 1, 47%); padding-top: 13px; text-align: left;
+            .name{}
+        }
+        .time{text-align: center; padding-top: 13px; position: relative;
+            &:before{position: absolute; left: -15px; top: 0; margin: auto; height: 70%; width: 1px; bottom: 0; content: '';background-color: #fff;}
+            span{}
+        }
+    }
+}
+
+/* Loader */
+.loader{background-color: rgba(58, 102, 103, 0.44);display: none;.center_box(fixed);z-index: 999999;
+    .content_loader{.center_box();height: 64px;width: 64px;
+        .message{color: rgba(238, 98, 0,.8);.text_shadow(0 0 2px #fff);margin-top: .8rem; font-family: 'Waiting for the Sunrise', cursive; font-size: 1.7rem;margin-left: -.8rem; font-weight: bold;}
+    }
+}
+
+/* Materialize Custom */
+.waves-effect.waves-logo .waves-ripple {background-color: @btn_ripple_orange;}
+
+.waves-effect.waves-btn-start{background-color: @btn_start; position: relative;
+    &:after{position: absolute; width: 0%; height: 100%; content: '';left:0;top: 0; .transition();z-index: -1;background-color: rgba(255,255,255,.25);}
+    &:hover:after{width: 100%;}
+}
+
+.waves-effect.waves-btn-start .waves-ripple{background-color: @btn_ripple;}
+
+.waves-effect.waves-btn-login{background-color: @btn_login; position: relative;
+    &:after{position: absolute; width: 0%; height: 100%; content: '';top: 0; .transition();z-index: -1;background-color: rgba(255,255,255,.25);}
+    &:hover:after{width: 100%;}
+}
+
+.waves-effect.waves-btn-login .waves-ripple{background-color: @btn_ripple;}
+
+.side-nav a{line-height: 1;padding: 0;height: auto;}
+
+.material-icons {font-family: 'Material Icons';font-weight: normal;font-style: normal;font-size: 24px;line-height: 1.75;letter-spacing: normal;text-transform: none;display: inline-block;word-wrap: normal;-webkit-font-feature-settings: 'liga';-webkit-font-smoothing: antialiased;}
+
+input[type="email"],
+input[type="text"],
+input[type="password"]{background-color: @txt;border-color: transparent;padding: .25rem 1rem;&:focus::-webkit-input-placeholder,
+    &:focus::input-placeholder{color: red!important;}
+    &:focus:not([readonly]){border-color: transparent;box-shadow: 0 0 0 0 transparent;
+        +label{opacity: 0;}
+    }
+    &:focus{box-shadow: 0}
+}
+
+.input-field label{left: 2rem;}
+
+.container{width:100%;padding:0 1rem;}
+
+/* Custom Toast Materialize */
+.toast{height: auto;line-height: 2;padding: 1rem 1.5rem 2rem;
+    *{.text_shadow();font-family: 'DK Mango'; font-style: normal;}
+    h3{font-size: 1.7rem; margin: 0;text-decoration: underline;text-align: center;}
+    .error{
+        h2{color: #fff; .text_shadow(0,0,0,#fff);font-size: 1.4rem;}
+    }
+    .no-register,.error,.success{text-align: center; width: 100%;
+        h2,h4{font-family: 'Waiting for the Sunrise', cursive; text-align: center; font-size: 2rem;}
+    }
+}
+
+/* Custom Spinner Background */
+.spinner-blue, .spinner-blue-only {border-color: #EE6200;}
+
+/* Custom container inputs */
+.input-field{margin-bottom: 1rem;}
 
 .ui-panel{width: 22em;}
 .ui-panel-animate.ui-panel-page-content-position-left {.transform(translate3d(22em,0,0));}
@@ -595,6 +645,25 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
                     img{max-height: 230px;}
                 }
             }
+        }
+    }
+    /* Panel */
+    .panel,.profile {
+        .panel_header{min-height: 155px;
+            .information_user{min-height: 75px;
+                .image_user{width: 55px;height: 54px;}
+            }
+        }
+    }
+    
+    .profile {
+        .content_profile{
+            .panel_header{min-height: 155px;
+                .information_user{min-height: 75px;
+                    .image_user{width: 55px;height: 54px;}
+                }
+            }
+            .panel_content{padding: 1rem .75rem 1rem;}
         }
     }
 }

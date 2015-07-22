@@ -11,14 +11,15 @@ class home {
         $email = $_POST['email'];
         $password = $_POST['pwd'];
         
-        $result = jur_users::all(array('conditions' => array('username = ? AND password = MD5(?) ', $email, $password)));
+        $result = jur_users::all(array('conditions' => array('username = ? OR email = ? AND password = MD5(?) ',$email, $email, $password)));
         
         if(count($result) > 0){
             $r = $result[0]->attributes();
             $data = array(
                     'message'   => "Welcome to Jurisquiz",
                     'status'    => "OK",
-                    'id_user'   => base64_encode($r['id'])
+                    'id_user'   => base64_encode($r['id']),
+                    'role'      => $r['role']
                 );
         }else{
             $data = array(
@@ -45,15 +46,16 @@ class home {
         }else{
             $username = explode('@',$email);
             $data = jur_users::create(array(
-                'id'        => NULL, 
-                'name'      => '',
-                'image'     => 'default_user.png',
-                'image_biography'=> '',
-                'username'  => $username[0],
-                'email'     => $email,
-                'password'  => $pwd,
-                'points'    => '0',
-                'level'     => '1'
+                'id'                => NULL, 
+                'role'              => 'user', 
+                'name'              => '',
+                'image'             => 'default_user.png',
+                'image_biography'   => 'default.jpg',
+                'username'          => $username[0],
+                'email'             => $email,
+                'password'          => $pwd,
+                'points'            => '0',
+                'level'             => '1'
             ));
             
             if( $data->errors->errors === null){
@@ -82,6 +84,7 @@ class home {
             $r = $query[0]->attributes();
             $data = array(
                     'user_id'   => $r['id'],
+                    'role'      => $r['role'],
                     'name'      => $r['name'],
                     'image'     => $r['image'],
                     'image_b'   => $r['image_biography'],
@@ -110,15 +113,19 @@ class home {
 		echo json_encode($data);
     }
     
-    function encryptIt( $q ) {
-        $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-        $qEncoded      = base64_encode( mcrypt_encrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), $q, MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ) );
-        return( $qEncoded );
-    }
-    
-    function decryptIt( $q ) {
-        $cryptKey  = 'qJB0rGtIn5UB1xG03efyCp';
-        $qDecoded      = rtrim( mcrypt_decrypt( MCRYPT_RIJNDAEL_256, md5( $cryptKey ), base64_decode( $q ), MCRYPT_MODE_CBC, md5( md5( $cryptKey ) ) ), "\0");
-        return( $qDecoded );
+    function image_user(){
+        $uploads_dir = '/frontend/media/profile_users';
+        
+        $type = $_FILES["image_user"]["type"];
+        $file = $_FILES["image_user"]["tmp_name"];
+        
+        echo $type;
+        // if($_FILES["image_user"]["error"] == 0) {
+        //     $tmp_name = $_FILES["image_user"]["tmp_name"][0];
+        //     $name = $_FILES["image_user"]["name"][0];
+        //     $response = move_uploaded_file($tmp_name, "$uploads_dir/$name");
+        //     // echo $tmp_name;
+        //     echo $name;
+        // }
     }
 }

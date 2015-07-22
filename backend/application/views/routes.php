@@ -17,6 +17,10 @@ $app->post(
     '/user_data','home:user_data'
 )->setParams(array($app));
 
+$app->post(
+    '/image_user','home:image_user'
+)->setParams(array($app));
+
 // All users
 $app->post(
     '/users','home:users'

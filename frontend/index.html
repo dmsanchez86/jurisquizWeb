@@ -22,7 +22,6 @@
         <script src="js/jquery-1.11.3.min.js"></script>
         <script src="js/jquery.mobile.router.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
-        <script src="js/jquery.stellar.js"></script>
         <script src="js/materialize.min.js"></script>
     </head>
     <body>
@@ -136,6 +135,50 @@
     		</div>
         </div>
         
+        <!-- Page Dashboard Admin -->
+        <div data-role="page" id="dashboard_admin" class="dashboard" data-title="Jurisquiz - Dashboard Admin" >
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="status">
+                    <div class="points">
+                        <em>55</em> puntos
+                    </div>
+                    <div class="icon_level">
+                        <img src="img/level1.png" class="responsive-img"></img>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="games">
+                        <hgroup>
+                            <h1 class="question">¿ Como quieres jugar ?</h1>
+                            <h2 class="title">Prueba una de nuestras 5 opciones</h2>
+                        </hgroup>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#race">Carrera</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#duel">Duelo</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#test">Examen</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#specialty">Especialidad</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Litigio</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- Page Dashboard -->
         <div data-role="page" id="dashboard" class="dashboard" data-title="Jurisquiz - Dashboard" >
             <div data-role="header">
@@ -199,103 +242,7 @@
             </div>
             <div data-role="content">
                 <div class="container">
-                    <div class="content_friends">
-                        <div class="friend">
-                            <div class="row" style="margin:0">
-                                <div class="col s3">
-                                    <div class="image_friend">
-                                        <img src="img/level.png" class="responsive-img">
-                                    </div>
-                                </div>
-                                <div class="col s6">
-                                    <div class="name_friend">
-                                        <em>1.</em> David Ortegon
-                                    </div>
-                                </div>
-                                <div class="col s3">
-                                    <div class="score_friend">
-                                        567
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="friend">
-                            <div class="row" style="margin:0">
-                                <div class="col s3">
-                                    <div class="image_friend">
-                                        <img src="img/level_w.png" class="responsive-img">
-                                    </div>
-                                </div>
-                                <div class="col s6">
-                                    <div class="name_friend">
-                                        <em>2.</em> Camila Giraldo
-                                    </div>
-                                </div>
-                                <div class="col s3">
-                                    <div class="score_friend">
-                                        544
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="friend">
-                            <div class="row" style="margin:0">
-                                <div class="col s3">
-                                    <div class="image_friend">
-                                        <img src="img/level.png" class="responsive-img">
-                                    </div>
-                                </div>
-                                <div class="col s6">
-                                    <div class="name_friend">
-                                        <em>3.</em> Carlos Marco
-                                    </div>
-                                </div>
-                                <div class="col s3">
-                                    <div class="score_friend">
-                                        467
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="friend">
-                            <div class="row" style="margin:0">
-                                <div class="col s3">
-                                    <div class="image_friend">
-                                        <img src="img/level_w.png" class="responsive-img">
-                                    </div>
-                                </div>
-                                <div class="col s6">
-                                    <div class="name_friend">
-                                        <em>4.</em> Mariana Lopez
-                                    </div>
-                                </div>
-                                <div class="col s3">
-                                    <div class="score_friend">
-                                        316
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="friend">
-                            <div class="row" style="margin:0">
-                                <div class="col s3">
-                                    <div class="image_friend">
-                                        <img src="img/level.png" class="responsive-img">
-                                    </div>
-                                </div>
-                                <div class="col s6">
-                                    <div class="name_friend">
-                                        <em>5.</em> Andres Perez
-                                    </div>
-                                </div>
-                                <div class="col s3">
-                                    <div class="score_friend">
-                                        36
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="content_friends"></div>
                 </div>
             </div>
         </div>
@@ -717,9 +664,468 @@
             </div>
         </div>
         
+        <!-- Page Test-->
+        <div id="test" class="test" data-role="page" data-title="Test Mode">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_race.png" class="responsive-img">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        Este es el texto descriptivo para cada modo de juego,
+                                        donde se le explica en que consiste el juego.
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_test">Comenzar Modo Examen</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Start Test -->
+        <div id="start_test" class="start_test" data-role="page" data-title="Start Test - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="levels_content">
+                    <div class="level active">
+                        <div class="top">
+                            <span class="name">Alcalde</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Gobernador</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Presidente</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_start_game">
+                        <div class="question">
+                            La sanción legal no es solo pena sino tambien la recompensa
+                        </div>
+                        <div class="answers_options">
+                            <div class="answer">
+                                <input id="answer__1" type="radio" name="answer"/>
+                                <label for="answer__1" data-role="none">
+                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer__2" type="radio" name="answer"/>
+                                <label for="answer__2">
+                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer__3" type="radio" name="answer"/>
+                                <label for="answer__3">
+                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer__4" type="radio" name="answer"/>
+                                <label for="answer__4">
+                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+         <!-- Page Specialty-->
+        <div id="specialty" class="specialty" data-role="page" data-title="Specialty Mode">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_race.png" class="responsive-img">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        Este es el texto descriptivo para cada modo de juego,
+                                        donde se le explica en que consiste el juego.
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_test">Escoger Tématica</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Start Specialty -->
+        <div id="start_specialty" class="start_specialty" data-role="page" data-title="Start Specialty - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="levels_content">
+                    <div class="level active">
+                        <div class="top">
+                            <span class="name">Alcalde</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Gobernador</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Presidente</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_start_game">
+                        <div class="question">
+                            La sanción legal no es solo pena sino tambien la recompensa
+                        </div>
+                        <div class="answers_options">
+                            <div class="answer">
+                                <input id="answer___1" type="radio" name="answer"/>
+                                <label for="answer___1" data-role="none">
+                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer___2" type="radio" name="answer"/>
+                                <label for="answer___2">
+                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer___3" type="radio" name="answer"/>
+                                <label for="answer___3">
+                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer___4" type="radio" name="answer"/>
+                                <label for="answer___4">
+                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Litigation-->
+        <div id="litigation" class="litigation" data-role="page" data-title="Litigation Mode">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_race.png" class="responsive-img">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        Este es el texto descriptivo para cada modo de juego,
+                                        donde se le explica en que consiste el juego.
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_test">Exponer Caso</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Start Litigation -->
+        <div id="start_litigation" class="start_litigation" data-role="page" data-title="Start Litigation - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="levels_content">
+                    <div class="level active">
+                        <div class="top">
+                            <span class="name">Alcalde</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Gobernador</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Presidente</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_start_game">
+                        <div class="question">
+                            La sanción legal no es solo pena sino tambien la recompensa
+                        </div>
+                        <div class="answers_options">
+                            <div class="answer">
+                                <input id="answer____1" type="radio" name="answer"/>
+                                <label for="answer____1" data-role="none">
+                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer____2" type="radio" name="answer"/>
+                                <label for="answer____2">
+                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer____3" type="radio" name="answer"/>
+                                <label for="answer____3">
+                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer____4" type="radio" name="answer"/>
+                                <label for="answer____4">
+                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- Page Profile -->
         <div id="profile" class="profile" data-role="page" data-title="Profile User - Jurizquiz">
-            Profile
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="status">
+                    <div class="points">
+                        <em>55</em> puntos
+                    </div>
+                    <div class="icon_level">
+                        <img src="img/level1.png" class="responsive-img"></img>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_profile">
+                        <header class="panel_header">
+                            <div class="information_user">
+                                <div class="row" style="margin: 0">
+                                    <div class="col m4 s4" style="padding:0">
+                                        <div class="image_user">
+                                            <form id="form_image" name="form_image">
+                                                <label for="image_user"><img src="media/profile_users/default_user.png" class="responsive-img"></label>
+                                                <input type="file" name="image_user" id="image_user"/>
+                                            </form>
+                                        </div>
+                                        <span class="name_file"></span>
+                                    </div>
+                                    <div class="col m8 s8" style="padding: 0 ">
+                                        <div class="data_user">
+                                            <span class="name">Name</span>
+                                            <span class="email">Email</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <section class="panel_content">
+                            <article class="levels">
+                                <div class="row">
+                                    <div class="col m4 s4">
+                                        <div class="current_level">
+                                            <span style="font-weight: bold;">Estas</span>
+                                            <img src="img/level1.png" class="responsive-img"></img>
+                                            <span>Nivel 1</span>
+                                        </div>
+                                    </div>
+                                    <div class="col m4 s4">
+                                        <div class="arrow">
+                                            <img src="img/arrow.png" class="responsive-img"></img>
+                                        </div>
+                                    </div>
+                                    <div class="col m4 s4">
+                                        <div class="next_level">
+                                            <span style="font-weight: bold;">Siguiente</span>
+                                            <img src="img/level2.png" class="responsive-img"></img>
+                                            <span>Nivel 2</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article>
+                                <div class="row">
+                                    <div class="col m1" style="padding: 0">&nbsp;</div>
+                                    <div class="col m10 s12" style="padding: 0">
+                                        <div class="form">
+                                            <form>
+                                                <div>
+                                                    <input type="text" name="current_password" placeholder="Contraseña Actual"/>
+                                                </div>
+                                                <div>
+                                                    <input type="text" name="new_password" placeholder="Contraseña Nueva"/>
+                                                </div>
+                                                <div>
+                                                    <input type="text" name="confirm_password" placeholder="Confirmar Contraseña"/>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col m1" style="padding: 0">&nbsp;</div>
+                                </div>
+                            </article>
+                            <article>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_login">Cambiar Contraseña</button>
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_start">Actualizar Datos</button>
+                                </div>
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Panel Notification -->
@@ -782,59 +1188,59 @@
                         </div>
                     </div>
                 </header>
-                <section class="panel_content">
-                    <article>
-                        <div class="row">
-                            <div class="col m7 s7" style="padding: 0">
-                                <div class="status">
-                                    <div class="points">
-                                        <em>0</em> puntos
-                                    </div>
-                                    <div class="icon_level">
-                                        <img src="img/level1.png" class="responsive-img"></img>
-                                    </div>
+            <section class="panel_content">
+                <article>
+                    <div class="row">
+                        <div class="col m7 s7" style="padding: 0">
+                            <div class="status">
+                                <div class="points">
+                                    <em>0</em> puntos
                                 </div>
-                            </div>
-                            <div class="col m5 s5" style="padding: 0">
-                                <div class="friends">
-                                    <h4 class=title"">Colegas</h4>
-                                    <ul>
-                                        <li>Camila 567</li>
-                                        <li>Herman 390</li>
-                                        <li>Mariana 57</li>
-                                    </ul>
-                                    <a href="#friends">Ver Todos...</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="levels">
-                        <div class="row">
-                            <div class="col m4 s4">
-                                <div class="current_level">
+                                <div class="icon_level">
                                     <img src="img/level1.png" class="responsive-img"></img>
-                                    <span>Nivel 1</span>
-                                </div>
-                            </div>
-                            <div class="col m4 s4">
-                                <div class="arrow">
-                                    <img src="img/arrow.png" class="responsive-img"></img>
-                                </div>
-                            </div>
-                            <div class="col m4 s4">
-                                <div class="next_level">
-                                    <img src="img/level2.png" class="responsive-img"></img>
-                                    <span>Nivel 2</span>
                                 </div>
                             </div>
                         </div>
-                    </article>
-                    <article>
-                        <div class="container_btn">
-                            <button type="button" class="waves-effect waves-btn-start btn btn_logout">Salir</button>
+                        <div class="col m5 s5" style="padding: 0">
+                            <div class="friends">
+                                <h4 class=title"">Colegas</h4>
+                                <ul>
+                                    <li>Camila 567</li>
+                                    <li>Herman 390</li>
+                                    <li>Mariana 57</li>
+                                </ul>
+                                <a href="#friends">Ver Todos...</a>
+                            </div>
                         </div>
-                    </article>
-                </section>
+                    </div>
+                </article>
+                <article class="levels">
+                    <div class="row">
+                        <div class="col m4 s4">
+                            <div class="current_level">
+                                <img src="img/level1.png" class="responsive-img"></img>
+                                <span>Nivel 1</span>
+                            </div>
+                        </div>
+                        <div class="col m4 s4">
+                            <div class="arrow">
+                                <img src="img/arrow.png" class="responsive-img"></img>
+                            </div>
+                        </div>
+                        <div class="col m4 s4">
+                            <div class="next_level">
+                                <img src="img/level2.png" class="responsive-img"></img>
+                                <span>Nivel 2</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <div class="container_btn">
+                        <button type="button" class="waves-effect waves-btn-start btn btn_logout">Salir</button>
+                    </div>
+                </article>
+            </section>
           </div>
         </div>
         
@@ -860,5 +1266,28 @@
         </script>
         <script type="text/javascript" src="js/nav.js"></script>
         <script type="text/javascript" src="js/routes.js"></script>
+        
+        <!-- Templates -->
+        <script type="text/html" id="each_user">
+            <div class="friend">
+                <div class="row" style="margin:0">
+                    <div class="col s3">
+                        <div class="image_friend">
+                            <img src="img/level<%= level %>.png" class="responsive-img">
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="name_friend">
+                            <em><%= (++index) %>. </em> <%= name %>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="score_friend">
+                            <%= points %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
     </body>
 </html>

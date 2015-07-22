@@ -14,6 +14,7 @@ var router = new $.mobile.Router({
     "#register": {handler: "register", events: "s" },
     "#terms": {handler: "terms", events: "s" },
     "#dashboard": {handler: "dashboard", events: "s" },
+    "#dashboard_admin": {handler: "dashboard_admin", events: "s" },
     "#friends": {handler: "friends", events: "s" },
     "#race": {handler: "race", events: "s" },
     "#start_race": {handler: "start_race", events: "s" },
@@ -21,6 +22,12 @@ var router = new $.mobile.Router({
     "#duel_users": {handler: "duel_users", events: "s" },
     "#search_duel": {handler: "search_duel", events: "s" },
     "#win_duel": {handler: "win_duel", events: "s" },
+    "#test": {handler: "test", events: "s" },
+    "#start_test": {handler: "start_test", events: "s" },
+    "#specialty": {handler: "specialty", events: "s" },
+    "#start_specialty": {handler: "start_specialty", events: "s" },
+    "#litigation": {handler: "litigation", events: "s" },
+    "#start_litigation": {handler: "start_litigation", events: "s" },
     "#profile": {handler: "profile", events: "s" },
 },{
     home: function(type,match,ui){
@@ -31,7 +38,8 @@ var router = new $.mobile.Router({
         hide_nav_button();
         
         // Button Login
-        $('.btn_login').unbind('click').click(function(){
+        $('.btn_login').unbind('click').click(function(e){
+            e.preventDefault();
             evt_login();
         });
         
@@ -46,7 +54,6 @@ var router = new $.mobile.Router({
         if(first_view == null){
             // Welcome Message
             message('welcome');
-            console.log(first_view);
             localStorage.setItem('first_view',true);
         }
     },
@@ -89,6 +96,7 @@ var router = new $.mobile.Router({
             }
         }else{
             var $id = params.user;
+            console.log($id);
         }
         
         if($id == null || $id == undefined || $id == ""){
@@ -97,29 +105,7 @@ var router = new $.mobile.Router({
             localStorage.setItem('log','true');
             localStorage.setItem('id_user',$id);
             
-            // Ajax for all data user
-            $.ajax({
-                type    : 'POST',
-                url     : webService+'user_data',
-                data    : {
-                    id  : $id
-                },
-                success : function(response){
-                    var data = JSON.parse(response);
-                    
-                    console.log(data);
-                    
-                    $('.points em').text(data.points);
-                    $('.data_user .name').text(data.name);
-                    $('.data_user .email').text(data.email);
-                    $('.information_user .image_user img').attr('src', directory_profile + data.image);
-                    $('.panel_header').css('background-image','url('+directory_biography+data.image_b+')');
-                    $('.panel .icon_level img,.panel .current_level img,.status .icon_level img').attr('src','img/level'+data.level+'.png');
-                    $('.panel .current_level span').text('Nivel '+data.level);
-                    $('.panel .next_level span').text('Nivel '+(parseInt(data.level) + 1));
-                    $('.panel .next_level img').attr('src','img/level'+(parseInt(data.level) + 1)+'.png');
-                }   
-            });
+            panel_data($id);
             
             // Ajax for friends
             $.ajax({
@@ -152,12 +138,74 @@ var router = new $.mobile.Router({
             $.mobile.changePage(url,{role:'page',transition:'flip'});
         });
     },
+    dashboard_admin: function(type,match,ui){
+        
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+        
+        // Params
+        var params = router.getParams(match[1]); 
+        
+        if(params == null){
+            var log = localStorage.getItem('log');
+            
+            if(log != 'true'){
+                $.mobile.changePage('#home',{role: 'page',transition: 'slide'});
+            }
+        }else{
+            var $id = params.user;
+            console.log($id);
+        }
+        
+        if($id == null || $id == undefined || $id == ""){
+            $.mobile.changePage('#home',{role: 'page',transition: 'slide'})
+        }else{
+            localStorage.setItem('log','true');
+            localStorage.setItem('id_user',$id);
+            
+            panel_data($id);
+        }
+        
+        // Events for buttons
+        $('.games button').unbind('click').click(function(e){
+            e.preventDefault();
+            var url = $(this).attr('data-url');
+            $.mobile.changePage(url,{role:'page',transition:'flip'});
+        });
+    },
     friends: function(type,match,ui){
         nav_menu();
         
         show_nav_button();
         
         evt_logout();
+        
+        var $id = localStorage.getItem('id_user');
+        
+        panel_data($id);
+        
+        $('.content_friends').empty();
+        
+        // Ajax for all users
+        $.ajax({
+            url     : webService + "users",
+            type    : 'POST',
+            data    : null,
+            success : function(response){
+                console.log(JSON.parse(response));
+                
+                var data = JSON.parse(response);
+                
+                data.forEach(function(i,o){
+                    console.log(o);
+                    i.index = o;
+                    $(".content_friends").append(tmpl("each_user", i));
+                });
+            }
+        });
     },
     race: function(type,match,ui){
         nav_menu();
@@ -188,7 +236,6 @@ var router = new $.mobile.Router({
         
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
-            console.log(':)');
             $.mobile.changePage('#search_duel',{role: 'page',transition: 'turn'});
         });
     },
@@ -235,12 +282,101 @@ var router = new $.mobile.Router({
         
         evt_logout();
     },
+    test :function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+        
+        $('.content_game button').unbind('click').click(function(e){
+            e.preventDefault();
+            $.mobile.changePage('#start_test',{role: 'page',transition: 'turn'});
+        });
+    },
+    start_test :function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+    },
+    specialty :function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+        
+        $('.content_game button').unbind('click').click(function(e){
+            e.preventDefault();
+            $.mobile.changePage('#start_specialty',{role: 'page',transition: 'turn'});
+        });
+    },
+    start_specialty :function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+    },
+    litigation :function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+        
+        $('.content_game button').unbind('click').click(function(e){
+            e.preventDefault();
+            $.mobile.changePage('#start_litigation',{role: 'page',transition: 'turn'});
+        });
+    },
+    start_litigation :function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+    },
     profile : function(type,match,ui){
         nav_menu();
         
         show_nav_button();
         
         evt_logout();
+        
+        var $id = localStorage.getItem('id_user');
+        
+        panel_data($id);
+        
+        var form_image = $('#form_image');
+        form_image.submit(function(e){
+            e.preventDefault();
+            console.log($(this));
+            var image_user = $('#image_user')[0].files[0];
+            
+            var oData = new FormData($(this)[0]);
+            oData.append('image_user',image_user);
+            
+            $.ajax({
+                url: webService + "image_user",
+                type: 'POST',
+                data: oData,
+                processData: false,
+                contentType : false,
+                success: function(response){
+                    console.log(response);
+                }
+            });
+        });
+        
+        $('#image_user').change(function(){
+           console.log('change'); 
+           var name_file = $(this).val();
+           $('.name_file').text(name_file);
+           form_image.submit();
+        });
     },
 },{ 
   defaultHandler: function(type, ui, page) {
@@ -277,7 +413,9 @@ function validate_login(){
     var id_user = localStorage.getItem('id_user');
     
     if(log == 'true'){
-        $.mobile.changePage('#dashboard?user='+id_user,{role: 'page',transition: 'fade'})
+        var id = encodeURIComponent(id_user);
+        console.log(id);
+        $.mobile.changePage('#dashboard?user='+id,{role: 'page',transition: 'fade'});
     }
 }
 
@@ -313,7 +451,11 @@ function evt_login(){
                         clean_login();
                     },1000);
                     setTimeout(function(){
-                        $.mobile.changePage('#dashboard?user='+data.id_user,{role: 'page',transition:"flip"});
+                        var role = data.role;
+                        var url = role == 'admin' ? '#dashboard_admin?user=' + data.id_user : '#dashboard?user=' + data.id_user;
+                        
+                        $.mobile.changePage(url,{role: 'page',transition:"flip"});
+                        
                     },2500);
                 }else{
                     $('.loader').fadeOut(1000);
@@ -417,13 +559,12 @@ function hide_nav_button(){
 function show_nav_button(){
     $('.nav').fadeIn(1500);
     
-    $('.nav_button .nav a').on('click',function(e){
+    $('.nav_button .nav a').click(function(e){
         e.preventDefault();
         var url = $(this).attr('href');
         
-        if(url != "#"){
+        if(url != "#")
             $.mobile.changePage(url,{role:'page',transition: 'pop'});
-        }
     });
 }
 
@@ -446,6 +587,57 @@ function nav_menu(){
         }
       );
     }
+}
+
+// Panel Data user
+function panel_data($id){
+    
+    // Ajax for all data user
+    $.ajax({
+        type    : 'POST',
+        url     : webService+'user_data',
+        data    : {
+            id  : $id
+        },
+        success : function(response){
+            var data = JSON.parse(response);
+            
+            console.log(data);
+            
+            $('.points em').text(data.points);
+            $('.data_user .name').text(data.name);
+            $('.data_user .email').text(data.email);
+            $('.information_user .image_user img').attr('src', directory_profile + data.image);
+            $('.panel_header').css('background-image','url('+directory_biography+data.image_b+')');
+            $('.panel .icon_level img,.panel .current_level img,.status .icon_level img').attr('src','img/level'+data.level+'.png');
+            $('.panel .current_level span').text('Nivel '+data.level);
+            $('.panel .next_level span').text('Nivel '+(parseInt(data.level) + 1));
+            $('.panel .next_level img').attr('src','img/level'+(parseInt(data.level) + 1)+'.png');
+        }   
+    });
+    
+    // Ajax for friends
+    $.ajax({
+        type    : 'POST',
+        url     : webService+'users',
+        data    : null,
+        success : function(response){
+            var data = JSON.parse(response);
+            
+            console.log(data);
+            
+            var list_users = $('.friends ul');
+            var data_users = {};
+            
+            list_users.empty();
+            
+            for (var i = 0; i < data.length; i++) {
+                if(i < 3){
+                    list_users.append('<li>'+data[i].name+' '+data[0].points+'</li>');
+                }
+            }
+        }
+    });
 }
 
 // Render Template
