@@ -351,6 +351,7 @@ var router = new $.mobile.Router({
         panel_data($id);
         
         var form_image = $('#form_image');
+        var form_image_biography = $('#form_image_biography');
         form_image.submit(function(e){
             e.preventDefault();
             console.log($(this));
@@ -358,6 +359,7 @@ var router = new $.mobile.Router({
             
             var oData = new FormData($(this)[0]);
             oData.append('image_user',image_user);
+            oData.append('id_user',$id);
             
             $.ajax({
                 url: webService + "image_user",
@@ -366,16 +368,56 @@ var router = new $.mobile.Router({
                 processData: false,
                 contentType : false,
                 success: function(response){
-                    console.log(response);
+                    var data = JSON.parse(response);
+                    
+                    console.log(data);
+                    
+                    if(data.status == "OK"){
+                        message(data.message);
+                        panel_data($id);
+                    }else{
+                        message(data.message);
+                    }
+                }
+            });
+        });
+        
+        form_image_biography.submit(function(e){
+            e.preventDefault();
+            console.log($(this));
+            var image_user = $('#image_biography_user')[0].files[0];
+            
+            var oData = new FormData($(this)[0]);
+            oData.append('image_user_biography',image_user);
+            oData.append('id_user',$id);
+            
+            $.ajax({
+                url: webService + "image_user_biography",
+                type: 'POST',
+                data: oData,
+                processData: false,
+                contentType : false,
+                success: function(response){
+                    var data = JSON.parse(response);
+                    
+                    console.log(data);
+                    
+                    if(data.status == "OK"){
+                        message(data.message);
+                        panel_data($id);
+                    }else{
+                        message(data.message);
+                    }
                 }
             });
         });
         
         $('#image_user').change(function(){
-           console.log('change'); 
-           var name_file = $(this).val();
-           $('.name_file').text(name_file);
            form_image.submit();
+        });
+        
+        $('#image_biography_user').change(function(){
+           form_image_biography.submit();
         });
     },
 },{ 
@@ -572,20 +614,41 @@ function show_nav_button(){
 function nav_menu(){
     var window_width = window.innerWidth;
     
-    if(window_width >= 480){
-        $('.button_collapse').sideNav({
-          menuWidth: 352, // Default is 240
-          edge: 'left', // Choose the horizontal origin
-          closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    var first_view_dashboard = localStorage.getItem('first_view_dashboard');
+        
+    if(first_view_dashboard == null){
+        if(window_width >= 480){
+            $('.button_collapse').sideNav({
+              menuWidth: 352, // Default is 240
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+          );
+        }else if(window_width < 479){
+            $('.button_collapse').sideNav({
+              menuWidth: 305, // Default is 240
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+          );
         }
-      );
-    }else if(window_width < 479){
-        $('.button_collapse').sideNav({
-          menuWidth: 305, // Default is 240
-          edge: 'left', // Choose the horizontal origin
-          closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        localStorage.setItem('first_view_dashboard',true);
+    }else{
+        if(window_width >= 480){
+            $('.button_collapse').sideNav({
+              menuWidth: 352, // Default is 240
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+          );
+        }else if(window_width < 479){
+            $('.button_collapse').sideNav({
+              menuWidth: 305, // Default is 240
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            }
+          );
         }
-      );
     }
 }
 

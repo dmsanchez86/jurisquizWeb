@@ -44,7 +44,8 @@ html {
 .specialty .container_logo,
 .start_specialty .container_logo,
 .litigation .container_logo,
-.start_litigation .container_logo {
+.start_litigation .container_logo,
+.questions .container_logo {
   padding: 1.5rem 0;
 }
 .home .container_logo .content,
@@ -61,7 +62,8 @@ html {
 .specialty .container_logo .content,
 .start_specialty .container_logo .content,
 .litigation .container_logo .content,
-.start_litigation .container_logo .content {
+.start_litigation .container_logo .content,
+.questions .container_logo .content {
   width: 380px;
   margin: 0 auto;
   max-width: 100%;
@@ -80,7 +82,8 @@ html {
 .specialty .container_logo .content .btn_logo,
 .start_specialty .container_logo .content .btn_logo,
 .litigation .container_logo .content .btn_logo,
-.start_litigation .container_logo .content .btn_logo {
+.start_litigation .container_logo .content .btn_logo,
+.questions .container_logo .content .btn_logo {
   background-color: #f6f6f6;
   height: inherit;
   padding: 0;
@@ -107,7 +110,8 @@ html {
 .specialty .container_logo .content .btn_logo div,
 .start_specialty .container_logo .content .btn_logo div,
 .litigation .container_logo .content .btn_logo div,
-.start_litigation .container_logo .content .btn_logo div {
+.start_litigation .container_logo .content .btn_logo div,
+.questions .container_logo .content .btn_logo div {
   background-image: url(../img/logo.png);
   width: 100%;
   min-height: 300px;
@@ -127,7 +131,8 @@ html {
 .specialty .container_btn,
 .start_specialty .container_btn,
 .litigation .container_btn,
-.start_litigation .container_btn {
+.start_litigation .container_btn,
+.questions .container_btn {
   text-align: center;
 }
 .home .container_btn button,
@@ -144,7 +149,8 @@ html {
 .specialty .container_btn button,
 .start_specialty .container_btn button,
 .litigation .container_btn button,
-.start_litigation .container_btn button {
+.start_litigation .container_btn button,
+.questions .container_btn button {
   width: 380px;
   padding: 1.5rem 0.5rem;
   height: inherit;
@@ -169,7 +175,8 @@ html {
 .specialty .container_btn button:hover,
 .start_specialty .container_btn button:hover,
 .litigation .container_btn button:hover,
-.start_litigation .container_btn button:hover {
+.start_litigation .container_btn button:hover,
+.questions .container_btn button:hover {
   color: white;
 }
 .home .container_btn button:focus,
@@ -186,7 +193,8 @@ html {
 .specialty .container_btn button:focus,
 .start_specialty .container_btn button:focus,
 .litigation .container_btn button:focus,
-.start_litigation .container_btn button:focus {
+.start_litigation .container_btn button:focus,
+.questions .container_btn button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .home .container_btn button:hover,
@@ -203,7 +211,8 @@ html {
 .specialty .container_btn button:hover,
 .start_specialty .container_btn button:hover,
 .litigation .container_btn button:hover,
-.start_litigation .container_btn button:hover {
+.start_litigation .container_btn button:hover,
+.questions .container_btn button:hover {
   background-color: #3a6667;
   text-shadow: none;
 }
@@ -221,7 +230,8 @@ html {
 .specialty .container_btn:nth-child(even) button:after,
 .start_specialty .container_btn:nth-child(even) button:after,
 .litigation .container_btn:nth-child(even) button:after,
-.start_litigation .container_btn:nth-child(even) button:after {
+.start_litigation .container_btn:nth-child(even) button:after,
+.questions .container_btn:nth-child(even) button:after {
   left: 0;
   right: inherit;
 }
@@ -239,7 +249,8 @@ html {
 .specialty .container_btn:nth-child(odd) button:after,
 .start_specialty .container_btn:nth-child(odd) button:after,
 .litigation .container_btn:nth-child(odd) button:after,
-.start_litigation .container_btn:nth-child(odd) button:after {
+.start_litigation .container_btn:nth-child(odd) button:after,
+.questions .container_btn:nth-child(odd) button:after {
   right: 0;
   left: inherit;
 }
@@ -257,7 +268,8 @@ html {
 .specialty .container_register,
 .start_specialty .container_register,
 .litigation .container_register,
-.start_litigation .container_register {
+.start_litigation .container_register,
+.questions .container_register {
   text-align: center;
   margin-top: 1.5rem;
   margin-bottom: 1.3rem;
@@ -277,6 +289,7 @@ html {
 .start_specialty .container_register span,
 .litigation .container_register span,
 .start_litigation .container_register span,
+.questions .container_register span,
 .home .container_register span a,
 .register .container_register span a,
 .dashboard .container_register span a,
@@ -291,7 +304,8 @@ html {
 .specialty .container_register span a,
 .start_specialty .container_register span a,
 .litigation .container_register span a,
-.start_litigation .container_register span a {
+.start_litigation .container_register span a,
+.questions .container_register span a {
   color: #323232;
   font-size: 1.35rem;
   -webkit-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
@@ -315,7 +329,8 @@ html {
 .specialty .container_register span a,
 .start_specialty .container_register span a,
 .litigation .container_register span a,
-.start_litigation .container_register span a {
+.start_litigation .container_register span a,
+.questions .container_register span a {
   font-weight: 700;
 }
 .home .container_login .content,
@@ -332,7 +347,8 @@ html {
 .specialty .container_login .content,
 .start_specialty .container_login .content,
 .litigation .container_login .content,
-.start_litigation .container_login .content {
+.start_litigation .container_login .content,
+.questions .container_login .content {
   width: 380px;
   margin: 0 auto;
   max-width: 100%;
@@ -351,7 +367,8 @@ html {
 .specialty .container_login .content button,
 .start_specialty .container_login .content button,
 .litigation .container_login .content button,
-.start_litigation .container_login .content button {
+.start_litigation .container_login .content button,
+.questions .container_login .content button {
   width: 380px;
   padding: 1.5rem 1rem;
   height: inherit;
@@ -376,7 +393,8 @@ html {
 .specialty .container_login .content button:hover,
 .start_specialty .container_login .content button:hover,
 .litigation .container_login .content button:hover,
-.start_litigation .container_login .content button:hover {
+.start_litigation .container_login .content button:hover,
+.questions .container_login .content button:hover {
   color: white;
 }
 .home .container_login .content button:focus,
@@ -393,7 +411,8 @@ html {
 .specialty .container_login .content button:focus,
 .start_specialty .container_login .content button:focus,
 .litigation .container_login .content button:focus,
-.start_litigation .container_login .content button:focus {
+.start_litigation .container_login .content button:focus,
+.questions .container_login .content button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .home .container_login .content button:hover,
@@ -410,7 +429,8 @@ html {
 .specialty .container_login .content button:hover,
 .start_specialty .container_login .content button:hover,
 .litigation .container_login .content button:hover,
-.start_litigation .container_login .content button:hover {
+.start_litigation .container_login .content button:hover,
+.questions .container_login .content button:hover {
   background-color: #ee6200;
   text-shadow: none;
 }
@@ -428,7 +448,8 @@ html {
 .specialty .container_terms,
 .start_specialty .container_terms,
 .litigation .container_terms,
-.start_litigation .container_terms {
+.start_litigation .container_terms,
+.questions .container_terms {
   text-align: center;
   margin: 1.5rem 0 2rem;
 }
@@ -446,7 +467,8 @@ html {
 .specialty .container_terms span a,
 .start_specialty .container_terms span a,
 .litigation .container_terms span a,
-.start_litigation .container_terms span a {
+.start_litigation .container_terms span a,
+.questions .container_terms span a {
   color: #aaa;
 }
 /* Dashboard */
@@ -464,7 +486,8 @@ html {
 .start_specialty .btn_panel,
 .litigation .btn_panel,
 .start_litigation .btn_panel,
-.profile .btn_panel {
+.profile .btn_panel,
+.questions .btn_panel {
   display: inline-block;
   width: 35px;
   margin-left: 1rem;
@@ -492,7 +515,8 @@ html {
 .start_specialty .btn_panel:after,
 .litigation .btn_panel:after,
 .start_litigation .btn_panel:after,
-.profile .btn_panel:after {
+.profile .btn_panel:after,
+.questions .btn_panel:after {
   position: absolute;
   right: 0;
   width: 2.5px;
@@ -517,7 +541,8 @@ html {
 .start_specialty .btn_panel > div,
 .litigation .btn_panel > div,
 .start_litigation .btn_panel > div,
-.profile .btn_panel > div {
+.profile .btn_panel > div,
+.questions .btn_panel > div {
   border-top: 3.3px solid white;
   margin-bottom: .5rem;
   -webkit-transition: all 0.4s ease;
@@ -541,7 +566,8 @@ html {
 .start_specialty .btn_panel > div:nth-child(1),
 .litigation .btn_panel > div:nth-child(1),
 .start_litigation .btn_panel > div:nth-child(1),
-.profile .btn_panel > div:nth-child(1) {
+.profile .btn_panel > div:nth-child(1),
+.questions .btn_panel > div:nth-child(1) {
   margin-top: 1rem;
 }
 .dashboard .btn_panel.toggle > div:nth-child(1),
@@ -558,7 +584,8 @@ html {
 .start_specialty .btn_panel.toggle > div:nth-child(1),
 .litigation .btn_panel.toggle > div:nth-child(1),
 .start_litigation .btn_panel.toggle > div:nth-child(1),
-.profile .btn_panel.toggle > div:nth-child(1) {
+.profile .btn_panel.toggle > div:nth-child(1),
+.questions .btn_panel.toggle > div:nth-child(1) {
   -webkit-transform: rotate(45deg) translate3d(6px, 9px, 0);
   -khtml-transform: rotate(45deg) translate3d(6px, 9px, 0);
   -moz-transform: rotate(45deg) translate3d(6px, 9px, 0);
@@ -580,7 +607,8 @@ html {
 .start_specialty .btn_panel.toggle > div:nth-child(2),
 .litigation .btn_panel.toggle > div:nth-child(2),
 .start_litigation .btn_panel.toggle > div:nth-child(2),
-.profile .btn_panel.toggle > div:nth-child(2) {
+.profile .btn_panel.toggle > div:nth-child(2),
+.questions .btn_panel.toggle > div:nth-child(2) {
   -webkit-transform: rotate(45deg) translate3d(2px, -1px, 0);
   -khtml-transform: rotate(45deg) translate3d(2px, -1px, 0);
   -moz-transform: rotate(45deg) translate3d(2px, -1px, 0);
@@ -603,7 +631,8 @@ html {
 .start_specialty .btn_panel.toggle > div:nth-child(3),
 .litigation .btn_panel.toggle > div:nth-child(3),
 .start_litigation .btn_panel.toggle > div:nth-child(3),
-.profile .btn_panel.toggle > div:nth-child(3) {
+.profile .btn_panel.toggle > div:nth-child(3),
+.questions .btn_panel.toggle > div:nth-child(3) {
   -webkit-transform: rotate(-45deg) translate3d(6px, -10px, 0);
   -khtml-transform: rotate(-45deg) translate3d(6px, -10px, 0);
   -moz-transform: rotate(-45deg) translate3d(6px, -10px, 0);
@@ -626,6 +655,7 @@ html {
 .litigation .status,
 .start_litigation .status,
 .profile .status,
+.questions .status,
 .dashboard .levels_content,
 .friends .levels_content,
 .race .levels_content,
@@ -640,7 +670,8 @@ html {
 .start_specialty .levels_content,
 .litigation .levels_content,
 .start_litigation .levels_content,
-.profile .levels_content {
+.profile .levels_content,
+.questions .levels_content {
   float: right;
   height: 97px;
   width: 230px;
@@ -664,6 +695,7 @@ html {
 .litigation .status .points,
 .start_litigation .status .points,
 .profile .status .points,
+.questions .status .points,
 .dashboard .levels_content .points,
 .friends .levels_content .points,
 .race .levels_content .points,
@@ -678,7 +710,8 @@ html {
 .start_specialty .levels_content .points,
 .litigation .levels_content .points,
 .start_litigation .levels_content .points,
-.profile .levels_content .points {
+.profile .levels_content .points,
+.questions .levels_content .points {
   color: white;
   font-family: 'DK Mango';
   font-style: normal;
@@ -708,6 +741,7 @@ html {
 .litigation .status .points:before,
 .start_litigation .status .points:before,
 .profile .status .points:before,
+.questions .status .points:before,
 .dashboard .levels_content .points:before,
 .friends .levels_content .points:before,
 .race .levels_content .points:before,
@@ -722,7 +756,8 @@ html {
 .start_specialty .levels_content .points:before,
 .litigation .levels_content .points:before,
 .start_litigation .levels_content .points:before,
-.profile .levels_content .points:before {
+.profile .levels_content .points:before,
+.questions .levels_content .points:before {
   position: absolute;
   left: -16px;
   width: 2px;
@@ -748,6 +783,7 @@ html {
 .litigation .status .points em,
 .start_litigation .status .points em,
 .profile .status .points em,
+.questions .status .points em,
 .dashboard .levels_content .points em,
 .friends .levels_content .points em,
 .race .levels_content .points em,
@@ -762,7 +798,8 @@ html {
 .start_specialty .levels_content .points em,
 .litigation .levels_content .points em,
 .start_litigation .levels_content .points em,
-.profile .levels_content .points em {
+.profile .levels_content .points em,
+.questions .levels_content .points em {
   font-size: 4.5rem;
   font-family: 'DK Mango';
   font-style: normal;
@@ -783,6 +820,7 @@ html {
 .litigation .status .icon_level,
 .start_litigation .status .icon_level,
 .profile .status .icon_level,
+.questions .status .icon_level,
 .dashboard .levels_content .icon_level,
 .friends .levels_content .icon_level,
 .race .levels_content .icon_level,
@@ -797,7 +835,8 @@ html {
 .start_specialty .levels_content .icon_level,
 .litigation .levels_content .icon_level,
 .start_litigation .levels_content .icon_level,
-.profile .levels_content .icon_level {
+.profile .levels_content .icon_level,
+.questions .levels_content .icon_level {
   text-align: right;
   padding: .25rem 1rem .25rem 0;
   -webkit-flex: 1 1 0%;
@@ -820,6 +859,7 @@ html {
 .litigation .status .icon_level img,
 .start_litigation .status .icon_level img,
 .profile .status .icon_level img,
+.questions .status .icon_level img,
 .dashboard .levels_content .icon_level img,
 .friends .levels_content .icon_level img,
 .race .levels_content .icon_level img,
@@ -834,7 +874,8 @@ html {
 .start_specialty .levels_content .icon_level img,
 .litigation .levels_content .icon_level img,
 .start_litigation .levels_content .icon_level img,
-.profile .levels_content .icon_level img {
+.profile .levels_content .icon_level img,
+.questions .levels_content .icon_level img {
   height: 88px;
 }
 .dashboard .levels_content,
@@ -851,7 +892,8 @@ html {
 .start_specialty .levels_content,
 .litigation .levels_content,
 .start_litigation .levels_content,
-.profile .levels_content {
+.profile .levels_content,
+.questions .levels_content {
   margin-right: 1rem;
   width: inherit;
 }
@@ -869,7 +911,8 @@ html {
 .start_specialty .levels_content > div,
 .litigation .levels_content > div,
 .start_litigation .levels_content > div,
-.profile .levels_content > div {
+.profile .levels_content > div,
+.questions .levels_content > div {
   padding: .25rem .15rem;
 }
 .dashboard .levels_content .level,
@@ -886,7 +929,8 @@ html {
 .start_specialty .levels_content .level,
 .litigation .levels_content .level,
 .start_litigation .levels_content .level,
-.profile .levels_content .level {
+.profile .levels_content .level,
+.questions .levels_content .level {
   opacity: .5;
   padding-right: 1.5rem;
   position: relative;
@@ -906,6 +950,7 @@ html {
 .litigation .levels_content .level .top,
 .start_litigation .levels_content .level .top,
 .profile .levels_content .level .top,
+.questions .levels_content .level .top,
 .dashboard .levels_content .level .bottom,
 .friends .levels_content .level .bottom,
 .race .levels_content .level .bottom,
@@ -920,7 +965,8 @@ html {
 .start_specialty .levels_content .level .bottom,
 .litigation .levels_content .level .bottom,
 .start_litigation .levels_content .level .bottom,
-.profile .levels_content .level .bottom {
+.profile .levels_content .level .bottom,
+.questions .levels_content .level .bottom {
   text-align: center;
 }
 .dashboard .levels_content .level .top span,
@@ -938,6 +984,7 @@ html {
 .litigation .levels_content .level .top span,
 .start_litigation .levels_content .level .top span,
 .profile .levels_content .level .top span,
+.questions .levels_content .level .top span,
 .dashboard .levels_content .level .bottom span,
 .friends .levels_content .level .bottom span,
 .race .levels_content .level .bottom span,
@@ -952,7 +999,8 @@ html {
 .start_specialty .levels_content .level .bottom span,
 .litigation .levels_content .level .bottom span,
 .start_litigation .levels_content .level .bottom span,
-.profile .levels_content .level .bottom span {
+.profile .levels_content .level .bottom span,
+.questions .levels_content .level .bottom span {
   font-family: 'DK Mango';
   color: white;
   text-shadow: none;
@@ -972,6 +1020,7 @@ html {
 .litigation .levels_content .level .top img,
 .start_litigation .levels_content .level .top img,
 .profile .levels_content .level .top img,
+.questions .levels_content .level .top img,
 .dashboard .levels_content .level .bottom img,
 .friends .levels_content .level .bottom img,
 .race .levels_content .level .bottom img,
@@ -986,7 +1035,8 @@ html {
 .start_specialty .levels_content .level .bottom img,
 .litigation .levels_content .level .bottom img,
 .start_litigation .levels_content .level .bottom img,
-.profile .levels_content .level .bottom img {
+.profile .levels_content .level .bottom img,
+.questions .levels_content .level .bottom img {
   padding: 0;
   height: 55px;
 }
@@ -1004,7 +1054,8 @@ html {
 .start_specialty .levels_content .level .top,
 .litigation .levels_content .level .top,
 .start_litigation .levels_content .level .top,
-.profile .levels_content .level .top {
+.profile .levels_content .level .top,
+.questions .levels_content .level .top {
   height: 65px;
 }
 .dashboard .levels_content .level .bottom,
@@ -1021,7 +1072,8 @@ html {
 .start_specialty .levels_content .level .bottom,
 .litigation .levels_content .level .bottom,
 .start_litigation .levels_content .level .bottom,
-.profile .levels_content .level .bottom {
+.profile .levels_content .level .bottom,
+.questions .levels_content .level .bottom {
   height: 27px;
   position: relative;
   padding-top: .25rem;
@@ -1040,7 +1092,8 @@ html {
 .start_specialty .levels_content .level .bottom:before,
 .litigation .levels_content .level .bottom:before,
 .start_litigation .levels_content .level .bottom:before,
-.profile .levels_content .level .bottom:before {
+.profile .levels_content .level .bottom:before,
+.questions .levels_content .level .bottom:before {
   position: absolute;
   content: '';
   top: 0;
@@ -1065,7 +1118,8 @@ html {
 .start_specialty .levels_content .level.active,
 .litigation .levels_content .level.active,
 .start_litigation .levels_content .level.active,
-.profile .levels_content .level.active {
+.profile .levels_content .level.active,
+.questions .levels_content .level.active {
   opacity: 1;
 }
 .dashboard .levels_content .level:not(.active) .bottom,
@@ -1082,7 +1136,8 @@ html {
 .start_specialty .levels_content .level:not(.active) .bottom,
 .litigation .levels_content .level:not(.active) .bottom,
 .start_litigation .levels_content .level:not(.active) .bottom,
-.profile .levels_content .level:not(.active) .bottom {
+.profile .levels_content .level:not(.active) .bottom,
+.questions .levels_content .level:not(.active) .bottom {
   opacity: 0;
 }
 .dashboard .levels_content .level:after,
@@ -1099,7 +1154,8 @@ html {
 .start_specialty .levels_content .level:after,
 .litigation .levels_content .level:after,
 .start_litigation .levels_content .level:after,
-.profile .levels_content .level:after {
+.profile .levels_content .level:after,
+.questions .levels_content .level:after {
   position: absolute;
   height: 100%;
   width: 40px;
@@ -1125,7 +1181,8 @@ html {
 .start_specialty .levels_content .level:last-child:after,
 .litigation .levels_content .level:last-child:after,
 .start_litigation .levels_content .level:last-child:after,
-.profile .levels_content .level:last-child:after {
+.profile .levels_content .level:last-child:after,
+.questions .levels_content .level:last-child:after {
   display: none;
 }
 .dashboard hgroup,
@@ -1142,7 +1199,8 @@ html {
 .start_specialty hgroup,
 .litigation hgroup,
 .start_litigation hgroup,
-.profile hgroup {
+.profile hgroup,
+.questions hgroup {
   margin: 6rem 0 2rem;
 }
 .dashboard hgroup h1,
@@ -1160,6 +1218,7 @@ html {
 .litigation hgroup h1,
 .start_litigation hgroup h1,
 .profile hgroup h1,
+.questions hgroup h1,
 .dashboard hgroup h2,
 .friends hgroup h2,
 .race hgroup h2,
@@ -1174,7 +1233,8 @@ html {
 .start_specialty hgroup h2,
 .litigation hgroup h2,
 .start_litigation hgroup h2,
-.profile hgroup h2 {
+.profile hgroup h2,
+.questions hgroup h2 {
   font-size: 1.3rem;
   text-align: center;
   margin: 0;
@@ -1195,7 +1255,8 @@ html {
 .start_specialty .container_btn button,
 .litigation .container_btn button,
 .start_litigation .container_btn button,
-.profile .container_btn button {
+.profile .container_btn button,
+.questions .container_btn button {
   padding: .95rem .5rem;
   font-weight: normal;
 }
@@ -1213,7 +1274,8 @@ html {
 .start_specialty .games,
 .litigation .games,
 .start_litigation .games,
-.profile .games {
+.profile .games,
+.questions .games {
   margin-bottom: 1.5rem;
 }
 /* Friends */
@@ -2205,14 +2267,82 @@ html {
 .profile .content_profile:after {
   border-color: transparent;
 }
-.profile .content_profile .panel_header .information_user .image_user + span {
-  color: white;
-  display: block;
-  text-align: center;
-  font-size: .75rem;
-  white-space: nowrap;
+.profile .content_profile .panel_header .information_user .image_user .form_image {
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+.profile .content_profile .panel_header .information_user .image_user .form_image label {
+  margin: 0;
+  background-color: transparent;
+  cursor: pointer;
+  height: 74.5px;
+  position: relative;
+  margin-top: -1px;
+}
+.profile .content_profile .panel_header .information_user .image_user .form_image label i {
+  color: white;
+  -webkit-text-shadow: 0 0 2px #323232;
+  -khtml-text-shadow: 0 0 2px #323232;
+  -moz-text-shadow: 0 0 2px #323232;
+  -ms-text-shadow: 0 0 2px #323232;
+  -o-text-shadow: 0 0 2px #323232;
+  text-shadow: 0 0 2px #323232;
+  line-height: 30px;
+}
+.profile .content_profile .panel_header .information_user .image_user .form_image label + div {
+  display: none;
+}
+.profile .content_profile .panel_header:hover .form_biography {
+  opacity: 1;
+}
+.profile .content_profile .form_biography {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  bottom: 2%;
+  right: 2%;
+  opacity: 0;
+  -webkit-border-radius: 50%;
+  -khtml-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+.profile .content_profile .form_biography form {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+.profile .content_profile .form_biography form label {
+  margin: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+.profile .content_profile .form_biography form label i {
+  color: white;
+  -webkit-text-shadow: 0 0 2px #323232;
+  -khtml-text-shadow: 0 0 2px #323232;
+  -moz-text-shadow: 0 0 2px #323232;
+  -ms-text-shadow: 0 0 2px #323232;
+  -o-text-shadow: 0 0 2px #323232;
+  text-shadow: 0 0 2px #323232;
+  line-height: 30px;
+}
+.profile .content_profile .form_biography form label + div {
+  display: none;
 }
 .profile .content_profile .panel_content {
   background-color: #fff;

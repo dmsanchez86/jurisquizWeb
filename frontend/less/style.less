@@ -47,7 +47,7 @@
 /* ----------------------------------------- */
 
 /* Home */
-.home,.register,.dashboard,.race,.start_race,.duel,.search_duel,.duel_users,.terms,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation{
+.home,.register,.dashboard,.race,.start_race,.duel,.search_duel,.duel_users,.terms,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.questions{
     .container_logo{padding: 1.5rem 0;
          .content{width: @width_relative;margin: 0 auto;max-width: 100%;
             .btn_logo{.btn_logo(); 
@@ -92,7 +92,7 @@
 }
 
 /* Dashboard */
-.dashboard,.friends,.race,.start_race,.duel,.search_duel,.duel_users,.win_duel,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.profile{
+.dashboard,.friends,.race,.start_race,.duel,.search_duel,.duel_users,.win_duel,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.profile,.questions{
     .btn_panel{display: inline-block;width: 35px;margin-left: 1rem;margin-top: 1rem;position: relative;.box_sizing(content-box);padding-right: 1.2rem;
         &:after{position: absolute; right: 0; width: 2.5px; height: 88%; background-color: #fff; content:''; margin: auto; top: 8px;bottom: 0;}
         > div{border-top: 3.3px solid white;margin-bottom: .5rem;.transition(all .4s ease);
@@ -369,7 +369,23 @@
         .panel_header{
             .information_user{
                 .image_user{
-                    + span{color: white;display: block; text-align: center;font-size: .75rem;.short_word();}
+                    .form_image{.transition();overflow: hidden;
+                        label{margin: 0; background-color: transparent; cursor: pointer;height: 74.5px; position: relative;    margin-top: -1px;
+                            i{color: white;.text_shadow(0,0,2px,#323232); line-height: 30px;}
+                            + div{display: none;}
+                        }
+                    }
+                }
+            }
+            &:hover{
+                .form_biography{opacity: 1;}
+            }
+        }
+        .form_biography{position: absolute; width:30px; height: 30px; bottom: 2%; right: 2%;opacity: 0;.border_radius(50%);
+            form{width: 100%; height: 100%; text-align: center;.transition();overflow: hidden;
+                label{margin: 0; background-color: transparent; cursor: pointer;
+                    i{color: white;.text_shadow(0,0,2px,#323232); line-height: 30px;}
+                    + div{display: none;}
                 }
             }
         }

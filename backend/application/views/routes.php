@@ -1,29 +1,33 @@
 <?php
 
-include_once(ROOT . DS . 'application' . DS . "Controllers" . DS . "home.php");
+include_once(ROOT . DS . 'application' . DS . "Controllers" . DS . "main.php");
 
 // validate login
 $app->post(
-    '/validate_login','home:validate_login'
+    '/validate_login','main:validate_login'
 )->setParams(array($app));
 
 // Register new user
 $app->post(
-    '/register_user','home:register_user'
+    '/register_user','main:register_user'
 )->setParams(array($app));
 
 // User Data
 $app->post(
-    '/user_data','home:user_data'
+    '/user_data','main:user_data'
 )->setParams(array($app));
 
 $app->post(
-    '/image_user','home:image_user'
+    '/image_user','main:image_user'
+)->setParams(array($app));
+
+$app->post(
+    '/image_user_biography','main:image_user_biography'
 )->setParams(array($app));
 
 // All users
 $app->post(
-    '/users','home:users'
+    '/users','main:users'
 )->setParams(array($app));
 
 
