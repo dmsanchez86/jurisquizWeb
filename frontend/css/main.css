@@ -1,5 +1,6 @@
 @import url('http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic');
 @import url('http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise');
+@import url('http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
 @font-face {
   font-family: 'DK Mango';
   src: url(fonts/dk_mango.otf);
@@ -2035,28 +2036,9 @@ html {
   font-size: .84rem;
   display: block;
 }
-.panel .panel_header .information_user .data_user .username:before,
-.profile .panel_header .information_user .data_user .username:before {
-  content: '@';
-}
-.panel .panel_header .information_user .data_user .username.success:after,
-.profile .panel_header .information_user .data_user .username.success:after,
-.panel .panel_header .information_user .data_user .username.error:after,
-.profile .panel_header .information_user .data_user .username.error:after {
-  color: white;
-  text-shadow: 0 0 1px #323232;
-  font-size: .84rem;
-  content: '';
-}
-.panel .panel_header .information_user .data_user .username.success:after,
-.profile .panel_header .information_user .data_user .username.success:after {
-  content: ' - Usuario Valido √';
-  color: #66bb6a;
-}
-.panel .panel_header .information_user .data_user .username.error:after,
-.profile .panel_header .information_user .data_user .username.error:after {
-  content: ' - El usuario ya existe x';
-  color: #b71c1c;
+.panel .panel_header .information_user .data_user span:focus,
+.profile .panel_header .information_user .data_user span:focus {
+  outline: none;
 }
 .panel .panel_content,
 .profile .panel_content {
@@ -2324,6 +2306,75 @@ html {
 .profile .content_profile .panel_header .information_user .data_user .username {
   cursor: pointer;
 }
+.profile .content_profile .panel_header .information_user .data_user .name.success:after,
+.profile .content_profile .panel_header .information_user .data_user .name.error:after {
+  color: white;
+  content: '';
+}
+.profile .content_profile .panel_header .information_user .data_user .name.success:after {
+  content: ' - √';
+  color: #66bb6a;
+}
+.profile .content_profile .panel_header .information_user .data_user .name.error:after {
+  content: ' - x';
+  color: #b71c1c;
+  font-weight: bold;
+}
+.profile .content_profile .panel_header .information_user .data_user .name:after {
+  content: ' - Editar';
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: .74rem;
+  -webkit-transition: all 0.5s linear;
+  -khtml-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  color: #0097a7;
+  -webkit-text-shadow: 0 0 1px #323232;
+  -khtml-text-shadow: 0 0 1px #323232;
+  -moz-text-shadow: 0 0 1px #323232;
+  -ms-text-shadow: 0 0 1px #323232;
+  -o-text-shadow: 0 0 1px #323232;
+  text-shadow: 0 0 1px #323232;
+  text-transform: uppercase;
+}
+.profile .content_profile .panel_header .information_user .data_user .username:before {
+  content: '@';
+}
+.profile .content_profile .panel_header .information_user .data_user .username.success:after,
+.profile .content_profile .panel_header .information_user .data_user .username.error:after {
+  color: white;
+  content: '';
+}
+.profile .content_profile .panel_header .information_user .data_user .username.success:after {
+  content: ' - Usuario disponible √';
+  color: #66bb6a;
+}
+.profile .content_profile .panel_header .information_user .data_user .username.error:after {
+  content: ' - El usuario ya existe x';
+  color: #b71c1c;
+  font-weight: bold;
+}
+.profile .content_profile .panel_header .information_user .data_user .username:after {
+  content: ' - Editar';
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: .74rem;
+  -webkit-transition: all 0.5s linear;
+  -khtml-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  color: #0097a7;
+  -webkit-text-shadow: 0 0 1px #323232;
+  -khtml-text-shadow: 0 0 1px #323232;
+  -moz-text-shadow: 0 0 1px #323232;
+  -ms-text-shadow: 0 0 1px #323232;
+  -o-text-shadow: 0 0 1px #323232;
+  text-shadow: 0 0 1px #323232;
+  text-transform: uppercase;
+}
 .profile .content_profile .panel_header:hover .form_biography {
   opacity: 1;
 }
@@ -2400,6 +2451,30 @@ html {
 }
 .profile input[type=file] {
   display: none;
+}
+/* Questions */
+.questions .content_questions {
+  max-width: 100%;
+  width: 600px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: #3a6667;
+  margin: 1.3rem auto 2rem;
+}
+.questions .content_questions .forms {
+  background-color: #fff;
+  padding: .15rem .85rem 1rem;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
 }
 /* Panel Notifications */
 .panel_notification {
@@ -2893,6 +2968,84 @@ label.ui-btn {
   -ms-transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
   -o-transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
   transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
+}
+/* Tabs */
+.tabs {
+  background-color: transparent;
+  margin-bottom: .75rem;
+}
+.tabs .tab a {
+  color: #ee6200;
+  font-size: .85rem;
+  z-index: 0;
+  -webkit-text-shadow: 0 0 1px #323232;
+  -khtml-text-shadow: 0 0 1px #323232;
+  -moz-text-shadow: 0 0 1px #323232;
+  -ms-text-shadow: 0 0 1px #323232;
+  -o-text-shadow: 0 0 1px #323232;
+  text-shadow: 0 0 1px #323232;
+}
+.tabs .tab a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 85%;
+  height: 0;
+  background-color: #ef863e;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: -1;
+  -webkit-transition: all 0.45s 0.2s cubic-bezier(0, -3.42, 0.34, -1.27);
+  -khtml-transition: all 0.45s 0.2s cubic-bezier(0, -3.42, 0.34, -1.27);
+  -moz-transition: all 0.45s 0.2s cubic-bezier(0, -3.42, 0.34, -1.27);
+  -ms-transition: all 0.45s 0.2s cubic-bezier(0, -3.42, 0.34, -1.27);
+  -o-transition: all 0.45s 0.2s cubic-bezier(0, -3.42, 0.34, -1.27);
+  transition: all 0.45s 0.2s cubic-bezier(0, -3.42, 0.34, -1.27);
+}
+.tabs .tab a.active,
+.tabs .tab a:hover {
+  color: #323232;
+  -webkit-text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+  -khtml-text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+  -moz-text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+  -ms-text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+  -o-text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+}
+.tabs .tab a.active {
+  position: relative;
+  color: #323232;
+  overflow: hidden;
+}
+.tabs .tab a.active:after {
+  height: 45px;
+  -webkit-border-radius: 8px 8px 0 0;
+  -khtml-border-radius: 8px 8px 0 0;
+  -moz-border-radius: 8px 8px 0 0;
+  -ms-border-radius: 8px 8px 0 0;
+  -o-border-radius: 8px 8px 0 0;
+  border-radius: 8px 8px 0 0;
+  -webkit-box-shadow: 0 0 3px 0px #e4915b;
+  -khtml-box-shadow: 0 0 3px 0px #e4915b;
+  -moz-box-shadow: 0 0 3px 0px #e4915b;
+  -ms-box-shadow: 0 0 3px 0px #e4915b;
+  -o-box-shadow: 0 0 3px 0px #e4915b;
+  box-shadow: 0 0 3px 0px #e4915b;
+  background-image: -webkit-radial-gradient(center, #f49d63, #ef863e);
+  background-image: -moz-radial-gradient(center, #f49d63, #ef863e);
+  background-image: radial-gradient(center, #f49d63, #ef863e);
+}
+.tabs .tab a.active:hover {
+  color: #000;
+}
+.tabs .tab a:hover {
+  color: #ef863e;
+}
+.tabs .indicator {
+  background-color: #ef863e;
+  min-width: 100%;
+  left: 0!important;
 }
 span[contenteditable] br {
   display: none;

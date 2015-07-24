@@ -29,6 +29,7 @@ var router = new $.mobile.Router({
     "#litigation": {handler: "litigation", events: "s" },
     "#start_litigation": {handler: "start_litigation", events: "s" },
     "#profile": {handler: "profile", events: "s" },
+    "#questions": {handler: "questions", events: "s" },
 },{
     home: function(type,match,ui){
         validate_login();
@@ -148,7 +149,7 @@ var router = new $.mobile.Router({
         $('.games button').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('data-url');
-            $.mobile.changePage(url,{role:'page',transition:'flip'});
+            $.mobile.changePage(url,{role:'page',transition:'fade'});
         });
     },
     friends: function(type,match,ui){
@@ -402,7 +403,7 @@ var router = new $.mobile.Router({
                 evt_change_password();
         });
         
-        $('.content_profile .data_user span.name').blur(function(){
+        $('.content_profile .data_user span.name').unbind('blur').blur(function(){
            var name = $(this).text();
            
           if(name == current_name){
@@ -450,7 +451,7 @@ var router = new $.mobile.Router({
           }
         });
         
-        $('.content_profile .data_user span.username').keyup(function(e){
+        $('.content_profile .data_user span.username').unbind('keyup').keyup(function(e){
             var username = $(this).text();
             if(username == current_username){
                 $('.content_profile .data_user span.username').removeClass('success error');
@@ -491,6 +492,9 @@ var router = new $.mobile.Router({
                 evt_change_username(username);
             }
         });
+    },
+    questions : function(type,match,ui){
+        $('ul.tabs').tabs();
     },
 },{ 
   defaultHandler: function(type, ui, page) {
@@ -835,13 +839,50 @@ function clean_change_password(){
     $('#confirm_password').val("");
 }
 
+// Event to change name user
+function evt_change_name(name){
+    if(name == ""){
+      message('El nombre no puede estar vacio');
+      $('.content_profile .data_user span.name').focus();
+    }else if(name.length > 50){
+      message('El nombre de usuario no puede contener mas de 50 caracteres');
+      $('.content_profile .data_user span.name').focus();
+    }else{
+        $.ajax({
+              url       : webService + 'change_name_user',
+              type      : 'POST',
+              data      : {
+                  id    : localStorage.getItem('id_user'),
+                  name  : name
+              },
+              success   : function(response){
+                $('.loader').fadeOut(500);
+                var data = JSON.parse(response);
+                  
+                if(data.status == 'OK'){
+                    setTimeout(function(){
+                        message(data.message);
+                        panel_data(localStorage.getItem('id_user'));
+                        $('.content_profile .data_user span.name').removeClass('success error');
+                    },800);
+                }else{
+                    setTimeout(function(){
+                        message(data.message);
+                        $('.content_profile .data_user span.name').focus().removeClass('success error');
+                    },800);
+                }
+              }
+          });
+    }
+}
+
 // Event to change username
 function evt_change_username(username){
     if(username == ""){
       message('El nombre no puede estar vacio');
       $('.content_profile .data_user span.username').focus();
-    }else if(username.length > 15){
-      message('El nombre de usuario no puede contener mas de 15 caracteres');
+    }else if(username.length > 50){
+      message('El nombre de usuario no puede contener mas de 50 caracteres');
       $('.content_profile .data_user span.username').focus();
     }else{
       $.ajax({
@@ -864,7 +905,7 @@ function evt_change_username(username){
             }else{
                 setTimeout(function(){
                     message(data.message);
-                    $('.content_profile .data_user span.username').focus().removeClass('success error');
+                    $('.content_profile .data_user span.username').removeClass('success error');
                 },800);
             }
           }
@@ -876,7 +917,7 @@ function evt_change_username(username){
 function evt_verify_username(username){
     if(username.length > 15){
       message('El nombre de usuario no puede contener mas de 15 caracteres');
-      $('.content_profile .data_user span.username').focus();
+      $('.content_profile .data_user span.username').focus().removeClass('error success');
     }else{
       $.ajax({
           url       : webService + 'verify_username_user',

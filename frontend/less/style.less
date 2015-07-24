@@ -1,6 +1,7 @@
 // Fonts
 @import url('http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic');
 @import url('http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise');
+@import url('http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
 
 @font-face {font-family: 'DK Mango';src: url(fonts/dk_mango.otf);}
 
@@ -320,18 +321,8 @@
             .row{padding: .5rem .35rem;}
             .image_user{width: 75px;height: 74px; .border_radius(50%); background-color: @txt;margin: 0 auto;.box_shadow(0,0,7px,1px,#737373); max-width: 100%;overflow: hidden;}
             .data_user{ word-wrap: break-word;margin-top: 1rem;
-                span{color: white;text-shadow: 0 0 1px #323232;font-size: .84rem;display: block; }
-                .username{
-                    &:before{content:'@';}
-                    &.success,&.error{
-                        &:after{ color: white;text-shadow: 0 0 1px #323232;font-size: .84rem;content: ''; }
-                    }
-                    &.success{
-                        &:after{content: ' - Usuario Valido √'; color: #66bb6a;}
-                    }
-                    &.error{
-                        &:after{content: ' - El usuario ya existe x'; color: #b71c1c;}
-                    }
+                span{color: white;text-shadow: 0 0 1px #323232;font-size: .84rem;display: block; 
+                    &:focus{outline: none;}
                 }
             }
         }
@@ -390,6 +381,31 @@
                 }
                 .data_user{
                     .name,.username{cursor: pointer;}
+                    .name{
+                        &.success,&.error{
+                            &:after{ color: white;content: ''; }
+                        }
+                        &.success{
+                            &:after{content: ' - √'; color: #66bb6a;}
+                        }
+                        &.error{
+                            &:after{content: ' - x'; color: #b71c1c;font-weight: bold;}
+                        }
+                        &:after{content: ' - Editar';font-family: 'Shadows Into Light Two', cursive;font-size: .74rem;.transition(all .5s linear); color: #0097a7;.text_shadow(0, 0, 1px, #323232);text-transform: uppercase;}
+                    }
+                    .username{
+                        &:before{content:'@';}
+                        &.success,&.error{
+                            &:after{ color: white;content: ''; }
+                        }
+                        &.success{
+                            &:after{content: ' - Usuario disponible √'; color: #66bb6a;}
+                        }
+                        &.error{
+                            &:after{content: ' - El usuario ya existe x'; color: #b71c1c;font-weight: bold;}
+                        }
+                        &:after{content: ' - Editar';font-family: 'Shadows Into Light Two', cursive;font-size: .74rem;.transition(all .5s linear); color: #0097a7;.text_shadow(0, 0, 1px, #323232);text-transform: uppercase;}
+                    }
                 }
             }
             &:hover{
@@ -424,6 +440,13 @@
     input[type=file]{display: none;}
 }
 
+/* Questions */
+.questions{
+    .content_questions{max-width: 100%;width: 600px; .border_radius(5px); padding: 1rem; background-color: @btn_start;margin: 1.3rem auto 2rem; 
+        .forms{background-color: #fff;padding: .15rem .85rem 1rem;.border_radius(5px);}
+    }
+}
+
 /* Panel Notifications */
 .panel_notification{display:none;position: absolute;margin: auto; top: 1.5rem; left: 0; right: 0; max-width: 100%; width: 380px; background-color: @notification; padding: 0rem .4rem 0;z-index: 9999; .border_radius(5px); .transition(all .8s ease); .transform(translatey(-100px));
     &:before{position: absolute; left: 1.5rem; top: -29px; border: 15px solid @notification; border-color: transparent transparent @notification transparent; content: '';}
@@ -440,7 +463,6 @@
         }
         .time{text-align: center; padding-top: 13px; position: relative;
             &:before{position: absolute; left: -15px; top: 0; margin: auto; height: 70%; width: 1px; bottom: 0; content: '';background-color: #fff;}
-            span{}
         }
     }
 }
@@ -529,6 +551,27 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
         }
     }
 }
+
+/* Tabs */
+.tabs{ background-color: transparent; margin-bottom: .75rem;
+    .tab{
+        a{color: @btn_login; font-size: .85rem; z-index: 0; .text_shadow(0,0,1px,#323232);
+            &:after{content: ''; position: absolute; bottom: 0; width: 85%; height: 0; background-color: @before_color; left: 0; right: 0; margin: auto; z-index: -1;.transition(all .45s .2s cubic-bezier(0, -3.42, 0.34, -1.27));}
+            &.active,&:hover{color: #323232;.text_shadow(0,0,1px,rgba(255,255,255,.7));}
+            &.active{position: relative;color: #323232;overflow: hidden;
+                &:after{height: 45px;.border_radius(8px 8px 0 0);.box_shadow( 0, 0, 3px, 0px, #E4915B );
+    background-image: -webkit-radial-gradient(center,#F49D63 ,#EF863E );background-image: -moz-radial-gradient(center,#F49D63 ,#EF863E );background-image: radial-gradient(center,#F49D63 ,#EF863E );}
+                &:hover{color: #000;}
+            }
+            &:hover{color: @before_color;}
+        }
+    }
+    .indicator{background-color: @before_color;min-width: 100%; left: 0!important;}
+}
+
+// div[id*='test']{
+//     background-color: #fff;
+// }
 
 span[contenteditable] br {display: none;}
 
