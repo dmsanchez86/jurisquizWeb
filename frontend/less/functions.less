@@ -68,6 +68,21 @@
     .property_(transform,@param);
 }
 
+// Tranform Origin
+.transform_origin(@param){
+    .property_(transform-origin,@param);
+}
+
+// Perspective
+.perspective(@param: 400px){
+    .property_(perspective,@param);
+}
+
+// Perspective
+.perspective_origin(@param: 50% 50%){
+    .property_(perspective-origin,@param);
+}
+
 // Transitions
 .transition(@param:all .5s ease){
     .property_(transition,@param);

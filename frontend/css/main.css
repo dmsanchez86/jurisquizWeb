@@ -2499,6 +2499,48 @@ html {
 .questions .content_questions .forms .container_btn button[data-url="#create_question"]:hover {
   background-color: #ee6200;
 }
+.questions .content_questions .forms .forms_contents {
+  -webkit-perspective: 800px;
+  -khtml-perspective: 800px;
+  -moz-perspective: 800px;
+  -ms-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+  -webkit-perspective-origin: 0% 0%;
+  -khtml-perspective-origin: 0% 0%;
+  -moz-perspective-origin: 0% 0%;
+  -ms-perspective-origin: 0% 0%;
+  -o-perspective-origin: 0% 0%;
+  perspective-origin: 0% 0%;
+}
+.questions .content_questions .forms .forms_contents > div {
+  -webkit-transition: all 0.8s 0.5s ease;
+  -khtml-transition: all 0.8s 0.5s ease;
+  -moz-transition: all 0.8s 0.5s ease;
+  -ms-transition: all 0.8s 0.5s ease;
+  -o-transition: all 0.8s 0.5s ease;
+  transition: all 0.8s 0.5s ease;
+  -webkit-transform: rotatey(90deg);
+  -khtml-transform: rotatey(90deg);
+  -moz-transform: rotatey(90deg);
+  -ms-transform: rotatey(90deg);
+  -o-transform: rotatey(90deg);
+  transform: rotatey(90deg);
+  -webkit-transform-origin: left bottom;
+  -khtml-transform-origin: left bottom;
+  -moz-transform-origin: left bottom;
+  -ms-transform-origin: left bottom;
+  -o-transform-origin: left bottom;
+  transform-origin: left bottom;
+}
+.questions .content_questions .forms .forms_contents > div.active {
+  -webkit-transform: rotatey(0);
+  -khtml-transform: rotatey(0);
+  -moz-transform: rotatey(0);
+  -ms-transform: rotatey(0);
+  -o-transform: rotatey(0);
+  transform: rotatey(0);
+}
 /* Panel Notifications */
 .panel_notification {
   display: none;

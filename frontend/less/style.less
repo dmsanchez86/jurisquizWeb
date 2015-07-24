@@ -455,6 +455,11 @@
                     &:hover{background-color: #ee6200;}
                 }
             }
+            .forms_contents{ .perspective(800px); .perspective_origin(0% 0%);
+                > div{.transition(all .8s .5s ease);.transform(rotatey(90deg));.transform_origin(left bottom);
+                    &.active{.transform(rotatey(0));}
+                }
+            }
         }
     }
 }

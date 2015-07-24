@@ -496,7 +496,7 @@ var router = new $.mobile.Router({
     questions : function(type,match,ui){
         $('ul.tabs').tabs();
         $('select').material_select();
-        
+        $('.forms_contents div').eq(0).addClass('active');
         $('#mode_game').unbind('change').change(function(){
             var id_mode_game = $(this).val();
             console.log(id_mode_game);
@@ -623,6 +623,13 @@ var router = new $.mobile.Router({
                     }
                 });
             }
+        });
+        
+        $('.tabs a').unbind('click').click(function(){
+            var url = $(this).attr('href');
+            
+            $('.forms_contents > div').removeClass('active');
+            setTimeout(function(){ $(url).addClass('active'); } , 100);
         });
     },
 },{ 
