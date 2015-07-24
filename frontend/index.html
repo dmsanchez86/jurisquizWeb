@@ -143,14 +143,6 @@
                     <div></div>
                     <div></div>
                 </a>
-                <!--<div class="status">-->
-                <!--    <div class="points">-->
-                <!--        <em>55</em> puntos-->
-                <!--    </div>-->
-                <!--    <div class="icon_level">-->
-                <!--        <img src="img/level1.png" class="responsive-img"></img>-->
-                <!--    </div>-->
-                <!--</div>-->
             </div>
             <div data-role="content">
                 <div class="container">
@@ -201,9 +193,6 @@
                             <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#race">Carrera</button>
                         </div>
                         <div class="container_btn">
-                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#duel">Duelo</button>
-                        </div>
-                        <div class="container_btn">
                             <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#test">Examen</button>
                         </div>
                         <div class="container_btn">
@@ -211,6 +200,9 @@
                         </div>
                         <div class="container_btn">
                             <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Litigio</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#duel">Duelo</button>
                         </div>
                     </div>
                 </div>
@@ -225,47 +217,6 @@
                     <div></div>
                     <div></div>
                 </a>
-                <!--<div class="levels_content">-->
-                <!--    <div class="level active">-->
-                <!--        <div class="top">-->
-                <!--            <span class="name">Alcalde</span>-->
-                <!--            <span>-->
-                <!--                <img src="img/level1.png" class="responsive-img icon_level">-->
-                <!--            </span>-->
-                <!--        </div>-->
-                <!--        <div class="bottom">-->
-                <!--            <span class="number_questions">-->
-                <!--                15 / 20-->
-                <!--            </span>-->
-                <!--        </div>-->
-                <!--    </div>-->
-                <!--    <div class="level">-->
-                <!--        <div class="top">-->
-                <!--            <span class="name">Gobernador</span>-->
-                <!--            <span>-->
-                <!--                <img src="img/level1.png" class="responsive-img icon_level">-->
-                <!--            </span>-->
-                <!--        </div>-->
-                <!--        <div class="bottom">-->
-                <!--            <span class="number_questions">-->
-                <!--                15 / 20-->
-                <!--            </span>-->
-                <!--        </div>-->
-                <!--    </div>-->
-                <!--    <div class="level">-->
-                <!--        <div class="top">-->
-                <!--            <span class="name">Presidente</span>-->
-                <!--            <span>-->
-                <!--                <img src="img/level1.png" class="responsive-img icon_level">-->
-                <!--            </span>-->
-                <!--        </div>-->
-                <!--        <div class="bottom">-->
-                <!--            <span class="number_questions">-->
-                <!--                15 / 20-->
-                <!--            </span>-->
-                <!--        </div>-->
-                <!--    </div>-->
-                <!--</div>-->
             </div>
             <div data-role="content">
                 <div class="container">
@@ -274,16 +225,77 @@
                             <div class="row" style="margin: 0">
                                 <div class="col s12" style="padding: 0">
                                   <ul class="tabs">
-                                    <li class="tab col s3"><a href="#test1" data-role="none">Nueva</a></li>
-                                    <li class="tab col s3"><a href="#test2" data-role="none">Modificar</a></li>
-                                    <li class="tab col s3"><a href="#test3" data-role="none">Desactivar</a></li>
-                                    <li class="tab col s3"><a href="#test4" data-role="none">Mostrar</a></li>
+                                    <li class="tab col s3"><a href="#new_question" data-role="none">Nueva</a></li>
+                                    <li class="tab col s3"><a href="#update_question" data-role="none">Modificar</a></li>
+                                    <li class="tab col s3"><a href="#deactivate_question" data-role="none">Desactivar</a></li>
+                                    <li class="tab col s3"><a href="#show_questions" data-role="none">Mostrar</a></li>
                                   </ul>
                                 </div>
-                                <div id="test1" class="col s12">Agregar</div>
-                                <div id="test2" class="col s12">Modificar</div>
-                                <div id="test3" class="col s12">Desactivar</div>
-                                <div id="test4" class="col s12">Todas</div>
+                                <div class="forms_contents">
+                                    <div id="new_question" class="col s12">
+                                        <h2 class="tab_title">Nueva Pregunta</h2>
+                                        <div class="form_content">
+                                            <form id="form_new_question">
+                                                <div class="input-field col s12">
+                                                    <select data-role="none" id="mode_game">
+                                                      <option value="" selected>Seleccione un modo</option>
+                                                      <option value="1">Carrera</option>
+                                                      <option value="2">Examen</option>
+                                                      <option value="3">Especialidad</option>
+                                                      <option value="4">Litigio</option>
+                                                      <option value="5">Duelo</option>
+                                                    </select>
+                                                    <label data-role="none">Modo Pregunta: </label>
+                                                </div>
+                                                <div class="input-field col s12 level_game" style="display: none">
+                                                    <select data-role="none" id="level_mode">
+                                                    </select>
+                                                    <label data-role="none">Nivel Pregunta: </label>
+                                                </div>
+                                                <div class="input-field col s12 level_mode" style="display: none">
+                                                    <select data-role="none" id="category_level">
+                                                    </select>
+                                                    <label data-role="none">Categoría: </label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                  <textarea id="question" class="materialize-textarea" data-role="none"></textarea>
+                                                  <label for="question" data-role="none">Pregunta: </label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <select data-role="none" id="type_question">
+                                                      <option value="">Seleccione el tipo de pregunta</option>
+                                                      <option value="1">Selección Múltiple</option>
+                                                      <option value="2">Si / No</option>
+                                                      <option value="3">Ordenamiento</option>
+                                                    </select>
+                                                    <label data-role="none">Tipo Pregunta: </label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                  <textarea id="question_answer" class="materialize-textarea" data-role="none"></textarea>
+                                                  <label for="question_answer" data-role="none">Respuesta de la pregunta: </label>
+                                                </div>
+                                                <div class="container_btn">
+                                                    <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#create_question">Crear Pregunta</button>
+                                                </div>
+                                                <div class="container_btn">
+                                                    <button type="reset" class="waves-effect waves-btn-start btn btn_register" data-url="#cancel_question">Cancelar</button>
+                                                </div>
+                                                <div class="structure_content">
+                                                    
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div id="update_question" class="col s12">
+                                        <h2 class="tab_title">Modificar Pregunta</h2>
+                                    </div>
+                                    <div id="deactivate_question" class="col s12">
+                                        <h2 class="tab_title">Desactivar Pregunta</h2>
+                                    </div>
+                                    <div id="show_questions" class="col s12">
+                                        <h2 class="tab_title">Todas Las Pregunta</h2>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1364,6 +1376,12 @@
                     </div>
                 </div>
             </div>
+        </script>
+        <script type="text/html" id="levels_mode_template">
+                <option value="<%= id %>"><%= name %></option>
+        </script>
+        <script type="text/html" id="category_level_template">
+                <option value="<%= id %>"><%= name %></option>
         </script>
     </body>
 </html>

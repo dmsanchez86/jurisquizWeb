@@ -52,6 +52,21 @@ $app->post(
     '/verify_username_user','main:verify_username_user'
 )->setParams(array($app));
 
+// Route for all levels of each mode game
+$app->post(
+    '/levels_mode','main:levels_mode'
+)->setParams(array($app));
+
+// Route for all categories of each level game
+$app->post(
+    '/category_level','main:category_level'
+)->setParams(array($app));
+
+// Route for register new question 
+$app->post(
+    '/register_question','main:register_question'
+)->setParams(array($app));
+
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';

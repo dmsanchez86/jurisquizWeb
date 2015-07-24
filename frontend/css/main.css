@@ -2476,6 +2476,29 @@ html {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
+.questions .content_questions .forms .tab_title {
+  font-family: 'DK Mango';
+  font-size: 3.5rem;
+  color: #ee6200;
+  text-align: center;
+  margin-top: .5rem;
+}
+.questions .content_questions .forms .input-field label {
+  color: #3a6667;
+}
+.questions .content_questions .forms .input-field label.active {
+  text-decoration: underline;
+  font-size: 0.8rem;
+  -webkit-transform: translateY(-210%);
+  -khtml-transform: translateY(-210%);
+  -moz-transform: translateY(-210%);
+  -ms-transform: translateY(-210%);
+  -o-transform: translateY(-210%);
+  transform: translateY(-210%);
+}
+.questions .content_questions .forms .container_btn button[data-url="#create_question"]:hover {
+  background-color: #ee6200;
+}
 /* Panel Notifications */
 .panel_notification {
   display: none;
@@ -2974,6 +2997,9 @@ label.ui-btn {
   background-color: transparent;
   margin-bottom: .75rem;
 }
+.tabs .tab {
+  line-height: 54px;
+}
 .tabs .tab a {
   color: #ee6200;
   font-size: .85rem;
@@ -3049,6 +3075,46 @@ label.ui-btn {
 }
 span[contenteditable] br {
   display: none;
+}
+.select-wrapper .mdi-navigation-arrow-drop-down {
+  display: none;
+}
+.select-wrapper input.select-dropdown {
+  padding-left: 1.1rem;
+  box-sizing: border-box;
+}
+.select-wrapper + label {
+  top: -24px;
+}
+.dropdown-content li > a,
+.dropdown-content li > span {
+  font-size: 1.05rem;
+  color: #3a6667;
+}
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #3A6667;
+  box-shadow: 0 1px 0 0 #3A6667;
+}
+textarea.materialize-textarea {
+  padding: .6rem 1rem 1.5rem;
+  resize: none;
+  box-sizing: border-box;
+  height: inherit;
+  background-color: rgba(58, 102, 103, 0.13);
+  min-height: 5.5rem;
+}
+.select-wrapper {
+  background-color: rgba(58, 102, 103, 0.16);
 }
 /* Queries */
 @media (max-width: 460px) {

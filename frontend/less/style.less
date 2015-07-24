@@ -443,7 +443,19 @@
 /* Questions */
 .questions{
     .content_questions{max-width: 100%;width: 600px; .border_radius(5px); padding: 1rem; background-color: @btn_start;margin: 1.3rem auto 2rem; 
-        .forms{background-color: #fff;padding: .15rem .85rem 1rem;.border_radius(5px);}
+        .forms{background-color: #fff;padding: .15rem .85rem 1rem;.border_radius(5px);
+            .tab_title{font-family: 'DK Mango'; font-size: 3.5rem; color: @btn_login; text-align: center;margin-top: .5rem;}
+            .input-field{
+                label{color: @btn_start;
+                    &.active{text-decoration: underline;font-size: 0.8rem;.transform( translateY(-210%) );}
+                }
+            }
+            .container_btn{
+                button[data-url="#create_question"]{
+                    &:hover{background-color: #ee6200;}
+                }
+            }
+        }
     }
 }
 
@@ -554,7 +566,7 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
 
 /* Tabs */
 .tabs{ background-color: transparent; margin-bottom: .75rem;
-    .tab{
+    .tab{ line-height: 54px;
         a{color: @btn_login; font-size: .85rem; z-index: 0; .text_shadow(0,0,1px,#323232);
             &:after{content: ''; position: absolute; bottom: 0; width: 85%; height: 0; background-color: @before_color; left: 0; right: 0; margin: auto; z-index: -1;.transition(all .45s .2s cubic-bezier(0, -3.42, 0.34, -1.27));}
             &.active,&:hover{color: #323232;.text_shadow(0,0,1px,rgba(255,255,255,.7));}
@@ -574,6 +586,14 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
 // }
 
 span[contenteditable] br {display: none;}
+.select-wrapper .mdi-navigation-arrow-drop-down {display: none;}
+.select-wrapper input.select-dropdown {padding-left: 1.1rem;box-sizing: border-box;}
+.select-wrapper+label {top: -24px;}
+.dropdown-content li>a, .dropdown-content li>span {font-size: 1.05rem;color: @btn_start;}
+input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {border-bottom: 1px solid #3A6667;box-shadow: 0 1px 0 0 #3A6667;}
+
+textarea.materialize-textarea {padding: .6rem 1rem 1.5rem;resize: none;box-sizing: border-box;height: inherit;    background-color: rgba(58, 102, 103, 0.13);min-height: 5.5rem;}
+.select-wrapper {background-color: rgba(58, 102, 103, 0.16);}
 
 /* Queries */
 
