@@ -96,7 +96,6 @@ var router = new $.mobile.Router({
             }
         }else{
             var $id = params.user;
-            console.log($id);
         }
         
         if($id == null || $id == undefined || $id == ""){
@@ -106,29 +105,6 @@ var router = new $.mobile.Router({
             localStorage.setItem('id_user',$id);
             
             panel_data($id);
-            
-            // Ajax for friends
-            $.ajax({
-                type    : 'POST',
-                url     : webService+'users',
-                data    : null,
-                success : function(response){
-                    var data = JSON.parse(response);
-                    
-                    console.log(data);
-                    
-                    var list_users = $('.friends ul');
-                    var data_users = {};
-                    
-                    list_users.empty();
-                    
-                    for (var i = 0; i < data.length; i++) {
-                        if(i < 3){
-                            list_users.append('<li>'+data[i].name+' '+data[0].points+'</li>');
-                        }
-                    }
-                }
-            });
         }
         
         // Events for buttons
@@ -157,7 +133,6 @@ var router = new $.mobile.Router({
             }
         }else{
             var $id = params.user;
-            console.log($id);
         }
         
         if($id == null || $id == undefined || $id == ""){
@@ -195,12 +170,9 @@ var router = new $.mobile.Router({
             type    : 'POST',
             data    : null,
             success : function(response){
-                console.log(JSON.parse(response));
-                
                 var data = JSON.parse(response);
                 
                 data.forEach(function(i,o){
-                    console.log(o);
                     i.index = o;
                     $(".content_friends").append(tmpl("each_user", i));
                 });
@@ -216,7 +188,6 @@ var router = new $.mobile.Router({
         
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
-            console.log(':)');
             $.mobile.changePage('#start_race',{role: 'page',transition: 'turn'});
         });
     },
@@ -352,9 +323,16 @@ var router = new $.mobile.Router({
         
         var form_image = $('#form_image');
         var form_image_biography = $('#form_image_biography');
+        var current_name = "";
+        var current_username = "";
+        
+        setTimeout(function(){
+            current_name = $('.content_profile .data_user span.name').text();
+            current_username = $('.content_profile .data_user span.username').text();
+        },800);
+        
         form_image.submit(function(e){
             e.preventDefault();
-            console.log($(this));
             var image_user = $('#image_user')[0].files[0];
             
             var oData = new FormData($(this)[0]);
@@ -370,8 +348,6 @@ var router = new $.mobile.Router({
                 success: function(response){
                     var data = JSON.parse(response);
                     
-                    console.log(data);
-                    
                     if(data.status == "OK"){
                         message(data.message);
                         panel_data($id);
@@ -384,7 +360,6 @@ var router = new $.mobile.Router({
         
         form_image_biography.submit(function(e){
             e.preventDefault();
-            console.log($(this));
             var image_user = $('#image_biography_user')[0].files[0];
             
             var oData = new FormData($(this)[0]);
@@ -399,8 +374,6 @@ var router = new $.mobile.Router({
                 contentType : false,
                 success: function(response){
                     var data = JSON.parse(response);
-                    
-                    console.log(data);
                     
                     if(data.status == "OK"){
                         message(data.message);
@@ -419,6 +392,105 @@ var router = new $.mobile.Router({
         $('#image_biography_user').change(function(){
            form_image_biography.submit();
         });
+        
+        $('#btn_change_password').unbind('click').click(function(){
+            evt_change_password();
+        });
+        
+        $('#current_password,#new_password,#confirm_password').unbind('keyup').keyup(function(e){
+            if(e.keyCode == 13)
+                evt_change_password();
+        });
+        
+        $('.content_profile .data_user span.name').blur(function(){
+           var name = $(this).text();
+           
+          if(name == current_name){
+              return;
+          }else if(name == ""){
+              message('El nombre no puede estar vacio');
+              $('.content_profile .data_user span.name').focus();
+              panel_data(localStorage.getItem('id_user'));
+          }else if(!isNaN(name)){
+              message('El nombre no puede contener números');
+              $('.content_profile .data_user span.name').focus();
+              panel_data(localStorage.getItem('id_user'));
+          }else if(name.length > 50){
+              message('El nombre no puede contener mas de 50 caracteres');
+              $('.content_profile .data_user span.name').focus();
+              panel_data(localStorage.getItem('id_user'));
+          }else{
+              loader('Verificando Nombre');
+              $.ajax({
+                  url       : webService + 'change_name_user',
+                  type      : 'POST',
+                  data      : {
+                      id    : localStorage.getItem('id_user'),
+                      name  : name
+                  },
+                  success   : function(response){
+                    $('.loader').fadeOut(500);
+                    var data = JSON.parse(response);
+                      
+                    if(data.status == 'OK'){
+                        $('.loader').fadeOut(500);
+                        setTimeout(function(){
+                            message(data.message);
+                            panel_data(localStorage.getItem('id_user'));
+                            current_name = $('.content_profile .data_user span.name').text();
+                        },800);
+                    }else{
+                        $('.loader').fadeOut(500);
+                        setTimeout(function(){
+                            message(data.message);
+                        },800);
+                    }
+                  }
+              });
+          }
+        });
+        
+        $('.content_profile .data_user span.username').keyup(function(e){
+            var username = $(this).text();
+            if(username == current_username){
+                $('.content_profile .data_user span.username').removeClass('success error');
+                return;
+            }else if(username.length < 6){
+                $('.content_profile .data_user span.username').removeClass('success error');
+                return;
+            }else{
+                evt_verify_username(username);
+            }
+           
+            if(e.keyCode == 13){
+                if(username == current_username){
+                    $('.content_profile .data_user span.username').removeClass('success error');
+                    return;
+                }else if(username.length < 6){
+                    message('El nombre de usuario debe tener mas de 6 caracteres');
+                    $('.content_profile .data_user span.username').focus().removeClass('success error');
+                    return;
+                }else{
+                    loader('Verificando Nombre');
+                    evt_change_username(username);
+                }
+            }
+        });
+        
+        $('.content_profile .data_user span.username').blur(function(e){
+           var username = $(this).text();
+            if(username == current_username){
+                $('.content_profile .data_user span.username').removeClass('success error');
+                return;
+            }else if(username.length < 6){
+                message('El nombre de usuario debe tener mas de 6 caracteres');
+                $('.content_profile .data_user span.username').focus().removeClass('success error');
+                return;
+            }else{
+                loader('Verificando Nombre');
+                evt_change_username(username);
+            }
+        });
     },
 },{ 
   defaultHandler: function(type, ui, page) {
@@ -434,13 +506,13 @@ var router = new $.mobile.Router({
 // Message to the toast Materialize
 function message(param){
     if(param === "welcome"){
-        Materialize.toast('<div><h3><em>!Welcome To Jurizquiz Game!</em></h3><div><div><p>Click in the button <b>"Acceder"</b> to enter the game</p></div><div><p>Or click on the button <b>"Register"</b> to enjoy the game of questions.</p></div>',2000);
+        Materialize.toast('<div><h3><em>!Welcome To Jurizquiz Game!</em></h3><div><div><p>Click in the button <b>"Acceder"</b> to enter the game</p></div><div><p>Or click on the button <b>"Register"</b> to enjoy the game of questions.</p></div>',2800);
     }else if(param == "null fields"){
-        Materialize.toast('<div class="error"><h2>¡No Pueden Haber Campos Vaciós!</h2></div>',2000);
+        Materialize.toast('<div class="error"><h2>¡No Pueden Haber Campos Vaciós!</h2></div>',2800);
     }else if(param == "user isn\'t exist"){
-        Materialize.toast('<div class="no-register"><h4>¡El usuario No Esta Registrado!</h4></div>',2000);
+        Materialize.toast('<div class="no-register"><h4>¡Accesos Incorrectos, Verifique Nuevamente!</h4></div>',2800);
     }else{
-        Materialize.toast('<div><h3><em>'+param+'</em></h3></div>',2000);
+        Materialize.toast('<div><h3><em>'+param+'</em></h3></div>',2800);
     }
 }
 
@@ -456,7 +528,6 @@ function validate_login(){
     
     if(log == 'true'){
         var id = encodeURIComponent(id_user);
-        console.log(id);
         $.mobile.changePage('#dashboard?user='+id,{role: 'page',transition: 'fade'});
     }
 }
@@ -494,8 +565,8 @@ function evt_login(){
                     },1000);
                     setTimeout(function(){
                         var role = data.role;
+                        localStorage.setItem('role_user',data.role);
                         var url = role == 'admin' ? '#dashboard_admin?user=' + data.id_user : '#dashboard?user=' + data.id_user;
-                        
                         $.mobile.changePage(url,{role: 'page',transition:"flip"});
                         
                     },2500);
@@ -518,6 +589,7 @@ function evt_logout(){
         setTimeout(function(){
             localStorage.removeItem('log');
             localStorage.removeItem('id_user');
+            localStorage.removeItem('role_user');
             $.mobile.changePage('#home',{role: 'page',transition: 'flow'});
             $('.loader').fadeOut(1800);
         },1200);
@@ -605,8 +677,15 @@ function show_nav_button(){
         e.preventDefault();
         var url = $(this).attr('href');
         
-        if(url != "#")
+        if(url == "#dashboard"){
+            var role = localStorage.getItem('role_user');
+            var id = localStorage.getItem('id_user')
+            
+            var link = role == 'admin' ? '#dashboard_admin?user=' + id : '#dashboard?user=' + id;
+            $.mobile.changePage(link,{role: 'page',transition:"flip"});
+        }else if(url != "#"){
             $.mobile.changePage(url,{role:'page',transition: 'pop'});
+        }
     });
 }
 
@@ -665,11 +744,10 @@ function panel_data($id){
         success : function(response){
             var data = JSON.parse(response);
             
-            console.log(data);
-            
             $('.points em').text(data.points);
             $('.data_user .name').text(data.name);
             $('.data_user .email').text(data.email);
+            $('.data_user .username').text(data.username);
             $('.information_user .image_user img').attr('src', directory_profile + data.image);
             $('.panel_header').css('background-image','url('+directory_biography+data.image_b+')');
             $('.panel .icon_level img,.panel .current_level img,.status .icon_level img').attr('src','img/level'+data.level+'.png');
@@ -687,11 +765,7 @@ function panel_data($id){
         success : function(response){
             var data = JSON.parse(response);
             
-            console.log(data);
-            
             var list_users = $('.friends ul');
-            var data_users = {};
-            
             list_users.empty();
             
             for (var i = 0; i < data.length; i++) {
@@ -701,6 +775,125 @@ function panel_data($id){
             }
         }
     });
+}
+
+// Event to change the password
+function evt_change_password(){
+    var $current_password = $('#current_password').val();
+    var $new_password = $('#new_password').val();
+    var $confirm_password = $('#confirm_password').val();
+    
+    if($current_password == ""){
+        message('La contraseña actual no puede estar vacía');
+        $('#current_password').focus();
+    }else if($new_password == ""){
+        message('La contraseña nueva no puede estar vacía');
+        $('#new_password').focus();
+    }else if($confirm_password == ""){
+        message('La confirmación de la contraseña no puede estar vacía');
+        $('#confirm_password').focus();
+    }else if($new_password.length < 6){
+        message('La contraseña nueva no puede tener menos de 6 caracteres');
+        $('#new_password').focus();
+    }else if($new_password !== $confirm_password){
+        message('¡Las contraseñas no son iguales!');
+    }else{
+        loader('Cambiando Contraseña');
+        
+        $.ajax({
+            url     : webService + 'change_password',
+            type    : 'POST',
+            data    : {
+                id          : localStorage.getItem('id_user'),
+                c_password  : $current_password,
+                password    : $new_password,
+            },
+            success : function(response){
+                var data = JSON.parse(response);
+                
+                if(data.status == 'OK'){
+                    $('.loader').fadeOut(500);
+                    setTimeout(function(){
+                        message(data.message);
+                        clean_change_password();
+                    },800);
+                }else{
+                    $('.loader').fadeOut(500);
+                    setTimeout(function(){
+                        message(data.message);
+                    },800);
+                }
+            }
+        });
+    }
+}
+
+// Clean form change password
+function clean_change_password(){
+    $('#current_password').val("");
+    $('#new_password').val("");
+    $('#confirm_password').val("");
+}
+
+// Event to change username
+function evt_change_username(username){
+    if(username == ""){
+      message('El nombre no puede estar vacio');
+      $('.content_profile .data_user span.username').focus();
+    }else if(username.length > 15){
+      message('El nombre de usuario no puede contener mas de 15 caracteres');
+      $('.content_profile .data_user span.username').focus();
+    }else{
+      $.ajax({
+          url       : webService + 'change_username_user',
+          type      : 'POST',
+          data      : {
+              id        : localStorage.getItem('id_user'),
+              username  : username
+          },
+          success   : function(response){
+            $('.loader').fadeOut(500);
+            var data = JSON.parse(response);
+              
+            if(data.status == 'OK'){
+                setTimeout(function(){
+                    message(data.message);
+                    panel_data(localStorage.getItem('id_user'));
+                    $('.content_profile .data_user span.username').removeClass('success error');
+                },800);
+            }else{
+                setTimeout(function(){
+                    message(data.message);
+                    $('.content_profile .data_user span.username').focus().removeClass('success error');
+                },800);
+            }
+          }
+      });
+    }
+}
+
+// Event to verify username
+function evt_verify_username(username){
+    if(username.length > 15){
+      message('El nombre de usuario no puede contener mas de 15 caracteres');
+      $('.content_profile .data_user span.username').focus();
+    }else{
+      $.ajax({
+          url       : webService + 'verify_username_user',
+          type      : 'POST',
+          data      : {
+              username  : username
+          },
+          success   : function(response){
+            var data = JSON.parse(response);
+            if(data.status == 'OK'){
+                $('.content_profile .data_user span.username').addClass('success').removeClass('error');
+            }else{
+                $('.content_profile .data_user span.username').addClass('error').removeClass('success') ;
+            }
+          }
+      });
+    }
 }
 
 // Render Template

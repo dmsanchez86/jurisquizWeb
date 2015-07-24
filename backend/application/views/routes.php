@@ -17,10 +17,12 @@ $app->post(
     '/user_data','main:user_data'
 )->setParams(array($app));
 
+// Route to upload profile image
 $app->post(
     '/image_user','main:image_user'
 )->setParams(array($app));
 
+// Route to upload biography image
 $app->post(
     '/image_user_biography','main:image_user_biography'
 )->setParams(array($app));
@@ -30,6 +32,25 @@ $app->post(
     '/users','main:users'
 )->setParams(array($app));
 
+// Route for change password
+$app->post(
+    '/change_password','main:change_password'
+)->setParams(array($app));
+
+// Route for change name user
+$app->post(
+    '/change_name_user','main:change_name_user'
+)->setParams(array($app));
+
+// Route for change username user
+$app->post(
+    '/change_username_user','main:change_username_user'
+)->setParams(array($app));
+
+// Route for verify username user
+$app->post(
+    '/verify_username_user','main:verify_username_user'
+)->setParams(array($app));
 
 // PUT route
 $app->put('/put', function () {

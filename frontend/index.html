@@ -1113,7 +1113,7 @@
                                     <div class="col m4 s4" style="padding:0">
                                         <div class="image_user">
                                             <form id="form_image" name="form_image" class="form_image">
-                                                <label for="image_user"><img src="media/profile_users/default_user.png" class="responsive-img tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cambiar Imagen Perfil"></label>
+                                                <label for="image_user"><img src="media/profile_users/defaul_user.png" class="responsive-img tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cambiar Imagen Perfil"></label>
                                                 <input type="file" name="image_user" id="image_user"/>
                                             </form>
                                         </div>
@@ -1121,7 +1121,8 @@
                                     </div>
                                     <div class="col m8 s8" style="padding: 0 ">
                                         <div class="data_user">
-                                            <span class="name">Name</span>
+                                            <span class="name tooltipped" contenteditable data-position="left" data-delay="50" data-tooltip="Cambiar Nombre">Name</span>
+                                            <span class="username tooltipped" contenteditable data-position="left" data-delay="50" data-tooltip="Cambiar Nombre de Usuario">Username</span>
                                             <span class="email">Email</span>
                                         </div>
                                     </div>
@@ -1165,13 +1166,13 @@
                                         <div class="form">
                                             <form>
                                                 <div>
-                                                    <input type="text" name="current_password" placeholder="Contraseña Actual"/>
+                                                    <input type="password" name="current_password" placeholder="Contraseña Actual" id="current_password"/>
                                                 </div>
                                                 <div>
-                                                    <input type="text" name="new_password" placeholder="Contraseña Nueva"/>
+                                                    <input type="password" name="new_password" placeholder="Contraseña Nueva" id="new_password"/>
                                                 </div>
                                                 <div>
-                                                    <input type="text" name="confirm_password" placeholder="Confirmar Contraseña"/>
+                                                    <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" id="confirm_password"/>
                                                 </div>
                                             </form>
                                         </div>
@@ -1181,8 +1182,8 @@
                             </article>
                             <article>
                                 <div class="container_btn">
-                                    <button type="button" class="waves-effect waves-btn-login btn btn_login">Cambiar Contraseña</button>
-                                    <button type="button" class="waves-effect waves-btn-start btn btn_start">Actualizar Datos</button>
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_login" id="btn_change_password">Cambiar Contraseña</button>
+                                    <!--<button type="button" class="waves-effect waves-btn-start btn btn_start">Actualizar Datos</button>-->
                                 </div>
                             </article>
                         </section>
@@ -1239,12 +1240,13 @@
                         <div class="row" style="margin: 0">
                             <div class="col m4 s4" style="padding:0">
                                 <div class="image_user">
-                                    <img src="media/profile_users/default_user.png" class="responsive-img">
+                                    <img src="media/profile_users/defaul_user.png" class="responsive-img">
                                 </div>
                             </div>
                             <div class="col m8 s8" style="padding: 0 ">
                                 <div class="data_user">
                                     <span class="name">Name</span>
+                                    <span class="username">Username</span>
                                     <span class="email">Email</span>
                                 </div>
                             </div>
@@ -1311,7 +1313,7 @@
         <div class="nav_button">
             <div class="nav">
     			<a href="#profile" class="nav-item nav-count-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Perfil"><i class="material-icons">perm_identity</i><span class="invisible"></span></a>
-    			<a href="#notifications" class="nav-item nav-count-2 tooltipped" data-position="left" data-delay="50" data-tooltip="Mensajes"><i class="material-icons">chat_bubble_outline</i><span class="invisible"></span></a>
+    			<a href="#dashboard" class="nav-item nav-count-2 tooltipped" data-position="left" data-delay="50" data-tooltip="Home"><i class="material-icons">dashboard</i><span class="invisible"></span></a>
     			<a href="#friends" class="nav-item nav-count-3 tooltipped" data-position="left" data-delay="50" data-tooltip="Colegas"><i class="material-icons">supervisor_account</i><span class="invisible"></span></a>
     			<a href="#config" class="nav-item nav-count-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Configuración"><i class="material-icons">settings</i><span class="invisible"></span></a>
     			<a href="#" class="mask"><i class="material-icons">add</i></a>

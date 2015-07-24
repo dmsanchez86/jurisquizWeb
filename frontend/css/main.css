@@ -2035,6 +2035,29 @@ html {
   font-size: .84rem;
   display: block;
 }
+.panel .panel_header .information_user .data_user .username:before,
+.profile .panel_header .information_user .data_user .username:before {
+  content: '@';
+}
+.panel .panel_header .information_user .data_user .username.success:after,
+.profile .panel_header .information_user .data_user .username.success:after,
+.panel .panel_header .information_user .data_user .username.error:after,
+.profile .panel_header .information_user .data_user .username.error:after {
+  color: white;
+  text-shadow: 0 0 1px #323232;
+  font-size: .84rem;
+  content: '';
+}
+.panel .panel_header .information_user .data_user .username.success:after,
+.profile .panel_header .information_user .data_user .username.success:after {
+  content: ' - Usuario Valido √';
+  color: #66bb6a;
+}
+.panel .panel_header .information_user .data_user .username.error:after,
+.profile .panel_header .information_user .data_user .username.error:after {
+  content: ' - El usuario ya existe x';
+  color: #b71c1c;
+}
 .panel .panel_content,
 .profile .panel_content {
   padding: 2rem .35rem 2rem;
@@ -2297,6 +2320,10 @@ html {
 .profile .content_profile .panel_header .information_user .image_user .form_image label + div {
   display: none;
 }
+.profile .content_profile .panel_header .information_user .data_user .name,
+.profile .content_profile .panel_header .information_user .data_user .username {
+  cursor: pointer;
+}
 .profile .content_profile .panel_header:hover .form_biography {
   opacity: 1;
 }
@@ -2304,7 +2331,7 @@ html {
   position: absolute;
   width: 30px;
   height: 30px;
-  bottom: 2%;
+  top: 2%;
   right: 2%;
   opacity: 0;
   -webkit-border-radius: 50%;
@@ -2346,7 +2373,7 @@ html {
 }
 .profile .content_profile .panel_content {
   background-color: #fff;
-  padding: 2rem 3.5rem 2rem;
+  padding: 2rem 3.5rem .7rem;
 }
 .profile .content_profile .panel_content article {
   margin-bottom: 0;
@@ -2364,9 +2391,6 @@ html {
 }
 .profile .container_btn button:hover {
   background-color: #ee6200;
-}
-.profile .container_btn button:last-child:hover {
-  background-color: #3a6667;
 }
 .profile .container_btn .waves-effect.waves-btn-login:after {
   left: 0;
@@ -2870,6 +2894,9 @@ label.ui-btn {
   -o-transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
   transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
 }
+span[contenteditable] br {
+  display: none;
+}
 /* Queries */
 @media (max-width: 460px) {
   .start_race .levels_content {
@@ -3089,7 +3116,6 @@ label.ui-btn {
   .terms .container_logo .content .btn_logo img {
     max-height: 230px;
   }
-  /* Panel */
   .panel .panel_header,
   .profile .panel_header {
     min-height: 155px;
@@ -3115,6 +3141,9 @@ label.ui-btn {
   }
   .profile .content_profile .panel_content {
     padding: 1rem .75rem 1rem;
+  }
+  .profile .content_profile .form_biography {
+    opacity: 1;
   }
 }
 @media (max-width: 320px) {

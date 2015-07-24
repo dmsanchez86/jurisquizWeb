@@ -11,17 +11,17 @@
 
 // Variables
 @btn_start : #3A6667;
-@btn_start_gradient: -webkit-linear-gradient(top,#689596,#3a6667);
+@btn_start_gradient : -webkit-linear-gradient(top,#689596,#3a6667);
 @btn_ripple : rgba(255,255,255,.55);
 @btn_ripple_orange : rgba(238, 98, 0, 0.15);
 @btn_login : #EE6200;
 @txt : #F6F6F6;
-@background_menu: #F4F4F4;
-@background_menu_header: #858585;
-@width_relative: 380px;
-@before_color: #EF863E;
-@number_questions: #DC8400;
-@notification: #F39D35;
+@background_menu : #F4F4F4;
+@background_menu_header : #858585;
+@width_relative : 380px;
+@before_color : #EF863E;
+@number_questions : #DC8400;
+@notification : #F39D35;
 
 // Métodos
 .btn_logo(){
@@ -321,6 +321,18 @@
             .image_user{width: 75px;height: 74px; .border_radius(50%); background-color: @txt;margin: 0 auto;.box_shadow(0,0,7px,1px,#737373); max-width: 100%;overflow: hidden;}
             .data_user{ word-wrap: break-word;margin-top: 1rem;
                 span{color: white;text-shadow: 0 0 1px #323232;font-size: .84rem;display: block; }
+                .username{
+                    &:before{content:'@';}
+                    &.success,&.error{
+                        &:after{ color: white;text-shadow: 0 0 1px #323232;font-size: .84rem;content: ''; }
+                    }
+                    &.success{
+                        &:after{content: ' - Usuario Valido √'; color: #66bb6a;}
+                    }
+                    &.error{
+                        &:after{content: ' - El usuario ya existe x'; color: #b71c1c;}
+                    }
+                }
             }
         }
     }
@@ -376,12 +388,15 @@
                         }
                     }
                 }
+                .data_user{
+                    .name,.username{cursor: pointer;}
+                }
             }
             &:hover{
                 .form_biography{opacity: 1;}
             }
         }
-        .form_biography{position: absolute; width:30px; height: 30px; bottom: 2%; right: 2%;opacity: 0;.border_radius(50%);
+        .form_biography{position: absolute; width:30px; height: 30px; top: 2%; right: 2%;opacity: 0;.border_radius(50%);
             form{width: 100%; height: 100%; text-align: center;.transition();overflow: hidden;
                 label{margin: 0; background-color: transparent; cursor: pointer;
                     i{color: white;.text_shadow(0,0,2px,#323232); line-height: 30px;}
@@ -389,7 +404,7 @@
                 }
             }
         }
-        .panel_content{ background-color: #fff; padding: 2rem 3.5rem 2rem;
+        .panel_content{ background-color: #fff; padding: 2rem 3.5rem .7rem;
             article{ margin-bottom: 0;
                 &:nth-child(2){padding-top: 0; padding-bottom: 0;
                     .row{margin: 0;}
@@ -401,11 +416,9 @@
     .container_btn{
         button{
             &:hover{background-color: #ee6200;}
-            &:last-child:hover{background-color: #3a6667;}
+            // &:last-child:hover{background-color: #3a6667;}
         }
-        .waves-effect.waves-btn-login:after{
-            left: 0;
-        }
+        .waves-effect.waves-btn-login:after{left: 0;}
     }
     .form{text-align: center;}
     input[type=file]{display: none;}
@@ -516,6 +529,8 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
         }
     }
 }
+
+span[contenteditable] br {display: none;}
 
 /* Queries */
 
@@ -663,7 +678,6 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
             }
         }
     }
-    /* Panel */
     .panel,.profile {
         .panel_header{min-height: 155px;
             .information_user{min-height: 75px;
@@ -671,7 +685,6 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
             }
         }
     }
-    
     .profile {
         .content_profile{
             .panel_header{min-height: 155px;
@@ -680,6 +693,7 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
                 }
             }
             .panel_content{padding: 1rem .75rem 1rem;}
+            .form_biography{opacity: 1;}
         }
     }
 }
