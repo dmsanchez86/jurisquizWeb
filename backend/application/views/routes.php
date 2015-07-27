@@ -67,6 +67,16 @@ $app->post(
     '/register_question','main:register_question'
 )->setParams(array($app));
 
+// Route for get all questions 
+$app->post(
+    '/all_questions','main:all_questions'
+)->setParams(array($app));
+
+// Route for get data question 
+$app->post(
+    '/data_question','main:data_question'
+)->setParams(array($app));
+
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';

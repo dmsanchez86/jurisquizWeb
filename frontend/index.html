@@ -20,6 +20,7 @@
         
         <!-- Librarys JavaScript -->
         <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.mobile.router.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/materialize.min.js"></script>
@@ -225,14 +226,34 @@
                             <div class="row" style="margin: 0">
                                 <div class="col s12" style="padding: 0">
                                   <ul class="tabs">
-                                    <li class="tab col s3"><a href="#new_question" data-role="none">Nueva</a></li>
-                                    <li class="tab col s3"><a href="#update_question" data-role="none">Modificar</a></li>
-                                    <li class="tab col s3"><a href="#deactivate_question" data-role="none">Desactivar</a></li>
-                                    <li class="tab col s3"><a href="#show_questions" data-role="none">Mostrar</a></li>
+                                    <li class="tab col s3">
+                                        <a href="#new_question" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Nueva Pregunta"><i class="material-icons">add</i></div>
+                                            <span>Nueva</span>
+                                        </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a href="#update_question" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Editar Pregunta"><i class="material-icons">edit</i></div>
+                                            <span>Modificar</span>
+                                        </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a href="#deactivate_question" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Desactivar Pregunta"><i class="material-icons">warning</i></div>
+                                            <span>Desactivar</span>
+                                        </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a href="#show_questions" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Mostrar Preguntas"><i class="material-icons">list</i></div>
+                                            <span>Mostrar</span>
+                                        </a>
+                                    </li>
                                   </ul>
                                 </div>
                                 <div class="forms_contents">
-                                    <div id="new_question" class="col s12">
+                                    <div id="new_question" class="col s12 new_question">
                                         <h2 class="tab_title">Nueva Pregunta</h2>
                                         <div class="form_content">
                                             <form id="form_new_question">
@@ -271,8 +292,33 @@
                                                     <label data-role="none">Tipo Pregunta: </label>
                                                 </div>
                                                 <div class="input-field col s12">
-                                                  <textarea id="question_answer" class="materialize-textarea" data-role="none"></textarea>
-                                                  <label for="question_answer" data-role="none">Respuesta de la pregunta: </label>
+                                                  <div class="structure">
+                                                      <div class="multiple_choice">
+                                                          <div class="input">
+                                                              <input type="text" name="question_choice" id="question_choice" placeholder="Ingrese las preguntas:"/>
+                                                              <i class="large material-icons">input</i>
+                                                          </div>
+                                                          <ol id="sortable_choice" class="sortable">
+                                                          </ol>
+                                                      </div>
+                                                      <div class="yes_no">
+                                                            <span>Respuesta</span>
+                                                            <p>
+                                                              <input class="with-gap" name="yes_no" type="radio" id="yes_answer" data-role="none" value="yes"/>
+                                                              <label for="yes_answer">Si</label>&nbsp;&nbsp;&nbsp;
+                                                              <input class="with-gap" name="yes_no" type="radio" id="no_answer" data-role="none" value="no"/>
+                                                              <label for="no_answer">No</label>
+                                                            </p>
+                                                      </div>
+                                                      <div class="order_questions">
+                                                          <div class="input">
+                                                              <input type="text" name="question_sortable" id="question_sortable" placeholder="Ingrese las preguntas (4)"/>
+                                                              <i class="large material-icons">input</i>
+                                                          </div>
+                                                          <ol id="sortable" class="sortable">
+                                                          </ol>
+                                                      </div>
+                                                  </div>
                                                 </div>
                                                 <div class="container_btn">
                                                     <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#create_question">Crear Pregunta</button>
@@ -280,20 +326,29 @@
                                                 <div class="container_btn">
                                                     <button type="reset" class="waves-effect waves-btn-start btn btn_register" data-url="#cancel_question">Cancelar</button>
                                                 </div>
-                                                <div class="structure_content">
-                                                    
-                                                </div>
                                             </form>
                                         </div>
                                     </div>
                                     <div id="update_question" class="col s12">
                                         <h2 class="tab_title">Modificar Pregunta</h2>
+                                        <div class="input-field col s12 level_mode">
+                                            <select data-role="none" id="all_questions"></select>
+                                            <label data-role="none">Seleccione la pregunta: </label>
+                                        </div>
+                                        <div class="content_question_find">
+                                            <div class="input-field col s12 level_mode">
+                                                <input type="text" data-role="none" id="mode_game_question" name="mode_game_question">
+                                                <label data-role="none">Modo de Juego</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div id="deactivate_question" class="col s12">
                                         <h2 class="tab_title">Desactivar Pregunta</h2>
                                     </div>
-                                    <div id="show_questions" class="col s12">
+                                    <div id="show_questions" class="col s12 show_questions">
                                         <h2 class="tab_title">Todas Las Pregunta</h2>
+                                        <div class="content_question_show">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1378,10 +1433,30 @@
             </div>
         </script>
         <script type="text/html" id="levels_mode_template">
-                <option value="<%= id %>"><%= name %></option>
+            <option value="<%= id %>"><%= name %></option>
         </script>
         <script type="text/html" id="category_level_template">
-                <option value="<%= id %>"><%= name %></option>
+            <option value="<%= id %>"><%= name %></option>
         </script>
+        <script type="text/html" id="all_questions_template">
+            <option value="<%= id %>"><%= question %> ( <%= mode_game %> )</option>
+        </script>
+        <script type="text/html" id="all_questions_show">
+            <div class="question">
+                <div>
+                    <span class="name"><b>Pregunta:</b> <%= question %></span> | <span class="id"><b>ID:</b> <%= id %></span>
+                </div>
+                <div>
+                    <span class="mode_game"><b>Modo de Juego:</b> <%= mode_game %></span> | <span><b>Estado: </b><%= state %></span>
+                </div>
+                <div>
+                    <span class="type_question"><b>Tipo de Pregunta:</b> <%= t_question %>
+                </div>
+                <div>
+                    <span class="answer_question"><b>Respuesta:</b> <%= correct_answer %></div>
+                </div>
+            </div>
+        </script>
+        
     </body>
 </html>
