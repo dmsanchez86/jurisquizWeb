@@ -2685,10 +2685,27 @@ html {
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question span b {
   color: #3a6667;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover span b {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus span b {
   color: #ef863e;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover > div,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus > div {
+  -webkit-transform-origin: left center;
+  -khtml-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  -webkit-transform: perspective(1000px) translatez(-50px);
+  -khtml-transform: perspective(1000px) translatez(-50px);
+  -moz-transform: perspective(1000px) translatez(-50px);
+  -ms-transform: perspective(1000px) translatez(-50px);
+  -o-transform: perspective(1000px) translatez(-50px);
+  transform: perspective(1000px) translatez(-50px);
+}
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question {
   background-color: rgba(239, 134, 62, 0.81);
   -webkit-transform: translatex(0);
   -khtml-transform: translatex(0);
@@ -2697,7 +2714,8 @@ html {
   -o-transform: translatex(0);
   transform: translatex(0);
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question ul li i {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question ul li i {
   color: #323232;
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question {

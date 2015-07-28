@@ -18,7 +18,9 @@ var router = new $.mobile.Router({
     "#dashboard_admin": {handler: "dashboard_admin", events: "s" },
     "#friends": {handler: "friends", events: "s" },
     "#race": {handler: "race", events: "s" },
-    "#start_race": {handler: "start_race", events: "s" },
+    "#executive": {handler: "executive", events: "s" },
+    "#legislative": {handler: "legislative", events: "s" },
+    "#judicial": {handler: "judicial", events: "s" },
     "#duel": {handler: "duel", events: "s" },
     "#duel_users": {handler: "duel_users", events: "s" },
     "#search_duel": {handler: "search_duel", events: "s" },
@@ -201,10 +203,25 @@ var router = new $.mobile.Router({
         
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
-            $.mobile.changePage('#start_race',{role: 'page',transition: 'turn'});
+            var link = $(this).attr('data-url');
+            $.mobile.changePage(link,{role: 'page',transition: 'pop'});
         });
     },
-    start_race : function(type,match,ui){
+    executive : function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+    },
+    legislative : function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+    },
+    judicial : function(type,match,ui){
         nav_menu();
         
         show_nav_button();
@@ -506,6 +523,16 @@ var router = new $.mobile.Router({
         });
     },
     questions : function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+        
+        var $id = localStorage.getItem('id_user');
+        
+        panel_data($id);
+        
         $('ul.tabs').tabs();
         
         $('select').material_select();
@@ -576,6 +603,7 @@ var router = new $.mobile.Router({
                             $('.loader').fadeOut(1500);
                             setTimeout(function(){
                                 message(data.message);
+                                reset_form_new_question();
                                 $('button[data-url="#cancel_question"]').click();
                             },1000);
                         }else{
@@ -691,14 +719,8 @@ var router = new $.mobile.Router({
         
         $('#type_question').unbind('change').change(function(){
             var type = $(this).val();
-            count = 4;
-            $('.structure > div').hide(50);
-            $('#sortable').empty();
-            $('#sortable_choice').empty();
-            $('.structure .order_questions .input input').removeAttr('disabled').attr('placeholder','Ingrese las preguntas ('+(count)+')');
-            $('.structure .order_questions .input i').css('z-index','1');
-            $('.structure .multiple_choice .input input').removeAttr('disabled');
-            $('.structure .multiple_choice .input i').css('z-index','1');
+            
+            reset_form_new_question();
             
             if(type == 1)
                 $('.structure .multiple_choice').fadeIn(1000);
@@ -1366,6 +1388,18 @@ function evt_question(param, $id){
             },700);
         }
     });
+}
+
+// Evt to reset form new question
+function reset_form_new_question(){
+    count = 4;
+    $('.structure > div').hide(50);
+    $('#sortable').empty();
+    $('#sortable_choice').empty();
+    $('.structure .order_questions .input input').removeAttr('disabled').attr('placeholder','Ingrese las preguntas ('+(count)+')');
+    $('.structure .order_questions .input i').css('z-index','1');
+    $('.structure .multiple_choice .input input').removeAttr('disabled');
+    $('.structure .multiple_choice .input i').css('z-index','1');
 }
 
 // Render Template

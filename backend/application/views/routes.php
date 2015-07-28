@@ -82,10 +82,6 @@ $app->post(
     '/question/:param','main:question'
 )->setParams(array($app));
 
-$app->get(
-    '/andres','main:get_route'
-)->setParams(array($app));
-
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';

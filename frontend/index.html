@@ -290,7 +290,7 @@
                                                   <div class="structure">
                                                       <div class="multiple_choice">
                                                           <div class="input">
-                                                              <input type="text" name="question_choice" id="question_choice" placeholder="Ingrese las preguntas:"/>
+                                                              <input type="text" name="question_choice" id="question_choice" placeholder="Ingrese las preguntas:"  style="padding-right:3.8rem"/>
                                                               <i class="large material-icons">input</i>
                                                           </div>
                                                           <ol id="sortable_choice" class="sortable">
@@ -307,7 +307,7 @@
                                                       </div>
                                                       <div class="order_questions">
                                                           <div class="input">
-                                                              <input type="text" name="question_sortable" id="question_sortable" placeholder="Ingrese las preguntas (4)"/>
+                                                              <input type="text" name="question_sortable" id="question_sortable" placeholder="Ingrese las preguntas (4)" style="padding-right:3.8rem"/>
                                                               <i class="large material-icons">input</i>
                                                           </div>
                                                           <ol id="sortable" class="sortable">
@@ -411,13 +411,13 @@
                                     </p>
                                 </div>
                                 <div class="container_btn">
-                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Iniciar en Ejecutivo</button>
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#executive">Iniciar en Ejecutivo</button>
                                 </div>
                                 <div class="container_btn">
-                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Iniciar en Legislativo</button>
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#legislative">Iniciar en Legislativo</button>
                                 </div>
                                 <div class="container_btn">
-                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Iniciar en Judicial</button>
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#judicial">Iniciar en Judicial</button>
                                 </div>
                             </div>
                         </div>
@@ -426,8 +426,182 @@
             </div>
         </div>
         
-        <!-- Page Star Race -->
-        <div id="start_race" class="start_race" data-role="page" data-title="Start Race - Jurizquiz">
+        <!-- Page Star Executive -->
+        <div id="executive" class="start_race" data-role="page" data-title="Start Ecexutive - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="levels_content">
+                    <div class="level active">
+                        <div class="top">
+                            <span class="name">Alcalde</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Gobernador</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Presidente</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_start_game">
+                        <div class="question">
+                            La sanción legal no es solo pena sino tambien la recompensa
+                        </div>
+                        <div class="answers_options">
+                            <div class="answer">
+                                <input id="answer1" type="radio" name="answer"/>
+                                <label for="answer1" data-role="none">
+                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer2" type="radio" name="answer"/>
+                                <label for="answer2">
+                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer3" type="radio" name="answer"/>
+                                <label for="answer3">
+                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer4" type="radio" name="answer"/>
+                                <label for="answer4">
+                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Star Legislative -->
+        <div id="legislative" class="start_race" data-role="page" data-title="Start Legislative - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="levels_content">
+                    <div class="level active">
+                        <div class="top">
+                            <span class="name">Alcalde</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Gobernador</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                    <div class="level">
+                        <div class="top">
+                            <span class="name">Presidente</span>
+                            <span>
+                                <img src="img/level1.png" class="responsive-img icon_level">
+                            </span>
+                        </div>
+                        <div class="bottom">
+                            <span class="number_questions">
+                                15 / 20
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_start_game">
+                        <div class="question">
+                            La sanción legal no es solo pena sino tambien la recompensa
+                        </div>
+                        <div class="answers_options">
+                            <div class="answer">
+                                <input id="answer1" type="radio" name="answer"/>
+                                <label for="answer1" data-role="none">
+                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer2" type="radio" name="answer"/>
+                                <label for="answer2">
+                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer3" type="radio" name="answer"/>
+                                <label for="answer3">
+                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                            <div class="answer">
+                                <input id="answer4" type="radio" name="answer"/>
+                                <label for="answer4">
+                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Star Judicial -->
+        <div id="judicial" class="start_race" data-role="page" data-title="Start Judicial - Jurizquiz">
             <div data-role="header">
                 <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
                     <div></div>
@@ -1462,9 +1636,9 @@
                     <ul>
                         <!-- <li><span><i class="material-icons">delete</i></span></li> -->
                         <% if(state == 'Activa') %>
-                            <li class="desactivate"><span><i class="material-icons">warning</i></span></li>
+                            <li class="desactivate" title="Desactivar"><span><i class="material-icons">warning</i></span></li>
                         <% else %>
-                            <li class="activate"><span><i class="material-icons">done</i></span></li>
+                            <li class="activate" title="Activar"><span><i class="material-icons">done</i></span></li>
                     </ul>
                 </nav>
             </div>
