@@ -69,12 +69,21 @@ $app->post(
 
 // Route for get all questions 
 $app->post(
-    '/all_questions','main:all_questions'
+    '/all_questions/:filter','main:all_questions'
 )->setParams(array($app));
 
 // Route for get data question 
 $app->post(
     '/data_question','main:data_question'
+)->setParams(array($app));
+
+// Route for active or deactive question 
+$app->post(
+    '/question/:param','main:question'
+)->setParams(array($app));
+
+$app->get(
+    '/andres','main:get_route'
 )->setParams(array($app));
 
 // PUT route

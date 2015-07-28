@@ -150,6 +150,13 @@
     .games{margin-bottom: 1.5rem;}
 }
 
+/* Home */
+.home{
+    .wrapper {
+        .container_btn{display: none;}
+    }
+}
+
 /* Friends */
 .friends,.profile{
     .content_friends,.content_profile{background-color: @btn_start;.border_radius(10px);margin: 3rem auto 2rem;position: relative;padding: 1.5rem .5rem; max-width: 100%; width: 580px; 
@@ -294,7 +301,7 @@
     p,.container_btn{max-width: 100%; margin: 0 auto; width: 380px;}
     .container_btn{ 
         a{background-color: @btn_start;margin-bottom: .7rem; .border_radius(5px); .button();
-            &:last-child{background-color: @btn_login;}
+            &:nth-child(2),&:nth-child(3){background-color: @btn_login;}
         }
     }
 }
@@ -345,8 +352,13 @@
             ul{padding-left: 1.35rem;}
             li{margin: .35rem 0; position: relative; .border_radius(3px); z-index: 2;padding-left:0rem; padding-right: 0;
                 &:hover{cursor: pointer; color: #fff; .text_shadow(0, 0, 2px, #323232)}
-                &:hover:before{width: 135%; background-color: @btn_start;z-index: -1;}
                 &:before{position: absolute; left: -31px; width: 0; height: 100%; content: ''; .transition(.5s all ease-in-out);.border_radius(3px);}
+                &:nth-child(odd){
+                    &:hover:before{width: 135%; background-color: @btn_start;z-index: -1;}
+                }
+                &:nth-child(even){
+                    &:hover:before{width: 135%; background-color: @btn_login;z-index: -1;}
+                }
             }
             a{ font-size: 1.15rem; margin-top: 1.2rem; display: block;font-weight: bold;
                 &:hover{text-decoration:underline;}
@@ -443,7 +455,10 @@
 /* Questions */
 .questions{
     .content_questions{max-width: 100%;width: 600px; .border_radius(5px); padding: 1rem; background-color: @btn_start;margin: 1.3rem auto 2rem; 
-        .forms{background-color: #fff;padding: .15rem .85rem 1rem;.border_radius(5px); overflow: hidden;            .tab_title{font-family: 'DK Mango'; font-size: 3.5rem; color: @btn_login; text-align: center;margin-top: .5rem;}
+        .forms{background-color: #fff;padding: .15rem .85rem 1rem;.border_radius(5px); overflow: hidden;            
+            .tab_title{font-family: 'DK Mango'; font-size: 3.5rem; color: @btn_login; text-align: center;margin-top: .5rem;
+                + h4{font-size: 1rem; color: @btn_start;margin: 0;}
+            }
             .input-field{
                 label{color: @btn_start;
                     &.active{text-decoration: underline;font-size: 0.8rem;.transform( translateY(-210%) );}
@@ -484,7 +499,7 @@
                 }
                 .show_questions{
                     .content_question_show{
-                        .question{padding: 1rem; margin-bottom: .15rem; .box_shadow(0,0,1px,0,@btn_start); .border_radius(1px);.transition();
+                        .question{position: relative;padding: 1rem; margin-bottom: .15rem; .box_shadow(0,0,1px,0,@btn_start); .border_radius(1px);.transition();.perspective_origin(50% 50%);overflow: hidden; .perspective(600px);
                             > div{padding: .05rem .15rem;.word_wrap();}
                             span{
                                 b{color: @btn_start;}
@@ -492,6 +507,22 @@
                             &:hover{
                                 span{
                                     b{color: @before_color;}
+                                }
+                                .menu_question{background-color: rgba(239, 134, 62, 0.81);.transform(translatex(0));
+                                    ul{
+                                        li{
+                                            i{color: #323232;}
+                                        }
+                                    }
+                                }
+                            }
+                            .menu_question{position: absolute; background-color: @btn_start; right: 0; top: 0; width: 27px; height: 100%;.transform_origin(right center);.transform(translatex(110%)); .transition(all .3s  ease);
+                                ul{ height: 100%;
+                                    li{ min-height: 30px; max-height: 35px; float: left; width: 100%;text-align: center; cursor: pointer;
+                                        span{ float: left;min-height: 30px; max-height: 35px; width: 100%; display: block;
+                                            i{color: #000; font-size: 1.15rem; line-height: 1; vertical-align: top; padding-top: .45rem; }
+                                        }
+                                    }
                                 }
                             }
                         }

@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="container_btn">
-                        <button type="button" class="waves-effect waves-btn-start btn btn_start">Comienza con las Preguntas</button>
+                        <button type="button" id="btn_start" class="waves-effect waves-btn-start btn btn_start">Comienza con las Preguntas</button>
                     </div>
                     <div class="container_register">
                         <span>Aún No Tienes Cuenta? Crear Una <a href="#register" data-transition="pop">Aqui</a></span>
@@ -131,6 +131,7 @@
         			<div class="container_btn">
         			    <a href="#home">Iniciar Sesión</a>
         			    <a href="#register">Registrarse</a>
+        			    <a href="#" data-role="back" class="back">Volver</a>
         			</div>
         		</div>
     		</div>
@@ -239,12 +240,6 @@
                                         </a>
                                     </li>
                                     <li class="tab col s3">
-                                        <a href="#deactivate_question" data-role="none">
-                                            <div data-position="bottom" data-delay="50" data-tooltip="Desactivar Pregunta"><i class="material-icons">warning</i></div>
-                                            <span>Desactivar</span>
-                                        </a>
-                                    </li>
-                                    <li class="tab col s3">
                                         <a href="#show_questions" data-role="none">
                                             <div data-position="bottom" data-delay="50" data-tooltip="Mostrar Preguntas"><i class="material-icons">list</i></div>
                                             <span>Mostrar</span>
@@ -332,7 +327,7 @@
                                     <div id="update_question" class="col s12">
                                         <h2 class="tab_title">Modificar Pregunta</h2>
                                         <div class="input-field col s12 level_mode">
-                                            <select data-role="none" id="all_questions"></select>
+                                            <select data-role="none" id="modify_questions"></select>
                                             <label data-role="none">Seleccione la pregunta: </label>
                                         </div>
                                         <div class="content_question_find">
@@ -342,11 +337,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="deactivate_question" class="col s12">
-                                        <h2 class="tab_title">Desactivar Pregunta</h2>
-                                    </div>
                                     <div id="show_questions" class="col s12 show_questions">
                                         <h2 class="tab_title">Todas Las Pregunta</h2>
+                                        <h4>Filtrar Por:</h4>
+                                        <div>
+                                            <p>
+                                              <input class="with-gap" name="active_questions" type="radio" id="all__questions" data-role="none" value="all" checked/>
+                                              <label for="all__questions">Todas</label>&nbsp;
+                                              <input class="with-gap" name="active_questions" type="radio" id="active_questions" data-role="none" value="actives"/>
+                                              <label for="active_questions">Activas</label>&nbsp;
+                                              <input class="with-gap" name="active_questions" type="radio" id="inactive_questions" data-role="none" value="inactives"/>
+                                              <label for="inactive_questions">Inactivas</label>
+                                            </p>
+                                        </div>
                                         <div class="content_question_show">
                                         </div>
                                     </div>
@@ -1450,11 +1453,20 @@
                     <span class="mode_game"><b>Modo de Juego:</b> <%= mode_game %></span> | <span><b>Estado: </b><%= state %></span>
                 </div>
                 <div>
-                    <span class="type_question"><b>Tipo de Pregunta:</b> <%= t_question %>
+                    <span class="type_question"><b>Tipo de Pregunta:</b> <%= t_question %></span>
                 </div>
                 <div>
-                    <span class="answer_question"><b>Respuesta:</b> <%= correct_answer %></div>
+                    <span class="answer_question"><b>Respuesta:</b> <%= correct_answer %></span>
                 </div>
+                <nav class="menu_question">
+                    <ul>
+                        <!-- <li><span><i class="material-icons">delete</i></span></li> -->
+                        <% if(state == 'Activa') %>
+                            <li class="desactivate"><span><i class="material-icons">warning</i></span></li>
+                        <% else %>
+                            <li class="activate"><span><i class="material-icons">done</i></span></li>
+                    </ul>
+                </nav>
             </div>
         </script>
         
