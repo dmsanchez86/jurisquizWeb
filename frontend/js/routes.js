@@ -72,6 +72,10 @@ var router = new $.mobile.Router({
           evt_register();
         });
       
+        $('button[data-role="back"]').unbind('click').click(function(){
+            history.back();
+        });
+      
         // Text
         $('#email_r,#password_r,#password_c').unbind('keyup').keyup(function(e){
             if(e.keyCode == 13)
@@ -627,6 +631,8 @@ var router = new $.mobile.Router({
                 evt_all_questions_show('all');
             else if(tab == "#update_question")
                 evt_all_questions('actives');
+            else if(tab == "#new_question")
+                reset_form_new_question();
                 
             $('input[name="active_questions"]').unbind('change').change(function(){
                 var filter = $('input[name="active_questions"]:checked').val();

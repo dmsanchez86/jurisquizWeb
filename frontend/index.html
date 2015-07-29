@@ -24,6 +24,7 @@
         <script src="js/jquery.mobile.router.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/materialize.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>-->
     </head>
     <body>
         
@@ -33,7 +34,7 @@
                 <div class="wrapper">
                     <div class="container_logo">
                         <div class="content">
-                            <a href="#home" class="waves-effect waves-logo btn-flat btn_logo">
+                            <a href="#home" class="btn_logo">
                                 <img src="img/logo.png" alt="logo" title="Jurizquiz" class="responsive-img">
                             </a>
                         </div>
@@ -72,13 +73,13 @@
                 <div class="wrapper">
                     <div class="container_logo">
                         <div class="content">
-                            <a href="#home" class="waves-effect waves-logo btn-flat btn_logo" data-transition="flip">
+                            <a href="#home" class="btn_logo" data-transition="flip">
                                 <img src="img/logo.png" alt="logo" title="Jurizquiz" class="responsive-img">
                             </a>
                         </div>
                     </div>
                     <div class="container_btn">
-                        <button type="button" class="waves-effect waves-btn-start btn btn_start">Comienza con las Preguntas</button>
+                        <button type="button" class="waves-effect waves-btn-start btn btn_start" data-role="back">Volver</button>
                     </div>
                     <div class="container_login">
                         <div class="content">
@@ -234,12 +235,6 @@
                                         </a>
                                     </li>
                                     <li class="tab col s3">
-                                        <a href="#update_question" data-role="none">
-                                            <div data-position="bottom" data-delay="50" data-tooltip="Editar Pregunta"><i class="material-icons">edit</i></div>
-                                            <span>Modificar</span>
-                                        </a>
-                                    </li>
-                                    <li class="tab col s3">
                                         <a href="#show_questions" data-role="none">
                                             <div data-position="bottom" data-delay="50" data-tooltip="Mostrar Preguntas"><i class="material-icons">list</i></div>
                                             <span>Mostrar</span>
@@ -286,7 +281,7 @@
                                                     </select>
                                                     <label data-role="none">Tipo Pregunta: </label>
                                                 </div>
-                                                <div class="input-field col s12">
+                                                <div class="input-field col s12" style="margin-top: 0">
                                                   <div class="structure">
                                                       <div class="multiple_choice">
                                                           <div class="input">
@@ -324,19 +319,19 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div id="update_question" class="col s12">
-                                        <h2 class="tab_title">Modificar Pregunta</h2>
-                                        <div class="input-field col s12 level_mode">
-                                            <select data-role="none" id="modify_questions"></select>
-                                            <label data-role="none">Seleccione la pregunta: </label>
-                                        </div>
-                                        <div class="content_question_find">
-                                            <div class="input-field col s12 level_mode">
-                                                <input type="text" data-role="none" id="mode_game_question" name="mode_game_question">
-                                                <label data-role="none">Modo de Juego</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!--<div id="update_question" class="col s12">-->
+                                    <!--    <h2 class="tab_title">Modificar Pregunta</h2>-->
+                                    <!--    <div class="input-field col s12 level_mode">-->
+                                    <!--        <select data-role="none" id="modify_questions"></select>-->
+                                    <!--        <label data-role="none">Seleccione la pregunta: </label>-->
+                                    <!--    </div>-->
+                                    <!--    <div class="content_question_find">-->
+                                    <!--        <div class="input-field col s12 level_mode">-->
+                                    <!--            <input type="text" data-role="none" id="mode_game_question" name="mode_game_question">-->
+                                    <!--            <label data-role="none">Modo de Juego</label>-->
+                                    <!--        </div>-->
+                                    <!--    </div>-->
+                                    <!--</div>-->
                                     <div id="show_questions" class="col s12 show_questions">
                                         <h2 class="tab_title">Todas Las Pregunta</h2>
                                         <h4>Filtrar Por:</h4>
@@ -1635,10 +1630,12 @@
                 <nav class="menu_question">
                     <ul>
                         <!-- <li><span><i class="material-icons">delete</i></span></li> -->
-                        <% if(state == 'Activa') %>
+                        <% if(state == 'Activa'){ %>
                             <li class="desactivate" title="Desactivar"><span><i class="material-icons">warning</i></span></li>
-                        <% else %>
+                        <% }else{ %>
                             <li class="activate" title="Activar"><span><i class="material-icons">done</i></span></li>
+                        <% } %>
+                        <li class="edit" title="Editar Pregunta"><span><i class="material-icons">edit</i></span></li>
                     </ul>
                 </nav>
             </div>
