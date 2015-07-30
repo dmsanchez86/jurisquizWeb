@@ -8,7 +8,8 @@ var seconds = 10;
 var time = null;
 var directory_profile = 'media/profile_users/';
 var directory_biography = 'media/biography_users/';
-var count = 4;
+var count = 6;
+var count_id = 6;
 
 var router = new $.mobile.Router({
     "#home": {handler: "home", events: "s" },
@@ -33,6 +34,7 @@ var router = new $.mobile.Router({
     "#start_litigation": {handler: "start_litigation", events: "s" },
     "#profile": {handler: "profile", events: "s" },
     "#questions": {handler: "questions", events: "s" },
+    "#specialties": {handler: "specialties", events: "s" },
 },{
     home: function(type,match,ui){
         validate_login();
@@ -65,6 +67,8 @@ var router = new $.mobile.Router({
         clean_register();
         
         hide_nav_button();
+        
+        $('select').material_select();
         
         // Button Register 
         $('.btn_register').unbind('click').click(function(e){
@@ -545,21 +549,34 @@ var router = new $.mobile.Router({
         
         $('.forms_contents div').eq(0).addClass('active');
         
+        $.ajax({
+            url     : webService + 'all_specialties/all',
+            type    : 'POST',
+            data    : null,
+            success : function(res){
+                var data = JSON.parse(res);
+                
+                $('#specialty_name').empty();
+                $('#specialty_name').append('<option value="">Seleccione una especialidad para la pregunta</option>');
+                
+                data.forEach(function(i){
+                    $('#specialty_name').append(tmpl('category_level_template',i));
+                });
+                
+                $('select').material_select();
+            }
+        });
+        
         $('button[data-url="#create_question"]').unbind('click').click(function(){
-            var $id_mode_game = $('#mode_game').val();
-            var $id_level_game = $('#level_mode').val();
-            var $id_level_category = "";
+            var $id_specialty = $('#specialty_name').val();
             var $question = $('#question').val();
             var $type_question = $('#type_question').val();
-            var $correct_answer = '';
-            var $data_question = [];
+            var $correct_answer = [];
+            var $options_question = [];
             
-            if($id_mode_game == ""){
-                message('El campo de modo de pregunta no puede estar vacío');
-                $('#mode_game').parent().find('input[type=text]').focus();
-            }else if($id_level_game == ""){
-                message('El campo del nivel de la pregunta no puede estar vacía');
-                $('#level_mode').parent().find('input[type=text]').focus();
+            if($id_specialty == ""){
+                message('El campo seleccione la especialidad para la pregunta');
+                $('#specialty_name').parent().find('input[type=text]').focus();
             }else if($question == ""){
                 message('El campo de la pregunta no puede estar vacía');
                 $('#question').focus();
@@ -570,54 +587,71 @@ var router = new $.mobile.Router({
                 message('El campo del tipo de pregunta no puede estar vacío');
                 $('#type_question').parent().find('input[type=text]').focus();
             }else{
-                if($id_level_game == 1 || $id_level_game == 2 || $id_level_game == 3){
-                    $id_level_category = $('#category_level').val();
-                }else{
-                    $id_level_category = "";
-                }
                 if($type_question == 1){
-                    for (var i = 0; i <  $('#sortable_choice li').length; i++) 
-                        $data_question[i] =  $('#sortable_choice li').eq(i).find('span').text();
-                }else if($type_question == 2){
-                    if( $('input[name=yes_no]:checked').val() == 'yes')
-                        $data_question[0] = 'si';
-                    else
-                        $data_question[0] = 'no';
-                }else if($type_question == 3){
-                    for (var i = 0; i <  $('#sortable li').length; i++)
-                        $data_question[i] =  $('#sortable li').eq(i).find('span').text();
-                }
-                loader('Registrando Pregunta');
-                $.ajax({
-                    url         : webService + 'register_question',
-                    type        : 'POST',
-                    data        : {
-                        id_level_game       : $id_level_game,
-                        id_mode_game        : $id_mode_game,
-                        id_level_category   : $id_level_category,
-                        question            : $question,
-                        type_question       : $type_question,
-                        structure_question  : $type_question,
-                        correct_answer      : split($data_question) 
-                    },
-                    success                 : function(res){
-                        var data = JSON.parse(res);
-                        
-                        if(data.status == "OK"){
-                            $('.loader').fadeOut(1500);
-                            setTimeout(function(){
-                                message(data.message);
-                                reset_form_new_question();
-                                $('button[data-url="#cancel_question"]').click();
-                            },1000);
-                        }else{
-                            $('.loader').fadeOut(1000);
-                            setTimeout(function(){
-                                message(data.message);
-                            },1200);
+                    var position = 0;
+                    for (var i = 0; i <  $('#sortable_choice li').length; i++) {
+                        debugger;
+                        $options_question[i] =  $('#sortable_choice li').eq(i).find('span').text();
+                        if($('#sortable_choice li').eq(i).find('.last').find('input[type=checkbox]:checked').val() != undefined){
+                            $correct_answer[position] =  $('#sortable_choice li').eq(i).find('.last').find('input[type=checkbox]:checked').val();
+                            position++;
                         }
                     }
-                });
+                    
+                    if($options_question.length < 4){
+                        message('Las opciones deben tener como minimo 4');
+                        $('.structure .multiple_choice .input input').focus();
+                    }else{
+                        
+                        if($correct_answer.length == 0){
+                            message('Necesita por lo menos escoger una respuesta');
+                        }else{
+                            var data = {
+                                id_specialty        : $id_specialty,
+                                question            : $question,
+                                type_question       : $type_question,
+                                options_question    : $options_question.join(","),
+                                correct_answer      : $correct_answer.join(",")
+                            }
+                            evt_insert_question(data);
+                        }
+                    }
+                }else if($type_question == 2){
+                    if( $('input[name=yes_no]:checked').val() == 'yes')
+                        $correct_answer[0] = 'si';
+                        
+                    if($correct_answer.length == 0){
+                        message('Seleccione alguna opcion');
+                    }else{
+                        var data = {
+                                id_specialty        : $id_specialty,
+                                question            : $question,
+                                type_question       : $type_question,
+                                options_question    : "Si, No",
+                                correct_answer      : $correct_answer.join(",")
+                            }
+                        evt_insert_question(data);
+                    }
+                }else if($type_question == 3){
+                    for (var i = 0; i <  $('#sortable li').length; i++){
+                        $options_question[i] =  $('#sortable li').eq(i).find('span').text();
+                        $correct_answer[i] =  $('#sortable li').eq(i).find('span').text();
+                    }
+                    
+                    if($correct_answer.length < 4){
+                        message('Las opciones deben tener como minimo 4');
+                        $('.structure .order_question .input input').focus();
+                    }else{
+                        var data = {
+                                id_specialty        : $id_specialty,
+                                question            : $question,
+                                type_question       : $type_question,
+                                options_question    : $options_question.join(","),
+                                correct_answer      : $correct_answer.join(",")
+                            }
+                        evt_insert_question(data);
+                    }
+                }
             }
         });
         
@@ -764,6 +798,207 @@ var router = new $.mobile.Router({
                 evt_append_question(question);
         });
     },
+    specialties : function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+        
+        var $id = localStorage.getItem('id_user');
+        
+        panel_data($id);
+        
+        $('ul.tabs').tabs();
+        
+        $('.forms_contents #new_specialty').addClass('active');
+        
+        $.ajax({
+            url         : webService + 'all_games_mode',
+            type        : 'POST',
+            data        : {},
+            success     : function(response){
+                var data = JSON.parse(response);
+                console.log(response);
+                $('#mode_game_context').empty();
+                $('#mode_game_context').append('<option value="">Selecione un modo de juego</option>');
+                
+                data.forEach(function(i){
+                    $('#mode_game_context').append(tmpl('levels_mode_template',i));
+                });
+                
+                $('select').material_select();
+                
+                $('#mode_game_context').unbind('change').change( function(e){
+                    var id_mode_game = $(this).val();
+                    
+                    console.log(id_mode_game);
+                    
+                    $('.level_game').fadeOut(50);
+                    if(id_mode_game != ""){
+                        $.ajax({
+                            url         : webService + 'levels_mode',
+                            type        : 'POST',
+                            data        : {
+                                id      : id_mode_game
+                            },
+                            success     : function(response){
+                                var data = JSON.parse(response);
+                                
+                                $("#level_game_context").empty();
+                                $("#level_game_context").append('<option value="">Seleccione un nivel</options>');
+                                
+                                if(data.length==0){
+                                    $('#level_game_context').html('No hay resultados para este modo');
+                                }else{
+                                    data.forEach(function(i,o){
+                                        $("#level_game_context").append(tmpl("levels_mode_template", i));
+                                        // debugger;
+                                        if(o <= 1)
+                                            $('.level_game').fadeOut(50);
+                                        else
+                                            $('.level_game').fadeIn(50);
+                                    });
+                                    $('select').material_select();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        
+        $('button[data-url="#create_specialty"]').unbind('click').click(function(){
+            var $name_specialty = $('#name_specialty').val();
+            var $mode_game = $('#mode_game_context').val();
+            var $level_game = $("#level_game_context").val();
+            
+            if($name_specialty == ""){
+                message('El campo de la especialidad no puede estar vacio');
+                $('#name_specialty').focus();
+            }else if($mode_game == ""){
+                message('Escoja el modo de juego');
+                $('#mode_game_context').parent().find('input[type=text]').focus();
+            }else{
+                if($mode_game == 1){
+                    if($level_game == ""){
+                        message('Escoja un nivel de juego');
+                        $("#level_game_context").parent().find('input[type=text]').focus();
+                    }
+                }
+                
+                loader('Registrando Especialidad');
+                $.ajax({
+                    url         : webService + 'register_specialty',
+                    type        : 'POST',
+                    data        : {
+                        id_game_mode    : $mode_game,
+                        id_level_game   : $level_game,
+                        name            : $name_specialty
+                    },
+                    success                 : function(res){
+                        var data = JSON.parse(res);
+                        
+                        if(data.status == "OK"){
+                            $('.loader').fadeOut(1500);
+                            setTimeout(function(){
+                                message(data.message);
+                                $('button[data-url="#cancel_specialty"]').click();
+                            },1000);
+                        }else{
+                            $('.loader').fadeOut(1000);
+                            setTimeout(function(){
+                                message(data.message);
+                            },1200);
+                        }
+                    }
+                });
+            }
+        });
+        
+        $('.tabs a').unbind('click').click(function(){
+            var tab = $(this).attr('href');
+            
+            $('.forms_contents > div').removeClass('active');
+            setTimeout(function(){ $(tab).addClass('active'); } , 500);
+            
+            if(tab == "#show_specialties")
+                evt_all_specialties_show('all');
+                
+            $('input[name="active_specialties"]').unbind('change').change(function(){
+                var filter = $('input[name="active_specialties"]:checked').val();
+                evt_all_specialties_show(filter);
+            });
+        });
+        
+        // $('#modify_questions,#desactivate_questions').unbind('change').change(function(){
+        //     var $id_question = $(this).val();
+            
+        //     $.ajax({
+        //         url         : webService + 'data_question',
+        //         type        : 'POST',
+        //         data        : {
+        //             id      : $id_question
+        //         },
+        //         success     : function(res){
+        //             var data = JSON.parse(res);
+        //             var mode_game = "";
+                    
+        //             if(data.id_mode_game == 1)
+        //                 mode_game = "Carrera";
+        //             else if(data.id_mode_game == 2)
+        //                 mode_game = "Examen";
+        //             else if(data.id_mode_game == 3)
+        //                 mode_game = "Especialidad";
+        //             else if(data.id_mode_game == 4)
+        //                 mode_game = "Litigio";
+        //             else if(data.id_mode_game == 5)
+        //                 mode_game = "Duelo";
+        //         }
+        //     });
+        // });
+        
+        // $('#type_question').unbind('change').change(function(){
+        //     var type = $(this).val();
+            
+        //     reset_form_new_question();
+            
+        //     if(type == 1)
+        //         $('.structure .multiple_choice').fadeIn(1000);
+        //     else if(type == 2)
+        //         $('.structure .yes_no').fadeIn(1000);
+        //     else if(type == 3)
+        //         $('.structure .order_questions').fadeIn(1000);
+        //     else
+        //         $('.structure > div').hide(50);
+        // });
+        
+        // $('.structure .multiple_choice .input i').unbind('click').click(function(){
+        //     var question = $(this).parent().find('input').val();
+            
+        //     evt_append_question_choice(question);
+        // });
+        
+        // $('.structure .multiple_choice .input input').unbind('keyup').keyup(function(e){
+        //     var question = $(this).val();
+            
+        //     if(e.keyCode == 13)
+        //         evt_append_question_choice(question);
+        // });
+        
+        // $('.structure .order_questions .input i').unbind('click').click(function(){
+        //     var question = $(this).parent().find('input').val();
+            
+        //     evt_append_question(question);
+        // });
+        
+        // $('.structure .order_questions .input input').unbind('keyup').keyup(function(e){
+        //     var question = $(this).val();
+            
+        //     if(e.keyCode == 13)
+        //         evt_append_question(question);
+        // });
+    },
 },{ 
   defaultHandler: function(type, ui, page) {
     console.log("Default handler called due to unknown route");
@@ -854,6 +1089,7 @@ function evt_login(){
                     setTimeout(function(){
                         var role = data.role;
                         localStorage.setItem('role_user',data.role);
+                        localStorage.setItem('gender_user',data.gender);
                         var url = role == 'admin' ? '#dashboard_admin?user=' + data.id_user : '#dashboard?user=' + data.id_user;
                         $.mobile.changePage(url,{role: 'page',transition:"flip"});
                         
@@ -895,6 +1131,9 @@ function evt_register(){
     var $email = $('#email_r').val();
     var $password = $('#password_r').val();
     var $password_confirmation = $('#password_c').val();
+    var $gender = $('#gender_user').val();
+    
+    console.log($gender);
     
     if($email === ""){
       message('¡ El campo del correo eléctronico no puede estar vacio !');
@@ -914,14 +1153,19 @@ function evt_register(){
     }else if($password !== $password_confirmation){
       message('¡ Las contraseñas no coinciden !');
       $('#password_r').focus();
+    }else if($gender == null){
+        message('Seleccione un genero');
+        $('input[value="Seleccione un genero"]').focus();
     }else{
       loader('Registrando...');
+      console.log($gender);
       $.ajax({
             type: "POST",
             url: webService+"register_user",
             data: {
                 email       : $email,
-                password    : $password
+                password    : $password,
+                gender      : $gender
             },success:function(response){
                 var data = JSON.parse(response);
                 
@@ -1257,7 +1501,7 @@ function evt_all_questions(filter){
 // Event to get all questions
 function evt_all_questions_show(filter){
     $(".content_question_show").empty();
-    // debugger;
+    
     $.ajax({
         url         : webService + 'all_questions/'+filter,
         type        : 'POST',
@@ -1265,20 +1509,8 @@ function evt_all_questions_show(filter){
         success     : function(res){
             var data = JSON.parse(res);
             data.forEach(function(i,o){
-                i.mode_game = "";
                 i.t_question = "";
-            
-                if(i.id_mode_game == 1)
-                    i.mode_game = "Carrera";
-                else if(i.id_mode_game == 2)
-                    i.mode_game = "Examen";
-                else if(i.id_mode_game == 3)
-                    i.mode_game = "Especialidad";
-                else if(i.id_mode_game == 4)
-                    i.mode_game = "Litigio";
-                else if(i.id_mode_game == 5)
-                    i.mode_game = "Duelo";
-                    
+                
                 if(i.type_question == 1)
                     i.t_question = "Selección múltiple";
                 else if(i.type_question == 2)
@@ -1303,6 +1535,30 @@ function evt_all_questions_show(filter){
                     
                     evt_question('inactive',id);
                 });
+                
+                $('.menu_question .edit').unbind('click').click(function(){
+                    var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                    
+                    $.ajax({
+                        url     : webService + 'data_question',
+                        type    : 'POST',
+                        data    : {
+                            id  : $id
+                        },
+                        success : function(res){
+                            var data = JSON.parse(res);
+                        }
+                    });
+                    
+                    $('.popup_edit').addClass('active');
+                    
+                    setTimeout(function(){$('.popup_edit .wrapper').css('transform','translatey(0)');},50);
+                });
+                
+                $('.popup_edit .outside').unbind('click').click(function(){
+                    $('.popup_edit .wrapper').css('transform','translatey(-105%)');
+                    setTimeout(function(){$('.popup_edit').removeClass('active');},500);
+                });
             });
         }
     });
@@ -1313,11 +1569,14 @@ function evt_append_question(question){
     if(question == ""){
         message('Ingrese una pregunta que no este en blanco');
         $('.structure .order_questions .input input').focus();
+    }else if(question.length < 5){
+        message('La pregunta no puede ser tan corta!!');
+        $('.structure .order_question .input input').focus();
     }else{
         var items = $('#sortable > li');
         $('#sortable').append('<li><span>' + question + '</span><i class="large material-icons">delete</i></li>');
         $('.structure .order_questions .input input').val('').focus().attr('placeholder','Ingrese las preguntas ('+(--count)+')');
-        if(items.length == 3){
+        if(items.length == 5){
             $('.structure .order_questions .input input').attr('disabled','true');
             $('.structure .order_questions .input i').css('z-index','-1');
         }
@@ -1330,24 +1589,59 @@ function evt_append_question(question){
     }
 }
 
+// Event to insert a question
+function evt_insert_question(obj){
+    loader('Registrando Pregunta');
+    $.ajax({
+        url         : webService + 'register_question',
+        type        : 'POST',
+        data        : obj,
+        success                 : function(res){
+            var data = JSON.parse(res);
+            
+            if(data.status == "OK"){
+                $('.loader').fadeOut(1500);
+                setTimeout(function(){
+                    message(data.message);
+                    reset_form_new_question();
+                    $('button[data-url="#cancel_question"]').click();
+                },1000);
+            }else{
+                $('.loader').fadeOut(1000);
+                setTimeout(function(){
+                    message(data.message);
+                },1200);
+            }
+        }
+    });
+}
+
 // Event to append question_choice on the ol
 function evt_append_question_choice(question){
     if(question == ""){
         message('Ingrese una pregunta que no este en blanco');
         $('.structure .multiple_choice .input input').focus();
+    }else if(question.length < 5){
+        message('La pregunta no puede ser tan corta!!');
+        $('.structure .multiple_choice .input input').focus();
     }else{
         var items = $('#sortable_choice > li');
-        $('#sortable_choice').append('<li><span>' + question + '</span><i class="large material-icons">delete</i></li>');
+        var current = count_id;
+        $('#sortable_choice').append('<li><span>' + question + '</span><span class="last"><p><input type="checkbox" class="filled-in" id="correct'+ current +'" value="'+question+'"/><label for="correct'+ current +'"></label></p></span><i class="large material-icons">delete</i></li>');
         $('.structure .multiple_choice .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
-        if(items.length == 1){
+        if(items.length == 5){
             $('.structure .multiple_choice .input input').attr('disabled','true');
             $('.structure .multiple_choice .input i').css('z-index','-1');
         }
+        
+        count_id--;
+        
         $('#sortable_choice li i').unbind('click').click(function(e) {
             $(this).parent().remove();
             $('.structure .multiple_choice .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
             $('.structure .multiple_choice .input input').removeAttr('disabled');
             $('.structure .multiple_choice .input i').css('z-index','1');
+            count_id++;
         });
     }
 }
@@ -1398,7 +1692,8 @@ function evt_question(param, $id){
 
 // Evt to reset form new question
 function reset_form_new_question(){
-    count = 4;
+    count = 6;
+    count_id = 6;
     $('.structure > div').hide(50);
     $('#sortable').empty();
     $('#sortable_choice').empty();
@@ -1406,6 +1701,95 @@ function reset_form_new_question(){
     $('.structure .order_questions .input i').css('z-index','1');
     $('.structure .multiple_choice .input input').removeAttr('disabled');
     $('.structure .multiple_choice .input i').css('z-index','1');
+}
+
+// Event to get all specialties
+function evt_all_specialties_show(filter){
+    $(".content_specialty_show").empty();
+    // debugger;
+    $.ajax({
+        url         : webService + 'all_specialties/'+filter,
+        type        : 'POST',
+        data        : null,
+        success     : function(res){
+            var data = JSON.parse(res);
+            data.forEach(function(i,o){
+                    
+                i.mode_game = "";
+                i.level_game = "";
+                
+                if(i.id_game_mode == 1) {
+                    i.mode_game = "Carrera";
+                }else if(i.id_game_mode == 2) {
+                    i.mode_game = "Examen";
+                }else if(i.id_game_mode == 3) {
+                    i.mode_game = "Especialidad";
+                }else if(i.id_game_mode == 4) {
+                    i.mode_game = "Litigio";
+                }else if(i.id_game_mode == 5) {
+                    i.mode_game = "Duelo";
+                }
+                    
+                if(i.id_level_game == 1){
+                    i.level_game = "Ejecutiva";
+                }else if(i.id_level_game == 2){
+                    i.level_game = "Legislativa";
+                }else if(i.id_level_game == 3){
+                    i.level_game = "Judicial";
+                }else{
+                    i.level_game = "N/A";
+                } 
+                    
+                    
+                if(i.state == 'active')
+                    i.state = 'Activa'
+                else
+                    i.state = "Inactiva";
+
+                $(".content_specialty_show").append(tmpl("all_specialties_show", i));
+                
+                $('.menu_specialty .desactivate').unbind('click').click(function(){
+                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                    evt_specialty('active',id);
+                });
+                $('.menu_specialty .activate').unbind('click').click(function(){
+                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                    evt_specialty('inactive',id);
+                });
+            });
+        }
+    });
+}
+
+// Evt to activate or deactivate question
+function evt_specialty(param, $id){
+    
+    if(param == "inactive")
+        loader('Activando Especialidad');
+    else
+        loader('Desactivando Especialidad');
+        
+    $.ajax({
+        url         : webService + 'specialty/' + param,
+        type        : 'POST',
+        data        : {
+            id      : $id
+        },
+        success     : function(res){
+            var data = JSON.parse(res);
+            $('.loader').fadeOut(500);
+            setTimeout(function(){
+                if(data.status == 'OK')
+                    message(data.message);
+                else
+                    message(data.message);
+                
+                $('input[name="active_specialties"]').removeAttr('checked');
+                
+                evt_all_questions_show(data.ref);
+            },700);
+        }
+    });
 }
 
 // Render Template

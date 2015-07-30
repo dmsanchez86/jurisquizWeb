@@ -46,8 +46,7 @@ html {
 .start_specialty .container_logo,
 .litigation .container_logo,
 .start_litigation .container_logo,
-.questions .container_logo,
-.specialties .container_logo {
+.questions .container_logo {
   padding: 1.5rem 0;
 }
 .home .container_logo .content,
@@ -65,8 +64,7 @@ html {
 .start_specialty .container_logo .content,
 .litigation .container_logo .content,
 .start_litigation .container_logo .content,
-.questions .container_logo .content,
-.specialties .container_logo .content {
+.questions .container_logo .content {
   width: 380px;
   margin: 0 auto;
   max-width: 100%;
@@ -86,8 +84,7 @@ html {
 .start_specialty .container_logo .content .btn_logo,
 .litigation .container_logo .content .btn_logo,
 .start_litigation .container_logo .content .btn_logo,
-.questions .container_logo .content .btn_logo,
-.specialties .container_logo .content .btn_logo {
+.questions .container_logo .content .btn_logo {
   background-color: #f6f6f6;
   height: inherit;
   padding: 0;
@@ -115,8 +112,7 @@ html {
 .start_specialty .container_logo .content .btn_logo div,
 .litigation .container_logo .content .btn_logo div,
 .start_litigation .container_logo .content .btn_logo div,
-.questions .container_logo .content .btn_logo div,
-.specialties .container_logo .content .btn_logo div {
+.questions .container_logo .content .btn_logo div {
   background-image: url(../img/logo.png);
   width: 100%;
   min-height: 300px;
@@ -137,8 +133,7 @@ html {
 .start_specialty .container_btn,
 .litigation .container_btn,
 .start_litigation .container_btn,
-.questions .container_btn,
-.specialties .container_btn {
+.questions .container_btn {
   text-align: center;
 }
 .home .container_btn button,
@@ -156,8 +151,7 @@ html {
 .start_specialty .container_btn button,
 .litigation .container_btn button,
 .start_litigation .container_btn button,
-.questions .container_btn button,
-.specialties .container_btn button {
+.questions .container_btn button {
   width: 380px;
   padding: 1.5rem 0.5rem;
   height: inherit;
@@ -183,8 +177,7 @@ html {
 .start_specialty .container_btn button:hover,
 .litigation .container_btn button:hover,
 .start_litigation .container_btn button:hover,
-.questions .container_btn button:hover,
-.specialties .container_btn button:hover {
+.questions .container_btn button:hover {
   color: white;
 }
 .home .container_btn button:focus,
@@ -202,8 +195,7 @@ html {
 .start_specialty .container_btn button:focus,
 .litigation .container_btn button:focus,
 .start_litigation .container_btn button:focus,
-.questions .container_btn button:focus,
-.specialties .container_btn button:focus {
+.questions .container_btn button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .home .container_btn button:hover,
@@ -221,8 +213,7 @@ html {
 .start_specialty .container_btn button:hover,
 .litigation .container_btn button:hover,
 .start_litigation .container_btn button:hover,
-.questions .container_btn button:hover,
-.specialties .container_btn button:hover {
+.questions .container_btn button:hover {
   background-color: #3a6667;
   text-shadow: none;
 }
@@ -241,8 +232,7 @@ html {
 .start_specialty .container_btn:nth-child(even) button:after,
 .litigation .container_btn:nth-child(even) button:after,
 .start_litigation .container_btn:nth-child(even) button:after,
-.questions .container_btn:nth-child(even) button:after,
-.specialties .container_btn:nth-child(even) button:after {
+.questions .container_btn:nth-child(even) button:after {
   left: 0;
   right: inherit;
 }
@@ -261,8 +251,7 @@ html {
 .start_specialty .container_btn:nth-child(odd) button:after,
 .litigation .container_btn:nth-child(odd) button:after,
 .start_litigation .container_btn:nth-child(odd) button:after,
-.questions .container_btn:nth-child(odd) button:after,
-.specialties .container_btn:nth-child(odd) button:after {
+.questions .container_btn:nth-child(odd) button:after {
   right: 0;
   left: inherit;
 }
@@ -281,8 +270,7 @@ html {
 .start_specialty .container_register,
 .litigation .container_register,
 .start_litigation .container_register,
-.questions .container_register,
-.specialties .container_register {
+.questions .container_register {
   text-align: center;
   margin-top: 1.5rem;
   margin-bottom: 1.3rem;
@@ -303,7 +291,6 @@ html {
 .litigation .container_register span,
 .start_litigation .container_register span,
 .questions .container_register span,
-.specialties .container_register span,
 .home .container_register span a,
 .register .container_register span a,
 .dashboard .container_register span a,
@@ -319,8 +306,7 @@ html {
 .start_specialty .container_register span a,
 .litigation .container_register span a,
 .start_litigation .container_register span a,
-.questions .container_register span a,
-.specialties .container_register span a {
+.questions .container_register span a {
   color: #323232;
   font-size: 1.35rem;
   -webkit-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
@@ -345,8 +331,7 @@ html {
 .start_specialty .container_register span a,
 .litigation .container_register span a,
 .start_litigation .container_register span a,
-.questions .container_register span a,
-.specialties .container_register span a {
+.questions .container_register span a {
   font-weight: 700;
 }
 .home .container_login .content,
@@ -364,8 +349,7 @@ html {
 .start_specialty .container_login .content,
 .litigation .container_login .content,
 .start_litigation .container_login .content,
-.questions .container_login .content,
-.specialties .container_login .content {
+.questions .container_login .content {
   width: 380px;
   margin: 0 auto;
   max-width: 100%;
@@ -385,8 +369,7 @@ html {
 .start_specialty .container_login .content button,
 .litigation .container_login .content button,
 .start_litigation .container_login .content button,
-.questions .container_login .content button,
-.specialties .container_login .content button {
+.questions .container_login .content button {
   width: 380px;
   padding: 1.5rem 1rem;
   height: inherit;
@@ -412,8 +395,7 @@ html {
 .start_specialty .container_login .content button:hover,
 .litigation .container_login .content button:hover,
 .start_litigation .container_login .content button:hover,
-.questions .container_login .content button:hover,
-.specialties .container_login .content button:hover {
+.questions .container_login .content button:hover {
   color: white;
 }
 .home .container_login .content button:focus,
@@ -431,8 +413,7 @@ html {
 .start_specialty .container_login .content button:focus,
 .litigation .container_login .content button:focus,
 .start_litigation .container_login .content button:focus,
-.questions .container_login .content button:focus,
-.specialties .container_login .content button:focus {
+.questions .container_login .content button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .home .container_login .content button:hover,
@@ -450,8 +431,7 @@ html {
 .start_specialty .container_login .content button:hover,
 .litigation .container_login .content button:hover,
 .start_litigation .container_login .content button:hover,
-.questions .container_login .content button:hover,
-.specialties .container_login .content button:hover {
+.questions .container_login .content button:hover {
   background-color: #ee6200;
   text-shadow: none;
 }
@@ -470,8 +450,7 @@ html {
 .start_specialty .container_terms,
 .litigation .container_terms,
 .start_litigation .container_terms,
-.questions .container_terms,
-.specialties .container_terms {
+.questions .container_terms {
   text-align: center;
   margin: 1.5rem 0 2rem;
 }
@@ -490,8 +469,7 @@ html {
 .start_specialty .container_terms span a,
 .litigation .container_terms span a,
 .start_litigation .container_terms span a,
-.questions .container_terms span a,
-.specialties .container_terms span a {
+.questions .container_terms span a {
   color: #aaa;
 }
 /* Dashboard */
@@ -510,8 +488,7 @@ html {
 .litigation .btn_panel,
 .start_litigation .btn_panel,
 .profile .btn_panel,
-.questions .btn_panel,
-.specialties .btn_panel {
+.questions .btn_panel {
   display: inline-block;
   width: 35px;
   margin-left: 1rem;
@@ -540,8 +517,7 @@ html {
 .litigation .btn_panel:after,
 .start_litigation .btn_panel:after,
 .profile .btn_panel:after,
-.questions .btn_panel:after,
-.specialties .btn_panel:after {
+.questions .btn_panel:after {
   position: absolute;
   right: 0;
   width: 2.5px;
@@ -567,8 +543,7 @@ html {
 .litigation .btn_panel > div,
 .start_litigation .btn_panel > div,
 .profile .btn_panel > div,
-.questions .btn_panel > div,
-.specialties .btn_panel > div {
+.questions .btn_panel > div {
   border-top: 3.3px solid white;
   margin-bottom: .5rem;
   -webkit-transition: all 0.4s ease;
@@ -593,8 +568,7 @@ html {
 .litigation .btn_panel > div:nth-child(1),
 .start_litigation .btn_panel > div:nth-child(1),
 .profile .btn_panel > div:nth-child(1),
-.questions .btn_panel > div:nth-child(1),
-.specialties .btn_panel > div:nth-child(1) {
+.questions .btn_panel > div:nth-child(1) {
   margin-top: 1rem;
 }
 .dashboard .btn_panel.toggle > div:nth-child(1),
@@ -612,8 +586,7 @@ html {
 .litigation .btn_panel.toggle > div:nth-child(1),
 .start_litigation .btn_panel.toggle > div:nth-child(1),
 .profile .btn_panel.toggle > div:nth-child(1),
-.questions .btn_panel.toggle > div:nth-child(1),
-.specialties .btn_panel.toggle > div:nth-child(1) {
+.questions .btn_panel.toggle > div:nth-child(1) {
   -webkit-transform: rotate(45deg) translate3d(6px, 9px, 0);
   -khtml-transform: rotate(45deg) translate3d(6px, 9px, 0);
   -moz-transform: rotate(45deg) translate3d(6px, 9px, 0);
@@ -636,8 +609,7 @@ html {
 .litigation .btn_panel.toggle > div:nth-child(2),
 .start_litigation .btn_panel.toggle > div:nth-child(2),
 .profile .btn_panel.toggle > div:nth-child(2),
-.questions .btn_panel.toggle > div:nth-child(2),
-.specialties .btn_panel.toggle > div:nth-child(2) {
+.questions .btn_panel.toggle > div:nth-child(2) {
   -webkit-transform: rotate(45deg) translate3d(2px, -1px, 0);
   -khtml-transform: rotate(45deg) translate3d(2px, -1px, 0);
   -moz-transform: rotate(45deg) translate3d(2px, -1px, 0);
@@ -661,8 +633,7 @@ html {
 .litigation .btn_panel.toggle > div:nth-child(3),
 .start_litigation .btn_panel.toggle > div:nth-child(3),
 .profile .btn_panel.toggle > div:nth-child(3),
-.questions .btn_panel.toggle > div:nth-child(3),
-.specialties .btn_panel.toggle > div:nth-child(3) {
+.questions .btn_panel.toggle > div:nth-child(3) {
   -webkit-transform: rotate(-45deg) translate3d(6px, -10px, 0);
   -khtml-transform: rotate(-45deg) translate3d(6px, -10px, 0);
   -moz-transform: rotate(-45deg) translate3d(6px, -10px, 0);
@@ -686,7 +657,6 @@ html {
 .start_litigation .status,
 .profile .status,
 .questions .status,
-.specialties .status,
 .dashboard .levels_content,
 .friends .levels_content,
 .race .levels_content,
@@ -702,8 +672,7 @@ html {
 .litigation .levels_content,
 .start_litigation .levels_content,
 .profile .levels_content,
-.questions .levels_content,
-.specialties .levels_content {
+.questions .levels_content {
   float: right;
   height: 97px;
   width: 230px;
@@ -728,7 +697,6 @@ html {
 .start_litigation .status .points,
 .profile .status .points,
 .questions .status .points,
-.specialties .status .points,
 .dashboard .levels_content .points,
 .friends .levels_content .points,
 .race .levels_content .points,
@@ -744,8 +712,7 @@ html {
 .litigation .levels_content .points,
 .start_litigation .levels_content .points,
 .profile .levels_content .points,
-.questions .levels_content .points,
-.specialties .levels_content .points {
+.questions .levels_content .points {
   color: white;
   font-family: 'DK Mango';
   font-style: normal;
@@ -776,7 +743,6 @@ html {
 .start_litigation .status .points:before,
 .profile .status .points:before,
 .questions .status .points:before,
-.specialties .status .points:before,
 .dashboard .levels_content .points:before,
 .friends .levels_content .points:before,
 .race .levels_content .points:before,
@@ -792,8 +758,7 @@ html {
 .litigation .levels_content .points:before,
 .start_litigation .levels_content .points:before,
 .profile .levels_content .points:before,
-.questions .levels_content .points:before,
-.specialties .levels_content .points:before {
+.questions .levels_content .points:before {
   position: absolute;
   left: -16px;
   width: 2px;
@@ -820,7 +785,6 @@ html {
 .start_litigation .status .points em,
 .profile .status .points em,
 .questions .status .points em,
-.specialties .status .points em,
 .dashboard .levels_content .points em,
 .friends .levels_content .points em,
 .race .levels_content .points em,
@@ -836,8 +800,7 @@ html {
 .litigation .levels_content .points em,
 .start_litigation .levels_content .points em,
 .profile .levels_content .points em,
-.questions .levels_content .points em,
-.specialties .levels_content .points em {
+.questions .levels_content .points em {
   font-size: 4.5rem;
   font-family: 'DK Mango';
   font-style: normal;
@@ -859,7 +822,6 @@ html {
 .start_litigation .status .icon_level,
 .profile .status .icon_level,
 .questions .status .icon_level,
-.specialties .status .icon_level,
 .dashboard .levels_content .icon_level,
 .friends .levels_content .icon_level,
 .race .levels_content .icon_level,
@@ -875,8 +837,7 @@ html {
 .litigation .levels_content .icon_level,
 .start_litigation .levels_content .icon_level,
 .profile .levels_content .icon_level,
-.questions .levels_content .icon_level,
-.specialties .levels_content .icon_level {
+.questions .levels_content .icon_level {
   text-align: right;
   padding: .25rem 1rem .25rem 0;
   -webkit-flex: 1 1 0%;
@@ -900,7 +861,6 @@ html {
 .start_litigation .status .icon_level img,
 .profile .status .icon_level img,
 .questions .status .icon_level img,
-.specialties .status .icon_level img,
 .dashboard .levels_content .icon_level img,
 .friends .levels_content .icon_level img,
 .race .levels_content .icon_level img,
@@ -916,8 +876,7 @@ html {
 .litigation .levels_content .icon_level img,
 .start_litigation .levels_content .icon_level img,
 .profile .levels_content .icon_level img,
-.questions .levels_content .icon_level img,
-.specialties .levels_content .icon_level img {
+.questions .levels_content .icon_level img {
   height: 88px;
 }
 .dashboard .levels_content,
@@ -935,8 +894,7 @@ html {
 .litigation .levels_content,
 .start_litigation .levels_content,
 .profile .levels_content,
-.questions .levels_content,
-.specialties .levels_content {
+.questions .levels_content {
   margin-right: 1rem;
   width: inherit;
 }
@@ -955,8 +913,7 @@ html {
 .litigation .levels_content > div,
 .start_litigation .levels_content > div,
 .profile .levels_content > div,
-.questions .levels_content > div,
-.specialties .levels_content > div {
+.questions .levels_content > div {
   padding: .25rem .15rem;
 }
 .dashboard .levels_content .level,
@@ -974,8 +931,7 @@ html {
 .litigation .levels_content .level,
 .start_litigation .levels_content .level,
 .profile .levels_content .level,
-.questions .levels_content .level,
-.specialties .levels_content .level {
+.questions .levels_content .level {
   opacity: .5;
   padding-right: 1.5rem;
   position: relative;
@@ -996,7 +952,6 @@ html {
 .start_litigation .levels_content .level .top,
 .profile .levels_content .level .top,
 .questions .levels_content .level .top,
-.specialties .levels_content .level .top,
 .dashboard .levels_content .level .bottom,
 .friends .levels_content .level .bottom,
 .race .levels_content .level .bottom,
@@ -1012,8 +967,7 @@ html {
 .litigation .levels_content .level .bottom,
 .start_litigation .levels_content .level .bottom,
 .profile .levels_content .level .bottom,
-.questions .levels_content .level .bottom,
-.specialties .levels_content .level .bottom {
+.questions .levels_content .level .bottom {
   text-align: center;
 }
 .dashboard .levels_content .level .top span,
@@ -1032,7 +986,6 @@ html {
 .start_litigation .levels_content .level .top span,
 .profile .levels_content .level .top span,
 .questions .levels_content .level .top span,
-.specialties .levels_content .level .top span,
 .dashboard .levels_content .level .bottom span,
 .friends .levels_content .level .bottom span,
 .race .levels_content .level .bottom span,
@@ -1048,8 +1001,7 @@ html {
 .litigation .levels_content .level .bottom span,
 .start_litigation .levels_content .level .bottom span,
 .profile .levels_content .level .bottom span,
-.questions .levels_content .level .bottom span,
-.specialties .levels_content .level .bottom span {
+.questions .levels_content .level .bottom span {
   font-family: 'DK Mango';
   color: white;
   text-shadow: none;
@@ -1070,7 +1022,6 @@ html {
 .start_litigation .levels_content .level .top img,
 .profile .levels_content .level .top img,
 .questions .levels_content .level .top img,
-.specialties .levels_content .level .top img,
 .dashboard .levels_content .level .bottom img,
 .friends .levels_content .level .bottom img,
 .race .levels_content .level .bottom img,
@@ -1086,8 +1037,7 @@ html {
 .litigation .levels_content .level .bottom img,
 .start_litigation .levels_content .level .bottom img,
 .profile .levels_content .level .bottom img,
-.questions .levels_content .level .bottom img,
-.specialties .levels_content .level .bottom img {
+.questions .levels_content .level .bottom img {
   padding: 0;
   height: 55px;
 }
@@ -1106,8 +1056,7 @@ html {
 .litigation .levels_content .level .top,
 .start_litigation .levels_content .level .top,
 .profile .levels_content .level .top,
-.questions .levels_content .level .top,
-.specialties .levels_content .level .top {
+.questions .levels_content .level .top {
   height: 65px;
 }
 .dashboard .levels_content .level .bottom,
@@ -1125,8 +1074,7 @@ html {
 .litigation .levels_content .level .bottom,
 .start_litigation .levels_content .level .bottom,
 .profile .levels_content .level .bottom,
-.questions .levels_content .level .bottom,
-.specialties .levels_content .level .bottom {
+.questions .levels_content .level .bottom {
   height: 27px;
   position: relative;
   padding-top: .25rem;
@@ -1146,8 +1094,7 @@ html {
 .litigation .levels_content .level .bottom:before,
 .start_litigation .levels_content .level .bottom:before,
 .profile .levels_content .level .bottom:before,
-.questions .levels_content .level .bottom:before,
-.specialties .levels_content .level .bottom:before {
+.questions .levels_content .level .bottom:before {
   position: absolute;
   content: '';
   top: 0;
@@ -1173,8 +1120,7 @@ html {
 .litigation .levels_content .level.active,
 .start_litigation .levels_content .level.active,
 .profile .levels_content .level.active,
-.questions .levels_content .level.active,
-.specialties .levels_content .level.active {
+.questions .levels_content .level.active {
   opacity: 1;
 }
 .dashboard .levels_content .level:not(.active) .bottom,
@@ -1192,8 +1138,7 @@ html {
 .litigation .levels_content .level:not(.active) .bottom,
 .start_litigation .levels_content .level:not(.active) .bottom,
 .profile .levels_content .level:not(.active) .bottom,
-.questions .levels_content .level:not(.active) .bottom,
-.specialties .levels_content .level:not(.active) .bottom {
+.questions .levels_content .level:not(.active) .bottom {
   opacity: 0;
 }
 .dashboard .levels_content .level:after,
@@ -1211,8 +1156,7 @@ html {
 .litigation .levels_content .level:after,
 .start_litigation .levels_content .level:after,
 .profile .levels_content .level:after,
-.questions .levels_content .level:after,
-.specialties .levels_content .level:after {
+.questions .levels_content .level:after {
   position: absolute;
   height: 100%;
   width: 40px;
@@ -1239,8 +1183,7 @@ html {
 .litigation .levels_content .level:last-child:after,
 .start_litigation .levels_content .level:last-child:after,
 .profile .levels_content .level:last-child:after,
-.questions .levels_content .level:last-child:after,
-.specialties .levels_content .level:last-child:after {
+.questions .levels_content .level:last-child:after {
   display: none;
 }
 .dashboard hgroup,
@@ -1258,8 +1201,7 @@ html {
 .litigation hgroup,
 .start_litigation hgroup,
 .profile hgroup,
-.questions hgroup,
-.specialties hgroup {
+.questions hgroup {
   margin: 6rem 0 2rem;
 }
 .dashboard hgroup h1,
@@ -1278,7 +1220,6 @@ html {
 .start_litigation hgroup h1,
 .profile hgroup h1,
 .questions hgroup h1,
-.specialties hgroup h1,
 .dashboard hgroup h2,
 .friends hgroup h2,
 .race hgroup h2,
@@ -1294,8 +1235,7 @@ html {
 .litigation hgroup h2,
 .start_litigation hgroup h2,
 .profile hgroup h2,
-.questions hgroup h2,
-.specialties hgroup h2 {
+.questions hgroup h2 {
   font-size: 1.3rem;
   text-align: center;
   margin: 0;
@@ -1317,8 +1257,7 @@ html {
 .litigation .container_btn button,
 .start_litigation .container_btn button,
 .profile .container_btn button,
-.questions .container_btn button,
-.specialties .container_btn button {
+.questions .container_btn button {
   padding: .95rem .5rem;
   font-weight: normal;
 }
@@ -1337,8 +1276,7 @@ html {
 .litigation .games,
 .start_litigation .games,
 .profile .games,
-.questions .games,
-.specialties .games {
+.questions .games {
   margin-bottom: 1.5rem;
 }
 /* Home */
@@ -2611,12 +2549,12 @@ html {
   transform-origin: center;
 }
 .questions .content_questions .forms .forms_contents > div:nth-child(odd) {
-  -webkit-transform: translatex(-150%) skew(35deg);
-  -khtml-transform: translatex(-150%) skew(35deg);
-  -moz-transform: translatex(-150%) skew(35deg);
-  -ms-transform: translatex(-150%) skew(35deg);
-  -o-transform: translatex(-150%) skew(35deg);
-  transform: translatex(-150%) skew(35deg);
+  -webkit-transform: translatex(-120%) skew(35deg);
+  -khtml-transform: translatex(-120%) skew(35deg);
+  -moz-transform: translatex(-120%) skew(35deg);
+  -ms-transform: translatex(-120%) skew(35deg);
+  -o-transform: translatex(-120%) skew(35deg);
+  transform: translatex(-120%) skew(35deg);
 }
 .questions .content_questions .forms .forms_contents > div:nth-child(even) {
   -webkit-transform: translatex(150%) skew(0deg);
@@ -2673,19 +2611,18 @@ html {
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  cursor: move;
 }
 .questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:hover,
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:hover {
   border-color: #ee6200;
 }
+.questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:after,
+.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:after {
+  content: ' ?';
+}
 .questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:first-letter,
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:first-letter {
   text-transform: uppercase;
-}
-.questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li span:first-child:after,
-.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li span:first-child:after {
-  content: ' ?';
 }
 .questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li i,
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li i {
@@ -2701,25 +2638,6 @@ html {
 .questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li i:hover,
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li i:hover {
   color: #ee6200;
-}
-.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li {
-  cursor: initial;
-}
-.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li .last {
-  position: absolute;
-  right: 3rem;
-}
-.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li .last p {
-  display: inline;
-}
-.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li .last p label {
-  top: -2px;
-  -webkit-transform: scale(0.7);
-  -khtml-transform: scale(0.7);
-  -moz-transform: scale(0.7);
-  -ms-transform: scale(0.7);
-  -o-transform: scale(0.7);
-  transform: scale(0.7);
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question {
   position: relative;
@@ -2764,10 +2682,6 @@ html {
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question span b {
   color: #3a6667;
-}
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question ol {
-  margin-top: .5rem;
-  padding-left: 1.5rem;
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover span b,
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus span b {
@@ -2835,380 +2749,6 @@ html {
   display: block;
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span i {
-  color: #000;
-  font-size: 1.15rem;
-  line-height: 1;
-  vertical-align: top;
-  padding-top: .45rem;
-}
-/* Specialties */
-.specialties .content_questions {
-  max-width: 100%;
-  width: 600px;
-  -webkit-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-  padding: 1rem;
-  background-color: #3a6667;
-  margin: 1.3rem auto 2rem;
-}
-.specialties .content_questions .forms {
-  background-color: #fff;
-  padding: .15rem .85rem 1rem;
-  -webkit-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.specialties .content_questions .forms .tab_title {
-  font-family: 'DK Mango';
-  font-size: 3.5rem;
-  color: #ee6200;
-  text-align: center;
-  margin-top: .5rem;
-}
-.specialties .content_questions .forms .tab_title + h4 {
-  font-size: 1rem;
-  color: #3a6667;
-  margin: 0;
-}
-.specialties .content_questions .forms .input-field label {
-  color: #3a6667;
-}
-.specialties .content_questions .forms .input-field label.active {
-  text-decoration: underline;
-  font-size: 0.8rem;
-  -webkit-transform: translateY(-210%);
-  -khtml-transform: translateY(-210%);
-  -moz-transform: translateY(-210%);
-  -ms-transform: translateY(-210%);
-  -o-transform: translateY(-210%);
-  transform: translateY(-210%);
-}
-.specialties .content_questions .forms .container_btn button[data-url="#create_specialty"]:hover {
-  background-color: #ee6200;
-}
-.specialties .content_questions .forms .forms_contents {
-  -webkit-perspective: 100px;
-  -khtml-perspective: 100px;
-  -moz-perspective: 100px;
-  -ms-perspective: 100px;
-  -o-perspective: 100px;
-  perspective: 100px;
-  -webkit-perspective-origin: 0% 50%;
-  -khtml-perspective-origin: 0% 50%;
-  -moz-perspective-origin: 0% 50%;
-  -ms-perspective-origin: 0% 50%;
-  -o-perspective-origin: 0% 50%;
-  perspective-origin: 0% 50%;
-}
-.specialties .content_questions .forms .forms_contents > div {
-  -webkit-transition: all 0.5s ease-in-out;
-  -khtml-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-transform-origin: center;
-  -khtml-transform-origin: center;
-  -moz-transform-origin: center;
-  -ms-transform-origin: center;
-  -o-transform-origin: center;
-  transform-origin: center;
-}
-.specialties .content_questions .forms .forms_contents > div:nth-child(odd) {
-  -webkit-transform: translatey(120%) skew(0deg);
-  -khtml-transform: translatey(120%) skew(0deg);
-  -moz-transform: translatey(120%) skew(0deg);
-  -ms-transform: translatey(120%) skew(0deg);
-  -o-transform: translatey(120%) skew(0deg);
-  transform: translatey(120%) skew(0deg);
-}
-.specialties .content_questions .forms .forms_contents > div:nth-child(even) {
-  -webkit-transform: translatex(-150%) skew(0deg);
-  -khtml-transform: translatex(-150%) skew(0deg);
-  -moz-transform: translatex(-150%) skew(0deg);
-  -ms-transform: translatex(-150%) skew(0deg);
-  -o-transform: translatex(-150%) skew(0deg);
-  transform: translatex(-150%) skew(0deg);
-}
-.specialties .content_questions .forms .forms_contents > div.active {
-  -webkit-transform: translatex(0) translatey(0) skew(0deg);
-  -khtml-transform: translatex(0) translatey(0) skew(0deg);
-  -moz-transform: translatex(0) translatey(0) skew(0deg);
-  -ms-transform: translatex(0) translatey(0) skew(0deg);
-  -o-transform: translatex(0) translatey(0) skew(0deg);
-  transform: translatex(0) translatey(0) skew(0deg);
-  min-height: 600px;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure > div {
-  display: none;
-  overflow: visible!important;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .input,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .input {
-  position: relative;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .input i,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .input i {
-  position: absolute;
-  right: 5%;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  font-size: 1.45rem;
-  line-height: 2.3;
-  cursor: pointer;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .input i:hover,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .input i:hover {
-  color: #ee6200;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable {
-  padding-left: 1.5rem;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li {
-  position: relative;
-  padding: .5rem 0;
-  margin-bottom: .5rem;
-  border-bottom: solid thin transparent;
-  -webkit-transition: all 0.5s ease;
-  -khtml-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:hover,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:hover {
-  border-color: #ee6200;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:after,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:after {
-  content: ' ?';
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:first-letter,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:first-letter {
-  text-transform: uppercase;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li i,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li i {
-  position: absolute;
-  right: 2%;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  font-size: 1rem;
-  line-height: 2;
-  cursor: pointer;
-}
-.specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li i:hover,
-.specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li i:hover {
-  color: #ee6200;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty {
-  position: relative;
-  padding: 1rem;
-  margin-bottom: .15rem;
-  -webkit-box-shadow: 0 0 1px 0 #3a6667;
-  -khtml-box-shadow: 0 0 1px 0 #3a6667;
-  -moz-box-shadow: 0 0 1px 0 #3a6667;
-  -ms-box-shadow: 0 0 1px 0 #3a6667;
-  -o-box-shadow: 0 0 1px 0 #3a6667;
-  box-shadow: 0 0 1px 0 #3a6667;
-  -webkit-border-radius: 1px;
-  -khtml-border-radius: 1px;
-  -moz-border-radius: 1px;
-  -ms-border-radius: 1px;
-  -o-border-radius: 1px;
-  border-radius: 1px;
-  -webkit-transition: all 0.5s ease;
-  -khtml-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  -webkit-perspective-origin: 50% 50%;
-  -khtml-perspective-origin: 50% 50%;
-  -moz-perspective-origin: 50% 50%;
-  -ms-perspective-origin: 50% 50%;
-  -o-perspective-origin: 50% 50%;
-  perspective-origin: 50% 50%;
-  overflow: hidden;
-  -webkit-perspective: 600px;
-  -khtml-perspective: 600px;
-  -moz-perspective: 600px;
-  -ms-perspective: 600px;
-  -o-perspective: 600px;
-  perspective: 600px;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question > div,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question > div,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty > div,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty > div {
-  padding: .05rem .15rem;
-  word-break: break-word;
-  word-wrap: break-word;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty span b {
-  color: #3a6667;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:hover span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:hover span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:hover span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:focus span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:focus span b,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:focus span b {
-  color: #ef863e;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:hover .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:hover .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:hover .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:focus .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:focus .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:focus .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:hover .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:hover .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:hover .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:focus .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:focus .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:focus .menu_specialty {
-  background-color: rgba(239, 134, 62, 0.81);
-  -webkit-transform: translatex(0);
-  -khtml-transform: translatex(0);
-  -moz-transform: translatex(0);
-  -ms-transform: translatex(0);
-  -o-transform: translatex(0);
-  transform: translatex(0);
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:hover .menu_question ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:hover .menu_question ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:hover .menu_question ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:focus .menu_question ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:focus .menu_question ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:focus .menu_question ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_specialty ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:hover .menu_specialty ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:hover .menu_specialty ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:hover .menu_specialty ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_specialty ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:focus .menu_specialty ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty:focus .menu_specialty ul li i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty:focus .menu_specialty ul li i {
-  color: #323232;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_question,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_specialty,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_specialty {
-  position: absolute;
-  background-color: #3a6667;
-  right: 0;
-  top: 0;
-  width: 27px;
-  height: 100%;
-  -webkit-transform-origin: right center;
-  -khtml-transform-origin: right center;
-  -moz-transform-origin: right center;
-  -ms-transform-origin: right center;
-  -o-transform-origin: right center;
-  transform-origin: right center;
-  -webkit-transform: translatex(110%);
-  -khtml-transform: translatex(110%);
-  -moz-transform: translatex(110%);
-  -ms-transform: translatex(110%);
-  -o-transform: translatex(110%);
-  transform: translatex(110%);
-  -webkit-transition: all 0.3s ease;
-  -khtml-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_question ul,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_question ul,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_question ul,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_specialty ul,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_specialty ul,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_specialty ul,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_specialty ul {
-  height: 100%;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_question ul li,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_question ul li,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_question ul li,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_specialty ul li,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_specialty ul li,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_specialty ul li,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_specialty ul li {
-  min-height: 30px;
-  max-height: 35px;
-  float: left;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li:first-child:not(.desactivate) span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_question ul li:first-child:not(.desactivate) span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_question ul li:first-child:not(.desactivate) span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_question ul li:first-child:not(.desactivate) span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_specialty ul li:first-child:not(.desactivate) span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_specialty ul li:first-child:not(.desactivate) span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_specialty ul li:first-child:not(.desactivate) span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_specialty ul li:first-child:not(.desactivate) span i {
-  font-weight: bold;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_question ul li span,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_question ul li span,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_question ul li span,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_specialty ul li span,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_specialty ul li span,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_specialty ul li span,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_specialty ul li span {
-  float: left;
-  min-height: 30px;
-  max-height: 35px;
-  width: 100%;
-  display: block;
-}
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_question ul li span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_question ul li span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_question ul li span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_specialty ul li span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_specialty ul li span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_specialty ul li span i,
-.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_specialty ul li span i {
   color: #000;
   font-size: 1.15rem;
   line-height: 1;
@@ -3343,93 +2883,6 @@ html {
   font-size: 1.7rem;
   margin-left: -0.8rem;
   font-weight: bold;
-}
-/* Popup Edit Question or Specialty */
-.popup_edit {
-  position: fixed;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 100vw;
-  height: 100vh;
-  -webkit-transition: all 0.4s ease-in-out;
-  -khtml-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-  display: none;
-  z-index: 0;
-}
-.popup_edit .wrapper {
-  width: 580px;
-  max-width: 90%;
-  height: 95vh;
-  border: thin solid white;
-  -webkit-transform: translatey(-105%);
-  -khtml-transform: translatey(-105%);
-  -moz-transform: translatey(-105%);
-  -ms-transform: translatey(-105%);
-  -o-transform: translatey(-105%);
-  transform: translatey(-105%);
-  z-index: 4;
-  -webkit-transition: all 0.5s 0.4s ease;
-  -khtml-transition: all 0.5s 0.4s ease;
-  -moz-transition: all 0.5s 0.4s ease;
-  -ms-transition: all 0.5s 0.4s ease;
-  -o-transition: all 0.5s 0.4s ease;
-  transition: all 0.5s 0.4s ease;
-  background-color: white;
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-.popup_edit .outside {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  height: 100%;
-  z-index: 0;
-}
-.popup_edit:after,
-.popup_edit:before {
-  width: 50vw;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  content: '';
-  -webkit-transition: all 0.5s linear;
-  -khtml-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -ms-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
-  transition: all 0.5s linear;
-  z-index: -1;
-}
-.popup_edit:before {
-  left: 0;
-}
-.popup_edit:after {
-  right: 0;
-}
-.popup_edit.active {
-  display: block;
-  z-index: 998;
-}
-.popup_edit.active:after,
-.popup_edit.active:before {
-  -webkit-animation: door 0.5s 1 linear;
-  -khtml-animation: door 0.5s 1 linear;
-  -moz-animation: door 0.5s 1 linear;
-  -ms-animation: door 0.5s 1 linear;
-  -o-animation: door 0.5s 1 linear;
-  animation: door 0.5s 1 linear;
-  background-color: rgba(0, 0, 0, 0.75);
 }
 /* Materialize Custom */
 .waves-effect.waves-logo .waves-ripple {
@@ -3975,10 +3428,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #3A6667;
   box-shadow: 0 1px 0 0 #3A6667;
 }
-[type="checkbox"].filled-in:checked + label:after {
-  border: 2px solid #EE6200;
-  background-color: #EE6200;
-}
 textarea.materialize-textarea {
   padding: .6rem 1rem 1.5rem;
   resize: none;
@@ -3995,12 +3444,10 @@ textarea.materialize-textarea {
 }
 /* Queries */
 @media (max-width: 620px) {
-  .questions .content_questions,
-  .specialties .content_questions {
+  .questions .content_questions {
     padding: .55rem;
   }
-  .questions .content_questions .forms,
-  .specialties .content_questions .forms {
+  .questions .content_questions .forms {
     padding: .15rem .45rem 1rem;
   }
   .tabs .indicator {
@@ -4256,25 +3703,21 @@ textarea.materialize-textarea {
   .profile .content_profile .form_biography {
     opacity: 1;
   }
-  .questions .content_questions,
-  .specialties .content_questions {
+  .questions .content_questions {
     padding: .35rem;
     margin: .4rem auto 1rem;
   }
-  .questions .content_questions .forms .tab_title,
-  .specialties .content_questions .forms .tab_title {
+  .questions .content_questions .forms .tab_title {
     font-size: 2rem;
     line-height: 1;
   }
-  .questions .content_questions .forms .tab_title + h4,
-  .specialties .content_questions .forms .tab_title + h4 {
+  .questions .content_questions .forms .tab_title + h4 {
     font-size: .85rem;
     line-height: 1;
     padding-left: .5rem;
     margin-bottom: .25rem;
   }
-  .questions .content_questions .forms .forms_contents,
-  .specialties .content_questions .forms .forms_contents {
+  .questions .content_questions .forms .forms_contents {
     -webkit-perspective: 400px;
     -khtml-perspective: 400px;
     -moz-perspective: 400px;
@@ -4288,8 +3731,7 @@ textarea.materialize-textarea {
     -o-perspective-origin: 0% 50%;
     perspective-origin: 0% 50%;
   }
-  .questions .content_questions .forms .forms_contents > div,
-  .specialties .content_questions .forms .forms_contents > div {
+  .questions .content_questions .forms .forms_contents > div {
     padding: 0;
   }
 }
@@ -4454,19 +3896,3 @@ textarea.materialize-textarea {
   }
 }
 /* Animations */
-@keyframes door {
-  0% {
-    width: 0vw;
-  }
-  100% {
-    width: 50vw;
-  }
-}
-@-webkit-keyframes door {
-  0% {
-    width: 0vw;
-  }
-  100% {
-    width: 50vw;
-  }
-}

@@ -19,7 +19,8 @@ class main {
                     'message'   => "Welcome to Jurisquiz",
                     'status'    => "OK",
                     'id_user'   => base64_encode($r['id']),
-                    'role'      => $r['role']
+                    'role'      => $r['role'],
+                    'gender'    => $r['gender']
                 );
         }else{
             $data = array(
@@ -35,6 +36,7 @@ class main {
     public function register_user(){
         $email = $_POST['email'];
         $pwd = md5($_POST['password']);
+        $gender = $_POST['gender'];
         
         $query = jur_users::all(array('conditions'  => array('email = ?',$email)));
         
@@ -54,6 +56,7 @@ class main {
                 'username'          => $username[0],
                 'email'             => $email,
                 'password'          => $pwd,
+                'gender'            => $gender,
                 'points'            => '0',
                 'level'             => '1'
             ));
@@ -335,24 +338,20 @@ class main {
         }
     }
     
-    # Function to register new user
+    # Function to register new question
     public function register_question(){
-        $id_level_game = $_POST['id_level_game'];
-        $id_mode_game = $_POST['id_mode_game'];
-        $id_level_category = $_POST['id_level_category'];
+        $id_specialty = $_POST['id_specialty'];
         $question = $_POST['question'];
         $type_question = $_POST['type_question'];
-        $structure_question = $_POST['structure_question'];
+        $options_question = $_POST['options_question'];
         $correct_answer = $_POST['correct_answer'];
         
         $data = jur_questions::create(array(
             'id'                    => NULL, 
-            'id_level_game'         => $id_level_game, 
-            'id_mode_game'          => $id_mode_game,
-            'id_level_category'     => $id_level_category,
+            'id_specialty'          => $id_specialty,
             'question'              => $question,
             'type_question'         => $type_question,
-            'structure_question'    => $structure_question,
+            'options_question'      => $options_question,
             'correct_answer'        => $correct_answer,
             'state'                 => 'active'
         ));
@@ -431,4 +430,110 @@ class main {
         
     }
     
+    # Function that return all mode games
+    function all_games_mode(){
+        $q = jur_game_mode::all();
+        
+        $d = array();
+        
+        foreach ($q as $k) {
+            $d[] = $k->attributes();
+        }
+        
+        echo json_encode($d);
+    }
+    
+    # Function to register new specialty
+    public function register_specialty(){
+        $id_game_mode = $_POST['id_game_mode'];
+        $id_level_game = $_POST['id_level_game'];
+        $name = $_POST['name'];
+        
+        $data = jur_specialty::create(array(
+            'id'                    => NULL, 
+            'id_game_mode'          => $id_game_mode, 
+            'id_level_game'         => $id_level_game,
+            'name'                  => $name,
+            'state'                 => 'active'
+        ));
+        
+        if( $data->errors->errors === null){
+            $response = array( 
+                "message"   => 'La pregunta se ha registrado satisfactoriamente!',
+                "status"    => 'OK'
+            );
+        }else{
+            $response = array( 
+                "message"   => 'Ocurrio un error intentalo de nuevo',
+                "status"    => 'FAIL'
+            );
+        }
+        
+        echo json_encode($response);
+    }
+    
+    # Function to get all questions from database
+    function all_specialties($app,$filter){
+        
+        $data = array();
+        
+        if($filter == "actives")
+            $query = jur_specialty::all(array('conditions' => array('state = "active"')));
+        else if($filter == "inactives")
+            $query = jur_specialty::all(array('conditions' => array('state = "inactive"')));
+        else if($filter == 'all')
+            $query = jur_specialty::find_by_sql("SELECT * FROM jur_specialty");
+        
+        foreach ($query as $value) {
+            $data[] = $value->attributes();
+        }
+        
+        echo json_encode($data);
+    }
+    
+    # Function to active or deactive a question
+    function specialty($app,$param){
+        
+        $query = jur_specialty::find($_POST['id']);
+        
+        if($param == 'inactive'){
+            $query->state = 'active';
+            $ref = 'actives';
+        }else if($param == 'active'){
+            $query->state = 'inactive';
+            $ref = 'inactives';
+        }
+            
+        $res = $query->save();
+        
+        if($res){
+            $data = array( 
+                "message"   => 'El estado de la especialidad se cambio correctamente!',
+                "status"    => 'OK',
+                'ref'       => $ref
+            );
+        }else{
+            $data = array( 
+                "message"   => 'El estado de la especialidad no se cambio correctamente!',
+                "status"    => 'FAIL',
+                'ref'       => $ref
+            );
+        }
+        
+        echo json_encode($data);
+        
+    }
+    
+    # Function to active or deactive a question
+    function find_specialty(){
+        $query = jur_specialty::find($_POST['id']);
+        
+        $res = $query->attributes();
+        
+        $data = array(
+                'name'  => $res['name']
+            );
+        
+        echo json_encode($data);
+    }
 }

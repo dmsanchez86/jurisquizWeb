@@ -93,6 +93,13 @@
                                 <div class="input-field col s12">
                                   <input id="password_c" type="password" class="validate" placeholder="Confirmar Contraseña">
                                 </div>
+                                <div class="input-field col s12">
+                                    <select data-role="none" id="gender_user">
+                                      <option value="" disabled selected>Seleccione un genero</option>
+                                      <option value="M">Masculino</option>
+                                      <option value="F">Femenino</option>
+                                    </select>
+                                </div>
                                 <div class="container_btn">
                                     <button type="button" class="waves-effect waves-btn-login btn btn_register">Registrarse</button>
                                 </div>
@@ -154,6 +161,9 @@
                             <h1 class="question">- Bienvenido Administrador -</h1>
                             <h2 class="title">Prueba una de nuestras opciones</h2>
                         </hgroup>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#specialties">Especialidades</button>
+                        </div>
                         <div class="container_btn">
                             <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#questions">Preguntas</button>
                         </div>
@@ -248,25 +258,10 @@
                                         <div class="form_content">
                                             <form id="form_new_question">
                                                 <div class="input-field col s12">
-                                                    <select data-role="none" id="mode_game">
-                                                      <option value="" selected>Seleccione un modo</option>
-                                                      <option value="1">Carrera</option>
-                                                      <option value="2">Examen</option>
-                                                      <option value="3">Especialidad</option>
-                                                      <option value="4">Litigio</option>
-                                                      <option value="5">Duelo</option>
+                                                    <select data-role="none" id="specialty_name">
+                                                      <option value="" selected>Seleccione una categoría</option>
                                                     </select>
-                                                    <label data-role="none">Modo Pregunta: </label>
-                                                </div>
-                                                <div class="input-field col s12 level_game" style="display: none">
-                                                    <select data-role="none" id="level_mode">
-                                                    </select>
-                                                    <label data-role="none">Nivel Pregunta: </label>
-                                                </div>
-                                                <div class="input-field col s12 level_mode" style="display: none">
-                                                    <select data-role="none" id="category_level">
-                                                    </select>
-                                                    <label data-role="none">Categoría: </label>
+                                                    <label data-role="none">Categoría Pregunta: </label>
                                                 </div>
                                                 <div class="input-field col s12">
                                                   <textarea id="question" class="materialize-textarea" data-role="none"></textarea>
@@ -285,7 +280,7 @@
                                                   <div class="structure">
                                                       <div class="multiple_choice">
                                                           <div class="input">
-                                                              <input type="text" name="question_choice" id="question_choice" placeholder="Ingrese las preguntas:"  style="padding-right:3.8rem"/>
+                                                              <input type="text" name="question_choice" id="question_choice" placeholder="Ingrese las opciones:"  style="padding-right:3.8rem"/>
                                                               <i class="large material-icons">input</i>
                                                           </div>
                                                           <ol id="sortable_choice" class="sortable">
@@ -319,21 +314,8 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <!--<div id="update_question" class="col s12">-->
-                                    <!--    <h2 class="tab_title">Modificar Pregunta</h2>-->
-                                    <!--    <div class="input-field col s12 level_mode">-->
-                                    <!--        <select data-role="none" id="modify_questions"></select>-->
-                                    <!--        <label data-role="none">Seleccione la pregunta: </label>-->
-                                    <!--    </div>-->
-                                    <!--    <div class="content_question_find">-->
-                                    <!--        <div class="input-field col s12 level_mode">-->
-                                    <!--            <input type="text" data-role="none" id="mode_game_question" name="mode_game_question">-->
-                                    <!--            <label data-role="none">Modo de Juego</label>-->
-                                    <!--        </div>-->
-                                    <!--    </div>-->
-                                    <!--</div>-->
                                     <div id="show_questions" class="col s12 show_questions">
-                                        <h2 class="tab_title">Todas Las Pregunta</h2>
+                                        <h2 class="tab_title">Todas Las Preguntas</h2>
                                         <h4>Filtrar Por:</h4>
                                         <div>
                                             <p>
@@ -346,6 +328,88 @@
                                             </p>
                                         </div>
                                         <div class="content_question_show">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page specialties -->
+        <div id="specialties" class="specialties" data-role="page" data-title="Especialties - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_questions">
+                        <div class="forms">
+                            <div class="row" style="margin: 0">
+                                <div class="col s12" style="padding: 0">
+                                  <ul class="tabs">
+                                    <li class="tab col s3">
+                                        <a href="#new_specialty" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Nueva Pregunta"><i class="material-icons">add</i></div>
+                                            <span>Nueva</span>
+                                        </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a href="#show_specialties" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Mostrar Preguntas"><i class="material-icons">list</i></div>
+                                            <span>Mostrar</span>
+                                        </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="forms_contents">
+                                    <div id="new_specialty" class="col s12 new_question">
+                                        <h2 class="tab_title">Nueva Especialidad</h2>
+                                        <div class="form_content">
+                                            <form id="form_new_specialty">
+                                                <div class="input-field col s12">
+                                                  <textarea id="name_specialty" class="materialize-textarea" data-role="none"></textarea>
+                                                  <label for="name_specialty" data-role="none">Nombre: </label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <select data-role="none" id="mode_game_context">
+                                                    </select>
+                                                    <label data-role="none">Modo de Juego: </label>
+                                                </div>
+                                                <div class="input-field col s12 level_game" style="display: none">
+                                                    <select data-role="none" id="level_game_context">
+                                                    </select>
+                                                    <label data-role="none">Nivel Juego: </label>
+                                                </div>
+                                                <div class="container_btn">
+                                                    <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#create_specialty">Crear Especialidad</button>
+                                                </div>
+                                                <div class="container_btn">
+                                                    <button type="reset" class="waves-effect waves-btn-start btn btn_register" data-url="#cancel_specialty">Cancelar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div id="show_specialties" class="col s12 show_questions">
+                                        <h2 class="tab_title">Todas Las Pregunta</h2>
+                                        <h4>Filtrar Por:</h4>
+                                        <div>
+                                            <p>
+                                              <input class="with-gap" name="active_specialties" type="radio" id="all__specialties" data-role="none" value="all" checked/>
+                                              <label for="all__specialties">Todas</label>&nbsp;
+                                              <input class="with-gap" name="active_specialties" type="radio" id="active_specialties" data-role="none" value="actives"/>
+                                              <label for="active_specialties">Activas</label>&nbsp;
+                                              <input class="with-gap" name="active_specialties" type="radio" id="inactive_specialties" data-role="none" value="inactives"/>
+                                              <label for="inactive_specialties">Inactivas</label>
+                                            </p>
+                                        </div>
+                                        <div class="content_specialty_show">
                                         </div>
                                     </div>
                                 </div>
@@ -1570,6 +1634,16 @@
     		</div>
         </div>
         
+        <!-- Edit Question or Specialty -->
+        <div class="popup_edit">
+            <div class="outside"></div>
+            <div class="wrapper">
+                <div class="content">
+                    
+                </div>
+            </div>
+        </div>
+        
         <!-- Scripts -->
         <script>
             $(document).bind("mobileinit", function(){
@@ -1615,18 +1689,38 @@
         </script>
         <script type="text/html" id="all_questions_show">
             <div class="question">
+                <%
+                    var options = options_question.split(',');
+                %>
+            
                 <div>
                     <span class="name"><b>Pregunta:</b> <%= question %></span> | <span class="id"><b>ID:</b> <%= id %></span>
                 </div>
                 <div>
-                    <span class="mode_game"><b>Modo de Juego:</b> <%= mode_game %></span> | <span><b>Estado: </b><%= state %></span>
+                    <span class="mode_game"><b>Especialidad:</b> <%= id_specialty %></span> | <span><b>Estado: </b><%= state %></span>
                 </div>
                 <div>
                     <span class="type_question"><b>Tipo de Pregunta:</b> <%= t_question %></span>
                 </div>
                 <div>
-                    <span class="answer_question"><b>Respuesta:</b> <%= correct_answer %></span>
+                    <% var name_type = t_question == "Ordenamiento" ? 'Orden Correcto: ' : 'Respuesta Correcta: '; %>
+                    <span class="answer_question"><b><%= name_type %></b> <%= correct_answer %></span>
                 </div>
+                <% if(t_question != "Ordenamiento"){ %>
+                <div>
+                    <span class="options_question"><b>Opciones:</b></span>
+                    <ol>
+                        <%
+                        
+                        for(var i = 0; i < options.length; i++){ %>
+                            <% if(options[i] != correct_answer) %>
+                                <li><%= options[i] %></li>
+                        <% }
+                        
+                        %>
+                    </ol>
+                </div>
+                <% } %>
                 <nav class="menu_question">
                     <ul>
                         <!-- <li><span><i class="material-icons">delete</i></span></li> -->
@@ -1638,6 +1732,56 @@
                         <li class="edit" title="Editar Pregunta"><span><i class="material-icons">edit</i></span></li>
                     </ul>
                 </nav>
+            </div>
+        </script>
+        <script type="text/html" id="all_specialties_show">
+            <div class="specialty">
+                <div>
+                    <span class="name"><b>Especialidad:</b> <%= name %></span> | <span class="id"><b>ID:</b> <%= id %></span>
+                </div>
+                <div>
+                    <span class="mode_game"><b>Modo de Juego:</b> <%= mode_game %></span> | <span><b>Estado: </b><%= state %></span>
+                </div>
+                <div>
+                    <span class="level_game"><b>Nivel de Juego:</b> <%= level_game %></span>
+                </div>
+                <nav class="menu_specialty">
+                    <ul>
+                        <!-- <li><span><i class="material-icons">delete</i></span></li> -->
+                        <% if(state == 'Activa'){ %>
+                            <li class="desactivate" title="Desactivar"><span><i class="material-icons">warning</i></span></li>
+                        <% }else{ %>
+                            <li class="activate" title="Activar"><span><i class="material-icons">done</i></span></li>
+                        <% } %>
+                        <li class="edit" title="Editar Pregunta"><span><i class="material-icons">edit</i></span></li>
+                    </ul>
+                </nav>
+            </div>
+        </script>
+        <script type="text/html" id="template_edit_question">
+            <div class="form_content">
+                <form id="form_new_specialty">
+                    <div class="input-field col s12">
+                      <textarea id="name_specialty" class="materialize-textarea" data-role="none"></textarea>
+                      <label for="name_specialty" data-role="none">Nombre: </label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select data-role="none" id="mode_game_context">
+                        </select>
+                        <label data-role="none">Modo de Juego: </label>
+                    </div>
+                    <div class="input-field col s12 level_game" style="display: none">
+                        <select data-role="none" id="level_game_context">
+                        </select>
+                        <label data-role="none">Nivel Juego: </label>
+                    </div>
+                    <div class="container_btn">
+                        <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#create_specialty">Crear Especialidad</button>
+                    </div>
+                    <div class="container_btn">
+                        <button type="reset" class="waves-effect waves-btn-start btn btn_register" data-url="#cancel_specialty">Cancelar</button>
+                    </div>
+                </form>
             </div>
         </script>
         

@@ -82,6 +82,31 @@ $app->post(
     '/question/:param','main:question'
 )->setParams(array($app));
 
+// Route for get all mode games 
+$app->post(
+    '/all_games_mode','main:all_games_mode'
+)->setParams(array($app));
+
+// Route for register specialty
+$app->post(
+    '/register_specialty','main:register_specialty'
+)->setParams(array($app));
+
+// Route for get all specialties 
+$app->post(
+    '/all_specialties/:filter','main:all_specialties'
+)->setParams(array($app));
+
+// Route for active or deactive specialty 
+$app->post(
+    '/specialty/:param','main:specialty'
+)->setParams(array($app));
+
+// Route for get data specialty 
+$app->post(
+    '/find_specialty','main:find_specialty'
+)->setParams(array($app));
+
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';
