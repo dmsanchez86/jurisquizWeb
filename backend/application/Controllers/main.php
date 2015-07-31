@@ -371,6 +371,39 @@ class main {
         echo json_encode($response);
     }
     
+    # Function to update a question
+    public function modify_question(){
+        $id = $_POST['id'];
+        $id_specialty = $_POST['id_specialty'];
+        $question = $_POST['question'];
+        $type_question = $_POST['type_question'];
+        $options_question = $_POST['options_question'];
+        $correct_answer = $_POST['correct_answer'];
+        
+        $query = jur_questions::find($id);
+        $query->id_specialty = $id_specialty;
+        $query->question = $question;
+        $query->type_question = $type_question;
+        $query->options_question = $options_question;
+        $query->correct_answer = $correct_answer;
+        
+        $status = $query->save();
+        
+        if($status){
+            $data = array(
+                    'message'       => 'La pregunta se cambio correctamente!',
+                    'status'        => 'OK'
+                );
+        }else{
+            $data = array(
+                    'message'       => 'La pregunta no se cambio correctamente!',
+                    'status'        => 'FAIL'
+                );
+        }
+        
+        echo json_encode($data);
+    }
+    
     # Function to get all questions from database
     function all_questions($app,$filter){
         

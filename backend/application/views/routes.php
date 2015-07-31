@@ -67,6 +67,11 @@ $app->post(
     '/register_question','main:register_question'
 )->setParams(array($app));
 
+// Route for update a question 
+$app->post(
+    '/modify_question','main:modify_question'
+)->setParams(array($app));
+
 // Route for get all questions 
 $app->post(
     '/all_questions/:filter','main:all_questions'

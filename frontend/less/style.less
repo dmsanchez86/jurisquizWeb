@@ -823,6 +823,9 @@ textarea.materialize-textarea {padding: .6rem 1rem 1.5rem;resize: none;box-sizin
 .ui-popup.ui-body-inherit {padding: .5rem;}
 .ui-popup-container{z-index: 20;}
 .ui-popup-screen{z-index: 19;}
+.ui-page-theme-a .ui-btn{background-color: @btn_start!important;
+    &:hover{background-color: @btn_login!important;}
+}
 .ui-page-theme-a .ui-body-inherit {background-color: #3A6667;
     .edit_question{ background-color: white; padding: 1rem;
         .title{font-family: 'DK Mango';font-size: 3.5rem;color: #ee6200;text-align: center;margin: 0; padding-bottom: 1rem;}
@@ -870,6 +873,11 @@ textarea.materialize-textarea {padding: .6rem 1rem 1.5rem;resize: none;box-sizin
                             }
                         }
                     }
+                }
+            }
+            .container_btn{
+                button{
+                    &:hover{background-color: @btn_start!important;}
                 }
             }
         }
