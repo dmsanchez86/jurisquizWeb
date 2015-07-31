@@ -3554,6 +3554,7 @@ input[type="password"]:focus {
   height: auto;
   line-height: 2;
   padding: 1rem 1.5rem 2rem;
+  z-index: 9999999999;
 }
 .toast * {
   -webkit-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
@@ -3639,7 +3640,7 @@ label.ui-btn {
   bottom: 0;
   right: 0;
   outline: none;
-  z-index: 999;
+  z-index: 17;
 }
 .nav_button .nav {
   right: 15px;
@@ -3979,6 +3980,19 @@ textarea.materialize-textarea:focus:not([readonly]) {
   border: 2px solid #EE6200;
   background-color: #EE6200;
 }
+input[type=text]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label,
+input[type=email]:focus:not([readonly]) + label,
+input[type=url]:focus:not([readonly]) + label,
+input[type=time]:focus:not([readonly]) + label,
+input[type=date]:focus:not([readonly]) + label,
+input[type=datetime-local]:focus:not([readonly]) + label,
+input[type=tel]:focus:not([readonly]) + label,
+input[type=number]:focus:not([readonly]) + label,
+input[type=search]:focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #3A6667;
+}
 textarea.materialize-textarea {
   padding: .6rem 1rem 1.5rem;
   resize: none;
@@ -3992,6 +4006,145 @@ textarea.materialize-textarea {
 }
 .select-wrapper input.select-dropdown {
   background-color: #F6F6F6;
+}
+/* .Popup for edit question and specialties */
+.ui-popup-screen.in {
+  opacity: 1;
+  background-image: -webkit-radial-gradient(center, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.9));
+}
+.ui-popup-container {
+  position: fixed;
+  top: 100px!important;
+}
+.ui-popup.ui-body-inherit {
+  padding: .5rem;
+}
+.ui-popup-container {
+  z-index: 20;
+}
+.ui-popup-screen {
+  z-index: 19;
+}
+.ui-page-theme-a .ui-body-inherit {
+  background-color: #3A6667;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question {
+  background-color: white;
+  padding: 1rem;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .title {
+  font-family: 'DK Mango';
+  font-size: 3.5rem;
+  color: #ee6200;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 1rem;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .input-field label {
+  color: #3a6667;
+  left: 1rem;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure > div {
+  overflow: visible!important;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input input {
+  padding-right: 3.8rem;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i {
+  position: absolute;
+  right: 3%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 1.45rem;
+  line-height: 2.7;
+  cursor: pointer;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i:hover {
+  color: #ef863e;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input {
+  position: relative;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i {
+  position: absolute;
+  right: 5%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 1.45rem;
+  line-height: 2.3;
+  cursor: pointer;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input i:hover,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i:hover {
+  color: #ee6200;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable {
+  padding-left: 1.5rem;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li {
+  position: relative;
+  padding: .5rem 0;
+  margin-bottom: .5rem;
+  border-bottom: solid thin transparent;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  cursor: move;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li:hover {
+  border-color: #ee6200;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li:first-letter {
+  text-transform: uppercase;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li span:first-child:after {
+  content: '';
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li i {
+  position: absolute;
+  right: 2%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 1rem;
+  line-height: 2;
+  cursor: pointer;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li i:hover,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li i:hover {
+  color: #ee6200;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li {
+  cursor: initial;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last {
+  position: absolute;
+  right: 3rem;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last p {
+  display: inline;
+}
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last p label {
+  top: -2px;
+  -webkit-transform: scale(0.7);
+  -khtml-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -o-transform: scale(0.7);
+  transform: scale(0.7);
 }
 /* Queries */
 @media (max-width: 620px) {
