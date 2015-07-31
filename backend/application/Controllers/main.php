@@ -505,7 +505,7 @@ class main {
         echo json_encode($response);
     }
     
-    # Function to get all questions from database
+    # Function to get all specialties from database
     function all_specialties($app,$filter){
         
         $data = array();
@@ -524,7 +524,7 @@ class main {
         echo json_encode($data);
     }
     
-    # Function to active or deactive a question
+    # Function to active or deactive a specialty
     function specialty($app,$param){
         
         $query = jur_specialty::find($_POST['id']);
@@ -557,7 +557,7 @@ class main {
         
     }
     
-    # Function to active or deactive a question
+    # Function to find a specialty
     function find_specialty(){
         $query = jur_specialty::find($_POST['id']);
         
@@ -566,6 +566,42 @@ class main {
         $data = array(
                 'name'  => $res['name']
             );
+        
+        echo json_encode($data);
+    }
+    
+    # Function to get data to unique specialty
+    function data_specialty(){
+        $data = jur_specialty::find($_POST['id']);
+        
+        echo json_encode($data->attributes());
+    }
+    
+    # Function to update a specialty
+    public function modify_specialty(){
+        $id = $_POST['id'];
+        $id_game_mode = $_POST['id_game_mode'];
+        $id_level_game = $_POST['id_level_game'];
+        $name = $_POST['name'];
+        
+        $query = jur_specialty::find($id);
+        $query->id_game_mode = $id_game_mode;
+        $query->id_level_game = $id_level_game;
+        $query->name = $name;
+        
+        $status = $query->save();
+        
+        if($status){
+            $data = array(
+                    'message'       => 'La especialidad se cambio correctamente!',
+                    'status'        => 'OK'
+                );
+        }else{
+            $data = array(
+                    'message'       => 'La especialidad no se cambio correctamente!',
+                    'status'        => 'FAIL'
+                );
+        }
         
         echo json_encode($data);
     }

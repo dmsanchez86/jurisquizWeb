@@ -112,6 +112,17 @@ $app->post(
     '/find_specialty','main:find_specialty'
 )->setParams(array($app));
 
+// Route for get data specialty 
+$app->post(
+    '/data_specialty','main:data_specialty'
+)->setParams(array($app));
+
+// Route for modify specialty 
+$app->post(
+    '/modify_specialty','main:modify_specialty'
+)->setParams(array($app));
+
+
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';

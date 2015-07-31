@@ -928,11 +928,11 @@ var router = new $.mobile.Router({
             success     : function(response){
                 var data = JSON.parse(response);
                 console.log(response);
-                $('#mode_game_context').empty();
-                $('#mode_game_context').append('<option value="">Selecione un modo de juego</option>');
+                $('#mode_game_context,#mode_game_context_edit').empty();
+                $('#mode_game_context,#mode_game_context_edit').append('<option value="">Selecione un modo de juego</option>');
                 
                 data.forEach(function(i){
-                    $('#mode_game_context').append(tmpl('levels_mode_template',i));
+                    $('#mode_game_context,#mode_game_context_edit').append(tmpl('levels_mode_template',i));
                 });
                 
                 $('select').material_select();
@@ -942,7 +942,7 @@ var router = new $.mobile.Router({
                     
                     console.log(id_mode_game);
                     
-                    $('.level_game').fadeOut(50);
+                    $('.level_game,.level_game_edit').fadeOut(50);
                     if(id_mode_game != ""){
                         $.ajax({
                             url         : webService + 'levels_mode',
@@ -953,18 +953,52 @@ var router = new $.mobile.Router({
                             success     : function(response){
                                 var data = JSON.parse(response);
                                 
-                                $("#level_game_context").empty();
-                                $("#level_game_context").append('<option value="">Seleccione un nivel</options>');
+                                $("#level_game_context,#level_game_context_edit").empty();
+                                $("#level_game_context,#level_game_context_edit").append('<option value="">Seleccione un nivel</options>');
                                 
                                 if(data.length==0){
-                                    $('#level_game_context').html('No hay resultados para este modo');
+                                    $('#level_game_context,#level_game_context_edit').html('No hay resultados para este modo');
                                 }else{
                                     data.forEach(function(i,o){
-                                        $("#level_game_context").append(tmpl("levels_mode_template", i));
+                                        $("#level_game_context,#level_game_context_edit").append(tmpl("levels_mode_template", i));
                                         if(o <= 1)
-                                            $('.level_game').fadeOut(50);
+                                            $('.level_game,.level_game_edit').fadeOut(50);
                                         else
-                                            $('.level_game').fadeIn(50);
+                                            $('.level_game,.level_game_edit').fadeIn(50);
+                                    });
+                                    $('select').material_select();
+                                }
+                            }
+                        });
+                    }
+                });
+                
+                $('#mode_game_context_edit').unbind('change').change( function(e){
+                    var id_mode_game = $(this).val();
+                    
+                    $('.level_game_edit').fadeOut(50);
+                    if(id_mode_game != ""){
+                        $.ajax({
+                            url         : webService + 'levels_mode',
+                            type        : 'POST',
+                            data        : {
+                                id      : id_mode_game
+                            },
+                            success     : function(response){
+                                var data = JSON.parse(response);
+                                
+                                $("#level_game_context_edit").empty();
+                                $("#level_game_context_edit").append('<option value="">Seleccione un nivel</options>');
+                                
+                                if(data.length==0){
+                                    $('#level_game_context_edit').html('No hay resultados para este modo');
+                                }else{
+                                    data.forEach(function(i,o){
+                                        $("#level_game_context_edit").append(tmpl("levels_mode_template", i));
+                                        if(o <= 1)
+                                            $('.level_game_edit').fadeOut(50);
+                                        else
+                                            $('.level_game_edit').fadeIn(50);
                                     });
                                     $('select').material_select();
                                 }
@@ -1023,6 +1057,58 @@ var router = new $.mobile.Router({
             }
         });
         
+        $('button[data-url="#modify_specialty"]').unbind('click').click(function(){
+            var $id_specialty = $('#form_edit_specialty .id span').text();
+            var $name_specialty = $('#name_specialty_edit').val();
+            var $mode_game = $('#mode_game_context_edit').val();
+            var $level_game = $("#level_game_context_edit").val();
+            
+            if($name_specialty == ""){
+                message('El campo de la especialidad no puede estar vacio');
+                $('#name_specialty_edit').focus();
+            }else if($mode_game == ""){
+                message('Escoja el modo de juego');
+                $('#mode_game_context_edit').parent().find('input[type=text]').focus();
+            }else{
+                if($mode_game == 1){
+                    if($level_game == ""){
+                        message('Escoja un nivel de juego');
+                        $("#level_game_context_edit").parent().find('input[type=text]').focus();
+                    }
+                }
+                
+                loader('Modificando Especialidad');
+                $.ajax({
+                    url         : webService + 'modify_specialty',
+                    type        : 'POST',
+                    data        : {
+                        id              : $id_specialty,
+                        id_game_mode    : $mode_game,
+                        id_level_game   : $level_game,
+                        name            : $name_specialty
+                    },
+                    success                 : function(res){
+                        var data = JSON.parse(res);
+                        
+                        if(data.status == "OK"){
+                            $('.loader').fadeOut(1500);
+                            $('#edit_specialty').find('a').click();
+                            evt_all_specialties_show('all');
+                            setTimeout(function(){
+                                message(data.message);
+                                $('button[data-url="#cancel_specialty"]').click();
+                            },1000);
+                        }else{
+                            $('.loader').fadeOut(1000);
+                            setTimeout(function(){
+                                message(data.message);
+                            },1200);
+                        }
+                    }
+                });
+            }
+        });
+        
         $('.tabs a').unbind('click').click(function(){
             var tab = $(this).attr('href');
             
@@ -1037,74 +1123,6 @@ var router = new $.mobile.Router({
                 evt_all_specialties_show(filter);
             });
         });
-        
-        // $('#modify_questions,#desactivate_questions').unbind('change').change(function(){
-        //     var $id_question = $(this).val();
-            
-        //     $.ajax({
-        //         url         : webService + 'data_question',
-        //         type        : 'POST',
-        //         data        : {
-        //             id      : $id_question
-        //         },
-        //         success     : function(res){
-        //             var data = JSON.parse(res);
-        //             var mode_game = "";
-                    
-        //             if(data.id_mode_game == 1)
-        //                 mode_game = "Carrera";
-        //             else if(data.id_mode_game == 2)
-        //                 mode_game = "Examen";
-        //             else if(data.id_mode_game == 3)
-        //                 mode_game = "Especialidad";
-        //             else if(data.id_mode_game == 4)
-        //                 mode_game = "Litigio";
-        //             else if(data.id_mode_game == 5)
-        //                 mode_game = "Duelo";
-        //         }
-        //     });
-        // });
-        
-        // $('#type_question').unbind('change').change(function(){
-        //     var type = $(this).val();
-            
-        //     reset_form_new_question();
-            
-        //     if(type == 1)
-        //         $('.structure .multiple_choice').fadeIn(1000);
-        //     else if(type == 2)
-        //         $('.structure .yes_no').fadeIn(1000);
-        //     else if(type == 3)
-        //         $('.structure .order_questions').fadeIn(1000);
-        //     else
-        //         $('.structure > div').hide(50);
-        // });
-        
-        // $('.structure .multiple_choice .input i').unbind('click').click(function(){
-        //     var question = $(this).parent().find('input').val();
-            
-        //     evt_append_question_choice(question);
-        // });
-        
-        // $('.structure .multiple_choice .input input').unbind('keyup').keyup(function(e){
-        //     var question = $(this).val();
-            
-        //     if(e.keyCode == 13)
-        //         evt_append_question_choice(question);
-        // });
-        
-        // $('.structure .order_questions .input i').unbind('click').click(function(){
-        //     var question = $(this).parent().find('input').val();
-            
-        //     evt_append_question(question);
-        // });
-        
-        // $('.structure .order_questions .input input').unbind('keyup').keyup(function(e){
-        //     var question = $(this).val();
-            
-        //     if(e.keyCode == 13)
-        //         evt_append_question(question);
-        // });
     },
 },{ 
   defaultHandler: function(type, ui, page) {
@@ -1759,11 +1777,6 @@ function evt_all_questions_show(filter){
                     
                     // setTimeout(function(){$('.popup_edit .wrapper').css('transform','translatey(0)');},50);
                 });
-                
-                // $('.popup_edit .outside').unbind('click').click(function(){
-                //     $('.popup_edit .wrapper').css('transform','translatey(-105%)');
-                //     setTimeout(function(){$('.popup_edit').removeClass('active');},500);
-                // });
             });
         }
     });
@@ -2045,6 +2058,44 @@ function evt_all_specialties_show(filter){
                 $('.menu_specialty .activate').unbind('click').click(function(){
                     var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     evt_specialty('inactive',id);
+                });
+                
+                $('.menu_specialty .edit').unbind('click').click(function(){
+                    var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                    
+                    $('#form_edit_specialty .structure > div').hide(50);
+                    
+                    $.ajax({
+                        url     : webService + 'data_specialty',
+                        type    : 'POST',
+                        data    : {
+                            id  : $id
+                        },
+                        success : function(res){
+                            var data = JSON.parse(res);
+                            
+                            $('#form_edit_specialty .id span').empty().text(data.id);
+                            $('#name_specialty_edit').empty().text(data.name);
+                            console.log(data);
+                            
+                            var options_mode_game = $('#mode_game_context_edit option');
+                            
+                            for(var i = 0; i < options_mode_game.length; i++){
+                                if(data.id_game_mode == options_mode_game[i].value){
+                                    $(options_mode_game).eq(i).attr('selected','selected').change();
+                                }
+                            }
+                        
+                            if(data.id_game_mode == 1)
+                                $('.level_game_edit').fadeIn(500);
+                            else
+                                $('.level_game_edit').fadeOut(500);
+                            
+                            $('select').material_select();
+                        }
+                    });
+                    
+                    $('a[href="#edit_specialty"]').click();
                 });
             });
         }

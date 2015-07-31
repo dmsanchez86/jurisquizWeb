@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <title>Jurisquiz -- Zopp</title>
+        <title>Jurisquiz -- Game</title>
         
         <!-- Librarys CSS -->
         <link rel="stylesheet" href="css/materialize.min.css">
@@ -215,7 +215,7 @@
                             <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Litigio</button>
                         </div>
                         <div class="container_btn">
-                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#duel">Duelo</button>
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#duel">Reto</button>
                         </div>
                     </div>
                 </div>
@@ -401,7 +401,7 @@
             </div>
         </div>
         
-        <!-- Page specialties -->
+        <!-- Page Specialties -->
         <div id="specialties" class="specialties" data-role="page" data-title="Especialties - Jurizquiz">
             <div data-role="header">
                 <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
@@ -460,7 +460,7 @@
                                         </div>
                                     </div>
                                     <div id="show_specialties" class="col s12 show_questions">
-                                        <h2 class="tab_title">Todas Las Pregunta</h2>
+                                        <h2 class="tab_title">Todas Las Especialidades</h2>
                                         <h4>Filtrar Por:</h4>
                                         <div>
                                             <p>
@@ -481,6 +481,35 @@
                     </div>
                 </div>
             </div>
+            <div data-role="popup" id="edit_specialty" style="max-width:97%; width: 580px" class="ui-corner-all">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div id="edit_specialty" class="col s12 edit_specialty">
+                    <h2 class="title">Editar Especialidad</h2>
+                    <div class="form_content">
+                        <form id="form_edit_specialty">
+                            <div class="id" style="display:none">ID <span></span></div>
+                            <div class="input-field col s12">
+                              <textarea id="name_specialty_edit" class="materialize-textarea" data-role="none"></textarea>
+                              <label for="name_specialty_edit" data-role="none" style="transform: translateY(-209%);">Nombre: </label>
+                            </div>
+                            <div class="input-field col s12" style="padding: 1rem 0">
+                                <select data-role="none" id="mode_game_context_edit">
+                                </select>
+                                <label data-role="none">Modo de Juego: </label>
+                            </div>
+                            <div class="input-field col s12 level_game_edit" style="display: none">
+                                <select data-role="none" id="level_game_context_edit">
+                                </select>
+                                <label data-role="none">Nivel Juego: </label>
+                            </div>
+                            <div class="container_btn">
+                                <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#modify_specialty">Modificar Especialidad</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+			</div>
+            <a href="#edit_specialty" data-transition="slidedown" data-position-to="window" class="ui-btn-right  ui-corner-all ui-shadow ui-btn-inline" data-rel="popup" aria-haspopup="true" aria-owns="transitionExample" aria-expanded="false" style="display: none"></a>
         </div>
         
         <!-- Page Friends -->
@@ -835,7 +864,7 @@
                                     </p>
                                 </div>
                                 <div class="container_btn">
-                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#search_duel">Buscar Duelo</button>
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#search_duel">Retar Usuario</button>
                                 </div>
                             </div>
                         </div>
@@ -872,7 +901,7 @@
                                     </div>
                                     <div class="col s5" style="padding: 0">
                                         <div class="duel_link">
-                                            <a href="#duel_users?id=8">Duelo</a>
+                                            <a href="#duel_users?id=8">Retar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -891,7 +920,7 @@
                                     </div>
                                     <div class="col s5" style="padding: 0">
                                         <div class="duel_link">
-                                            <a href="#duel_users?id=7">Duelo</a>
+                                            <a href="#duel_users?id=7">Retar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -910,7 +939,7 @@
                                     </div>
                                     <div class="col s5" style="padding: 0">
                                         <div class="duel_link">
-                                            <a href="#duel_users?id=128">Duelo</a>
+                                            <a href="#duel_users?id=128">Retar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -929,7 +958,7 @@
                                     </div>
                                     <div class="col s5" style="padding: 0">
                                         <div class="duel_link">
-                                            <a href="#duel_users?id=78">Duelo</a>
+                                            <a href="#duel_users?id=78">retar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -948,7 +977,7 @@
                                     </div>
                                     <div class="col s5" style="padding: 0">
                                         <div class="duel_link">
-                                            <a href="#duel_users?id=11">Duelo</a>
+                                            <a href="#duel_users?id=11">Retar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1706,9 +1735,6 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Popups -->
-        
         
         <!-- Scripts -->
         <script>
