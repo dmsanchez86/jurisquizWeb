@@ -145,7 +145,7 @@
         h1,h2{font-size: 1.3rem; text-align: center;margin: 0;line-height: 1;margin-bottom: .5rem;}
     }
     .container_btn{
-        button{padding: .95rem .5rem;font-weight: normal;}
+        button{padding: .95rem .5rem;font-weight: normal;margin: .5rem 0;}
     }
     .games{margin-bottom: 1.5rem;}
 }
@@ -181,7 +181,9 @@
 /* Mode-Race */ 
 .race,.duel,.test,.specialty,.litigation{
     .content_game{margin-top: 5rem;
-        .icon_game{width: 230px;max-width: 100%;margin: 0 auto;}
+        .icon_game{max-width: 100%;margin: 0 auto;text-align: center;
+            img{max-height: 380px;.transition();}
+        }
         .message_game{background-color: @btn_start;padding: 1rem 2rem; .border_radius(5px);max-width: 100%;width: 380px; margin: .8rem auto;position: relative;
             &:before{position: absolute;border: 2rem solid @btn_login;content:''; left: -55px; top: 2rem; border-color: transparent @before_color transparent transparent;}
             p{font-family: 'DK Mango';color: white; font-size: 2rem;text-shadow: none;}
@@ -311,7 +313,7 @@
     .ui-panel-inner{padding: 0;}
     .panel_header{min-height: 200px; background-color: @background_menu_header;position: relative; background-size: cover; background-position: center;
         .btn_close{float: right;
-                .btn_panel{display: inline-block;width: 35px;margin-left: 1rem;position: relative;.box_sizing(content-box);padding-right: 1.2rem;
+                .btn_panel{display: inline-block;width: 35px;margin-left: 1rem;position: relative;.box_sizing(content-box);padding-right: 1.2rem;cursor: pointer;
                 > div{border-top: 3.3px solid white;margin-bottom: .5rem;.transition(all .4s ease);
                     &:nth-child(1){ margin-top: 1rem;}
                 }
@@ -371,6 +373,7 @@
         .levels{ border-top: thin solid @btn_start;border-bottom: thin solid @btn_start;
             .current_level,.next_level{text-align: center;
                 span{font-family: 'DK Mango'; color: @btn_start; font-size: 1.35rem;}
+                img{max-height: 120px;}
             }
             .arrow{margin-top:2.5rem;}
         }
@@ -451,7 +454,9 @@
         }
         .waves-effect.waves-btn-login:after{left: 0;}
     }
-    .form{text-align: center;}
+    .form{text-align: center;
+        .input-field{margin: 0;}
+    }
     input[type=file]{display: none;}
 }
 
@@ -707,7 +712,8 @@
 
 input[type="email"],
 input[type="text"],
-input[type="password"]{background-color: @txt;border-color: transparent;padding: .25rem 1rem;&:focus::-webkit-input-placeholder,
+input[type="password"]{background-color: @txt;border-color: transparent;padding: .25rem 1rem;.box_sizing();
+    &:focus::-webkit-input-placeholder,
     &:focus::input-placeholder{color: red!important;}
     &:focus:not([readonly]){border-color: transparent;box-shadow: 0 0 0 0 transparent;
         +label{opacity: 0;}
@@ -819,14 +825,11 @@ textarea.materialize-textarea {padding: .6rem 1rem 1.5rem;resize: none;box-sizin
 
 /* .Popup for edit question and specialties */
 .ui-popup-screen.in {opacity: 1;background-image: -webkit-radial-gradient(center,rgba(0, 0, 0, 0.34),rgba(0,0,0,.9));}
-.ui-popup-container {position: fixed; top: 100px!important;}
+.ui-popup-container {position: fixed; top: 3.5%!important;z-index: 20;}
 .ui-popup.ui-body-inherit {padding: .5rem;}
-.ui-popup-container{z-index: 20;}
 .ui-popup-screen{z-index: 19;}
-.ui-page-theme-a .ui-btn{background-color: @btn_start!important;
-    &:hover{background-color: @btn_login!important;}
-}
-.ui-page-theme-a .ui-body-inherit {background-color: #3A6667;
+.ui-popup>.ui-btn-right {right: 10px;top: 11px;}
+.ui-page-theme-a .ui-body-inherit {background-color: #3A6667; height: 90vh;overflow-y: scroll;overflow-x: hidden;
     .edit_question,.edit_specialty{ background-color: white; padding: 1rem;
         .title{font-family: 'DK Mango';font-size: 3.5rem;color: #ee6200;text-align: center;margin: 0; padding-bottom: 1rem;}
         .form_content{
@@ -881,6 +884,9 @@ textarea.materialize-textarea {padding: .6rem 1rem 1.5rem;resize: none;box-sizin
                 }
             }
         }
+    }
+    .ui-btn{background-color: @btn_start!important;
+        &:hover{background-color: @btn_login!important;}
     }
 }
 
@@ -994,7 +1000,64 @@ textarea.materialize-textarea {padding: .6rem 1rem 1.5rem;resize: none;box-sizin
         .container_logo{padding:.15rem 0;
             .content{
                 .btn_logo{
-                    img{max-height: 280px;}
+                    img{max-height: 280px;display: block;margin: 0 auto;}
+                }
+            }
+        }
+    }
+    .ui-page-theme-a .ui-body-inherit {
+        .edit_question,.edit_specialty{padding: .5rem;
+            .title{font-size: 2rem;padding-bottom: .6rem;}
+            .form_content{
+                .input-field{
+                    label{color: #3a6667; left: 1rem;}
+                }
+                .structure{
+                    > div{overflow: visible!important;}
+                    .multiple_choice_edit{
+                        .input{
+                            input{padding-right: 3.8rem;}
+                            i{position: absolute;right: 3%;top: 0;bottom: 0;margin: auto;font-size: 1.45rem;line-height: 2.7;cursor: pointer;
+                                &:hover{color: @before_color;}
+                            }
+                        }
+                    }
+                    .order_questions_edit,.multiple_choice_edit{
+                        .input{position: relative;
+                            i{position: absolute; right: 5%; top: 0; bottom: 0; margin: auto;font-size: 1.45rem; line-height: 2.3;cursor: pointer;
+                                &:hover{color: @btn_login;}
+                            }
+                        }
+                        .sortable{ padding-left: 1.5rem;
+                            li{ position: relative; padding: .5rem 0; margin-bottom: .5rem; border-bottom: solid thin transparent;.transition(); cursor: move;
+                                &:hover{border-color: @btn_login;}
+                                &:first-letter{text-transform: uppercase;}
+                                span:first-child{
+                                    &:after{content: '';}
+                                    
+                                }
+                                i{position: absolute; right: 2%; top: 0; bottom: 0; margin: auto;font-size: 1rem; line-height: 2;cursor: pointer;
+                                    &:hover{color: @btn_login;}
+                                }
+                            }
+                        }
+                    }
+                    .multiple_choice_edit{
+                        .sortable{
+                            li{cursor: initial;
+                                .last{position:absolute; right: 3rem;
+                                    p{display: inline;
+                                        label{ top: -2px; .transform(scale(.7));}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .container_btn{
+                    button{
+                        &:hover{background-color: @btn_start!important;}
+                    }
                 }
             }
         }
@@ -1012,6 +1075,12 @@ textarea.materialize-textarea {padding: .6rem 1rem 1.5rem;resize: none;box-sizin
          .content_friends {
              .friend {
                  .score_friend,.name_friend{margin: 0;}
+                 em{font-size: 1.75rem;}
+                 .image_friend{text-align: center;
+                     img{height: 45px;}
+                 }
+                 .score_friend{font-size:2rem;font-weight: normal;}
+                 .col.s6{padding: 0;}
             }
          }
     }
@@ -1045,6 +1114,7 @@ textarea.materialize-textarea {padding: .6rem 1rem 1.5rem;resize: none;box-sizin
         .panel_header{min-height: 155px;
             .information_user{min-height: 75px;
                 .image_user{width: 55px;height: 54px;}
+                .data_user{margin-top: 0;}
             }
         }
     }

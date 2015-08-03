@@ -122,6 +122,11 @@ $app->post(
     '/modify_specialty','main:modify_specialty'
 )->setParams(array($app));
 
+// Route for get categories level game 
+$app->post(
+    '/categories_level','main:categories_level'
+)->setParams(array($app));
+
 
 // PUT route
 $app->put('/put', function () {

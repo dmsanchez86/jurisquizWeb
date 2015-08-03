@@ -19,9 +19,7 @@ var router = new $.mobile.Router({
     "#dashboard_admin": {handler: "dashboard_admin", events: "s" },
     "#friends": {handler: "friends", events: "s" },
     "#race": {handler: "race", events: "s" },
-    "#executive": {handler: "executive", events: "s" },
-    "#legislative": {handler: "legislative", events: "s" },
-    "#judicial": {handler: "judicial", events: "s" },
+    "#start_race": {handler: "start_race", events: "s" },
     "#duel": {handler: "duel", events: "s" },
     "#duel_users": {handler: "duel_users", events: "s" },
     "#search_duel": {handler: "search_duel", events: "s" },
@@ -203,6 +201,10 @@ var router = new $.mobile.Router({
         });
     },
     race: function(type,match,ui){
+        $('.race .content_game .icon_game img').attr('src','img/icons/race'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        
+        $('.start_race .levels_content').empty();
+        
         nav_menu();
         
         show_nav_button();
@@ -211,25 +213,38 @@ var router = new $.mobile.Router({
         
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
+            loader('Cargando');
             var link = $(this).attr('data-url');
             $.mobile.changePage(link,{role: 'page',transition: 'pop'});
         });
     },
-    executive : function(type,match,ui){
-        nav_menu();
+    start_race : function(type,match,ui){
+        var params = router.getParams(match[1]);
         
-        show_nav_button();
+        var $id_level_game = params.id;
         
-        evt_logout();
-    },
-    legislative : function(type,match,ui){
-        nav_menu();
+        $.ajax({
+            url         : webService + 'categories_level',
+            type        : 'POST',
+            data        : {
+                id      : $id_level_game
+            },
+            success     : function(res){
+                console.log(JSON.parse(res));
+                var data = JSON.parse(res);
+                
+                
+                
+                data.forEach(function(i,o){
+                    i.gender = localStorage.getItem('gender_user');
+                    i.index = o;
+                    $('.start_race .levels_content').append(tmpl('start_race_categories',i));
+                });
+                
+                $('.loader').fadeOut(1000)
+            }
+        });
         
-        show_nav_button();
-        
-        evt_logout();
-    },
-    judicial : function(type,match,ui){
         nav_menu();
         
         show_nav_button();
@@ -237,6 +252,8 @@ var router = new $.mobile.Router({
         evt_logout();
     },
     duel: function(type,match,ui){
+        $('.duel .content_game .icon_game img').attr('src','img/icons/duel'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        
         nav_menu();
         
         show_nav_button();
@@ -292,6 +309,8 @@ var router = new $.mobile.Router({
         evt_logout();
     },
     test :function(type,match,ui){
+        $('.test .content_game .icon_game img').attr('src','img/icons/test'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        
         nav_menu();
         
         show_nav_button();
@@ -311,6 +330,8 @@ var router = new $.mobile.Router({
         evt_logout();
     },
     specialty :function(type,match,ui){
+        $('.specialty .content_game .icon_game img').attr('src','img/icons/specialty'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        
         nav_menu();
         
         show_nav_button();
@@ -330,6 +351,8 @@ var router = new $.mobile.Router({
         evt_logout();
     },
     litigation :function(type,match,ui){
+        $('.litigation .content_game .icon_game img').attr('src','img/icons/litigation'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        
         nav_menu();
         
         show_nav_button();
@@ -1407,10 +1430,10 @@ function panel_data($id){
             $('.data_user .username').text(data.username);
             $('.information_user .image_user img').attr('src', directory_profile + data.image);
             $('.panel_header').css('background-image','url('+directory_biography+data.image_b+')');
-            $('.panel .icon_level img,.panel .current_level img,.status .icon_level img').attr('src','img/level'+data.level+'.png');
+            $('.panel .icon_level img,.panel .current_level img,.status .icon_level img').attr('src','img/levels/level'+data.level+data.gender+'.png');
             $('.panel .current_level span').text('Nivel '+data.level);
             $('.panel .next_level span').text('Nivel '+(parseInt(data.level) + 1));
-            $('.panel .next_level img').attr('src','img/level'+(parseInt(data.level) + 1)+'.png');
+            $('.panel .next_level img').attr('src','img/levels/level'+(parseInt(data.level) + 1)+data.gender+'.png');
         }   
     });
     

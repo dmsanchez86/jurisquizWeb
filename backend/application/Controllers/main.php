@@ -93,6 +93,7 @@ class main {
                     'image'     => $r['image'],
                     'image_b'   => $r['image_biography'],
                     'email'     => $r['email'],
+                    'gender'    => $r['gender'],
                     'points'    => $r['points'],
                     'level'     => $r['level'],
                 );
@@ -605,4 +606,16 @@ class main {
         
         echo json_encode($data);
     }
+    
+    # Function to get all categories to level game
+    function categories_level(){
+        $query = jur_level_category::all(array('conditions' => array('id_level_game = ?',$_POST['id'])));
+        
+        foreach($query as $k){
+			$data[] = $k->attributes();
+		}
+        
+        echo json_encode($data);
+    }
+    
 }

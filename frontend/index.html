@@ -49,10 +49,10 @@
                         <div class="content">
                             <form class="col s12">
                                 <div class="input-field col s12">
-                                  <input id="email" type="email" class="validate" placeholder="Correo">
+                                  <input id="email" type="email" class="validate" placeholder="Correo"  data-role="none">
                                 </div>
                                 <div class="input-field col s12">
-                                  <input id="password" type="password" class="validate" placeholder="Contraseña">
+                                  <input id="password" type="password" class="validate" placeholder="Contraseña" data-role="none">
                                 </div>
                                 <div class="container_btn">
                                     <button type="button" class="waves-effect waves-btn-login btn btn_login">Acceder</button>
@@ -73,7 +73,7 @@
                 <div class="wrapper">
                     <div class="container_logo">
                         <div class="content">
-                            <a href="#home" class="btn_logo" data-transition="flip">
+                            <a href="#home" class="btn_logo" data-transition="flow">
                                 <img src="img/logo.png" alt="logo" title="Jurizquiz" class="responsive-img">
                             </a>
                         </div>
@@ -85,13 +85,13 @@
                         <div class="content">
                             <form class="col s12">
                                 <div class="input-field col s12">
-                                  <input id="email_r" type="email" class="validate" placeholder="Correo Eléctronico">
+                                  <input id="email_r" type="email" class="validate" placeholder="Correo Eléctronico" data-role="none">
                                 </div>
                                 <div class="input-field col s12">
-                                  <input id="password_r" type="password" class="validate" placeholder="Contraseña">
+                                  <input id="password_r" type="password" class="validate" placeholder="Contraseña" data-role="none">
                                 </div>
                                 <div class="input-field col s12">
-                                  <input id="password_c" type="password" class="validate" placeholder="Confirmar Contraseña">
+                                  <input id="password_c" type="password" class="validate" placeholder="Confirmar Contraseña" data-role="none">
                                 </div>
                                 <div class="input-field col s12">
                                     <select data-role="none" id="gender_user">
@@ -119,7 +119,7 @@
         		<div class="container_terms">
         		    <div class="container_logo">
                         <div class="content">
-                            <a href="#home" class="waves-effect waves-logo btn-flat btn_logo" data-transition="flip">
+                            <a href="#home" class="btn_logo" data-transition="pop">
                                 <img src="img/logo.png" alt="logo" title="Jurizquiz" class="responsive-img">
                             </a>
                         </div>
@@ -162,16 +162,16 @@
                             <h2 class="title">Prueba una de nuestras opciones</h2>
                         </hgroup>
                         <div class="container_btn">
-                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#specialties">Especialidades</button>
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#specialties" data-role="none">Especialidades</button>
                         </div>
                         <div class="container_btn">
-                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#questions">Preguntas</button>
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#questions" data-role="none">Preguntas</button>
                         </div>
                         <div class="container_btn">
-                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#profile">Perfil</button>
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#profile" data-role="none">Perfil</button>
                         </div>
                         <div class="container_btn">
-                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#notifications">Notificaciones</button>
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#notifications" data-role="none">Notificaciones</button>
                         </div>
                     </div>
                 </div>
@@ -365,7 +365,7 @@
                                   <div class="structure">
                                       <div class="multiple_choice_edit">
                                           <div class="input">
-                                              <input type="text" name="question_choice" id="question_choice_edit" placeholder="Ingrese las opciones:"  style="padding-right:3.8rem"/>
+                                              <input type="text" name="question_choice" id="question_choice_edit" placeholder="Ingrese las opciones:"  style="padding-right:3.8rem;box-sizing: border-box;" data-role="none"/>
                                               <i class="large material-icons">input</i>
                                           </div>
                                           <ol id="sortable_choice_edit" class="sortable">
@@ -551,7 +551,7 @@
                         <div class="row">
                             <div class="col s6" style="padding: 0">
                                 <div class="icon_game">
-                                    <img src="img/icon_race.png" class="responsive-img">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
                                 </div>
                             </div>
                             <div class="col s6">
@@ -562,13 +562,13 @@
                                     </p>
                                 </div>
                                 <div class="container_btn">
-                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#executive">Iniciar en Ejecutivo</button>
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_race?level=executive&id=1">Iniciar en Ejecutivo</button>
                                 </div>
                                 <div class="container_btn">
-                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#legislative">Iniciar en Legislativo</button>
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_race?level=legislative&id=2">Iniciar en Legislativo</button>
                                 </div>
                                 <div class="container_btn">
-                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#judicial">Iniciar en Judicial</button>
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_race?level=judicial&id=3">Iniciar en Judicial</button>
                                 </div>
                             </div>
                         </div>
@@ -578,7 +578,7 @@
         </div>
         
         <!-- Page Star Executive -->
-        <div id="executive" class="start_race" data-role="page" data-title="Start Ecexutive - Jurizquiz">
+        <div id="start_race" class="start_race" data-role="page" data-title="Start Ecexutive - Jurizquiz">
             <div data-role="header">
                 <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
                     <div></div>
@@ -586,219 +586,45 @@
                     <div></div>
                 </a>
                 <div class="levels_content">
-                    <div class="level active">
-                        <div class="top">
-                            <span class="name">Alcalde</span>
-                            <span>
-                                <img src="img/level1.png" class="responsive-img icon_level">
-                            </span>
-                        </div>
-                        <div class="bottom">
-                            <span class="number_questions">
-                                15 / 20
-                            </span>
-                        </div>
-                    </div>
-                    <div class="level">
-                        <div class="top">
-                            <span class="name">Gobernador</span>
-                            <span>
-                                <img src="img/level1.png" class="responsive-img icon_level">
-                            </span>
-                        </div>
-                        <div class="bottom">
-                            <span class="number_questions">
-                                15 / 20
-                            </span>
-                        </div>
-                    </div>
-                    <div class="level">
-                        <div class="top">
-                            <span class="name">Presidente</span>
-                            <span>
-                                <img src="img/level1.png" class="responsive-img icon_level">
-                            </span>
-                        </div>
-                        <div class="bottom">
-                            <span class="number_questions">
-                                15 / 20
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-role="content">
-                <div class="container">
-                    <div class="content_start_game">
-                        <div class="question">
-                            La sanción legal no es solo pena sino tambien la recompensa
-                        </div>
-                        <div class="answers_options">
-                            <div class="answer">
-                                <input id="answer1" type="radio" name="answer"/>
-                                <label for="answer1" data-role="none">
-                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                            <div class="answer">
-                                <input id="answer2" type="radio" name="answer"/>
-                                <label for="answer2">
-                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                            <div class="answer">
-                                <input id="answer3" type="radio" name="answer"/>
-                                <label for="answer3">
-                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                            <div class="answer">
-                                <input id="answer4" type="radio" name="answer"/>
-                                <label for="answer4">
-                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Page Star Legislative -->
-        <div id="legislative" class="start_race" data-role="page" data-title="Start Legislative - Jurizquiz">
-            <div data-role="header">
-                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </a>
-                <div class="levels_content">
-                    <div class="level active">
-                        <div class="top">
-                            <span class="name">Alcalde</span>
-                            <span>
-                                <img src="img/level1.png" class="responsive-img icon_level">
-                            </span>
-                        </div>
-                        <div class="bottom">
-                            <span class="number_questions">
-                                15 / 20
-                            </span>
-                        </div>
-                    </div>
-                    <div class="level">
-                        <div class="top">
-                            <span class="name">Gobernador</span>
-                            <span>
-                                <img src="img/level1.png" class="responsive-img icon_level">
-                            </span>
-                        </div>
-                        <div class="bottom">
-                            <span class="number_questions">
-                                15 / 20
-                            </span>
-                        </div>
-                    </div>
-                    <div class="level">
-                        <div class="top">
-                            <span class="name">Presidente</span>
-                            <span>
-                                <img src="img/level1.png" class="responsive-img icon_level">
-                            </span>
-                        </div>
-                        <div class="bottom">
-                            <span class="number_questions">
-                                15 / 20
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-role="content">
-                <div class="container">
-                    <div class="content_start_game">
-                        <div class="question">
-                            La sanción legal no es solo pena sino tambien la recompensa
-                        </div>
-                        <div class="answers_options">
-                            <div class="answer">
-                                <input id="answer1" type="radio" name="answer"/>
-                                <label for="answer1" data-role="none">
-                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                            <div class="answer">
-                                <input id="answer2" type="radio" name="answer"/>
-                                <label for="answer2">
-                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                            <div class="answer">
-                                <input id="answer3" type="radio" name="answer"/>
-                                <label for="answer3">
-                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                            <div class="answer">
-                                <input id="answer4" type="radio" name="answer"/>
-                                <label for="answer4">
-                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Page Star Judicial -->
-        <div id="judicial" class="start_race" data-role="page" data-title="Start Judicial - Jurizquiz">
-            <div data-role="header">
-                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </a>
-                <div class="levels_content">
-                    <div class="level active">
-                        <div class="top">
-                            <span class="name">Alcalde</span>
-                            <span>
-                                <img src="img/level1.png" class="responsive-img icon_level">
-                            </span>
-                        </div>
-                        <div class="bottom">
-                            <span class="number_questions">
-                                15 / 20
-                            </span>
-                        </div>
-                    </div>
-                    <div class="level">
-                        <div class="top">
-                            <span class="name">Gobernador</span>
-                            <span>
-                                <img src="img/level1.png" class="responsive-img icon_level">
-                            </span>
-                        </div>
-                        <div class="bottom">
-                            <span class="number_questions">
-                                15 / 20
-                            </span>
-                        </div>
-                    </div>
-                    <div class="level">
-                        <div class="top">
-                            <span class="name">Presidente</span>
-                            <span>
-                                <img src="img/level1.png" class="responsive-img icon_level">
-                            </span>
-                        </div>
-                        <div class="bottom">
-                            <span class="number_questions">
-                                15 / 20
-                            </span>
-                        </div>
-                    </div>
+                    <!--<div class="level active">-->
+                    <!--    <div class="top">-->
+                    <!--        <span class="name">Alcalde</span>-->
+                    <!--        <span>-->
+                    <!--            <img src="img/level1.png" class="responsive-img icon_level">-->
+                    <!--        </span>-->
+                    <!--    </div>-->
+                    <!--    <div class="bottom">-->
+                    <!--        <span class="number_questions">-->
+                    <!--            <span class="correct_answers">0</span> / <span class="rank">20</span>-->
+                    <!--        </span>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    <!--<div class="level">-->
+                    <!--    <div class="top">-->
+                    <!--        <span class="name">Gobernador</span>-->
+                    <!--        <span>-->
+                    <!--            <img src="img/level1.png" class="responsive-img icon_level">-->
+                    <!--        </span>-->
+                    <!--    </div>-->
+                    <!--    <div class="bottom">-->
+                    <!--        <span class="number_questions">-->
+                    <!--            15 / 20-->
+                    <!--        </span>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    <!--<div class="level">-->
+                    <!--    <div class="top">-->
+                    <!--        <span class="name">Presidente</span>-->
+                    <!--        <span>-->
+                    <!--            <img src="img/level1.png" class="responsive-img icon_level">-->
+                    <!--        </span>-->
+                    <!--    </div>-->
+                    <!--    <div class="bottom">-->
+                    <!--        <span class="number_questions">-->
+                    <!--            15 / 20-->
+                    <!--        </span>-->
+                    <!--    </div>-->
+                    <!--</div>-->
                 </div>
             </div>
             <div data-role="content">
@@ -853,7 +679,7 @@
                         <div class="row">
                             <div class="col s6" style="padding: 0">
                                 <div class="icon_game">
-                                    <img src="img/icon_race.png" class="responsive-img">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
                                 </div>
                             </div>
                             <div class="col s6">
@@ -1142,7 +968,7 @@
                         <div class="row">
                             <div class="col s6" style="padding: 0">
                                 <div class="icon_game">
-                                    <img src="img/icon_race.png" class="responsive-img">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
                                 </div>
                             </div>
                             <div class="col s6">
@@ -1264,7 +1090,7 @@
                         <div class="row">
                             <div class="col s6" style="padding: 0">
                                 <div class="icon_game">
-                                    <img src="img/icon_race.png" class="responsive-img">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
                                 </div>
                             </div>
                             <div class="col s6">
@@ -1386,7 +1212,7 @@
                         <div class="row">
                             <div class="col s6" style="padding: 0">
                                 <div class="icon_game">
-                                    <img src="img/icon_race.png" class="responsive-img">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
                                 </div>
                             </div>
                             <div class="col s6">
@@ -1571,14 +1397,14 @@
                                     <div class="col m10 s12" style="padding: 0">
                                         <div class="form">
                                             <form>
-                                                <div>
-                                                    <input type="password" name="current_password" placeholder="Contraseña Actual" id="current_password"/>
+                                                <div class="input-field">
+                                                    <input type="password" name="current_password" placeholder="Contraseña Actual" id="current_password" data-role="none"/>
                                                 </div>
-                                                <div>
-                                                    <input type="password" name="new_password" placeholder="Contraseña Nueva" id="new_password"/>
+                                                <div class="input-field">
+                                                    <input type="password" name="new_password" placeholder="Contraseña Nueva" id="new_password" data-role="none"/>
                                                 </div>
-                                                <div>
-                                                    <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" id="confirm_password"/>
+                                                <div class="input-field">
+                                                    <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" id="confirm_password" data-role="none" style=""/>
                                                 </div>
                                             </form>
                                         </div>
@@ -1754,7 +1580,7 @@
                 <div class="row" style="margin:0">
                     <div class="col s3">
                         <div class="image_friend">
-                            <img src="img/level<%= level %>.png" class="responsive-img">
+                            <img src="img/levels/level<%= level %><%= gender %>.png" class="responsive-img">
                         </div>
                     </div>
                     <div class="col s6">
@@ -1874,6 +1700,26 @@
                         <button type="reset" class="waves-effect waves-btn-start btn btn_register" data-url="#cancel_specialty">Cancelar</button>
                     </div>
                 </form>
+            </div>
+        </script>
+        <script type="text/html" id="start_race_categories">
+            <%
+            
+            var i = (index == 0)?'active': '';
+            
+            %>
+            <div class="level <%= i %>">
+                <div class="top">
+                    <span class="name"><%= name %></span>
+                    <span>
+                        <img src="img/characteres/<%= icon %><%= gender %>.png" class="responsive-img icon_level">
+                    </span>
+                </div>
+                <div class="bottom">
+                    <span class="number_questions">
+                        <span class="correct_answers">0</span> / <span class="rank"><%= number_questions %></span>
+                    </span>
+                </div>
             </div>
         </script>
         

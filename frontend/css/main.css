@@ -1321,6 +1321,7 @@ html {
 .specialties .container_btn button {
   padding: .95rem .5rem;
   font-weight: normal;
+  margin: .5rem 0;
 }
 .dashboard .games,
 .friends .games,
@@ -1481,9 +1482,22 @@ html {
 .test .content_game .icon_game,
 .specialty .content_game .icon_game,
 .litigation .content_game .icon_game {
-  width: 230px;
   max-width: 100%;
   margin: 0 auto;
+  text-align: center;
+}
+.race .content_game .icon_game img,
+.duel .content_game .icon_game img,
+.test .content_game .icon_game img,
+.specialty .content_game .icon_game img,
+.litigation .content_game .icon_game img {
+  max-height: 380px;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 .race .content_game .message_game,
 .duel .content_game .message_game,
@@ -2015,6 +2029,7 @@ html {
   -o-box-sizing: content-box;
   box-sizing: content-box;
   padding-right: 1.2rem;
+  cursor: pointer;
 }
 .panel .panel_header .btn_close .btn_panel > div,
 .profile .panel_header .btn_close .btn_panel > div {
@@ -2302,6 +2317,12 @@ html {
   color: #3a6667;
   font-size: 1.35rem;
 }
+.panel .panel_content .levels .current_level img,
+.profile .panel_content .levels .current_level img,
+.panel .panel_content .levels .next_level img,
+.profile .panel_content .levels .next_level img {
+  max-height: 120px;
+}
 .panel .panel_content .levels .arrow,
 .profile .panel_content .levels .arrow {
   margin-top: 2.5rem;
@@ -2525,6 +2546,9 @@ html {
 }
 .profile .form {
   text-align: center;
+}
+.profile .form .input-field {
+  margin: 0;
 }
 .profile input[type=file] {
   display: none;
@@ -3510,6 +3534,12 @@ input[type="password"] {
   background-color: #f6f6f6;
   border-color: transparent;
   padding: .25rem 1rem;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
 }
 input[type="email"]:focus::-webkit-input-placeholder,
 input[type="text"]:focus::-webkit-input-placeholder,
@@ -4014,25 +4044,24 @@ textarea.materialize-textarea {
 }
 .ui-popup-container {
   position: fixed;
-  top: 100px!important;
+  top: 3.5%!important;
+  z-index: 20;
 }
 .ui-popup.ui-body-inherit {
   padding: .5rem;
 }
-.ui-popup-container {
-  z-index: 20;
-}
 .ui-popup-screen {
   z-index: 19;
 }
-.ui-page-theme-a .ui-btn {
-  background-color: #3a6667 !important;
-}
-.ui-page-theme-a .ui-btn:hover {
-  background-color: #ee6200 !important;
+.ui-popup > .ui-btn-right {
+  right: 10px;
+  top: 11px;
 }
 .ui-page-theme-a .ui-body-inherit {
   background-color: #3A6667;
+  height: 90vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question,
 .ui-page-theme-a .ui-body-inherit .edit_specialty {
@@ -4186,6 +4215,12 @@ textarea.materialize-textarea {
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .container_btn button:hover,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .container_btn button:hover {
   background-color: #3a6667 !important;
+}
+.ui-page-theme-a .ui-body-inherit .ui-btn {
+  background-color: #3a6667 !important;
+}
+.ui-page-theme-a .ui-body-inherit .ui-btn:hover {
+  background-color: #ee6200 !important;
 }
 /* Queries */
 @media (max-width: 620px) {
@@ -4359,6 +4394,156 @@ textarea.materialize-textarea {
   .register .container_logo .content .btn_logo img,
   .terms .container_logo .content .btn_logo img {
     max-height: 280px;
+    display: block;
+    margin: 0 auto;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty {
+    padding: .5rem;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .title,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .title {
+    font-size: 2rem;
+    padding-bottom: .6rem;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .input-field label,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .input-field label {
+    color: #3a6667;
+    left: 1rem;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure > div,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure > div {
+    overflow: visible!important;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input input,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input input {
+    padding-right: 3.8rem;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i {
+    position: absolute;
+    right: 3%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 1.45rem;
+    line-height: 2.7;
+    cursor: pointer;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i:hover {
+    color: #ef863e;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input {
+    position: relative;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input i,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input i,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i {
+    position: absolute;
+    right: 5%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 1.45rem;
+    line-height: 2.3;
+    cursor: pointer;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input i:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input i:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i:hover {
+    color: #ee6200;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable {
+    padding-left: 1.5rem;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li {
+    position: relative;
+    padding: .5rem 0;
+    margin-bottom: .5rem;
+    border-bottom: solid thin transparent;
+    -webkit-transition: all 0.5s ease;
+    -khtml-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    cursor: move;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:hover {
+    border-color: #ee6200;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:first-letter,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li:first-letter,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li:first-letter,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:first-letter {
+    text-transform: uppercase;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li span:first-child:after,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li span:first-child:after,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li span:first-child:after,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li span:first-child:after {
+    content: '';
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li i,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li i,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li i,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li i {
+    position: absolute;
+    right: 2%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 1rem;
+    line-height: 2;
+    cursor: pointer;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li i:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li i:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li i:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li i:hover {
+    color: #ee6200;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li {
+    cursor: initial;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last {
+    position: absolute;
+    right: 3rem;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last p,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p {
+    display: inline;
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last p label,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p label {
+    top: -2px;
+    -webkit-transform: scale(0.7);
+    -khtml-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+  .ui-page-theme-a .ui-body-inherit .edit_question .form_content .container_btn button:hover,
+  .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .container_btn button:hover {
+    background-color: #3a6667 !important;
   }
 }
 @media (max-width: 380px) {
@@ -4371,6 +4556,22 @@ textarea.materialize-textarea {
   .friends .content_friends .friend .score_friend,
   .friends .content_friends .friend .name_friend {
     margin: 0;
+  }
+  .friends .content_friends .friend em {
+    font-size: 1.75rem;
+  }
+  .friends .content_friends .friend .image_friend {
+    text-align: center;
+  }
+  .friends .content_friends .friend .image_friend img {
+    height: 45px;
+  }
+  .friends .content_friends .friend .score_friend {
+    font-size: 2rem;
+    font-weight: normal;
+  }
+  .friends .content_friends .friend .col.s6 {
+    padding: 0;
   }
   .race .content_game,
   .duel .content_game {
@@ -4433,6 +4634,10 @@ textarea.materialize-textarea {
   .profile .panel_header .information_user .image_user {
     width: 55px;
     height: 54px;
+  }
+  .panel .panel_header .information_user .data_user,
+  .profile .panel_header .information_user .data_user {
+    margin-top: 0;
   }
   .profile .content_profile .panel_header {
     min-height: 155px;
