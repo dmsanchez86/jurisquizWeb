@@ -220,8 +220,12 @@ var router = new $.mobile.Router({
     },
     start_race : function(type,match,ui){
         var params = router.getParams(match[1]);
-        
+        var page = "#start_race";
         var $id_level_game = params.id;
+        var $name_level = params.level;
+        
+        $('.start_race .levels_content .level').removeClass('active');
+        $('.start_race div[data-role="content"] .container .wrapper > div').hide(10);
         
         $.ajax({
             url         : webService + 'categories_level',
@@ -233,13 +237,17 @@ var router = new $.mobile.Router({
                 console.log(JSON.parse(res));
                 var data = JSON.parse(res);
                 
-                
-                
                 data.forEach(function(i,o){
                     i.gender = localStorage.getItem('gender_user');
                     i.index = o;
                     $('.start_race .levels_content').append(tmpl('start_race_categories',i));
                 });
+                
+                var obj = {
+                        id  : localStorage.getItem('id_user')
+                };
+                
+                evt_validate_mode_game(obj,$name_level);
                 
                 $('.loader').fadeOut(1000)
             }
@@ -2154,6 +2162,106 @@ function evt_specialty(param, $id){
             },700);
         }
     });
+}
+
+// Funtion to validate mode game
+function evt_validate_mode_game(data,name_level){
+    $.ajax({
+        url         : webService + 'validate_level',
+        type        : 'POST',
+        data        : data,
+        success     : function(res){
+            $('.start_race .wrapper > div').hide(50);
+            
+            data = JSON.parse(res);
+            console.log(data);
+            // debugger;
+            var top_questions = "";
+            
+            evt_current_level(data);
+            
+            top_questions = $('#start_race').find('.levels_content').find('.level.active').find('.number_questions').find('.rank').text();
+            
+            console.log(top_questions);
+            
+            if(data.correct_answers < top_questions){
+                $('.start_race .wrapper .complete_level,.start_race .wrapper .content_start_game    ').hide(100);
+                $('.start_race .wrapper .start').fadeIn(1000);
+                
+                $.ajax({
+                    url         : webService + 'all_questions/actives',
+                    type        : 'POST',
+                    data        : null,
+                    success     : function(res){
+                        var questions = JSON.parse(res);
+                        console.log(questions);
+                        questions.forEach(function(i,o){
+                            $('.content_start_game').append(tmpl('structure_question',i));
+                        });
+                    }
+                });
+                
+                $('button[data-url="start_mode_game"]').unbind('click').click(function(){
+                    var content_questions = $('.start_race .content_start_game .content_question');
+                    loader('Cargando...');
+                    $(this).fadeOut(500).parent().parent().hide();
+                    content_questions.eq(0).show();
+                    setTimeout(function(){
+                        $('.loader').hide(1000);
+                        $('.start_race .wrapper .content_start_game').show(50).css('transform','scale(1)');
+                    },1300);
+                });
+            }
+        }
+    });
+}
+
+// Event to paint the current level
+function evt_current_level(data){
+    debugger;
+    if(data.id_game_mode == 1){
+        if(data.id_level_game == 1){
+            if(data.id_level_category == 1){
+                $('.start_race .levels_content .level.mayor').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers);
+            }else if(data.id_level_category == 2){
+                $('.start_race .levels_content .level.mayor').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
+                $('.start_race .levels_content .level.governor').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers);
+            }else if(data.id_level_category == 3){
+                $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
+                $('.start_race .levels_content .level.president').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers);
+            }else{
+                // $('.start_race .wrapper .no_complete_level').show(10);
+            }
+        }else if(data.id_level_game == 2){
+            if(data.id_level_category == 1){
+                $('.start_race .levels_content .level.councilor').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers);
+            }else if(data.id_level_category == 2){
+                $('.start_race .levels_content .level.councilor').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
+                $('.start_race .levels_content .level.deputy').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers);
+            }else if(data.id_level_category == 3){
+                $('.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
+                $('.start_race .levels_content .level.congressman').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers);
+            }else{
+                $('.start_race .wrapper .no_complete_level').show(10);
+            }
+            $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
+            $('.start_race .wrapper .complete_level').show(10);
+        }else if(data.id_level_game == 3){
+            if(data.id_level_category == 1){
+                $('.start_race .levels_content .level.municipaljudge').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers);
+            }else if(data.id_level_category == 2){
+                $('.start_race .levels_content .level.municipaljudge').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
+                $('.start_race .levels_content .level.circuitjudge').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers);
+            }else if(data.id_level_category == 3){
+                $('.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
+                $('.start_race .levels_content .level.magistrate').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers);
+            }else{
+                $('.start_race .wrapper .no_complete_level').show(10);
+            }
+            $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president,.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy,.start_race .levels_content .level.congressman').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
+            $('.start_race .wrapper .complete_level').show(10);
+        }
+    }
 }
 
 // Render Template

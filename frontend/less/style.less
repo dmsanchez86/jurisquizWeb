@@ -194,18 +194,58 @@
 /* Start-Race */
 .start_race,.search_duel,.duel_users,.start_test,.start_specialty,.start_litigation{
     .content_start_game{ margin-top: 2.7rem;
-        .question,.answers_options{background-color: @btn_start;.border_radius(15px); font-family: 'DK Mango'; padding: 1rem 2rem; color: white;max-width: 100%; width: 580px; margin-left: auto; margin-right: auto;}
-        .question{margin-bottom: 1rem;font-size: 2.3rem;text-align: center;text-shadow: none;position:relative;
-            &:after{position: absolute;content: ''; border: 2rem solid ; border-color: transparent transparent @before_color transparent; top: -55px; right: 6rem;}
-        }
-        .answers_options{padding: 1rem 3rem;
-            input[type=radio]{display: none;}
-            label{ padding-left: 1em; font-family: 'DK Mango'; font-size: 1.4rem; background-color: transparent; color: white; text-shadow: none;font-weight: normal;
-                &:after{display: none;}
-                &:hover{background-color: transparent;}
+            .question,.answers_options{background-color: @btn_start;.border_radius(15px); font-family: 'DK Mango'; padding: 1rem 2rem; color: white;max-width: 100%; width: 580px; margin-left: auto; margin-right: auto;}
+            .question{margin-bottom: 1rem;font-size: 2.3rem;text-align: center;text-shadow: none;position:relative;
+                &:after{position: absolute;content: ''; border: 2rem solid ; border-color: transparent transparent @before_color transparent; top: -55px; right: 6rem;}
+            }
+            .answers_options{padding: 1rem 3rem;
+                input[type=radio]{display: none;}
+                label{ padding-left: 1em; font-family: 'DK Mango'; font-size: 1.4rem; background-color: transparent; color: white; text-shadow: none;font-weight: normal;
+                    &:after{display: none;}
+                    &:hover{background-color: transparent;}
+                }
             }
         }
-    } 
+}
+
+.start_race{
+    div[data-role="content"]{
+        .container{
+            .wrapper{
+                > div{display: none;}
+            }
+        }
+    }
+    .wrapper{
+        .content_start_game{overflow: visible!important;.transform(scale(0));.transition(all 1s cubic-bezier(0.4, 0.18, 0, 0.94)); position: relative; height: 73vh;
+            > div{position: absolute; top: 0; left: 0; width: 100%; padding: .5rem .25rem;display: none;}
+        }
+        .content_start_game,.start,.complete_level{ margin-top: 1.5rem;
+            .question,.answers_options,.message{background-color: @btn_start;.border_radius(15px); font-family: 'DK Mango'; padding: 1rem 2rem; color: white;max-width: 100%; width: 580px; margin-left: auto; margin-right: auto;}
+            .question{padding: 1rem;margin-bottom: .65rem;font-size: 1.65rem;text-align: center;text-shadow: none;position:relative;
+                &:after{position: absolute;content: ''; border: 2rem solid ; border-color: transparent transparent @before_color transparent; top: -55px; right: 6rem;}
+            }
+            .answers_options,.message{padding: 1rem 3rem;
+                input[type=radio]{display: none;}
+                label{ padding-left: 1em; font-family: 'DK Mango'; font-size: 1.4rem;color: white; text-shadow: none;font-weight: normal; border: thin solid white; position: relative; display: block;.border_radius(.5rem);background-color:transparent;white-space: normal;text-align:justify;padding: 1rem;height: auto;
+                    &:before{display: none;}
+                    &:hover,&:focus{background-image: -webkit-radial-gradient(center,@btn_login,@before_color);background-image: -moz-radial-gradient(center,@btn_login,@before_color);background-image: radial-gradient(center,@btn_login,@before_color);border-color: @btn_login;
+                    }
+                    &:active{background-color: transparent;background-image: none;border-color: white;}
+                }
+            }
+            .content_question{
+                .type_question{margin: 0 0 .5rem;text-align: right;
+                    span{padding: .15rem .5rem; color: white; .border_radius(3px); background-color: @before_color; font-size: 1.3rem;font-family: 'DK Mango';text-shadow: 0 0 1px black;}
+                }
+            }
+        } 
+        .start{
+            .container_btn{
+                button{.button();background-color: @btn_start;}
+            }
+        }
+    }
 }
 
 /* Search-Duel */

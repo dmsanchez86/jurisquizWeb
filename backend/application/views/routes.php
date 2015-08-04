@@ -127,6 +127,12 @@ $app->post(
     '/categories_level','main:categories_level'
 )->setParams(array($app));
 
+// Route for validate to current level 
+$app->post(
+    '/validate_level','main:validate_level'
+)->setParams(array($app));
+
+
 
 // PUT route
 $app->put('/put', function () {

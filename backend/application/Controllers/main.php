@@ -618,4 +618,12 @@ class main {
         echo json_encode($data);
     }
     
+    function validate_level(){
+        $id = base64_decode($_POST['id']);
+        
+        $query = jur_current_state_game::find($id);
+        
+        echo (json_encode($query->attributes()));
+    }
+    
 }

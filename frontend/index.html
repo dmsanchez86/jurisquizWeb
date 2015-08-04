@@ -586,77 +586,27 @@
                     <div></div>
                 </a>
                 <div class="levels_content">
-                    <!--<div class="level active">-->
-                    <!--    <div class="top">-->
-                    <!--        <span class="name">Alcalde</span>-->
-                    <!--        <span>-->
-                    <!--            <img src="img/level1.png" class="responsive-img icon_level">-->
-                    <!--        </span>-->
-                    <!--    </div>-->
-                    <!--    <div class="bottom">-->
-                    <!--        <span class="number_questions">-->
-                    <!--            <span class="correct_answers">0</span> / <span class="rank">20</span>-->
-                    <!--        </span>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--<div class="level">-->
-                    <!--    <div class="top">-->
-                    <!--        <span class="name">Gobernador</span>-->
-                    <!--        <span>-->
-                    <!--            <img src="img/level1.png" class="responsive-img icon_level">-->
-                    <!--        </span>-->
-                    <!--    </div>-->
-                    <!--    <div class="bottom">-->
-                    <!--        <span class="number_questions">-->
-                    <!--            15 / 20-->
-                    <!--        </span>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--<div class="level">-->
-                    <!--    <div class="top">-->
-                    <!--        <span class="name">Presidente</span>-->
-                    <!--        <span>-->
-                    <!--            <img src="img/level1.png" class="responsive-img icon_level">-->
-                    <!--        </span>-->
-                    <!--    </div>-->
-                    <!--    <div class="bottom">-->
-                    <!--        <span class="number_questions">-->
-                    <!--            15 / 20-->
-                    <!--        </span>-->
-                    <!--    </div>-->
-                    <!--</div>-->
                 </div>
             </div>
             <div data-role="content">
                 <div class="container">
-                    <div class="content_start_game">
-                        <div class="question">
-                            La sanción legal no es solo pena sino tambien la recompensa
+                    <div class="wrapper">
+                        <div class="start">
+                            <div class="container_btn">
+                                <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="start_mode_game" data-role="none">Comenzar Con las Preguntas</button>
+                            </div>
                         </div>
-                        <div class="answers_options">
-                            <div class="answer">
-                                <input id="answer1" type="radio" name="answer"/>
-                                <label for="answer1" data-role="none">
-                                    a). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
+                        <div class="content_start_game">
+                            
+                        </div>
+                        <div class="complete_level">
+                            <div class="message">
+                                Ya completaste este nivel
                             </div>
-                            <div class="answer">
-                                <input id="answer2" type="radio" name="answer"/>
-                                <label for="answer2">
-                                    b). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                            <div class="answer">
-                                <input id="answer3" type="radio" name="answer"/>
-                                <label for="answer3">
-                                    c). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
-                            </div>
-                            <div class="answer">
-                                <input id="answer4" type="radio" name="answer"/>
-                                <label for="answer4">
-                                    d). Es el bien o el mal que se deriva como consecuencia del cumplimiento de sus mandatos o de la transgresión de sus prohibiciones 
-                                </label>
+                        </div>
+                        <div class="no_complete_level">
+                            <div class="message">
+                                Aun no haz desbloqueado este nivel
                             </div>
                         </div>
                     </div>
@@ -1703,12 +1653,7 @@
             </div>
         </script>
         <script type="text/html" id="start_race_categories">
-            <%
-            
-            var i = (index == 0)?'active': '';
-            
-            %>
-            <div class="level <%= i %>">
+            <div class="level <%= icon %>">
                 <div class="top">
                     <span class="name"><%= name %></span>
                     <span>
@@ -1719,6 +1664,39 @@
                     <span class="number_questions">
                         <span class="correct_answers">0</span> / <span class="rank"><%= number_questions %></span>
                     </span>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="structure_question">
+            <div class="content_question" correct-answer="<%= correct_answer %>">
+                <div class="question">
+                    <%= question %>
+                </div>
+                
+                <%
+                    var options = options_question.split(',');
+                    var name_type_question = '';
+                    
+                    if(type_question == 1)
+                        name_type_question = "Selección Múltiple";
+                    else if(type_question == 2)
+                        name_type_question = "Si / No";
+                    else if(type_question == 3)
+                        name_type_question = "Ordenamiento";
+                %>
+                
+                <div class="answers_options">
+                    <div class="type_question">
+                        <span>Tipo de pregunta: <%= name_type_question %></span>
+                    </div>
+                    <div class="answer">
+                        <% for(var i = 0; i < options.length; i++){ %>
+                            <input id="answer<%= i %>" type="radio" name="answer" data-role="none"/>
+                            <label for="answer<%= i %>" data-role="none">
+                                <%= options[i] %>
+                            </label>
+                        <% } %>
+                    </div>
                 </div>
             </div>
         </script>

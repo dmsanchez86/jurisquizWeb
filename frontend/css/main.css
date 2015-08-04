@@ -1646,6 +1646,201 @@ html {
 .start_litigation .content_start_game .answers_options label:hover {
   background-color: transparent;
 }
+.start_race div[data-role="content"] .container .wrapper > div {
+  display: none;
+}
+.start_race .wrapper .content_start_game {
+  overflow: visible!important;
+  -webkit-transform: scale(0);
+  -khtml-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -khtml-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -moz-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -ms-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -o-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
+  transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
+  position: relative;
+  height: 73vh;
+}
+.start_race .wrapper .content_start_game > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: .5rem .25rem;
+  display: none;
+}
+.start_race .wrapper .content_start_game,
+.start_race .wrapper .start,
+.start_race .wrapper .complete_level {
+  margin-top: 1.5rem;
+}
+.start_race .wrapper .content_start_game .question,
+.start_race .wrapper .start .question,
+.start_race .wrapper .complete_level .question,
+.start_race .wrapper .content_start_game .answers_options,
+.start_race .wrapper .start .answers_options,
+.start_race .wrapper .complete_level .answers_options,
+.start_race .wrapper .content_start_game .message,
+.start_race .wrapper .start .message,
+.start_race .wrapper .complete_level .message {
+  background-color: #3a6667;
+  -webkit-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  font-family: 'DK Mango';
+  padding: 1rem 2rem;
+  color: white;
+  max-width: 100%;
+  width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.start_race .wrapper .content_start_game .question,
+.start_race .wrapper .start .question,
+.start_race .wrapper .complete_level .question {
+  padding: 1rem;
+  margin-bottom: .65rem;
+  font-size: 1.65rem;
+  text-align: center;
+  text-shadow: none;
+  position: relative;
+}
+.start_race .wrapper .content_start_game .question:after,
+.start_race .wrapper .start .question:after,
+.start_race .wrapper .complete_level .question:after {
+  position: absolute;
+  content: '';
+  border: 2rem solid ;
+  border-color: transparent transparent #ef863e transparent;
+  top: -55px;
+  right: 6rem;
+}
+.start_race .wrapper .content_start_game .answers_options,
+.start_race .wrapper .start .answers_options,
+.start_race .wrapper .complete_level .answers_options,
+.start_race .wrapper .content_start_game .message,
+.start_race .wrapper .start .message,
+.start_race .wrapper .complete_level .message {
+  padding: 1rem 3rem;
+}
+.start_race .wrapper .content_start_game .answers_options input[type=radio],
+.start_race .wrapper .start .answers_options input[type=radio],
+.start_race .wrapper .complete_level .answers_options input[type=radio],
+.start_race .wrapper .content_start_game .message input[type=radio],
+.start_race .wrapper .start .message input[type=radio],
+.start_race .wrapper .complete_level .message input[type=radio] {
+  display: none;
+}
+.start_race .wrapper .content_start_game .answers_options label,
+.start_race .wrapper .start .answers_options label,
+.start_race .wrapper .complete_level .answers_options label,
+.start_race .wrapper .content_start_game .message label,
+.start_race .wrapper .start .message label,
+.start_race .wrapper .complete_level .message label {
+  padding-left: 1em;
+  font-family: 'DK Mango';
+  font-size: 1.4rem;
+  color: white;
+  text-shadow: none;
+  font-weight: normal;
+  border: thin solid white;
+  position: relative;
+  display: block;
+  -webkit-border-radius: 0.5rem;
+  -khtml-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  white-space: normal;
+  text-align: justify;
+  padding: 1rem;
+  height: auto;
+}
+.start_race .wrapper .content_start_game .answers_options label:before,
+.start_race .wrapper .start .answers_options label:before,
+.start_race .wrapper .complete_level .answers_options label:before,
+.start_race .wrapper .content_start_game .message label:before,
+.start_race .wrapper .start .message label:before,
+.start_race .wrapper .complete_level .message label:before {
+  display: none;
+}
+.start_race .wrapper .content_start_game .answers_options label:hover,
+.start_race .wrapper .start .answers_options label:hover,
+.start_race .wrapper .complete_level .answers_options label:hover,
+.start_race .wrapper .content_start_game .message label:hover,
+.start_race .wrapper .start .message label:hover,
+.start_race .wrapper .complete_level .message label:hover,
+.start_race .wrapper .content_start_game .answers_options label:focus,
+.start_race .wrapper .start .answers_options label:focus,
+.start_race .wrapper .complete_level .answers_options label:focus,
+.start_race .wrapper .content_start_game .message label:focus,
+.start_race .wrapper .start .message label:focus,
+.start_race .wrapper .complete_level .message label:focus {
+  background-image: -webkit-radial-gradient(center, #ee6200, #ef863e);
+  background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
+  background-image: radial-gradient(center, #ee6200, #ef863e);
+  border-color: #ee6200;
+}
+.start_race .wrapper .content_start_game .answers_options label:active,
+.start_race .wrapper .start .answers_options label:active,
+.start_race .wrapper .complete_level .answers_options label:active,
+.start_race .wrapper .content_start_game .message label:active,
+.start_race .wrapper .start .message label:active,
+.start_race .wrapper .complete_level .message label:active {
+  background-color: transparent;
+  background-image: none;
+  border-color: white;
+}
+.start_race .wrapper .content_start_game .content_question .type_question,
+.start_race .wrapper .start .content_question .type_question,
+.start_race .wrapper .complete_level .content_question .type_question {
+  margin: 0 0 .5rem;
+  text-align: right;
+}
+.start_race .wrapper .content_start_game .content_question .type_question span,
+.start_race .wrapper .start .content_question .type_question span,
+.start_race .wrapper .complete_level .content_question .type_question span {
+  padding: .15rem .5rem;
+  color: white;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ef863e;
+  font-size: 1.3rem;
+  font-family: 'DK Mango';
+  text-shadow: 0 0 1px black;
+}
+.start_race .wrapper .start .container_btn button {
+  width: 380px;
+  padding: 1.5rem 0.5rem;
+  height: inherit;
+  line-height: 1;
+  max-width: 100%;
+  white-space: normal;
+  display: inline-block;
+  text-shadow: none;
+  color: white;
+  background-color: #3a6667;
+}
+.start_race .wrapper .start .container_btn button:hover {
+  color: white;
+}
+.start_race .wrapper .start .container_btn button:focus {
+  box-shadow: 0 0 0 0 transparent;
+}
 /* Search-Duel */
 .search_duel .content_list_users > h1,
 .duel_users .content_list_users > h1,
