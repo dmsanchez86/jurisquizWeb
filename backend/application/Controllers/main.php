@@ -493,7 +493,7 @@ class main {
         
         if( $data->errors->errors === null){
             $response = array( 
-                "message"   => 'La pregunta se ha registrado satisfactoriamente!',
+                "message"   => 'La especialidad se ha registrado satisfactoriamente!',
                 "status"    => 'OK'
             );
         }else{
@@ -618,6 +618,7 @@ class main {
         echo json_encode($data);
     }
     
+    # function to validate current level
     function validate_level(){
         $id = base64_decode($_POST['id']);
         
@@ -626,4 +627,41 @@ class main {
         echo (json_encode($query->attributes()));
     }
     
+    #
+    function correct_answers(){
+        $id = base64_decode($_POST['id_user']);
+        
+        $query = jur_current_state_game::find($id);
+        $options = $query->attributes();
+        
+        if(isset($_POST['id_level_category'])){
+            if($_POST['id_level_category'] > 3){
+                $query->id_level_game = (++$options['id_level_game']);
+                $query->id_level_category = 1;
+                $query->correct_answers = 0;
+            }else{
+                $query->id_level_category = $_POST['id_level_category'];
+                $query->correct_answers = 0;
+            }
+        }
+        else{
+            $query->correct_answers = $_POST['number'];
+        }
+        $res = $query->save();
+        
+        if($res){
+            $data = array(
+                    'message'       => 'Se guardo el numero de respuestas correctamente',
+                    'status'        => 'OK',
+                    'metadata'      => $query->attributes()
+                );
+        }else{
+            $data = array(
+                    'message'       => 'Error al actualizar las respuestas correctas',
+                    'status'        => 'FAIL'
+                );
+        }
+        
+        echo (json_encode($data));
+    }
 }

@@ -132,6 +132,11 @@ $app->post(
     '/validate_level','main:validate_level'
 )->setParams(array($app));
 
+// Route for validate to current level 
+$app->post(
+    '/correct_answers','main:correct_answers'
+)->setParams(array($app));
+
 
 
 // PUT route

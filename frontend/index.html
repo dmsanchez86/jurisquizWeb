@@ -280,7 +280,7 @@
                                                   <div class="structure">
                                                       <div class="multiple_choice">
                                                           <div class="input">
-                                                              <input type="text" name="question_choice" id="question_choice" placeholder="Ingrese las opciones:"  style="padding-right:3.8rem"/>
+                                                              <input type="text" name="question_choice" id="question_choice" placeholder="Ingrese las opciones:"  style="padding-right:3.8rem" data-role="none"/>
                                                               <i class="large material-icons">input</i>
                                                           </div>
                                                           <ol id="sortable_choice" class="sortable">
@@ -297,7 +297,7 @@
                                                       </div>
                                                       <div class="order_questions">
                                                           <div class="input">
-                                                              <input type="text" name="question_sortable" id="question_sortable" placeholder="Ingrese las preguntas" style="padding-right:3.8rem"/>
+                                                              <input type="text" name="question_sortable" id="question_sortable" placeholder="Ingrese las preguntas" style="padding-right:3.8rem" data-role="none"/>
                                                               <i class="large material-icons">input</i>
                                                           </div>
                                                           <ol id="sortable" class="sortable">
@@ -577,8 +577,8 @@
             </div>
         </div>
         
-        <!-- Page Star Executive -->
-        <div id="start_race" class="start_race" data-role="page" data-title="Start Ecexutive - Jurizquiz">
+        <!-- Page Star Race -->
+        <div id="start_race" class="start_race" data-role="page" data-title="Start Race - Jurizquiz">
             <div data-role="header">
                 <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
                     <div></div>
@@ -600,14 +600,10 @@
                             
                         </div>
                         <div class="complete_level">
-                            <div class="message">
-                                Ya completaste este nivel
-                            </div>
+                            <div class="message">Ya completaste este nivel</div>
                         </div>
                         <div class="no_complete_level">
-                            <div class="message">
-                                Aun no haz desbloqueado este nivel
-                            </div>
+                            <div class="message">Aun no haz desbloqueado este nivel</div>
                         </div>
                     </div>
                 </div>
@@ -1558,7 +1554,7 @@
         <script type="text/html" id="all_questions_show">
             <div class="question">
                 <%
-                    var options = options_question.split(',');
+                    var options = options_question.split('/');
                 %>
             
                 <div>
@@ -1653,7 +1649,7 @@
             </div>
         </script>
         <script type="text/html" id="start_race_categories">
-            <div class="level <%= icon %>">
+            <div class="level <%= icon %>" id-level-category="<%= id %>">
                 <div class="top">
                     <span class="name"><%= name %></span>
                     <span>
@@ -1662,19 +1658,19 @@
                 </div>
                 <div class="bottom">
                     <span class="number_questions">
-                        <span class="correct_answers">0</span> / <span class="rank"><%= number_questions %></span>
+                        <span class="correct_answers"></span> / <span class="rank"><%= number_questions %></span>
                     </span>
                 </div>
             </div>
         </script>
         <script type="text/html" id="structure_question">
-            <div class="content_question" correct-answer="<%= correct_answer %>">
+            <div class="content_question" correct-answer="<%= correct_answer %>" type-question="<%= type_question %>">
                 <div class="question">
                     <%= question %>
                 </div>
                 
                 <%
-                    var options = options_question.split(',');
+                    var options = options_question.split('/');
                     var name_type_question = '';
                     
                     if(type_question == 1)
@@ -1685,19 +1681,35 @@
                         name_type_question = "Ordenamiento";
                 %>
                 
-                <div class="answers_options">
-                    <div class="type_question">
-                        <span>Tipo de pregunta: <%= name_type_question %></span>
-                    </div>
-                    <div class="answer">
-                        <% for(var i = 0; i < options.length; i++){ %>
-                            <input id="answer<%= i %>" type="radio" name="answer" data-role="none"/>
-                            <label for="answer<%= i %>" data-role="none">
-                                <%= options[i] %>
-                            </label>
+                <% if(type_question != 3){ %>
+                    <div class="answers_options">
+                        <div class="type_question">
+                            <span>Tipo de pregunta: <%= name_type_question %></span>
+                        </div>
+                        <% 
+                        
+                        var options_random = options.random();
+                        
+                        for(var i = 0; i < options_random.length; i++){ %>
+                            <div class="answer" id-answer="<%= id %>">
+                                <input id="answer<%= i %>" type="radio" name="answer_<%= id %>" value="<%= options_random[i] %>" data-role="none"/>
+                                <label for="answer<%= i %>" data-role="none"><%= options_random[i] %></label>
+                            </div>
                         <% } %>
                     </div>
-                </div>
+                <% }else{ %>
+                    <div class="answers_options">
+                        <div class="type_question">
+                            <span>Tipo de pregunta: <%= name_type_question %></span>
+                        </div>
+                        <ul class="sortable_answer">
+                        <% for(var i = 0; i < options.length; i++){ %>
+                            <li position="<%= i + 1 %>"><%= options[i] %></li>
+                        <% } %>
+                        </ul>
+                        <div class="container_btn"><button type="button" class="waves-effect waves-btn-start btn btn_register">Enviar Orden</button></div>
+                    </div>
+                <% } %>
             </div>
         </script>
         
