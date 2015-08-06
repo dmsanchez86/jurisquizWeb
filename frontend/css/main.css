@@ -4679,6 +4679,7 @@ label.ui-btn {
   }
   .start_race .levels_content {
     margin-right: 0rem;
+    height: 68px;
   }
   .start_race .levels_content > div {
     padding: .25rem .15rem;
@@ -4694,7 +4695,7 @@ label.ui-btn {
   }
   .start_race .levels_content .level .top {
     height: inherit;
-    margin-top: 20px;
+    margin-top: 0px;
   }
   .start_race .levels_content .level .top .name {
     font-size: .83rem;
@@ -4834,6 +4835,11 @@ label.ui-btn {
     max-height: 280px;
     display: block;
     margin: 0 auto;
+  }
+  .home .container_logo + .container_btn button,
+  .register .container_logo + .container_btn button,
+  .terms .container_logo + .container_btn button {
+    margin-top: 1rem;
   }
   .ui-page-theme-a .ui-body-inherit .edit_question,
   .ui-page-theme-a .ui-body-inherit .edit_specialty {
@@ -4983,33 +4989,352 @@ label.ui-btn {
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .container_btn button:hover {
     background-color: #3a6667 !important;
   }
+  .race .container,
+  .duel .container,
+  .test .container,
+  .litigation .container,
+  .specialty .container {
+    padding: 0 .5rem;
+  }
   .race .content_game,
-  .duel .content_game {
-    margin-top: 2rem;
+  .duel .content_game,
+  .test .content_game,
+  .litigation .content_game,
+  .specialty .content_game {
+    margin-top: .5rem;
   }
   .race .content_game .message_game,
-  .duel .content_game .message_game {
+  .duel .content_game .message_game,
+  .test .content_game .message_game,
+  .litigation .content_game .message_game,
+  .specialty .content_game .message_game {
     padding: 1rem .7rem;
   }
   .race .content_game .message_game:before,
-  .duel .content_game .message_game:before {
+  .duel .content_game .message_game:before,
+  .test .content_game .message_game:before,
+  .litigation .content_game .message_game:before,
+  .specialty .content_game .message_game:before {
     border-width: 1.3rem;
     left: -35px;
   }
   .race .content_game .message_game p,
-  .duel .content_game .message_game p {
+  .duel .content_game .message_game p,
+  .test .content_game .message_game p,
+  .litigation .content_game .message_game p,
+  .specialty .content_game .message_game p {
     font-size: 1.25rem;
   }
-  .race .content_game .icon_game {
+  .race .content_game .icon_game,
+  .duel .content_game .icon_game,
+  .test .content_game .icon_game,
+  .litigation .content_game .icon_game,
+  .specialty .content_game .icon_game {
     text-align: center;
   }
-  .race .content_game .icon_game img {
-    max-width: 100%;
+  .race .content_game .icon_game img,
+  .duel .content_game .icon_game img,
+  .test .content_game .icon_game img,
+  .litigation .content_game .icon_game img,
+  .specialty .content_game .icon_game img {
+    max-height: 350px;
+    margin-top: .35rem;
     margin-left: -10px;
   }
-  .race .content_game .container_btn button {
+  .race .content_game .container_btn button,
+  .duel .content_game .container_btn button,
+  .test .content_game .container_btn button,
+  .litigation .content_game .container_btn button,
+  .specialty .content_game .container_btn button {
     font-size: .77rem;
     padding: .6rem .2rem;
+    margin-top: 0;
+  }
+  .race .content_game .row,
+  .duel .content_game .row,
+  .test .content_game .row,
+  .litigation .content_game .row,
+  .specialty .content_game .row {
+    margin: 0;
+  }
+  .dashboard .container,
+  .dashboard_admin .container {
+    padding: 0 .5rem;
+  }
+  .dashboard .container .games,
+  .dashboard_admin .container .games {
+    margin: 0;
+  }
+  .nav_button {
+    -webkit-transform: scale(0.7);
+    -khtml-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7);
+  }
+  .dashboard .btn_panel,
+  .friends .btn_panel,
+  .race .btn_panel,
+  .start_race .btn_panel,
+  .duel .btn_panel,
+  .search_duel .btn_panel,
+  .duel_users .btn_panel,
+  .win_duel .btn_panel,
+  .test .btn_panel,
+  .start_test .btn_panel,
+  .specialty .btn_panel,
+  .start_specialty .btn_panel,
+  .litigation .btn_panel,
+  .start_litigation .btn_panel,
+  .profile .btn_panel,
+  .questions .btn_panel,
+  .specialties .btn_panel {
+    width: 30px;
+    margin-left: .81rem;
+    margin-top: .75rem;
+    position: relative;
+  }
+  .dashboard .btn_panel:after,
+  .friends .btn_panel:after,
+  .race .btn_panel:after,
+  .start_race .btn_panel:after,
+  .duel .btn_panel:after,
+  .search_duel .btn_panel:after,
+  .duel_users .btn_panel:after,
+  .win_duel .btn_panel:after,
+  .test .btn_panel:after,
+  .start_test .btn_panel:after,
+  .specialty .btn_panel:after,
+  .start_specialty .btn_panel:after,
+  .litigation .btn_panel:after,
+  .start_litigation .btn_panel:after,
+  .profile .btn_panel:after,
+  .questions .btn_panel:after,
+  .specialties .btn_panel:after {
+    position: absolute;
+    width: 2px;
+    top: 1px;
+  }
+  .dashboard .btn_panel > div,
+  .friends .btn_panel > div,
+  .race .btn_panel > div,
+  .start_race .btn_panel > div,
+  .duel .btn_panel > div,
+  .search_duel .btn_panel > div,
+  .duel_users .btn_panel > div,
+  .win_duel .btn_panel > div,
+  .test .btn_panel > div,
+  .start_test .btn_panel > div,
+  .specialty .btn_panel > div,
+  .start_specialty .btn_panel > div,
+  .litigation .btn_panel > div,
+  .start_litigation .btn_panel > div,
+  .profile .btn_panel > div,
+  .questions .btn_panel > div,
+  .specialties .btn_panel > div {
+    border-top: 2.7px solid white;
+    margin-bottom: .5rem;
+    -webkit-transition: all 0.4s ease;
+    -khtml-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+  .dashboard .btn_panel > div:nth-child(1),
+  .friends .btn_panel > div:nth-child(1),
+  .race .btn_panel > div:nth-child(1),
+  .start_race .btn_panel > div:nth-child(1),
+  .duel .btn_panel > div:nth-child(1),
+  .search_duel .btn_panel > div:nth-child(1),
+  .duel_users .btn_panel > div:nth-child(1),
+  .win_duel .btn_panel > div:nth-child(1),
+  .test .btn_panel > div:nth-child(1),
+  .start_test .btn_panel > div:nth-child(1),
+  .specialty .btn_panel > div:nth-child(1),
+  .start_specialty .btn_panel > div:nth-child(1),
+  .litigation .btn_panel > div:nth-child(1),
+  .start_litigation .btn_panel > div:nth-child(1),
+  .profile .btn_panel > div:nth-child(1),
+  .questions .btn_panel > div:nth-child(1),
+  .specialties .btn_panel > div:nth-child(1) {
+    margin-top: .5rem;
+  }
+  .dashboard .btn_panel.toggle > div:nth-child(1),
+  .friends .btn_panel.toggle > div:nth-child(1),
+  .race .btn_panel.toggle > div:nth-child(1),
+  .start_race .btn_panel.toggle > div:nth-child(1),
+  .duel .btn_panel.toggle > div:nth-child(1),
+  .search_duel .btn_panel.toggle > div:nth-child(1),
+  .duel_users .btn_panel.toggle > div:nth-child(1),
+  .win_duel .btn_panel.toggle > div:nth-child(1),
+  .test .btn_panel.toggle > div:nth-child(1),
+  .start_test .btn_panel.toggle > div:nth-child(1),
+  .specialty .btn_panel.toggle > div:nth-child(1),
+  .start_specialty .btn_panel.toggle > div:nth-child(1),
+  .litigation .btn_panel.toggle > div:nth-child(1),
+  .start_litigation .btn_panel.toggle > div:nth-child(1),
+  .profile .btn_panel.toggle > div:nth-child(1),
+  .questions .btn_panel.toggle > div:nth-child(1),
+  .specialties .btn_panel.toggle > div:nth-child(1) {
+    -webkit-transform: rotate(45deg) translate3d(6px, 9px, 0);
+    -khtml-transform: rotate(45deg) translate3d(6px, 9px, 0);
+    -moz-transform: rotate(45deg) translate3d(6px, 9px, 0);
+    -ms-transform: rotate(45deg) translate3d(6px, 9px, 0);
+    -o-transform: rotate(45deg) translate3d(6px, 9px, 0);
+    transform: rotate(45deg) translate3d(6px, 9px, 0);
+  }
+  .dashboard .btn_panel.toggle > div:nth-child(2),
+  .friends .btn_panel.toggle > div:nth-child(2),
+  .race .btn_panel.toggle > div:nth-child(2),
+  .start_race .btn_panel.toggle > div:nth-child(2),
+  .duel .btn_panel.toggle > div:nth-child(2),
+  .search_duel .btn_panel.toggle > div:nth-child(2),
+  .duel_users .btn_panel.toggle > div:nth-child(2),
+  .win_duel .btn_panel.toggle > div:nth-child(2),
+  .test .btn_panel.toggle > div:nth-child(2),
+  .start_test .btn_panel.toggle > div:nth-child(2),
+  .specialty .btn_panel.toggle > div:nth-child(2),
+  .start_specialty .btn_panel.toggle > div:nth-child(2),
+  .litigation .btn_panel.toggle > div:nth-child(2),
+  .start_litigation .btn_panel.toggle > div:nth-child(2),
+  .profile .btn_panel.toggle > div:nth-child(2),
+  .questions .btn_panel.toggle > div:nth-child(2),
+  .specialties .btn_panel.toggle > div:nth-child(2) {
+    -webkit-transform: rotate(45deg) translate3d(2px, -1px, 0);
+    -khtml-transform: rotate(45deg) translate3d(2px, -1px, 0);
+    -moz-transform: rotate(45deg) translate3d(2px, -1px, 0);
+    -ms-transform: rotate(45deg) translate3d(2px, -1px, 0);
+    -o-transform: rotate(45deg) translate3d(2px, -1px, 0);
+    transform: rotate(45deg) translate3d(2px, -1px, 0);
+    opacity: 0;
+  }
+  .dashboard .btn_panel.toggle > div:nth-child(3),
+  .friends .btn_panel.toggle > div:nth-child(3),
+  .race .btn_panel.toggle > div:nth-child(3),
+  .start_race .btn_panel.toggle > div:nth-child(3),
+  .duel .btn_panel.toggle > div:nth-child(3),
+  .search_duel .btn_panel.toggle > div:nth-child(3),
+  .duel_users .btn_panel.toggle > div:nth-child(3),
+  .win_duel .btn_panel.toggle > div:nth-child(3),
+  .test .btn_panel.toggle > div:nth-child(3),
+  .start_test .btn_panel.toggle > div:nth-child(3),
+  .specialty .btn_panel.toggle > div:nth-child(3),
+  .start_specialty .btn_panel.toggle > div:nth-child(3),
+  .litigation .btn_panel.toggle > div:nth-child(3),
+  .start_litigation .btn_panel.toggle > div:nth-child(3),
+  .profile .btn_panel.toggle > div:nth-child(3),
+  .questions .btn_panel.toggle > div:nth-child(3),
+  .specialties .btn_panel.toggle > div:nth-child(3) {
+    -webkit-transform: rotate(-45deg) translate3d(6px, -10px, 0);
+    -khtml-transform: rotate(-45deg) translate3d(6px, -10px, 0);
+    -moz-transform: rotate(-45deg) translate3d(6px, -10px, 0);
+    -ms-transform: rotate(-45deg) translate3d(6px, -10px, 0);
+    -o-transform: rotate(-45deg) translate3d(6px, -10px, 0);
+    transform: rotate(-45deg) translate3d(6px, -10px, 0);
+  }
+  .dashboard .status,
+  .friends .status,
+  .race .status,
+  .start_race .status,
+  .duel .status,
+  .search_duel .status,
+  .duel_users .status,
+  .win_duel .status,
+  .test .status,
+  .start_test .status,
+  .specialty .status,
+  .start_specialty .status,
+  .litigation .status,
+  .start_litigation .status,
+  .profile .status,
+  .questions .status,
+  .specialties .status {
+    height: 68px;
+  }
+  .dashboard .status .icon_level img,
+  .friends .status .icon_level img,
+  .race .status .icon_level img,
+  .start_race .status .icon_level img,
+  .duel .status .icon_level img,
+  .search_duel .status .icon_level img,
+  .duel_users .status .icon_level img,
+  .win_duel .status .icon_level img,
+  .test .status .icon_level img,
+  .start_test .status .icon_level img,
+  .specialty .status .icon_level img,
+  .start_specialty .status .icon_level img,
+  .litigation .status .icon_level img,
+  .start_litigation .status .icon_level img,
+  .profile .status .icon_level img,
+  .questions .status .icon_level img,
+  .specialties .status .icon_level img {
+    height: 50px;
+  }
+  .dashboard .status .points,
+  .friends .status .points,
+  .race .status .points,
+  .start_race .status .points,
+  .duel .status .points,
+  .search_duel .status .points,
+  .duel_users .status .points,
+  .win_duel .status .points,
+  .test .status .points,
+  .start_test .status .points,
+  .specialty .status .points,
+  .start_specialty .status .points,
+  .litigation .status .points,
+  .start_litigation .status .points,
+  .profile .status .points,
+  .questions .status .points,
+  .specialties .status .points {
+    text-align: right;
+    -webkit-flex: 1 1 48%;
+    -moz-flex: 1 1 48%;
+    -o-flex: 1 1 48%;
+    flex: 1 1 48%;
+  }
+  .dashboard .status .points em,
+  .friends .status .points em,
+  .race .status .points em,
+  .start_race .status .points em,
+  .duel .status .points em,
+  .search_duel .status .points em,
+  .duel_users .status .points em,
+  .win_duel .status .points em,
+  .test .status .points em,
+  .start_test .status .points em,
+  .specialty .status .points em,
+  .start_specialty .status .points em,
+  .litigation .status .points em,
+  .start_litigation .status .points em,
+  .profile .status .points em,
+  .questions .status .points em,
+  .specialties .status .points em {
+    font-size: 3rem;
+  }
+  .dashboard .status .points:before,
+  .friends .status .points:before,
+  .race .status .points:before,
+  .start_race .status .points:before,
+  .duel .status .points:before,
+  .search_duel .status .points:before,
+  .duel_users .status .points:before,
+  .win_duel .status .points:before,
+  .test .status .points:before,
+  .start_test .status .points:before,
+  .specialty .status .points:before,
+  .start_specialty .status .points:before,
+  .litigation .status .points:before,
+  .start_litigation .status .points:before,
+  .profile .status .points:before,
+  .questions .status .points:before,
+  .specialties .status .points:before {
+    display: none;
+  }
+  .ui-header {
+    min-height: 70px;
   }
 }
 @media (max-width: 380px) {
@@ -5166,24 +5491,25 @@ label.ui-btn {
     display: inline-block;
     margin-top: .5rem;
   }
-  .race .content_game .icon_game,
-  .duel .content_game .icon_game {
-    text-align: center;
-  }
-  .race .content_game .icon_game img,
-  .duel .content_game .icon_game img {
-    max-width: 80%;
-  }
   .race .content_game .message_game p,
-  .duel .content_game .message_game p {
+  .duel .content_game .message_game p,
+  .test .content_game .message_game p,
+  .litigation .content_game .message_game p,
+  .specialty .content_game .message_game p {
     text-shadow: none;
   }
   .race .content_game .container_btn button,
-  .duel .content_game .container_btn button {
+  .duel .content_game .container_btn button,
+  .test .content_game .container_btn button,
+  .litigation .content_game .container_btn button,
+  .specialty .content_game .container_btn button {
     font-size: .82rem;
   }
   .race .content_game .col.s6:last-child,
-  .duel .content_game .col.s6:last-child {
+  .duel .content_game .col.s6:last-child,
+  .test .content_game .col.s6:last-child,
+  .litigation .content_game .col.s6:last-child,
+  .specialty .content_game .col.s6:last-child {
     padding: 0;
   }
   .start_race .content_start_game,

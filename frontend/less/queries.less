@@ -1,5 +1,4 @@
 /* Queries */
-
 @media(max-width: 620px){
     .questions,.specialties{
         .content_questions{padding: .55rem;
@@ -41,13 +40,13 @@
                 .message{font-size: 1.5rem;}
             }
         }
-        .levels_content{ margin-right: 0rem;
+        .levels_content{ margin-right: 0rem; height: 68px;
             > div{padding: .25rem .15rem;}
             .level{padding-right: .85rem; position: relative;
                 .top,.bottom{
                     img{padding: 0;height: 22px;}
                 }
-                .top{ height: inherit; margin-top: 20px;
+                .top{ height: inherit; margin-top: 0px;
                     .name{font-size: .83rem;}
                 }
                 &:after{background-size: 60%; background-position: center; width: 22px;}
@@ -139,6 +138,9 @@
                     img{max-height: 280px;display: block;margin: 0 auto;}
                 }
             }
+            + .container_btn{
+                    button{margin-top: 1rem;}
+            }
         }
     }
     .ui-page-theme-a .ui-body-inherit {
@@ -198,24 +200,53 @@
             }
         }
     }
-    .race,.duel{
-        .content_game{margin-top: 2rem;
+    .race,.duel,.test,.litigation,.specialty{
+        .container{padding: 0 .5rem;}
+        .content_game{margin-top: .5rem;
             .message_game{padding: 1rem .7rem; 
                 &:before{border-width: 1.3rem; left: -35px;}
                 p{font-size: 1.25rem;}
             }
-        }
-    }
-    .race{
-        .content_game {
-            .icon_game{text-align: center;
-                img{max-width: 100%;margin-left: -10px;}
+            .icon_game{ text-align: center;
+                img{max-height: 350px; margin-top: .35rem;margin-left: -10px;}
             }
             .container_btn{
-                button{font-size: .77rem; padding: .6rem .2rem;}
+                button{font-size: .77rem; padding: .6rem .2rem;margin-top: 0;}
+            }
+            .row{margin: 0;}
+        }
+    }
+    .dashboard,.dashboard_admin{
+        .container{padding: 0 .5rem;
+            .games{margin: 0;}
+        }
+    }
+    .nav_button{.transform(scale(.7));}
+    .dashboard,.friends,.race,.start_race,.duel,.search_duel,.duel_users,.win_duel,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.profile,.questions,.specialties{
+        .btn_panel{width: 30px;margin-left: .81rem;margin-top: .75rem;position: relative;
+            &:after{position: absolute;width: 2px;top: 1px;}
+            > div{border-top: 2.7px solid white;margin-bottom: .5rem;.transition(all .4s ease);
+                &:nth-child(1){ margin-top: .5rem;}
+            }
+            &.toggle{
+                > div{
+                    &:nth-child(1){.transform(rotate(45deg) translate3d(6px, 9px, 0));}
+                    &:nth-child(2){.transform(rotate(45deg) translate3d(2px,-1px,0));opacity: 0;}
+                    &:nth-child(3){.transform(rotate(-45deg) translate3d(6px, -10px, 0));}
+                }
+            }
+        }
+        .status{height: 68px;
+            .icon_level{
+                img{height: 50px;}
+            }
+            .points{text-align: right;.flex_item(1, 1, 48%);
+                em{font-size: 3rem;}
+                &:before{display: none;}
             }
         }
     }
+    .ui-header{min-height: 70px;}
 }
 
 @media(max-width: 380px){
@@ -304,11 +335,8 @@
             }
         }
     }
-    .race,.duel {
+    .race,.duel,.test,.litigation,.specialty {
         .content_game {
-            .icon_game{text-align: center;
-                img{max-width: 80%;}
-            }
             .message_game{
                 p{text-shadow: none;}
             }

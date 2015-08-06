@@ -108,8 +108,14 @@ class main {
     }
     
     # Function to return all users
-    function users(){
-        $query = jur_users::all();
+    function users($app,$filter){
+        if($filter == 'admin'){
+            $query = jur_users::all(array('conditions' => array('role = "admin"')));
+        }else if($filter == 'users'){
+            $query = jur_users::all(array('conditions' => array('role = "user"')));
+        }else if($filter == 'all'){
+            $query = jur_users::all();
+        }
         
         foreach($query as $k){
 			$data[] = $k->attributes();

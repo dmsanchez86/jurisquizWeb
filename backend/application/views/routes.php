@@ -29,7 +29,7 @@ $app->post(
 
 // All users
 $app->post(
-    '/users','main:users'
+    '/users/:filter','main:users'
 )->setParams(array($app));
 
 // Route for change password

@@ -12,6 +12,7 @@ var count = 6;
 var count_id = 6;
 
 var router = new $.mobile.Router({
+    "index.html": {handler: "index", events: "s" },
     "#home": {handler: "home", events: "s" },
     "register.html": {handler: "register", events: "s" },
     "terms.html": {handler: "terms", events: "s" },
@@ -34,6 +35,9 @@ var router = new $.mobile.Router({
     "questions.html": {handler: "questions", events: "s" },
     "specialties.html": {handler: "specialties", events: "s" },
 },{
+    index: function(type,match,ui){
+        alert();
+    },
     home: function(type,match,ui){
         validate_login();
         
@@ -187,7 +191,7 @@ var router = new $.mobile.Router({
         
         // Ajax for all users
         $.ajax({
-            url     : webService + "users",
+            url     : webService + "users/users",
             type    : 'POST',
             data    : null,
             success : function(response){
@@ -1453,7 +1457,7 @@ function panel_data($id){
     // Ajax for friends
     $.ajax({
         type    : 'POST',
-        url     : webService+'users',
+        url     : webService + 'users/users',
         data    : null,
         success : function(response){
             var data = JSON.parse(response);
@@ -2406,3 +2410,5 @@ Array.prototype.random = function(){
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 }
+
+console.log(router);
