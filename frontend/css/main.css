@@ -3776,213 +3776,6 @@ html {
   animation: door 0.5s 1 linear;
   background-color: rgba(0, 0, 0, 0.75);
 }
-/* Materialize Custom */
-.waves-effect.waves-logo .waves-ripple {
-  background-color: rgba(238, 98, 0, 0.15);
-}
-.waves-effect.waves-btn-start {
-  background-color: #3a6667;
-  position: relative;
-}
-.waves-effect.waves-btn-start:after {
-  position: absolute;
-  width: 0%;
-  height: 100%;
-  content: '';
-  left: 0;
-  top: 0;
-  -webkit-transition: all 0.5s ease;
-  -khtml-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  z-index: -1;
-  background-color: rgba(255, 255, 255, 0.25);
-}
-.waves-effect.waves-btn-start:hover:after {
-  width: 100%;
-}
-.waves-effect.waves-btn-start .waves-ripple {
-  background-color: rgba(255, 255, 255, 0.55);
-}
-.waves-effect.waves-btn-login {
-  background-color: #ee6200;
-  position: relative;
-}
-.waves-effect.waves-btn-login:after {
-  position: absolute;
-  width: 0%;
-  height: 100%;
-  content: '';
-  top: 0;
-  -webkit-transition: all 0.5s ease;
-  -khtml-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  z-index: -1;
-  background-color: rgba(255, 255, 255, 0.25);
-}
-.waves-effect.waves-btn-login:hover:after {
-  width: 100%;
-}
-.waves-effect.waves-btn-login .waves-ripple {
-  background-color: rgba(255, 255, 255, 0.55);
-}
-.side-nav a {
-  line-height: 1;
-  padding: 0;
-  height: auto;
-}
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1.75;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  word-wrap: normal;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-input[type="email"],
-input[type="text"],
-input[type="password"] {
-  background-color: #f6f6f6;
-  border-color: transparent;
-  padding: .25rem 1rem;
-  -webkit-box-sizing: border-box;
-  -khtml-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
-}
-input[type="email"]:focus::-webkit-input-placeholder,
-input[type="text"]:focus::-webkit-input-placeholder,
-input[type="password"]:focus::-webkit-input-placeholder,
-input[type="email"]:focus::input-placeholder,
-input[type="text"]:focus::input-placeholder,
-input[type="password"]:focus::input-placeholder {
-  color: red!important;
-}
-input[type="email"]:focus:not([readonly]),
-input[type="text"]:focus:not([readonly]),
-input[type="password"]:focus:not([readonly]) {
-  border-color: transparent;
-  box-shadow: 0 0 0 0 transparent;
-}
-input[type="email"]:focus:not([readonly]) + label,
-input[type="text"]:focus:not([readonly]) + label,
-input[type="password"]:focus:not([readonly]) + label {
-  opacity: 0;
-}
-input[type="email"]:focus,
-input[type="text"]:focus,
-input[type="password"]:focus {
-  box-shadow: 0;
-}
-[type="radio"].with-gap:checked + label:after {
-  border: 2px solid #3a6667;
-  background-color: #3a6667;
-}
-[type="radio"].with-gap:checked + label:before {
-  border: 2px solid #3a6667;
-}
-.input-field label {
-  left: 2rem;
-}
-.container {
-  width: 100%;
-  padding: 0 1rem;
-}
-/* Custom Toast Materialize */
-.toast {
-  height: auto;
-  line-height: 2;
-  padding: 1rem 1.5rem 2rem;
-  z-index: 9999999999;
-}
-.toast * {
-  -webkit-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
-  -khtml-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
-  -moz-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
-  -ms-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
-  -o-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
-  font-family: 'DK Mango';
-  font-style: normal;
-}
-.toast h3 {
-  font-size: 1.7rem;
-  margin: 0;
-  text-decoration: underline;
-  text-align: center;
-}
-.toast .error h2 {
-  color: #fff;
-  -webkit-text-shadow: 0 0 0 #ffffff;
-  -khtml-text-shadow: 0 0 0 #ffffff;
-  -moz-text-shadow: 0 0 0 #ffffff;
-  -ms-text-shadow: 0 0 0 #ffffff;
-  -o-text-shadow: 0 0 0 #ffffff;
-  text-shadow: 0 0 0 #ffffff;
-  font-size: 1.4rem;
-}
-.toast .no-register,
-.toast .error,
-.toast .success {
-  text-align: center;
-  width: 100%;
-}
-.toast .no-register h2,
-.toast .error h2,
-.toast .success h2,
-.toast .no-register h4,
-.toast .error h4,
-.toast .success h4 {
-  font-family: 'Waiting for the Sunrise', cursive;
-  text-align: center;
-  font-size: 2rem;
-}
-/* Custom Spinner Background */
-.spinner-blue,
-.spinner-blue-only {
-  border-color: #EE6200;
-}
-/* Custom container inputs */
-.input-field {
-  margin-bottom: 1rem;
-}
-.ui-panel {
-  width: 22em;
-}
-.ui-panel-animate.ui-panel-page-content-position-left {
-  -webkit-transform: translate3d(22em, 0, 0);
-  -khtml-transform: translate3d(22em, 0, 0);
-  -moz-transform: translate3d(22em, 0, 0);
-  -ms-transform: translate3d(22em, 0, 0);
-  -o-transform: translate3d(22em, 0, 0);
-  transform: translate3d(22em, 0, 0);
-}
-.ui-header {
-  min-height: 100px;
-  background-color: #3a6667 !important;
-}
-.ui-content {
-  padding: 0;
-}
-.ui-panel-dismiss-open.ui-panel-dismiss-position-left {
-  display: none;
-}
-.ui-btn,
-label.ui-btn {
-  border-width: 0px;
-}
 /* Nav */
 .nav_button {
   width: 1px;
@@ -4154,6 +3947,190 @@ label.ui-btn {
   -o-transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
   transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
 }
+span[contenteditable] br {
+  display: none;
+}
+/* Materialize Custom */
+.waves-effect.waves-logo .waves-ripple {
+  background-color: rgba(238, 98, 0, 0.15);
+}
+.waves-effect.waves-btn-start {
+  background-color: #3a6667;
+  position: relative;
+}
+.waves-effect.waves-btn-start:after {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  content: '';
+  left: 0;
+  top: 0;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  z-index: -1;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.waves-effect.waves-btn-start:hover:after {
+  width: 100%;
+}
+.waves-effect.waves-btn-start .waves-ripple {
+  background-color: rgba(255, 255, 255, 0.55);
+}
+.waves-effect.waves-btn-login {
+  background-color: #ee6200;
+  position: relative;
+}
+.waves-effect.waves-btn-login:after {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  content: '';
+  top: 0;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  z-index: -1;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.waves-effect.waves-btn-login:hover:after {
+  width: 100%;
+}
+.waves-effect.waves-btn-login .waves-ripple {
+  background-color: rgba(255, 255, 255, 0.55);
+}
+.side-nav a {
+  line-height: 1;
+  padding: 0;
+  height: auto;
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1.75;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  word-wrap: normal;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+  background-color: #f6f6f6;
+  border-color: transparent;
+  padding: .25rem 1rem;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input[type="email"]:focus::-webkit-input-placeholder,
+input[type="text"]:focus::-webkit-input-placeholder,
+input[type="password"]:focus::-webkit-input-placeholder,
+input[type="email"]:focus::input-placeholder,
+input[type="text"]:focus::input-placeholder,
+input[type="password"]:focus::input-placeholder {
+  color: red!important;
+}
+input[type="email"]:focus:not([readonly]),
+input[type="text"]:focus:not([readonly]),
+input[type="password"]:focus:not([readonly]) {
+  border-color: transparent;
+  box-shadow: 0 0 0 0 transparent;
+}
+input[type="email"]:focus:not([readonly]) + label,
+input[type="text"]:focus:not([readonly]) + label,
+input[type="password"]:focus:not([readonly]) + label {
+  opacity: 0;
+}
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+  box-shadow: 0;
+}
+[type="radio"].with-gap:checked + label:after {
+  border: 2px solid #3a6667;
+  background-color: #3a6667;
+}
+[type="radio"].with-gap:checked + label:before {
+  border: 2px solid #3a6667;
+}
+.input-field label {
+  left: 2rem;
+}
+.container {
+  width: 100%;
+  padding: 0 1rem;
+}
+.toast {
+  height: auto;
+  line-height: 2;
+  padding: 1rem 1.5rem 2rem;
+  z-index: 9999999999;
+}
+.toast * {
+  -webkit-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  -khtml-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  -moz-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  -ms-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  -o-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  font-family: 'DK Mango';
+  font-style: normal;
+}
+.toast h3 {
+  font-size: 1.7rem;
+  margin: 0;
+  text-decoration: underline;
+  text-align: center;
+}
+.toast .error h2 {
+  color: #fff;
+  -webkit-text-shadow: 0 0 0 #ffffff;
+  -khtml-text-shadow: 0 0 0 #ffffff;
+  -moz-text-shadow: 0 0 0 #ffffff;
+  -ms-text-shadow: 0 0 0 #ffffff;
+  -o-text-shadow: 0 0 0 #ffffff;
+  text-shadow: 0 0 0 #ffffff;
+  font-size: 1.4rem;
+}
+.toast .no-register,
+.toast .error,
+.toast .success {
+  text-align: center;
+  width: 100%;
+}
+.toast .no-register h2,
+.toast .error h2,
+.toast .success h2,
+.toast .no-register h4,
+.toast .error h4,
+.toast .success h4 {
+  font-family: 'Waiting for the Sunrise', cursive;
+  text-align: center;
+  font-size: 2rem;
+}
+/* Custom Spinner Background */
+.spinner-blue,
+.spinner-blue-only {
+  border-color: #EE6200;
+}
+/* Custom container inputs */
+.input-field {
+  margin-bottom: 1rem;
+}
 /* Tabs */
 .tabs {
   background-color: transparent;
@@ -4291,9 +4268,6 @@ label.ui-btn {
   background-color: #ef863e;
   min-width: 100%;
   left: 0!important;
-}
-span[contenteditable] br {
-  display: none;
 }
 .select-wrapper .mdi-navigation-arrow-drop-down {
   display: none;
@@ -4542,6 +4516,31 @@ textarea.materialize-textarea {
 }
 .ui-page-theme-a .ui-body-inherit .ui-btn:hover {
   background-color: #ee6200 !important;
+}
+.ui-panel {
+  width: 22em;
+}
+.ui-panel-animate.ui-panel-page-content-position-left {
+  -webkit-transform: translate3d(22em, 0, 0);
+  -khtml-transform: translate3d(22em, 0, 0);
+  -moz-transform: translate3d(22em, 0, 0);
+  -ms-transform: translate3d(22em, 0, 0);
+  -o-transform: translate3d(22em, 0, 0);
+  transform: translate3d(22em, 0, 0);
+}
+.ui-header {
+  min-height: 100px;
+  background-color: #3a6667 !important;
+}
+.ui-content {
+  padding: 0;
+}
+.ui-panel-dismiss-open.ui-panel-dismiss-position-left {
+  display: none;
+}
+.ui-btn,
+label.ui-btn {
+  border-width: 0px;
 }
 /* Queries */
 @media (max-width: 620px) {

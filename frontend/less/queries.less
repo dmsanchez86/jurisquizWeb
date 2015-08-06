@@ -1,0 +1,384 @@
+/* Queries */
+
+@media(max-width: 620px){
+    .questions,.specialties{
+        .content_questions{padding: .55rem;
+            .forms{padding: .15rem .45rem 1rem;}
+        }
+    }
+    .tabs{
+        .indicator{background-color: @before_color;min-width: 100%; left: 0!important;}
+    }
+}
+
+@media(max-width: 480px){
+    .start_race{
+        .wrapper{
+            .content_start_game,.start,.complete_level,.no_complete_level{
+                .question,.answers_options,.message{.border_radius(10px); padding: 1rem .5rem;}
+                .question{font-size: 1.25rem;text-align: center;}
+                .answers_options,.message{padding: 1rem .5rem .5rem;
+                    label{ font-size: 1.15rem;padding: .5rem;}
+                }
+                .content_question{
+                    .type_question{margin: 0 0 .5rem;text-align: left;
+                        span{font-size: 1rem;}
+                    }
+                    .sortable_answer{
+                        li{padding: .5rem;font-size: 1.15rem;}
+                        + .container_btn{
+                            button{.button(); background-color: @btn_login; padding: .5rem;}
+                        }
+                    }
+                }
+            } 
+            .start{
+                .container_btn{
+                    button{.button();background-color: @btn_start;}
+                }
+            }
+            .complete_level,.no_complete_level{
+                .message{font-size: 1.5rem;}
+            }
+        }
+        .levels_content{ margin-right: 0rem;
+            > div{padding: .25rem .15rem;}
+            .level{padding-right: .85rem; position: relative;
+                .top,.bottom{
+                    img{padding: 0;height: 22px;}
+                }
+                .top{ height: inherit; margin-top: 20px;
+                    .name{font-size: .83rem;}
+                }
+                &:after{background-size: 60%; background-position: center; width: 22px;}
+            }
+        }
+    }
+    .search_duel{
+        .content_list_users{
+            .title{font-size: 3.3rem;}
+            .list_users{padding: 1rem 2rem;
+                &:after{border: 1.2rem solid; border-color: transparent transparent @before_color transparent;top: -32px;}
+                .user{ border-bottom: thin solid #fff; padding: .25rem 0;
+                    .col.s5{padding: 0;}
+                    .image_user{text-align: left;
+                        img{max-height: 40px;}
+                    }
+                    .name_user{ font-size: 1rem;
+                        em{font-size: 2rem;}
+                    }
+                    .duel_link{
+                        a{font-size: 2rem;}
+                        &:before{left:9px;}
+                        &:after{right:0px;}
+                    }
+                }
+            }
+        }
+    }
+    .duel_users{
+        .content_start_game{
+            .question{font-size: 1.9rem;padding: 1rem .8rem;
+                &:after{border-width: 1.3rem;top: -35px;right: 4rem;}
+            }
+            .answers_options{padding: 1rem .8rem;
+                label{font-size: 1.2rem;}
+            }
+            .opponent{padding: 1rem 1rem;
+                .arrow{
+                    img{max-height: 60px;margin-top: .8rem;}
+                }
+                .image{
+                    img{max-height: 75px;}
+                }
+                .number_answers{ padding-top: .8rem;
+                    span{font-size: 3rem;}
+                }
+            }
+        }
+    }
+    .panel_notification{
+        .content_panel{
+            .message{ .flex_item(1, 1, 47%);
+            }
+        }
+    }
+    .win_duel{
+        .content_win_duel{
+            .title{font-size: 3.8rem;margin: 1rem auto 1.5rem;}
+            .winner,.loser{padding: 1rem .8rem;
+                .number_answers{ padding-top: 0rem;
+                    span{font-size: 3rem;}
+                }
+                .image,.arrow{
+                    img{max-height: 55px;}
+                }
+            }
+            .winner{
+                .message{
+                    em{font-size: 3rem;}
+                }
+            }
+            .loser{
+                &:after{ border: 1.2rem solid @notification; top: -37px; border-color: transparent transparent @notification transparent;}
+            }
+        }
+    }
+    .terms{
+        .container_logo{padding-bottom: .35rem;}
+        .title{font-size: 3.2rem;}
+        p,.container_btn{padding: .8rem;}
+        .container_btn{
+            a{padding: 1rem .5rem;}
+        }
+    }
+    .home,.register,.terms {
+        .container_logo{padding:.15rem 0;
+            .content{
+                .btn_logo{
+                    img{max-height: 280px;display: block;margin: 0 auto;}
+                }
+            }
+        }
+    }
+    .ui-page-theme-a .ui-body-inherit {
+        .edit_question,.edit_specialty{padding: .5rem;
+            .title{font-size: 2rem;padding-bottom: .6rem;}
+            .form_content{
+                .input-field{
+                    label{color: #3a6667; left: 1rem;}
+                }
+                .structure{
+                    > div{overflow: visible!important;}
+                    .multiple_choice_edit{
+                        .input{
+                            input{padding-right: 3.8rem;}
+                            i{position: absolute;right: 3%;top: 0;bottom: 0;margin: auto;font-size: 1.45rem;line-height: 2.7;cursor: pointer;
+                                &:hover{color: @before_color;}
+                            }
+                        }
+                    }
+                    .order_questions_edit,.multiple_choice_edit{
+                        .input{position: relative;
+                            i{position: absolute; right: 5%; top: 0; bottom: 0; margin: auto;font-size: 1.45rem; line-height: 2.3;cursor: pointer;
+                                &:hover{color: @btn_login;}
+                            }
+                        }
+                        .sortable{ padding-left: 1.5rem;
+                            li{ position: relative; padding: .5rem 0; margin-bottom: .5rem; border-bottom: solid thin transparent;.transition(); cursor: move;
+                                &:hover{border-color: @btn_login;}
+                                &:first-letter{text-transform: uppercase;}
+                                span:first-child{
+                                    &:after{content: '';}
+                                    
+                                }
+                                i{position: absolute; right: 2%; top: 0; bottom: 0; margin: auto;font-size: 1rem; line-height: 2;cursor: pointer;
+                                    &:hover{color: @btn_login;}
+                                }
+                            }
+                        }
+                    }
+                    .multiple_choice_edit{
+                        .sortable{
+                            li{cursor: initial;
+                                .last{position:absolute; right: 3rem;
+                                    p{display: inline;
+                                        label{ top: -2px; .transform(scale(.7));}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .container_btn{
+                    button{
+                        &:hover{background-color: @btn_start!important;}
+                    }
+                }
+            }
+        }
+    }
+    .race,.duel{
+        .content_game{margin-top: 2rem;
+            .message_game{padding: 1rem .7rem; 
+                &:before{border-width: 1.3rem; left: -35px;}
+                p{font-size: 1.25rem;}
+            }
+        }
+    }
+    .race{
+        .content_game {
+            .icon_game{text-align: center;
+                img{max-width: 100%;margin-left: -10px;}
+            }
+            .container_btn{
+                button{font-size: .77rem; padding: .6rem .2rem;}
+            }
+        }
+    }
+}
+
+@media(max-width: 380px){
+    .panel {
+        .panel_content {padding: 1rem .35rem 2rem;}
+    }
+    .dashboard{
+        hgroup {margin: 2rem 0 2rem;}
+    }
+    .friends{
+         .content_friends {
+             .friend {
+                 .score_friend,.name_friend{margin: 0;}
+                 em{font-size: 1.75rem;}
+                 .image_friend{text-align: center;
+                     img{height: 45px;}
+                 }
+                 .score_friend{font-size:2rem;font-weight: normal;}
+                 .col.s6{padding: 0;}
+            }
+         }
+    }
+    .start_race,.search_duel{
+        .content_start_game{ margin-top: 2rem;
+            .question,.answers_options{padding: 1rem .8rem;}
+            .question{font-size: 2rem;}
+            .answers_options{padding: 1rem;
+                label{ font-size: 1.2rem;}
+            }
+        } 
+    }
+    .home,.register,.terms {
+        .container_logo{padding-bottom:0;
+            .content{
+                .btn_logo{
+                    img{max-height: 230px;}
+                }
+            }
+        }
+    }
+    .panel,.profile {
+        .panel_header{min-height: 155px;
+            .information_user{min-height: 75px;
+                .image_user{width: 55px;height: 54px;}
+                .data_user{margin-top: 0;}
+            }
+        }
+    }
+    .profile {
+        .content_profile{
+            .panel_header{min-height: 155px;
+                .information_user{min-height: 75px;
+                    .image_user{width: 55px;height: 54px;}
+                }
+            }
+            .panel_content{padding: 1rem .75rem 1rem;}
+            .form_biography{opacity: 1;}
+        }
+    }
+    .questions,.specialties{
+        .content_questions{padding: .35rem;margin: .4rem auto 1rem; 
+            .forms{      
+                .tab_title{font-size: 2rem; line-height: 1;
+                    + h4{font-size: .85rem;line-height: 1; padding-left: .5rem; margin-bottom: .25rem;}
+                }
+                .forms_contents{ .perspective(400px); .perspective_origin(0% 50%);
+                    > div{padding: 0;}
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 320px){
+    .search_duel {
+        .content_list_users { margin-bottom: 1rem;
+            .title {font-size: 2.3rem; margin: .5rem 0;line-height: 1.25;}
+            .list_users{ padding: 1rem;
+                .user{
+                    .duel_link{
+                        &:before{top: 8px;}
+                        &:after{width: 16px;right: 4px; top: 10px;}
+                        a{font-size: 1.5rem;display: inline-block; margin-top: .5rem;}
+                    }
+                }
+            }
+        }
+    }
+    .race,.duel {
+        .content_game {
+            .icon_game{text-align: center;
+                img{max-width: 80%;}
+            }
+            .message_game{
+                p{text-shadow: none;}
+            }
+            .container_btn{
+                button{font-size: .82rem;}
+            }
+            .col.s6:last-child{padding: 0;}
+        }
+    }
+    .start_race,.search_duel{
+        .content_start_game{ margin: 1.5rem 0;
+            .question,.answers_options{padding: 1rem .5rem;}
+            .question{font-size: 1.5rem;
+                &:after{border-width: 1.3rem;top: -35px;}
+            }
+            .answers_options{padding: .35rem .4rem;
+                label{ font-size: 1.1rem; padding: .25rem .4rem;}
+            }
+        } 
+    }
+    .dashboard {
+        hgroup {margin: 1rem 0 1rem;
+            h1,h2{font-size: 1.1rem;}
+        }
+    }
+    .container_btn{
+        button{font-size: .82rem;}
+    }
+    .win_duel {
+        .content_win_duel {
+            .title{font-size: 2.8rem; margin: 0rem 0 .5rem; line-height: 1.2;}
+        }
+    }
+    .panel_notification {
+        .content_panel {
+            .time{ padding-right: 0; padding-left: 0;
+                &:before{left: -7px;}
+            }
+        }
+    }
+    .duel_users {
+        .content_start_game { margin-bottom: 1.5rem;
+            .question{font-size: 1.5rem; margin-bottom: .5rem;}
+            .number_questions {
+                span{font-size: 1.3rem;}
+            }
+            .answers_options{padding: .4rem .65rem;
+                label{padding: .2rem .25rem;}
+            }
+            .opponent{margin:.5rem 0 0;}
+        }
+    }
+    .friends{
+        .content_friends{margin: 1.5rem 0 1rem;padding: .5rem;
+            &:after{border-width: 18px; top: -35px;}
+        }
+    }
+    .home,.register,.terms {
+        .container_logo{
+            .content{
+                .btn_logo{
+                    img{max-height: 190px;}
+                }
+            }
+        }
+        .container_btn,.container_login .content{
+            button{padding: 1rem .25rem;}
+        }
+        .container_register{margin: .35rem 0;
+            span,span a{font-size: 1rem;}
+        }
+    }
+}
