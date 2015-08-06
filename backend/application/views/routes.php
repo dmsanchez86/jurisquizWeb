@@ -137,8 +137,6 @@ $app->post(
     '/correct_answers','main:correct_answers'
 )->setParams(array($app));
 
-
-
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';
