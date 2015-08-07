@@ -1467,7 +1467,7 @@ function panel_data($id){
             
             for (var i = 0; i < data.length; i++) {
                 if(i < 3){
-                    list_users.append('<li>'+data[i].name+' '+data[0].points+'</li>');
+                    list_users.append('<li>'+data[i].name+' '+data[i].points+'</li>');
                 }
             }
         }
@@ -2221,6 +2221,10 @@ function evt_validate_mode_game(data,name_level,id_game){
                     // Get all contents of questions
                     var content_questions = $('.start_race .content_start_game .content_question');
                     var count_questions = 0;
+                    var points = 0;
+                    $.post(webService + 'points/' + localStorage.getItem('id_user'),{id: '.l.'}, function(data){
+                        points = parseInt(JSON.parse(data).points);
+                    });
                     
                     // Hide the content of this button
                     $(this).parent().parent().fadeOut(500);
@@ -2249,13 +2253,15 @@ function evt_validate_mode_game(data,name_level,id_game){
                                 if(current_question + 1 < top_questions){
                                     info = {
                                         id_user         : localStorage.getItem('id_user'),
-                                        number          : (current_question + 1)
+                                        number          : (current_question + 1),
+                                        points          : (++points)
                                     };
                                 }else{
                                     info = {
                                         id_user             : localStorage.getItem('id_user'),
                                         id_level_category   : (parseInt(id_level_category) + 1),
-                                        number              : (current_question + 1)
+                                        number              : (current_question + 1),
+                                        points              : (++points)
                                     };
                                 }
                                 
@@ -2265,13 +2271,14 @@ function evt_validate_mode_game(data,name_level,id_game){
                                     data    : info,
                                     success : function(res){
                                         var data = JSON.parse(res);
+                                        console.log(data);
                                         console.log(data.metadata);
                                         evt_current_level(data.metadata);
-                                        // location.reload();
                                         $('.start_race .levels_content .level .bottom .number_questions .correct_answers').attr('correct-answers',(++current_question)).addClass('active');
                                         setTimeout(function(){
                                             $('.start_race .levels_content .level .bottom .number_questions .correct_answers').text((current_question)).removeClass('active');
                                         },1000);
+                                        panel_data(data.id_user);
                                     }
                                 });
                             }else{
