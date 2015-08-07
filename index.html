@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <!-- Metas -->
+        <meta charset="utf-8">
+        <meta name="language" content="Spanish">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Script-Type" content="text/javascript">
+        <meta http-equiv="Content-Style-Type" content="text/css">
+        <meta name="author" content="Daniel Mauricio Sanchez">
+        
+        <!-- Page Title -->
+        <title>Jurisquiz -- Game</title>
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        
+        <!-- Librarys CSS -->
+        <link rel="stylesheet" href="css/materialize.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/animate.css">
+        
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        
+        <!-- Librarys JavaScript -->
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.mobile.router.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        
+    </head>
+    <body>
+        <!-- Page Home -->
+        <div data-role="page" id="home" class="home" data-title="Jurisquiz - Juego de Preguntas">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="container_logo">
+                        <div class="content">
+                            <a href="#home" class="btn_logo">
+                                <img src="img/logo.png" alt="Logo Jurisquiz" title="Jurisquiz" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="container_btn">
+                        <button type="button" id="btn_start" class="waves-effect waves-btn-start btn btn_start">Comienza con las Preguntas</button>
+                    </div>
+                    <div class="container_register">
+                        <span>Aún No Tienes Cuenta? Crear Una <a href="register.html" data-transition="pop">Aqui</a></span>
+                    </div>
+                    <div class="container_login">
+                        <div class="content">
+                            <form class="col s12">
+                                <div class="input-field col s12">
+                                  <input id="email" type="email" class="validate" placeholder="Correo"  data-role="none" autocomplete="on">
+                                </div>
+                                <div class="input-field col s12">
+                                  <input id="password" type="password" class="validate" placeholder="Contraseña" data-role="none">
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_login">Acceder</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container_terms">
+                        <span><a href="terms.html">Políticas de Uso</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Panel Notification -->
+        <div class="panel_notification">
+            <div class="content_panel">
+                <div class="image_user">
+                    <img src="img/level1.png" class="responsive-img">
+                </div>
+                <div class="message">
+                    <span class="name">Andres Martinez te reta a un duelo</span>
+                </div>
+                <div class="time">
+                    <span>( 10 seg )</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Preloader -->
+        <div class="loader">
+            <div class="content_loader">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                </div>
+                <div class="message"></div>
+            </div>
+        </div>
+        
+        <!-- Nav-Menu -->
+        <div>
+          <div id="slide-out" class="side-nav panel">
+            <header class="panel_header">
+                    <div class="btn_close">
+                        <a data-rel="close" data-role="none" class="btn_panel toggle">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </a>
+                    </div>
+                    <div class="information_user">
+                        <div class="row" style="margin: 0">
+                            <div class="col m4 s4" style="padding:0">
+                                <div class="image_user">
+                                    <img src="media/profile_users/defaul_user.png" class="responsive-img">
+                                </div>
+                            </div>
+                            <div class="col m8 s8" style="padding: 0 ">
+                                <div class="data_user">
+                                    <span class="name">Name</span>
+                                    <span class="username">@Username</span>
+                                    <span class="email">Email</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            <section class="panel_content">
+                <article>
+                    <div class="row">
+                        <div class="col m7 s7" style="padding: 0">
+                            <div class="status">
+                                <div class="points">
+                                    <em>0</em> puntos
+                                </div>
+                                <div class="icon_level">
+                                    <img src="#" class="responsive-img"></img>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col m5 s5" style="padding: 0">
+                            <div class="friends">
+                                <h4 class=title"">Colegas</h4>
+                                <ul>
+                                </ul>
+                                <a href="friends.html">Ver Todos...</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="levels">
+                    <div class="row">
+                        <div class="col m4 s4">
+                            <div class="current_level">
+                                <img src="img/level1.png" class="responsive-img"></img>
+                                <span>Nivel </span>
+                            </div>
+                        </div>
+                        <div class="col m4 s4">
+                            <div class="arrow">
+                                <img src="img/arrow.png" class="responsive-img"></img>
+                            </div>
+                        </div>
+                        <div class="col m4 s4">
+                            <div class="next_level">
+                                <img src="img/level2.png" class="responsive-img"></img>
+                                <span>Nivel </span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <div class="container_btn">
+                        <button type="button" class="waves-effect waves-btn-start btn btn_logout">Salir</button>
+                    </div>
+                </article>
+            </section>
+          </div>
+        </div>
+        
+        <!-- Nav-Button -->
+        <div class="nav_button">
+            <div class="nav">
+    			<a href="profile.html" class="nav-item nav-count-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Perfil"><i class="material-icons">perm_identity</i><span class="invisible"></span></a>
+    			<a href="#dashboard" class="nav-item nav-count-2 tooltipped" data-position="left" data-delay="50" data-tooltip="Home"><i class="material-icons">dashboard</i><span class="invisible"></span></a>
+    			<a href="friends.html" class="nav-item nav-count-3 tooltipped" data-position="left" data-delay="50" data-tooltip="Colegas"><i class="material-icons">supervisor_account</i><span class="invisible"></span></a>
+    			<a href="config.html" class="nav-item nav-count-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Configuración"><i class="material-icons">settings</i><span class="invisible"></span></a>
+    			<a href="#" class="mask"><i class="material-icons">add</i></a>
+    		</div>
+        </div>
+        
+        <!-- Edit Question or Specialty -->
+        <div class="popup_edit">
+            <div class="outside"></div>
+            <div class="wrapper">
+                <div class="content">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scripts -->
+        <script>
+            $(document).bind("mobileinit", function(){
+              $.mobile.touchOverflowEnabled = true;
+            });
+            $(document).ready(function(){
+                $('.tooltipped').tooltip({delay: 10});
+            });
+        </script>
+        <script type="text/javascript" src="js/nav.js"></script>
+        <script type="text/javascript" src="js/routes.js"></script>
+        
+        <!-- Templates -->
+        <script type="text/html" id="each_user">
+            <div class="friend">
+                <div class="row" style="margin:0">
+                    <div class="col s3">
+                        <div class="image_friend">
+                            <img src="img/levels/level<%= level %><%= gender %>.png" class="responsive-img">
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="name_friend">
+                            <em><%= (++index) %>. </em> <%= name %>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="score_friend">
+                            <%= points %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="levels_mode_template">
+            <option value="<%= id %>"><%= name %></option>
+        </script>
+        <script type="text/html" id="category_level_template">
+            <option value="<%= id %>"><%= name %></option>
+        </script>
+        <script type="text/html" id="all_questions_template">
+            <option value="<%= id %>"><%= question %> ( <%= mode_game %> )</option>
+        </script>
+        <script type="text/html" id="all_questions_show">
+            <div class="question">
+                <%
+                    var options = options_question.split('/');
+                %>
+            
+                <div>
+                    <span class="name"><b>Pregunta:</b> <%= question %></span> | <span class="id"><b>ID:</b> <%= id %></span>
+                </div>
+                <div>
+                    <span class="mode_game"><b>Especialidad:</b> <%= id_specialty %></span> | <span><b>Estado: </b><%= state %></span>
+                </div>
+                <div>
+                    <span class="type_question"><b>Tipo de Pregunta:</b> <%= t_question %></span>
+                </div>
+                <div>
+                    <% var name_type = t_question == "Ordenamiento" ? 'Orden Correcto: ' : 'Respuesta Correcta: '; %>
+                    <span class="answer_question"><b><%= name_type %></b> <%= correct_answer %></span>
+                </div>
+                <% if(t_question == "Selección múltiple"){ %>
+                <div>
+                    <span class="options_question"><b>Opciones:</b></span>
+                    <ol>
+                        <%
+                        
+                        for(var i = 0; i < options.length; i++){ %>
+                            <% if(options[i] != correct_answer) %>
+                                <li><%= options[i] %></li>
+                        <% }
+                        
+                        %>
+                    </ol>
+                </div>
+                <% } %>
+                <nav class="menu_question">
+                    <ul>
+                        <!-- <li><span><i class="material-icons">delete</i></span></li> -->
+                        <% if(state == 'Activa'){ %>
+                            <li class="desactivate" title="Desactivar"><span><i class="material-icons">warning</i></span></li>
+                        <% }else{ %>
+                            <li class="activate" title="Activar"><span><i class="material-icons">done</i></span></li>
+                        <% } %>
+                        <li class="edit" title="Editar Pregunta"><span><i class="material-icons">edit</i></span></li>
+                    </ul>
+                </nav>
+            </div>
+        </script>
+        <script type="text/html" id="all_specialties_show">
+            <div class="specialty">
+                <div>
+                    <span class="name"><b>Especialidad:</b> <%= name %></span> | <span class="id"><b>ID:</b> <%= id %></span>
+                </div>
+                <div>
+                    <span class="mode_game"><b>Modo de Juego:</b> <%= mode_game %></span> | <span><b>Estado: </b><%= state %></span>
+                </div>
+                <div>
+                    <span class="level_game"><b>Nivel de Juego:</b> <%= level_game %></span>
+                </div>
+                <nav class="menu_specialty">
+                    <ul>
+                        <!-- <li><span><i class="material-icons">delete</i></span></li> -->
+                        <% if(state == 'Activa'){ %>
+                            <li class="desactivate" title="Desactivar"><span><i class="material-icons">warning</i></span></li>
+                        <% }else{ %>
+                            <li class="activate" title="Activar"><span><i class="material-icons">done</i></span></li>
+                        <% } %>
+                        <li class="edit" title="Editar Pregunta"><span><i class="material-icons">edit</i></span></li>
+                    </ul>
+                </nav>
+            </div>
+        </script>
+        <script type="text/html" id="template_edit_question">
+            <div class="form_content">
+                <form id="form_new_specialty">
+                    <div class="input-field col s12">
+                      <textarea id="name_specialty" class="materialize-textarea" data-role="none"></textarea>
+                      <label for="name_specialty" data-role="none">Nombre: </label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select data-role="none" id="mode_game_context">
+                        </select>
+                        <label data-role="none">Modo de Juego: </label>
+                    </div>
+                    <div class="input-field col s12 level_game" style="display: none">
+                        <select data-role="none" id="level_game_context">
+                        </select>
+                        <label data-role="none">Nivel Juego: </label>
+                    </div>
+                    <div class="container_btn">
+                        <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#create_specialty">Crear Especialidad</button>
+                    </div>
+                    <div class="container_btn">
+                        <button type="reset" class="waves-effect waves-btn-start btn btn_register" data-url="#cancel_specialty">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </script>
+        <script type="text/html" id="start_race_categories">
+            <div class="level <%= icon %>" id-level-category="<%= id %>">
+                <div class="top">
+                    <span class="name"><%= name %></span>
+                    <span>
+                        <img src="img/characteres/<%= icon %><%= gender %>.png" class="responsive-img icon_level">
+                    </span>
+                </div>
+                <div class="bottom">
+                    <span class="number_questions">
+                        <span class="correct_answers"></span> / <span class="rank"><%= number_questions %></span>
+                    </span>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="structure_question">
+            <div class="content_question" correct-answer="<%= correct_answer %>" type-question="<%= type_question %>">
+                <div class="question">
+                    <%= question %>
+                </div>
+                
+                <%
+                    var options = options_question.split('/');
+                    var name_type_question = '';
+                    
+                    if(type_question == 1)
+                        name_type_question = "Selección Múltiple";
+                    else if(type_question == 2)
+                        name_type_question = "Si / No";
+                    else if(type_question == 3)
+                        name_type_question = "Ordenamiento";
+                %>
+                
+                <% if(type_question != 3){ %>
+                    <div class="answers_options">
+                        <div class="type_question">
+                            <span>Tipo de pregunta: <%= name_type_question %></span>
+                        </div>
+                        <% 
+                        
+                        var options_random = options.random();
+                        
+                        for(var i = 0; i < options_random.length; i++){ %>
+                            <div class="answer" id-answer="<%= id %>">
+                                <input id="answer<%= i %>" type="radio" name="answer_<%= id %>" value="<%= options_random[i] %>" data-role="none"/>
+                                <label for="answer<%= i %>" data-role="none"><%= options_random[i] %></label>
+                            </div>
+                        <% } %>
+                    </div>
+                <% }else{ %>
+                    <div class="answers_options">
+                        <div class="type_question">
+                            <span>Tipo de pregunta: <%= name_type_question %></span>
+                        </div>
+                        <ul class="sortable_answer">
+                        <% for(var i = 0; i < options.length; i++){ %>
+                            <li position="<%= i + 1 %>"><%= options[i] %></li>
+                        <% } %>
+                        </ul>
+                        <div class="container_btn"><button type="button" class="waves-effect waves-btn-start btn btn_register">Enviar Orden</button></div>
+                    </div>
+                <% } %>
+            </div>
+        </script>
+        
+    </body>
+</html>
