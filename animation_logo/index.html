@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="language" content="Spanish">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Script-Type" content="text/javascript">
+        <meta http-equiv="Content-Style-Type" content="text/css">
+        <meta name="author" content="Daniel Mauricio Sanchez">
+       <title>Animation Jurisquiz</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                border: 0;
+                transition: all 1s ease;
+            }
+            html,body{
+                height: 100%;
+                width: 100%;
+                display: block;
+            }
+            body{
+                perspective: 800px;
+                perspective-origin: 50% 0%;
+            }
+            .content{
+                position: absolute;
+                /*border: thin solid;*/
+                margin: auto;
+                top: 1rem;
+                left: 1rem;
+                right: 0;
+                width: 617px;
+                height: 567px;
+                overflow: hidden;
+                transition: transform 1s ease;
+                transform: rotateX(0deg) translatey(0px) rotatey(0deg) scale(.4);
+                transform-origin: left top;
+                transition: all .5s ease;
+            }
+            .content:before{
+                position: absolute;
+                width: 100%;
+                border: solid thin;
+                transition: height .5s .2s ease-in;
+                top: 0;
+                left: 0;
+                content: '';
+                height: 593px;
+            }
+            .content:after{
+                content: '';
+                top: 105%;
+                left: 0;
+                position: absolute;
+                width: 100%;
+                height: 593px;
+                border: thin solid #ddd;
+                background: rgba(130,130,130,.8);
+                transition: top 1s .3s ease-out;
+                z-index: 4;
+                transform: rotatex(0deg) translatez(-100px);
+            }
+            .content:hover:before{
+                height: 593px;
+            }
+            .content:hover:after{
+                top: 0;
+            }
+            .content:hover{
+                transform: rotatex(-15deg) translatey(0px) rotatey(0deg) translatex(0px) scale(.4);
+            }
+            .content img{
+                position: absolute;
+                top: 0;
+                left: 0;
+                max-width: 100%;
+                height: auto;
+                -webkit-animation: flat .5s 1 ease-in-out;
+                animation: flat .5s 1 ease-in-out;
+            }
+            .content img:first-child{
+                opacity: 1;
+                animation-iteration-count: 1;
+            }
+            .content .step_1{
+                left: 50%;
+                top: 60px;
+                z-index: 3;
+                -webkit-animation: hammer 1.5s 2s 1 ease;
+                animation: hammer 1.5s 2s 1 ease;
+            }
+            .content .step_2{
+                top: 230px;
+                left: 28%;
+                
+                -webkit-animation: step_3 2.4s.5 1 ease-in-out;
+                animation: step_3 2.4s 1 ease-in-out;
+            }
+            .content .step_3{
+                left: 2%;
+                top: 20px;
+                
+                -webkit-animation: step_3 1s 1 ease-in-out;
+                animation: step_3 1s 1 ease-in-out;
+            }
+            @keyframes flat{
+                0%{
+                    opacity: 0;
+                }
+                100%{
+                    opacity: 1;
+                }
+            }
+            @-webkit-keyframes flat{
+                0%{
+                    opacity: 0;
+                }
+                100%{
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes hammer{
+                0%{
+                    opacity: 0;transform: rotatez(0deg);
+                }
+                30%,100%{
+                    opacity: 1;
+                    transform: rotatez(0deg);
+                }
+                40%,50%{
+                    transform: rotateZ(-43deg) translatey(103px) translateX(-178px);
+                }
+                45%{
+                    transform: rotateZ(-39deg) translatey(113px) translateX(-155px);
+                }
+            }
+            @-webkit-keyframes hammer{
+                0%{
+                    opacity: 0;transform: rotatez(0deg);
+                }
+                30%,100%{
+                    opacity: 1;
+                    transform: rotatez(0deg);
+                }
+                40%,50%{
+                    transform: rotateZ(-43deg) translatey(103px) translateX(-178px);
+                }
+                45%{
+                    transform: rotateZ(-39deg) translatey(113px) translateX(-155px);
+                }
+            }
+            
+            @keyframes step_2{
+                0%{
+                    transform: scale(0);
+                    opacity: 0;
+                }
+                100%{
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            @-webkit-keyframes step_2{
+                0%{
+                    transform: scale(0);
+                    opacity: 0;
+                }
+                100%{
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            
+            @keyframes step_3{
+                0%{
+                    transform: scale(0);
+                    opacity: 0;
+                }
+                100%{
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            @-webkit-keyframes step_3{
+                0%{
+                    transform: scale(0);
+                    opacity: 0;
+                }
+                100%{
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <img src="logo_empty.png" class="empty_logo">
+            <img src="step_1.png" class="step_1">
+            <img src="step_3.png" class="step_2">
+            <img src="step_2.png" class="step_3">
+        </div>
+        
+        <script>
+            window.onload = function(){
+                var content = document.querySelector('.content');
+                // content.onmouseover = function(){
+                //     //this.style.transform = "rotatex(0deg) translatey(400px) rotatey(25deg) translatex(300px)";
+                // }
+                // content.onmouseout = function(){
+                //     //this.style.transform = "rotateX(0deg) translatey(400px) rotatey(0deg)";
+                // }
+                setInterval(function(){
+                    // location.reload();
+                },4200);
+            }
+        </script>
+    </body>
+</html>

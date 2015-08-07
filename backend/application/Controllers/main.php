@@ -112,7 +112,7 @@ class main {
         if($filter == 'admin'){
             $query = jur_users::all(array('conditions' => array('role = "admin"')));
         }else if($filter == 'users'){
-            $query = jur_users::all(array('conditions' => array('role = "user"')));
+            $query = jur_users::all(array('conditions' => array('role = "user" ORDER BY points ASC')));
         }else if($filter == 'all'){
             $query = jur_users::all();
         }
@@ -633,32 +633,40 @@ class main {
         echo (json_encode($query->attributes()));
     }
     
-    #
+    # function to save when the user answer well a question
     function correct_answers(){
         $id = base64_decode($_POST['id_user']);
         
         $query = jur_current_state_game::find($id);
+        $query_ = jur_users::find($id);
         $options = $query->attributes();
+        $id_user = $query->attributes();
         
         if(isset($_POST['id_level_category'])){
             if($_POST['id_level_category'] > 3){
                 $query->id_level_game = (++$options['id_level_game']);
                 $query->id_level_category = 1;
                 $query->correct_answers = 0;
+                $query_->points = $_POST['points'];
             }else{
                 $query->id_level_category = $_POST['id_level_category'];
                 $query->correct_answers = 0;
+                $query_->points = $_POST['points'];
             }
         }
         else{
             $query->correct_answers = $_POST['number'];
+            $query_->points = $_POST['points'];
         }
-        $res = $query->save();
         
-        if($res){
+        $res = $query->save();
+        $res_ = $query_->save();
+        
+        if($res && $res_){
             $data = array(
                     'message'       => 'Se guardo el numero de respuestas correctamente',
                     'status'        => 'OK',
+                    'id_user'       => base64_encode($id_user['id_user']),
                     'metadata'      => $query->attributes()
                 );
         }else{
@@ -669,5 +677,14 @@ class main {
         }
         
         echo (json_encode($data));
+    }
+    
+    # Function to get total points
+    function points($app,$id){
+        $id_user = base64_decode($id);
+        
+        $query = jur_users::find($id_user);
+        
+        echo json_encode($query->attributes());
     }
 }

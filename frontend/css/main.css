@@ -1657,12 +1657,12 @@ html {
   -ms-transform: scale(0);
   -o-transform: scale(0);
   transform: scale(0);
-  -webkit-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
-  -khtml-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
-  -moz-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
-  -ms-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
-  -o-transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
-  transition: all 1s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -webkit-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -khtml-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -moz-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -ms-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -o-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
+  transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
   position: relative;
   height: 75vh;
 }
@@ -4059,6 +4059,9 @@ input[type="email"]:focus,
 input[type="text"]:focus,
 input[type="password"]:focus {
   box-shadow: 0;
+  background-color: rgba(212, 212, 212, 0.63);
+  color: #332E2E;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.61);
 }
 [type="radio"].with-gap:checked + label:after {
   border: 2px solid #3a6667;
@@ -4695,7 +4698,7 @@ label.ui-btn {
   }
   .start_race .levels_content .level .top {
     height: inherit;
-    margin-top: 0px;
+    margin-top: 5px;
   }
   .start_race .levels_content .level .top .name {
     font-size: .83rem;
@@ -4840,6 +4843,7 @@ label.ui-btn {
   .register .container_logo + .container_btn button,
   .terms .container_logo + .container_btn button {
     margin-top: 1rem;
+    padding: .8rem;
   }
   .ui-page-theme-a .ui-body-inherit .edit_question,
   .ui-page-theme-a .ui-body-inherit .edit_specialty {
@@ -5336,6 +5340,13 @@ label.ui-btn {
   .ui-header {
     min-height: 70px;
   }
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    padding: 0 0 0 1rem;
+    margin-bottom: .25rem;
+    height: 2.3rem;
+  }
 }
 @media (max-width: 380px) {
   .panel .panel_content {
@@ -5390,6 +5401,7 @@ label.ui-btn {
   .register .container_logo,
   .terms .container_logo {
     padding-bottom: 0;
+    margin-top: 1rem;
   }
   .home .container_logo .content .btn_logo img,
   .register .container_logo .content .btn_logo img,

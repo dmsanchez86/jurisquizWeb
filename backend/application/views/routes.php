@@ -137,6 +137,12 @@ $app->post(
     '/correct_answers','main:correct_answers'
 )->setParams(array($app));
 
+// Route for get current points 
+$app->post(
+    '/points/:id','main:points'
+)->setParams(array($app));
+
+
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';
