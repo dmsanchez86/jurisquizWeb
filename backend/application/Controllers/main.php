@@ -652,6 +652,7 @@ class main {
                 $query->id_level_category = $_POST['id_level_category'];
                 $query->correct_answers = 0;
                 $query_->points = $_POST['points'];
+                $query_->level = $_POST['id_level_category'];
             }
         }
         else{

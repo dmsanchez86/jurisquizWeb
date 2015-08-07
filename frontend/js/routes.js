@@ -1448,8 +1448,8 @@ function panel_data($id){
             $('.information_user .image_user img').attr('src', directory_profile + data.image);
             $('.panel_header').css('background-image','url('+directory_biography+data.image_b+')');
             $('.panel .icon_level img,.panel .current_level img,.profile .current_level img,.status .icon_level img').attr('src','img/levels/level'+data.level+data.gender+'.png');
-            $('.panel .current_level span').text('Nivel '+data.level);
-            $('.panel .next_level span').text('Nivel '+(parseInt(data.level) + 1));
+            $('.panel .current_level span,.profile .current_level span').text('Nivel '+data.level);
+            $('.panel .next_level span,.profile .next_level span').text('Nivel '+(parseInt(data.level) + 1));
             $('.panel .next_level img,.profile .next_level img').attr('src','img/levels/level'+(parseInt(data.level) + 1)+data.gender+'.png');
         }   
     });
