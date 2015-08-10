@@ -13,6 +13,7 @@ var count_id = 6;
 var count_timer = null;
 
 var router = new $.mobile.Router({
+    "index.html": {handler: "home", events: "s" },
     "#home": {handler: "home", events: "s" },
     "register.html": {handler: "register", events: "s" },
     "terms.html": {handler: "terms", events: "s" },
@@ -202,6 +203,8 @@ var router = new $.mobile.Router({
         });
     },
     race: function(type,match,ui){
+        hide_timer();
+        
         $('.race .content_game .icon_game img').attr('src','img/icons/race'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
         
         $('.start_race .levels_content').empty();
@@ -1279,7 +1282,7 @@ function evt_logout(){
             localStorage.removeItem('role_user');
             localStorage.removeItem('gender_user');
             localStorage.removeItem('first_view_dashboard');
-            $.mobile.changePage('#home',{role: 'page',transition: 'flow'});
+            $.mobile.changePage('index.html',{role: 'page',transition: 'flow'});
             $('.loader').fadeOut(1800);
         },1200);
     });
@@ -2443,6 +2446,12 @@ function show_timer(time){
             clearInterval(count);
         }
     },1000);
+}
+
+// Evt to hide timer question
+function hide_timer(){
+    clearInterval(count_timer);
+    $('.question_time').hide(500);
 }
 
 // Render Template
