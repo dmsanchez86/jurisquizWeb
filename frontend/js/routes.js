@@ -1279,7 +1279,7 @@ function evt_logout(){
             localStorage.removeItem('role_user');
             localStorage.removeItem('gender_user');
             localStorage.removeItem('first_view_dashboard');
-            $.mobile.changePage('index.html',{role: 'page',transition: 'flow'});
+            $.mobile.changePage('#home',{role: 'page',transition: 'flow'});
             $('.loader').fadeOut(1800);
         },1200);
     });
@@ -1742,8 +1742,8 @@ function evt_all_questions_show(filter){
                                 }
                             }
                             
-                            var options_question = data.options_question.split('.,');
-                            var correct_answer_edit = data.correct_answer.split('.,');
+                            var options_question = data.options_question.split('/');
+                            var correct_answer_edit = data.correct_answer.split('/');
                             var correct_question = 0;
                             
                             if(data.type_question == 1){
@@ -1989,18 +1989,6 @@ function evt_append_question_choice_edit(question){
             count_id++;
         });
     }
-}
-
-// Function for split array
-function split(array){
-    var string = "";
-    for (var i = 0; i < array.length; i++) {
-        if(i < array.length - 1)
-            string += array[i] + ',';
-        else
-            string += array[i];
-    }
-    return string;
 }
 
 // Evt to activate or deactivate question
