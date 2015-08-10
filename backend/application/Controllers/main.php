@@ -112,7 +112,7 @@ class main {
         if($filter == 'admin'){
             $query = jur_users::all(array('conditions' => array('role = "admin"')));
         }else if($filter == 'users'){
-            $query = jur_users::all(array('conditions' => array('role = "user" ORDER BY points ASC')));
+            $query = jur_users::all(array('conditions' => array('role = "user" ORDER BY points DESC')));
         }else if($filter == 'all'){
             $query = jur_users::all();
         }

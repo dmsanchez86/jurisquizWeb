@@ -2369,7 +2369,6 @@ function evt_validate_mode_game(data,name_level,id_game){
         }
     });
 }
-
 // Event to paint the current level
 function evt_current_level(data){
     if(data.id_game_mode == 1){
