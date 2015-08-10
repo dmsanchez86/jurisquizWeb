@@ -664,12 +664,25 @@ class main {
         $res_ = $query_->save();
         
         if($res && $res_){
-            $data = array(
+            $answers = jur_answers::create(array(
+                    'id'            => null,
+                    'id_user'       => $id,
+                    'id_question'   => $_POST['id_question']
+                ));
+                
+            if($answers->errors->errors === null){
+                $data = array(
                     'message'       => 'Se guardo el numero de respuestas correctamente',
                     'status'        => 'OK',
                     'id_user'       => base64_encode($id_user['id_user']),
                     'metadata'      => $query->attributes()
                 );
+            }else{
+                $data = array(
+                    'message'       => 'Ocurrio un error',
+                    'status'        => 'FAIL'
+                );
+            }
         }else{
             $data = array(
                     'message'       => 'Error al actualizar las respuestas correctas',
@@ -687,5 +700,18 @@ class main {
         $query = jur_users::find($id_user);
         
         echo json_encode($query->attributes());
+    }
+    
+    # Function to get correct answers
+    function answers($app,$id){
+        $id_user = base64_decode($id);
+        
+        $query = jur_answers::all(array('conditions' => array('id_user = ?', $id_user)));
+        
+        foreach($query as $k){
+			$data[] = $k->attributes();
+		}
+        
+        echo json_encode($data);
     }
 }

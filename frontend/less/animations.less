@@ -41,3 +41,23 @@
         .transform(scale(1)); opacity: .1;
     }
 }
+
+@keyframes loading {
+    from{.transform(rotate(0));}
+    to{.transform(rotate(360deg));}
+}
+
+@-webkit-keyframes loading {
+    from{.transform(rotate(0));}
+    to{.transform(rotate(360deg));}
+}
+
+@keyframes scale {
+    from{.transform(scale(0));}
+    to{.transform(scale(2));}
+}
+
+@-webkit-keyframes scale {
+    from{.transform(scale(0));}
+    to{.transform(scale(2));}
+}

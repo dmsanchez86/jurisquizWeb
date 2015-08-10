@@ -142,6 +142,11 @@ $app->post(
     '/points/:id','main:points'
 )->setParams(array($app));
 
+// Route for get answers corrects 
+$app->post(
+    '/answers/:id','main:answers'
+)->setParams(array($app));
+
 
 // PUT route
 $app->put('/put', function () {
