@@ -87,6 +87,11 @@ $app->post(
     '/question/:param','main:question'
 )->setParams(array($app));
 
+// Route for get all question by specialty 
+$app->post(
+    '/find_question/','main:find_question'
+)->setParams(array($app));
+
 // Route for get all mode games 
 $app->post(
     '/all_games_mode','main:all_games_mode'

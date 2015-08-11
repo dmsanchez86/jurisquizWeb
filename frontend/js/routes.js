@@ -401,31 +401,21 @@ var router = new $.mobile.Router({
                     
                     if(answer_ == correct_answer){
                         var info = {};
-                        // if(current_question + 1 < top_questions){
-                        //     info = {
-                        //         id_user         : localStorage.getItem('id_user'),
-                        //         id_question     : $id_question,
-                        //         number          : (current_question + 1),
-                        //         points          : (++points)
-                        //     };
-                        // }else{
-                        //     info = {
-                        //         id_user             : localStorage.getItem('id_user'),
-                        //         id_question         : $id_question,
-                        //         id_level_game       : id_game,
-                        //         id_level_category   : parseInt(id_level_category),
-                        //         number              : (current_question + 1),
-                        //         points              : (++points)
-                        //     };
-                        // }
+                        
+                        var $id_specialty = $('.start_test .content_question.active').attr('id-specialty');
                         
                         $.ajax({
-                            url     : webService + "correct_answers_test",
+                            url     : webService + "find_question",
                             type    : 'POST',
-                            data    : info,
+                            data    : {
+                                id_specialty    : $id_specialty
+                            },
                             success : function(res){
-                                // var data = JSON.parse(res);
-                                console.log(res);
+                                var data = JSON.parse(res);
+                                
+                                clearInterval(count_timer);
+                                
+                                console.log(data);
                                 // var actives = $('.level.active').length;
                                 // if(current_question + 1 == data.metadata.correct_answers || actives < 3){
                                 //     evt_current_level(data.metadata);

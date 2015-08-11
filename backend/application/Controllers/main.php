@@ -470,6 +470,19 @@ class main {
         
     }
     
+    #Function to get all question by specialty
+    function find_question(){
+        $id_specilty = $_POST['id_specialty'];
+        
+        $query = jur_questions::all(array('conditions' => array('id_specialty = ?',$id_specilty)));
+        
+        foreach($query as $k){
+			$data[] = $k->attributes();
+		}
+        
+        echo json_encode($data);
+    }
+    
     # Function that return all mode games
     function all_games_mode(){
         $q = jur_game_mode::all();
