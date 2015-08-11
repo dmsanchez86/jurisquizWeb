@@ -230,7 +230,7 @@ var router = new $.mobile.Router({
         
         evt_logout();
         
-        questions();
+        questions('.start_race');
         
         validate_questions();
         
@@ -332,6 +332,8 @@ var router = new $.mobile.Router({
         
         evt_logout();
         
+        hide_timer();
+        
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('data-url');
@@ -344,6 +346,143 @@ var router = new $.mobile.Router({
         show_nav_button();
         
         evt_logout();
+        
+        questions('.start_test');
+        
+        $('.start_test .wrapper > div').hide(50);
+        
+        $('.start_test .wrapper .start').fadeIn(500);
+        
+        // Click to start to reply the questions mode race
+        $('button[data-url="start_mode_game"]').unbind('click').click(function(){
+            loader('Cargando...');
+            
+            // Get all contents of questions
+            var content_questions = $('.start_test .content_start_game .content_question');
+            var count_questions = content_questions.length;
+            var points = 0;
+            
+            var x = Math.floor((Math.random() * count_questions) + 1);
+            
+            $.post(webService + 'points/' + localStorage.getItem('id_user'),{}, function(data){
+                points = parseInt(JSON.parse(data).points);
+            });
+            
+            console.log(localStorage.getItem('id_user'));
+            console.log(points);
+            
+            // Hide the content of this button
+            $(this).parent().parent().fadeOut(500);
+            
+            content_questions.eq(0).addClass('active').show();
+            
+            clearInterval(count_timer);
+            
+            setTimeout(function(){
+                $('.loader').hide(1000);
+                $('.start_test .wrapper .content_start_game').show(50).css('transform','scale(1)');
+                setTimeout(function(){show_timer(10,'.start_test');},1000);
+            },1000);
+            
+            // Click in the answers to validate which is correct
+            $('.start_test .content_question input[type=radio]').unbind('click').click(function(e){
+                debugger;
+                console.log(e.target);
+                console.log($(this));
+                var type_question = $('.start_test .content_question.active').attr('type-question');
+                var $id_question = $('.start_test .content_question.active').attr('id-question');
+                var answer_ = '';
+                var correct_answer = '';
+                
+                if(type_question == 1){
+                    // var current_question = parseInt($('.start_test .levels_content .level.active .bottom .number_questions .correct_answers').attr('correct-answers'));
+                    answer_ = $('.start_test .content_question.active input[type=radio]:checked').val();
+                    correct_answer = $('.start_test .content_question.active').attr('correct-answer');
+                    
+                    if(answer_ == correct_answer){
+                        var info = {};
+                        // if(current_question + 1 < top_questions){
+                        //     info = {
+                        //         id_user         : localStorage.getItem('id_user'),
+                        //         id_question     : $id_question,
+                        //         number          : (current_question + 1),
+                        //         points          : (++points)
+                        //     };
+                        // }else{
+                        //     info = {
+                        //         id_user             : localStorage.getItem('id_user'),
+                        //         id_question         : $id_question,
+                        //         id_level_game       : id_game,
+                        //         id_level_category   : parseInt(id_level_category),
+                        //         number              : (current_question + 1),
+                        //         points              : (++points)
+                        //     };
+                        // }
+                        
+                        $.ajax({
+                            url     : webService + "correct_answers_test",
+                            type    : 'POST',
+                            data    : info,
+                            success : function(res){
+                                // var data = JSON.parse(res);
+                                console.log(res);
+                                // var actives = $('.level.active').length;
+                                // if(current_question + 1 == data.metadata.correct_answers || actives < 3){
+                                //     evt_current_level(data.metadata);
+                                //     $('.start_race .levels_content .level .bottom .number_questions .correct_answers').attr('correct-answers',(++current_question)).addClass('active');
+                                //     setTimeout(function(){
+                                //         $('.start_race .levels_content .level .bottom .number_questions .correct_answers').text((current_question)).removeClass('active');
+                                //     },1300);
+                                //     panel_data(data.id_user);
+                                //     evt_next_question();
+                                    
+                                //     if(data.metadata.correct_answers == 0){
+                                //         $('.level.active .bottom .number_questions .correct_answers').attr('correct-answers',data.metadata.correct_answers);
+                                //         setTimeout(function(){
+                                //             $('.level.active .bottom .number_questions .correct_answers').text(data.metadata.correct_answers);
+                                //             console.log(':P');
+                                //         },1000);
+                                //     }
+                                // }else{
+                                //     $('.start_race .content_start_game').hide();
+                                //     clearInterval(count_timer);
+                                //     $('.question_time').hide();
+                                //     evt_current_level(data.metadata);
+                                //     message('¡Completaste Este Nivel!');
+                                //     $('.start_race .wrapper .complete_level').fadeIn(1000);
+                                //     $('.start_race .wrapper .complete_level,.start_race .wrapper .no_complete_level').unbind('click').click(function(){
+                                //         history.back();
+                                //     });
+                                // }
+                            }
+                        });
+                    }else{
+                        evt_next_question('.start_test');
+                    }
+                }else if(type_question == 2){
+                    answer = $('.start_race .content_question.active input[type=radio]:checked').val().toLowerCase();
+                    correct_answer = $('.start_race .content_question.active').attr('correct-answer');
+                    
+                    if(answer == correct_answer){
+                        message('La respuesta es correcta');
+                        var current_question = parseInt($('.start_race .levels_content .level .bottom .number_questions .correct_answers').attr('correct-answers'));
+                        $('.start_race .levels_content .level .bottom .number_questions .correct_answers').attr('correct-answers',(++current_question)).addClass('active');
+                        setTimeout(function(){
+                            $('.start_race .levels_content .level .bottom .number_questions .correct_answers').text((current_question)).removeClass('active');
+                        },1000);
+                    }else{
+                        // message('La respuesta es incorrecta ');
+                    }
+                }
+                
+                // content_questions.eq(0).addClass('active').show().parent().attr('question',(++count_questions));
+                
+                // If the next question is type 3 
+                // if($('.start_race .content_question.active').next().attr('type-question') == 3 ){
+                //   $('.sortable_answer').sortable(); 
+                // }
+            });
+        });
     },
     specialty :function(type,match,ui){
         $('.specialty .content_game .icon_game img').attr('src','img/icons/specialty'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
@@ -367,25 +506,25 @@ var router = new $.mobile.Router({
         
         evt_logout();
         
-         $.ajax({
-                url: webService + "listNamespecialty",
-                type: 'POST',
-                data: {},
-                processData: false,
-                contentType : false,
-                success: function(response){
-                    var data = JSON.parse(response);
+        $.ajax({
+            url: webService + "listNamespecialty",
+            type: 'POST',
+            data: {},
+            processData: false,
+            contentType : false,
+            success: function(response){
+                var data = JSON.parse(response);
+                
+                data.forEach(function(index,element){
+               
+                   var compiled = tmpl("template_each_specialty", index);
+                   $(".listTematica").append(compiled);
                     
-                    data.forEach(function(o){
-                   
-                       var compiled = tmpl("template_each_answ_a", o);
-                       $(".answers_options").append(compiled);
-                        
-                        
-                    });
                     
-                }
-            });
+                });
+                
+            }
+        });
         
     },
     litigation :function(type,match,ui){
@@ -2184,7 +2323,7 @@ function evt_specialty(param, $id){
 }
 
 // Evt to get all questions any category
-function questions(){
+function questions(page_referer){
     // Ajax to get all questions with state active
     $.ajax({
         url         : webService + 'all_questions/actives',
@@ -2193,12 +2332,12 @@ function questions(){
         success     : function(res){
             var data = JSON.parse(res);
             
-            $('.start_race .content_start_game').empty();
+            $(page_referer + ' .content_start_game').empty();
             
             var questions = data.random(); 
-            
+
             questions.forEach(function(i,o){
-                $('.start_race .content_start_game').append(tmpl('structure_question',i));
+                $(page_referer + ' .content_start_game').append(tmpl('structure_question',i));
             });
         }
     });
@@ -2238,12 +2377,12 @@ function validate_questions(){
 
 // Funtion to validate mode game
 function evt_validate_mode_game(data,name_level,id_game){
+    // Ajax to validate current level game user
     $.ajax({
         url         : webService + 'validate_level',
         type        : 'POST',
         data        : data,
         success     : function(res){
-            // debugger;
             $('.start_race .wrapper > div').hide(50);
             
             data = JSON.parse(res);
@@ -2261,7 +2400,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                 
                 $('.start_race .wrapper .start').fadeIn(500);
                 
-                // Click to start to reply the questions
+                // Click to start to reply the questions mode race
                 $('button[data-url="start_mode_game"]').unbind('click').click(function(){
                     loader('Cargando...');
                     
@@ -2284,11 +2423,12 @@ function evt_validate_mode_game(data,name_level,id_game){
                     setTimeout(function(){
                         $('.loader').hide(1000);
                         $('.start_race .wrapper .content_start_game').show(50).css('transform','scale(1)');
-                        setTimeout(function(){show_timer(20);},1000);
+                        setTimeout(function(){show_timer(20,'.start_race');},1000);
                     },1000);
                     
                     // Click in the answers to validate which is correct
                     $('.start_race .content_question input[type=radio],.start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button').unbind('click').click(function(){
+                        // debugger;
                         var type_question = $('.start_race .content_question.active').attr('type-question');
                         var $id_question = $('.start_race .content_question.active').attr('id-question');
                         var answer = '';
@@ -2330,17 +2470,15 @@ function evt_validate_mode_game(data,name_level,id_game){
                                         if(current_question + 1 == data.metadata.correct_answers || actives < 3){
                                             evt_current_level(data.metadata);
                                             $('.start_race .levels_content .level .bottom .number_questions .correct_answers').attr('correct-answers',(++current_question)).addClass('active');
+                                            panel_data(data.id_user);
+                                            evt_next_question('.start_race');
                                             setTimeout(function(){
                                                 $('.start_race .levels_content .level .bottom .number_questions .correct_answers').text((current_question)).removeClass('active');
                                             },1300);
-                                            panel_data(data.id_user);
-                                            evt_next_question();
-                                            
                                             if(data.metadata.correct_answers == 0){
                                                 $('.level.active .bottom .number_questions .correct_answers').attr('correct-answers',data.metadata.correct_answers);
                                                 setTimeout(function(){
                                                     $('.level.active .bottom .number_questions .correct_answers').text(data.metadata.correct_answers);
-                                                    console.log(':P');
                                                 },1000);
                                             }
                                         }else{
@@ -2358,6 +2496,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                                 });
                             }else{
                                 // message('La respuesta es incorrecta ');
+                                evt_next_question('.start_race');
                             }
                         }else if(type_question == 2){
                             answer = $('.start_race .content_question.active input[type=radio]:checked').val().toLowerCase();
@@ -2398,6 +2537,7 @@ function evt_validate_mode_game(data,name_level,id_game){
         }
     });
 }
+
 // Event to paint the current level
 function evt_current_level(data){
     if(data.id_game_mode == 1){
@@ -2441,27 +2581,33 @@ function evt_current_level(data){
 }
 
 // Evt to next question
-function evt_next_question(){
-    // debugger
-    var current_content = $('.start_race .content_question.active');
-    var next_content = $('.start_race .content_question.active').next();
+function evt_next_question(page_referer){
+    debugger
+    var current_content = $(page_referer + ' .content_question.active');
+    var next_content = $(page_referer + ' .content_question.active').next();
+    var time_question = 0;
+    
+    if(page_referer == ".start_test")
+        time_question = 10;
+    else if(page_referer == '.start_race')
+        time_question = 20;
     
     $('.question_time').hide(500);
     
-    if($('.start_race .content_question.active').next().length == 0){
+    if($(page_referer + ' .content_question.active').next().length == 0){
         var count_questions = 0;
         
         current_content.hide();
         
-        questions();
+        questions(page_referer);
         
         validate_questions();
         
         clearInterval(count_timer);
         
         setTimeout(function(){
-            $('.start_race .content_start_game .content_question').eq(0).addClass('active').show().parent().attr('question',(++count_questions));
-            setTimeout(function(){show_timer(20);},500);
+            $(page_referer + ' .content_start_game .content_question').eq(0).addClass('active').show().parent().attr('question',(++count_questions));
+            setTimeout(function(){show_timer(time_question,page_referer);},500);
         },500);
     }else{
         clearInterval(count_timer);
@@ -2469,13 +2615,13 @@ function evt_next_question(){
         setTimeout(function(){
             current_content.remove();
             next_content.addClass('active').fadeIn(500);
-            setTimeout(function(){show_timer(20);},500);
+            setTimeout(function(){show_timer(time_question,page_referer);},500);
         },1000);
     }
 }
 
 // Evt to show question time
-function show_timer(time){
+function show_timer(time,page_referer){
     $('.question_time').fadeIn(1000).find('em').text(time+'s');
     var time_question = time;
     count_timer = setInterval(function(){
@@ -2483,7 +2629,7 @@ function show_timer(time){
         $('.question_time em').text(time_question+'s');
         if(time_question == 0){
             $('.question_time').fadeOut(1000);
-            evt_next_question();
+            evt_next_question(page_referer);
             clearInterval(count);
         }
     },1000);

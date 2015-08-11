@@ -531,7 +531,7 @@ class main {
         echo json_encode($data);
     }
     
-    #Lista los nombres de las specialty
+    # Lista los nombres de las specialty
     function listNamespecialty(){
         
         $query = jur_specialty::all(array('select' => 'id,name','conditions' => array('state = "active"')));
@@ -708,6 +708,11 @@ class main {
         }
         
         echo (json_encode($data));
+    }
+    
+    #Function to return correct answers mode test
+    function correct_answers_test(){
+        echo "jajajjaja";
     }
     
     # Function to get total points

@@ -142,6 +142,11 @@ $app->post(
     '/correct_answers','main:correct_answers'
 )->setParams(array($app));
 
+// Route for validate to current level 
+$app->post(
+    '/correct_answers_test','main:correct_answers_test'
+)->setParams(array($app));
+
 // Route for get current points 
 $app->post(
     '/points/:id','main:points'

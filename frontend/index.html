@@ -26,6 +26,7 @@
         
         <!-- Stylesheets -->
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/dacosta.css">
         
         <!-- Librarys JavaScript -->
         <script src="js/jquery-1.11.3.min.js"></script>
@@ -371,10 +372,9 @@
             </div>
         </script>
         <script type="text/html" id="structure_question">
-            <div class="content_question" correct-answer="<%= correct_answer %>" type-question="<%= type_question %>" id-question="<%= id %>">
-                <div class="question">
-                    <%= question %>
-                </div>
+            <div class="content_question" correct-answer="<%= correct_answer %>" type-question="<%= type_question %>" id-question="<%= id %>" id-specialty="<%= id_specialty %>">
+                
+                <div class="question"><%= question %></div>
                 
                 <%
                     var options = options_question.split('/');
@@ -419,13 +419,11 @@
                 <% } %>
             </div>
         </script>
-        <script type="text/html" id="template_each_answ_a">
-            <div class="answer">
-                <input id="answer___1" type="radio" name="answer"/>
-                <label for="answer___1" data-role="none">
-                    <%= name %>
-                </label>
-            </div>
+        <script type="text/html" id="template_each_specialty">
+                <div class="container_btn">
+                	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="race.html"><%= name %>
+                	</button>
+                </div>
         </script>
         
     </body>
