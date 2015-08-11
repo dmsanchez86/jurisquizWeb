@@ -531,6 +531,18 @@ class main {
         echo json_encode($data);
     }
     
+    #Lista los nombres de las specialty
+    function listNamespecialty(){
+        
+        $query = jur_specialty::all(array('select' => 'id,name','conditions' => array('state = "active"')));
+
+        foreach($query as $k){
+			$data[] = $k->attributes();
+		}
+		echo json_encode($data);
+       // echo json_encode($query->name);
+    }
+    
     # Function to active or deactive a specialty
     function specialty($app,$param){
         
@@ -624,7 +636,7 @@ class main {
         echo json_encode($data);
     }
     
-    # function to validate current level
+    # Function to validate current level
     function validate_level(){
         $id = base64_decode($_POST['id']);
         
@@ -633,7 +645,7 @@ class main {
         echo (json_encode($query->attributes()));
     }
     
-    # function to save when the user answer well a question
+    # Function to save when the user answer well a question
     function correct_answers(){
         $id = base64_decode($_POST['id_user']);
         
@@ -643,16 +655,19 @@ class main {
         $id_user = $query->attributes();
         
         if(isset($_POST['id_level_category'])){
-            if($_POST['id_level_category'] > 3){
-                $query->id_level_game = (++$options['id_level_game']);
-                $query->id_level_category = 1;
+            if($options['id_level_game'] == $_POST['id_level_game']){
+                $query->id_level_category = $query->id_level_category + 1;
                 $query->correct_answers = 0;
                 $query_->points = $_POST['points'];
-            }else{
-                $query->id_level_category = $_POST['id_level_category'];
-                $query->correct_answers = 0;
-                $query_->points = $_POST['points'];
-                $query_->level = $_POST['id_level_category'];
+                $query_->level = $query->id_level_category;
+                
+                if($query->id_level_category > 3){
+                    $query->id_level_game = (++$options['id_level_game']);
+                    $query->id_level_category = 1;
+                    $query->correct_answers = 0;
+                    $query_->points = $_POST['points'];
+                    $query_->level = 1;
+                }
             }
         }
         else{
@@ -672,10 +687,12 @@ class main {
                 
             if($answers->errors->errors === null){
                 $data = array(
-                    'message'       => 'Se guardo el numero de respuestas correctamente',
-                    'status'        => 'OK',
-                    'id_user'       => base64_encode($id_user['id_user']),
-                    'metadata'      => $query->attributes()
+                    'message'           => 'Se guardo el numero de respuestas correctamente',
+                    'status'            => 'OK',
+                    'id_user'           => base64_encode($id_user['id_user']),
+                    'metadata'          => $query->attributes(),
+                    'id_level_game'     => $options['id_level_game'],
+                    'id_level_category' => $options['id_level_category']
                 );
             }else{
                 $data = array(

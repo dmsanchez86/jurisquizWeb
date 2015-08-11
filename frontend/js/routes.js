@@ -49,7 +49,7 @@ var router = new $.mobile.Router({
             evt_login();
         });
         
-        // Text 
+        // Text
         $('#email,#password').unbind('keyup').keyup(function(e){
             if(e.keyCode == 13)
                 evt_login();
@@ -366,6 +366,27 @@ var router = new $.mobile.Router({
         show_nav_button();
         
         evt_logout();
+        
+         $.ajax({
+                url: webService + "listNamespecialty",
+                type: 'POST',
+                data: {},
+                processData: false,
+                contentType : false,
+                success: function(response){
+                    var data = JSON.parse(response);
+                    
+                    data.forEach(function(o){
+                   
+                       var compiled = tmpl("template_each_answ_a", o);
+                       $(".answers_options").append(compiled);
+                        
+                        
+                    });
+                    
+                }
+            });
+        
     },
     litigation :function(type,match,ui){
         $('.litigation .content_game .icon_game img').attr('src','img/icons/litigation'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
@@ -1174,9 +1195,7 @@ var router = new $.mobile.Router({
     console.log(type);
     console.log(ui);
     console.log(page);
-  },
-  defaultHandlerEvents: "s",
-  defaultArgsRe: true
+  },defaultHandlerEvents: "s",defaultArgsRe: true
 });
 
 // Message to the toast Materialize
@@ -2294,7 +2313,8 @@ function evt_validate_mode_game(data,name_level,id_game){
                                     info = {
                                         id_user             : localStorage.getItem('id_user'),
                                         id_question         : $id_question,
-                                        id_level_category   : (parseInt(id_level_category) + 1),
+                                        id_level_game       : id_game,
+                                        id_level_category   : parseInt(id_level_category),
                                         number              : (current_question + 1),
                                         points              : (++points)
                                     };
@@ -2306,14 +2326,34 @@ function evt_validate_mode_game(data,name_level,id_game){
                                     data    : info,
                                     success : function(res){
                                         var data = JSON.parse(res);
-                                        console.log(data);
-                                        console.log(data.metadata);
-                                        evt_current_level(data.metadata);
-                                        $('.start_race .levels_content .level .bottom .number_questions .correct_answers').attr('correct-answers',(++current_question)).addClass('active');
-                                        setTimeout(function(){
-                                            $('.start_race .levels_content .level .bottom .number_questions .correct_answers').text((current_question)).removeClass('active');
-                                        },1000);
-                                        panel_data(data.id_user);
+                                        var actives = $('.level.active').length;
+                                        if(current_question + 1 == data.metadata.correct_answers || actives < 3){
+                                            evt_current_level(data.metadata);
+                                            $('.start_race .levels_content .level .bottom .number_questions .correct_answers').attr('correct-answers',(++current_question)).addClass('active');
+                                            setTimeout(function(){
+                                                $('.start_race .levels_content .level .bottom .number_questions .correct_answers').text((current_question)).removeClass('active');
+                                            },1300);
+                                            panel_data(data.id_user);
+                                            evt_next_question();
+                                            
+                                            if(data.metadata.correct_answers == 0){
+                                                $('.level.active .bottom .number_questions .correct_answers').attr('correct-answers',data.metadata.correct_answers);
+                                                setTimeout(function(){
+                                                    $('.level.active .bottom .number_questions .correct_answers').text(data.metadata.correct_answers);
+                                                    console.log(':P');
+                                                },1000);
+                                            }
+                                        }else{
+                                            $('.start_race .content_start_game').hide();
+                                            clearInterval(count_timer);
+                                            $('.question_time').hide();
+                                            evt_current_level(data.metadata);
+                                            message('¡Completaste Este Nivel!');
+                                            $('.start_race .wrapper .complete_level').fadeIn(1000);
+                                            $('.start_race .wrapper .complete_level,.start_race .wrapper .no_complete_level').unbind('click').click(function(){
+                                                history.back();
+                                            });
+                                        }
                                     }
                                 });
                             }else{
@@ -2341,8 +2381,6 @@ function evt_validate_mode_game(data,name_level,id_game){
                         if($('.start_race .content_question.active').next().attr('type-question') == 3 ){
                            $('.sortable_answer').sortable(); 
                         }
-                        
-                        evt_next_question();
                     });
                 });
             }else{
@@ -2395,6 +2433,9 @@ function evt_current_level(data){
                 $('.start_race .levels_content .level.magistrate').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
             }
             $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president,.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy,.start_race .levels_content .level.congressman').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
+        }
+        else{
+            $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president,.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy,.start_race .levels_content .level.congressman,.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge,.start_race .levels_content .level.magistrate').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
         }
     }
 }

@@ -102,6 +102,11 @@ $app->post(
     '/all_specialties/:filter','main:all_specialties'
 )->setParams(array($app));
 
+$app->post(
+    '/listNamespecialty','main:listNamespecialty'
+)->setParams(array($app));
+
+
 // Route for active or deactive specialty 
 $app->post(
     '/specialty/:param','main:specialty'
