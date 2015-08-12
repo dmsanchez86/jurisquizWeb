@@ -29,6 +29,7 @@ var router = new $.mobile.Router({
     "test.html": {handler: "test", events: "s" },
     "start_test.html": {handler: "start_test", events: "s" },
     "specialty.html": {handler: "specialty", events: "s" },
+    "startGamespeciality.html": {handler: "startGamespeciality", events: "s" },
     "start_specialty.html": {handler: "start_specialty", events: "s" },
     "litigation.html": {handler: "litigation", events: "s" },
     "start_litigation.html": {handler: "start_litigation", events: "s" },
@@ -489,6 +490,9 @@ var router = new $.mobile.Router({
             $.mobile.changePage(url,{role: 'page',transition: 'turn'});
         });
     },
+    startGamespeciality :function(type,match,ui){
+        console.log(match);
+    },
     start_specialty :function(type,match,ui){
         nav_menu();
         
@@ -510,10 +514,16 @@ var router = new $.mobile.Router({
                    var compiled = tmpl("template_each_specialty", index);
                    $(".listTematica").append(compiled);
                     
-                    
                 });
                 
             }
+        });
+        
+         $('.listTematica .container_btn button').unbind('click').click(function(e){
+            e.preventDefault();
+            alert();
+            var url = $(this).attr('data-url');
+            $.mobile.changePage(url,{role: 'page',transition: 'turn'});
         });
         
     },
@@ -1521,7 +1531,7 @@ function hide_nav_button(){
 function show_nav_button(){
     $('.nav').fadeIn(1500);
     
-    $('.nav_button .nav a').click(function(e){
+    $('.nav_button .nav a').unbind('click').click(function(e){
         e.preventDefault();
         var url = $(this).attr('href');
         
@@ -1533,6 +1543,8 @@ function show_nav_button(){
             $.mobile.changePage(link,{role: 'page',transition:"flip"});
         }else if(url != "#"){
             $.mobile.changePage(url,{role:'page',transition: 'pop'});
+        }else if(url == "#"){
+            $(this).parent().toggleClass('active');
         }
     });
 }
@@ -2572,7 +2584,7 @@ function evt_current_level(data){
 
 // Evt to next question
 function evt_next_question(page_referer){
-    debugger
+
     var current_content = $(page_referer + ' .content_question.active');
     var next_content = $(page_referer + ' .content_question.active').next();
     var time_question = 0;
