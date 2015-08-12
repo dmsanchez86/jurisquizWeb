@@ -519,9 +519,8 @@ var router = new $.mobile.Router({
             }
         });
         
-         $('.listTematica .container_btn button').unbind('click').click(function(e){
+        $('.listTematica .container_btn button').unbind('click').click(function(e){
             e.preventDefault();
-            alert();
             var url = $(this).attr('data-url');
             $.mobile.changePage(url,{role: 'page',transition: 'turn'});
         });
@@ -1552,42 +1551,21 @@ function show_nav_button(){
 // Show Nav-Menu
 function nav_menu(){
     var window_width = window.innerWidth;
-    
-    var first_view_dashboard = localStorage.getItem('first_view_dashboard');
         
-    if(first_view_dashboard == null){
-        if(window_width >= 480){
-            $('.button_collapse').sideNav({
-              menuWidth: 352, // Default is 240
-              edge: 'left', // Choose the horizontal origin
-              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            }
-          );
-        }else if(window_width < 479){
-            $('.button_collapse').sideNav({
-              menuWidth: 305, // Default is 240
-              edge: 'left', // Choose the horizontal origin
-              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            }
-          );
+    if(window_width >= 480){
+        $('.button_collapse').sideNav({
+          menuWidth: 352, // Default is 240
+          edge: 'left', // Choose the horizontal origin
+          closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
         }
-        localStorage.setItem('first_view_dashboard',true);
-    }else{
-        if(window_width >= 480){
-            $('.button_collapse').sideNav({
-              menuWidth: 352, // Default is 240
-              edge: 'left', // Choose the horizontal origin
-              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            }
-          );
-        }else if(window_width < 479){
-            $('.button_collapse').sideNav({
-              menuWidth: 305, // Default is 240
-              edge: 'left', // Choose the horizontal origin
-              closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            }
-          );
+      );
+    }else if(window_width < 479){
+        $('.button_collapse').sideNav({
+          menuWidth: 305, // Default is 240
+          edge: 'left', // Choose the horizontal origin
+          closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
         }
+      );
     }
 }
 
