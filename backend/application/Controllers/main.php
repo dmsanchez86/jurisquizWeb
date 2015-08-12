@@ -473,7 +473,7 @@ class main {
     #Function to get all question by specialty
     function find_question(){
         $id_specilty = $_POST['id_specialty'];
-        
+        $data = array();
         $query = jur_questions::all(array('conditions' => array('id_specialty = ?',$id_specilty)));
         
         foreach($query as $k){

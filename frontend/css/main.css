@@ -1647,11 +1647,13 @@ html {
   background-color: transparent;
 }
 .start_race div[data-role="content"] .container .wrapper > div,
-.start_test div[data-role="content"] .container .wrapper > div {
+.start_test div[data-role="content"] .container .wrapper > div,
+.start_specialty div[data-role="content"] .container .wrapper > div {
   display: none;
 }
 .start_race .wrapper .content_start_game,
-.start_test .wrapper .content_start_game {
+.start_test .wrapper .content_start_game,
+.start_specialty .wrapper .content_start_game {
   overflow: visible!important;
   -webkit-transform: scale(0);
   -khtml-transform: scale(0);
@@ -1669,7 +1671,8 @@ html {
   height: 75vh;
 }
 .start_race .wrapper .content_start_game > div,
-.start_test .wrapper .content_start_game > div {
+.start_test .wrapper .content_start_game > div,
+.start_specialty .wrapper .content_start_game > div {
   position: absolute;
   top: 0;
   left: 0;
@@ -1679,38 +1682,54 @@ html {
 }
 .start_race .wrapper .content_start_game,
 .start_test .wrapper .content_start_game,
+.start_specialty .wrapper .content_start_game,
 .start_race .wrapper .start,
 .start_test .wrapper .start,
+.start_specialty .wrapper .start,
 .start_race .wrapper .complete_level,
 .start_test .wrapper .complete_level,
+.start_specialty .wrapper .complete_level,
 .start_race .wrapper .no_complete_level,
-.start_test .wrapper .no_complete_level {
+.start_test .wrapper .no_complete_level,
+.start_specialty .wrapper .no_complete_level {
   margin-top: 1.5rem;
 }
 .start_race .wrapper .content_start_game .question,
 .start_test .wrapper .content_start_game .question,
+.start_specialty .wrapper .content_start_game .question,
 .start_race .wrapper .start .question,
 .start_test .wrapper .start .question,
+.start_specialty .wrapper .start .question,
 .start_race .wrapper .complete_level .question,
 .start_test .wrapper .complete_level .question,
+.start_specialty .wrapper .complete_level .question,
 .start_race .wrapper .no_complete_level .question,
 .start_test .wrapper .no_complete_level .question,
+.start_specialty .wrapper .no_complete_level .question,
 .start_race .wrapper .content_start_game .answers_options,
 .start_test .wrapper .content_start_game .answers_options,
+.start_specialty .wrapper .content_start_game .answers_options,
 .start_race .wrapper .start .answers_options,
 .start_test .wrapper .start .answers_options,
+.start_specialty .wrapper .start .answers_options,
 .start_race .wrapper .complete_level .answers_options,
 .start_test .wrapper .complete_level .answers_options,
+.start_specialty .wrapper .complete_level .answers_options,
 .start_race .wrapper .no_complete_level .answers_options,
 .start_test .wrapper .no_complete_level .answers_options,
+.start_specialty .wrapper .no_complete_level .answers_options,
 .start_race .wrapper .content_start_game .message,
 .start_test .wrapper .content_start_game .message,
+.start_specialty .wrapper .content_start_game .message,
 .start_race .wrapper .start .message,
 .start_test .wrapper .start .message,
+.start_specialty .wrapper .start .message,
 .start_race .wrapper .complete_level .message,
 .start_test .wrapper .complete_level .message,
+.start_specialty .wrapper .complete_level .message,
 .start_race .wrapper .no_complete_level .message,
-.start_test .wrapper .no_complete_level .message {
+.start_test .wrapper .no_complete_level .message,
+.start_specialty .wrapper .no_complete_level .message {
   background-color: #3a6667;
   -webkit-border-radius: 15px;
   -khtml-border-radius: 15px;
@@ -1728,12 +1747,16 @@ html {
 }
 .start_race .wrapper .content_start_game .question,
 .start_test .wrapper .content_start_game .question,
+.start_specialty .wrapper .content_start_game .question,
 .start_race .wrapper .start .question,
 .start_test .wrapper .start .question,
+.start_specialty .wrapper .start .question,
 .start_race .wrapper .complete_level .question,
 .start_test .wrapper .complete_level .question,
+.start_specialty .wrapper .complete_level .question,
 .start_race .wrapper .no_complete_level .question,
-.start_test .wrapper .no_complete_level .question {
+.start_test .wrapper .no_complete_level .question,
+.start_specialty .wrapper .no_complete_level .question {
   padding: 1rem;
   margin-bottom: .65rem;
   font-size: 1.65rem;
@@ -1743,12 +1766,16 @@ html {
 }
 .start_race .wrapper .content_start_game .question:after,
 .start_test .wrapper .content_start_game .question:after,
+.start_specialty .wrapper .content_start_game .question:after,
 .start_race .wrapper .start .question:after,
 .start_test .wrapper .start .question:after,
+.start_specialty .wrapper .start .question:after,
 .start_race .wrapper .complete_level .question:after,
 .start_test .wrapper .complete_level .question:after,
+.start_specialty .wrapper .complete_level .question:after,
 .start_race .wrapper .no_complete_level .question:after,
-.start_test .wrapper .no_complete_level .question:after {
+.start_test .wrapper .no_complete_level .question:after,
+.start_specialty .wrapper .no_complete_level .question:after {
   position: absolute;
   content: '';
   border: 2rem solid ;
@@ -1758,56 +1785,80 @@ html {
 }
 .start_race .wrapper .content_start_game .answers_options,
 .start_test .wrapper .content_start_game .answers_options,
+.start_specialty .wrapper .content_start_game .answers_options,
 .start_race .wrapper .start .answers_options,
 .start_test .wrapper .start .answers_options,
+.start_specialty .wrapper .start .answers_options,
 .start_race .wrapper .complete_level .answers_options,
 .start_test .wrapper .complete_level .answers_options,
+.start_specialty .wrapper .complete_level .answers_options,
 .start_race .wrapper .no_complete_level .answers_options,
 .start_test .wrapper .no_complete_level .answers_options,
+.start_specialty .wrapper .no_complete_level .answers_options,
 .start_race .wrapper .content_start_game .message,
 .start_test .wrapper .content_start_game .message,
+.start_specialty .wrapper .content_start_game .message,
 .start_race .wrapper .start .message,
 .start_test .wrapper .start .message,
+.start_specialty .wrapper .start .message,
 .start_race .wrapper .complete_level .message,
 .start_test .wrapper .complete_level .message,
+.start_specialty .wrapper .complete_level .message,
 .start_race .wrapper .no_complete_level .message,
-.start_test .wrapper .no_complete_level .message {
+.start_test .wrapper .no_complete_level .message,
+.start_specialty .wrapper .no_complete_level .message {
   padding: 1rem 3rem;
 }
 .start_race .wrapper .content_start_game .answers_options input[type=radio],
 .start_test .wrapper .content_start_game .answers_options input[type=radio],
+.start_specialty .wrapper .content_start_game .answers_options input[type=radio],
 .start_race .wrapper .start .answers_options input[type=radio],
 .start_test .wrapper .start .answers_options input[type=radio],
+.start_specialty .wrapper .start .answers_options input[type=radio],
 .start_race .wrapper .complete_level .answers_options input[type=radio],
 .start_test .wrapper .complete_level .answers_options input[type=radio],
+.start_specialty .wrapper .complete_level .answers_options input[type=radio],
 .start_race .wrapper .no_complete_level .answers_options input[type=radio],
 .start_test .wrapper .no_complete_level .answers_options input[type=radio],
+.start_specialty .wrapper .no_complete_level .answers_options input[type=radio],
 .start_race .wrapper .content_start_game .message input[type=radio],
 .start_test .wrapper .content_start_game .message input[type=radio],
+.start_specialty .wrapper .content_start_game .message input[type=radio],
 .start_race .wrapper .start .message input[type=radio],
 .start_test .wrapper .start .message input[type=radio],
+.start_specialty .wrapper .start .message input[type=radio],
 .start_race .wrapper .complete_level .message input[type=radio],
 .start_test .wrapper .complete_level .message input[type=radio],
+.start_specialty .wrapper .complete_level .message input[type=radio],
 .start_race .wrapper .no_complete_level .message input[type=radio],
-.start_test .wrapper .no_complete_level .message input[type=radio] {
+.start_test .wrapper .no_complete_level .message input[type=radio],
+.start_specialty .wrapper .no_complete_level .message input[type=radio] {
   display: none;
 }
 .start_race .wrapper .content_start_game .answers_options label,
 .start_test .wrapper .content_start_game .answers_options label,
+.start_specialty .wrapper .content_start_game .answers_options label,
 .start_race .wrapper .start .answers_options label,
 .start_test .wrapper .start .answers_options label,
+.start_specialty .wrapper .start .answers_options label,
 .start_race .wrapper .complete_level .answers_options label,
 .start_test .wrapper .complete_level .answers_options label,
+.start_specialty .wrapper .complete_level .answers_options label,
 .start_race .wrapper .no_complete_level .answers_options label,
 .start_test .wrapper .no_complete_level .answers_options label,
+.start_specialty .wrapper .no_complete_level .answers_options label,
 .start_race .wrapper .content_start_game .message label,
 .start_test .wrapper .content_start_game .message label,
+.start_specialty .wrapper .content_start_game .message label,
 .start_race .wrapper .start .message label,
 .start_test .wrapper .start .message label,
+.start_specialty .wrapper .start .message label,
 .start_race .wrapper .complete_level .message label,
 .start_test .wrapper .complete_level .message label,
+.start_specialty .wrapper .complete_level .message label,
 .start_race .wrapper .no_complete_level .message label,
-.start_test .wrapper .no_complete_level .message label {
+.start_test .wrapper .no_complete_level .message label,
+.start_specialty .wrapper .no_complete_level .message label {
   padding-left: 1em;
   font-family: 'DK Mango';
   font-size: 1.4rem;
@@ -1831,54 +1882,78 @@ html {
 }
 .start_race .wrapper .content_start_game .answers_options label:before,
 .start_test .wrapper .content_start_game .answers_options label:before,
+.start_specialty .wrapper .content_start_game .answers_options label:before,
 .start_race .wrapper .start .answers_options label:before,
 .start_test .wrapper .start .answers_options label:before,
+.start_specialty .wrapper .start .answers_options label:before,
 .start_race .wrapper .complete_level .answers_options label:before,
 .start_test .wrapper .complete_level .answers_options label:before,
+.start_specialty .wrapper .complete_level .answers_options label:before,
 .start_race .wrapper .no_complete_level .answers_options label:before,
 .start_test .wrapper .no_complete_level .answers_options label:before,
+.start_specialty .wrapper .no_complete_level .answers_options label:before,
 .start_race .wrapper .content_start_game .message label:before,
 .start_test .wrapper .content_start_game .message label:before,
+.start_specialty .wrapper .content_start_game .message label:before,
 .start_race .wrapper .start .message label:before,
 .start_test .wrapper .start .message label:before,
+.start_specialty .wrapper .start .message label:before,
 .start_race .wrapper .complete_level .message label:before,
 .start_test .wrapper .complete_level .message label:before,
+.start_specialty .wrapper .complete_level .message label:before,
 .start_race .wrapper .no_complete_level .message label:before,
-.start_test .wrapper .no_complete_level .message label:before {
+.start_test .wrapper .no_complete_level .message label:before,
+.start_specialty .wrapper .no_complete_level .message label:before {
   display: none;
 }
 .start_race .wrapper .content_start_game .answers_options label:hover,
 .start_test .wrapper .content_start_game .answers_options label:hover,
+.start_specialty .wrapper .content_start_game .answers_options label:hover,
 .start_race .wrapper .start .answers_options label:hover,
 .start_test .wrapper .start .answers_options label:hover,
+.start_specialty .wrapper .start .answers_options label:hover,
 .start_race .wrapper .complete_level .answers_options label:hover,
 .start_test .wrapper .complete_level .answers_options label:hover,
+.start_specialty .wrapper .complete_level .answers_options label:hover,
 .start_race .wrapper .no_complete_level .answers_options label:hover,
 .start_test .wrapper .no_complete_level .answers_options label:hover,
+.start_specialty .wrapper .no_complete_level .answers_options label:hover,
 .start_race .wrapper .content_start_game .message label:hover,
 .start_test .wrapper .content_start_game .message label:hover,
+.start_specialty .wrapper .content_start_game .message label:hover,
 .start_race .wrapper .start .message label:hover,
 .start_test .wrapper .start .message label:hover,
+.start_specialty .wrapper .start .message label:hover,
 .start_race .wrapper .complete_level .message label:hover,
 .start_test .wrapper .complete_level .message label:hover,
+.start_specialty .wrapper .complete_level .message label:hover,
 .start_race .wrapper .no_complete_level .message label:hover,
 .start_test .wrapper .no_complete_level .message label:hover,
+.start_specialty .wrapper .no_complete_level .message label:hover,
 .start_race .wrapper .content_start_game .answers_options label:focus,
 .start_test .wrapper .content_start_game .answers_options label:focus,
+.start_specialty .wrapper .content_start_game .answers_options label:focus,
 .start_race .wrapper .start .answers_options label:focus,
 .start_test .wrapper .start .answers_options label:focus,
+.start_specialty .wrapper .start .answers_options label:focus,
 .start_race .wrapper .complete_level .answers_options label:focus,
 .start_test .wrapper .complete_level .answers_options label:focus,
+.start_specialty .wrapper .complete_level .answers_options label:focus,
 .start_race .wrapper .no_complete_level .answers_options label:focus,
 .start_test .wrapper .no_complete_level .answers_options label:focus,
+.start_specialty .wrapper .no_complete_level .answers_options label:focus,
 .start_race .wrapper .content_start_game .message label:focus,
 .start_test .wrapper .content_start_game .message label:focus,
+.start_specialty .wrapper .content_start_game .message label:focus,
 .start_race .wrapper .start .message label:focus,
 .start_test .wrapper .start .message label:focus,
+.start_specialty .wrapper .start .message label:focus,
 .start_race .wrapper .complete_level .message label:focus,
 .start_test .wrapper .complete_level .message label:focus,
+.start_specialty .wrapper .complete_level .message label:focus,
 .start_race .wrapper .no_complete_level .message label:focus,
-.start_test .wrapper .no_complete_level .message label:focus {
+.start_test .wrapper .no_complete_level .message label:focus,
+.start_specialty .wrapper .no_complete_level .message label:focus {
   background-image: -webkit-radial-gradient(center, #ee6200, #ef863e);
   background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
   background-image: radial-gradient(center, #ee6200, #ef863e);
@@ -1886,43 +1961,59 @@ html {
 }
 .start_race .wrapper .content_start_game .answers_options label:active,
 .start_test .wrapper .content_start_game .answers_options label:active,
+.start_specialty .wrapper .content_start_game .answers_options label:active,
 .start_race .wrapper .start .answers_options label:active,
 .start_test .wrapper .start .answers_options label:active,
+.start_specialty .wrapper .start .answers_options label:active,
 .start_race .wrapper .complete_level .answers_options label:active,
 .start_test .wrapper .complete_level .answers_options label:active,
+.start_specialty .wrapper .complete_level .answers_options label:active,
 .start_race .wrapper .no_complete_level .answers_options label:active,
 .start_test .wrapper .no_complete_level .answers_options label:active,
+.start_specialty .wrapper .no_complete_level .answers_options label:active,
 .start_race .wrapper .content_start_game .message label:active,
 .start_test .wrapper .content_start_game .message label:active,
+.start_specialty .wrapper .content_start_game .message label:active,
 .start_race .wrapper .start .message label:active,
 .start_test .wrapper .start .message label:active,
+.start_specialty .wrapper .start .message label:active,
 .start_race .wrapper .complete_level .message label:active,
 .start_test .wrapper .complete_level .message label:active,
+.start_specialty .wrapper .complete_level .message label:active,
 .start_race .wrapper .no_complete_level .message label:active,
-.start_test .wrapper .no_complete_level .message label:active {
+.start_test .wrapper .no_complete_level .message label:active,
+.start_specialty .wrapper .no_complete_level .message label:active {
   background-image: -webkit-radial-gradient(center, #ef863e, #ee6200);
   background-image: -moz-radial-gradient(center, #ef863e, #ee6200);
   background-image: radial-gradient(center, #ef863e, #ee6200);
 }
 .start_race .wrapper .content_start_game .content_question .type_question,
 .start_test .wrapper .content_start_game .content_question .type_question,
+.start_specialty .wrapper .content_start_game .content_question .type_question,
 .start_race .wrapper .start .content_question .type_question,
 .start_test .wrapper .start .content_question .type_question,
+.start_specialty .wrapper .start .content_question .type_question,
 .start_race .wrapper .complete_level .content_question .type_question,
 .start_test .wrapper .complete_level .content_question .type_question,
+.start_specialty .wrapper .complete_level .content_question .type_question,
 .start_race .wrapper .no_complete_level .content_question .type_question,
-.start_test .wrapper .no_complete_level .content_question .type_question {
+.start_test .wrapper .no_complete_level .content_question .type_question,
+.start_specialty .wrapper .no_complete_level .content_question .type_question {
   margin: 0 0 .5rem;
   text-align: right;
 }
 .start_race .wrapper .content_start_game .content_question .type_question span,
 .start_test .wrapper .content_start_game .content_question .type_question span,
+.start_specialty .wrapper .content_start_game .content_question .type_question span,
 .start_race .wrapper .start .content_question .type_question span,
 .start_test .wrapper .start .content_question .type_question span,
+.start_specialty .wrapper .start .content_question .type_question span,
 .start_race .wrapper .complete_level .content_question .type_question span,
 .start_test .wrapper .complete_level .content_question .type_question span,
+.start_specialty .wrapper .complete_level .content_question .type_question span,
 .start_race .wrapper .no_complete_level .content_question .type_question span,
-.start_test .wrapper .no_complete_level .content_question .type_question span {
+.start_test .wrapper .no_complete_level .content_question .type_question span,
+.start_specialty .wrapper .no_complete_level .content_question .type_question span {
   padding: .15rem .5rem;
   color: white;
   -webkit-border-radius: 3px;
@@ -1939,12 +2030,16 @@ html {
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer li,
 .start_test .wrapper .content_start_game .content_question .sortable_answer li,
+.start_specialty .wrapper .content_start_game .content_question .sortable_answer li,
 .start_race .wrapper .start .content_question .sortable_answer li,
 .start_test .wrapper .start .content_question .sortable_answer li,
+.start_specialty .wrapper .start .content_question .sortable_answer li,
 .start_race .wrapper .complete_level .content_question .sortable_answer li,
 .start_test .wrapper .complete_level .content_question .sortable_answer li,
+.start_specialty .wrapper .complete_level .content_question .sortable_answer li,
 .start_race .wrapper .no_complete_level .content_question .sortable_answer li,
-.start_test .wrapper .no_complete_level .content_question .sortable_answer li {
+.start_test .wrapper .no_complete_level .content_question .sortable_answer li,
+.start_specialty .wrapper .no_complete_level .content_question .sortable_answer li {
   padding: 1rem;
   cursor: move;
   border: thin solid white;
@@ -1960,48 +2055,68 @@ html {
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer li:hover,
 .start_test .wrapper .content_start_game .content_question .sortable_answer li:hover,
+.start_specialty .wrapper .content_start_game .content_question .sortable_answer li:hover,
 .start_race .wrapper .start .content_question .sortable_answer li:hover,
 .start_test .wrapper .start .content_question .sortable_answer li:hover,
+.start_specialty .wrapper .start .content_question .sortable_answer li:hover,
 .start_race .wrapper .complete_level .content_question .sortable_answer li:hover,
 .start_test .wrapper .complete_level .content_question .sortable_answer li:hover,
+.start_specialty .wrapper .complete_level .content_question .sortable_answer li:hover,
 .start_race .wrapper .no_complete_level .content_question .sortable_answer li:hover,
 .start_test .wrapper .no_complete_level .content_question .sortable_answer li:hover,
+.start_specialty .wrapper .no_complete_level .content_question .sortable_answer li:hover,
 .start_race .wrapper .content_start_game .content_question .sortable_answer li:active,
 .start_test .wrapper .content_start_game .content_question .sortable_answer li:active,
+.start_specialty .wrapper .content_start_game .content_question .sortable_answer li:active,
 .start_race .wrapper .start .content_question .sortable_answer li:active,
 .start_test .wrapper .start .content_question .sortable_answer li:active,
+.start_specialty .wrapper .start .content_question .sortable_answer li:active,
 .start_race .wrapper .complete_level .content_question .sortable_answer li:active,
 .start_test .wrapper .complete_level .content_question .sortable_answer li:active,
+.start_specialty .wrapper .complete_level .content_question .sortable_answer li:active,
 .start_race .wrapper .no_complete_level .content_question .sortable_answer li:active,
 .start_test .wrapper .no_complete_level .content_question .sortable_answer li:active,
+.start_specialty .wrapper .no_complete_level .content_question .sortable_answer li:active,
 .start_race .wrapper .content_start_game .content_question .sortable_answer li:focus,
 .start_test .wrapper .content_start_game .content_question .sortable_answer li:focus,
+.start_specialty .wrapper .content_start_game .content_question .sortable_answer li:focus,
 .start_race .wrapper .start .content_question .sortable_answer li:focus,
 .start_test .wrapper .start .content_question .sortable_answer li:focus,
+.start_specialty .wrapper .start .content_question .sortable_answer li:focus,
 .start_race .wrapper .complete_level .content_question .sortable_answer li:focus,
 .start_test .wrapper .complete_level .content_question .sortable_answer li:focus,
+.start_specialty .wrapper .complete_level .content_question .sortable_answer li:focus,
 .start_race .wrapper .no_complete_level .content_question .sortable_answer li:focus,
-.start_test .wrapper .no_complete_level .content_question .sortable_answer li:focus {
+.start_test .wrapper .no_complete_level .content_question .sortable_answer li:focus,
+.start_specialty .wrapper .no_complete_level .content_question .sortable_answer li:focus {
   background-color: #ef863e;
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer li:before,
 .start_test .wrapper .content_start_game .content_question .sortable_answer li:before,
+.start_specialty .wrapper .content_start_game .content_question .sortable_answer li:before,
 .start_race .wrapper .start .content_question .sortable_answer li:before,
 .start_test .wrapper .start .content_question .sortable_answer li:before,
+.start_specialty .wrapper .start .content_question .sortable_answer li:before,
 .start_race .wrapper .complete_level .content_question .sortable_answer li:before,
 .start_test .wrapper .complete_level .content_question .sortable_answer li:before,
+.start_specialty .wrapper .complete_level .content_question .sortable_answer li:before,
 .start_race .wrapper .no_complete_level .content_question .sortable_answer li:before,
-.start_test .wrapper .no_complete_level .content_question .sortable_answer li:before {
+.start_test .wrapper .no_complete_level .content_question .sortable_answer li:before,
+.start_specialty .wrapper .no_complete_level .content_question .sortable_answer li:before {
   content: ' ' attr(position) ') ';
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button,
 .start_test .wrapper .content_start_game .content_question .sortable_answer + .container_btn button,
+.start_specialty .wrapper .content_start_game .content_question .sortable_answer + .container_btn button,
 .start_race .wrapper .start .content_question .sortable_answer + .container_btn button,
 .start_test .wrapper .start .content_question .sortable_answer + .container_btn button,
+.start_specialty .wrapper .start .content_question .sortable_answer + .container_btn button,
 .start_race .wrapper .complete_level .content_question .sortable_answer + .container_btn button,
 .start_test .wrapper .complete_level .content_question .sortable_answer + .container_btn button,
+.start_specialty .wrapper .complete_level .content_question .sortable_answer + .container_btn button,
 .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button,
-.start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button {
+.start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button,
+.start_specialty .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button {
   width: 380px;
   padding: 1.5rem 0.5rem;
   height: inherit;
@@ -2016,26 +2131,35 @@ html {
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:hover,
 .start_test .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:hover,
+.start_specialty .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:hover,
 .start_race .wrapper .start .content_question .sortable_answer + .container_btn button:hover,
 .start_test .wrapper .start .content_question .sortable_answer + .container_btn button:hover,
+.start_specialty .wrapper .start .content_question .sortable_answer + .container_btn button:hover,
 .start_race .wrapper .complete_level .content_question .sortable_answer + .container_btn button:hover,
 .start_test .wrapper .complete_level .content_question .sortable_answer + .container_btn button:hover,
+.start_specialty .wrapper .complete_level .content_question .sortable_answer + .container_btn button:hover,
 .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover,
-.start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover {
+.start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover,
+.start_specialty .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover {
   color: white;
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:focus,
 .start_test .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:focus,
+.start_specialty .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:focus,
 .start_race .wrapper .start .content_question .sortable_answer + .container_btn button:focus,
 .start_test .wrapper .start .content_question .sortable_answer + .container_btn button:focus,
+.start_specialty .wrapper .start .content_question .sortable_answer + .container_btn button:focus,
 .start_race .wrapper .complete_level .content_question .sortable_answer + .container_btn button:focus,
 .start_test .wrapper .complete_level .content_question .sortable_answer + .container_btn button:focus,
+.start_specialty .wrapper .complete_level .content_question .sortable_answer + .container_btn button:focus,
 .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus,
-.start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus {
+.start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus,
+.start_specialty .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .start_race .wrapper .start .container_btn button,
-.start_test .wrapper .start .container_btn button {
+.start_test .wrapper .start .container_btn button,
+.start_specialty .wrapper .start .container_btn button {
   width: 380px;
   padding: 1.5rem 0.5rem;
   height: inherit;
@@ -2048,35 +2172,43 @@ html {
   background-color: #3a6667;
 }
 .start_race .wrapper .start .container_btn button:hover,
-.start_test .wrapper .start .container_btn button:hover {
+.start_test .wrapper .start .container_btn button:hover,
+.start_specialty .wrapper .start .container_btn button:hover {
   color: white;
 }
 .start_race .wrapper .start .container_btn button:focus,
-.start_test .wrapper .start .container_btn button:focus {
+.start_test .wrapper .start .container_btn button:focus,
+.start_specialty .wrapper .start .container_btn button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .start_race .wrapper .complete_level .message,
 .start_test .wrapper .complete_level .message,
+.start_specialty .wrapper .complete_level .message,
 .start_race .wrapper .no_complete_level .message,
-.start_test .wrapper .no_complete_level .message {
+.start_test .wrapper .no_complete_level .message,
+.start_specialty .wrapper .no_complete_level .message {
   font-size: 2rem;
   text-align: center;
   cursor: pointer;
 }
 .start_race .wrapper .complete_level .message,
-.start_test .wrapper .complete_level .message {
+.start_test .wrapper .complete_level .message,
+.start_specialty .wrapper .complete_level .message {
   background-color: #aed581;
 }
 .start_race .wrapper .no_complete_level .message,
-.start_test .wrapper .no_complete_level .message {
+.start_test .wrapper .no_complete_level .message,
+.start_specialty .wrapper .no_complete_level .message {
   background-color: #757575;
 }
 .start_race .levels_content .level .bottom .number_questions .correct_answers,
-.start_test .levels_content .level .bottom .number_questions .correct_answers {
+.start_test .levels_content .level .bottom .number_questions .correct_answers,
+.start_specialty .levels_content .level .bottom .number_questions .correct_answers {
   position: relative;
 }
 .start_race .levels_content .level .bottom .number_questions .correct_answers:before,
-.start_test .levels_content .level .bottom .number_questions .correct_answers:before {
+.start_test .levels_content .level .bottom .number_questions .correct_answers:before,
+.start_specialty .levels_content .level .bottom .number_questions .correct_answers:before {
   content: attr(correct-answers);
   position: absolute;
   bottom: 0;
@@ -2095,13 +2227,34 @@ html {
   opacity: 0;
 }
 .start_race .levels_content .level .bottom .number_questions .correct_answers.active:before,
-.start_test .levels_content .level .bottom .number_questions .correct_answers.active:before {
+.start_test .levels_content .level .bottom .number_questions .correct_answers.active:before,
+.start_specialty .levels_content .level .bottom .number_questions .correct_answers.active:before {
   -webkit-animation: big_letter 1s 0.5s 1 ease;
   -khtml-animation: big_letter 1s 0.5s 1 ease;
   -moz-animation: big_letter 1s 0.5s 1 ease;
   -ms-animation: big_letter 1s 0.5s 1 ease;
   -o-animation: big_letter 1s 0.5s 1 ease;
   animation: big_letter 1s 0.5s 1 ease;
+}
+/* Start Test */
+.start_test div[data-role='header'] .top_questions {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 230px;
+  display: none;
+}
+.start_test div[data-role='header'] .top_questions .content_questions {
+  text-align: center;
+}
+.start_test div[data-role='header'] .top_questions .content_questions span {
+  color: #ef863e;
+  font-size: 5.5rem;
+  font-family: 'DK Mango';
+  font-weight: normal;
+  line-height: 1.3;
+  font-style: italic;
 }
 /* Search-Duel */
 .search_duel .content_list_users > h1,
@@ -4939,6 +5092,13 @@ label.ui-btn {
     background-size: 60%;
     background-position: center;
     width: 22px;
+  }
+  .start_test div[data-role='header'] .top_questions {
+    width: 150px;
+  }
+  .start_test div[data-role='header'] .top_questions .content_questions span {
+    font-size: 3.5rem;
+    line-height: 1.4;
   }
   .search_duel .content_list_users .title {
     font-size: 3.3rem;
