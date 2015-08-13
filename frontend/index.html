@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Script-Type" content="text/javascript">
         <meta http-equiv="Content-Style-Type" content="text/css">
         <meta name="author" content="Daniel Mauricio Sanchez">
+        <meta http-equic="Cache-Control" content="no-store">
         
         <!-- Page Title -->
         <title>Jurisquiz -- Game</title>
@@ -420,6 +421,12 @@
             </div>
         </script>
         <script type="text/html" id="template_each_specialty">
+            <div class="container_btn">
+            	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="startGamespeciality.html?id=<%= id %>"><%= name %>
+            	</button>
+            </div>
+        </script>
+        <script type="text/html" id="template_each_finalGame">
             <div class="container_btn">
             	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="startGamespeciality.html?id=<%= id %>"><%= name %>
             	</button>

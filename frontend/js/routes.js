@@ -363,13 +363,10 @@ var router = new $.mobile.Router({
             var count_questions = content_questions.length;
             var points = 0;
             
-            var x = Math.floor((Math.random() * count_questions) + 1);
-            
             $.post(webService + 'points/' + localStorage.getItem('id_user'),{}, function(data){
                 points = parseInt(JSON.parse(data).points);
             });
             
-            console.log(localStorage.getItem('id_user'));
             console.log(points);
             
             // Hide the content of this button
@@ -435,9 +432,10 @@ var router = new $.mobile.Router({
                                         
                                         if(answer_ == correct_answer){
                                             ++corrects_questions;
-                                            evt_next_question_test('.start_test');
+                                            console.log(corrects_questions);
+                                            evt_next_question_test('.start_test',corrects_questions);
                                         }else{
-                                            evt_next_question_test('.start_test');
+                                            evt_next_question_test('.start_test',corrects_questions);
                                             message('La respuesta es incorrecta');
                                         }
                                     });
@@ -505,7 +503,7 @@ var router = new $.mobile.Router({
                     
                 //cantidad de Preguntas
                 var canPreguntas =  $('#content_startSpeciality .content_question').length;
-                $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((canPreguntas));
+                $('.start_specialty div[data-role="header"] .top_questions .content_questions .rank').text((canPreguntas));
                 //$('#content_startSpeciality').addClass('test_options');
                 $('#content_startSpeciality').show(50).css('transform','scale(1)');
                 $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
@@ -542,8 +540,16 @@ var router = new $.mobile.Router({
                     if(canPreguntas > con){
                         con++;
                         $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
+                        $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((con));
                     }else{
-                        
+                         
+                          itemRespuesta.forEach(function(index,element){
+               
+                           //var compiled = tmpl("template_each_specialty", index);
+                           //$(".listTematica").append(compiled);
+                            console.log(index);
+                        });
+                         
                     }
 
                 });
@@ -2673,8 +2679,8 @@ function evt_next_question(page_referer){
 }
 
 // Evt to next question mode test
-function evt_next_question_test(page_referer){
-
+function evt_next_question_test(page_referer,correct_questions){
+    console.log(correct_questions);
     var current_content = $(page_referer + ' .content_question.active');
     var next_content = $(page_referer + ' .content_question.active').next();
     var time_question = 10;
@@ -2687,7 +2693,7 @@ function evt_next_question_test(page_referer){
         
         current_content.hide();
         
-        questions(page_referer,'');
+        questions(page_referer,[]);
         
         validate_questions();
         
@@ -2698,7 +2704,6 @@ function evt_next_question_test(page_referer){
             setTimeout(function(){show_timer(time_question,page_referer);},500);
         },500);
     }else{
-        debugger;
         clearInterval(count_timer);
         current_content.hide(500);
         
@@ -2716,7 +2721,33 @@ function evt_next_question_test(page_referer){
                 current_content.hide(50);
                 $('.start_test .wrapper > div').hide();
                 $('.start_test div[data-role="header"] .top_questions').hide();
+                debugger;
+                $('.start_test .wrapper .complete_questions span').text(correct_questions);
                 $('.start_test .wrapper .complete_questions').fadeIn(1000);
+                
+                if(correct_questions == 10)
+                    setTimeout(function(){ message('Respondiste todas las preguntas correctamente, ¡Felicidades!'); },700);
+                
+                $.ajax({
+                    url         : webService + 'points_test',
+                    type        : 'POST',
+                    data        : {
+                        id      : localStorage.getItem('id_user'),
+                        points  : parseInt(correct_questions)
+                    },
+                    success     : function(res){
+                        var data = JSON.parse(res);
+                        if(data.status == "OK")
+                            message('Puntos en total: '+data.metadata.points);
+                        else
+                            message('Algo salio mal ="/');
+                    }
+                });
+                
+                
+                $('.start_test .wrapper .complete_questions').unbind('click').click(function(){
+                    history.back();
+                });
             }else{
                 $('.start_test div[data-role="header"] .top_questions .content_questions .number_questions').text((number_question));
                 current_content.remove();

@@ -157,6 +157,11 @@ $app->post(
     '/points/:id','main:points'
 )->setParams(array($app));
 
+// Route for update points user mode test 
+$app->post(
+    '/points_test','main:points_test'
+)->setParams(array($app));
+
 // Route for get answers corrects 
 $app->post(
     '/answers/:id','main:answers'

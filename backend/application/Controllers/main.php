@@ -737,6 +737,35 @@ class main {
         echo json_encode($query->attributes());
     }
     
+    # Function to get total points
+    function points_test(){
+        $id_user = base64_decode($_POST['id']);
+        
+        $query = jur_users::find($id_user);
+        $user = $query->attributes();
+        $points = (int) $query->points;
+        $correct_answer = (int) $_POST['points'];
+        $query->points = ($points + $correct_answer);
+        
+        $res = $query->save();
+        
+        if($res){
+            $data = array(
+                    'message'   => 'Se actualizaron los puntos correctamente!',
+                    'status'    => 'OK',
+                    'id_user'   => $user['id'],
+                    'metadata'  => $user
+                );
+        }else{
+            $data = array(
+                    'message'   => 'Ocurrio un error guardando los puntos!',
+                    'status'    => 'FAIL'
+                );
+        }
+        
+        echo json_encode($data);
+    }
+    
     # Function to get correct answers
     function answers($app,$id){
         $id_user = base64_decode($id);
