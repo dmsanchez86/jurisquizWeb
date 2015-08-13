@@ -2340,7 +2340,7 @@ html {
 }
 .search_duel .content_list_users .list_users .user .image_user,
 .duel_users .content_list_users .list_users .user .image_user {
-  text-align: right;
+  text-align: center;
 }
 .search_duel .content_list_users .list_users .user .image_user img,
 .duel_users .content_list_users .list_users .user .image_user img {
@@ -2410,6 +2410,8 @@ html {
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  display: block;
+  cursor: pointer;
 }
 .search_duel .content_list_users .list_users .user .duel_link a:hover,
 .duel_users .content_list_users .list_users .user .duel_link a:hover {
@@ -2428,6 +2430,7 @@ html {
   -ms-transform: scalex(1.5);
   -o-transform: scalex(1.5);
   transform: scalex(1.5);
+  cursor: pointer;
 }
 /* Duel-Users */
 .duel_users .content_start_game {

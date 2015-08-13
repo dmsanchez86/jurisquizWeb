@@ -16,5 +16,6 @@
 }
 
 .start_specialty table.resultado > tbody > tr.correcto{
-    background-color: #f2f2f2;
+    background-color: #3a6667;
+    color: #FFF;
 }

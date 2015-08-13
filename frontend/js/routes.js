@@ -278,15 +278,8 @@ var router = new $.mobile.Router({
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('data-url');
-            $.mobile.changePage(url,{role: 'page',transition: 'turn'});
+            $.mobile.changePage(url,{role: 'page',transition: 'fade'});
         });
-    },
-    duel_users: function(type,match,ui){
-        nav_menu();
-        
-        show_nav_button();
-        
-        evt_logout();
     },
     search_duel: function(type,match,ui){
         nav_menu();
@@ -312,30 +305,63 @@ var router = new $.mobile.Router({
                     $('.search_duel .list_users').append(tmpl('each_user_duel',i));
                 });
                 
+                setTimeout(function() {
+                    $('.search_duel .duel_link a').unbind('click').click(function(e){
+                        e.preventDefault();
+                        var url = $(this).attr('data-url');
+                        
+                        var id_friend = url.split('=')[1];
+                        
+                        loader('Retando colega...');
+                        
+                        $.ajax({
+                            url     : webService + 'duel',
+                            type    : 'POST',
+                            data    : {
+                                id_user     : localStorage.getItem('id_user'),
+                                id_friend   : id_friend
+                            },
+                            success : function(res){
+                                $('.loader').fadeOut(500);
+                                console.log(res);
+                                var response = JSON.parse(res);
+                                
+                                if(response.status == 'OK'){
+                                    message(response.message);
+                                    setTimeout(function(){ $.mobile.changePage(url,{role:'page',transition: 'pop'}); },2000);
+                                }else{
+                                    message(response.message);
+                                }
+                            }
+                        });
+                        // seconds = 10;
+                        // $('.panel_notification').css('transform','translatey(-100px)');
+                        // $('.panel_notification .time span').text('( 10 seg )');
+                        // $('.panel_notification').fadeIn(100,function(){
+                        //     $(this).css('transform','translatey(0)');
+                        //     time = setInterval(function(){
+                        //         seconds--;
+                        //         $('.panel_notification .time span').text('( '+seconds+' seg )');
+                                
+                        //         if(seconds == 0){
+                        //             clearInterval(time);
+                                    // $.mobile.changePage(url,{role:'page',transition: 'pop'});
+                        //             $('.panel_notification').fadeOut(500);
+                        //             seconds = 10;
+                        //         }
+                        //     },1000);
+                        // });
+                    });
+                }, 300);
             }
         });
+    },
+    duel_users: function(type,match,ui){
+        nav_menu();
         
-        $('.duel_link a').unbind('click').click(function(e){
-            e.preventDefault();
-            var url = $(this).attr('href');
-            seconds = 10;
-            $('.panel_notification').css('transform','translatey(-100px)');
-            $('.panel_notification .time span').text('( 10 seg )');
-            $('.panel_notification').fadeIn(100,function(){
-                $(this).css('transform','translatey(0)');
-                time = setInterval(function(){
-                    seconds--;
-                    $('.panel_notification .time span').text('( '+seconds+' seg )');
-                    
-                    if(seconds == 0){
-                        clearInterval(time);
-                        $.mobile.changePage(url,{role:'page',transition: 'pop'});
-                        $('.panel_notification').fadeOut(500);
-                        seconds = 10;
-                    }
-                },1000);
-            });
-        });
+        show_nav_button();
+        
+        evt_logout();
     },
     win_duel : function(type,match,ui){
         nav_menu();
@@ -504,6 +530,7 @@ var router = new $.mobile.Router({
         
         evt_logout();
         var params = router.getParams(match[1]);
+        $('#content_startSpeciality').empty();
         $.ajax({
             url: webService + "find_question",
             type: 'POST',
@@ -516,18 +543,21 @@ var router = new $.mobile.Router({
                 var respuestas= [];
                 var itemRespuesta = {};
                 var questions = data.random();
-                questions.forEach(function(i){
+                questions.forEach(function(i,o){
+                    i.key = o; 
                     $('#content_startSpeciality').append(tmpl('structure_question',i));
                 });
                     
                 //cantidad de Preguntas
-                var canPreguntas =  $('#content_startSpeciality .content_question').length;
+                var canPreguntas = $('#content_startSpeciality .content_question').length;
                 $('.start_specialty div[data-role="header"] .top_questions .content_questions .rank').text((canPreguntas));
                 //$('#content_startSpeciality').addClass('test_options');
                 $('#content_startSpeciality').show(50).css('transform','scale(1)');
                 $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
                 
-                $('#content_startSpeciality .content_question input[type=radio]').unbind('click').click(function(e){
+                $('#content_startSpeciality .content_question input[type="radio"]').unbind('click').click(function(e){
+                    console.log($(this).val());
+                    var respuesta = $(this).val();
                     
                     var type_question = $('#content_startSpeciality .content_question.active').attr('type-question');
                     var id_question = $('#content_startSpeciality .content_question.active').attr('id-question');
@@ -535,35 +565,34 @@ var router = new $.mobile.Router({
                     var correct_answer = $('#content_startSpeciality .content_question.active').attr('correct-answer');
                     
                     
-                   if($(this).val() === correct_answer){
+                   if(respuesta === correct_answer){
                         
                         itemRespuesta.pregunta = question;
-                        itemRespuesta.respuesta= $(this).val();
+                        itemRespuesta.respuesta= respuesta;
                         itemRespuesta.correcta = true;
-                        //console.log(JSON.stringify(itemRespuesta));
                         
                         respuestas.push(JSON.stringify(itemRespuesta));
-                        console.log(respuestas);
                        
                    }else{
                        
                         itemRespuesta.pregunta = question;
-                        itemRespuesta.respuesta= $(this).val();
+                        itemRespuesta.respuesta= respuesta;
                         itemRespuesta.correcta = false;
                         respuestas.push(JSON.stringify(itemRespuesta));
-                        console.log(respuestas);
+
                    }
                    
                     
                     $('#content_startSpeciality .content_question').removeClass('active').fadeOut(500);
-              
+                        
                         if(canPreguntas > con){
                             con++;
+                            
                             $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
                             $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((con));
                         }
                         if(canPreguntas == con){
-                            
+                            console.log(respuestas);
                             respuestas.forEach(function(index,element){
                
                                var compiled = tmpl("template_each_finalGame", JSON.parse(index));
@@ -572,7 +601,7 @@ var router = new $.mobile.Router({
                             });
                             
                         }
-                    
+                  
 
                 });
                 
@@ -598,7 +627,6 @@ var router = new $.mobile.Router({
                 var data = JSON.parse(response);
                 
                 data.forEach(function(index,element){
-               
                    var compiled = tmpl("template_each_specialty", index);
                    $(".listTematica").append(compiled);
                     
@@ -2408,6 +2436,7 @@ function questions(page_referer,array){
                 var questions = data.random(); 
     
                 questions.forEach(function(i,o){
+                    i.key = o;
                     $(page_referer + ' .content_start_game').append(tmpl('structure_question',i));
                 });
             }
@@ -2418,6 +2447,7 @@ function questions(page_referer,array){
         var questions = array.random();
         
         questions.forEach(function(i,o){
+            i.key = o;
             $(page_referer + ' .content_start_game').append(tmpl('structure_question',i));
         });
     }

@@ -167,6 +167,10 @@ $app->post(
     '/answers/:id','main:answers'
 )->setParams(array($app));
 
+// Route for start duel 
+$app->post(
+    '/duel','main:duel'
+)->setParams(array($app));
 
 // PUT route
 $app->put('/put', function () {

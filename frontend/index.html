@@ -400,8 +400,8 @@
                         
                         for(var i = 0; i < options_random.length; i++){ %>
                             <div class="answer" id-answer="<%= id %>">
-                                <input id="answer<%= i %>" type="radio" name="answer_<%= id %>" value="<%= options_random[i] %>" data-role="none"/>
-                                <label for="answer<%= i %>" data-role="none"><%= options_random[i] %></label>
+                                <input id="answer<%= key %><%= i %>" type="radio" name="answer_<%= id %>" value="<%= options_random[i] %>" data-role="none"/>
+                                <label for="answer<%= key %><%= i %>" data-role="none"><%= options_random[i] %></label>
                             </div>
                         <% } %>
                     </div>
@@ -428,23 +428,22 @@
         </script>
         <script type="text/html" id="template_each_finalGame">
             <% if (correcta) {%>
-            <tr class="correcto">
-               <td> <%= pregunta %> </td>
-               <td> <%= respuesta %> </td>
-              
+                <tr class="correcto">
+                    <td> <%= pregunta %> </td>
+                    <td> <%= respuesta %> </td>
                     <td> bien </td>
-              
-               
-                <td> mal </td>
-               
-              
-            </tr>
+                  
+                </tr>
             <%} else{ %>
-            
+                 <tr>
+                    <td> <%= pregunta %> </td>
+                    <td> <%= respuesta %> </td>
+                    <td> mal </td>
+                  
+                </tr>
             <% } %>
         </script>
         <script type="text/html" id="each_user_duel">
-        
             <div class="user">
                 <div class="row" style="margin:0">
                     <div class="col s2" style="padding: 0">
@@ -459,7 +458,7 @@
                     </div>
                     <div class="col s5" style="padding: 0">
                         <div class="duel_link">
-                            <a href="duel_users.html?id=<%= id %>">Retar</a>
+                            <a href="#" data-url="duel_users.html?id=<%= id_user %>">Retar</a>
                         </div>
                     </div>
                 </div>

@@ -121,7 +121,7 @@ class main {
         
         foreach($query as $k => $i){
 			$data[$k] = $i->attributes();
-			$data[$k]['id'] = base64_encode($data[$k]['id']);
+			$data[$k]['id_user'] = base64_encode($data[$k]['id']);
 		}
 		
 		echo json_encode($data);
@@ -780,6 +780,38 @@ class main {
         foreach($query as $k){
 			$data[] = $k->attributes();
 		}
+        
+        echo json_encode($data);
+    }
+    
+    # Function to write data duel
+    function duel(){
+        $id_user = base64_decode($_POST['id_user']);
+        $id_friend = base64_decode($_POST['id_friend']);
+        date_default_timezone_set('America/Bogota');
+        $date = date('Y-m-d H:i:s');
+        
+        $query = jur_duel::create(array(
+                'id'        => null,
+                'id_user_1' => $id_user,
+                'id_user_2' => $id_friend,
+                'date_duel' => $date,
+                'date_start'=> $date,
+                'date_end'  => null,
+                'state_duel'=> 'wait'
+            ));
+            
+        if($query->errors->errors == null){
+            $data = array(
+                    'message'   => 'El reto se creo correctamente',
+                    'status'    => 'OK'
+                );
+        }else{
+            $data = array(
+                    'message'   => 'Ocurrio un error al crear el reto',
+                    'status'    => 'FAIL'
+                );
+        }
         
         echo json_encode($data);
     }
