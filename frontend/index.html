@@ -427,11 +427,43 @@
             </div>
         </script>
         <script type="text/html" id="template_each_finalGame">
-            <div class="container_btn">
-            	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="startGamespeciality.html?id=<%= id %>"><%= name %>
-            	</button>
+            <% if (correcta) {%>
+            <tr class="correcto">
+               <td> <%= pregunta %> </td>
+               <td> <%= respuesta %> </td>
+              
+                    <td> bien </td>
+              
+               
+                <td> mal </td>
+               
+              
+            </tr>
+            <%} else{ %>
+            
+            <% } %>
+        </script>
+        <script type="text/html" id="each_user_duel">
+        
+            <div class="user">
+                <div class="row" style="margin:0">
+                    <div class="col s2" style="padding: 0">
+                        <div class="image_user">
+                            <img src="img/levels/level<%= level %><%= gender %>.png" class="responsive-img">
+                        </div>
+                    </div>
+                    <div class="col s5">
+                        <div class="name_user">
+                            <em><%= (++index) %>. </em> <%= name %>
+                        </div>
+                    </div>
+                    <div class="col s5" style="padding: 0">
+                        <div class="duel_link">
+                            <a href="duel_users.html?id=<%= id %>">Retar</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </script>
-        
     </body>
 </html>

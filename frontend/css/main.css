@@ -2186,10 +2186,7 @@ html {
 .start_specialty .wrapper .complete_level .message,
 .start_race .wrapper .no_complete_level .message,
 .start_test .wrapper .no_complete_level .message,
-.start_specialty .wrapper .no_complete_level .message,
-.start_race .wrapper .complete_questions .message,
-.start_test .wrapper .complete_questions .message,
-.start_specialty .wrapper .complete_questions .message {
+.start_specialty .wrapper .no_complete_level .message {
   font-size: 2rem;
   text-align: center;
   cursor: pointer;

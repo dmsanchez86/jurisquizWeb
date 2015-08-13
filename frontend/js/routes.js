@@ -295,6 +295,26 @@ var router = new $.mobile.Router({
         
         evt_logout();
         
+        $.ajax({
+            url         : webService + 'users/users_less_me',
+            type        : 'POST',
+            data        : {
+                id      : localStorage.getItem('id_user')
+            },
+            success     : function(res){
+                var data = JSON.parse(res);
+                console.log(data);
+                
+                $('.search_duel .list_users').empty();
+                
+                data.forEach(function(i,o){
+                    i.index = o;
+                    $('.search_duel .list_users').append(tmpl('each_user_duel',i));
+                });
+                
+            }
+        });
+        
         $('.duel_link a').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('href');
@@ -416,7 +436,7 @@ var router = new $.mobile.Router({
                                 questions('.start_test',data);
                                 
                                 $('.loader').fadeOut(1000);
-                                
+
                                 var content_questions = $('.start_test .content_question');
                                 var corrects_questions = 0;
                                 
@@ -432,7 +452,6 @@ var router = new $.mobile.Router({
                                         
                                         if(answer_ == correct_answer){
                                             ++corrects_questions;
-                                            console.log(corrects_questions);
                                             evt_next_question_test('.start_test',corrects_questions);
                                         }else{
                                             evt_next_question_test('.start_test',corrects_questions);
@@ -515,11 +534,12 @@ var router = new $.mobile.Router({
                     var question = $('#content_startSpeciality .content_question.active .question').text();
                     var correct_answer = $('#content_startSpeciality .content_question.active').attr('correct-answer');
                     
+                    
                    if($(this).val() === correct_answer){
                         
                         itemRespuesta.pregunta = question;
                         itemRespuesta.respuesta= $(this).val();
-                        itemRespuesta.corecta = true;
+                        itemRespuesta.correcta = true;
                         //console.log(JSON.stringify(itemRespuesta));
                         
                         respuestas.push(JSON.stringify(itemRespuesta));
@@ -529,28 +549,30 @@ var router = new $.mobile.Router({
                        
                         itemRespuesta.pregunta = question;
                         itemRespuesta.respuesta= $(this).val();
-                        itemRespuesta.corecta = false;
+                        itemRespuesta.correcta = false;
                         respuestas.push(JSON.stringify(itemRespuesta));
                         console.log(respuestas);
                    }
                    
                     
                     $('#content_startSpeciality .content_question').removeClass('active').fadeOut(500);
-                    
-                    if(canPreguntas > con){
-                        con++;
-                        $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
-                        $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((con));
-                    }else{
-                         
-                          itemRespuesta.forEach(function(index,element){
+              
+                        if(canPreguntas > con){
+                            con++;
+                            $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
+                            $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((con));
+                        }
+                        if(canPreguntas == con){
+                            
+                            respuestas.forEach(function(index,element){
                
-                           //var compiled = tmpl("template_each_specialty", index);
-                           //$(".listTematica").append(compiled);
-                            console.log(index);
-                        });
-                         
-                    }
+                               var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+                               $("#content_startSpeciality table tbody").append(compiled);
+                                
+                            });
+                            
+                        }
+                    
 
                 });
                 
@@ -2680,7 +2702,6 @@ function evt_next_question(page_referer){
 
 // Evt to next question mode test
 function evt_next_question_test(page_referer,correct_questions){
-    console.log(correct_questions);
     var current_content = $(page_referer + ' .content_question.active');
     var next_content = $(page_referer + ' .content_question.active').next();
     var time_question = 10;

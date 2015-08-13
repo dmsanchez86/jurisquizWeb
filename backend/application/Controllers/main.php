@@ -1,7 +1,7 @@
 <?php
 
 /*
-* Controller for the login the application
+* Main Controller Application
 */
 
 class main {
@@ -113,12 +113,15 @@ class main {
             $query = jur_users::all(array('conditions' => array('role = "admin"')));
         }else if($filter == 'users'){
             $query = jur_users::all(array('conditions' => array('role = "user" ORDER BY points DESC')));
+        }else if($filter == 'users_less_me'){
+            $query = jur_users::all(array('conditions' => array('id NOT IN(?) AND role = "user" ORDER BY points DESC',base64_decode($_POST['id']))));
         }else if($filter == 'all'){
             $query = jur_users::all();
         }
         
-        foreach($query as $k){
-			$data[] = $k->attributes();
+        foreach($query as $k => $i){
+			$data[$k] = $i->attributes();
+			$data[$k]['id'] = base64_encode($data[$k]['id']);
 		}
 		
 		echo json_encode($data);
@@ -473,7 +476,9 @@ class main {
     #Function to get all question by specialty
     function find_question(){
         $id_specilty = $_POST['id_specialty'];
+        
         $data = array();
+        
         $query = jur_questions::all(array('conditions' => array('id_specialty = ?',$id_specilty)));
         
         foreach($query as $k){
