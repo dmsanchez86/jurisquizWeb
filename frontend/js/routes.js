@@ -481,7 +481,11 @@ var router = new $.mobile.Router({
         });
     },
     startGamespeciality :function(type,match,ui){
+        nav_menu();
         
+        show_nav_button();
+        
+        evt_logout();
         var params = router.getParams(match[1]);
         $.ajax({
             url: webService + "find_question",
@@ -501,37 +505,46 @@ var router = new $.mobile.Router({
                     
                 //cantidad de Preguntas
                 var canPreguntas =  $('#content_startSpeciality .content_question').length;
-                
+                $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((canPreguntas));
                 //$('#content_startSpeciality').addClass('test_options');
                 $('#content_startSpeciality').show(50).css('transform','scale(1)');
                 $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
                 
-                var type_question = $('#content_startSpeciality .content_question.active').attr('type-question');
-                var id_question = $('#content_startSpeciality .content_question.active').attr('id-question');
-                var question = $('#content_startSpeciality .content_question.active .question').text();
-                var correct_answer = $('#content_startSpeciality .content_question.active').attr('correct-answer');
-                
                 $('#content_startSpeciality .content_question input[type=radio]').unbind('click').click(function(e){
-            
+                    
+                    var type_question = $('#content_startSpeciality .content_question.active').attr('type-question');
+                    var id_question = $('#content_startSpeciality .content_question.active').attr('id-question');
+                    var question = $('#content_startSpeciality .content_question.active .question').text();
+                    var correct_answer = $('#content_startSpeciality .content_question.active').attr('correct-answer');
+                    
                    if($(this).val() === correct_answer){
                         
                         itemRespuesta.pregunta = question;
-                        itemRespuesta.repuesta= $(this).val();
+                        itemRespuesta.respuesta= $(this).val();
                         itemRespuesta.corecta = true;
-                        console.log(JSON.stringify(itemRespuesta));
+                        //console.log(JSON.stringify(itemRespuesta));
                         
-                        respuestas.push(JSON.stringify(itemRespuesta))
+                        respuestas.push(JSON.stringify(itemRespuesta));
                         console.log(respuestas);
                        
                    }else{
                        
                         itemRespuesta.pregunta = question;
-                        itemRespuesta.repuesta= $(this).val();
+                        itemRespuesta.respuesta= $(this).val();
                         itemRespuesta.corecta = false;
                         respuestas.push(JSON.stringify(itemRespuesta));
+                        console.log(respuestas);
                    }
                    
                     
+                    $('#content_startSpeciality .content_question').removeClass('active').fadeOut(500);
+                    
+                    if(canPreguntas > con){
+                        con++;
+                        $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
+                    }else{
+                        
+                    }
 
                 });
                 
@@ -1488,7 +1501,7 @@ function evt_logout(){
             localStorage.removeItem('role_user');
             localStorage.removeItem('gender_user');
             localStorage.removeItem('first_view_dashboard');
-            $.mobile.changePage('#home',{role: 'page',transition: 'flow'});
+            $.mobile.changePage('index.html#home',{role: 'page',transition: 'flow'});
             $('.loader').fadeOut(1800);
         },1200);
     });
