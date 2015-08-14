@@ -4291,6 +4291,9 @@ html {
   -o-transform: translate(-100px, 0);
   transform: translate(-100px, 0);
 }
+.nav_button .nav.active .notifications:after {
+  opacity: 1;
+}
 .nav_button .nav:after {
   top: 0;
   left: 0;
@@ -4311,6 +4314,39 @@ html {
   -ms-transition: all 0.1s ease-in-out 0s;
   -o-transition: all 0.1s ease-in-out 0s;
   transition: all 0.1s ease-in-out 0s;
+}
+.nav_button .nav .notifications:after {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  -webkit-border-radius: 50%;
+  -khtml-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  content: attr(data-number-notifications);
+  background: #ef863e;
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  text-indent: -1px;
+  right: 2px;
+  top: -2px;
+  line-height: 1.5;
+  -webkit-text-shadow: 0 0 1px #323232;
+  -khtml-text-shadow: 0 0 1px #323232;
+  -moz-text-shadow: 0 0 1px #323232;
+  -ms-text-shadow: 0 0 1px #323232;
+  -o-text-shadow: 0 0 1px #323232;
+  text-shadow: 0 0 1px #323232;
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 .nav_button .nav .mask {
   z-index: 21;

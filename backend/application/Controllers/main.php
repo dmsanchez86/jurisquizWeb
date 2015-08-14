@@ -802,10 +802,19 @@ class main {
             ));
             
         if($query->errors->errors == null){
-            $data = array(
+            $user_data = jur_users::find($id_user);
+            $noti = jur_notifications::create(array(
+                    'id'            => null,
+                    'id_user'       => $id_friend,
+                    'notification'  => 'Tu amigo '. $user_data->name . ' te ha retado!',
+                    'state'         => 'active'
+                ));
+            if($noti->errors->errors == null){
+                $data = array(
                     'message'   => 'El reto se creo correctamente',
                     'status'    => 'OK'
                 );
+            }
         }else{
             $data = array(
                     'message'   => 'Ocurrio un error al crear el reto',

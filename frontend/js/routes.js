@@ -530,7 +530,7 @@ var router = new $.mobile.Router({
         
         evt_logout();
         var params = router.getParams(match[1]);
-        $('#content_startSpeciality').empty();
+       
         $.ajax({
             url: webService + "find_question",
             type: 'POST',
@@ -594,9 +594,10 @@ var router = new $.mobile.Router({
                         if(canPreguntas == con){
                             console.log(respuestas);
                             respuestas.forEach(function(index,element){
-               
-                               var compiled = tmpl("template_each_finalGame", JSON.parse(index));
-                               $("#content_startSpeciality table tbody").append(compiled);
+                                console.log(index);
+                               //var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+                               //console.log(compiled);
+                              // $("#content_startSpeciality table tbody").append(compiled);
                                 
                             });
                             

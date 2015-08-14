@@ -1,4 +1,6 @@
-
+.start_specialty table.resultado{
+    display:none;
+}
 .start_specialty div[data-role='header'] .top_questions {
     position: absolute;
     right: 0;
