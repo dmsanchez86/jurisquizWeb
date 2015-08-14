@@ -6,7 +6,7 @@
 /* ----------------------------------------- */
 
 /* Home */
-.home,.register,.dashboard,.race,.start_race,.duel,.search_duel,.duel_users,.terms,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.questions,.specialties{
+.home,.register,.dashboard,.race,.start_race,.duel,.search_duel,.duel_users,.terms,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.questions,.specialties,.notifications{
     .container_logo{padding: 1.5rem 0;
          .content{width: @width_relative;margin: 0 auto;max-width: 100%;
             .btn_logo{.btn_logo(); 
@@ -51,7 +51,7 @@
 }
 
 /* Dashboard */
-.dashboard,.friends,.race,.start_race,.duel,.search_duel,.duel_users,.win_duel,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.profile,.questions,.specialties{
+.dashboard,.friends,.race,.start_race,.duel,.search_duel,.duel_users,.win_duel,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.profile,.questions,.specialties,.notifications{
     .btn_panel{display: inline-block;width: 35px;margin-left: 1rem;margin-top: 1rem;position: relative;.box_sizing(content-box);padding-right: 1.2rem;
         &:after{position: absolute; right: 0; width: 2.5px; height: 88%; background-color: #fff; content:''; margin: auto; top: 8px;bottom: 0;}
         > div{border-top: 3.3px solid white;margin-bottom: .5rem;.transition(all .4s ease);
@@ -758,16 +758,53 @@
             .nav-count-2 {.transform( translate(-35px, -80px) );}
             .nav-count-3 {.transform( translate(-80px, -45px) );}
             .nav-count-4 {.transform( translate(-100px, 0) );}
-            .notifications{
+            .notifications_link{
                 &:after{opacity: 1;}
+                &.hide_notifications{
+                    &:after{opacity: 0;}
+                }
             }
         }
         &:after{top: 0;left: 0;content: '';width: inherit;height: inherit;.border_radius( 50% );position: absolute;background: #3A6667;.transition( all .1s ease-in-out 0s );}
-        .notifications{
+        .notifications_link{
             &:after{position: absolute; width: 15px;height: 15px; .border_radius(50%);content: attr(data-number-notifications); background: @before_color; color: #fff; font-size: 10px; text-align: center;text-indent: -1px; right: 2px; top: -2px; line-height: 1.5; .text_shadow(0,0,1px,#323232);opacity: 0;.transition();}
+            &.hide_notifications{
+                    &:after{opacity: 0;}
+                }
         }
         .mask {z-index: 21;.box_shadow(0,0,4px,1px,#fff);color: #fff;width: inherit;height: inherit;cursor: pointer;font-size: 28px;text-align: center;.border_radius( 50% );position: absolute;background: #3A6667;.transition( all .1s ease-in-out 0s );}
         .nav-item {top: 0;left: 0;z-index: 19;width: 45px;height: 45px;color: #fff;font-size: 24px;.transform( none );line-height: 45px;.border_radius( 50% );position: absolute;text-align: center;.transition( all .3s cubic-bezier(.68, 1.55, .265, 1) );
+        }
+    }
+}
+
+/* Popup Notifications */
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active{
+    .header{ background-color: @btn_start; overflow: auto;padding: .85rem 0; .border_radius(5px 5px 0 0);
+        .title{font-size: 3.5rem;font-family: 'DK Mango'; color: white; .text_shadow(0,0,2px,#323232);text-align: center;line-height: 1; margin: .5rem 0 0;}
+    }   
+    .content{ padding: 1rem;
+        .content_notifications{margin-bottom: 1rem;
+            .notification{margin: .25rem 0 0; .box_shadow(0, 0, 1px,0px, #999); padding: 1rem .5rem;position: relative;overflow: hidden;.border_radius(3px);
+                .text{
+                    span{color: @btn_login;font-family: 'DK Mango'; font-size: 1.5rem;font-weight: bold;}
+                }
+                .mask{position: absolute; top: 0;left: 0; width: 100%; height: 100%;background-color: rgba(130,130,130,.5); z-index: 2; cursor: pointer;
+                    &:hover{background-color: rgba(130,130,130,.15);
+                        .panel{.transform(translatex(0));}
+                    }
+                    .panel{position: absolute; right: 0; top: 0;  height: 105%; .transform(translatex(105%));.transition(all .5s ease);background-color: @btn_start;border: none;
+                        .btns{text-align: center; cursor: pointer;
+                            span{ display: block; padding: 0 .5rem;height: 100%;  font-family: 'DK Mango';font-size: 1.5rem; line-height: 1.3; .transition();
+                                &:hover{color: @before_color;
+                                    i{color: @before_color;}
+                                }
+                                i{font-size: 1.2rem;line-height: 1;.transition(); font-weight: normal;}
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

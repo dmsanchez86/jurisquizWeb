@@ -47,7 +47,8 @@ html {
 .litigation .container_logo,
 .start_litigation .container_logo,
 .questions .container_logo,
-.specialties .container_logo {
+.specialties .container_logo,
+.notifications .container_logo {
   padding: 1.5rem 0;
 }
 .home .container_logo .content,
@@ -66,7 +67,8 @@ html {
 .litigation .container_logo .content,
 .start_litigation .container_logo .content,
 .questions .container_logo .content,
-.specialties .container_logo .content {
+.specialties .container_logo .content,
+.notifications .container_logo .content {
   width: 380px;
   margin: 0 auto;
   max-width: 100%;
@@ -87,7 +89,8 @@ html {
 .litigation .container_logo .content .btn_logo,
 .start_litigation .container_logo .content .btn_logo,
 .questions .container_logo .content .btn_logo,
-.specialties .container_logo .content .btn_logo {
+.specialties .container_logo .content .btn_logo,
+.notifications .container_logo .content .btn_logo {
   background-color: #f6f6f6;
   height: inherit;
   padding: 0;
@@ -116,7 +119,8 @@ html {
 .litigation .container_logo .content .btn_logo div,
 .start_litigation .container_logo .content .btn_logo div,
 .questions .container_logo .content .btn_logo div,
-.specialties .container_logo .content .btn_logo div {
+.specialties .container_logo .content .btn_logo div,
+.notifications .container_logo .content .btn_logo div {
   background-image: url(../img/logo.png);
   width: 100%;
   min-height: 300px;
@@ -138,7 +142,8 @@ html {
 .litigation .container_btn,
 .start_litigation .container_btn,
 .questions .container_btn,
-.specialties .container_btn {
+.specialties .container_btn,
+.notifications .container_btn {
   text-align: center;
 }
 .home .container_btn button,
@@ -157,7 +162,8 @@ html {
 .litigation .container_btn button,
 .start_litigation .container_btn button,
 .questions .container_btn button,
-.specialties .container_btn button {
+.specialties .container_btn button,
+.notifications .container_btn button {
   width: 380px;
   padding: 1.5rem 0.5rem;
   height: inherit;
@@ -184,7 +190,8 @@ html {
 .litigation .container_btn button:hover,
 .start_litigation .container_btn button:hover,
 .questions .container_btn button:hover,
-.specialties .container_btn button:hover {
+.specialties .container_btn button:hover,
+.notifications .container_btn button:hover {
   color: white;
 }
 .home .container_btn button:focus,
@@ -203,7 +210,8 @@ html {
 .litigation .container_btn button:focus,
 .start_litigation .container_btn button:focus,
 .questions .container_btn button:focus,
-.specialties .container_btn button:focus {
+.specialties .container_btn button:focus,
+.notifications .container_btn button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .home .container_btn button:hover,
@@ -222,7 +230,8 @@ html {
 .litigation .container_btn button:hover,
 .start_litigation .container_btn button:hover,
 .questions .container_btn button:hover,
-.specialties .container_btn button:hover {
+.specialties .container_btn button:hover,
+.notifications .container_btn button:hover {
   background-color: #3a6667;
   text-shadow: none;
 }
@@ -242,7 +251,8 @@ html {
 .litigation .container_btn:nth-child(even) button:after,
 .start_litigation .container_btn:nth-child(even) button:after,
 .questions .container_btn:nth-child(even) button:after,
-.specialties .container_btn:nth-child(even) button:after {
+.specialties .container_btn:nth-child(even) button:after,
+.notifications .container_btn:nth-child(even) button:after {
   left: 0;
   right: inherit;
 }
@@ -262,7 +272,8 @@ html {
 .litigation .container_btn:nth-child(odd) button:after,
 .start_litigation .container_btn:nth-child(odd) button:after,
 .questions .container_btn:nth-child(odd) button:after,
-.specialties .container_btn:nth-child(odd) button:after {
+.specialties .container_btn:nth-child(odd) button:after,
+.notifications .container_btn:nth-child(odd) button:after {
   right: 0;
   left: inherit;
 }
@@ -282,7 +293,8 @@ html {
 .litigation .container_register,
 .start_litigation .container_register,
 .questions .container_register,
-.specialties .container_register {
+.specialties .container_register,
+.notifications .container_register {
   text-align: center;
   margin-top: 1.5rem;
   margin-bottom: 1.3rem;
@@ -304,6 +316,7 @@ html {
 .start_litigation .container_register span,
 .questions .container_register span,
 .specialties .container_register span,
+.notifications .container_register span,
 .home .container_register span a,
 .register .container_register span a,
 .dashboard .container_register span a,
@@ -320,7 +333,8 @@ html {
 .litigation .container_register span a,
 .start_litigation .container_register span a,
 .questions .container_register span a,
-.specialties .container_register span a {
+.specialties .container_register span a,
+.notifications .container_register span a {
   color: #323232;
   font-size: 1.35rem;
   -webkit-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
@@ -346,7 +360,8 @@ html {
 .litigation .container_register span a,
 .start_litigation .container_register span a,
 .questions .container_register span a,
-.specialties .container_register span a {
+.specialties .container_register span a,
+.notifications .container_register span a {
   font-weight: 700;
 }
 .home .container_login .content,
@@ -365,7 +380,8 @@ html {
 .litigation .container_login .content,
 .start_litigation .container_login .content,
 .questions .container_login .content,
-.specialties .container_login .content {
+.specialties .container_login .content,
+.notifications .container_login .content {
   width: 380px;
   margin: 0 auto;
   max-width: 100%;
@@ -386,7 +402,8 @@ html {
 .litigation .container_login .content button,
 .start_litigation .container_login .content button,
 .questions .container_login .content button,
-.specialties .container_login .content button {
+.specialties .container_login .content button,
+.notifications .container_login .content button {
   width: 380px;
   padding: 1.5rem 1rem;
   height: inherit;
@@ -413,7 +430,8 @@ html {
 .litigation .container_login .content button:hover,
 .start_litigation .container_login .content button:hover,
 .questions .container_login .content button:hover,
-.specialties .container_login .content button:hover {
+.specialties .container_login .content button:hover,
+.notifications .container_login .content button:hover {
   color: white;
 }
 .home .container_login .content button:focus,
@@ -432,7 +450,8 @@ html {
 .litigation .container_login .content button:focus,
 .start_litigation .container_login .content button:focus,
 .questions .container_login .content button:focus,
-.specialties .container_login .content button:focus {
+.specialties .container_login .content button:focus,
+.notifications .container_login .content button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .home .container_login .content button:hover,
@@ -451,7 +470,8 @@ html {
 .litigation .container_login .content button:hover,
 .start_litigation .container_login .content button:hover,
 .questions .container_login .content button:hover,
-.specialties .container_login .content button:hover {
+.specialties .container_login .content button:hover,
+.notifications .container_login .content button:hover {
   background-color: #ee6200;
   text-shadow: none;
 }
@@ -471,7 +491,8 @@ html {
 .litigation .container_terms,
 .start_litigation .container_terms,
 .questions .container_terms,
-.specialties .container_terms {
+.specialties .container_terms,
+.notifications .container_terms {
   text-align: center;
   margin: 1.5rem 0 2rem;
 }
@@ -491,7 +512,8 @@ html {
 .litigation .container_terms span a,
 .start_litigation .container_terms span a,
 .questions .container_terms span a,
-.specialties .container_terms span a {
+.specialties .container_terms span a,
+.notifications .container_terms span a {
   color: #aaa;
 }
 /* Dashboard */
@@ -511,7 +533,8 @@ html {
 .start_litigation .btn_panel,
 .profile .btn_panel,
 .questions .btn_panel,
-.specialties .btn_panel {
+.specialties .btn_panel,
+.notifications .btn_panel {
   display: inline-block;
   width: 35px;
   margin-left: 1rem;
@@ -541,7 +564,8 @@ html {
 .start_litigation .btn_panel:after,
 .profile .btn_panel:after,
 .questions .btn_panel:after,
-.specialties .btn_panel:after {
+.specialties .btn_panel:after,
+.notifications .btn_panel:after {
   position: absolute;
   right: 0;
   width: 2.5px;
@@ -568,7 +592,8 @@ html {
 .start_litigation .btn_panel > div,
 .profile .btn_panel > div,
 .questions .btn_panel > div,
-.specialties .btn_panel > div {
+.specialties .btn_panel > div,
+.notifications .btn_panel > div {
   border-top: 3.3px solid white;
   margin-bottom: .5rem;
   -webkit-transition: all 0.4s ease;
@@ -594,7 +619,8 @@ html {
 .start_litigation .btn_panel > div:nth-child(1),
 .profile .btn_panel > div:nth-child(1),
 .questions .btn_panel > div:nth-child(1),
-.specialties .btn_panel > div:nth-child(1) {
+.specialties .btn_panel > div:nth-child(1),
+.notifications .btn_panel > div:nth-child(1) {
   margin-top: 1rem;
 }
 .dashboard .btn_panel.toggle > div:nth-child(1),
@@ -613,7 +639,8 @@ html {
 .start_litigation .btn_panel.toggle > div:nth-child(1),
 .profile .btn_panel.toggle > div:nth-child(1),
 .questions .btn_panel.toggle > div:nth-child(1),
-.specialties .btn_panel.toggle > div:nth-child(1) {
+.specialties .btn_panel.toggle > div:nth-child(1),
+.notifications .btn_panel.toggle > div:nth-child(1) {
   -webkit-transform: rotate(45deg) translate3d(6px, 9px, 0);
   -khtml-transform: rotate(45deg) translate3d(6px, 9px, 0);
   -moz-transform: rotate(45deg) translate3d(6px, 9px, 0);
@@ -637,7 +664,8 @@ html {
 .start_litigation .btn_panel.toggle > div:nth-child(2),
 .profile .btn_panel.toggle > div:nth-child(2),
 .questions .btn_panel.toggle > div:nth-child(2),
-.specialties .btn_panel.toggle > div:nth-child(2) {
+.specialties .btn_panel.toggle > div:nth-child(2),
+.notifications .btn_panel.toggle > div:nth-child(2) {
   -webkit-transform: rotate(45deg) translate3d(2px, -1px, 0);
   -khtml-transform: rotate(45deg) translate3d(2px, -1px, 0);
   -moz-transform: rotate(45deg) translate3d(2px, -1px, 0);
@@ -662,7 +690,8 @@ html {
 .start_litigation .btn_panel.toggle > div:nth-child(3),
 .profile .btn_panel.toggle > div:nth-child(3),
 .questions .btn_panel.toggle > div:nth-child(3),
-.specialties .btn_panel.toggle > div:nth-child(3) {
+.specialties .btn_panel.toggle > div:nth-child(3),
+.notifications .btn_panel.toggle > div:nth-child(3) {
   -webkit-transform: rotate(-45deg) translate3d(6px, -10px, 0);
   -khtml-transform: rotate(-45deg) translate3d(6px, -10px, 0);
   -moz-transform: rotate(-45deg) translate3d(6px, -10px, 0);
@@ -687,6 +716,7 @@ html {
 .profile .status,
 .questions .status,
 .specialties .status,
+.notifications .status,
 .dashboard .levels_content,
 .friends .levels_content,
 .race .levels_content,
@@ -703,7 +733,8 @@ html {
 .start_litigation .levels_content,
 .profile .levels_content,
 .questions .levels_content,
-.specialties .levels_content {
+.specialties .levels_content,
+.notifications .levels_content {
   float: right;
   height: 97px;
   width: 230px;
@@ -729,6 +760,7 @@ html {
 .profile .status .points,
 .questions .status .points,
 .specialties .status .points,
+.notifications .status .points,
 .dashboard .levels_content .points,
 .friends .levels_content .points,
 .race .levels_content .points,
@@ -745,7 +777,8 @@ html {
 .start_litigation .levels_content .points,
 .profile .levels_content .points,
 .questions .levels_content .points,
-.specialties .levels_content .points {
+.specialties .levels_content .points,
+.notifications .levels_content .points {
   color: white;
   font-family: 'DK Mango';
   font-style: normal;
@@ -777,6 +810,7 @@ html {
 .profile .status .points:before,
 .questions .status .points:before,
 .specialties .status .points:before,
+.notifications .status .points:before,
 .dashboard .levels_content .points:before,
 .friends .levels_content .points:before,
 .race .levels_content .points:before,
@@ -793,7 +827,8 @@ html {
 .start_litigation .levels_content .points:before,
 .profile .levels_content .points:before,
 .questions .levels_content .points:before,
-.specialties .levels_content .points:before {
+.specialties .levels_content .points:before,
+.notifications .levels_content .points:before {
   position: absolute;
   left: -16px;
   width: 2px;
@@ -821,6 +856,7 @@ html {
 .profile .status .points em,
 .questions .status .points em,
 .specialties .status .points em,
+.notifications .status .points em,
 .dashboard .levels_content .points em,
 .friends .levels_content .points em,
 .race .levels_content .points em,
@@ -837,7 +873,8 @@ html {
 .start_litigation .levels_content .points em,
 .profile .levels_content .points em,
 .questions .levels_content .points em,
-.specialties .levels_content .points em {
+.specialties .levels_content .points em,
+.notifications .levels_content .points em {
   font-size: 5.5rem;
   font-family: 'DK Mango';
   font-style: normal;
@@ -860,6 +897,7 @@ html {
 .profile .status .icon_level,
 .questions .status .icon_level,
 .specialties .status .icon_level,
+.notifications .status .icon_level,
 .dashboard .levels_content .icon_level,
 .friends .levels_content .icon_level,
 .race .levels_content .icon_level,
@@ -876,7 +914,8 @@ html {
 .start_litigation .levels_content .icon_level,
 .profile .levels_content .icon_level,
 .questions .levels_content .icon_level,
-.specialties .levels_content .icon_level {
+.specialties .levels_content .icon_level,
+.notifications .levels_content .icon_level {
   text-align: right;
   padding: .25rem 1rem .25rem 0;
   -webkit-flex: 1 1 0%;
@@ -901,6 +940,7 @@ html {
 .profile .status .icon_level img,
 .questions .status .icon_level img,
 .specialties .status .icon_level img,
+.notifications .status .icon_level img,
 .dashboard .levels_content .icon_level img,
 .friends .levels_content .icon_level img,
 .race .levels_content .icon_level img,
@@ -917,7 +957,8 @@ html {
 .start_litigation .levels_content .icon_level img,
 .profile .levels_content .icon_level img,
 .questions .levels_content .icon_level img,
-.specialties .levels_content .icon_level img {
+.specialties .levels_content .icon_level img,
+.notifications .levels_content .icon_level img {
   height: 88px;
 }
 .dashboard .levels_content,
@@ -936,7 +977,8 @@ html {
 .start_litigation .levels_content,
 .profile .levels_content,
 .questions .levels_content,
-.specialties .levels_content {
+.specialties .levels_content,
+.notifications .levels_content {
   margin-right: 1rem;
   width: inherit;
 }
@@ -956,7 +998,8 @@ html {
 .start_litigation .levels_content > div,
 .profile .levels_content > div,
 .questions .levels_content > div,
-.specialties .levels_content > div {
+.specialties .levels_content > div,
+.notifications .levels_content > div {
   padding: .25rem .15rem;
 }
 .dashboard .levels_content .level,
@@ -975,7 +1018,8 @@ html {
 .start_litigation .levels_content .level,
 .profile .levels_content .level,
 .questions .levels_content .level,
-.specialties .levels_content .level {
+.specialties .levels_content .level,
+.notifications .levels_content .level {
   opacity: .5;
   padding-right: 1.5rem;
   position: relative;
@@ -997,6 +1041,7 @@ html {
 .profile .levels_content .level .top,
 .questions .levels_content .level .top,
 .specialties .levels_content .level .top,
+.notifications .levels_content .level .top,
 .dashboard .levels_content .level .bottom,
 .friends .levels_content .level .bottom,
 .race .levels_content .level .bottom,
@@ -1013,7 +1058,8 @@ html {
 .start_litigation .levels_content .level .bottom,
 .profile .levels_content .level .bottom,
 .questions .levels_content .level .bottom,
-.specialties .levels_content .level .bottom {
+.specialties .levels_content .level .bottom,
+.notifications .levels_content .level .bottom {
   text-align: center;
 }
 .dashboard .levels_content .level .top span,
@@ -1033,6 +1079,7 @@ html {
 .profile .levels_content .level .top span,
 .questions .levels_content .level .top span,
 .specialties .levels_content .level .top span,
+.notifications .levels_content .level .top span,
 .dashboard .levels_content .level .bottom span,
 .friends .levels_content .level .bottom span,
 .race .levels_content .level .bottom span,
@@ -1049,7 +1096,8 @@ html {
 .start_litigation .levels_content .level .bottom span,
 .profile .levels_content .level .bottom span,
 .questions .levels_content .level .bottom span,
-.specialties .levels_content .level .bottom span {
+.specialties .levels_content .level .bottom span,
+.notifications .levels_content .level .bottom span {
   font-family: 'DK Mango';
   color: white;
   text-shadow: none;
@@ -1071,6 +1119,7 @@ html {
 .profile .levels_content .level .top img,
 .questions .levels_content .level .top img,
 .specialties .levels_content .level .top img,
+.notifications .levels_content .level .top img,
 .dashboard .levels_content .level .bottom img,
 .friends .levels_content .level .bottom img,
 .race .levels_content .level .bottom img,
@@ -1087,7 +1136,8 @@ html {
 .start_litigation .levels_content .level .bottom img,
 .profile .levels_content .level .bottom img,
 .questions .levels_content .level .bottom img,
-.specialties .levels_content .level .bottom img {
+.specialties .levels_content .level .bottom img,
+.notifications .levels_content .level .bottom img {
   padding: 0;
   height: 55px;
 }
@@ -1107,7 +1157,8 @@ html {
 .start_litigation .levels_content .level .top,
 .profile .levels_content .level .top,
 .questions .levels_content .level .top,
-.specialties .levels_content .level .top {
+.specialties .levels_content .level .top,
+.notifications .levels_content .level .top {
   height: 65px;
 }
 .dashboard .levels_content .level .bottom,
@@ -1126,7 +1177,8 @@ html {
 .start_litigation .levels_content .level .bottom,
 .profile .levels_content .level .bottom,
 .questions .levels_content .level .bottom,
-.specialties .levels_content .level .bottom {
+.specialties .levels_content .level .bottom,
+.notifications .levels_content .level .bottom {
   height: 27px;
   position: relative;
   padding-top: .25rem;
@@ -1147,7 +1199,8 @@ html {
 .start_litigation .levels_content .level .bottom:before,
 .profile .levels_content .level .bottom:before,
 .questions .levels_content .level .bottom:before,
-.specialties .levels_content .level .bottom:before {
+.specialties .levels_content .level .bottom:before,
+.notifications .levels_content .level .bottom:before {
   position: absolute;
   content: '';
   top: 0;
@@ -1174,7 +1227,8 @@ html {
 .start_litigation .levels_content .level.active,
 .profile .levels_content .level.active,
 .questions .levels_content .level.active,
-.specialties .levels_content .level.active {
+.specialties .levels_content .level.active,
+.notifications .levels_content .level.active {
   opacity: 1;
 }
 .dashboard .levels_content .level:not(.active) .bottom,
@@ -1193,7 +1247,8 @@ html {
 .start_litigation .levels_content .level:not(.active) .bottom,
 .profile .levels_content .level:not(.active) .bottom,
 .questions .levels_content .level:not(.active) .bottom,
-.specialties .levels_content .level:not(.active) .bottom {
+.specialties .levels_content .level:not(.active) .bottom,
+.notifications .levels_content .level:not(.active) .bottom {
   opacity: 0;
 }
 .dashboard .levels_content .level:after,
@@ -1212,7 +1267,8 @@ html {
 .start_litigation .levels_content .level:after,
 .profile .levels_content .level:after,
 .questions .levels_content .level:after,
-.specialties .levels_content .level:after {
+.specialties .levels_content .level:after,
+.notifications .levels_content .level:after {
   position: absolute;
   height: 100%;
   width: 40px;
@@ -1240,7 +1296,8 @@ html {
 .start_litigation .levels_content .level:last-child:after,
 .profile .levels_content .level:last-child:after,
 .questions .levels_content .level:last-child:after,
-.specialties .levels_content .level:last-child:after {
+.specialties .levels_content .level:last-child:after,
+.notifications .levels_content .level:last-child:after {
   display: none;
 }
 .dashboard hgroup,
@@ -1259,7 +1316,8 @@ html {
 .start_litigation hgroup,
 .profile hgroup,
 .questions hgroup,
-.specialties hgroup {
+.specialties hgroup,
+.notifications hgroup {
   margin: 6rem 0 2rem;
 }
 .dashboard hgroup h1,
@@ -1279,6 +1337,7 @@ html {
 .profile hgroup h1,
 .questions hgroup h1,
 .specialties hgroup h1,
+.notifications hgroup h1,
 .dashboard hgroup h2,
 .friends hgroup h2,
 .race hgroup h2,
@@ -1295,7 +1354,8 @@ html {
 .start_litigation hgroup h2,
 .profile hgroup h2,
 .questions hgroup h2,
-.specialties hgroup h2 {
+.specialties hgroup h2,
+.notifications hgroup h2 {
   font-size: 1.3rem;
   text-align: center;
   margin: 0;
@@ -1318,7 +1378,8 @@ html {
 .start_litigation .container_btn button,
 .profile .container_btn button,
 .questions .container_btn button,
-.specialties .container_btn button {
+.specialties .container_btn button,
+.notifications .container_btn button {
   padding: .95rem .5rem;
   font-weight: normal;
   margin: .5rem 0;
@@ -1339,7 +1400,8 @@ html {
 .start_litigation .games,
 .profile .games,
 .questions .games,
-.specialties .games {
+.specialties .games,
+.notifications .games {
   margin-bottom: 1.5rem;
 }
 /* Home */
@@ -4291,8 +4353,11 @@ html {
   -o-transform: translate(-100px, 0);
   transform: translate(-100px, 0);
 }
-.nav_button .nav.active .notifications:after {
+.nav_button .nav.active .notifications_link:after {
   opacity: 1;
+}
+.nav_button .nav.active .notifications_link.hide_notifications:after {
+  opacity: 0;
 }
 .nav_button .nav:after {
   top: 0;
@@ -4315,7 +4380,7 @@ html {
   -o-transition: all 0.1s ease-in-out 0s;
   transition: all 0.1s ease-in-out 0s;
 }
-.nav_button .nav .notifications:after {
+.nav_button .nav .notifications_link:after {
   position: absolute;
   width: 15px;
   height: 15px;
@@ -4347,6 +4412,9 @@ html {
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+.nav_button .nav .notifications_link.hide_notifications:after {
+  opacity: 0;
 }
 .nav_button .nav .mask {
   z-index: 21;
@@ -4406,6 +4474,138 @@ html {
   -ms-transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
   -o-transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
   transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
+}
+/* Popup Notifications */
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header {
+  background-color: #3a6667;
+  overflow: auto;
+  padding: .85rem 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  -khtml-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -ms-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header .title {
+  font-size: 3.5rem;
+  font-family: 'DK Mango';
+  color: white;
+  -webkit-text-shadow: 0 0 2px #323232;
+  -khtml-text-shadow: 0 0 2px #323232;
+  -moz-text-shadow: 0 0 2px #323232;
+  -ms-text-shadow: 0 0 2px #323232;
+  -o-text-shadow: 0 0 2px #323232;
+  text-shadow: 0 0 2px #323232;
+  text-align: center;
+  line-height: 1;
+  margin: .5rem 0 0;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content {
+  padding: 1rem;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications {
+  margin-bottom: 1rem;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification {
+  margin: .25rem 0 0;
+  -webkit-box-shadow: 0 0 1px 0px #999999;
+  -khtml-box-shadow: 0 0 1px 0px #999999;
+  -moz-box-shadow: 0 0 1px 0px #999999;
+  -ms-box-shadow: 0 0 1px 0px #999999;
+  -o-box-shadow: 0 0 1px 0px #999999;
+  box-shadow: 0 0 1px 0px #999999;
+  padding: 1rem .5rem;
+  position: relative;
+  overflow: hidden;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text span {
+  color: #ee6200;
+  font-family: 'DK Mango';
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(130, 130, 130, 0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover {
+  background-color: rgba(130, 130, 130, 0.15);
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover .panel {
+  -webkit-transform: translatex(0);
+  -khtml-transform: translatex(0);
+  -moz-transform: translatex(0);
+  -ms-transform: translatex(0);
+  -o-transform: translatex(0);
+  transform: translatex(0);
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 105%;
+  -webkit-transform: translatex(105%);
+  -khtml-transform: translatex(105%);
+  -moz-transform: translatex(105%);
+  -ms-transform: translatex(105%);
+  -o-transform: translatex(105%);
+  transform: translatex(105%);
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background-color: #3a6667;
+  border: none;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns {
+  text-align: center;
+  cursor: pointer;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span {
+  display: block;
+  padding: 0 .5rem;
+  height: 100%;
+  font-family: 'DK Mango';
+  font-size: 1.5rem;
+  line-height: 1.3;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover {
+  color: #ef863e;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover i {
+  color: #ef863e;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span i {
+  font-size: 1.2rem;
+  line-height: 1;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-weight: normal;
 }
 span[contenteditable] br {
   display: none;

@@ -172,6 +172,11 @@ $app->post(
     '/duel','main:duel'
 )->setParams(array($app));
 
+// Route for get all notifications 
+$app->post(
+    '/notifications','main:notifications'
+)->setParams(array($app));
+
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';

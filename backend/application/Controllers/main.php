@@ -824,4 +824,24 @@ class main {
         
         echo json_encode($data);
     }
+    
+    # Function to get all notifications by user
+    function notifications(){
+        $id = base64_decode($_POST['id']);
+        
+        $data = array();
+        
+        if(isset($_POST['param'])){
+            $query = jur_notifications::all(array('conditions' => array('id_user = ? AND state = "active"',$id)));
+        }else{
+            $query = jur_notifications::all(array('conditions' => array('id_user = ?',$id)));
+        }
+        
+        foreach($query as $k){
+            $data[] = $k->attributes();
+        }
+        
+        echo json_encode($data);
+    }
+    
 }

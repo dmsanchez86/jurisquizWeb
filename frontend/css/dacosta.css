@@ -21,3 +21,7 @@
     background-color: #3a6667;
     color: #FFF;
 }
+
+.start_specialty table.resultado > tbody > tr > td:last-child{
+    text-align:center;
+}

@@ -19,6 +19,7 @@ var router = new $.mobile.Router({
     "terms.html": {handler: "terms", events: "s" },
     "dashboard.html": {handler: "dashboard", events: "s" },
     "dashboard_admin.html": {handler: "dashboard_admin", events: "s" },
+    "notifications.html": {handler: "notifications", events: "s" },
     "friends.html": {handler: "friends", events: "s" },
     "race.html": {handler: "race", events: "s" },
     "start_race.html": {handler: "start_race", events: "s" },
@@ -109,6 +110,8 @@ var router = new $.mobile.Router({
         
         evt_logout();
         
+        evt_notifications();
+        
         // Params
         var params = router.getParams(match[1]); 
         
@@ -175,6 +178,19 @@ var router = new $.mobile.Router({
             $.mobile.changePage(url,{role:'page',transition:'fade'});
         });
     },
+    notifications: function(type,match,ui){
+        $('.btns .accept').unbind('click').click(function(e){
+            console.log('accept');
+            console.log(e.target);
+        });
+        $('.btns .reject').unbind('click').click(function(e){
+            console.log('rekect');
+            console.log(e.target);
+        });
+        $('.container_btn button').unbind('click').click(function(e){
+            history.back();
+        });
+    }, 
     friends: function(type,match,ui){
         nav_menu();
         
@@ -588,17 +604,15 @@ var router = new $.mobile.Router({
                         if(canPreguntas > con){
                             con++;
                             
-                            $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
+                            $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(600);
                             $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((con));
                         }
                         if(canPreguntas == con){
-                            console.log(respuestas);
                             respuestas.forEach(function(index,element){
-                                console.log(index);
-                               //var compiled = tmpl("template_each_finalGame", JSON.parse(index));
-                               //console.log(compiled);
-                              // $("#content_startSpeciality table tbody").append(compiled);
-                                
+                             
+                                var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+                                $("#content_startSpeciality table tbody").append(compiled);
+                                $("#content_startSpeciality table.resultado").fadeIn(1000);
                             });
                             
                         }
@@ -1655,10 +1669,34 @@ function show_nav_button(){
         
         if(url == "#dashboard"){
             var role = localStorage.getItem('role_user');
-            var id = localStorage.getItem('id_user')
+            var id = localStorage.getItem('id_user');
             
             var link = role == 'admin' ? 'dashboard_admin.html?user=' + id : 'dashboard.html?user=' + id;
             $.mobile.changePage(link,{role: 'page',transition:"flip"});
+        }else if(url == "#notifications"){
+            $.mobile.changePage('notifications.html',{role: 'dialog',transition:"slidedown"});
+            
+            $.ajax({
+                url         : webService + 'notifications',
+                type        : 'POST',
+                data        : {
+                    id      : localStorage.getItem('id_user')
+                },
+                success     : function(res){
+                    var data = JSON.parse(res);
+                    console.log(data);
+                    
+                    $('.notifications .content_notifications').empty().fadeOut(50);
+                    
+                    data.forEach(function(i,o){
+                        i.index = o;
+                        $('.notifications .content_notifications').append(tmpl('template_notification',i));
+                    });
+                    
+                    setTimeout(function(){ $('.notifications .content_notifications').show(500); },500);
+                }
+            });
+            
         }else if(url != "#"){
             $.mobile.changePage(url,{role:'page',transition: 'pop'});
         }else if(url == "#"){
@@ -2833,6 +2871,32 @@ function show_timer(time,page_referer){
 function hide_timer(){
     clearInterval(count_timer);
     $('.question_time').hide(500);
+}
+
+// Function to return number notifications
+function evt_notifications(){
+    var $id = localStorage.getItem('id_user');
+    
+    $.ajax({
+        url         : webService + 'notifications',
+        type        : 'POST',
+        data        : {
+            id      : $id,
+            param   : 'actives'
+        },
+        success     : function(res){
+            var data = JSON.parse(res);
+            console.log(data);
+            
+            var numbers_notifications = data.length;
+            debugger;
+            if(numbers_notifications == 0){
+                $('.notifications_link').addClass('hide_notifications');
+            }else{
+                $('.notifications_link').removeClass('hide_notifications').attr('data-number-notifications',numbers_notifications);
+            }
+        }
+    });
 }
 
 // Render Template
