@@ -184,8 +184,24 @@ var router = new $.mobile.Router({
             console.log(e.target);
         });
         $('.btns .reject').unbind('click').click(function(e){
-            console.log('rekect');
-            console.log(e.target);
+            var id_duel = $(this).parent().parent().parent().parent().attr('id-duel');
+            
+            $.ajax({
+                url         : webService + 'cancel_duel',
+                type        : 'POST',
+                data        : {
+                    id      : id_duel
+                },
+                success     : function(res){
+                    var data = JSON.parse(res);
+                    
+                    if(data.status == 'OK'){
+                        message(data.message);
+                    }else{
+                        message(data.message);
+                    }
+                }
+            });
         });
         $('.container_btn button').unbind('click').click(function(e){
             history.back();
@@ -404,7 +420,7 @@ var router = new $.mobile.Router({
         
         
         // Get all contents of questions
-        setTimeout(function(){debugger;
+        setTimeout(function(){
             $('.duel_users .content_start_game .content_question').addClass('duel_options');
             var content_questions = $('.duel_users .content_start_game .content_question');
             var count_questions = content_questions.length;

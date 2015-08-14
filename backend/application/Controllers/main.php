@@ -827,6 +827,31 @@ class main {
         echo json_encode($data);
     }
     
+    # Function to cancel duel
+    function cancel_duel(){
+        $id = $_POST['id'];
+        
+        $query = jur_duel::find($id);
+        $query->state_duel = "reject";
+        
+        $res = $query->save();
+        
+        if($res){
+            $data = array(
+                    'message'       => 'Se cancelo el duelo correctamente',
+                    'status'        => 'OK'
+                );
+        }else{
+            $data = array(
+                    'message'       => 'No se pudo cancelar el duelo',
+                    'status'        => 'FAIL'
+                );
+        }
+        
+        echo json_encode($data);
+        
+    }
+    
     # Function to get all notifications by user
     function notifications(){
         $id = base64_decode($_POST['id']);
