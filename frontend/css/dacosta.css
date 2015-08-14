@@ -24,4 +24,8 @@
 
 .start_specialty table.resultado > tbody > tr > td:last-child{
     text-align:center;
+    color:#FFF;
+}
+.start_specialty table.resultado > tbody > tr.correcto > td:last-child{
+    color: #3a6667;
 }

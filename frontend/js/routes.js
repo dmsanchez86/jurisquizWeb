@@ -2889,7 +2889,7 @@ function evt_notifications(){
             console.log(data);
             
             var numbers_notifications = data.length;
-            debugger;
+            
             if(numbers_notifications == 0){
                 $('.notifications_link').addClass('hide_notifications');
             }else{

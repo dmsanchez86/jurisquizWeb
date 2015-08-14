@@ -199,10 +199,10 @@
         <!-- Nav-Button -->
         <div class="nav_button">
             <div class="nav">
-    			<a href="profile.html" class="nav-item nav-count-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Perfil"><i class="material-icons">perm_identity</i><span class="invisible"></span></a>
-    			<a href="#dashboard" class="nav-item nav-count-2 tooltipped" data-position="left" data-delay="50" data-tooltip="Home"><i class="material-icons">dashboard</i><span class="invisible"></span></a>
-    			<a href="friends.html" class="nav-item nav-count-3 tooltipped" data-position="left" data-delay="50" data-tooltip="Colegas"><i class="material-icons">supervisor_account</i><span class="invisible"></span></a>
-    			<a href="#notifications" class="nav-item nav-count-4 tooltipped notifications_link" data-position="left" data-delay="50" data-tooltip="Notificaciones" data-number-notifications=""><i class="material-icons">info</i><span class="invisible"></span></a>
+    			<a href="profile.html" class="nav-item nav-count-1" title="Perfil"><i class="material-icons">perm_identity</i><span class="invisible"></span></a>
+    			<a href="#dashboard" class="nav-item nav-count-2" title="Dashboard"><i class="material-icons">dashboard</i><span class="invisible"></span></a>
+    			<a href="friends.html" class="nav-item nav-count-3" title="Colegas"><i class="material-icons">supervisor_account</i><span class="invisible"></span></a>
+    			<a href="#notifications" class="nav-item nav-count-4 notifications_link" title="Notificaciones" data-number-notifications=""><i class="material-icons">info</i><span class="invisible"></span></a>
     			<a href="#" class="mask"><i class="material-icons">add</i></a>
     		</div>
         </div>
@@ -431,14 +431,14 @@
                 <tr class="correcto">
                     <td> <%= pregunta %> </td>
                     <td> <%= respuesta %> </td>
-                    <td><i class="material-icons dp48">Bien</i></td>
+                    <td><i class="material-icons dp48">done</i></td>
                   
                 </tr>
             <%} else{ %>
-                 <tr>
+                 <tr class="errada">
                     <td> <%= pregunta %> </td>
                     <td> <%= respuesta %> </td>
-                    <td><i class="material-icons dp48">Bien</i></td>
+                    <td><i class="material-icons dp48">error</i></td>
                   
                 </tr>
             <% } %>
@@ -480,8 +480,16 @@
 	            <div class="mask" style="<%= show %>">
 	                <div class="panel">
 	                    <div class="btns">
-	                        <span class="accept" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptar"><i class="material-icons">trending_flat</i></span>
-	                        <span class="reject" title="Rechazar"><i class="material-icons">warning</i></span>
+                                <%
+                                
+	                            if(state == 'inactive'){ %>
+	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptada"><i class="material-icons">done_all</i></span>
+	                            <% } else { %>
+	                                <span class="accept" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptar"><i class="material-icons">trending_flat</i></span>
+	                                <span class="reject" title="Rechazar"><i class="material-icons">warning</i></span>
+	                           <% } 
+	                           
+	                           %>
 	                    </div>
 	                </div>
 	            </div>
