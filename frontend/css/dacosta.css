@@ -26,6 +26,6 @@
     text-align:center;
     color:#FFF;
 }
-.start_specialty table.resultado > tbody > tr.correcto > td:last-child{
+.start_specialty table.resultado > tbody > tr.errada > td:last-child{
     color: #3a6667;
 }

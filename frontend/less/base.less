@@ -144,7 +144,7 @@
         }
         .message_game{background-color: @btn_start;padding: 1rem 2rem; .border_radius(5px);max-width: 100%;width: 380px; margin: .8rem auto;position: relative;
             &:before{position: absolute;border: 2rem solid @btn_login;content:''; left: -55px; top: 2rem; border-color: transparent @before_color transparent transparent;}
-            p{font-family: 'DK Mango';color: white; font-size: 2rem;text-shadow: none;}
+            p,b{font-family: 'DK Mango';color: white; font-size: 2rem;text-shadow: none;}
         }
     }
 }
@@ -767,10 +767,10 @@
         }
         &:after{top: 0;left: 0;content: '';width: inherit;height: inherit;.border_radius( 50% );position: absolute;background: #3A6667;.transition( all .1s ease-in-out 0s );}
         .notifications_link{
-            &:after{position: absolute; width: 15px;height: 15px; .border_radius(50%);content: attr(data-number-notifications); background: @before_color; color: #fff; font-size: 10px; text-align: center;text-indent: -1px; right: 2px; top: -2px; line-height: 1.5; .text_shadow(0,0,1px,#323232);opacity: 0;.transition();}
+            &:after{position: absolute; width: 15px;height: 15px; .border_radius(50% 50% 50% 0);content: attr(data-number-notifications); background: @before_color; color: #fff; font-size: 10px; text-align: center;text-indent: -1px; right: 2px; top: -2px; line-height: 1.5; .text_shadow(0,0,1px,#323232);opacity: 0;.transition();}
             &.hide_notifications{
-                    &:after{opacity: 0;}
-                }
+                &:after{opacity: 0;}
+            }
         }
         .mask {z-index: 21;.box_shadow(0,0,4px,1px,#fff);color: #fff;width: inherit;height: inherit;cursor: pointer;font-size: 28px;text-align: center;.border_radius( 50% );position: absolute;background: #3A6667;.transition( all .1s ease-in-out 0s );}
         .nav-item {top: 0;left: 0;z-index: 19;width: 45px;height: 45px;color: #fff;font-size: 24px;.transform( none );line-height: 45px;.border_radius( 50% );position: absolute;text-align: center;.transition( all .3s cubic-bezier(.68, 1.55, .265, 1) );

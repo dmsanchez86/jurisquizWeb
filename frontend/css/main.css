@@ -1595,7 +1595,12 @@ html {
 .duel .content_game .message_game p,
 .test .content_game .message_game p,
 .specialty .content_game .message_game p,
-.litigation .content_game .message_game p {
+.litigation .content_game .message_game p,
+.race .content_game .message_game b,
+.duel .content_game .message_game b,
+.test .content_game .message_game b,
+.specialty .content_game .message_game b,
+.litigation .content_game .message_game b {
   font-family: 'DK Mango';
   color: white;
   font-size: 2rem;
@@ -4384,12 +4389,12 @@ html {
   position: absolute;
   width: 15px;
   height: 15px;
-  -webkit-border-radius: 50%;
-  -khtml-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
+  -webkit-border-radius: 50% 50% 50% 0;
+  -khtml-border-radius: 50% 50% 50% 0;
+  -moz-border-radius: 50% 50% 50% 0;
+  -ms-border-radius: 50% 50% 50% 0;
+  -o-border-radius: 50% 50% 50% 0;
+  border-radius: 50% 50% 50% 0;
   content: attr(data-number-notifications);
   background: #ef863e;
   color: #fff;
@@ -5693,8 +5698,13 @@ label.ui-btn {
   .duel .content_game .message_game p,
   .test .content_game .message_game p,
   .litigation .content_game .message_game p,
-  .specialty .content_game .message_game p {
-    font-size: 1.25rem;
+  .specialty .content_game .message_game p,
+  .race .content_game .message_game b,
+  .duel .content_game .message_game b,
+  .test .content_game .message_game b,
+  .litigation .content_game .message_game b,
+  .specialty .content_game .message_game b {
+    font-size: 1rem;
   }
   .race .content_game .icon_game,
   .duel .content_game .icon_game,
@@ -6174,7 +6184,12 @@ label.ui-btn {
   .duel .content_game .message_game p,
   .test .content_game .message_game p,
   .litigation .content_game .message_game p,
-  .specialty .content_game .message_game p {
+  .specialty .content_game .message_game p,
+  .race .content_game .message_game b,
+  .duel .content_game .message_game b,
+  .test .content_game .message_game b,
+  .litigation .content_game .message_game b,
+  .specialty .content_game .message_game b {
     text-shadow: none;
   }
   .race .content_game .container_btn button,

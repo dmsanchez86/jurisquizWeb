@@ -1684,14 +1684,17 @@ function show_nav_button(){
                 },
                 success     : function(res){
                     var data = JSON.parse(res);
-                    console.log(data);
                     
                     $('.notifications .content_notifications').empty().fadeOut(50);
                     
-                    data.forEach(function(i,o){
-                        i.index = o;
-                        $('.notifications .content_notifications').append(tmpl('template_notification',i));
-                    });
+                    if(data.length == 0){
+                        setTimeout(function(){ message('¡ No tienes notificaciones !'); },200);
+                    }else{
+                        data.forEach(function(i,o){
+                            i.index = o;
+                            $('.notifications .content_notifications').append(tmpl('template_notification',i));
+                        });
+                    }
                     
                     setTimeout(function(){ $('.notifications .content_notifications').show(500); },500);
                 }
@@ -2886,7 +2889,6 @@ function evt_notifications(){
         },
         success     : function(res){
             var data = JSON.parse(res);
-            console.log(data);
             
             var numbers_notifications = data.length;
             
