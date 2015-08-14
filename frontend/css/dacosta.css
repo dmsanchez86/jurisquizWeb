@@ -29,3 +29,6 @@
 .start_specialty table.resultado > tbody > tr.errada > td:last-child{
     color: #3a6667;
 }
+.start_specialty table.resultado > tbody > tr > td {
+    border-radius: 0px;
+}

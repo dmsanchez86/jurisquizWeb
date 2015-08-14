@@ -810,9 +810,11 @@ class main {
                     'state'         => 'active'
                 ));
             if($noti->errors->errors == null){
+                $data_duel = jur_duel::find($query->id);
                 $data = array(
                     'message'   => 'El reto se creo correctamente',
-                    'status'    => 'OK'
+                    'status'    => 'OK',
+                    'data_duel' => $data_duel->attributes()
                 );
             }
         }else{

@@ -342,9 +342,12 @@ var router = new $.mobile.Router({
                                 console.log(res);
                                 var response = JSON.parse(res);
                                 
+                                console.log(response);
+                                
                                 if(response.status == 'OK'){
                                     message(response.message);
-                                    setTimeout(function(){ $.mobile.changePage(url,{role:'page',transition: 'pop'}); },2000);
+                                    setTimeout(function(){ loader('Cargando Duelo...'); },1000);
+                                    setTimeout(function(){ $.mobile.changePage('duel_users.html?id_duel=' + response.data_duel.id + '&id_user_1=' + response.data_duel.id_user_1 + '&id_user_2=' + response.data_duel.id_user_2 ,{role:'page',transition: 'pop'}); },2000);
                                 }else{
                                     message(response.message);
                                 }
@@ -378,6 +381,70 @@ var router = new $.mobile.Router({
         show_nav_button();
         
         evt_logout();
+        
+        // Params
+        var params = router.getParams(match[1]); 
+        
+        console.log(params);
+        
+        if(params == null){
+            var log = localStorage.getItem('log');
+            
+            if(log != 'true'){
+                $.mobile.changePage('index.html#home',{role: 'page',transition: 'slide'});
+            }
+        }else{
+            $('.loader').fadeOut(1000);
+            var $id_duel = params.id_duel;
+            var $id_user_1 = params.id_user_1;
+            var $id_user_2 = params.id_user_2;
+        }
+        
+        questions('.duel_users',null);
+        
+        
+        // Get all contents of questions
+        setTimeout(function(){debugger;
+            $('.duel_users .content_start_game .content_question').addClass('duel_options');
+            var content_questions = $('.duel_users .content_start_game .content_question');
+            var count_questions = content_questions.length;
+            content_questions.eq(0).addClass('active').show();
+            
+            clearInterval(count_timer);
+            
+            setTimeout(function(){
+                $('.duel_users .wrapper .content_start_game').show(50).css('transform','scale(1)');
+                setTimeout(function(){
+                    show_timer(10,'.duel_users');
+                    $('.duel_users div[data-role="header"] .top_questions').css('opacity','1');
+                },1000);
+            },1000);
+            
+            var corrects_questions = 0;
+            
+            // Click in the answers to validate which is correct
+            $('.duel_users .content_question input[type=radio]').unbind('click').click(function(e){
+                var type_question = $('.duel_users .content_question.active').attr('type-question');
+                var answer_ = '';
+                var correct_answer = '';
+                
+                if(type_question == 1){
+                    answer_ = $('.duel_users .content_question.duel_options.active input[type=radio]:checked').val();
+                    correct_answer = $('.duel_users .content_question.duel_options.active').attr('correct-answer');
+                    
+                    if(answer_ == correct_answer){
+                        hide_timer();
+                        
+                        ++corrects_questions;
+                        console.log(corrects_questions);
+                        evt_next_question_test('.duel_users',corrects_questions);
+                    }else{
+                        evt_next_question_test('.duel_users',corrects_questions);
+                        message('La respuesta es incorrecta');
+                    }
+                }
+            });
+        },500);
     },
     win_duel : function(type,match,ui){
         nav_menu();
@@ -603,16 +670,25 @@ var router = new $.mobile.Router({
                         
                         if(canPreguntas > con){
                             con++;
-                            
-                            $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(600);
-                            $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((con));
+                            setTimeout(function(){
+                               
+                                $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
+                                $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((con));
+                                
+                            }, 1000);
+                           
                         }
                         if(canPreguntas == con){
                             respuestas.forEach(function(index,element){
-                             
+                                
                                 var compiled = tmpl("template_each_finalGame", JSON.parse(index));
                                 $("#content_startSpeciality table tbody").append(compiled);
-                                $("#content_startSpeciality table.resultado").fadeIn(1000);
+                                
+                                setTimeout(function(){
+                        
+                                    $("#content_startSpeciality table.resultado").fadeIn(1000);
+                                
+                                }, 1000);
                             });
                             
                         }
@@ -2476,11 +2552,20 @@ function questions(page_referer,array){
                 $(page_referer + ' .content_start_game').empty();
                 
                 var questions = data.random(); 
-    
-                questions.forEach(function(i,o){
-                    i.key = o;
-                    $(page_referer + ' .content_start_game').append(tmpl('structure_question',i));
-                });
+                
+                if(page_referer == '.duel_users'){
+                    questions.forEach(function(i,o){
+                        if(o < 9){
+                            i.key = o;
+                            $(page_referer + ' .content_start_game').append(tmpl('structure_question',i));
+                        }
+                    });
+                }else{
+                    questions.forEach(function(i,o){
+                        i.key = o;
+                        $(page_referer + ' .content_start_game').append(tmpl('structure_question',i));
+                    });
+                }
             }
         });
     }else{
@@ -2774,6 +2859,7 @@ function evt_next_question(page_referer){
 
 // Evt to next question mode test
 function evt_next_question_test(page_referer,correct_questions){
+    console.log(correct_questions);
     var current_content = $(page_referer + ' .content_question.active');
     var next_content = $(page_referer + ' .content_question.active').next();
     var time_question = 10;
@@ -2800,26 +2886,30 @@ function evt_next_question_test(page_referer,correct_questions){
         clearInterval(count_timer);
         current_content.hide(500);
         
-        var number_question = $('.start_test .content_start_game').attr('question');
-        var top_question = parseInt($('.start_test div[data-role="header"] .top_questions .content_questions .rank').text());
+        var number_question = $(page_referer + ' .content_start_game').attr('question');
+        var top_question = parseInt($(page_referer + ' div[data-role="header"] .top_questions .content_questions .rank').text());
         
         setTimeout(function(){
             
-            if($('.start_test div[data-role="header"] .top_questions').css('display') != 'none'){
-                $('.start_test .content_start_game').attr('question',(++number_question));
+            if($(page_referer + ' div[data-role="header"] .top_questions').css('display') != 'none'){
+                $(page_referer + ' .content_start_game').attr('question',(++number_question));
             }
             
             if(number_question == top_question + 1){
                 hide_timer();
                 current_content.hide(50);
-                $('.start_test .wrapper > div').hide();
-                $('.start_test div[data-role="header"] .top_questions').hide();
-                debugger;
-                $('.start_test .wrapper .complete_questions span').text(correct_questions);
-                $('.start_test .wrapper .complete_questions').fadeIn(1000);
+                $(page_referer + ' .wrapper > div').hide();
+                $(page_referer + ' div[data-role="header"] .top_questions').hide();
+                $(page_referer + ' .wrapper .complete_questions span').text(correct_questions);
+                $(page_referer + ' .wrapper .complete_questions').fadeIn(1000);
                 
-                if(correct_questions == 10)
-                    setTimeout(function(){ message('Respondiste todas las preguntas correctamente, ¡Felicidades!'); },700);
+                if(page_referer == '.duel_users'){
+                    if(correct_questions == 8)
+                        setTimeout(function(){ message('Respondiste todas las preguntas correctamente, ¡Felicidades!'); },700);
+                }else{
+                    if(correct_questions == 10)
+                        setTimeout(function(){ message('Respondiste todas las preguntas correctamente, ¡Felicidades!'); },700);
+                }
                 
                 $.ajax({
                     url         : webService + 'points_test',
@@ -2838,11 +2928,11 @@ function evt_next_question_test(page_referer,correct_questions){
                 });
                 
                 
-                $('.start_test .wrapper .complete_questions').unbind('click').click(function(){
+                $(page_referer + ' .wrapper .complete_questions').unbind('click').click(function(){
                     history.back();
                 });
             }else{
-                $('.start_test div[data-role="header"] .top_questions .content_questions .number_questions').text((number_question));
+                $(page_referer + ' div[data-role="header"] .top_questions .content_questions .number_questions').text((number_question));
                 current_content.remove();
                 next_content.addClass('active').fadeIn(500);
                 setTimeout(function(){show_timer(time_question,page_referer);},500);
@@ -2860,7 +2950,7 @@ function show_timer(time,page_referer){
         $('.question_time em').text(time_question+'s');
         if(time_question == 0){
             $('.question_time').fadeOut(1000);
-            if(page_referer == '.start_test'){
+            if(page_referer == '.start_test' || page_referer == '.duel_users'){
                 evt_next_question_test(page_referer);
             }else{
                 evt_next_question(page_referer);
