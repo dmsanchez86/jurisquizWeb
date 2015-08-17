@@ -426,6 +426,75 @@
             	</button>
             </div>
         </script>
+        <script type="text/html" id="template_each_litigationCase">
+            <div class="container_btn">
+            	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="startGamelitigation.html?id=<%= id %>"><%= litigio_titulo %>
+            	</button>
+            </div>
+        </script>
+        <script type="text/html" id="structure_litigation">
+                
+            <div class="content_question" id="case_<%= id %>" id-case="<%= id %>" correct-answer="<%= correct_answer %>" type-question="<%= type_question %>" id="case_<%= id %>">
+                <% if(litigio_text){ %>
+                    <div  class="question litigio_titulo">
+                        <p>
+                            <%= litigio_text  %>
+                        </p> 
+                        <div class="container_btn">
+                        	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-id="<%= id %>"> Siguente Caso <i class="large material-icons">skip_next</i>
+                        	</button>
+                        </div>
+                    </div>
+                <% } %>
+                <div class="pregunta">
+                
+                <div class="question"><%= question %></div>
+                
+                <%
+                    var options = options_question.split('/');
+                    var name_type_question = '';
+                    
+                    if(type_question == 1)
+                        name_type_question = "Selección Múltiple";
+                    else if(type_question == 2)
+                        name_type_question = "Si / No";
+                    else if(type_question == 3)
+                        name_type_question = "Ordenamiento";
+                %>
+                
+                <% if(type_question != 3){ %>
+                    <div class="answers_options">
+                        <div class="type_question">
+                            <span>Tipo de pregunta: <%= name_type_question %></span>
+                        </div>
+                        <% 
+                        
+                        var options_random = options.random();
+                        
+                        for(var i = 0; i < options_random.length; i++){ %>
+                            <div class="answer" id-answer="<%= id %>">
+                                <input id="answer<%= key %><%= i %>" type="radio" name="answer_<%= id %>" id-case="<%= id %>" value="<%= options_random[i] %>" data-role="none"/>
+                                <label for="answer<%= key %><%= i %>" id-case="<%= id %>" data-role="none"><%= options_random[i] %></label>
+                            </div>
+                        <% } %>
+                    </div>
+                <% }else{ %>
+                    <div class="answers_options">
+                        <div class="type_question">
+                            <span>Tipo de pregunta: <%= name_type_question %></span>
+                        </div>
+                        <ul class="sortable_answer">
+                        <% for(var i = 0; i < options.length; i++){ %>
+                            <li position="<%= i + 1 %>"><%= options[i] %></li>
+                        <% } %>
+                        </ul>
+                        <div class="container_btn"><button type="button" class="waves-effect waves-btn-start btn btn_register">Enviar Orden</button></div>
+                    </div>
+                <% } %>
+                </div>
+            </div>
+            
+        </script>
         <script type="text/html" id="template_each_finalGame">
             <% if (correcta) {%>
                 <tr class="correcto">
@@ -467,13 +536,13 @@
         <script type="text/html" id="template_notification">
             <%
                 var show = ""; 
-                if(state == 'inactive'){
+                if(state == 'inactive' || state == 'reject'){
                     show = 'background-color: transparent';
                 }else{
                     show = 'background-color: rgba(130, 130, 130, 0.5)'
                 }
             %>
-            <div class="notification" id-duel="<%= id %>">
+            <div class="notification" id-duel="<%= metadata %>" id-notification="<%= id %>">
 	            <div class="text">
 	                <span><%= notification %></span>
 	            </div>
@@ -483,7 +552,9 @@
                                 <%
                                 
 	                            if(state == 'inactive'){ %>
-	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptada"><i class="material-icons">done_all</i></span>
+	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptada"><i class="material-icons">thumb_up</i></span>
+	                            <% } else if(state == 'reject'){ %>
+	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada"><i class="material-icons">thumb_down</i></span>
 	                            <% } else { %>
 	                                <span class="accept" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptar"><i class="material-icons">trending_flat</i></span>
 	                                <span class="reject" title="Rechazar"><i class="material-icons">warning</i></span>

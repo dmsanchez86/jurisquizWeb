@@ -488,6 +488,21 @@ class main {
         echo json_encode($data);
     }
     
+    #Function to get all question by specialty
+    function all_caseLitigation(){
+        //$id_case = $_POST['id_case'];
+        
+        $data = array();
+        
+        $query = jur_litigio_mode::all(array('conditions' => array('state = "active"')));
+        
+        foreach($query as $k){
+			$data[] = $k->attributes();
+		}
+        
+        echo json_encode($data);
+    }
+    
     # Function that return all mode games
     function all_games_mode(){
         $q = jur_game_mode::all();
@@ -560,7 +575,17 @@ class main {
 		echo json_encode($data);
        // echo json_encode($query->name);
     }
-    
+    # Lista los nombres de los casos
+    function listLitigationCases(){
+        
+        $query = jur_litigio_mode::all(array('select' => 'id,litigio_titulo','conditions' => array('state = "active"')));
+
+        foreach($query as $k){
+			$data[] = $k->attributes();
+		}
+		echo json_encode($data);
+       // echo json_encode($query->name);
+    }
     # Function to active or deactive a specialty
     function specialty($app,$param){
         
@@ -803,11 +828,13 @@ class main {
             
         if($query->errors->errors == null){
             $user_data = jur_users::find($id_user);
+            $data_duel = jur_duel::find($query->id);
             $noti = jur_notifications::create(array(
                     'id'            => null,
                     'id_user'       => $id_friend,
                     'notification'  => 'Tu amigo '. $user_data->name . ' te ha retado!',
-                    'state'         => 'active'
+                    'state'         => 'active',
+                    'metadata'      => $query->id
                 ));
             if($noti->errors->errors == null){
                 $data_duel = jur_duel::find($query->id);
@@ -830,13 +857,18 @@ class main {
     # Function to cancel duel
     function cancel_duel(){
         $id = $_POST['id'];
+        $id_notification = $_POST['id_notification'];
         
         $query = jur_duel::find($id);
+        $query_ = jur_notifications::find($id_notification);
+        
+        $query_->state = "reject";
         $query->state_duel = "reject";
         
+        $res_ = $query_->save();
         $res = $query->save();
         
-        if($res){
+        if($res && $res_){
             $data = array(
                     'message'       => 'Se cancelo el duelo correctamente',
                     'status'        => 'OK'

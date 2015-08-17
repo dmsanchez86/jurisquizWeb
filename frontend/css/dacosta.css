@@ -1,4 +1,4 @@
-.start_specialty table.resultado{
+.start_specialty, table.resultado{
     display:none;
 }
 .start_specialty div[data-role='header'] .top_questions {
@@ -32,3 +32,16 @@
 .start_specialty table.resultado > tbody > tr > td {
     border-radius: 0px;
 }
+
+
+#content_startLitigation .content_question .question > .container_btn > .waves-effect.waves-btn-start {
+    background-color: #ef863e;
+    color: #FFF;
+    position: relative;
+    font-size:29px;
+}
+
+#content_startLitigation .content_question .pregunta{
+    display:none;
+}
+

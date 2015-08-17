@@ -91,7 +91,10 @@ $app->post(
 $app->post(
     '/find_question/','main:find_question'
 )->setParams(array($app));
-
+// Route for get case
+$app->post(
+    '/all_caseLitigation/','main:all_caseLitigation'
+)->setParams(array($app));
 // Route for get all mode games 
 $app->post(
     '/all_games_mode','main:all_games_mode'
@@ -106,12 +109,14 @@ $app->post(
 $app->post(
     '/all_specialties/:filter','main:all_specialties'
 )->setParams(array($app));
-
+//Lista los nombres de todas las especialidades activas
 $app->post(
     '/listNamespecialty','main:listNamespecialty'
 )->setParams(array($app));
-
-
+//Lista los casos de litigios activos
+$app->post(
+    '/listLitigationCases','main:listLitigationCases'
+)->setParams(array($app));
 // Route for active or deactive specialty 
 $app->post(
     '/specialty/:param','main:specialty'

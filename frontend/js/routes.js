@@ -31,6 +31,7 @@ var router = new $.mobile.Router({
     "start_test.html": {handler: "start_test", events: "s" },
     "specialty.html": {handler: "specialty", events: "s" },
     "startGamespeciality.html": {handler: "startGamespeciality", events: "s" },
+    "startGamelitigation.html": {handler: "startGamelitigation", events: "s" },
     "start_specialty.html": {handler: "start_specialty", events: "s" },
     "litigation.html": {handler: "litigation", events: "s" },
     "start_litigation.html": {handler: "start_litigation", events: "s" },
@@ -185,23 +186,27 @@ var router = new $.mobile.Router({
         });
         $('.btns .reject').unbind('click').click(function(e){
             var id_duel = $(this).parent().parent().parent().parent().attr('id-duel');
+            var id_notification = $(this).parent().parent().parent().parent().attr('id-notification');
             
             $.ajax({
                 url         : webService + 'cancel_duel',
                 type        : 'POST',
                 data        : {
-                    id      : id_duel
+                    id      : id_duel,
+                    id_notification      : id_notification
                 },
                 success     : function(res){
                     var data = JSON.parse(res);
                     
                     if(data.status == 'OK'){
                         message(data.message);
+                        history.back();
                     }else{
                         message(data.message);
                     }
                 }
             });
+            
         });
         $('.container_btn button').unbind('click').click(function(e){
             history.back();
@@ -723,7 +728,7 @@ var router = new $.mobile.Router({
         show_nav_button();
         
         evt_logout();
-        
+        clearInterval(count_timer);
         $.ajax({
             url: webService + "listNamespecialty",
             type: 'POST',
@@ -772,6 +777,170 @@ var router = new $.mobile.Router({
         show_nav_button();
         
         evt_logout();
+        
+         $.ajax({
+            url: webService + "listLitigationCases",
+            type: 'POST',
+            data: {},
+            processData: false,
+            contentType : false,
+            success: function(response){
+                var data = JSON.parse(response);
+                data.forEach(function(index,element){
+                   var compiled = tmpl("template_each_litigationCase", index);
+                   $("#listCases").append(compiled);
+                    
+                });
+                
+                 $('#listCases .container_btn button').unbind('click').click(function(e){
+                    e.preventDefault();
+                    var url = $(this).attr('data-url');
+                    $.mobile.changePage(url,{role: 'page',transition: 'fade'});
+                });
+                
+            }
+        });
+    },
+    startGamelitigation :function(type,match,ui){
+        nav_menu();
+        
+        show_nav_button();
+        
+        evt_logout();
+        
+        var params = router.getParams(match[1]);
+        
+        $.ajax({
+            url: webService + "all_caseLitigation",
+            type: 'POST',
+            success: function(response){
+                
+                var data = JSON.parse(response);
+                var con = 0;
+                var respuestas= [];
+                var itemRespuesta = {};
+                var questions = data.random();
+                questions.forEach(function(i,o){
+                    i.key = o; 
+                    $('#content_startLitigation').append(tmpl('structure_litigation',i));
+                });
+                var cantCases = $('#content_startLitigation .content_question ').length;
+                var time= 10;
+                var cases = [];
+                
+                $('#content_startLitigation .content_question').each(function (index) {
+                    cases.push($(this).attr("id-case"));
+                });
+                
+                setTimeout(function(){
+                    //Caso de a cuerdo al id
+                    $('#content_startLitigation').show(50).css('transform','scale(1)');
+                    $('#content_startLitigation .content_question#case_'+ params.id).fadeIn(500);
+                    
+                    setTimeout(function(){
+                        timerLitigation(10,'#content_startLitigation .content_question#case_',params.id,false);
+                    },500);
+                    
+                },1000);
+                
+                $('#content_startLitigation .content_question .question .container_btn button').unbind('click').click(function(e){
+                    e.preventDefault();
+                    hide_timer();
+                    //alert(idCase= $(this).attr("id-case"));
+                    var idCase= $(this).attr('data-id');
+                    var deleteItem;
+                    $('#content_startLitigation .content_question#case_'+ idCase +' .litigio_titulo').fadeOut(500);
+                    
+                    if (cases.length != 0) {
+                        //lista de casos
+                        cases.forEach(function(value,index) {
+                            
+                            if (idCase === value) {
+                                deleteItem = index;
+                                //cases.random();
+                            }
+                            
+                        });
+                        
+                        cases.splice(deleteItem,1);
+                        
+                        setTimeout(function(){
+                             idCase = cases[0];
+                            //Caso de a cuerdo al id
+                            $('#content_startLitigation .content_question#case_'+ idCase).fadeIn(500);
+                            setTimeout(function(){
+                                timerLitigation(10,'#content_startLitigation .content_question#case_',idCase,false);
+                            },500);
+                            
+                        },1000);
+                
+                    }
+                    if (cases.length == 0) {
+                        clearInterval(count_timer);
+                        console.log("no hay mas casos");
+                    }
+                
+                    
+                });
+                
+                $('#content_startLitigation .content_question input[type="radio"]').unbind('click').click(function(e){
+                    e.preventDefault();
+                    hide_timer();
+                    var respuestas= [];
+                    var itemRespuesta = {};
+                    var respuesta = $(this).val();
+                    var idCase = $(this).attr('id-case');
+                    var question = $('#content_startLitigation .content_question#case_'+ idCase+' .pregunta .question').text();
+                    var correct_answer = $('#content_startLitigation .content_question#case_'+ idCase).attr('correct-answer');
+                    
+                    $('#content_startLitigation .content_question#case_'+ idCase).fadeOut(500);
+                    
+                    if(respuesta === correct_answer){
+                        
+                        itemRespuesta.pregunta = question;
+                        itemRespuesta.respuesta= respuesta;
+                        itemRespuesta.correcta = true;
+                        
+                        respuestas.push(JSON.stringify(itemRespuesta));
+                        
+                        respuestas.forEach(function(index,element){
+                                
+                        var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+                        $("#content_startLitigation table tbody").append(compiled);
+                        
+                            setTimeout(function(){
+                    
+                                $("#content_startLitigation table.resultado").fadeIn(1000);
+                            
+                            }, 1000);
+                        });
+                       
+                   }else{
+                       
+                        itemRespuesta.pregunta = question;
+                        itemRespuesta.respuesta= respuesta;
+                        itemRespuesta.correcta = false;
+                        respuestas.push(JSON.stringify(itemRespuesta));
+                        
+                        respuestas.forEach(function(index,element){
+                                
+                        var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+                        $("#content_startLitigation table tbody").append(compiled);
+                        
+                            setTimeout(function(){
+                    
+                                $("#content_startLitigation table.resultado").fadeIn(1000);
+                            
+                            }, 1000);
+                        });
+
+                   }
+                   
+                });
+                
+            }
+        });
+         
     },
     profile : function(type,match,ui){
         nav_menu();
@@ -1561,6 +1730,45 @@ var router = new $.mobile.Router({
   },defaultHandlerEvents: "s",defaultArgsRe: true
 });
 
+function timerLitigation(time,page_referer,idCase,question){
+    $('.question_time').fadeIn(1000).find('em').text(time+'s');
+    var time_question = time;
+    count_timer = setInterval(function(){
+        time_question--;
+        
+        $('.question_time em').text(time_question+'s');
+        //si es un caso
+        if(time_question == 0 && question == false){
+            
+            $('.question_time').fadeOut(1000);
+            
+            setTimeout(function(){
+                
+                $(page_referer + idCase+ ' .litigio_titulo').fadeOut();
+                $(page_referer + idCase + ' .pregunta').fadeIn(500);
+                
+            setTimeout(function(){
+                
+                timerLitigation(10,page_referer,idCase,true);},500);
+                
+            },500);
+            clearInterval(count_timer);
+            
+        }
+        //si es una pregunta
+        if(time_question == 0 && question == true){
+            $('.question_time').fadeOut(1000);
+            $(page_referer + idCase + ' .pregunta').fadeOut();
+            //aqui va la respuesta correcta si el usuario no respondio
+                
+            
+                    
+            clearInterval(count_timer);
+        }
+    },1000);
+    
+}
+
 // Message to the toast Materialize
 function message(param){
     if(param === "welcome"){
@@ -1776,6 +1984,7 @@ function show_nav_button(){
                 },
                 success     : function(res){
                     var data = JSON.parse(res);
+                    console.log(data);
                     
                     $('.notifications .content_notifications').empty().fadeOut(50);
                     
