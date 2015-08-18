@@ -4351,7 +4351,7 @@ html {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
-  border-color: rgba(238, 98, 0, 0.83) #ffffff;
+  border-color: rgba(238, 98, 0, 0.83) rgba(0, 0, 0, 0);
   -webkit-box-sizing: border-box;
   -khtml-box-sizing: border-box;
   -moz-box-sizing: border-box;

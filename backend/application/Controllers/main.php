@@ -903,4 +903,72 @@ class main {
         echo json_encode($data);
     }
     
+    # Function to insert questions in table duel_result
+    function questions_duel(){
+        $id_duel = $_POST['id_duel'];
+        $metadata = $_POST['metadata'];
+        
+        $query = jur_duel_result::all(array('conditions' => array('id_duel = ?', $id_duel)));
+        
+        foreach($query as $k){
+            $data[] = $k->attributes();
+        }
+        
+        $q = jur_duel_result::find($data[0]['id']);
+        $q->duel_questions = $metadata;
+        $q->save();
+        
+        if($q){
+            $res = array(
+                    'message'   => 'Las preguntas se guardaron correctamente!',
+                    'status'    => 'OK'
+                );
+        }else{
+            $res = array(
+                    'message'   => 'Las preguntas no se pudieron guardar!',
+                    'status'    => 'FAIL'
+                );
+        }
+        
+        echo json_encode($res);
+    }
+    
+    # Function to update table duel_result
+    function update_duel(){
+        $id_duel = $_POST['id_duel'];
+        $id_user_1 = $_POST['id_user_1'];
+        $id_user_2 = $_POST['id_user_2'];
+        $correct_answers = $_POST['correct_answers'];
+        
+        $query = jur_duel_result::all(array('conditions' => array('id_duel = ?', $id_duel)));
+        
+        foreach($query as $k){
+            $data[] = $k->attributes();
+        }
+        
+        $q = jur_duel_result::find($data[0]['id']);
+        
+        if($_POST['ref'] == 'first'){
+            $q->total_corrects_answers_user_1 = $correct_answers;
+        }else{
+            $q->total_corrects_answers_user_2 = $correct_answers;
+        }
+        
+        $q->save();
+        
+        if($q){
+            $res = array(
+                    'message'   => 'El resultado del duelo se actualizo correctamente',
+                    'status'    => 'OK'
+                );
+        }else{
+            $res = array(
+                    'message'   => 'No se pudo actualizar el duelo!',
+                    'status'    => 'FAIL'
+                );
+        }
+        
+        echo json_encode($res);
+    }
+    
 }

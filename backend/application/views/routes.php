@@ -187,6 +187,16 @@ $app->post(
     '/notifications','main:notifications'
 )->setParams(array($app));
 
+// Route for validate to current level 
+$app->post(
+    '/questions_duel','main:questions_duel'
+)->setParams(array($app));
+
+// Route for update result duel 
+$app->post(
+    '/update_duel','main:update_duel'
+)->setParams(array($app));
+
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';
