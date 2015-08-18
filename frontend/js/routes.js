@@ -99,6 +99,8 @@ var router = new $.mobile.Router({
         
         if(localStorage.getItem('log') == 'true'){
             $('.terms .container_btn a').hide();
+            
+            // button to back in terms
             $('.terms .container_btn a').eq(2).show().unbind('click').click(function(){
                 history.back();
             });
@@ -109,14 +111,11 @@ var router = new $.mobile.Router({
         }
     },
     dashboard: function(type,match,ui){
-        
         nav_menu();
         
         show_nav_button();
         
         evt_logout();
-        
-        evt_notifications();
         
         // Params
         var params = router.getParams(match[1]); 
@@ -138,6 +137,8 @@ var router = new $.mobile.Router({
             localStorage.setItem('id_user',$id);
             
             panel_data($id);
+            
+            evt_notifications();
         }
         
         // Events for buttons
@@ -922,7 +923,7 @@ var router = new $.mobile.Router({
                 $('#content_startLitigation .content_question .question .container_btn button').unbind('click').click(function(e){
                     e.preventDefault();
                     hide_timer();
-                    //alert(idCase= $(this).attr("id-case"));
+                    
                     var idCase= $(this).attr('data-id');
                     var deleteItem;
                     $('#content_startLitigation .content_question#case_'+ idCase +' .litigio_titulo').fadeOut(500);
@@ -940,15 +941,19 @@ var router = new $.mobile.Router({
                         
                         cases.splice(deleteItem,1);
                         
-                        setTimeout(function(){
-                             idCase = cases[0];
+                        if (cases.length != 0) {
+                            
+                            setTimeout(function(){
+                            idCase = cases[0];
                             //Caso de a cuerdo al id
                             $('#content_startLitigation .content_question#case_'+ idCase).fadeIn(500);
                             setTimeout(function(){
                                 timerLitigation(10,'#content_startLitigation .content_question#case_',idCase,false);
                             },500);
-                            
-                        },1000);
+                                
+                            },1000);
+                        }
+                        
                 
                     }
                     if (cases.length == 0) {
@@ -992,6 +997,7 @@ var router = new $.mobile.Router({
                         respuestas.forEach(function(index,element){
                                 
                         var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+                        
                         $("#content_startLitigation table tbody").append(compiled);
                         
                             setTimeout(function(){
@@ -1879,11 +1885,13 @@ function validate_login(){
     var id_user = localStorage.getItem('id_user');
     
     if(log == 'true'){
-        var id = encodeURIComponent(id_user);
+        var id = id_user;
         
+        // Click in the button start questions
         $('#btn_start').unbind('click').click(function(){
             var role = localStorage.getItem('role_user');
             
+            // Validate role for change page
             if(role == 'admin')
                 $.mobile.changePage('dashboard_admin.html?user='+id,{role: 'page',transition: 'fade'});
             else
@@ -1977,8 +1985,7 @@ function evt_register(){
     var $password_confirmation = $('#password_c').val();
     var $gender = $('#gender_user').val();
     
-    console.log($gender);
-    
+    // Validate fields
     if($email === ""){
       message('¡ El campo del correo eléctronico no puede estar vacio !');
       $('#email_r').focus();
@@ -2002,15 +2009,17 @@ function evt_register(){
         $('input[value="Seleccione un genero"]').focus();
     }else{
       loader('Registrando...');
-      console.log($gender);
-      $.ajax({
-            type: "POST",
-            url: webService+"register_user",
-            data: {
+      
+        //   ajax to register new user
+        $.ajax({
+            url     : webService + "register_user",
+            type    : "POST",
+            data    : {
                 email       : $email,
                 password    : $password,
                 gender      : $gender
-            },success:function(response){
+            },
+            success : function(response){
                 var data = JSON.parse(response);
                 
                 if(data.status == "OK"){
@@ -2020,7 +2029,7 @@ function evt_register(){
                         clean_register();
                     },1000);
                     setTimeout(function(){
-                        $.mobile.changePage('index.html',{role: 'page',transition:"slide"});
+                        $.mobile.changePage('index.html#home',{role: 'page',transition:"slide"});
                     },2800);
                 }else{
                     $('.loader').fadeOut(1000);
@@ -2042,7 +2051,7 @@ function clean_register(){
 
 // Hide nav button
 function hide_nav_button(){
-    $('.nav').hide();;
+    $('.nav').hide(); // Hide nav buttons right
 }
 
 // Show nav buttin
@@ -2865,7 +2874,6 @@ function questions(page_referer,array){
                 var questions = data.random(); 
                 
                 if(page_referer == '.duel_users' && ids_questions_duel.length != 0){
-                    alert();
                     var count = 0;
                     for (var i = 0; i < questions.length; i++) {
                         if(ids_questions_duel[count] == questions[i].id){
@@ -3342,6 +3350,7 @@ function hide_timer(){
 
 // Function to return number notifications
 function evt_notifications(){
+    debugger;
     var $id = localStorage.getItem('id_user');
     
     $.ajax({
