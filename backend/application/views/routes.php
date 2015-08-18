@@ -182,6 +182,11 @@ $app->post(
     '/cancel_duel','main:cancel_duel'
 )->setParams(array($app));
 
+// Route for accept duel 
+$app->post(
+    '/accept_duel','main:accept_duel'
+)->setParams(array($app));
+
 // Route for get all notifications 
 $app->post(
     '/notifications','main:notifications'

@@ -183,10 +183,34 @@ var router = new $.mobile.Router({
         });
     },
     notifications: function(type,match,ui){
+        // Button to accept duel
         $('.btns .accept').unbind('click').click(function(e){
-            console.log('accept');
-            console.log(e.target);
+            var id_duel = $(this).parent().parent().parent().parent().attr('id-duel');
+            var id_notification = $(this).parent().parent().parent().parent().attr('id-notification');
+            
+            $.ajax({
+                url         : webService + 'accept_duel',
+                type        : 'POST',
+                data        : {
+                    id                  : id_duel,
+                    id_notification     : id_notification
+                },
+                success     : function(res){
+                    var data = JSON.parse(res);
+                    console.log(data);
+                    
+                    if(data.status == 'OK'){
+                        message(data.message);
+                        loader('Cargando Duelo...');
+                        setTimeout(function(){ $.mobile.changePage('duel_users.html?id_duel=' + data.metadata.id + '&id_user_1=' + data.metadata.id_user_1 + '&id_user_2=' + data.metadata.id_user_2 + '&ref=accept' ,{role:'page',transition: 'flip'}); },2000);
+                    }else{
+                        message(data.message);
+                    }
+                }
+            });
         });
+        
+        // Button to reject duel
         $('.btns .reject').unbind('click').click(function(e){
             var id_duel = $(this).parent().parent().parent().parent().attr('id-duel');
             var id_notification = $(this).parent().parent().parent().parent().attr('id-notification');
@@ -820,7 +844,7 @@ var router = new $.mobile.Router({
                     
                 });
                 
-                 $('#listCases .container_btn button').unbind('click').click(function(e){
+                $('#listCases .container_btn button').unbind('click').click(function(e){
                     e.preventDefault();
                     var url = $(this).attr('data-url');
                     $.mobile.changePage(url,{role: 'page',transition: 'fade'});
@@ -907,7 +931,7 @@ var router = new $.mobile.Router({
                         hide_timer();
                         
                         //mensaje fin casos
-                            
+                        
                         
                     }
                 

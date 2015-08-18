@@ -884,6 +884,37 @@ class main {
         
     }
     
+    # Function to accept duel
+    function accept_duel(){
+        $id = $_POST['id'];
+        $id_notification = $_POST['id_notification'];
+        
+        $query = jur_duel::find($id);
+        $query_ = jur_notifications::find($id_notification);
+        
+        $query_->state = "inactive";
+        $query->state_duel = "accept";
+        
+        $res_ = $query_->save();
+        $res = $query->save();
+        
+        if($res && $res_){
+            $data = array(
+                    'message'       => 'Se acepto el duelo correctamente',
+                    'status'        => 'OK',
+                    'metadata'      => $query->attributes()
+                );
+        }else{
+            $data = array(
+                    'message'       => 'No se pudo acceptar el duelo, intentalo de nuevo',
+                    'status'        => 'FAIL'
+                );
+        }
+        
+        echo json_encode($data);
+        
+    }
+    
     # Function to get all notifications by user
     function notifications(){
         $id = base64_decode($_POST['id']);
