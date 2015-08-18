@@ -971,6 +971,9 @@ class main {
         $id_user_2 = $_POST['id_user_2'];
         $correct_answers = $_POST['correct_answers'];
         
+        date_default_timezone_set('America/Bogota');
+        $date = date('Y-m-d H:i:s');
+        
         $query = jur_duel_result::all(array('conditions' => array('id_duel = ?', $id_duel)));
         
         foreach($query as $k){
@@ -979,27 +982,77 @@ class main {
         
         $q = jur_duel_result::find($data[0]['id']);
         
-        if($_POST['ref'] == 'first'){
+        if(isset($_POST['ref'])){
             $q->total_corrects_answers_user_1 = $correct_answers;
+            
+            $q->save();
+        
+            if($q){
+                $res = array(
+                        'message'   => 'El resultado del duelo se actualizo correctamente',
+                        'status'    => 'OK'
+                    );
+            }else{
+                $res = array(
+                        'message'   => 'No se pudo actualizar el duelo!',
+                        'status'    => 'FAIL'
+                    );
+            }
         }else{
             $q->total_corrects_answers_user_2 = $correct_answers;
-        }
+            
+            $q->save();
         
-        $q->save();
-        
-        if($q){
-            $res = array(
-                    'message'   => 'El resultado del duelo se actualizo correctamente',
-                    'status'    => 'OK'
-                );
-        }else{
-            $res = array(
-                    'message'   => 'No se pudo actualizar el duelo!',
-                    'status'    => 'FAIL'
-                );
+            $win = jur_duel_result::find($q->id);
+            $duel = jur_duel::find($q->id_duel);
+            
+            $duel->date_end = $date;
+            
+            if($win->total_corrects_answers_user_1 == $win->total_corrects_answers_user_2){
+                $win_duel = '¡El duelo terminó empatado!';
+                $win->id_win_user = 0;
+                $duel->state_duel = 'wait';
+            }else if($win->total_corrects_answers_user_1 > $win->total_corrects_answers_user_2){
+                $win_duel = '¡Perdiste el Duelo!';
+                $win->id_win_user = $win->total_corrects_answers_user_1;
+                $duel->state_duel = 'finish';
+            }else{
+                $win_duel = '¡Ganaste el duelo!';
+                $win->id_win_user = $win->total_corrects_answers_user_2;
+                $duel->state_duel = 'finish';
+            }
+            
+            $res_duel = $duel->save();
+            $res_win = $win->save();
+            
+            if($q && $res_win && $res_duel){
+                $res = array(
+                        'message'   => $win_duel,
+                        'status'    => 'OK',
+                        'data_duel' => $q->attributes()
+                    );
+            }else{
+                $res = array(
+                        'message'   => 'No se pudo actualizar el duelo!',
+                        'status'    => 'FAIL'
+                    );
+            }
         }
         
         echo json_encode($res);
+    }
+    
+    # Function to get all data after accept duel
+    function data_duel(){
+        $id_duel = $_POST['id_duel'];
+        
+        $query = jur_duel_result::all(array('conditions' => array('id_duel = ?', $id_duel)));
+        
+        foreach($query as $k){
+            $data[] = $k->attributes();
+        }
+        
+        echo json_encode($data);
     }
     
 }

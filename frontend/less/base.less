@@ -1,5 +1,5 @@
 /* Reset */
-*,html{border: 0;margin: 0;padding:0;font-family: 'Roboto', sans-serif;.transition();}
+*,html{border: 0;margin: 0;padding:0;font-size: 100%;font-family: 'Roboto', sans-serif;.transition();}
 
 /* * Pages * */
 
@@ -807,21 +807,21 @@
     }   
     .content{ padding: 1rem;
         .content_notifications{margin-bottom: 1rem;
-            .notification{margin: .25rem 0 0; .box_shadow(0, 0, 1px,0px, #999); padding: 1rem .5rem;position: relative;overflow: hidden;.border_radius(3px);
-                .text{
+            .notification{margin: .25rem 0 0; .box_shadow(0, 0, 1px,0px, #999 inset); padding: 1rem .5rem;position: relative;overflow: hidden;.border_radius(3px);
+                .text{ text-align: center;
                     span{color: @btn_login;font-family: 'DK Mango'; font-size: 1.5rem;font-weight: bold;}
                 }
                 .mask{position: absolute; top: 0;left: 0; width: 100%; height: 100%;background-color: rgba(130,130,130,.5); z-index: 2; cursor: pointer;
-                    &:hover{background-color: rgba(130,130,130,.15);
+                    &:hover,&:focus{background-color: rgba(130,130,130,.15)!important;
                         .panel{.transform(translatex(0));}
                     }
                     .panel{position: absolute; right: 0; top: 0;  height: 105%; .transform(translatex(105%));.transition(all .5s ease);background-color: @btn_start;border: none;
                         .btns{text-align: center; cursor: pointer;
                             span{ display: block; padding: 0 .5rem;height: 100%;  font-family: 'DK Mango';font-size: 1.5rem; line-height: 1.3; .transition();
-                                &:hover{color: @before_color;
-                                    i{color: @before_color;}
+                                &:hover,&:focus{color: @before_color;
+                                    i{color: @before_color;.text_shadow(0,0,1px,#3A6667);}
                                 }
-                                i{font-size: 1.2rem;line-height: 1;.transition(); font-weight: normal;.text_shadow(0,0,1px,#fff);}
+                                i{font-size: 1.2rem;line-height: 1;.transition(); font-weight: normal;.text_shadow(0,0,1px,#323232);color: white;}
                             }
                         }
                     }

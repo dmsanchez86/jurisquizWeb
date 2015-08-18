@@ -152,7 +152,7 @@ $app->post(
     '/correct_answers','main:correct_answers'
 )->setParams(array($app));
 
-// Route for validate to current level 
+// Route for validate to current level
 $app->post(
     '/correct_answers_test','main:correct_answers_test'
 )->setParams(array($app));
@@ -185,6 +185,11 @@ $app->post(
 // Route for accept duel 
 $app->post(
     '/accept_duel','main:accept_duel'
+)->setParams(array($app));
+
+// Route for get data after accept duel 
+$app->post(
+    '/data_duel','main:data_duel'
 )->setParams(array($app));
 
 // Route for get all notifications 

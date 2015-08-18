@@ -12,8 +12,10 @@ var count = 6;
 var count_id = 6;
 var count_timer = null;
 var questions_duel = [];
+var ids_questions_duel = [];
 var correct_answers_user_duel = 0;
 var params_url = {};
+var corrects_questions = 0;
 
 var router = new $.mobile.Router({
     "index.html": {handler: "home", events: "s" },
@@ -352,6 +354,8 @@ var router = new $.mobile.Router({
         
         evt_logout();
         
+        hide_timer();
+        
         $.ajax({
             url         : webService + 'users/users_less_me',
             type        : 'POST',
@@ -444,6 +448,7 @@ var router = new $.mobile.Router({
             var $id_duel = params.id_duel;
             var $id_user_1 = params.id_user_1;
             var $id_user_2 = params.id_user_2;
+            var $ref = params.ref;
         }
         
         params_url = {
@@ -452,31 +457,52 @@ var router = new $.mobile.Router({
             id_user_2   : $id_user_2
         };
         
-        questions('.duel_users',null);
-        
-        setTimeout(function(){
-            var ids = [];
-            for(var i = 0; i < questions_duel.length; i++)
-                ids[i] = questions_duel[i].id;
-                
-            // Ajax to insert questions in database 
+        if($ref == 'accept'){
+            debugger;
             $.ajax({
-                url         : webService + 'questions_duel',
-                type        : 'POST',
-                data        : {
-                    id_duel     : $id_duel,
-                    metadata    : ids.join('/')
+                url     : webService + 'data_duel',
+                type    : 'POST',
+                data    : {
+                    id_duel : $id_duel
                 },
-                success     : function(res){
+                success : function(res){
                     var data = JSON.parse(res);
                     
-                    if(data.status == 'OK'){
-                        message('todos los datos han sido cargados satisfactoriamente!');
-                    }else{
-                        message(data.message);
-                    }
+                    ids_questions_duel = data[0].duel_questions.split('/');
+                    
+                    questions('.duel_users',null);
                 }
             });
+        }else{
+            questions('.duel_users',null);
+            
+            setTimeout(function(){
+                var ids = [];
+                for(var i = 0; i < questions_duel.length; i++)
+                    ids[i] = questions_duel[i].id;
+                    
+                // Ajax to insert questions in database 
+                $.ajax({
+                    url         : webService + 'questions_duel',
+                    type        : 'POST',
+                    data        : {
+                        id_duel     : $id_duel,
+                        metadata    : ids.join('/')
+                    },
+                    success     : function(res){
+                        var data = JSON.parse(res);
+                        
+                        if(data.status == 'OK'){
+                            message('todos los datos han sido cargados satisfactoriamente!');
+                        }else{
+                            message(data.message);
+                        }
+                    }
+                });
+            },500);
+        }
+        
+        setTimeout(function(){
             
             // Get all contents of questions
             $('.duel_users .content_start_game .content_question').addClass('duel_options');
@@ -493,8 +519,6 @@ var router = new $.mobile.Router({
                     $('.duel_users div[data-role="header"] .top_questions').css('opacity','1');
                 },1000);
             },1000);
-            
-            var corrects_questions = 0;
             
             // Click in the answers to validate which is correct
             $('.duel_users .content_question input[type=radio]').unbind('click').click(function(e){
@@ -820,7 +844,7 @@ var router = new $.mobile.Router({
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('data-url');
-            changePage(url,{role: 'page',transition: 'turn'});
+            $.mobile.changePage(url,{role: 'page',transition: 'turn'});
         });
     },
     start_litigation :function(type,match,ui){
@@ -855,7 +879,7 @@ var router = new $.mobile.Router({
     },
     startGamelitigation :function(type,match,ui){
         nav_menu();
-        
+        hide_timer();
         show_nav_button();
         
         evt_logout();
@@ -928,14 +952,21 @@ var router = new $.mobile.Router({
                 
                     }
                     if (cases.length == 0) {
-                        hide_timer();
-                        
+                    
+                       hide_timer();
+
                         //mensaje fin casos
-                        
+                        $("#content_startLitigation .volver").fadeIn(500);
                         
                     }
                 
                     
+                });
+                
+                $('#content_startLitigation .volver button').unbind('click').click(function(e){
+                    e.preventDefault();
+                    var url = $(this).attr('data-url');
+                    $.mobile.changePage(url,{role: 'page',transition: 'turn'});
                 });
                 
                 $('#content_startLitigation .content_question input[type="radio"]').unbind('click').click(function(e){
@@ -1787,6 +1818,7 @@ var router = new $.mobile.Router({
 
 // ect timer game mode litigation
 function timerLitigation(time,page_referer,idCase,question){
+    
     $('.question_time').fadeIn(1000).find('em').text(time+'s');
     var time_question = time;
     count_timer = setInterval(function(){
@@ -1817,8 +1849,6 @@ function timerLitigation(time,page_referer,idCase,question){
             $(page_referer + idCase + ' .pregunta').fadeOut();
             //aqui va la respuesta correcta si el usuario no respondio
                 
-            
-                    
             clearInterval(count_timer);
         }
     },1000);
@@ -2834,7 +2864,21 @@ function questions(page_referer,array){
                 
                 var questions = data.random(); 
                 
-                if(page_referer == '.duel_users'){
+                if(page_referer == '.duel_users' && ids_questions_duel.length != 0){
+                    alert();
+                    var count = 0;
+                    for (var i = 0; i < questions.length; i++) {
+                        if(ids_questions_duel[count] == questions[i].id){
+                            count++;
+                            questions[i].key = i;
+                            questions_duel[i] = questions[i];
+                            $(page_referer + ' .content_start_game').append(tmpl('structure_question',questions[i]));
+                            i = 0;
+                            if(count > 8)
+                                break;
+                        }
+                    }
+                }else if(page_referer == '.duel_users'){
                     questions.forEach(function(i,o){
                         if(o < 9){
                             i.key = o;
@@ -3141,6 +3185,8 @@ function evt_next_question(page_referer){
 
 // Evt to next question mode test
 function evt_next_question_test(page_referer,correct_questions,params){
+    console.log('esta----------------------');
+    console.log(correct_questions);
     var current_content = $(page_referer + ' .content_question.active');
     var next_content = $(page_referer + ' .content_question.active').next();
     var time_question = 10;
@@ -3184,29 +3230,54 @@ function evt_next_question_test(page_referer,correct_questions,params){
                 $(page_referer + ' .wrapper .complete_questions span').text(correct_questions);
                 $(page_referer + ' .wrapper .complete_questions').fadeIn(1000);
                 
-                if(page_referer == '.duel_users'){
+                if(page_referer == '.duel_users' && ids_questions_duel.length > 0){
                     if(correct_questions == 8)
                         setTimeout(function(){ message('Respondiste todas las preguntas correctamente, ¡Felicidades!'); },700);
-                        debugger;
-                        console.log(params);
-                        params.correct_answers = correct_questions;
-                        params.ref = 'first';
                         
-                        // Ajax for insert data duel after end this duel
-                        $.ajax({
-                            url         : webService + 'update_duel',
-                            type        : 'POST',
-                            data        : params,
-                            success     : function(res){
-                                var data = JSON.parse(res);
-                                
-                                if(data.status != 'OK'){
-                                    message(data.message);
-                                }else{
-                                    setTimeout(function(){ history.back(); },2500);
-                                }
+                    params.correct_answers = correct_questions;
+                    
+                    // Ajax for insert data duel after end this duel
+                    $.ajax({
+                        url         : webService + 'update_duel',
+                        type        : 'POST',
+                        data        : params,
+                        success     : function(res){
+                            var data = JSON.parse(res);
+                            console.log(data);
+                            
+                            if(data.status != 'OK'){
+                                message(data.message);
+                            }else{
+                                message(data.message);
+                                setTimeout(function(){ history.back(); },5000);
                             }
-                        });
+                        }
+                    });
+                    
+                }else if(page_referer == '.duel_users'){
+                    debugger;
+                    if(correct_questions == 8)
+                        setTimeout(function(){ message('Respondiste todas las preguntas correctamente, ¡Felicidades!'); },700);
+                        
+                    console.log(params);
+                    params.correct_answers = correct_questions;
+                    params.ref = 'first';
+                    
+                    // Ajax for insert data duel after end this duel
+                    $.ajax({
+                        url         : webService + 'update_duel',
+                        type        : 'POST',
+                        data        : params,
+                        success     : function(res){
+                            var data = JSON.parse(res);
+                            
+                            if(data.status != 'OK'){
+                                message(data.message);
+                            }else{
+                                setTimeout(function(){ history.back(); },2500);
+                            }
+                        }
+                    });
                     
                 }else{
                     if(correct_questions == 10)
@@ -3253,10 +3324,10 @@ function show_timer(time,page_referer){
             $('.question_time').fadeOut(1000);
             if(page_referer == '.start_test' || page_referer == '.duel_users'){
                 message('No respondiste nada =/');
-                evt_next_question_test(page_referer,null,params_url);
+                evt_next_question_test(page_referer,corrects_questions,params_url);
             }else{
                 message('No respondiste nada =/');
-                evt_next_question(page_referer,null);
+                evt_next_question(page_referer,corrects_questions);
             }
             clearInterval(count);
         }

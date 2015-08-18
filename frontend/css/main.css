@@ -20,6 +20,7 @@ html {
   border: 0;
   margin: 0;
   padding: 0;
+  font-size: 100%;
   font-family: 'Roboto', sans-serif;
   -webkit-transition: all 0.5s ease;
   -khtml-transition: all 0.5s ease;
@@ -4722,12 +4723,12 @@ html {
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification {
   margin: .25rem 0 0;
-  -webkit-box-shadow: 0 0 1px 0px #999999;
-  -khtml-box-shadow: 0 0 1px 0px #999999;
-  -moz-box-shadow: 0 0 1px 0px #999999;
-  -ms-box-shadow: 0 0 1px 0px #999999;
-  -o-box-shadow: 0 0 1px 0px #999999;
-  box-shadow: 0 0 1px 0px #999999;
+  -webkit-box-shadow: 0 0 1px 0px #999999 inset;
+  -khtml-box-shadow: 0 0 1px 0px #999999 inset;
+  -moz-box-shadow: 0 0 1px 0px #999999 inset;
+  -ms-box-shadow: 0 0 1px 0px #999999 inset;
+  -o-box-shadow: 0 0 1px 0px #999999 inset;
+  box-shadow: 0 0 1px 0px #999999 inset;
   padding: 1rem .5rem;
   position: relative;
   overflow: hidden;
@@ -4737,6 +4738,9 @@ html {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text {
+  text-align: center;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text span {
   color: #ee6200;
@@ -4754,10 +4758,12 @@ html {
   z-index: 2;
   cursor: pointer;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover {
-  background-color: rgba(130, 130, 130, 0.15);
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover,
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:focus {
+  background-color: rgba(130, 130, 130, 0.15) !important;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover .panel {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover .panel,
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:focus .panel {
   -webkit-transform: translatex(0);
   -khtml-transform: translatex(0);
   -moz-transform: translatex(0);
@@ -4803,11 +4809,19 @@ html {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover,
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:focus {
   color: #ef863e;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover i {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover i,
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:focus i {
   color: #ef863e;
+  -webkit-text-shadow: 0 0 1px #3a6667;
+  -khtml-text-shadow: 0 0 1px #3a6667;
+  -moz-text-shadow: 0 0 1px #3a6667;
+  -ms-text-shadow: 0 0 1px #3a6667;
+  -o-text-shadow: 0 0 1px #3a6667;
+  text-shadow: 0 0 1px #3a6667;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span i {
   font-size: 1.2rem;
@@ -4819,12 +4833,13 @@ html {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
   font-weight: normal;
-  -webkit-text-shadow: 0 0 1px #ffffff;
-  -khtml-text-shadow: 0 0 1px #ffffff;
-  -moz-text-shadow: 0 0 1px #ffffff;
-  -ms-text-shadow: 0 0 1px #ffffff;
-  -o-text-shadow: 0 0 1px #ffffff;
-  text-shadow: 0 0 1px #ffffff;
+  -webkit-text-shadow: 0 0 1px #323232;
+  -khtml-text-shadow: 0 0 1px #323232;
+  -moz-text-shadow: 0 0 1px #323232;
+  -ms-text-shadow: 0 0 1px #323232;
+  -o-text-shadow: 0 0 1px #323232;
+  text-shadow: 0 0 1px #323232;
+  color: white;
 }
 span[contenteditable] br {
   display: none;
