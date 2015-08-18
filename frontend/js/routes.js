@@ -148,7 +148,6 @@ var router = new $.mobile.Router({
         });
     },
     dashboard_admin: function(type,match,ui){
-        
         nav_menu();
         
         show_nav_button();
@@ -192,6 +191,7 @@ var router = new $.mobile.Router({
             var id_duel = $(this).parent().parent().parent().parent().attr('id-duel');
             var id_notification = $(this).parent().parent().parent().parent().attr('id-notification');
             
+            // ajax to accept duel
             $.ajax({
                 url         : webService + 'accept_duel',
                 type        : 'POST',
@@ -201,7 +201,6 @@ var router = new $.mobile.Router({
                 },
                 success     : function(res){
                     var data = JSON.parse(res);
-                    console.log(data);
                     
                     if(data.status == 'OK'){
                         message(data.message);
@@ -219,6 +218,7 @@ var router = new $.mobile.Router({
             var id_duel = $(this).parent().parent().parent().parent().attr('id-duel');
             var id_notification = $(this).parent().parent().parent().parent().attr('id-notification');
             
+            // ajax for cancel duel
             $.ajax({
                 url         : webService + 'cancel_duel',
                 type        : 'POST',
@@ -239,6 +239,8 @@ var router = new $.mobile.Router({
             });
             
         });
+        
+        // button to back last page
         $('.container_btn button').unbind('click').click(function(e){
             history.back();
         });
@@ -272,11 +274,8 @@ var router = new $.mobile.Router({
         });
     },
     race: function(type,match,ui){
-        hide_timer();
         
         $('.race .content_game .icon_game img').attr('src','img/icons/race'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
-        
-        $('.start_race .levels_content').empty();
         
         nav_menu();
         
@@ -284,10 +283,16 @@ var router = new $.mobile.Router({
         
         evt_logout();
         
+        hide_timer();
+        
+        // Evt buttons to dashboard
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
-            $('.start_race .wrapper > div').hide(50);
             loader('Cargando');
+            
+            $('.start_race .wrapper > div').hide(50);
+            $('.start_race .levels_content').empty();
+            
             var link = $(this).attr('data-url');
             $.mobile.changePage(link,{role: 'page',transition: 'pop'});
         });
@@ -295,11 +300,11 @@ var router = new $.mobile.Router({
     start_race : function(type,match,ui){
         nav_menu();
         
-        show_nav_button();
+        hide_nav_button();
         
         evt_logout();
         
-        questions('.start_race',null);
+        questions('.start_race', null);
         
         validate_questions();
         
@@ -309,6 +314,7 @@ var router = new $.mobile.Router({
         
         $('.start_race .levels_content .level').removeClass('active');
         
+        // ajax to get categories of each level game
         $.ajax({
             url         : webService + 'categories_level',
             type        : 'POST',
@@ -1002,10 +1008,11 @@ var router = new $.mobile.Router({
                         $("#content_startLitigation table tbody").append(compiled);
                         
                             setTimeout(function(){
-                    
+                
                                 $("#content_startLitigation table.resultado").fadeIn(1000);
                             
                             }, 1000);
+                            
                         });
                        
                    }else{
@@ -1823,7 +1830,7 @@ var router = new $.mobile.Router({
   },defaultHandlerEvents: "s",defaultArgsRe: true
 });
 
-// ect timer game mode litigation
+// evt timer game mode litigation
 function timerLitigation(time,page_referer,idCase,question){
     
     $('.question_time').fadeIn(1000).find('em').text(time+'s');
@@ -1855,13 +1862,32 @@ function timerLitigation(time,page_referer,idCase,question){
             $('.question_time').fadeOut(1000);
             $(page_referer + idCase + ' .pregunta').fadeOut();
             //aqui va la respuesta correcta si el usuario no respondio
-                
+            respuestaFinaltempPregunta(idCase);
             clearInterval(count_timer);
+            
         }
     },1000);
     
 }
-
+function respuestaFinaltempPregunta(idCase){
+            var respuestas = [];
+            var question = $('#content_startLitigation .content_question#case_'+ idCase+' .pregunta .question').text();
+            var correct_answer = $('#content_startLitigation .content_question#case_'+ idCase).attr('correct-answer');
+            var itemRespuesta = {};
+            itemRespuesta.pregunta = question;
+            itemRespuesta.respuesta= correct_answer;
+            itemRespuesta.correcta = true;
+            
+            respuestas.push(JSON.stringify(itemRespuesta));
+            
+            respuestas.forEach(function(index,element){
+  
+            var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+            
+            $("#content_startLitigation table tbody").append(compiled);
+                $("#content_startLitigation table.resultado").fadeIn(1000);
+            });
+}
 // Message to the toast Materialize
 function message(param){
     if(param === "welcome"){
@@ -2138,8 +2164,8 @@ function panel_data($id){
     
     // Ajax for all data user
     $.ajax({
+        url     : webService + 'user_data',
         type    : 'POST',
-        url     : webService+'user_data',
         data    : {
             id  : $id
         },
@@ -2149,6 +2175,9 @@ function panel_data($id){
             if(localStorage.getItem('role_user') == 'admin'){
                 $('.panel .panel_content article').eq(0).hide(50);
                 $('.panel .panel_content .levels,.profile .panel_content .levels').hide(50);
+            }else{
+                $('.panel .panel_content article').eq(0).show(50);
+                $('.panel .panel_content .levels,.profile .panel_content .levels').show(50);
             }
             
             $('.points em').text(data.points);
@@ -2166,8 +2195,8 @@ function panel_data($id){
     
     // Ajax for friends
     $.ajax({
-        type    : 'POST',
         url     : webService + 'users/users',
+        type    : 'POST',
         data    : null,
         success : function(response){
             var data = JSON.parse(response);
@@ -2935,6 +2964,7 @@ function validate_questions(){
         for(var i = 0; i < questions.length; i++)
             ids_questions[i] = questions.eq(i).attr('id-question');
         
+        // ajax to get questions before reply
         $.ajax({
             url         : webService + 'answers/' + localStorage.getItem('id_user'),
             type        : 'POST',
@@ -2970,11 +3000,11 @@ function evt_validate_mode_game(data,name_level,id_game){
             
             data = JSON.parse(res);
             
-            var top_questions = "";
+            var top_questions = 0;
             
             evt_current_level(data);
             
-            top_questions = $('.start_race .levels_content .level.active .number_questions .rank').text();
+            top_questions = parseInt($('.start_race .levels_content .level.active .number_questions .rank').text());
             
             var id_level_category = $('.start_race .levels_content .level.active').last().attr('id-level-category');
             
@@ -2983,7 +3013,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                 
                 $('.start_race .wrapper .start').fadeIn(500);
                 
-                // Click to start to reply the questions mode race
+                // button click to start to reply the questions mode race
                 $('button[data-url="start_mode_game"]').unbind('click').click(function(){
                     loader('Cargando...');
                     
@@ -3006,7 +3036,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                     setTimeout(function(){
                         $('.loader').hide(1000);
                         $('.start_race .wrapper .content_start_game').show(50).css('transform','scale(1)');
-                        setTimeout(function(){show_timer(20,'.start_race');},1000);
+                        setTimeout(function(){ show_timer(20, '.start_race'); }, 1000);
                     },1000);
                     
                     // Click in the answers to validate which is correct
@@ -3043,6 +3073,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                                     };
                                 }
                                 
+                                // ajax to update current points and level mode race
                                 $.ajax({
                                     url     : webService + "correct_answers",
                                     type    : 'POST',
@@ -3050,19 +3081,24 @@ function evt_validate_mode_game(data,name_level,id_game){
                                     success : function(res){
                                         var data = JSON.parse(res);
                                         var actives = $('.level.active').length;
+                                        
                                         if(current_question + 1 == data.metadata.correct_answers || actives < 3){
                                             evt_current_level(data.metadata);
+                                            
                                             $('.start_race .levels_content .level .bottom .number_questions .correct_answers').attr('correct-answers',(++current_question)).addClass('active');
+                                            
                                             panel_data(data.id_user);
+                                            
                                             evt_next_question('.start_race');
+                                            
                                             setTimeout(function(){
                                                 $('.start_race .levels_content .level .bottom .number_questions .correct_answers').text((current_question)).removeClass('active');
                                             },1300);
                                             if(data.metadata.correct_answers == 0){
+                                                debugger;
+                                                current_question = 0;
                                                 $('.level.active .bottom .number_questions .correct_answers').attr('correct-answers',data.metadata.correct_answers);
-                                                setTimeout(function(){
-                                                    $('.level.active .bottom .number_questions .correct_answers').text(data.metadata.correct_answers);
-                                                },1000);
+                                                $('.level.active .bottom .number_questions .correct_answers').text(data.metadata.correct_answers);
                                             }
                                         }else{
                                             $('.start_race .content_start_game').hide();
