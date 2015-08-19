@@ -490,7 +490,6 @@ class main {
     
     #Function to get all question by specialty
     function all_caseLitigation(){
-        //$id_case = $_POST['id_case'];
         
         $data = array();
         
@@ -573,8 +572,8 @@ class main {
 			$data[] = $k->attributes();
 		}
 		echo json_encode($data);
-       // echo json_encode($query->name);
     }
+    
     # Lista los nombres de los casos
     function listLitigationCases(){
         
@@ -584,8 +583,8 @@ class main {
 			$data[] = $k->attributes();
 		}
 		echo json_encode($data);
-       // echo json_encode($query->name);
     }
+    
     # Function to active or deactive a specialty
     function specialty($app,$param){
         

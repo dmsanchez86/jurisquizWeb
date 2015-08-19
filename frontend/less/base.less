@@ -152,8 +152,12 @@
 /* Start-Race */
 .start_race,.search_duel,.duel_users,.start_test,.start_specialty,.start_litigation{
     .content_start_game{ margin-top: 2.7rem;
-        .question,.answers_options{background-color: @btn_start;.border_radius(15px); font-family: 'DK Mango'; padding: 1rem 2rem; color: white;max-width: 100%; width: 580px; margin-left: auto; margin-right: auto;}
+        .question,.answers_options,.question span{background-color: @btn_start;.border_radius(15px); font-family: 'Roboto',Helvetica; padding: 1rem 2rem; color: white;max-width: 100%; width: 580px; margin-left: auto; margin-right: auto;}
         .question{margin-bottom: 1rem;font-size: 2.3rem;text-align: center;text-shadow: none;position:relative;
+            span{ padding: 0; font-size: 1.25rem;
+                &:before{content: '¿ ';}
+                &:after{content: ' ?';}
+            }
             &:after{position: absolute;content: ''; border: 2rem solid ; border-color: transparent transparent @before_color transparent; top: -55px; right: 6rem;}
         }
         .answers_options{padding: 1rem 3rem;
@@ -179,13 +183,13 @@
             > div{position: absolute; top: 0; left: 0; width: 100%; padding: .5rem .25rem;display: none;}
         }
         .content_start_game,.start,.complete_level,.no_complete_level{ margin-top: 1.5rem;
-            .question,.answers_options,.message{background-color: @btn_start;.border_radius(15px); font-family: 'DK Mango'; padding: 1rem 2rem; color: white;max-width: 100%; width: 580px; margin-left: auto; margin-right: auto;}
+            .question,.answers_options,.message{background-color: @btn_start;.border_radius(15px); font-family: 'Roboto',Helvetica; padding: 1rem 2rem; color: white;max-width: 100%; width: 580px; margin-left: auto; margin-right: auto;}
             .question{padding: 1rem;margin-bottom: .65rem;font-size: 1.65rem;text-align: center;text-shadow: none;position:relative;
                 &:after{position: absolute;content: ''; border: 2rem solid ; border-color: transparent transparent @before_color transparent; top: -55px; right: 6rem;}
             }
             .answers_options,.message{padding: 1rem 3rem;
                 input[type=radio]{display: none;}
-                label{ padding-left: 1em; font-family: 'DK Mango'; font-size: 1.4rem;color: white; text-shadow: none;font-weight: normal; border: thin solid white; position: relative; display: block;.border_radius(.5rem);background-color:transparent;white-space: normal;text-align:justify;padding: 1rem;height: auto;
+                label{ padding-left: 1em; font-family: 'Roboto',Helvetica; font-size: 1.15rem;color: white; text-shadow: none;font-weight: normal; border: thin solid white; position: relative; display: block;.border_radius(.5rem);background-color:transparent;white-space: normal;text-align:justify;padding: 1rem;height: auto;
                     &:before{display: none;}
                     &:hover,&:focus{background-image: -webkit-radial-gradient(center,@btn_login,@before_color);background-image: -moz-radial-gradient(center,@btn_login,@before_color);background-image: radial-gradient(center,@btn_login,@before_color);border-color: @btn_login;}
                     &:active{background-image: -webkit-radial-gradient(center,@before_color,@btn_login);background-image: -moz-radial-gradient(center,@before_color,@btn_login);background-image: radial-gradient(center,@before_color,@btn_login);}

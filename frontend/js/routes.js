@@ -1002,16 +1002,21 @@ var router = new $.mobile.Router({
                         
                         respuestas.forEach(function(index,element){
                                 
-                        var compiled = tmpl("template_each_finalGame", JSON.parse(index));
-                        
-                        $("#content_startLitigation table tbody").append(compiled);
-                        
+                            var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+                            
+                            $("#content_startLitigation table tbody").append(compiled);
+                    
                             setTimeout(function(){
                 
                                 $("#content_startLitigation table.resultado").fadeIn(1000);
                             
                             }, 1000);
-                            
+                        
+                        });
+                        
+                        $.post( "test.php", { id: "John", points: 1 })
+                        .done(function( data ) {
+                            alert( "Data Loaded: " + data );
                         });
                        
                    }else{

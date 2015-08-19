@@ -1627,7 +1627,13 @@ html {
 .duel_users .content_start_game .answers_options,
 .start_test .content_start_game .answers_options,
 .start_specialty .content_start_game .answers_options,
-.start_litigation .content_start_game .answers_options {
+.start_litigation .content_start_game .answers_options,
+.start_race .content_start_game .question span,
+.search_duel .content_start_game .question span,
+.duel_users .content_start_game .question span,
+.start_test .content_start_game .question span,
+.start_specialty .content_start_game .question span,
+.start_litigation .content_start_game .question span {
   background-color: #3a6667;
   -webkit-border-radius: 15px;
   -khtml-border-radius: 15px;
@@ -1635,7 +1641,7 @@ html {
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
   border-radius: 15px;
-  font-family: 'DK Mango';
+  font-family: 'Roboto', Helvetica;
   padding: 1rem 2rem;
   color: white;
   max-width: 100%;
@@ -1654,6 +1660,31 @@ html {
   text-align: center;
   text-shadow: none;
   position: relative;
+}
+.start_race .content_start_game .question span,
+.search_duel .content_start_game .question span,
+.duel_users .content_start_game .question span,
+.start_test .content_start_game .question span,
+.start_specialty .content_start_game .question span,
+.start_litigation .content_start_game .question span {
+  padding: 0;
+  font-size: 1.25rem;
+}
+.start_race .content_start_game .question span:before,
+.search_duel .content_start_game .question span:before,
+.duel_users .content_start_game .question span:before,
+.start_test .content_start_game .question span:before,
+.start_specialty .content_start_game .question span:before,
+.start_litigation .content_start_game .question span:before {
+  content: '¿ ';
+}
+.start_race .content_start_game .question span:after,
+.search_duel .content_start_game .question span:after,
+.duel_users .content_start_game .question span:after,
+.start_test .content_start_game .question span:after,
+.start_specialty .content_start_game .question span:after,
+.start_litigation .content_start_game .question span:after {
+  content: ' ?';
 }
 .start_race .content_start_game .question:after,
 .search_duel .content_start_game .question:after,
@@ -1824,7 +1855,7 @@ html {
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
   border-radius: 15px;
-  font-family: 'DK Mango';
+  font-family: 'Roboto', Helvetica;
   padding: 1rem 2rem;
   color: white;
   max-width: 100%;
@@ -1979,8 +2010,8 @@ html {
 .start_specialty .wrapper .no_complete_level .message label,
 .duel_users .wrapper .no_complete_level .message label {
   padding-left: 1em;
-  font-family: 'DK Mango';
-  font-size: 1.4rem;
+  font-family: 'Roboto', Helvetica;
+  font-size: 1.15rem;
   color: white;
   text-shadow: none;
   font-weight: normal;
@@ -5232,6 +5263,9 @@ textarea.materialize-textarea {
 #sidenav-overlay {
   opacity: 0!important;
   display: none!important;
+}
+.drag-target {
+  width: 20px;
 }
 /* .Popup for edit question and specialties */
 .ui-popup-screen.in {

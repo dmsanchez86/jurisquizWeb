@@ -375,7 +375,9 @@
         <script type="text/html" id="structure_question">
             <div class="content_question" correct-answer="<%= correct_answer %>" type-question="<%= type_question %>" id-question="<%= id %>" id-specialty="<%= id_specialty %>">
                 
-                <div class="question"><%= question %></div>
+                <div class="question">
+                    <span><%= question %></span>
+                </div>
                 
                 <%
                     var options = options_question.split('/');
