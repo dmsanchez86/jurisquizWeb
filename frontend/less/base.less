@@ -179,10 +179,10 @@
         }
     }
     .wrapper{
-        .content_start_game{overflow: visible!important;.transform(scale(0));.transition(all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94)); position: relative; height: 75vh;
+        .content_start_game,.question_result{overflow: visible!important;.transform(scale(0));.transition(all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94)); position: relative; height: 75vh;
             > div{position: absolute; top: 0; left: 0; width: 100%; padding: .5rem .25rem;display: none;}
         }
-        .content_start_game,.start,.complete_level,.no_complete_level{ margin-top: 1.5rem;
+        .content_start_game,.start,.complete_level,.no_complete_level,.question_result{ margin-top: 1.5rem;
             .question,.answers_options,.message{background-color: @btn_start;.border_radius(15px); font-family: 'Roboto',Helvetica; padding: 1rem 2rem; color: white;max-width: 100%; width: 580px; margin-left: auto; margin-right: auto;}
             .question{padding: 1rem;margin-bottom: .65rem;font-size: 1.65rem;text-align: center;text-shadow: none;position:relative;
                 &:after{position: absolute;content: ''; border: 2rem solid ; border-color: transparent transparent @before_color transparent; top: -55px; right: 6rem;}
@@ -223,6 +223,24 @@
         }
         .no_complete_level{
             .message{background-color: @inactive;}
+        }
+        .question_result{background-color: @btn_start; padding: 1rem 2rem; .border_radius(10px); max-width: 100%; width: 580px; margin: 1.5rem auto 0; height: auto;
+            .punctuation{ width: 100%; min-height: 210px; background-image: url('../img/done.png'); background-repeat: no-repeat; background-position: right center; background-size: 60%;line-height: 195px;text-indent: -45px; text-align: center; position: relative;
+                &:after{position: absolute; width: 1px; height: 85%; background-color: white; right: -15%; top: 0; content: ''; margin: auto; bottom: 0;}
+                span,span em{font-family: 'DK Mango'; font-size: 3rem; color: white; font-style: normal;}
+            }
+            .report_question{ text-align: center; cursor: pointer;
+                &:hover,&:focus{
+                    img{.transform(rotate(360deg));}
+                    span{.transform(translateY(8px));}
+                }
+                &:active{
+                    span{color: @before_color;}
+                }
+                img{margin: 2.5rem auto 0; display: block;max-height: 110px;.transition(transform .5s cubic-bezier(0,-1.26, 0, 1.68));}
+                span{color: white; font-size: 1.3rem; font-family: 'DK Mango';}
+            }
+            .advertising{}
         }
     }
     .levels_content{

@@ -17,6 +17,11 @@ $app->post(
     '/user_data','main:user_data'
 )->setParams(array($app));
 
+// User Data
+$app->post(
+    '/user_data_id','main:user_data_id'
+)->setParams(array($app));
+
 // Route to upload profile image
 $app->post(
     '/image_user','main:image_user'

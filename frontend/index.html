@@ -538,7 +538,7 @@
         <script type="text/html" id="template_notification">
             <%
                 var show = ""; 
-                if(state == 'inactive' || state == 'reject'){
+                if(state == 'inactive' || state == 'reject' || state == 'win' || state == 'loss'){
                     show = 'background-color: transparent';
                 }else{
                     show = 'background-color: rgba(130, 130, 130, 0.5)'
@@ -553,16 +553,20 @@
 	                    <div class="btns">
                                 <%
                                 
-	                            if(state == 'inactive'){ %>
-	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptada"><i class="material-icons">thumb_up</i></span>
-	                            <% } else if(state == 'reject'){ %>
-	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada"><i class="material-icons">thumb_down</i></span>
-	                            <% } else { %>
-	                                <span class="accept" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptar"><i class="material-icons">trending_flat</i></span>
-	                                <span class="reject" title="Rechazar"><i class="material-icons">warning</i></span>
-	                           <% } 
-	                           
-	                           %>
+    	                            if(state == 'inactive'){ %>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptada"><i class="material-icons">thumb_up</i></span>
+    	                            <% } else if(state == 'reject'){ %>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada"><i class="material-icons">thumb_down</i></span>
+    	                            <% } else if(state == 'win'){ %>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada"><i class="material-icons">done</i></span>
+    	                            <% } else if(state == 'loss'){ %>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada"><i class="material-icons">error</i></span>
+    	                            <%  } else { %>
+    	                                <span class="accept" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptar"><i class="material-icons">trending_flat</i></span>
+    	                                <span class="reject" title="Rechazar"><i class="material-icons">warning</i></span>
+    	                            <% } 
+	                            
+                                %>
 	                    </div>
 	                </div>
 	            </div>

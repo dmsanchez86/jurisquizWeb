@@ -107,6 +107,15 @@ class main {
         echo json_encode( $data );
     }
     
+    # User Data by id
+    function user_data_id(){
+        $id = $_POST['id'];
+        
+        $query = jur_users::find($id);
+        
+        echo json_encode($query->attributes());
+    }
+    
     # Function to return all users
     function users($app,$filter){
         if($filter == 'admin'){
@@ -801,6 +810,8 @@ class main {
         
         $query = jur_answers::all(array('conditions' => array('id_user = ?', $id_user)));
         
+        $data = array();
+        
         foreach($query as $k){
 			$data[] = $k->attributes();
 		}
@@ -923,7 +934,7 @@ class main {
         if(isset($_POST['param'])){
             $query = jur_notifications::all(array('conditions' => array('id_user = ? AND state = "active"',$id)));
         }else{
-            $query = jur_notifications::all(array('conditions' => array('id_user = ?',$id)));
+            $query = jur_notifications::all(array('conditions' => array('id_user = ? ORDER BY id DESC',$id)));
         }
         
         foreach($query as $k){
@@ -997,7 +1008,7 @@ class main {
                         'status'    => 'FAIL'
                     );
             }
-        }else{
+        }else{ // when accept the other user the duel
             $q->total_corrects_answers_user_2 = $correct_answers;
             
             $q->save();
@@ -1013,12 +1024,44 @@ class main {
                 $duel->state_duel = 'wait';
             }else if($win->total_corrects_answers_user_1 > $win->total_corrects_answers_user_2){
                 $win_duel = '¡Perdiste el Duelo!';
-                $win->id_win_user = $win->total_corrects_answers_user_1;
+                $win->id_win_user = $duel->id_user_1;
                 $duel->state_duel = 'finish';
+                
+                $noti1 = jur_notifications::create(array(
+                    'id'            => null,
+                    'id_user'       => $duel->id_user_1,
+                    'notification'  => 'Ganaste un reto!',
+                    'state'         => 'win',
+                    'metadata'      => '{}'
+                ));
+                
+                $noti2 = jur_notifications::create(array(
+                    'id'            => null,
+                    'id_user'       => $duel->id_user_2,
+                    'notification'  => 'Perdiste un reto!',
+                    'state'         => 'loss',
+                    'metadata'      => '{}'
+                ));
             }else{
                 $win_duel = '¡Ganaste el duelo!';
-                $win->id_win_user = $win->total_corrects_answers_user_2;
+                $win->id_win_user = $duel->id_user_2;
                 $duel->state_duel = 'finish';
+                
+                $noti1 = jur_notifications::create(array(
+                    'id'            => null,
+                    'id_user'       => $duel->id_user_2,
+                    'notification'  => 'Ganaste un reto!',
+                    'state'         => 'win',
+                    'metadata'      => '{}'
+                ));
+                
+                $noti2 = jur_notifications::create(array(
+                    'id'            => null,
+                    'id_user'       => $duel->id_user_1,
+                    'notification'  => 'Perdiste un reto!',
+                    'state'         => 'loss',
+                    'metadata'      => '{}'
+                ));
             }
             
             $res_duel = $duel->save();

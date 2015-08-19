@@ -1754,7 +1754,11 @@ html {
 .start_race .wrapper .content_start_game,
 .start_test .wrapper .content_start_game,
 .start_specialty .wrapper .content_start_game,
-.duel_users .wrapper .content_start_game {
+.duel_users .wrapper .content_start_game,
+.start_race .wrapper .question_result,
+.start_test .wrapper .question_result,
+.start_specialty .wrapper .question_result,
+.duel_users .wrapper .question_result {
   overflow: visible!important;
   -webkit-transform: scale(0);
   -khtml-transform: scale(0);
@@ -1774,7 +1778,11 @@ html {
 .start_race .wrapper .content_start_game > div,
 .start_test .wrapper .content_start_game > div,
 .start_specialty .wrapper .content_start_game > div,
-.duel_users .wrapper .content_start_game > div {
+.duel_users .wrapper .content_start_game > div,
+.start_race .wrapper .question_result > div,
+.start_test .wrapper .question_result > div,
+.start_specialty .wrapper .question_result > div,
+.duel_users .wrapper .question_result > div {
   position: absolute;
   top: 0;
   left: 0;
@@ -1797,7 +1805,11 @@ html {
 .start_race .wrapper .no_complete_level,
 .start_test .wrapper .no_complete_level,
 .start_specialty .wrapper .no_complete_level,
-.duel_users .wrapper .no_complete_level {
+.duel_users .wrapper .no_complete_level,
+.start_race .wrapper .question_result,
+.start_test .wrapper .question_result,
+.start_specialty .wrapper .question_result,
+.duel_users .wrapper .question_result {
   margin-top: 1.5rem;
 }
 .start_race .wrapper .content_start_game .question,
@@ -1816,6 +1828,10 @@ html {
 .start_test .wrapper .no_complete_level .question,
 .start_specialty .wrapper .no_complete_level .question,
 .duel_users .wrapper .no_complete_level .question,
+.start_race .wrapper .question_result .question,
+.start_test .wrapper .question_result .question,
+.start_specialty .wrapper .question_result .question,
+.duel_users .wrapper .question_result .question,
 .start_race .wrapper .content_start_game .answers_options,
 .start_test .wrapper .content_start_game .answers_options,
 .start_specialty .wrapper .content_start_game .answers_options,
@@ -1832,6 +1848,10 @@ html {
 .start_test .wrapper .no_complete_level .answers_options,
 .start_specialty .wrapper .no_complete_level .answers_options,
 .duel_users .wrapper .no_complete_level .answers_options,
+.start_race .wrapper .question_result .answers_options,
+.start_test .wrapper .question_result .answers_options,
+.start_specialty .wrapper .question_result .answers_options,
+.duel_users .wrapper .question_result .answers_options,
 .start_race .wrapper .content_start_game .message,
 .start_test .wrapper .content_start_game .message,
 .start_specialty .wrapper .content_start_game .message,
@@ -1847,7 +1867,11 @@ html {
 .start_race .wrapper .no_complete_level .message,
 .start_test .wrapper .no_complete_level .message,
 .start_specialty .wrapper .no_complete_level .message,
-.duel_users .wrapper .no_complete_level .message {
+.duel_users .wrapper .no_complete_level .message,
+.start_race .wrapper .question_result .message,
+.start_test .wrapper .question_result .message,
+.start_specialty .wrapper .question_result .message,
+.duel_users .wrapper .question_result .message {
   background-color: #3a6667;
   -webkit-border-radius: 15px;
   -khtml-border-radius: 15px;
@@ -1878,7 +1902,11 @@ html {
 .start_race .wrapper .no_complete_level .question,
 .start_test .wrapper .no_complete_level .question,
 .start_specialty .wrapper .no_complete_level .question,
-.duel_users .wrapper .no_complete_level .question {
+.duel_users .wrapper .no_complete_level .question,
+.start_race .wrapper .question_result .question,
+.start_test .wrapper .question_result .question,
+.start_specialty .wrapper .question_result .question,
+.duel_users .wrapper .question_result .question {
   padding: 1rem;
   margin-bottom: .65rem;
   font-size: 1.65rem;
@@ -1901,7 +1929,11 @@ html {
 .start_race .wrapper .no_complete_level .question:after,
 .start_test .wrapper .no_complete_level .question:after,
 .start_specialty .wrapper .no_complete_level .question:after,
-.duel_users .wrapper .no_complete_level .question:after {
+.duel_users .wrapper .no_complete_level .question:after,
+.start_race .wrapper .question_result .question:after,
+.start_test .wrapper .question_result .question:after,
+.start_specialty .wrapper .question_result .question:after,
+.duel_users .wrapper .question_result .question:after {
   position: absolute;
   content: '';
   border: 2rem solid ;
@@ -1925,6 +1957,10 @@ html {
 .start_test .wrapper .no_complete_level .answers_options,
 .start_specialty .wrapper .no_complete_level .answers_options,
 .duel_users .wrapper .no_complete_level .answers_options,
+.start_race .wrapper .question_result .answers_options,
+.start_test .wrapper .question_result .answers_options,
+.start_specialty .wrapper .question_result .answers_options,
+.duel_users .wrapper .question_result .answers_options,
 .start_race .wrapper .content_start_game .message,
 .start_test .wrapper .content_start_game .message,
 .start_specialty .wrapper .content_start_game .message,
@@ -1940,7 +1976,11 @@ html {
 .start_race .wrapper .no_complete_level .message,
 .start_test .wrapper .no_complete_level .message,
 .start_specialty .wrapper .no_complete_level .message,
-.duel_users .wrapper .no_complete_level .message {
+.duel_users .wrapper .no_complete_level .message,
+.start_race .wrapper .question_result .message,
+.start_test .wrapper .question_result .message,
+.start_specialty .wrapper .question_result .message,
+.duel_users .wrapper .question_result .message {
   padding: 1rem 3rem;
 }
 .start_race .wrapper .content_start_game .answers_options input[type=radio],
@@ -1959,6 +1999,10 @@ html {
 .start_test .wrapper .no_complete_level .answers_options input[type=radio],
 .start_specialty .wrapper .no_complete_level .answers_options input[type=radio],
 .duel_users .wrapper .no_complete_level .answers_options input[type=radio],
+.start_race .wrapper .question_result .answers_options input[type=radio],
+.start_test .wrapper .question_result .answers_options input[type=radio],
+.start_specialty .wrapper .question_result .answers_options input[type=radio],
+.duel_users .wrapper .question_result .answers_options input[type=radio],
 .start_race .wrapper .content_start_game .message input[type=radio],
 .start_test .wrapper .content_start_game .message input[type=radio],
 .start_specialty .wrapper .content_start_game .message input[type=radio],
@@ -1974,7 +2018,11 @@ html {
 .start_race .wrapper .no_complete_level .message input[type=radio],
 .start_test .wrapper .no_complete_level .message input[type=radio],
 .start_specialty .wrapper .no_complete_level .message input[type=radio],
-.duel_users .wrapper .no_complete_level .message input[type=radio] {
+.duel_users .wrapper .no_complete_level .message input[type=radio],
+.start_race .wrapper .question_result .message input[type=radio],
+.start_test .wrapper .question_result .message input[type=radio],
+.start_specialty .wrapper .question_result .message input[type=radio],
+.duel_users .wrapper .question_result .message input[type=radio] {
   display: none;
 }
 .start_race .wrapper .content_start_game .answers_options label,
@@ -1993,6 +2041,10 @@ html {
 .start_test .wrapper .no_complete_level .answers_options label,
 .start_specialty .wrapper .no_complete_level .answers_options label,
 .duel_users .wrapper .no_complete_level .answers_options label,
+.start_race .wrapper .question_result .answers_options label,
+.start_test .wrapper .question_result .answers_options label,
+.start_specialty .wrapper .question_result .answers_options label,
+.duel_users .wrapper .question_result .answers_options label,
 .start_race .wrapper .content_start_game .message label,
 .start_test .wrapper .content_start_game .message label,
 .start_specialty .wrapper .content_start_game .message label,
@@ -2008,7 +2060,11 @@ html {
 .start_race .wrapper .no_complete_level .message label,
 .start_test .wrapper .no_complete_level .message label,
 .start_specialty .wrapper .no_complete_level .message label,
-.duel_users .wrapper .no_complete_level .message label {
+.duel_users .wrapper .no_complete_level .message label,
+.start_race .wrapper .question_result .message label,
+.start_test .wrapper .question_result .message label,
+.start_specialty .wrapper .question_result .message label,
+.duel_users .wrapper .question_result .message label {
   padding-left: 1em;
   font-family: 'Roboto', Helvetica;
   font-size: 1.15rem;
@@ -2046,6 +2102,10 @@ html {
 .start_test .wrapper .no_complete_level .answers_options label:before,
 .start_specialty .wrapper .no_complete_level .answers_options label:before,
 .duel_users .wrapper .no_complete_level .answers_options label:before,
+.start_race .wrapper .question_result .answers_options label:before,
+.start_test .wrapper .question_result .answers_options label:before,
+.start_specialty .wrapper .question_result .answers_options label:before,
+.duel_users .wrapper .question_result .answers_options label:before,
 .start_race .wrapper .content_start_game .message label:before,
 .start_test .wrapper .content_start_game .message label:before,
 .start_specialty .wrapper .content_start_game .message label:before,
@@ -2061,7 +2121,11 @@ html {
 .start_race .wrapper .no_complete_level .message label:before,
 .start_test .wrapper .no_complete_level .message label:before,
 .start_specialty .wrapper .no_complete_level .message label:before,
-.duel_users .wrapper .no_complete_level .message label:before {
+.duel_users .wrapper .no_complete_level .message label:before,
+.start_race .wrapper .question_result .message label:before,
+.start_test .wrapper .question_result .message label:before,
+.start_specialty .wrapper .question_result .message label:before,
+.duel_users .wrapper .question_result .message label:before {
   display: none;
 }
 .start_race .wrapper .content_start_game .answers_options label:hover,
@@ -2080,6 +2144,10 @@ html {
 .start_test .wrapper .no_complete_level .answers_options label:hover,
 .start_specialty .wrapper .no_complete_level .answers_options label:hover,
 .duel_users .wrapper .no_complete_level .answers_options label:hover,
+.start_race .wrapper .question_result .answers_options label:hover,
+.start_test .wrapper .question_result .answers_options label:hover,
+.start_specialty .wrapper .question_result .answers_options label:hover,
+.duel_users .wrapper .question_result .answers_options label:hover,
 .start_race .wrapper .content_start_game .message label:hover,
 .start_test .wrapper .content_start_game .message label:hover,
 .start_specialty .wrapper .content_start_game .message label:hover,
@@ -2096,6 +2164,10 @@ html {
 .start_test .wrapper .no_complete_level .message label:hover,
 .start_specialty .wrapper .no_complete_level .message label:hover,
 .duel_users .wrapper .no_complete_level .message label:hover,
+.start_race .wrapper .question_result .message label:hover,
+.start_test .wrapper .question_result .message label:hover,
+.start_specialty .wrapper .question_result .message label:hover,
+.duel_users .wrapper .question_result .message label:hover,
 .start_race .wrapper .content_start_game .answers_options label:focus,
 .start_test .wrapper .content_start_game .answers_options label:focus,
 .start_specialty .wrapper .content_start_game .answers_options label:focus,
@@ -2112,6 +2184,10 @@ html {
 .start_test .wrapper .no_complete_level .answers_options label:focus,
 .start_specialty .wrapper .no_complete_level .answers_options label:focus,
 .duel_users .wrapper .no_complete_level .answers_options label:focus,
+.start_race .wrapper .question_result .answers_options label:focus,
+.start_test .wrapper .question_result .answers_options label:focus,
+.start_specialty .wrapper .question_result .answers_options label:focus,
+.duel_users .wrapper .question_result .answers_options label:focus,
 .start_race .wrapper .content_start_game .message label:focus,
 .start_test .wrapper .content_start_game .message label:focus,
 .start_specialty .wrapper .content_start_game .message label:focus,
@@ -2127,7 +2203,11 @@ html {
 .start_race .wrapper .no_complete_level .message label:focus,
 .start_test .wrapper .no_complete_level .message label:focus,
 .start_specialty .wrapper .no_complete_level .message label:focus,
-.duel_users .wrapper .no_complete_level .message label:focus {
+.duel_users .wrapper .no_complete_level .message label:focus,
+.start_race .wrapper .question_result .message label:focus,
+.start_test .wrapper .question_result .message label:focus,
+.start_specialty .wrapper .question_result .message label:focus,
+.duel_users .wrapper .question_result .message label:focus {
   background-image: -webkit-radial-gradient(center, #ee6200, #ef863e);
   background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
   background-image: radial-gradient(center, #ee6200, #ef863e);
@@ -2149,6 +2229,10 @@ html {
 .start_test .wrapper .no_complete_level .answers_options label:active,
 .start_specialty .wrapper .no_complete_level .answers_options label:active,
 .duel_users .wrapper .no_complete_level .answers_options label:active,
+.start_race .wrapper .question_result .answers_options label:active,
+.start_test .wrapper .question_result .answers_options label:active,
+.start_specialty .wrapper .question_result .answers_options label:active,
+.duel_users .wrapper .question_result .answers_options label:active,
 .start_race .wrapper .content_start_game .message label:active,
 .start_test .wrapper .content_start_game .message label:active,
 .start_specialty .wrapper .content_start_game .message label:active,
@@ -2164,7 +2248,11 @@ html {
 .start_race .wrapper .no_complete_level .message label:active,
 .start_test .wrapper .no_complete_level .message label:active,
 .start_specialty .wrapper .no_complete_level .message label:active,
-.duel_users .wrapper .no_complete_level .message label:active {
+.duel_users .wrapper .no_complete_level .message label:active,
+.start_race .wrapper .question_result .message label:active,
+.start_test .wrapper .question_result .message label:active,
+.start_specialty .wrapper .question_result .message label:active,
+.duel_users .wrapper .question_result .message label:active {
   background-image: -webkit-radial-gradient(center, #ef863e, #ee6200);
   background-image: -moz-radial-gradient(center, #ef863e, #ee6200);
   background-image: radial-gradient(center, #ef863e, #ee6200);
@@ -2184,7 +2272,11 @@ html {
 .start_race .wrapper .no_complete_level .content_question .type_question,
 .start_test .wrapper .no_complete_level .content_question .type_question,
 .start_specialty .wrapper .no_complete_level .content_question .type_question,
-.duel_users .wrapper .no_complete_level .content_question .type_question {
+.duel_users .wrapper .no_complete_level .content_question .type_question,
+.start_race .wrapper .question_result .content_question .type_question,
+.start_test .wrapper .question_result .content_question .type_question,
+.start_specialty .wrapper .question_result .content_question .type_question,
+.duel_users .wrapper .question_result .content_question .type_question {
   margin: 0 0 .5rem;
   text-align: right;
 }
@@ -2203,7 +2295,11 @@ html {
 .start_race .wrapper .no_complete_level .content_question .type_question span,
 .start_test .wrapper .no_complete_level .content_question .type_question span,
 .start_specialty .wrapper .no_complete_level .content_question .type_question span,
-.duel_users .wrapper .no_complete_level .content_question .type_question span {
+.duel_users .wrapper .no_complete_level .content_question .type_question span,
+.start_race .wrapper .question_result .content_question .type_question span,
+.start_test .wrapper .question_result .content_question .type_question span,
+.start_specialty .wrapper .question_result .content_question .type_question span,
+.duel_users .wrapper .question_result .content_question .type_question span {
   padding: .15rem .5rem;
   color: white;
   -webkit-border-radius: 3px;
@@ -2233,7 +2329,11 @@ html {
 .start_race .wrapper .no_complete_level .content_question .sortable_answer li,
 .start_test .wrapper .no_complete_level .content_question .sortable_answer li,
 .start_specialty .wrapper .no_complete_level .content_question .sortable_answer li,
-.duel_users .wrapper .no_complete_level .content_question .sortable_answer li {
+.duel_users .wrapper .no_complete_level .content_question .sortable_answer li,
+.start_race .wrapper .question_result .content_question .sortable_answer li,
+.start_test .wrapper .question_result .content_question .sortable_answer li,
+.start_specialty .wrapper .question_result .content_question .sortable_answer li,
+.duel_users .wrapper .question_result .content_question .sortable_answer li {
   padding: 1rem;
   cursor: move;
   border: thin solid white;
@@ -2263,6 +2363,10 @@ html {
 .start_test .wrapper .no_complete_level .content_question .sortable_answer li:hover,
 .start_specialty .wrapper .no_complete_level .content_question .sortable_answer li:hover,
 .duel_users .wrapper .no_complete_level .content_question .sortable_answer li:hover,
+.start_race .wrapper .question_result .content_question .sortable_answer li:hover,
+.start_test .wrapper .question_result .content_question .sortable_answer li:hover,
+.start_specialty .wrapper .question_result .content_question .sortable_answer li:hover,
+.duel_users .wrapper .question_result .content_question .sortable_answer li:hover,
 .start_race .wrapper .content_start_game .content_question .sortable_answer li:active,
 .start_test .wrapper .content_start_game .content_question .sortable_answer li:active,
 .start_specialty .wrapper .content_start_game .content_question .sortable_answer li:active,
@@ -2279,6 +2383,10 @@ html {
 .start_test .wrapper .no_complete_level .content_question .sortable_answer li:active,
 .start_specialty .wrapper .no_complete_level .content_question .sortable_answer li:active,
 .duel_users .wrapper .no_complete_level .content_question .sortable_answer li:active,
+.start_race .wrapper .question_result .content_question .sortable_answer li:active,
+.start_test .wrapper .question_result .content_question .sortable_answer li:active,
+.start_specialty .wrapper .question_result .content_question .sortable_answer li:active,
+.duel_users .wrapper .question_result .content_question .sortable_answer li:active,
 .start_race .wrapper .content_start_game .content_question .sortable_answer li:focus,
 .start_test .wrapper .content_start_game .content_question .sortable_answer li:focus,
 .start_specialty .wrapper .content_start_game .content_question .sortable_answer li:focus,
@@ -2294,7 +2402,11 @@ html {
 .start_race .wrapper .no_complete_level .content_question .sortable_answer li:focus,
 .start_test .wrapper .no_complete_level .content_question .sortable_answer li:focus,
 .start_specialty .wrapper .no_complete_level .content_question .sortable_answer li:focus,
-.duel_users .wrapper .no_complete_level .content_question .sortable_answer li:focus {
+.duel_users .wrapper .no_complete_level .content_question .sortable_answer li:focus,
+.start_race .wrapper .question_result .content_question .sortable_answer li:focus,
+.start_test .wrapper .question_result .content_question .sortable_answer li:focus,
+.start_specialty .wrapper .question_result .content_question .sortable_answer li:focus,
+.duel_users .wrapper .question_result .content_question .sortable_answer li:focus {
   background-color: #ef863e;
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer li:before,
@@ -2312,7 +2424,11 @@ html {
 .start_race .wrapper .no_complete_level .content_question .sortable_answer li:before,
 .start_test .wrapper .no_complete_level .content_question .sortable_answer li:before,
 .start_specialty .wrapper .no_complete_level .content_question .sortable_answer li:before,
-.duel_users .wrapper .no_complete_level .content_question .sortable_answer li:before {
+.duel_users .wrapper .no_complete_level .content_question .sortable_answer li:before,
+.start_race .wrapper .question_result .content_question .sortable_answer li:before,
+.start_test .wrapper .question_result .content_question .sortable_answer li:before,
+.start_specialty .wrapper .question_result .content_question .sortable_answer li:before,
+.duel_users .wrapper .question_result .content_question .sortable_answer li:before {
   content: ' ' attr(position) ') ';
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button,
@@ -2330,7 +2446,11 @@ html {
 .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button,
 .start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button,
 .start_specialty .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button,
-.duel_users .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button {
+.duel_users .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button,
+.start_race .wrapper .question_result .content_question .sortable_answer + .container_btn button,
+.start_test .wrapper .question_result .content_question .sortable_answer + .container_btn button,
+.start_specialty .wrapper .question_result .content_question .sortable_answer + .container_btn button,
+.duel_users .wrapper .question_result .content_question .sortable_answer + .container_btn button {
   width: 380px;
   padding: 1.5rem 0.5rem;
   height: inherit;
@@ -2358,7 +2478,11 @@ html {
 .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover,
 .start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover,
 .start_specialty .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover,
-.duel_users .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover {
+.duel_users .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover,
+.start_race .wrapper .question_result .content_question .sortable_answer + .container_btn button:hover,
+.start_test .wrapper .question_result .content_question .sortable_answer + .container_btn button:hover,
+.start_specialty .wrapper .question_result .content_question .sortable_answer + .container_btn button:hover,
+.duel_users .wrapper .question_result .content_question .sortable_answer + .container_btn button:hover {
   color: white;
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:focus,
@@ -2376,7 +2500,11 @@ html {
 .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus,
 .start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus,
 .start_specialty .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus,
-.duel_users .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus {
+.duel_users .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus,
+.start_race .wrapper .question_result .content_question .sortable_answer + .container_btn button:focus,
+.start_test .wrapper .question_result .content_question .sortable_answer + .container_btn button:focus,
+.start_specialty .wrapper .question_result .content_question .sortable_answer + .container_btn button:focus,
+.duel_users .wrapper .question_result .content_question .sortable_answer + .container_btn button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .start_race .wrapper .start .container_btn button,
@@ -2429,6 +2557,130 @@ html {
 .start_specialty .wrapper .no_complete_level .message,
 .duel_users .wrapper .no_complete_level .message {
   background-color: #757575;
+}
+.start_race .wrapper .question_result,
+.start_test .wrapper .question_result,
+.start_specialty .wrapper .question_result,
+.duel_users .wrapper .question_result {
+  background-color: #3a6667;
+  padding: 1rem 2rem;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  max-width: 100%;
+  width: 580px;
+  margin: 1.5rem auto 0;
+  height: auto;
+}
+.start_race .wrapper .question_result .punctuation,
+.start_test .wrapper .question_result .punctuation,
+.start_specialty .wrapper .question_result .punctuation,
+.duel_users .wrapper .question_result .punctuation {
+  width: 100%;
+  min-height: 210px;
+  background-image: url('../img/done.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 60%;
+  line-height: 195px;
+  text-indent: -45px;
+  text-align: center;
+  position: relative;
+}
+.start_race .wrapper .question_result .punctuation:after,
+.start_test .wrapper .question_result .punctuation:after,
+.start_specialty .wrapper .question_result .punctuation:after,
+.duel_users .wrapper .question_result .punctuation:after {
+  position: absolute;
+  width: 1px;
+  height: 85%;
+  background-color: white;
+  right: -15%;
+  top: 0;
+  content: '';
+  margin: auto;
+  bottom: 0;
+}
+.start_race .wrapper .question_result .punctuation span,
+.start_test .wrapper .question_result .punctuation span,
+.start_specialty .wrapper .question_result .punctuation span,
+.duel_users .wrapper .question_result .punctuation span,
+.start_race .wrapper .question_result .punctuation span em,
+.start_test .wrapper .question_result .punctuation span em,
+.start_specialty .wrapper .question_result .punctuation span em,
+.duel_users .wrapper .question_result .punctuation span em {
+  font-family: 'DK Mango';
+  font-size: 3rem;
+  color: white;
+  font-style: normal;
+}
+.start_race .wrapper .question_result .report_question,
+.start_test .wrapper .question_result .report_question,
+.start_specialty .wrapper .question_result .report_question,
+.duel_users .wrapper .question_result .report_question {
+  text-align: center;
+  cursor: pointer;
+}
+.start_race .wrapper .question_result .report_question:hover img,
+.start_test .wrapper .question_result .report_question:hover img,
+.start_specialty .wrapper .question_result .report_question:hover img,
+.duel_users .wrapper .question_result .report_question:hover img,
+.start_race .wrapper .question_result .report_question:focus img,
+.start_test .wrapper .question_result .report_question:focus img,
+.start_specialty .wrapper .question_result .report_question:focus img,
+.duel_users .wrapper .question_result .report_question:focus img {
+  -webkit-transform: rotate(360deg);
+  -khtml-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.start_race .wrapper .question_result .report_question:hover span,
+.start_test .wrapper .question_result .report_question:hover span,
+.start_specialty .wrapper .question_result .report_question:hover span,
+.duel_users .wrapper .question_result .report_question:hover span,
+.start_race .wrapper .question_result .report_question:focus span,
+.start_test .wrapper .question_result .report_question:focus span,
+.start_specialty .wrapper .question_result .report_question:focus span,
+.duel_users .wrapper .question_result .report_question:focus span {
+  -webkit-transform: translateY(8px);
+  -khtml-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  -ms-transform: translateY(8px);
+  -o-transform: translateY(8px);
+  transform: translateY(8px);
+}
+.start_race .wrapper .question_result .report_question:active span,
+.start_test .wrapper .question_result .report_question:active span,
+.start_specialty .wrapper .question_result .report_question:active span,
+.duel_users .wrapper .question_result .report_question:active span {
+  color: #ef863e;
+}
+.start_race .wrapper .question_result .report_question img,
+.start_test .wrapper .question_result .report_question img,
+.start_specialty .wrapper .question_result .report_question img,
+.duel_users .wrapper .question_result .report_question img {
+  margin: 2.5rem auto 0;
+  display: block;
+  max-height: 110px;
+  -webkit-transition: transform 0.5s cubic-bezier(0, -1.26, 0, 1.68);
+  -khtml-transition: transform 0.5s cubic-bezier(0, -1.26, 0, 1.68);
+  -moz-transition: transform 0.5s cubic-bezier(0, -1.26, 0, 1.68);
+  -ms-transition: transform 0.5s cubic-bezier(0, -1.26, 0, 1.68);
+  -o-transition: transform 0.5s cubic-bezier(0, -1.26, 0, 1.68);
+  transition: transform 0.5s cubic-bezier(0, -1.26, 0, 1.68);
+}
+.start_race .wrapper .question_result .report_question span,
+.start_test .wrapper .question_result .report_question span,
+.start_specialty .wrapper .question_result .report_question span,
+.duel_users .wrapper .question_result .report_question span {
+  color: white;
+  font-size: 1.3rem;
+  font-family: 'DK Mango';
 }
 .start_race .levels_content .level .bottom .number_questions .correct_answers,
 .start_test .levels_content .level .bottom .number_questions .correct_answers,
@@ -6307,6 +6559,45 @@ label.ui-btn {
     padding: 0 0 0 1rem;
     margin-bottom: .25rem;
     height: 2.3rem;
+  }
+  .start_race .wrapper .question_result,
+  .start_test .wrapper .question_result,
+  .start_specialty .wrapper .question_result,
+  .duel_users .wrapper .question_result {
+    padding: .8rem;
+    margin: 1rem auto 0;
+  }
+  .start_race .wrapper .question_result .punctuation,
+  .start_test .wrapper .question_result .punctuation,
+  .start_specialty .wrapper .question_result .punctuation,
+  .duel_users .wrapper .question_result .punctuation {
+    min-height: 145px;
+    background-size: 70%;
+    line-height: 100px;
+  }
+  .start_race .wrapper .question_result .punctuation:after,
+  .start_test .wrapper .question_result .punctuation:after,
+  .start_specialty .wrapper .question_result .punctuation:after,
+  .duel_users .wrapper .question_result .punctuation:after {
+    height: 75%;
+  }
+  .start_race .wrapper .question_result .punctuation span,
+  .start_test .wrapper .question_result .punctuation span,
+  .start_specialty .wrapper .question_result .punctuation span,
+  .duel_users .wrapper .question_result .punctuation span,
+  .start_race .wrapper .question_result .punctuation span em,
+  .start_test .wrapper .question_result .punctuation span em,
+  .start_specialty .wrapper .question_result .punctuation span em,
+  .duel_users .wrapper .question_result .punctuation span em {
+    font-size: 2rem;
+  }
+  .start_race .wrapper .question_result .report_question img,
+  .start_test .wrapper .question_result .report_question img,
+  .start_specialty .wrapper .question_result .report_question img,
+  .duel_users .wrapper .question_result .report_question img {
+    margin: 0.5rem auto 0;
+    display: block;
+    max-height: 80px;
   }
 }
 @media (max-width: 380px) {
