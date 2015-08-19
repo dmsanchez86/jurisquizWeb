@@ -2999,6 +2999,7 @@ function questions(page_referer,array){
 // Evt to validate questions
 function validate_questions(){
     setTimeout(function(){
+        debugger;
         var questions = $('.start_race .content_start_game .content_question');
         var ids_questions = [];
         
@@ -3012,6 +3013,7 @@ function validate_questions(){
             data        : null,
             success     : function(res){
                 var data = JSON.parse(res);
+                console.log(data);
                 var n = 0;
                 var limit = data.length;
                 

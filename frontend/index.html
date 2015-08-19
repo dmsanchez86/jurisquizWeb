@@ -554,16 +554,16 @@
                                 <%
                                 
     	                            if(state == 'inactive'){ %>
-    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptada"><i class="material-icons">thumb_up</i></span>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptada">Aceptada <i class="material-icons">thumb_up</i></span>
     	                            <% } else if(state == 'reject'){ %>
-    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada"><i class="material-icons">thumb_down</i></span>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada">Rechazada <i class="material-icons">thumb_down</i></span>
     	                            <% } else if(state == 'win'){ %>
-    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada"><i class="material-icons">done</i></span>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada">Ganador <i class="material-icons">done</i></span>
     	                            <% } else if(state == 'loss'){ %>
-    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada"><i class="material-icons">error</i></span>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada">Perdedor <i class="material-icons">error</i></span>
     	                            <%  } else { %>
-    	                                <span class="accept" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptar"><i class="material-icons">trending_flat</i></span>
-    	                                <span class="reject" title="Rechazar"><i class="material-icons">warning</i></span>
+    	                                <span class="accept" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptar">Aceptar <i class="material-icons">trending_flat</i></span>
+    	                                <span class="reject" title="Rechazar">Rechazar <i class="material-icons">warning</i></span>
     	                            <% } 
 	                            
                                 %>
