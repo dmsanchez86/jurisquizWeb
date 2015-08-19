@@ -274,7 +274,7 @@ var router = new $.mobile.Router({
         });
     },
     race: function(type,match,ui){
-        $('.race .content_game .icon_game img').attr('src','img/icons/race'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        icon_mode_game('.race','race');
         
         nav_menu();
         
@@ -340,7 +340,7 @@ var router = new $.mobile.Router({
         });
     },
     duel: function(type,match,ui){
-        $('.duel .content_game .icon_game img').attr('src','img/icons/duel'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        icon_mode_game('.duel','duel')
         
         nav_menu();
         
@@ -558,7 +558,7 @@ var router = new $.mobile.Router({
         evt_logout();
     },
     test :function(type,match,ui){
-        $('.test .content_game .icon_game img').attr('src','img/icons/test'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        icon_mode_game('.test','test');
         
         nav_menu();
         
@@ -568,6 +568,7 @@ var router = new $.mobile.Router({
         
         hide_timer();
         
+        // Event to start mode test
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('data-url');
@@ -696,7 +697,7 @@ var router = new $.mobile.Router({
         });
     },
     specialty :function(type,match,ui){
-        $('.specialty .content_game .icon_game img').attr('src','img/icons/specialty'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        icon_mode_game('.specialty','specialty');
         
         nav_menu();
         
@@ -840,7 +841,7 @@ var router = new $.mobile.Router({
         
     },
     litigation :function(type,match,ui){
-        $('.litigation .content_game .icon_game img').attr('src','img/icons/litigation'+localStorage.getItem('gender_user')+'.png').css('opacity','1');
+        icon_mode_game('.litigation','litigation');
         
         nav_menu();
         
@@ -1829,6 +1830,11 @@ var router = new $.mobile.Router({
   },defaultHandlerEvents: "s",defaultArgsRe: true
 });
 
+// Change the icon mode game depending the gender user
+function icon_mode_game(page_referer,ref){
+    $(page_referer + ' .content_game .icon_game img').attr('src','img/icons/'+ ref +localStorage.getItem('gender_user')+'.png').css('opacity','1');
+}
+
 // evt timer game mode litigation
 function timerLitigation(time,page_referer,idCase,question){
     
@@ -2527,7 +2533,6 @@ function evt_all_questions_show(filter){
                             });
                             
                             $('#form_edit_question .id span').empty().text(data.id);
-                            console.log();
                             $('#question_edit').empty().text(data.question);
                             
                             $('#sortable_choice_edit li i').unbind('click').click(function(e) {
