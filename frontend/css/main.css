@@ -5229,6 +5229,10 @@ textarea.materialize-textarea {
 .select-wrapper input.select-dropdown {
   background-color: #F6F6F6;
 }
+#sidenav-overlay {
+  opacity: 0!important;
+  display: none!important;
+}
 /* .Popup for edit question and specialties */
 .ui-popup-screen.in {
   opacity: 1;
@@ -5438,6 +5442,9 @@ textarea.materialize-textarea {
 .ui-btn,
 label.ui-btn {
   border-width: 0px;
+}
+.ui-loader {
+  display: none!important;
 }
 /* Queries */
 @media (max-width: 620px) {

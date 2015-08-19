@@ -348,6 +348,7 @@ var router = new $.mobile.Router({
         
         evt_logout();
         
+        // Event to start mode duel
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('data-url');
@@ -600,8 +601,6 @@ var router = new $.mobile.Router({
             $.post(webService + 'points/' + localStorage.getItem('id_user'),{}, function(data){
                 points = parseInt(JSON.parse(data).points);
             });
-            
-            console.log(points);
             
             // Hide the content of this button
             $(this).parent().parent().fadeOut(500);
