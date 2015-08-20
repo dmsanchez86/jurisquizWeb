@@ -45,3 +45,9 @@
     display:none;
 }
 
+.correct_answer{
+    background-image: -webkit-radial-gradient(center, #ee6200, #ef863e);
+    background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
+    background-image: radial-gradient(center, #ee6200, #ef863e);
+    border-color: #ee6200;
+}

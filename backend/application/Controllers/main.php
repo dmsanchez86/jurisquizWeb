@@ -726,11 +726,10 @@ class main {
                 $query_->level = $options->id_level_category;
                 
                 if($options->id_level_category > 3){
-                    $options->id_level_game = (++$options->id_level_game);
-                    $options->id_level_category = 1;
-                    $options->correct_answers = 0;
+                    $options->id_level_category = 4;
+                    $options->correct_answers = 20;
                     $query_->points = $_POST['points'];
-                    $query_->level = 1;
+                    $query_->level = 3;
                 }
             }
         }

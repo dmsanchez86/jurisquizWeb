@@ -690,6 +690,7 @@ var router = new $.mobile.Router({
                                 
                                 if(answer_ == correct_answer){
                                     ++corrects_questions;
+                                
                                     evt_next_question_test('.start_test',corrects_questions);
                                 }else{
                                     evt_next_question_test('.start_test',corrects_questions);
@@ -3090,7 +3091,6 @@ function evt_validate_mode_game(data,name_level,id_game){
             $('.start_race .wrapper > div').hide(50);
             
             data = JSON.parse(res);
-            console.log(data);
             
             var top_questions = 0;
             
@@ -3177,7 +3177,6 @@ function evt_validate_mode_game(data,name_level,id_game){
                                     data    : info,
                                     success : function(res){
                                         var data = JSON.parse(res);
-                                        console.log(data);
                                         var actives = $('.level.active').length;
                                         var obj = [];
                                         
@@ -3199,8 +3198,8 @@ function evt_validate_mode_game(data,name_level,id_game){
                                             if(data.metadata.correct_answers == 0){
                                                 
                                                 current_question = 0;
-                                                $('.level.active .bottom .number_questions .correct_answers').attr('correct-answers',data.metadata.correct_answers);
-                                                $('.level.active .bottom .number_questions .correct_answers').text(data.metadata.correct_answers);
+                                                $('.level.active .bottom .number_questions .correct_answers').last().attr('correct-answers',data.metadata.correct_answers);
+                                                $('.level.active .bottom .number_questions .correct_answers').last().text(data.metadata.correct_answers);
                                             }
                                         }else{
                                             
@@ -3234,10 +3233,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                 top_questions = $('#start_race').find('.levels_content').find('.level.active').find('.number_questions').text();
                 $('.start_race .wrapper > div').hide(10);
                 
-                if(top_questions == '✔✔✔' )
-                    $('.start_race .wrapper .complete_level').fadeIn(1000);
-                else
-                    $('.start_race .wrapper .no_complete_level').fadeIn(1000);
+                $('.start_race .wrapper .complete_level').fadeIn(1000);
                     
                 // Click in message complete or no complete level
                 $('.start_race .wrapper .complete_level,.start_race .wrapper .no_complete_level').unbind('click').click(function(){
@@ -3261,6 +3257,8 @@ function evt_current_level(data,id){
             }else if(data[i].id_level_category == 3){
                 $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
                 $('.start_race .levels_content .level.president').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
+            }else{
+                $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
             }
         }else if(data[i].id_level_game == 2){
             if(data[i].id_level_category == 1){
@@ -3271,6 +3269,8 @@ function evt_current_level(data,id){
             }else if(data[i].id_level_category == 3){
                 $('.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
                 $('.start_race .levels_content .level.congressman').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
+            }else{
+                $('.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy,.start_race .levels_content .level.congressman').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
             }
         }else if(data[i].id_level_game == 3){
             if(data[i].id_level_category == 1){
@@ -3281,6 +3281,8 @@ function evt_current_level(data,id){
             }else if(data[i].id_level_category == 3){
                 $('.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
                 $('.start_race .levels_content .level.magistrate').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
+            }else{
+                $('.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge,.start_race .levels_content .level.magistrate').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
             }
         }
     }
