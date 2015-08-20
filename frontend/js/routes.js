@@ -582,12 +582,14 @@ var router = new $.mobile.Router({
         hide_nav_button();
         
         evt_logout();
-        
+        var ListlistSpecialties = JSON.parse(listSpecialties('actives').responseText);
+        /*
         questions('.start_test',null);
         
         $('.start_test .wrapper > div,.start_test div[data-role="header"] .top_questions').hide(50);
         
         $('.start_test .wrapper .start').fadeIn(500);
+        */
         
         // Click to start to reply the questions mode race
         $('button[data-url="start_mode_game"]').unbind('click').click(function(){
@@ -1838,19 +1840,11 @@ var router = new $.mobile.Router({
 
 //
 function listSpecialties(filter){
-    var data;
-    $.ajax({
+    return $.ajax({
       method: "POST",
       url: webService + "all_specialties/"+filter,
       data: null,
     })
-    .done(function( msg ) {
-        data= JSON.parse(msg);
-        
-    });    
-    console.log(data);
-    return data;
-
 }
 // Change the icon mode game depending the gender user
 function icon_mode_game(page_referer,ref){
@@ -2131,33 +2125,41 @@ function show_nav_button(){
             
             $.mobile.changePage(link,{role: 'page',transition:"flip"});
         }else if(url == "#notifications"){
-            $.mobile.changePage('notifications.html',{role: 'dialog',transition:"slidedown"});
+            var hash =window.location.hash;
             
-            // ajax to get all notifications for user
-            $.ajax({
-                url         : webService + 'notifications',
-                type        : 'POST',
-                data        : {
-                    id      : localStorage.getItem('id_user')
-                },
-                success     : function(res){
-                    var data = JSON.parse(res);
-                    
-                    $('.notifications .content_notifications').empty().fadeOut(50);
-                    
-                    // if empty notifications
-                    if(data.length == 0){
-                        setTimeout(function(){ message('¡ No tienes notificaciones !'); },200);
-                    }else{
-                        data.forEach(function(i,o){
-                            i.index = o;
-                            $('.notifications .content_notifications').append(tmpl('template_notification',i));
-                        });
+            var items = hash.split('&').length;
+            
+            if(items > 1){
+                return;
+            }else{
+                $.mobile.changePage('notifications.html',{role: 'dialog',transition:"slidedown"});
+            
+                // ajax to get all notifications for user
+                $.ajax({
+                    url         : webService + 'notifications',
+                    type        : 'POST',
+                    data        : {
+                        id      : localStorage.getItem('id_user')
+                    },
+                    success     : function(res){
+                        var data = JSON.parse(res);
+                        
+                        $('.notifications .content_notifications').empty().fadeOut(50);
+                        
+                        // if empty notifications
+                        if(data.length == 0){
+                            setTimeout(function(){ message('¡ No tienes notificaciones !'); },200);
+                        }else{
+                            data.forEach(function(i,o){
+                                i.index = o;
+                                $('.notifications .content_notifications').append(tmpl('template_notification',i));
+                            });
+                        }
+                        
+                        setTimeout(function(){ $('.notifications .content_notifications').show(300); },300);
                     }
-                    
-                    setTimeout(function(){ $('.notifications .content_notifications').show(300); },300);
-                }
-            });
+                });
+            }
             
         }else if(url != "#"){
             $.mobile.changePage(url,{role:'page',transition: 'pop'});
