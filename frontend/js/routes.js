@@ -557,6 +557,17 @@ var router = new $.mobile.Router({
         show_nav_button();
         
         evt_logout();
+        
+        nav_menu();
+        
+        hide_timer();
+        
+        // Event to start mode test
+        $('.content_game button').unbind('click').click(function(e){
+            e.preventDefault();
+            var url = $(this).attr('data-url');
+            $.mobile.changePage(url,{role: 'page',transition: 'fade'});
+        });
     },
     test :function(type,match,ui){
         icon_mode_game('.test','test');
@@ -582,7 +593,12 @@ var router = new $.mobile.Router({
         hide_nav_button();
         
         evt_logout();
-        var ListlistSpecialties = JSON.parse(listSpecialties('actives').responseText);
+        
+        var listSpecialtiesObj= {};
+        //lista de especialidades
+        var list = listSpecialties('actives');
+        console.log(list);
+        
         /*
         questions('.start_test',null);
         
@@ -1838,13 +1854,13 @@ var router = new $.mobile.Router({
 });
 
 
-//
+//Lista de especialidades
 function listSpecialties(filter){
     return $.ajax({
       method: "POST",
       url: webService + "all_specialties/"+filter,
       data: null,
-    })
+    });
 }
 // Change the icon mode game depending the gender user
 function icon_mode_game(page_referer,ref){
@@ -2125,8 +2141,7 @@ function show_nav_button(){
             
             $.mobile.changePage(link,{role: 'page',transition:"flip"});
         }else if(url == "#notifications"){
-            var hash =window.location.hash;
-            
+            var hash = window.location.hash;
             var items = hash.split('&').length;
             
             if(items > 1){
@@ -3039,16 +3054,19 @@ function evt_validate_mode_game(data,name_level,id_game){
             $('.start_race .wrapper > div').hide(50);
             
             data = JSON.parse(res);
+            console.log(data);
             
             var top_questions = 0;
             
-            evt_current_level(data);
+            evt_current_level(data,id_game);
             
-            top_questions = $('.start_race .levels_content .level.active .number_questions .rank').text();
+            top_questions = $('.start_race .levels_content .level.active .number_questions .rank').last().text();
             
             var id_level_category = $('.start_race .levels_content .level.active').last().attr('id-level-category');
             
-            if(data.correct_answers < top_questions){
+            console.log(id_game - 1);
+            
+            if(data[id_game  -1].correct_answers < top_questions){
                 $('.start_race .wrapper .complete_level,.start_race .wrapper .content_start_game').hide(50);
                 
                 $('.start_race .wrapper .start').fadeIn(500);
@@ -3173,6 +3191,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                     });
                 });
             }else{
+                debugger;
                 top_questions = $('#start_race').find('.levels_content').find('.level.active').find('.number_questions').text();
                 $('.start_race .wrapper > div').hide(10);
                 
@@ -3191,43 +3210,39 @@ function evt_validate_mode_game(data,name_level,id_game){
 }
 
 // Event to paint the current level
-function evt_current_level(data){
-    if(data.id_game_mode == 1){
-        if(data.id_level_game == 1){
-            if(data.id_level_category == 1){
-                $('.start_race .levels_content .level.mayor').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
-            }else if(data.id_level_category == 2){
-                $('.start_race .levels_content .level.mayor').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
-                $('.start_race .levels_content .level.governor').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
-            }else if(data.id_level_category == 3){
-                $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
-                $('.start_race .levels_content .level.president').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
+function evt_current_level(data,id){
+    debugger;
+    for(var i = 0; i < data.length; i++){
+        if(data[i].id_level_game == 1){
+            if(data[i].id_level_category == 1){
+                $('.start_race .levels_content .level.mayor').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
+            }else if(data[i].id_level_category == 2){
+                $('.start_race .levels_content .level.mayor').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
+                $('.start_race .levels_content .level.governor').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
+            }else if(data[i].id_level_category == 3){
+                $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
+                $('.start_race .levels_content .level.president').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
             }
-        }else if(data.id_level_game == 2){
-            if(data.id_level_category == 1){
-                $('.start_race .levels_content .level.councilor').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
-            }else if(data.id_level_category == 2){
-                $('.start_race .levels_content .level.councilor').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
-                $('.start_race .levels_content .level.deputy').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
-            }else if(data.id_level_category == 3){
-                $('.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
-                $('.start_race .levels_content .level.congressman').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
+        }else if(data[i].id_level_game == 2){
+            if(data[i].id_level_category == 1){
+                $('.start_race .levels_content .level.councilor').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
+            }else if(data[i].id_level_category == 2){
+                $('.start_race .levels_content .level.councilor').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
+                $('.start_race .levels_content .level.deputy').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
+            }else if(data[i].id_level_category == 3){
+                $('.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
+                $('.start_race .levels_content .level.congressman').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
             }
-            $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
-        }else if(data.id_level_game == 3){
-            if(data.id_level_category == 1){
-                $('.start_race .levels_content .level.municipaljudge').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
-            }else if(data.id_level_category == 2){
-                $('.start_race .levels_content .level.municipaljudge').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
-                $('.start_race .levels_content .level.circuitjudge').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
-            }else if(data.id_level_category == 3){
-                $('.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
-                $('.start_race .levels_content .level.magistrate').addClass('active').find('.number_questions').find('.correct_answers').text(data.correct_answers).attr('correct-answers',data.correct_answers);
+        }else if(data[i].id_level_game == 3){
+            if(data[i].id_level_category == 1){
+                $('.start_race .levels_content .level.municipaljudge').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
+            }else if(data[i].id_level_category == 2){
+                $('.start_race .levels_content .level.municipaljudge').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
+                $('.start_race .levels_content .level.circuitjudge').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
+            }else if(data[i].id_level_category == 3){
+                $('.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
+                $('.start_race .levels_content .level.magistrate').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
             }
-            $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president,.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy,.start_race .levels_content .level.congressman').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
-        }
-        else{
-            $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president,.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy,.start_race .levels_content .level.congressman,.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge,.start_race .levels_content .level.magistrate').addClass('active').find('.bottom').find('.number_questions').empty().text('✔');
         }
     }
 }

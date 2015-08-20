@@ -358,7 +358,7 @@ class main {
     }
     
     # Function to register new question
-    public function register_question(){
+    function register_question(){
         $id_specialty = $_POST['id_specialty'];
         $question = $_POST['question'];
         $type_question = $_POST['type_question'];
@@ -391,7 +391,7 @@ class main {
     }
     
     # Function to update a question
-    public function modify_question(){
+    function modify_question(){
         $id = $_POST['id'];
         $id_specialty = $_POST['id_specialty'];
         $question = $_POST['question'];
@@ -497,7 +497,7 @@ class main {
         echo json_encode($data);
     }
     
-    #Function to get all question by specialty
+    # Function to get all question by specialty
     function all_caseLitigation(){
         
         $data = array();
@@ -525,7 +525,7 @@ class main {
     }
     
     # Function to register new specialty
-    public function register_specialty(){
+    function register_specialty(){
         $id_game_mode = $_POST['id_game_mode'];
         $id_level_game = $_POST['id_level_game'];
         $name = $_POST['name'];
@@ -648,7 +648,7 @@ class main {
     }
     
     # Function to update a specialty
-    public function modify_specialty(){
+    function modify_specialty(){
         $id = $_POST['id'];
         $id_game_mode = $_POST['id_game_mode'];
         $id_level_game = $_POST['id_level_game'];
@@ -691,16 +691,24 @@ class main {
     function validate_level(){
         $id = base64_decode($_POST['id']);
         
-        $query = jur_current_state_game::find($id);
+        $query = jur_current_state_game::all(array('conditions' => array('id_user = ?',$id)));
         
-        echo (json_encode($query->attributes()));
+        $data = array();
+        
+        foreach($query as $key){
+            $data[] = $key->attributes();
+        }
+        
+        echo json_encode($data);
     }
     
     # Function to save when the user answer well a question
     function correct_answers(){
         $id = base64_decode($_POST['id_user']);
         
-        $query = jur_current_state_game::find($id);
+        $query = jur_current_state_game::all(array('conditions' => array('id_user = ?', $id)));
+        
+        
         $query_ = jur_users::find($id);
         $options = $query->attributes();
         $id_user = $query->attributes();
