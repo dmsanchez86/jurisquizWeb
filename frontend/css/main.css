@@ -738,7 +738,7 @@ html {
 .notifications .levels_content {
   float: right;
   height: 97px;
-  width: 230px;
+  width: 250px;
   display: -webkit-flex;
   display: -moz-flex;
   display: -o-flex;
@@ -1502,6 +1502,18 @@ html {
   content: '';
   background-color: #fff;
   top: .89rem;
+}
+.friends .content_friends .friend .image_friend img,
+.profile .content_friends .friend .image_friend img,
+.friends .content_profile .friend .image_friend img,
+.profile .content_profile .friend .image_friend img {
+  max-height: 65px;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 .friends .container_btn,
 .profile .container_btn {
@@ -4977,7 +4989,7 @@ html {
   text-shadow: none;
 }
 .nav_button .nav .nav-item:hover,
-.nav_button .nav .nav-item:focus.nav_button .nav .nav-item.active {
+.nav_button .nav .nav-item:focus {
   color: #ef863e;
 }
 /* Popup Notifications */
@@ -6628,7 +6640,7 @@ label.ui-btn {
     text-align: center;
   }
   .friends .content_friends .friend .image_friend img {
-    height: 45px;
+    max-height: 35px;
   }
   .friends .content_friends .friend .score_friend {
     font-size: 2rem;

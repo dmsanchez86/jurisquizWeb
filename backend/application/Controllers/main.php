@@ -705,36 +705,41 @@ class main {
     # Function to save when the user answer well a question
     function correct_answers(){
         $id = base64_decode($_POST['id_user']);
+        $id_game = $_POST['id_level_game'];
+        $data = array();
         
-        $query = jur_current_state_game::all(array('conditions' => array('id_user = ?', $id)));
+        $query = jur_current_state_game::all(array('conditions' => array('id_user = ? AND id_level_game = ? LIMIT 1', $id,$id_game)));
         
+        $o = $query[0]->attributes();
         
         $query_ = jur_users::find($id);
-        $options = $query->attributes();
-        $id_user = $query->attributes();
+        $current = jur_current_state_game::find($o['id']);
+        $options = $current;
+        
+        $id_user = $query_->attributes();
         
         if(isset($_POST['id_level_category'])){
-            if($options['id_level_game'] == $_POST['id_level_game']){
-                $query->id_level_category = $query->id_level_category + 1;
-                $query->correct_answers = 0;
+            if($options->id_level_game == $id_game){
+                $options->id_level_category = $options->id_level_category + 1;
+                $options->correct_answers = 0;
                 $query_->points = $_POST['points'];
-                $query_->level = $query->id_level_category;
+                $query_->level = $options->id_level_category;
                 
-                if($query->id_level_category > 3){
-                    $query->id_level_game = (++$options['id_level_game']);
-                    $query->id_level_category = 1;
-                    $query->correct_answers = 0;
+                if($options->id_level_category > 3){
+                    $options->id_level_game = (++$options->id_level_game);
+                    $options->id_level_category = 1;
+                    $options->correct_answers = 0;
                     $query_->points = $_POST['points'];
                     $query_->level = 1;
                 }
             }
         }
         else{
-            $query->correct_answers = $_POST['number'];
+            $options->correct_answers = $_POST['number'];
             $query_->points = $_POST['points'];
         }
         
-        $res = $query->save();
+        $res = $options->save();
         $res_ = $query_->save();
         
         if($res && $res_){
@@ -748,10 +753,10 @@ class main {
                 $data = array(
                     'message'           => 'Se guardo el numero de respuestas correctamente',
                     'status'            => 'OK',
-                    'id_user'           => base64_encode($id_user['id_user']),
-                    'metadata'          => $query->attributes(),
-                    'id_level_game'     => $options['id_level_game'],
-                    'id_level_category' => $options['id_level_category']
+                    'id_user'           => base64_encode($id_user['id']),
+                    'metadata'          => $options->attributes(),
+                    'id_level_game'     => $options->id_level_game,
+                    'id_level_category' => $options->id_level_category
                 );
             }else{
                 $data = array(
