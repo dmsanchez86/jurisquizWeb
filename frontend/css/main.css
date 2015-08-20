@@ -3497,7 +3497,10 @@ html {
   font-weight: bold;
 }
 .panel .panel_content .friends a:hover,
-.profile .panel_content .friends a:hover {
+.profile .panel_content .friends a:hover,
+.panel .panel_content .friends a:focus,
+.profile .panel_content .friends a:focus {
+  color: #ef863e;
   text-decoration: underline;
 }
 .panel .panel_content article,
@@ -3530,7 +3533,7 @@ html {
 .profile .panel_content .levels .current_level img,
 .panel .panel_content .levels .next_level img,
 .profile .panel_content .levels .next_level img {
-  max-height: 120px;
+  max-height: 100px;
 }
 .panel .panel_content .levels .arrow,
 .profile .panel_content .levels .arrow {
@@ -4971,6 +4974,11 @@ html {
   -ms-transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
   -o-transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
   transition: all 0.3s cubic-bezier(0.68, 1.55, 0.265, 1);
+  text-shadow: none;
+}
+.nav_button .nav .nav-item:hover,
+.nav_button .nav .nav-item:focus.nav_button .nav .nav-item.active {
+  color: #ef863e;
 }
 /* Popup Notifications */
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header {
