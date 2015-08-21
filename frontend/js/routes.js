@@ -727,7 +727,7 @@ var router = new $.mobile.Router({
                                 
                             }
                             
-                             if(canPreguntas > con){
+                            if(canPreguntas > con){
                                 con++;
                                 
                                 setTimeout(function(){
