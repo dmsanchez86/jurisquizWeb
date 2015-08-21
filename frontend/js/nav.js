@@ -62,10 +62,10 @@ var App = {
 			})
 		},
 		hyperlinks: function() {
-			$(".nav .nav-item").on("click", function(e) {
-				e.preventDefault();
-				var t = $(this).attr("href").replace("#", "");
-				$(".html").removeClass("visible"), $(".html." + t).addClass("visible"), $(".nav").toggleClass("active"), App.title($(this).text())
-			})
+			// $(".nav .nav-item").on("click", function(e) {
+			// 	e.preventDefault();
+			// 	var t = $(this).attr("href").replace("#", "");
+			// 	$(".html").removeClass("visible"), $(".html." + t).addClass("visible"), $(".nav").toggleClass("active"), App.title($(this).text())
+			// })
 		}
 };

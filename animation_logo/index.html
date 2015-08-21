@@ -59,7 +59,7 @@
                 width: 100%;
                 height: 593px;
                 border: thin solid #ddd;
-                background: rgba(130,130,130,.8);
+                background-color: rgba(130,130,130,.8);
                 transition: top 1s .3s ease-out;
                 z-index: 4;
                 transform: rotatex(0deg) translatez(-100px);
@@ -97,15 +97,15 @@
                 top: 230px;
                 left: 28%;
                 
-                -webkit-animation: step_3 2.4s.5 1 ease-in-out;
-                animation: step_3 2.4s 1 ease-in-out;
+                /*-webkit-animation: step_3 2.4s.5 1 ease-in-out;*/
+                /*animation: step_3 2.4s 1 ease-in-out;*/
             }
             .content .step_3{
                 left: 2%;
                 top: 20px;
                 
-                -webkit-animation: step_3 1s 1 ease-in-out;
-                animation: step_3 1s 1 ease-in-out;
+                /*-webkit-animation: step_3 1s 1 ease-in-out;*/
+                /*animation: step_3 1s 1 ease-in-out;*/
             }
             @keyframes flat{
                 0%{
@@ -208,17 +208,8 @@
         
         <script>
             window.onload = function(){
-                var content = document.querySelector('.content');
-                // content.onmouseover = function(){
-                //     //this.style.transform = "rotatex(0deg) translatey(400px) rotatey(25deg) translatex(300px)";
-                // }
-                // content.onmouseout = function(){
-                //     //this.style.transform = "rotateX(0deg) translatey(400px) rotatey(0deg)";
-                // }
-                setInterval(function(){
-                    // location.reload();
-                },4200);
-            }
+                setInterval(function(){ location.reload(); },4200);
+            };
         </script>
     </body>
 </html>

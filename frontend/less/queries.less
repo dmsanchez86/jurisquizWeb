@@ -53,6 +53,21 @@
             }
         }
     }
+    .start_test,.duel_users{
+        div[data-role='header']{
+            .top_questions{width: 230px;
+                .content_questions{
+                    span{font-size: 3.5rem; line-height: 1.4;}
+                }
+                .opponent{
+                    .image{ margin-top: .05rem;
+                        img{max-height: 45px;}
+                        span{font-size: .8rem;}
+                    }
+                }
+            }
+        }
+    }
     .search_duel{
         .content_list_users{
             .title{font-size: 3.3rem;}
@@ -205,7 +220,7 @@
         .content_game{margin-top: .5rem;
             .message_game{padding: 1rem .7rem; 
                 &:before{border-width: 1.3rem; left: -35px;}
-                p{font-size: 1.25rem;}
+                p,b{font-size: 1rem;}
             }
             .icon_game{ text-align: center;
                 img{max-height: 350px; margin-top: .35rem;margin-left: -10px;}
@@ -238,16 +253,29 @@
         }
         .status{height: 68px;
             .icon_level{
-                img{height: 50px;}
+                img{height: 56px;}
             }
             .points{text-align: right;.flex_item(1, 1, 48%);
-                em{font-size: 3rem;}
+                em{font-size: 3.5rem;}
                 &:before{display: none;}
             }
         }
     }
     .ui-header{min-height: 70px;}
     input[type="email"], input[type="text"], input[type="password"]{padding: 0 0 0 1rem;margin-bottom: .25rem;height: 2.3rem;}
+    .start_race,.start_test,.start_specialty,.duel_users{
+        .wrapper{
+            .question_result{padding: .8rem;margin: 1rem auto 0;
+                .punctuation{min-height: 145px; background-size: 70%;line-height: 100px;
+                    &:after{height: 75%;}
+                    span,span em{ font-size: 2rem;}
+                }
+                .report_question{
+                    img{margin: 0.5rem auto 0; display: block;max-height: 80px;}
+                }
+            }
+        }
+    }
 }
 
 @media(max-width: 380px){
@@ -263,7 +291,7 @@
                  .score_friend,.name_friend{margin: 0;}
                  em{font-size: 1.75rem;}
                  .image_friend{text-align: center;
-                     img{height: 45px;}
+                     img{max-height: 35px;}
                  }
                  .score_friend{font-size:2rem;font-weight: normal;}
                  .col.s6{padding: 0;}
@@ -339,7 +367,7 @@
     .race,.duel,.test,.litigation,.specialty {
         .content_game {
             .message_game{
-                p{text-shadow: none;}
+                p,b{text-shadow: none;}
             }
             .container_btn{
                 button{font-size: .82rem;}

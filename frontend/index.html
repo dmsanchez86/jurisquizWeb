@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Script-Type" content="text/javascript">
         <meta http-equiv="Content-Style-Type" content="text/css">
         <meta name="author" content="Daniel Mauricio Sanchez">
+        <meta http-equic="Cache-Control" content="no-store">
         
         <!-- Page Title -->
         <title>Jurisquiz -- Game</title>
@@ -26,6 +27,7 @@
         
         <!-- Stylesheets -->
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/dacosta.css">
         
         <!-- Librarys JavaScript -->
         <script src="js/jquery-1.11.3.min.js"></script>
@@ -106,6 +108,11 @@
                 </div>
                 <div class="message"></div>
             </div>
+        </div>
+        
+        <!-- Time Question -->
+        <div class="question_time">
+            <span>Restan <br><em>20s</em></span>
         </div>
         
         <!-- Nav-Menu -->
@@ -192,10 +199,10 @@
         <!-- Nav-Button -->
         <div class="nav_button">
             <div class="nav">
-    			<a href="profile.html" class="nav-item nav-count-1 tooltipped" data-position="left" data-delay="50" data-tooltip="Perfil"><i class="material-icons">perm_identity</i><span class="invisible"></span></a>
-    			<a href="#dashboard" class="nav-item nav-count-2 tooltipped" data-position="left" data-delay="50" data-tooltip="Home"><i class="material-icons">dashboard</i><span class="invisible"></span></a>
-    			<a href="friends.html" class="nav-item nav-count-3 tooltipped" data-position="left" data-delay="50" data-tooltip="Colegas"><i class="material-icons">supervisor_account</i><span class="invisible"></span></a>
-    			<a href="config.html" class="nav-item nav-count-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Configuración"><i class="material-icons">settings</i><span class="invisible"></span></a>
+    			<a href="profile.html" class="nav-item nav-count-1" title="Perfil"><i class="material-icons">perm_identity</i><span class="invisible"></span></a>
+    			<a href="#dashboard" class="nav-item nav-count-2" title="Dashboard"><i class="material-icons">dashboard</i><span class="invisible"></span></a>
+    			<a href="friends.html" class="nav-item nav-count-3" title="Colegas"><i class="material-icons">supervisor_account</i><span class="invisible"></span></a>
+    			<a href="#notifications" class="nav-item nav-count-4 notifications_link" title="Notificaciones" data-number-notifications=""><i class="material-icons">info</i><span class="invisible"></span></a>
     			<a href="#" class="mask"><i class="material-icons">add</i></a>
     		</div>
         </div>
@@ -220,7 +227,7 @@
             });
         </script>
         <script type="text/javascript" src="js/nav.js"></script>
-        <script type="text/javascript" src="js/routes.js"></script>
+        <script type="text/javascript" src="js/routes.js?v=78678tu7y5t"></script>
         
         <!-- Templates -->
         <script type="text/html" id="each_user">
@@ -366,9 +373,10 @@
             </div>
         </script>
         <script type="text/html" id="structure_question">
-            <div class="content_question" correct-answer="<%= correct_answer %>" type-question="<%= type_question %>">
+            <div class="content_question" correct-answer="<%= correct_answer %>" type-question="<%= type_question %>" id-question="<%= id %>" id-specialty="<%= id_specialty %>">
+                
                 <div class="question">
-                    <%= question %>
+                    <span><%= question %></span>
                 </div>
                 
                 <%
@@ -394,8 +402,8 @@
                         
                         for(var i = 0; i < options_random.length; i++){ %>
                             <div class="answer" id-answer="<%= id %>">
-                                <input id="answer<%= i %>" type="radio" name="answer_<%= id %>" value="<%= options_random[i] %>" data-role="none"/>
-                                <label for="answer<%= i %>" data-role="none"><%= options_random[i] %></label>
+                                <input id="answer<%= key %><%= i %>" type="radio" name="answer_<%= id %>" value="<%= options_random[i] %>" data-role="none"/>
+                                <label for="answer<%= key %><%= i %>" data-role="none"><%= options_random[i] %></label>
                             </div>
                         <% } %>
                     </div>
@@ -414,6 +422,155 @@
                 <% } %>
             </div>
         </script>
-        
+        <script type="text/html" id="template_each_specialty">
+            <div class="container_btn">
+            	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="startGamespeciality.html?id=<%= id %>"><%= name %>
+            	</button>
+            </div>
+        </script>
+        <script type="text/html" id="template_each_litigationCase">
+            <div class="container_btn">
+            	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="startGamelitigation.html?id=<%= id %>"><%= litigio_titulo %>
+            	</button>
+            </div>
+        </script>
+        <script type="text/html" id="structure_litigation">
+            
+            <div class="content_question" id="case_<%= id %>" id-case="<%= id %>" correct-answer="<%= correct_answer %>" type-question="<%= type_question %>" id="case_<%= id %>">
+                <% if(litigio_text){ %>
+                    <div  class="question litigio_titulo">
+                        <p>
+                            <%= litigio_text  %>
+                        </p> 
+                        <div class="container_btn">
+                        	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-id="<%= id %>"> Siguente Caso <i class="large material-icons">skip_next</i>
+                        	</button>
+                        </div>
+                    </div>
+                <% } %>
+                <div class="pregunta">
+                
+                <div class="question"><%= question %></div>
+                
+                <%
+                    var options = options_question.split('/');
+                    var name_type_question = '';
+                    
+                    if(type_question == 1)
+                        name_type_question = "Selección Múltiple";
+                    else if(type_question == 2)
+                        name_type_question = "Si / No";
+                    else if(type_question == 3)
+                        name_type_question = "Ordenamiento";
+                %>
+                
+                <% if(type_question != 3){ %>
+                    <div class="answers_options">
+                        <div class="type_question">
+                            <span>Tipo de pregunta: <%= name_type_question %></span>
+                        </div>
+                        <% 
+                        
+                        var options_random = options.random();
+                        
+                        for(var i = 0; i < options_random.length; i++){ %>
+                            <div class="answer" id-answer="<%= id %>">
+                                <input id="answer<%= key %><%= i %>" type="radio" name="answer_<%= id %>" id-case="<%= id %>" value="<%= options_random[i] %>" data-role="none"/>
+                                <label for="answer<%= key %><%= i %>" id-case="<%= id %>" data-role="none"><%= options_random[i] %></label>
+                            </div>
+                        <% } %>
+                    </div>
+                <% }else{ %>
+                    <div class="answers_options">
+                        <div class="type_question">
+                            <span>Tipo de pregunta: <%= name_type_question %></span>
+                        </div>
+                        <ul class="sortable_answer">
+                        <% for(var i = 0; i < options.length; i++){ %>
+                            <li position="<%= i + 1 %>"><%= options[i] %></li>
+                        <% } %>
+                        </ul>
+                        <div class="container_btn"><button type="button" class="waves-effect waves-btn-start btn btn_register">Enviar Orden</button></div>
+                    </div>
+                <% } %>
+                </div>
+            </div>
+            
+        </script>
+        <script type="text/html" id="template_each_finalGame">
+            <% if (correcta) {%>
+                <tr class="correcto">
+                    <td> <%= pregunta %> </td>
+                    <td> <%= respuesta %> </td>
+                    <td><i class="material-icons dp48">done</i></td>
+                  
+                </tr>
+            <%} else{ %>
+                 <tr class="errada">
+                    <td> <%= pregunta %> </td>
+                    <td> <%= respuesta %> </td>
+                    <td><i class="material-icons dp48">error</i></td>
+                  
+                </tr>
+            <% } %>
+        </script>
+        <script type="text/html" id="each_user_duel">
+            <div class="user">
+                <div class="row" style="margin:0">
+                    <div class="col s2" style="padding: 0">
+                        <div class="image_user">
+                            <img src="img/levels/level<%= level %><%= gender %>.png" class="responsive-img">
+                        </div>
+                    </div>
+                    <div class="col s5">
+                        <div class="name_user">
+                            <em><%= (++index) %>. </em> <%= name %>
+                        </div>
+                    </div>
+                    <div class="col s5" style="padding: 0">
+                        <div class="duel_link">
+                            <a href="#" data-url="duel_users.html?id=<%= id_user %>">Retar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="template_notification">
+            <%
+                var show = ""; 
+                if(state == 'inactive' || state == 'reject' || state == 'win' || state == 'loss'){
+                    show = 'background-color: transparent';
+                }else{
+                    show = 'background-color: rgba(130, 130, 130, 0.5)'
+                }
+            %>
+            <div class="notification" id-duel="<%= metadata %>" id-notification="<%= id %>">
+	            <div class="text">
+	                <span><%= notification %></span>
+	            </div>
+	            <div class="mask" style="<%= show %>">
+	                <div class="panel">
+	                    <div class="btns">
+                                <%
+                                
+    	                            if(state == 'inactive'){ %>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptada">Aceptada <i class="material-icons">thumb_up</i></span>
+    	                            <% } else if(state == 'reject'){ %>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada">Rechazada <i class="material-icons">thumb_down</i></span>
+    	                            <% } else if(state == 'win'){ %>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada">Ganador <i class="material-icons">done</i></span>
+    	                            <% } else if(state == 'loss'){ %>
+    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada">Perdedor <i class="material-icons">error</i></span>
+    	                            <%  } else { %>
+    	                                <span class="accept" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptar">Aceptar <i class="material-icons">trending_flat</i></span>
+    	                                <span class="reject" title="Rechazar">Rechazar <i class="material-icons">warning</i></span>
+    	                            <% } 
+	                            
+                                %>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        </script>
     </body>
 </html>
