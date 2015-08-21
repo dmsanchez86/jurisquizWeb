@@ -1,4 +1,4 @@
-.start_specialty, table.resultado{
+.start_specialty,.start_test table.resultado{
     display:none;
 }
 .start_specialty div[data-role='header'] .top_questions {

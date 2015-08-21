@@ -736,13 +736,15 @@ var router = new $.mobile.Router({
                                
                             }
                             if(canPreguntas == con){
-                                 hide_timer();
+                                
+                                hide_timer();
+                                $('.start_test .wrapper .content_start_game').hide().css('transform','scale(1)');
                                 respuestas.forEach(function(index,element){
-                               
+                                    
                                     var compiled = tmpl("template_each_finalGame", JSON.parse(index));
                                     $("#start_test table tbody").append(compiled);
                                     
-                                    setTimeout(function(){ $("#start_test table.resultado").fadeIn(1000); }, 1000);
+                                    setTimeout(function(){ $(".resultado#result_test").fadeIn(1000); }, 1000);
                                 });
                     
                             }
