@@ -51,3 +51,9 @@
     background-image: radial-gradient(center, #ee6200, #ef863e);
     border-color: #ee6200;
 }
+.incorrect_answer{
+    background-image: -webkit-radial-gradient(center, #E86000, #DE0101);
+    background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
+    background-image: radial-gradient(center, #ee6200, #ef863e);
+    border-color: #ee6200;
+}

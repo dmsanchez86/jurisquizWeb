@@ -1763,6 +1763,23 @@ html {
 .duel_users div[data-role="content"] .container .wrapper > div {
   display: none;
 }
+.start_race .wrapper,
+.start_test .wrapper,
+.start_specialty .wrapper,
+.duel_users .wrapper {
+  -webkit-perspective: 800px;
+  -khtml-perspective: 800px;
+  -moz-perspective: 800px;
+  -ms-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+  -webkit-perspective-origin: center;
+  -khtml-perspective-origin: center;
+  -moz-perspective-origin: center;
+  -ms-perspective-origin: center;
+  -o-perspective-origin: center;
+  perspective-origin: center;
+}
 .start_race .wrapper .content_start_game,
 .start_test .wrapper .content_start_game,
 .start_specialty .wrapper .content_start_game,
@@ -1778,12 +1795,12 @@ html {
   -ms-transform: scale(0);
   -o-transform: scale(0);
   transform: scale(0);
-  -webkit-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
-  -khtml-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
-  -moz-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
-  -ms-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
-  -o-transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
-  transition: all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -webkit-transition: all 0.5s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -khtml-transition: all 0.5s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -moz-transition: all 0.5s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -ms-transition: all 0.5s cubic-bezier(0.4, 0.18, 0, 0.94);
+  -o-transition: all 0.5s cubic-bezier(0.4, 0.18, 0, 0.94);
+  transition: all 0.5s cubic-bezier(0.4, 0.18, 0, 0.94);
   position: relative;
   height: 75vh;
 }
@@ -2586,6 +2603,17 @@ html {
   width: 580px;
   margin: 1.5rem auto 0;
   height: auto;
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  -webkit-transform: scale(1) rotatey(90deg);
+  -khtml-transform: scale(1) rotatey(90deg);
+  -moz-transform: scale(1) rotatey(90deg);
+  -ms-transform: scale(1) rotatey(90deg);
+  -o-transform: scale(1) rotatey(90deg);
+  transform: scale(1) rotatey(90deg);
+  opacity: 0;
 }
 .start_race .wrapper .question_result .punctuation,
 .start_test .wrapper .question_result .punctuation,
@@ -5005,7 +5033,7 @@ html {
   border-radius: 5px 5px 0 0;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header .title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-family: 'DK Mango';
   color: white;
   -webkit-text-shadow: 0 0 2px #323232;
@@ -5145,6 +5173,16 @@ html {
   -o-text-shadow: 0 0 1px #323232;
   text-shadow: 0 0 1px #323232;
   color: white;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications textarea {
+  min-height: 5rem;
+  color: white;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn:first-child button {
+  background-color: #ee6200;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn:first-child button:hover {
+  background-color: #ee6200;
 }
 span[contenteditable] br {
   display: none;

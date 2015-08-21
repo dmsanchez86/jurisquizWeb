@@ -1109,4 +1109,33 @@ class main {
         echo json_encode($data);
     }
     
+    # Funtion to register new report question
+    function report_question(){
+        $id_question = $_POST['id'];
+        $message = $_POST['message'];
+        date_default_timezone_set('America/Bogota');
+        $date = date('Y-m-d H:i:s');
+        
+        $query = jur_report_questions::create(array(
+                'id'            => null,
+                'id_question'   => $id_question,
+                'message'       => $message,
+                'date'          => $date
+            ));
+            
+        if($query){
+            $data = array(
+                    'message'   => 'Se envio el reporte de la pregunta correctamente!',
+                    'status'    => 'OK'
+                );
+        }else{
+            $data = array(
+                    'message'   => 'No se pudo enviar el reporte :(!',
+                    'status'    => 'FAIL'
+                );
+        }
+        
+        echo json_encode($data);
+    }
+    
 }

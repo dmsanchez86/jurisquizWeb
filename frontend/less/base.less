@@ -181,8 +181,8 @@
             }
         }
     }
-    .wrapper{
-        .content_start_game,.question_result{overflow: visible!important;.transform(scale(0));.transition(all 1.3s cubic-bezier(0.4, 0.18, 0, 0.94)); position: relative; height: 75vh;
+    .wrapper{ .perspective(800px); .perspective_origin(center);
+        .content_start_game,.question_result{overflow: visible!important;.transform(scale(0));.transition(all .5s cubic-bezier(0.4, 0.18, 0, 0.94)); position: relative; height: 75vh;
             > div{position: absolute; top: 0; left: 0; width: 100%; padding: .5rem .25rem;display: none;}
         }
         .content_start_game,.start,.complete_level,.no_complete_level,.question_result{ margin-top: 1.5rem;
@@ -227,7 +227,7 @@
         .no_complete_level{
             .message{background-color: @inactive;}
         }
-        .question_result{background-color: @btn_start; padding: 1rem 2rem; .border_radius(10px); max-width: 100%; width: 580px; margin: 1.5rem auto 0; height: auto;
+        .question_result{background-color: @btn_start; padding: 1rem 2rem; .border_radius(10px); max-width: 100%; width: 580px; margin: 1.5rem auto 0; height: auto; position: absolute; top: -30px; left: 0; right: 0; .transform(scale(1) rotatey(90deg)); opacity: 0;
             .punctuation{ width: 100%; min-height: 210px; background-image: url('../img/done.png'); background-repeat: no-repeat; background-position: right center; background-size: 60%;line-height: 195px;text-indent: -45px; text-align: center; position: relative;
                 &:after{position: absolute; width: 1px; height: 85%; background-color: white; right: -15%; top: 0; content: ''; margin: auto; bottom: 0;}
                 span,span em{font-family: 'DK Mango'; font-size: 3rem; color: white; font-style: normal;}
@@ -829,7 +829,7 @@
 /* Popup Notifications */
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active{
     .header{ background-color: @btn_start; overflow: auto;padding: .85rem 0; .border_radius(5px 5px 0 0);
-        .title{font-size: 3.5rem;font-family: 'DK Mango'; color: white; .text_shadow(0,0,2px,#323232);text-align: center;line-height: 1; margin: .5rem 0 0;}
+        .title{font-size: 3rem;font-family: 'DK Mango'; color: white; .text_shadow(0,0,2px,#323232);text-align: center;line-height: 1; margin: .5rem 0 0;}
     }   
     .content{ padding: 1rem;
         .content_notifications{margin-bottom: 1rem;
@@ -851,6 +851,14 @@
                             }
                         }
                     }
+                }
+            }
+            textarea{min-height: 5rem; color: white;}
+        }
+        .container_btn{
+            &:first-child{
+                button{background-color: @btn_login;
+                    &:hover{background-color: @btn_login;}
                 }
             }
         }

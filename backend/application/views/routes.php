@@ -212,6 +212,11 @@ $app->post(
     '/update_duel','main:update_duel'
 )->setParams(array($app));
 
+// Route for insert new report question 
+$app->post(
+    '/report_question','main:report_question'
+)->setParams(array($app));
+
 // PUT route
 $app->put('/put', function () {
         echo 'This is a PUT route';
