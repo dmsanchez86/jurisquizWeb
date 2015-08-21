@@ -740,9 +740,9 @@ var router = new $.mobile.Router({
                                 respuestas.forEach(function(index,element){
                                
                                     var compiled = tmpl("template_each_finalGame", JSON.parse(index));
-                                    $("#content_startTest table tbody").append(compiled);
+                                    $("#start_test table tbody").append(compiled);
                                     
-                                    setTimeout(function(){ $("#content_startTest table.resultado").fadeIn(1000); }, 1000);
+                                    setTimeout(function(){ $("#start_test table.resultado").fadeIn(1000); }, 1000);
                                 });
                     
                             }
