@@ -690,7 +690,7 @@ var router = new $.mobile.Router({
                                 
                                 if(answer_ == correct_answer){
                                     ++corrects_questions;
-                                
+                                    
                                     evt_next_question_test('.start_test',corrects_questions);
                                 }else{
                                     evt_next_question_test('.start_test',corrects_questions);
@@ -3246,7 +3246,6 @@ function evt_validate_mode_game(data,name_level,id_game){
 
 // Event to paint the current level
 function evt_current_level(data,id){
-    debugger;
     for(var i = 0; i < data.length; i++){
         if(data[i].id_level_game == 1){
             if(data[i].id_level_category == 1){
@@ -3258,7 +3257,7 @@ function evt_current_level(data,id){
                 $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
                 $('.start_race .levels_content .level.president').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
             }else{
-                $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
+                $('.start_race .levels_content .level.mayor,.start_race .levels_content .level.governor,.start_race .levels_content .level.president').addClass('active complete').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
             }
         }else if(data[i].id_level_game == 2){
             if(data[i].id_level_category == 1){
@@ -3270,7 +3269,7 @@ function evt_current_level(data,id){
                 $('.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
                 $('.start_race .levels_content .level.congressman').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
             }else{
-                $('.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy,.start_race .levels_content .level.congressman').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
+                $('.start_race .levels_content .level.councilor,.start_race .levels_content .level.deputy,.start_race .levels_content .level.congressman').addClass('active complete').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
             }
         }else if(data[i].id_level_game == 3){
             if(data[i].id_level_category == 1){
@@ -3282,7 +3281,7 @@ function evt_current_level(data,id){
                 $('.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
                 $('.start_race .levels_content .level.magistrate').addClass('active').find('.number_questions').find('.correct_answers').text(data[i].correct_answers).attr('correct-answers',data[i].correct_answers);
             }else{
-                $('.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge,.start_race .levels_content .level.magistrate').addClass('active').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
+                $('.start_race .levels_content .level.municipaljudge,.start_race .levels_content .level.circuitjudge,.start_race .levels_content .level.magistrate').addClass('active complete').find('.bottom').find('.number_questions').find('.correct_answers').text('20');
             }
         }
     }
@@ -3561,6 +3560,6 @@ function remove_drag(){
 // Function to change order any array
 Array.prototype.random = function(){
     var o = this;
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x)
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 };

@@ -46,7 +46,7 @@
 }
 
 .correct_answer{
-    background-image: -webkit-radial-gradient(center, #ee6200, #ef863e);
+    background-image: -webkit-radial-gradient(center, #01DF01, #3ADF00);
     background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
     background-image: radial-gradient(center, #ee6200, #ef863e);
     border-color: #ee6200;
