@@ -1,4 +1,4 @@
-.start_specialty,.start_test table.resultado{
+table.resultado{
     display:none;
 }
 .start_specialty div[data-role='header'] .top_questions {
@@ -17,19 +17,19 @@
     font-style: italic;
 }
 
-.start_specialty table.resultado > tbody > tr.correcto{
+table.resultado > tbody > tr.correcto{
     background-color: #3a6667;
     color: #FFF;
 }
 
-.start_specialty table.resultado > tbody > tr > td:last-child{
+table.resultado > tbody > tr > td:last-child{
     text-align:center;
     color:#FFF;
 }
-.start_specialty table.resultado > tbody > tr.errada > td:last-child{
+table.resultado > tbody > tr.errada > td:last-child{
     color: #3a6667;
 }
-.start_specialty table.resultado > tbody > tr > td {
+table.resultado > tbody > tr > td {
     border-radius: 0px;
 }
 
