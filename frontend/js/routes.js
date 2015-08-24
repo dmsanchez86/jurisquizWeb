@@ -47,7 +47,7 @@ var router = new $.mobile.Router({
         validate_login();
         
         clean_login();
-        
+        hide_timer();
         hide_nav_button();
         
         remove_drag();
@@ -126,6 +126,8 @@ var router = new $.mobile.Router({
         
         evt_logout();
         
+        hide_timer();
+        cont = false;
         // Params
         var params = router.getParams(match[1]); 
         
@@ -152,6 +154,7 @@ var router = new $.mobile.Router({
         
         // Events for buttons
         $('.games button').unbind('click').click(function(e){
+            cont = true;
             e.preventDefault();
             var url = $(this).attr('data-url');
             $.mobile.changePage(url,{role:'page',transition:'flip'});
@@ -538,15 +541,16 @@ var router = new $.mobile.Router({
         });
         
         setTimeout(function(){
-            
+            debugger;
             // Get all contents of questions
             $('.duel_users .content_start_game .content_question').addClass('duel_options');
             var content_questions = $('.duel_users .content_start_game .content_question');
             content_questions.eq(0).addClass('active').show();
-            
+            console.log(content_questions);
             clearInterval(count_timer);
             
             setTimeout(function(){
+                console.log(content_questions);
                 $('.duel_users .wrapper .content_start_game').show(50).css('transform','scale(1)');
                 setTimeout(function(){
                     show_timer(15, '.duel_users');
@@ -688,8 +692,10 @@ var router = new $.mobile.Router({
                         var corrects_questions = 0;
                         var canPreguntas = $('.start_test .content_question').length;
                         var con= 0;
+                        var numRespCorrect = 1;
                         var respuestas= [];
                         var itemRespuesta = {};
+                        var points=0;
         
                         $('.start_test .content_question').addClass('test_options');
                         content_questions.eq(0).addClass('active').fadeIn(500);
@@ -701,6 +707,8 @@ var router = new $.mobile.Router({
                             var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
                             
                             if(answer_ == correct_answer){
+                                points = numRespCorrect++ * 0.5;
+                                
                                 
                                 itemRespuesta.pregunta = answer_;
                                 itemRespuesta.respuesta= correct_answer;
@@ -736,15 +744,22 @@ var router = new $.mobile.Router({
                             
                             if(canPreguntas > con){
                                 con++;
-                                $('.start_test .content_question.active .answers_options input').prop('disabled', true);
-                                setTimeout(function(){
-                                     evt_next_question_test('.start_test',corrects_questions);
-                                },3000);
-                               
+                                
+                               $('.start_test .content_question.active .answers_options input').prop('disabled', true);
+                                    setTimeout(function(){
+                                         evt_next_question_test('.start_test',corrects_questions);
+                                    },3000);
                             }
                             if(canPreguntas == con){
                                 
                                 hide_timer();
+                                $('#points').text(points);
+                                
+                                if (points >=3) {
+                                    $('#status').text("Aprobado");
+                                }else{
+                                     $('#status').text("Desaprobado");
+                                }
                                 $('.start_test .wrapper .content_start_game').hide().css('transform','scale(1)');
                                 
                                 cont = false;
@@ -976,6 +991,8 @@ var router = new $.mobile.Router({
         evt_logout();
         
         var params = router.getParams(match[1]);
+        var arrayId = [];
+        var id_case = 1; 
         
         $.ajax({
             url: webService + "all_caseLitigation",
@@ -983,6 +1000,14 @@ var router = new $.mobile.Router({
             success: function(response){
                 
                 var data = JSON.parse(response);
+                
+                data.forEach(function(element,index){
+            
+                    arrayId.push(element.id);
+                });
+                
+                id_case = arrayId[Math.floor(Math.random() * arrayId.length)];
+                message(id_case);
                 var con = 0;
                 var respuestas= [];
                 var itemRespuesta = {};
@@ -1004,10 +1029,10 @@ var router = new $.mobile.Router({
                 setTimeout(function(){
                     //Caso de a cuerdo al id
                     $('#content_startLitigation').show(50).css('transform','scale(1)');
-                    $('#content_startLitigation .content_question#case_'+ params.id).fadeIn(500);
+                    $('#content_startLitigation .content_question#case_'+ id_case).fadeIn(500);
                     
                     setTimeout(function(){
-                        timerLitigation(10,'#content_startLitigation .content_question#case_',params.id,false);
+                        timerLitigation(10,'#content_startLitigation .content_question#case_',id_case,false);
                     },500);
                     
                 },1000);
@@ -2073,7 +2098,7 @@ function respuestaFinaltempPregunta(idCase){
 // Message to the toast Materialize
 function message(param){
     if(param === "welcome"){
-        Materialize.toast('<div><h3><em>!Welcome To Jurizquiz Game!</em></h3><div><div><p>Click in the button <b>"Acceder"</b> to enter the game</p></div><div><p>Or click on the button <b>"Register"</b> to enjoy the game of questions.</p></div>',2800);
+        Materialize.toast('<div><h3><em>!Bienvenido a Jurizquiz!</em></h3><div><div><p>Click in the button <b>"Acceder"</b> to enter the game</p></div><div><p>Or click on the button <b>"Register"</b> to enjoy the game of questions.</p></div>',2800);
     }else if(param == "null fields"){
         Materialize.toast('<div class="error"><h2>¡No Pueden Haber Campos Vaciós!</h2></div>',2800);
     }else if(param == "user isn\'t exist"){
@@ -2740,6 +2765,14 @@ function evt_all_questions_show(filter){
                     $('a[href="#edit_question"]').click();
                 });
             });
+            
+            setTimeout(function(){
+                $(".container_questions").jPages({
+                    containerID: "content_question_show",
+                    perPage: 3,
+                    keyBrowse: true,
+                });
+            },1000);
         }
     });
 }
@@ -3059,6 +3092,14 @@ function evt_all_specialties_show(filter){
                     $('a[href="#edit_specialty"]').click();
                 });
             });
+            
+            setTimeout(function(){
+                $(".container_specialties").jPages({
+                    containerID: "content_specialty_show",
+                    perPage: 4,
+                    keyBrowse: true,
+                });
+            },500);
         }
     });
 }
@@ -3113,7 +3154,7 @@ function questions(page_referer,array){
                 if(page_referer == '.duel_users' && ids_questions_duel.length != 0){
                     var count = 0;
                     
-                    for (var i = 0; i < questions.length; i++) {
+                    for (var i = 0; i < questions.length; i++) { 
                         if(ids_questions_duel[count] == questions[i].id){
                             count++;
                             questions[i].key = i;
@@ -3705,6 +3746,9 @@ function show_timer(time,page_referer){
                 $('.question_time').fadeOut(1000);
                 
                 if (page_referer == '.start_test') {
+                    //$.mobile.changePage('index.html#home',{role: 'page',transition: 'fade'});
+                    var user= localStorage.getItem('id_user');
+                    $.mobile.changePage('dashboard.html?user='+user,{role: 'page',transition: 'fade'});
                     
                 }
                 if(page_referer == '.start_test' || page_referer == '.duel_users'){

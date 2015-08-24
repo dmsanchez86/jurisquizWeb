@@ -5187,6 +5187,44 @@ html {
 span[contenteditable] br {
   display: none;
 }
+/* Paginator questions */
+.container_questions,
+.container_specialties {
+  text-align: center;
+}
+.container_questions .jp-current,
+.container_specialties .jp-current {
+  font-weight: bold;
+  color: #ef863e;
+}
+.container_questions .jp-previous,
+.container_specialties .jp-previous {
+  display: inline-block;
+  margin-right: .5rem;
+}
+.container_questions .jp-next,
+.container_specialties .jp-next {
+  display: inline-block;
+  margin-left: .5rem;
+}
+.container_questions a,
+.container_specialties a {
+  color: #3a6667;
+  cursor: pointer;
+}
+.ui-page-theme-a a:visited,
+html .ui-bar-a a:visited,
+html .ui-body-a a:visited,
+html body .ui-group-theme-a a:visited {
+  color: #3A6667;
+}
+.ui-page-theme-a a,
+html .ui-bar-a a,
+html .ui-body-a a,
+html body .ui-group-theme-a a {
+  color: #3A6667;
+  font-weight: 700;
+}
 /* Materialize Custom */
 .waves-effect.waves-logo .waves-ripple {
   background-color: rgba(238, 98, 0, 0.15);

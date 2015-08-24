@@ -31,6 +31,7 @@
         
         <!-- Librarys JavaScript -->
         <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jpages.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.mobile.router.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
@@ -261,7 +262,7 @@
             <option value="<%= id %>"><%= question %> ( <%= mode_game %> )</option>
         </script>
         <script type="text/html" id="all_questions_show">
-            <div class="question">
+            <li class="question">
                 <%
                     var options = options_question.split('/');
                 %>
@@ -305,10 +306,10 @@
                         <li class="edit" title="Editar Pregunta"><span><i class="material-icons">edit</i></span></li>
                     </ul>
                 </nav>
-            </div>
+            </li>
         </script>
         <script type="text/html" id="all_specialties_show">
-            <div class="specialty">
+            <li class="specialty">
                 <div>
                     <span class="name"><b>Especialidad:</b> <%= name %></span> | <span class="id"><b>ID:</b> <%= id %></span>
                 </div>
@@ -329,7 +330,7 @@
                         <li class="edit" title="Editar Pregunta"><span><i class="material-icons">edit</i></span></li>
                     </ul>
                 </nav>
-            </div>
+            </li>
         </script>
         <script type="text/html" id="template_edit_question">
             <div class="form_content">

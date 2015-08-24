@@ -866,3 +866,31 @@
 }
 
 span[contenteditable] br {display: none;}
+
+/* Paginator questions */
+.container_questions,.container_specialties{ text-align: center;
+    .jp-current{
+        font-weight: bold;
+        color: @before_color;
+    }
+    .jp-previous{
+        display: inline-block;
+        margin-right: .5rem;
+    }
+    .jp-next{
+        display: inline-block;
+        margin-left: .5rem;
+    }
+    a{
+        color: @btn_start;
+        cursor: pointer;
+    }
+}
+
+.ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited {
+color: #3A6667;
+}
+.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
+color: #3A6667;
+font-weight: 700;
+}
