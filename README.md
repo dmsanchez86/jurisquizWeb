@@ -14,6 +14,6 @@
 > Materialize
 > Animate CSS
 
-[Demo] (http://dmsanchez86.github.io/Jurisquiz/)
+[Demo] (http://dmsanchez86.github.io/cellphone-3d/)
 
 ![Screen Shoot](http://jurizquiz-dmsanchez86.c9.io/frontend/img/screen.png)

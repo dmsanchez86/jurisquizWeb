@@ -541,16 +541,13 @@ var router = new $.mobile.Router({
         });
         
         setTimeout(function(){
-            debugger;
             // Get all contents of questions
             $('.duel_users .content_start_game .content_question').addClass('duel_options');
             var content_questions = $('.duel_users .content_start_game .content_question');
             content_questions.eq(0).addClass('active').show();
-            console.log(content_questions);
             clearInterval(count_timer);
             
             setTimeout(function(){
-                console.log(content_questions);
                 $('.duel_users .wrapper .content_start_game').show(50).css('transform','scale(1)');
                 setTimeout(function(){
                     show_timer(15, '.duel_users');
@@ -1965,9 +1962,7 @@ var router = new $.mobile.Router({
         hide_timer();
         
         // Params
-        var params = router.getParams(match[1]); 
-        
-        console.log(params);
+        var params = router.getParams(match[1]);
         
         // button to back last page
         $('.container_btn button.back').unbind('click').click(function(e){
@@ -1977,7 +1972,6 @@ var router = new $.mobile.Router({
         $('.container_btn button.send').unbind('click').click(function(e){
             var $message = $('#error_message_question').val();
             var $id = $(this).attr('id-question');
-            console.log($message);
             
             if($message == ''){
                 message('No puedes mandar la solicitud vacía');
@@ -3303,8 +3297,8 @@ function evt_validate_mode_game(data,name_level,id_game){
                                     if(cont){
                                         $('.start_race .question_result').fadeOut(300).css({'opacity':'0'});
                                         
-                                        var info = {}; 
-                                        // debugger;
+                                        var info = {};
+                                        
                                         if(current_question + 1 < top_questions){
                                             info = {
                                                 id_user         : localStorage.getItem('id_user'),
@@ -3505,7 +3499,6 @@ function evt_validate_mode_game(data,name_level,id_game){
 
 // Event when the question is correct
 function question_correct(page_referer){
-    debugger;
     var id_question = $('.start_race .content_question.active').attr('id-question');
     
     $('.start_race .content_question.active').hide();
