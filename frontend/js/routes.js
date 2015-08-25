@@ -47,7 +47,9 @@ var router = new $.mobile.Router({
         validate_login();
         
         clean_login();
+        
         hide_timer();
+        
         hide_nav_button();
         
         remove_drag();
@@ -1268,7 +1270,6 @@ var router = new $.mobile.Router({
                     },
                     success : function(res){
                         var data = JSON.parse(res);
-                        console.log(data);
                         
                         if(data.status == 'OK')
                             message(data.message);
@@ -2157,6 +2158,11 @@ function validate_login(){
                 $.mobile.changePage('dashboard.html?user='+id,{role: 'page',transition: 'fade'});
         });
         
+        if(localStorage.getItem('role_user') == 'admin')
+            $('#home .wrapper .container_btn button').text('Ingresar');
+        else
+            $('#home .wrapper .container_btn button').text('Comenzar con las preguntas');
+        
         $('#home .wrapper .container_btn').fadeIn(1000);
         $('#home .wrapper .container_register,#home .wrapper .container_login').hide(10);
     }else{
@@ -2399,7 +2405,6 @@ function panel_data($id){
         },
         success : function(response){
             var data = JSON.parse(response);
-            console.log(data);
             
             // when role is admin hide panels punctuation
             if(localStorage.getItem('role_user') == 'admin'){
