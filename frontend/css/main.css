@@ -3993,6 +3993,9 @@ html {
   -o-transform: scale(0.7);
   transform: scale(0.7);
 }
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show {
+  display: none;
+}
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question {
   position: relative;
   padding: 1rem;
@@ -5212,6 +5215,12 @@ span[contenteditable] br {
   color: #3a6667;
   cursor: pointer;
 }
+.container_questions a:hover,
+.container_specialties a:hover,
+.container_questions a:focus,
+.container_specialties a:focus {
+  color: #ef863e;
+}
 .ui-page-theme-a a:visited,
 html .ui-bar-a a:visited,
 html .ui-body-a a:visited,
@@ -5224,6 +5233,9 @@ html .ui-body-a a,
 html body .ui-group-theme-a a {
   color: #3A6667;
   font-weight: 700;
+}
+ol li {
+  list-style-type: circle;
 }
 /* Materialize Custom */
 .waves-effect.waves-logo .waves-ripple {

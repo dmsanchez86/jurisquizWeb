@@ -1420,11 +1420,12 @@ var router = new $.mobile.Router({
             success : function(res){
                 var data = JSON.parse(res);
                 
-                $('#specialty_name,#specialty_name_edit').empty();
+                $('#specialty_name,#specialty_name_edit,#specialty_filter').empty();
                 $('#specialty_name,#specialty_name_edit').append('<option value="">Seleccione una especialidad para la pregunta</option>');
+                $('#specialty_filter').append('<option value="">Seleccione una especialidad</option>');
                 
                 data.forEach(function(i){
-                    $('#specialty_name,#specialty_name_edit').append(tmpl('category_level_template',i));
+                    $('#specialty_name,#specialty_name_edit,#specialty_filter').append(tmpl('category_level_template',i));
                 });
                 
                 $('select').material_select();
@@ -1627,7 +1628,7 @@ var router = new $.mobile.Router({
             setTimeout(function(){ $(tab).addClass('active'); } , 500);
             
             if(tab == "#show_questions")
-                evt_all_questions_show('all');
+                evt_all_questions_show('all',null);
             else if(tab == "#update_question")
                 evt_all_questions('actives');
             else if(tab == "#new_question")
@@ -1635,8 +1636,15 @@ var router = new $.mobile.Router({
                 
             $('input[name="active_questions"]').unbind('change').change(function(){
                 var filter = $('input[name="active_questions"]:checked').val();
-                evt_all_questions_show(filter);
+                $('.content_question_show').hide(50);
+                evt_all_questions_show(filter,null);
             });
+        });
+        
+        $('#specialty_filter').unbind('change').change(function(){
+            var id_specialty = $(this).val();
+            $('.content_question_show').hide(50);
+            evt_all_questions_show(id_specialty,'specialty');
         });
         
         $('#mode_game').unbind('change').change(function(){
@@ -2658,14 +2666,22 @@ function evt_all_questions(filter){
 }
 
 // Event to get all questions
-function evt_all_questions_show(filter){
+function evt_all_questions_show(filter,ref){
     $(".content_question_show").empty();
+    var data = {};
+    
+    if(ref != null){
+        data = {
+            id_specialty : filter,
+            ref         : ref
+        };
+    }
     
     // ajax to get all questions by filter
     $.ajax({
         url         : webService + 'all_questions/'+filter,
         type        : 'POST',
-        data        : null,
+        data        : data,
         success     : function(res){
             var data = JSON.parse(res);
             
@@ -2813,13 +2829,15 @@ function evt_all_questions_show(filter){
                 });
             });
             
+            $('.content_question_show').show(600);
+            
             setTimeout(function(){
                 $(".container_questions").jPages({
                     containerID: "content_question_show",
                     perPage: 3,
                     keyBrowse: true,
                 });
-            },1000);
+            },500);
         }
     });
 }
@@ -2924,7 +2942,7 @@ function evt_update_question(obj){
                 $('.loader').fadeOut(1500);
                 $('#edit_question').find('a').click();
                 
-                evt_all_questions_show('all');
+                evt_all_questions_show('all',null);
                 
                 setTimeout(function(){
                     message(data.message);
@@ -3032,7 +3050,7 @@ function evt_question(param, $id){
                 
                 $('input[name="active_questions"]').removeAttr('checked');
                 
-                evt_all_questions_show(data.ref);
+                evt_all_questions_show(data.ref,null);
             },700);
         }
     });
@@ -3177,7 +3195,7 @@ function evt_specialty(param, $id){
                 
                 $('input[name="active_specialties"]').removeAttr('checked');
                 
-                evt_all_questions_show(data.ref);
+                evt_all_questions_show(data.ref,null);
             },700);
         }
     });
