@@ -185,7 +185,7 @@ var router = new $.mobile.Router({
         }
         
         if($id == null || $id == undefined || $id == ""){
-            $.mobile.changePage('index.html',{role: 'page',transition: 'slide'})
+            $.mobile.changePage('index.html',{role: 'page',transition: 'slide'});
         }else{
             localStorage.setItem('log','true');
             localStorage.setItem('id_user',$id);
@@ -199,11 +199,21 @@ var router = new $.mobile.Router({
         $('.games button').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('data-url');
-            $.mobile.changePage(url,{role:'page',transition:'fade'});
+            if(url == 'notifications.html')
+                $.mobile.changePage(url+'?ref=admin',{role:'dialog',transition:'fade'});
+            else    
+                $.mobile.changePage(url,{role:'page',transition:'fade'});
         });
     },
     notifications: function(type,match,ui){
         remove_drag();
+        
+        hide_nav_button();
+        
+         // Params
+        var params = router.getParams(match[1]); 
+        
+        console.log(params);
         
         // Button to accept duel
         $('.btns .accept').unbind('click').click(function(e){
@@ -3664,6 +3674,7 @@ function evt_next_question_test(page_referer,correct_questions,params){
             $(page_referer + ' .content_start_game .content_question').eq(0).addClass('active').show().parent().attr('question',(++count_questions));
             setTimeout(function(){ show_timer( time_question, page_referer ); },500);
         },500);
+        
     }else{
         current_content.hide(500);
         
