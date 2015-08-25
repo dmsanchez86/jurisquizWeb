@@ -1169,6 +1169,7 @@ var router = new $.mobile.Router({
         
         hide_timer();
         
+        // hide panels when role is admin
         if(localStorage.getItem('role_user') == 'admin')
             $('.profile .status').hide();
         
@@ -1181,11 +1182,13 @@ var router = new $.mobile.Router({
         var current_name = "";
         var current_username = "";
         
+        // save the current name and username
         setTimeout(function(){
             current_name = $('.content_profile .data_user span.name').text();
             current_username = $('.content_profile .data_user span.username').text();
         },800);
         
+        // form to save image profile
         form_image.submit(function(e){
             e.preventDefault();
             var image_user = $('#image_user')[0].files[0];
@@ -1214,6 +1217,7 @@ var router = new $.mobile.Router({
             });
         });
         
+        // form to save image biography profile
         form_image_biography.submit(function(e){
             e.preventDefault();
             var image_user = $('#image_biography_user')[0].files[0];
@@ -1248,6 +1252,33 @@ var router = new $.mobile.Router({
         
         $('#image_biography_user').change(function(){
            form_image_biography.submit();
+        });
+        
+        $('#gender_profile').unbind('change').change(function(){
+            var $gender = $(this).val();
+            
+            if($gender != ''){
+                // ajax to change gender user
+                $.ajax({
+                    url     : webService + 'change_gender',
+                    type    : 'POST',
+                    data    : {
+                        id      : localStorage.getItem('id_user'),
+                        gender  : $gender
+                    },
+                    success : function(res){
+                        var data = JSON.parse(res);
+                        console.log(data);
+                        
+                        if(data.status == 'OK')
+                            message(data.message);
+                        else
+                            message(data.message);
+                            
+                        panel_data(data.id);
+                    }
+                });
+            }
         });
         
         $('#btn_change_password').unbind('click').click(function(){
@@ -2368,6 +2399,7 @@ function panel_data($id){
         },
         success : function(response){
             var data = JSON.parse(response);
+            console.log(data);
             
             // when role is admin hide panels punctuation
             if(localStorage.getItem('role_user') == 'admin'){
@@ -2378,6 +2410,14 @@ function panel_data($id){
                 $('.panel .panel_content .levels,.profile .panel_content .levels').show(50);
             }
             
+            if(data.gender == 'M'){
+                $('#gender_profile option').eq(1).attr('selected','');
+            }else if(data.gender == 'F'){
+                $('#gender_profile option').eq(2).attr('selected','');
+            }
+            
+            $('select').material_select();
+            
             $('.points em').text(data.points);
             $('.data_user .name').text(data.name);
             $('.data_user .email').text(data.email);
@@ -2385,8 +2425,10 @@ function panel_data($id){
             $('.information_user .image_user img').attr('src', directory_profile + data.image);
             $('.panel_header').css('background-image','url('+directory_biography+data.image_b+')');
             $('.panel .icon_level img,.panel .current_level img,.profile .current_level img,.status .icon_level img').attr('src','img/levels/level'+data.level+data.gender+'.png');
-            $('.panel .current_level span,.profile .current_level span').text('Nivel '+data.level);
-            $('.panel .next_level span,.profile .next_level span').text('Nivel '+(parseInt(data.level) + 1));
+            $('.panel .current_level span').text('Nivel '+data.level);
+            $('.profile .current_level span').last().text('Nivel '+data.level);
+            $('.panel .next_level span').text('Nivel '+(parseInt(data.level) + 1));
+            $('.profile .next_level span').last().text('Nivel '+(parseInt(data.level) + 1));
             $('.panel .next_level img,.profile .next_level img').attr('src','img/levels/level'+(parseInt(data.level) + 1)+data.gender+'.png');
         }   
     });
