@@ -177,15 +177,14 @@ var router = new $.mobile.Router({
         if(params == null){
             var log = localStorage.getItem('log');
             
-            if(log != 'true'){
+            if(log != 'true')
                 $.mobile.changePage('index.html#home',{role: 'page',transition: 'slide'});
-            }
         }else{
             var $id = params.user;
         }
         
         if($id == null || $id == undefined || $id == ""){
-            $.mobile.changePage('index.html',{role: 'page',transition: 'slide'});
+            $.mobile.changePage('index.html#home',{role: 'page',transition: 'slide'});
         }else{
             localStorage.setItem('log','true');
             localStorage.setItem('id_user',$id);
@@ -198,11 +197,8 @@ var router = new $.mobile.Router({
         // Events for buttons
         $('.games button').unbind('click').click(function(e){
             e.preventDefault();
-            var url = $(this).attr('data-url');
-            if(url == 'notifications.html')
-                $.mobile.changePage(url+'?ref=admin',{role:'dialog',transition:'fade'});
-            else    
-                $.mobile.changePage(url,{role:'page',transition:'fade'});
+            var url = $(this).attr('data-url');   
+            $.mobile.changePage(url,{role:'page',transition:'fade'});
         });
     },
     notifications: function(type,match,ui){
@@ -2156,11 +2152,10 @@ function validate_login(){
     
     if(log == 'true'){
         var id = id_user;
+        var role = localStorage.getItem('role_user');
         
         // Click in the button start questions
         $('#btn_start').unbind('click').click(function(){
-            var role = localStorage.getItem('role_user');
-            
             // Validate role for change page
             if(role == 'admin')
                 $.mobile.changePage('dashboard_admin.html?user='+id,{role: 'page',transition: 'fade'});
@@ -2168,18 +2163,19 @@ function validate_login(){
                 $.mobile.changePage('dashboard.html?user='+id,{role: 'page',transition: 'fade'});
         });
         
-        if(localStorage.getItem('role_user') == 'admin')
+        if(role == 'admin')
             $('#home .wrapper .container_btn button').text('Ingresar');
         else
             $('#home .wrapper .container_btn button').text('Comenzar con las preguntas');
         
-        $('#home .wrapper .container_btn').fadeIn(1000);
+        $('#home .wrapper .container_btn').hide(1000);
         $('#home .wrapper .container_register,#home .wrapper .container_login').hide(10);
+        $('#home .wrapper .container_btn').eq(0).show(10);
     }else{
-        $('#home .wrapper .container_btn').eq(0).hide(10);
+        $('#home .wrapper .container_register,#home .wrapper .container_login').show(1000);
+        $('#home .wrapper .container_btn').hide(10);
         $('#home .wrapper .container_btn').eq(1).show(10);
-        $('#home .wrapper .container_register,#home .wrapper .container_login').fadeIn(1000);
-        $('#btn_start').unbind('click');
+        $('#home .wrapper .container_btn').eq(3).show(10);
     }
 }
 
