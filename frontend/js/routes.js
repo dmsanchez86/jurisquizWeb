@@ -417,9 +417,19 @@ var router = new $.mobile.Router({
                 
                 $('.search_duel .list_users').empty();
                 
-                data.forEach(function(i,o){
+                var users = data.random();
+                
+                users.forEach(function(i,o){
                     i.index = o;
                     $('.search_duel .list_users').append(tmpl('each_user_duel',i));
+                });
+                
+                $('.search_duel .list_users').fadeIn(600);
+                
+                $('.list_users_content').jPages({
+                    containerID: "list_users",
+                    perPage: 5,
+                    keyBrowse: true,
                 });
                 
                 setTimeout(function() {

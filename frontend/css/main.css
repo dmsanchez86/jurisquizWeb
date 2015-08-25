@@ -2918,6 +2918,7 @@ html {
   -o-border-radius: 5px;
   border-radius: 5px;
   position: relative;
+  display: none;
 }
 .search_duel .content_list_users .list_users:after,
 .duel_users .content_list_users .list_users:after {
@@ -5196,33 +5197,41 @@ span[contenteditable] br {
 }
 /* Paginator questions */
 .container_questions,
-.container_specialties {
+.container_specialties,
+.list_users_content {
   text-align: center;
+  margin-top: .5rem;
 }
 .container_questions .jp-current,
-.container_specialties .jp-current {
+.container_specialties .jp-current,
+.list_users_content .jp-current {
   font-weight: bold;
   color: #ef863e;
 }
 .container_questions .jp-previous,
-.container_specialties .jp-previous {
+.container_specialties .jp-previous,
+.list_users_content .jp-previous {
   display: inline-block;
   margin-right: .5rem;
 }
 .container_questions .jp-next,
-.container_specialties .jp-next {
+.container_specialties .jp-next,
+.list_users_content .jp-next {
   display: inline-block;
   margin-left: .5rem;
 }
 .container_questions a,
-.container_specialties a {
+.container_specialties a,
+.list_users_content a {
   color: #3a6667;
   cursor: pointer;
 }
 .container_questions a:hover,
 .container_specialties a:hover,
+.list_users_content a:hover,
 .container_questions a:focus,
-.container_specialties a:focus {
+.container_specialties a:focus,
+.list_users_content a:focus {
   color: #ef863e;
 }
 .ui-page-theme-a a:visited,

@@ -312,7 +312,7 @@
     .content_list_users{
         > h1,> div{max-width: 100%; width: 580px;margin: 0 auto; font-family: 'DK Mango';}
         .title{font-size: 5rem; color: @before_color; margin: 1.5rem auto 2rem;}
-        .list_users{background-color: @btn_start;padding: 1.3rem 4rem;.border_radius(5px); position: relative;
+        .list_users{background-color: @btn_start;padding: 1.3rem 4rem;.border_radius(5px); position: relative; display: none;
             &:after{position: absolute; content: ''; right: 3rem; top: -55px; border: 2rem solid; border-color: transparent transparent @before_color transparent;}
             .user{ border-bottom: thin solid #fff; padding: .25rem 0;
                 &:last-child{border-color:transparent;}
@@ -868,7 +868,7 @@
 span[contenteditable] br {display: none;}
 
 /* Paginator questions */
-.container_questions,.container_specialties{ text-align: center;
+.container_questions,.container_specialties,.list_users_content{ text-align: center; margin-top: .5rem;
     .jp-current{font-weight: bold;color: @before_color;}
     .jp-previous{display: inline-block;margin-right: .5rem;}
     .jp-next{display: inline-block;margin-left: .5rem;}
