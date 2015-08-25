@@ -4289,6 +4289,10 @@ html {
 .specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li i:hover {
   color: #ee6200;
 }
+.specialties .content_questions .forms .forms_contents .show_questions .content_question_show,
+.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show {
+  display: none;
+}
 .specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question,
 .specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question,
 .specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty,

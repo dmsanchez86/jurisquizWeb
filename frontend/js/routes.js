@@ -1712,6 +1712,7 @@ var router = new $.mobile.Router({
         
         $('.forms_contents #new_specialty').addClass('active');
         
+        // ajax to get all mode games
         $.ajax({
             url         : webService + 'all_games_mode',
             type        : 'POST',
@@ -1728,11 +1729,14 @@ var router = new $.mobile.Router({
                 
                 $('select').material_select();
                 
+                // Event to choose mode game in new specialty
                 $('#mode_game_context').unbind('change').change( function(e){
                     var id_mode_game = $(this).val();
                     
                     $('.level_game,.level_game_edit').fadeOut(50);
                     if(id_mode_game != ""){
+                        
+                        // ajax to get all levels mode
                         $.ajax({
                             url         : webService + 'levels_mode',
                             type        : 'POST',
@@ -1762,6 +1766,7 @@ var router = new $.mobile.Router({
                     }
                 });
                 
+                // Event to choose mode game in edit specialty
                 $('#mode_game_context_edit').unbind('change').change( function(e){
                     var id_mode_game = $(this).val();
                     
@@ -1798,6 +1803,7 @@ var router = new $.mobile.Router({
             }
         });
         
+        // Event to create a new specialty
         $('button[data-url="#create_specialty"]').unbind('click').click(function(){
             var $name_specialty = $('#name_specialty').val();
             var $mode_game = $('#mode_game_context').val();
@@ -1818,6 +1824,8 @@ var router = new $.mobile.Router({
                 }
                 
                 loader('Registrando Especialidad');
+                
+                // ajax to register new specialty
                 $.ajax({
                     url         : webService + 'register_specialty',
                     type        : 'POST',
@@ -1846,6 +1854,7 @@ var router = new $.mobile.Router({
             }
         });
         
+        // event to modify specialty
         $('button[data-url="#modify_specialty"]').unbind('click').click(function(){
             var $id_specialty = $('#form_edit_specialty .id span').text();
             var $name_specialty = $('#name_specialty_edit').val();
@@ -1867,6 +1876,8 @@ var router = new $.mobile.Router({
                 }
                 
                 loader('Modificando Especialidad');
+                
+                // ajax to modify specialty
                 $.ajax({
                     url         : webService + 'modify_specialty',
                     type        : 'POST',
@@ -1898,6 +1909,7 @@ var router = new $.mobile.Router({
             }
         });
         
+        // events to tabs
         $('.tabs a').unbind('click').click(function(){
             var tab = $(this).attr('href');
             
@@ -1909,6 +1921,7 @@ var router = new $.mobile.Router({
                 
             $('input[name="active_specialties"]').unbind('change').change(function(){
                 var filter = $('input[name="active_specialties"]:checked').val();
+                $('.content_specialty_show').hide(50);
                 evt_all_specialties_show(filter);
             });
         });
@@ -3025,6 +3038,7 @@ function evt_all_specialties_show(filter){
                     var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     evt_specialty('active',id);
                 });
+                
                 $('.menu_specialty .activate').unbind('click').click(function(){
                     var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     evt_specialty('inactive',id);
@@ -3066,6 +3080,8 @@ function evt_all_specialties_show(filter){
                     $('a[href="#edit_specialty"]').click();
                 });
             });
+            
+            $('.content_specialty_show').show(600);
             
             setTimeout(function(){
                 $(".container_specialties").jPages({
