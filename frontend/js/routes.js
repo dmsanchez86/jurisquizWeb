@@ -720,7 +720,7 @@ var router = new $.mobile.Router({
                         hide_timer();
                         var answer_ = $('.start_test .content_question.test_options.active input[type=radio]:checked').val();
                         var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
-                        
+                        control_mode_test = false;
                         if(answer_ == correct_answer){
                             setTimeout(function() { question_correct('.start_test'); },800);
                             hide_timer();
@@ -752,9 +752,11 @@ var router = new $.mobile.Router({
                             con++;
                             
                             $('.start_test .content_question.active .answers_options input').prop('disabled', true);
-                            setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },2300);
-                            if(control_mode_test)
-                                setTimeout(function(){ evt_next_question_test('.start_test',corrects_questions); },2500);
+                            setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },2300);debugger;
+                            setTimeout(function(){ 
+                                if(control_mode_test == false)
+                                    evt_next_question_test('.start_test',corrects_questions);
+                            },2500);
                         }
                         
                         if(canPreguntas == con){
@@ -3500,12 +3502,16 @@ function question_correct(page_referer){
     
     setTimeout(function(){ $(page_referer + ' .question_result').css({'display':'block','opacity':'1'}); },500);
     
+    var page = page_referer;
+    
     $(page_referer + ' .question_result .report_question').unbind('click').click(function(){
         hide_timer();
-        if(page_referer == '.mode_test')
+        debugger;
+        if(page == '.start_test')
             control_mode_test = true;
         else
             control_mode_test = false;
+            
         setTimeout(function(){ $('.container_btn button.send').attr('id-question',id_question); },500);
         $.mobile.changePage('report_question.html',{role:'dialog',transition: 'pop'});
     });
