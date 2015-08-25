@@ -2608,7 +2608,7 @@ html {
   margin: 1.5rem auto 0;
   height: auto;
   position: absolute;
-  top: -30px;
+  top: -10px;
   left: 0;
   right: 0;
   -webkit-transform: scale(1);
@@ -5255,6 +5255,27 @@ html body .ui-group-theme-a a {
 }
 ol li {
   list-style-type: circle;
+}
+.name_specialty {
+  text-align: center;
+  margin: .25rem 0;
+}
+.name_specialty span {
+  color: #FFFFFF;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'DK Mango';
+  text-shadow: 0 0 2px #EF863E;
+  display: inline-block;
+  background-color: #E3813D;
+  padding: .6rem .5rem .1rem;
+  line-height: 1;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
 }
 /* Materialize Custom */
 .waves-effect.waves-logo .waves-ripple {

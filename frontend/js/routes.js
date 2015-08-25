@@ -15,6 +15,7 @@ var correct_answers_user_duel = 0;
 var params_url = {};
 var corrects_questions = 0;
 var cont = true;
+var control_mode_test = false;
 
 var router = new $.mobile.Router({
     "#home": {handler: "home", events: "s" },
@@ -206,10 +207,7 @@ var router = new $.mobile.Router({
         
         hide_nav_button();
         
-         // Params
-        var params = router.getParams(match[1]); 
-        
-        console.log(params);
+        hide_timer();
         
         // Button to accept duel
         $('.btns .accept').unbind('click').click(function(e){
@@ -655,155 +653,133 @@ var router = new $.mobile.Router({
         hide_nav_button();
         
         evt_logout();
+        
         var list;
         var arrayId = [];
-        var $id_specialty=1;
-        var nameSpecialty="";
+        var $id_specialty = 1;
+        var nameSpecialty = "";
         
-        list= JSON.parse(listSpecialties('actives'));
+        list = JSON.parse(listSpecialties('actives'));
         
         list.forEach(function(element,index){
-            
             arrayId.push(element.id);
         });
         
         $id_specialty = arrayId[Math.floor(Math.random() * arrayId.length)];
         
         list.forEach(function(element,index){
-            if ($id_specialty === element.id) {
-                nameSpecialty = element.name
-            }
+            if ($id_specialty === element.id)
+                nameSpecialty = element.name;
         });
 
-        //lista de especialidades
-        //$('.start_test .wrapper .content_start_game').show(50).css('transform','scale(1)');
-        //$('button[data-url="start_mode_game"]').fadeIn(500);
-        
-        /*
-        questions('.start_test',null);
-        
-        $('.start_test .wrapper > div,.start_test div[data-role="header"] .top_questions').hide(50);
-        */
         $('.start_test .wrapper .content_start_game').show(50).css('transform','scale(1)');
         $('.start_test .wrapper .start').fadeIn(500);
         
-        
         // Click to start to reply the questions mode race
         $('button[data-url="start_mode_game"]').unbind('click').click(function(){
-            cont= true;
-            message('Especialidad selecionada es ' + nameSpecialty);
-            // Click in the answers to validate which is correct
+            cont = true;
+            
+            $('.name_specialty span').text('Especialidad: '+nameSpecialty).parent().show();
+            $('.start_test .wrapper .start').fadeOut(500);
+            
+            loader('Cargando preguntas');
+                
+            $('.start_test div[data-role="header"] .top_questions').fadeIn(500);
+                
+            // ajax to find question by id
+            $.ajax({
+                url     : webService + "find_question",
+                type    : 'POST',
+                data    : {
+                    id_specialty    : $id_specialty
+                },
+                success : function(res){
+                    var data = JSON.parse(res);
                     
-                loader('Cargando preguntas');
-                
-                $('.start_test div[data-role="header"] .top_questions').fadeIn(500);
-                
-                // ajax to find question by id
-                $.ajax({
-                    url     : webService + "find_question",
-                    type    : 'POST',
-                    data    : {
-                        id_specialty    : $id_specialty
-                    },
-                    success : function(res){
-                        var data = JSON.parse(res);
-                        
-                        hide_timer();
-                        $('.start_test .wrapper .start').fadeOut(500);
-                        questions('.start_test', data);
-                        
-                        $('.loader').fadeOut(1000);
+                    hide_timer();
+                    
+                    questions('.start_test', data);
+                    
+                    $('.loader').fadeOut(1000);
 
-                        var content_questions = $('.start_test .content_question');
-                        var corrects_questions = 0;
-                        var canPreguntas = $('.start_test .content_question').length;
-                        var con= 0;
-                        var numRespCorrect = 1;
-                        var respuestas= [];
-                        var itemRespuesta = {};
-                        var points=0;
-        
-                        $('.start_test .content_question').addClass('test_options');
-                        content_questions.eq(0).addClass('active').fadeIn(500);
-                        show_timer(15, '.start_test');
+                    var content_questions = $('.start_test .content_question');
+                    var corrects_questions = 0;
+                    var canPreguntas = $('.start_test .content_question').length;
+                    var con = 0;
+                    var numRespCorrect = 1;
+                    var respuestas= [];
+                    var itemRespuesta = {};
+                    var points=0;
+    
+                    $('.start_test .content_question').addClass('test_options');
+                    content_questions.eq(0).addClass('active').fadeIn(500);
+                    show_timer(15, '.start_test');
+                    
+                    // Click in the answers options
+                    $('.start_test .content_question.test_options input[type=radio]').unbind('click').click(function(e){
+                        hide_timer();
+                        var answer_ = $('.start_test .content_question.test_options.active input[type=radio]:checked').val();
+                        var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
                         
-                        $('.start_test .content_question.test_options input[type=radio]').unbind('click').click(function(e){
+                        if(answer_ == correct_answer){
+                            setTimeout(function() { question_correct('.start_test'); },800);
                             hide_timer();
-                            var answer_ = $('.start_test .content_question.test_options.active input[type=radio]:checked').val();
-                            var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
+                            points = numRespCorrect++ * 0.5;
+                            itemRespuesta.pregunta = answer_;
+                            itemRespuesta.respuesta= correct_answer;
+                            itemRespuesta.correcta = true;
+                            respuestas.push(JSON.stringify(itemRespuesta));
                             
-                            if(answer_ == correct_answer){
-                                points = numRespCorrect++ * 0.5;
-                                
-                                
-                                itemRespuesta.pregunta = answer_;
-                                itemRespuesta.respuesta= correct_answer;
-                                itemRespuesta.correcta = true;
-                                respuestas.push(JSON.stringify(itemRespuesta));
-                                
-                                message('La respuesta es correcta');
-                                ++corrects_questions;
-                                $(this).next().addClass('correct_answer');
-                               
-                            }else{
-                                
-                                itemRespuesta.pregunta = answer_;
-                                itemRespuesta.respuesta= correct_answer;
-                                itemRespuesta.correcta = false;
-                                respuestas.push(JSON.stringify(itemRespuesta));
-                                
-                                var opciones = $('.start_test .content_question.test_options.active .answers_options .answer input');
-                                //lista de respuestas
-                                opciones.each(function(indice, elemento) {
-                                   
-                                   if ($(elemento).val() === correct_answer) {
-                                       $(elemento).next().addClass('correct_answer');
-                                   }
-                                   
-                                });
-                                
-                                message('La respuesta es incorrecta');
-                                $(this).next().addClass('incorrect_answer');
-                                
-                                
-                            }
+                            ++corrects_questions;
+                            $(this).next().addClass('correct_answer');
+                        }else{
+                            itemRespuesta.pregunta = answer_;
+                            itemRespuesta.respuesta= correct_answer;
+                            itemRespuesta.correcta = false;
+                            respuestas.push(JSON.stringify(itemRespuesta));
                             
-                            if(canPreguntas > con){
-                                con++;
-                                
-                               $('.start_test .content_question.active .answers_options input').prop('disabled', true);
-                                    setTimeout(function(){
-                                         evt_next_question_test('.start_test',corrects_questions);
-                                    },3000);
-                            }
-                            if(canPreguntas == con){
-                                
-                                hide_timer();
-                                $('#points').text(points);
-                                
-                                if (points >=3) {
-                                    $('#status').text("Aprobado");
-                                }else{
-                                     $('#status').text("Desaprobado");
-                                }
-                                $('.start_test .wrapper .content_start_game').hide().css('transform','scale(1)');
-                                
-                                cont = false;
-                                respuestas.forEach(function(index,element){
-                                    
-                                    var compiled = tmpl("template_each_finalGame", JSON.parse(index));
-                                    $("#start_test table tbody").append(compiled);
-                                    
-                                    setTimeout(function(){ $(".resultado#result_test").fadeIn(1000); }, 1000);
-                                });
-                    
-                            }
+                            var opciones = $('.start_test .content_question.test_options.active .answers_options .answer input');
+                            //lista de respuestas
+                            opciones.each(function(indice, elemento) {
+                               if ($(elemento).val() === correct_answer)
+                                   $(elemento).next().addClass('correct_answer');
+                            });
                             
-                        });
+                            $(this).next().addClass('incorrect_answer');
+                        }
                         
-                    }
-                });
+                        if(canPreguntas > con){
+                            con++;
+                            
+                            $('.start_test .content_question.active .answers_options input').prop('disabled', true);
+                            setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },2300);
+                            if(control_mode_test)
+                                setTimeout(function(){ evt_next_question_test('.start_test',corrects_questions); },2500);
+                        }
+                        
+                        if(canPreguntas == con){
+                            hide_timer();
+                            $('#points').text(points);
+                            $('#status').removeClass('success error');
+                            
+                            if(points >=3) 
+                                $('#status').text("Pasaste el examen!").addClass('success');
+                            else
+                                $('#status').text("No aprobaste el examen!").addClass('error');
+                                 
+                            $('.start_test .wrapper .content_start_game').hide().css('transform','scale(1)');
+                            
+                            cont = false;
+                            respuestas.forEach(function(index,element){
+                                var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+                                $("#start_test table tbody").append(compiled);
+                                setTimeout(function(){ $(".resultado#result_test").fadeIn(500); }, 500);
+                            });
+                        }
+                    });
                     
+                }
+            });
         });
     },
     specialty :function(type,match,ui){
@@ -2002,12 +1978,11 @@ var router = new $.mobile.Router({
 
 //Lista de especialidades
 function listSpecialties(filter){
-    var data;
-    data= $.ajax({
-      method: "POST",
-      async: false,
-      url: webService + "all_specialties/"+filter,
-      data: null,
+    var data = $.ajax({
+      method    : "POST",
+      async     : false,
+      url       : webService + "all_specialties/"+filter,
+      data      : null,
     }).done(function(res){
         data = JSON.parse(res);
     });
@@ -3306,6 +3281,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                         if(type_question == 1){
                             
                             answer = $('.start_race .content_question.active input[type=radio]:checked').val();
+                            $('.start_race .content_question.active input').prop('disabled', true);
                             correct_answer = $('.start_race .content_question.active').attr('correct-answer');
                             
                             // if the question is correct
@@ -3518,16 +3494,20 @@ function evt_validate_mode_game(data,name_level,id_game){
 
 // Event when the question is correct
 function question_correct(page_referer){
-    var id_question = $('.start_race .content_question.active').attr('id-question');
+    var id_question = $(page_referer + ' .content_question.active').attr('id-question');
     
-    $('.start_race .content_question.active').hide();
+    $(page_referer + ' .content_question.active').hide();
     
-    setTimeout(function(){ $('.start_race .question_result').css({'display':'block','opacity':'1'}); },500);
+    setTimeout(function(){ $(page_referer + ' .question_result').css({'display':'block','opacity':'1'}); },500);
     
-    $('.start_race .question_result .report_question').unbind('click').click(function(){
+    $(page_referer + ' .question_result .report_question').unbind('click').click(function(){
+        hide_timer();
+        if(page_referer == '.mode_test')
+            control_mode_test = true;
+        else
+            control_mode_test = false;
         setTimeout(function(){ $('.container_btn button.send').attr('id-question',id_question); },500);
         $.mobile.changePage('report_question.html',{role:'dialog',transition: 'pop'});
-        hide_timer();
     });
 }
 
