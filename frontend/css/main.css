@@ -1454,7 +1454,11 @@ html {
 .friends .content_friends .friend:last-child,
 .profile .content_friends .friend:last-child,
 .friends .content_profile .friend:last-child,
-.profile .content_profile .friend:last-child {
+.profile .content_profile .friend:last-child,
+.friends .content_friends .friend:nth-child(5n+5),
+.profile .content_friends .friend:nth-child(5n+5),
+.friends .content_profile .friend:nth-child(5n+5),
+.profile .content_profile .friend:nth-child(5n+5) {
   border-color: transparent;
 }
 .friends .content_friends .friend *,
@@ -2935,7 +2939,9 @@ html {
   padding: .25rem 0;
 }
 .search_duel .content_list_users .list_users .user:last-child,
-.duel_users .content_list_users .list_users .user:last-child {
+.duel_users .content_list_users .list_users .user:last-child,
+.search_duel .content_list_users .list_users .user:nth-child(5n+5),
+.duel_users .content_list_users .list_users .user:nth-child(5n+5) {
   border-color: transparent;
 }
 .search_duel .content_list_users .list_users .user .image_user,

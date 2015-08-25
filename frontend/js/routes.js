@@ -303,6 +303,12 @@ var router = new $.mobile.Router({
                     i.index = o;
                     $(".content_friends").append(tmpl("each_user", i));
                 });
+                
+                $('.list_users_content').jPages({
+                    containerID: "content_friends",
+                    perPage: 5,
+                    keyBrowse: true,
+                });
             }
         });
     },
