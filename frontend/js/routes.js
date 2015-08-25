@@ -286,6 +286,11 @@ var router = new $.mobile.Router({
         
         $('.content_friends').empty();
         
+        if(localStorage.getItem('role_user') == 'admin')
+            $('div[data-role="header"] .status').hide(10);
+        else
+            $('div[data-role="header"] .status').show(10);
+        
         // Ajax for all users
         $.ajax({
             url     : webService + "users/users",
@@ -1772,6 +1777,8 @@ var router = new $.mobile.Router({
                     
                     $('.level_game_edit').fadeOut(50);
                     if(id_mode_game != ""){
+                        
+                        // ajax to get all levels mode
                         $.ajax({
                             url         : webService + 'levels_mode',
                             type        : 'POST',

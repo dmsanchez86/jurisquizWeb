@@ -14,7 +14,7 @@
         <meta http-equic="Cache-Control" content="no-store">
         
         <!-- Page Title -->
-        <title>Jurisquiz -- Game</title>
+        <title>Jurisquiz -- Juego de Preguntas</title>
         
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="img/favicon.png">
@@ -171,7 +171,7 @@
                     <div class="row">
                         <div class="col m4 s4">
                             <div class="current_level">
-                                <img src="img/level1.png" class="responsive-img"></img>
+                                <img src="#" class="responsive-img"></img>
                                 <span>Nivel </span>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                         </div>
                         <div class="col m4 s4">
                             <div class="next_level">
-                                <img src="img/level2.png" class="responsive-img"></img>
+                                <img src="#" class="responsive-img"></img>
                                 <span>Nivel </span>
                             </div>
                         </div>
@@ -212,21 +212,11 @@
         <div class="popup_edit">
             <div class="outside"></div>
             <div class="wrapper">
-                <div class="content">
-                    
-                </div>
+                <div class="content"></div>
             </div>
         </div>
         
         <!-- Scripts -->
-        <script>
-            $(document).bind("mobileinit", function(){
-              $.mobile.touchOverflowEnabled = true;
-            });
-            $(document).ready(function(){
-                $('.tooltipped').tooltip({delay: 10});
-            });
-        </script>
         <script type="text/javascript" src="js/nav.js"></script>
         <script type="text/javascript" src="js/routes.js?v=78678tu7y5t"></script>
         
@@ -245,9 +235,7 @@
                         </div>
                     </div>
                     <div class="col s3">
-                        <div class="score_friend">
-                            <%= points %>
-                        </div>
+                        <div class="score_friend"><%= points %></div>
                     </div>
                 </div>
             </div>
@@ -263,9 +251,7 @@
         </script>
         <script type="text/html" id="all_questions_show">
             <li class="question">
-                <%
-                    var options = options_question.split('/');
-                %>
+                <% var options = options_question.split('/'); %>
             
                 <div>
                     <span class="name"><b>Pregunta:</b> <%= question %></span> | <span class="id"><b>ID:</b> <%= id %></span>
@@ -284,20 +270,15 @@
                 <div>
                     <span class="options_question"><b>Opciones:</b></span>
                     <ol>
-                        <%
-                        
-                        for(var i = 0; i < options.length; i++){ %>
+                        <% for(var i = 0; i < options.length; i++){ %>
                             <% if(options[i] != correct_answer) %>
                                 <li><%= options[i] %></li>
-                        <% }
-                        
-                        %>
+                        <% } %>
                     </ol>
                 </div>
                 <% } %>
                 <nav class="menu_question">
                     <ul>
-                        <!-- <li><span><i class="material-icons">delete</i></span></li> -->
                         <% if(state == 'Activa'){ %>
                             <li class="desactivate" title="Desactivar"><span><i class="material-icons">warning</i></span></li>
                         <% }else{ %>
@@ -321,7 +302,6 @@
                 </div>
                 <nav class="menu_specialty">
                     <ul>
-                        <!-- <li><span><i class="material-icons">delete</i></span></li> -->
                         <% if(state == 'Activa'){ %>
                             <li class="desactivate" title="Desactivar"><span><i class="material-icons">warning</i></span></li>
                         <% }else{ %>
