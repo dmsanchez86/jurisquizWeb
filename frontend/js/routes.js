@@ -16,6 +16,7 @@ var params_url = {};
 var corrects_questions = 0;
 var cont = true;
 var control_mode_test = false;
+var global_timeout = null;
 
 var router = new $.mobile.Router({
     "#home": {handler: "home", events: "s" },
@@ -577,7 +578,6 @@ var router = new $.mobile.Router({
             setTimeout(function(){
                 $('.duel_users .wrapper .content_start_game').show(50).css('transform','scale(1)');
                 setTimeout(function(){
-                    console.log('log');
                     cont = true;
                     show_timer(15, '.duel_users');
                     $('.duel_users div[data-role="header"] .top_questions').css('opacity','1');
@@ -3247,7 +3247,6 @@ function evt_validate_mode_game(data,name_level,id_game){
                 // button click to start to reply the questions mode race
                 $('button[data-url="start_mode_game"]').unbind('click').click(function(){
                     loader('Cargando...');
-                    
                     cont = true;
                     
                     // Get all contents of questions
@@ -3624,7 +3623,6 @@ function evt_next_question_test(page_referer,correct_questions,params){
             $(page_referer + ' .content_start_game .content_question').eq(0).addClass('active').show().parent().attr('question',(++count_questions));
             setTimeout(function(){ show_timer( time_question, page_referer ); },500);
         },500);
-        
     }else{
         current_content.hide(500);
         
@@ -3632,10 +3630,11 @@ function evt_next_question_test(page_referer,correct_questions,params){
         var top_question = parseInt($(page_referer + ' div[data-role="header"] .top_questions .content_questions .rank').text());
         
         setTimeout(function(){
-            
+            // if the top question isn't hide
             if($(page_referer + ' div[data-role="header"] .top_questions').css('display') != 'none')
                 $(page_referer + ' .content_start_game').attr('question',(++number_question));
             
+            // if the number questios is equals top questions
             if(number_question == top_question + 1){
                 hide_timer();
                 current_content.hide(50);
@@ -3664,7 +3663,7 @@ function evt_next_question_test(page_referer,correct_questions,params){
                                 message(data.message);
                             }else{
                                 message(data.message);
-                                setTimeout(function(){ back(); },10000);
+                                global_timeout =setTimeout(function(){ back(); },10000);
                             }
                         }
                     });
@@ -3688,7 +3687,7 @@ function evt_next_question_test(page_referer,correct_questions,params){
                             if(data.status != 'OK'){
                                 message(data.message);
                             }else{
-                                setTimeout(function(){ back(); },10000);
+                                global_timeout = setTimeout(function(){ back(); },10000);
                             }
                         }
                     });
@@ -3718,6 +3717,7 @@ function evt_next_question_test(page_referer,correct_questions,params){
                 }
                 
                 $(page_referer + ' .wrapper .complete_questions').unbind('click').click(function(){
+                    clearTimeout(global_timeout);
                     back();
                 });
             }else{
@@ -3734,7 +3734,6 @@ function evt_next_question_test(page_referer,correct_questions,params){
 function show_timer(time, page_referer){
     // var time_question = time;
     clearInterval(count_timer);
-    console.log(cont);
     if(cont){
         $('.question_time').fadeIn(1000).find('em').text(time+'s');
         
