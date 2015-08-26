@@ -577,6 +577,8 @@ var router = new $.mobile.Router({
             setTimeout(function(){
                 $('.duel_users .wrapper .content_start_game').show(50).css('transform','scale(1)');
                 setTimeout(function(){
+                    console.log('log');
+                    cont = true;
                     show_timer(15, '.duel_users');
                     $('.duel_users div[data-role="header"] .top_questions').css('opacity','1');
                 },1000);
@@ -739,6 +741,7 @@ var router = new $.mobile.Router({
                             respuestas.push(JSON.stringify(itemRespuesta));
                             
                             var opciones = $('.start_test .content_question.test_options.active .answers_options .answer input');
+                            
                             //lista de respuestas
                             opciones.each(function(indice, elemento) {
                                if ($(elemento).val() === correct_answer)
@@ -1006,12 +1009,11 @@ var router = new $.mobile.Router({
                 var data = JSON.parse(response);
                 
                 data.forEach(function(element,index){
-            
                     arrayId.push(element.id);
                 });
                 
                 id_case = arrayId[Math.floor(Math.random() * arrayId.length)];
-                message(id_case);
+
                 var con = 0;
                 var respuestas= [];
                 var itemRespuesta = {};
@@ -3729,10 +3731,10 @@ function evt_next_question_test(page_referer,correct_questions,params){
 }
 
 // Evt to show question time
-function show_timer(time,page_referer){
+function show_timer(time, page_referer){
     // var time_question = time;
     clearInterval(count_timer);
-    
+    console.log(cont);
     if(cont){
         $('.question_time').fadeIn(1000).find('em').text(time+'s');
         
