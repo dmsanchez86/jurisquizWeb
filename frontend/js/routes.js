@@ -698,6 +698,11 @@ var router = new $.mobile.Router({
                 success : function(res){
                     var data = JSON.parse(res);
                     
+                    if(data == null || data.length == 0){
+                        message('Disculpanos esta especialidad no contiene preguntas!');
+                        setTimeout(function() { back(); },2000);
+                    }
+                    
                     hide_timer();
                     
                     questions('.start_test', data);
@@ -755,7 +760,7 @@ var router = new $.mobile.Router({
                             con++;
                             
                             $('.start_test .content_question.active .answers_options input').prop('disabled', true);
-                            setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },2300);debugger;
+                            setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },2300);
                             setTimeout(function(){ 
                                 if(control_mode_test == false)
                                     evt_next_question_test('.start_test',corrects_questions);
@@ -3293,9 +3298,9 @@ function evt_validate_mode_game(data,name_level,id_game){
                                 
                                 setTimeout(function(){
                                     if(cont){
-                                        $('.start_race .question_result').fadeOut(300).css({'opacity':'0'});
-                                        
                                         var info = {};
+                                        
+                                        $('.start_race .question_result').fadeOut(300).css({'opacity':'0'});
                                         
                                         if(current_question + 1 < top_questions){
                                             info = {
@@ -3335,9 +3340,10 @@ function evt_validate_mode_game(data,name_level,id_game){
                                                     
                                                     panel_data(data.id_user);
                                                     
-                                                    evt_next_question('.start_race');
-                                                    
                                                     setTimeout(function(){
+                                                        if(control_mode_test)
+                                                            evt_next_question('.start_race');
+                                                        
                                                         $('.start_race .levels_content .level .bottom .number_questions .correct_answers').last().text((current_question)).removeClass('active');
                                                     },1300);
                                                     
@@ -3471,7 +3477,10 @@ function evt_validate_mode_game(data,name_level,id_game){
                                                 if(current_question_ + 1 < data.metadata.correct_answers){
                                                     panel_data(data.id_user);
                                                     
-                                                    evt_next_question('.start_race');
+                                                    setTimeout(function() {
+                                                        if(control_mode_test)
+                                                            evt_next_question('.start_race');
+                                                    },500);
                                                 }
                                             }
                                         });
@@ -3507,13 +3516,14 @@ function question_correct(page_referer){
     
     $(page_referer + ' .question_result .report_question').unbind('click').click(function(){
         hide_timer();
-        debugger;
-        if(page == '.start_test')
+        
+        if(page == '.start_test' || page_referer == '.start_race')
             control_mode_test = true;
         else
             control_mode_test = false;
             
         setTimeout(function(){ $('.container_btn button.send').attr('id-question',id_question); },500);
+        
         $.mobile.changePage('report_question.html',{role:'dialog',transition: 'pop'});
     });
 }
