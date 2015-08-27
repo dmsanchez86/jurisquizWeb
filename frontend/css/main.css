@@ -232,7 +232,25 @@ html {
 .start_litigation .container_btn button:hover,
 .questions .container_btn button:hover,
 .specialties .container_btn button:hover,
-.notifications .container_btn button:hover {
+.notifications .container_btn button:hover,
+.home .container_btn button:focus,
+.register .container_btn button:focus,
+.dashboard .container_btn button:focus,
+.race .container_btn button:focus,
+.start_race .container_btn button:focus,
+.duel .container_btn button:focus,
+.search_duel .container_btn button:focus,
+.duel_users .container_btn button:focus,
+.terms .container_btn button:focus,
+.test .container_btn button:focus,
+.start_test .container_btn button:focus,
+.specialty .container_btn button:focus,
+.start_specialty .container_btn button:focus,
+.litigation .container_btn button:focus,
+.start_litigation .container_btn button:focus,
+.questions .container_btn button:focus,
+.specialties .container_btn button:focus,
+.notifications .container_btn button:focus {
   background-color: #3a6667;
   text-shadow: none;
 }
@@ -472,7 +490,25 @@ html {
 .start_litigation .container_login .content button:hover,
 .questions .container_login .content button:hover,
 .specialties .container_login .content button:hover,
-.notifications .container_login .content button:hover {
+.notifications .container_login .content button:hover,
+.home .container_login .content button:focus,
+.register .container_login .content button:focus,
+.dashboard .container_login .content button:focus,
+.race .container_login .content button:focus,
+.start_race .container_login .content button:focus,
+.duel .container_login .content button:focus,
+.search_duel .container_login .content button:focus,
+.duel_users .container_login .content button:focus,
+.terms .container_login .content button:focus,
+.test .container_login .content button:focus,
+.start_test .container_login .content button:focus,
+.specialty .container_login .content button:focus,
+.start_specialty .container_login .content button:focus,
+.litigation .container_login .content button:focus,
+.start_litigation .container_login .content button:focus,
+.questions .container_login .content button:focus,
+.specialties .container_login .content button:focus,
+.notifications .container_login .content button:focus {
   background-color: #ee6200;
   text-shadow: none;
 }
@@ -717,6 +753,26 @@ html {
 .profile .status,
 .questions .status,
 .specialties .status,
+.notifications .status {
+  opacity: 0;
+}
+.dashboard .status,
+.friends .status,
+.race .status,
+.start_race .status,
+.duel .status,
+.search_duel .status,
+.duel_users .status,
+.win_duel .status,
+.test .status,
+.start_test .status,
+.specialty .status,
+.start_specialty .status,
+.litigation .status,
+.start_litigation .status,
+.profile .status,
+.questions .status,
+.specialties .status,
 .notifications .status,
 .dashboard .levels_content,
 .friends .levels_content,
@@ -738,7 +794,7 @@ html {
 .notifications .levels_content {
   float: right;
   height: 97px;
-  width: 250px;
+  width: 300px;
   display: -webkit-flex;
   display: -moz-flex;
   display: -o-flex;
@@ -1549,6 +1605,25 @@ html {
   text-shadow: none;
 }
 /* Mode-Race */
+.race .title_game,
+.duel .title_game,
+.test .title_game,
+.specialty .title_game,
+.litigation .title_game {
+  float: right;
+  margin-right: 1rem;
+  height: 100%;
+}
+.race .title_game h1,
+.duel .title_game h1,
+.test .title_game h1,
+.specialty .title_game h1,
+.litigation .title_game h1 {
+  margin: 0;
+  color: white;
+  font-family: 'DK Mango';
+  font-size: 3.3rem;
+}
 .race .content_game,
 .duel .content_game,
 .test .content_game,
@@ -2857,6 +2932,13 @@ html {
 .duel_users .wrapper .complete_questions:hover h5 span {
   color: #3a6667;
 }
+/* Start Specialty */
+.start_specialty .content_start_game {
+  margin-top: 0.5rem;
+}
+.start_specialty .content_start_game .question:after {
+  display: none;
+}
 /* Duel Users */
 .duel_users div[data-role='header'] .top_questions {
   position: absolute;
@@ -3383,7 +3465,7 @@ html {
 }
 .panel .panel_content,
 .profile .panel_content {
-  padding: 2rem .35rem 2rem;
+  padding: 0rem .35rem 2rem;
 }
 .panel .panel_content .status,
 .profile .panel_content .status {
@@ -3625,6 +3707,7 @@ html {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px;
+  display: none;
 }
 .profile .content_profile:after {
   border-color: transparent;
@@ -5065,6 +5148,7 @@ html {
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications {
   margin-bottom: 1rem;
+  opacity: 0;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification {
   margin: .25rem 0 0;
@@ -5301,7 +5385,8 @@ ol li {
   z-index: -1;
   background-color: rgba(255, 255, 255, 0.25);
 }
-.waves-effect.waves-btn-start:hover:after {
+.waves-effect.waves-btn-start:hover:after,
+.waves-effect.waves-btn-start:focus:after {
   width: 100%;
 }
 .waves-effect.waves-btn-start .waves-ripple {
@@ -5326,7 +5411,8 @@ ol li {
   z-index: -1;
   background-color: rgba(255, 255, 255, 0.25);
 }
-.waves-effect.waves-btn-login:hover:after {
+.waves-effect.waves-btn-login:hover:after,
+.waves-effect.waves-btn-login:focus:after {
   width: 100%;
 }
 .waves-effect.waves-btn-login .waves-ripple {
@@ -5871,6 +5957,7 @@ textarea.materialize-textarea {
 }
 .ui-content {
   padding: 0;
+  overflow: visible;
 }
 .ui-panel-dismiss-open.ui-panel-dismiss-position-left {
   display: none;
@@ -6046,25 +6133,36 @@ label.ui-btn {
     width: 22px;
   }
   .start_test div[data-role='header'] .top_questions,
-  .duel_users div[data-role='header'] .top_questions {
+  .duel_users div[data-role='header'] .top_questions,
+  .start_specialty div[data-role='header'] .top_questions {
     width: 230px;
   }
   .start_test div[data-role='header'] .top_questions .content_questions span,
-  .duel_users div[data-role='header'] .top_questions .content_questions span {
+  .duel_users div[data-role='header'] .top_questions .content_questions span,
+  .start_specialty div[data-role='header'] .top_questions .content_questions span {
     font-size: 3.5rem;
     line-height: 1.4;
   }
   .start_test div[data-role='header'] .top_questions .opponent .image,
-  .duel_users div[data-role='header'] .top_questions .opponent .image {
+  .duel_users div[data-role='header'] .top_questions .opponent .image,
+  .start_specialty div[data-role='header'] .top_questions .opponent .image {
     margin-top: .05rem;
   }
   .start_test div[data-role='header'] .top_questions .opponent .image img,
-  .duel_users div[data-role='header'] .top_questions .opponent .image img {
+  .duel_users div[data-role='header'] .top_questions .opponent .image img,
+  .start_specialty div[data-role='header'] .top_questions .opponent .image img {
     max-height: 45px;
   }
   .start_test div[data-role='header'] .top_questions .opponent .image span,
-  .duel_users div[data-role='header'] .top_questions .opponent .image span {
+  .duel_users div[data-role='header'] .top_questions .opponent .image span,
+  .start_specialty div[data-role='header'] .top_questions .opponent .image span {
     font-size: .8rem;
+  }
+  .start_specialty div[data-role="header"] .top_questions {
+    width: 135px!important;
+  }
+  .start_specialty div[data-role="header"] .top_questions .content_questions span {
+    font-size: 3.5rem!important;
   }
   .search_duel .content_list_users .title {
     font-size: 3.3rem;
@@ -6432,6 +6530,10 @@ label.ui-btn {
   .dashboard_admin .container .games {
     margin: 0;
   }
+  .dashboard hgroup,
+  .dashboard_admin hgroup {
+    margin: 1.5rem 0 1rem;
+  }
   .nav_button {
     -webkit-transform: scale(0.7);
     -khtml-transform: scale(0.7);
@@ -6619,6 +6721,7 @@ label.ui-btn {
   .questions .status,
   .specialties .status {
     height: 68px;
+    width: 230px;
   }
   .dashboard .status .icon_level img,
   .friends .status .icon_level img,
@@ -6753,9 +6856,6 @@ label.ui-btn {
 @media (max-width: 380px) {
   .panel .panel_content {
     padding: 1rem .35rem 2rem;
-  }
-  .dashboard hgroup {
-    margin: 2rem 0 2rem;
   }
   .friends .content_friends .friend .score_friend,
   .friends .content_friends .friend .name_friend {

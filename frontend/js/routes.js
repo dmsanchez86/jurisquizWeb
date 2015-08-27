@@ -161,7 +161,7 @@ var router = new $.mobile.Router({
             cont = true;
             e.preventDefault();
             var url = $(this).attr('data-url');
-            $.mobile.changePage(url,{role:'page',transition:'flip'});
+            $.mobile.changePage(url,{role:'page',transition:'slidefade'});
         });
     },
     dashboard_admin: function(type,match,ui){
@@ -699,7 +699,7 @@ var router = new $.mobile.Router({
                     var data = JSON.parse(res);
                     
                     if(data == null || data.length == 0){
-                        message('Disculpanos esta especialidad no contiene preguntas!');
+                        message('Disculpanos esta especialidad aun no contiene preguntas!');
                         setTimeout(function() { back(); },2000);
                     }
                     
@@ -955,7 +955,7 @@ var router = new $.mobile.Router({
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('data-url');
-            $.mobile.changePage(url,{role: 'page',transition: 'turn'});
+            $.mobile.changePage(url,{role: 'page',transition: 'fade'});
         });
     },
     start_litigation :function(type,match,ui){
@@ -2067,7 +2067,7 @@ function respuestaFinaltempPregunta(idCase){
 // Message to the toast Materialize
 function message(param){
     if(param === "welcome"){
-        Materialize.toast('<div><h3><em>!Bienvenido a Jurizquiz!</em></h3><div><div><p>Click in the button <b>"Acceder"</b> to enter the game</p></div><div><p>Or click on the button <b>"Register"</b> to enjoy the game of questions.</p></div>',2800);
+        Materialize.toast('<div><h3><em>!Bienvenido a Jurizquiz!</em></h3><div><div><p>Click en el boton <b>"Acceder"</b> para entrar al juego!</p></div><div><p>O click en el enlace <b>"Aqui"</b> para registrarse.</p></div>',2800);
     }else if(param == "null fields"){
         Materialize.toast('<div class="error"><h2>¡No Pueden Haber Campos Vaciós!</h2></div>',2800);
     }else if(param == "user isn\'t exist"){
@@ -2301,19 +2301,18 @@ function show_nav_button(){
                     success     : function(res){
                         var data = JSON.parse(res);
                         
-                        $('.notifications .content_notifications').empty().fadeOut(50);
+                        $('.notifications .content_notifications').empty();
                         
-                        // if empty notifications
-                        if(data.length == 0){
-                            setTimeout(function(){ message('¡ No tienes notificaciones !'); },200);
-                        }else{
+                        if(data.length != 0){
                             data.forEach(function(i,o){
                                 i.index = o;
                                 $('.notifications .content_notifications').append(tmpl('template_notification',i));
                             });
+                        }else{
+                            setTimeout(function(){ message('¡ No tienes notificaciones !'); },200);
                         }
                         
-                        setTimeout(function(){ $('.notifications .content_notifications').show(300); },300);
+                        setTimeout(function(){ $('.notifications .content_notifications').css('opacity','1'); },300);
                     }
                 });
             }
@@ -2378,6 +2377,9 @@ function panel_data($id){
             $('.panel .next_level span').text('Nivel '+(parseInt(data.level) + 1));
             $('.profile .next_level span').last().text('Nivel '+(parseInt(data.level) + 1));
             $('.panel .next_level img,.profile .next_level img').attr('src','img/levels/level'+(parseInt(data.level) + 1)+data.gender+'.png');
+            
+            $('.profile .content_profile').fadeIn(500);
+            $('.dashboard .status,.profile .status,.friends .status').css('opacity','1');
         }   
     });
     

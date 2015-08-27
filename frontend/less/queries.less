@@ -53,7 +53,7 @@
             }
         }
     }
-    .start_test,.duel_users{
+    .start_test,.duel_users,.start_specialty{
         div[data-role='header']{
             .top_questions{width: 230px;
                 .content_questions{
@@ -64,6 +64,15 @@
                         img{max-height: 45px;}
                         span{font-size: .8rem;}
                     }
+                }
+            }
+        }
+    }
+    .start_specialty{
+        div[data-role="header"]{
+            .top_questions{width: 135px!important;
+                .content_questions{
+                    span{font-size: 3.5rem!important;}
                 }
             }
         }
@@ -235,6 +244,7 @@
         .container{padding: 0 .5rem;
             .games{margin: 0;}
         }
+        hgroup {margin: 1.5rem 0 1rem;}
     }
     .nav_button{.transform(scale(.7));}
     .dashboard,.friends,.race,.start_race,.duel,.search_duel,.duel_users,.win_duel,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.profile,.questions,.specialties{
@@ -251,7 +261,7 @@
                 }
             }
         }
-        .status{height: 68px;
+        .status{height: 68px; width: 230px;
             .icon_level{
                 img{height: 56px;}
             }
@@ -281,9 +291,6 @@
 @media(max-width: 380px){
     .panel {
         .panel_content {padding: 1rem .35rem 2rem;}
-    }
-    .dashboard{
-        hgroup {margin: 2rem 0 2rem;}
     }
     .friends{
          .content_friends {
