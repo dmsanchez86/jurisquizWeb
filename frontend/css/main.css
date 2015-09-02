@@ -6125,12 +6125,14 @@ textarea.materialize-textarea {
   overflow-x: hidden;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question,
-.ui-page-theme-a .ui-body-inherit .edit_specialty {
+.ui-page-theme-a .ui-body-inherit .edit_specialty,
+.ui-page-theme-a .ui-body-inherit .edit_case {
   background-color: white;
   padding: 1rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .title,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .title {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .title,
+.ui-page-theme-a .ui-body-inherit .edit_case .title {
   font-family: 'DK Mango';
   font-size: 3.5rem;
   color: #ee6200;
@@ -6139,22 +6141,36 @@ textarea.materialize-textarea {
   padding-bottom: 1rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .input-field label,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .input-field label {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .input-field label,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .input-field label {
   color: #3a6667;
   left: 1rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure > div,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure > div {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure > div,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure > div {
   overflow: visible!important;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input input,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input input {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input input,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input input,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input input {
   padding-right: 3.8rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input i,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input img,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input img {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input img {
   position: absolute;
   right: 3%;
   top: -8px;
@@ -6168,18 +6184,42 @@ textarea.materialize-textarea {
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .input,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input {
   position: relative;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input i,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .input i,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input i,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input img,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .input img,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input img,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input img {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input img {
   position: absolute;
   right: 5%;
   top: -8px;
@@ -6193,14 +6233,30 @@ textarea.materialize-textarea {
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable {
   padding-left: 1.5rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li {
   position: relative;
   padding: .5rem 0;
   margin-bottom: .5rem;
@@ -6215,30 +6271,70 @@ textarea.materialize-textarea {
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:hover,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li:hover,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li:hover,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:hover {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li:hover {
   border-color: #ee6200;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:first-letter,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li:first-letter,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li:first-letter,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:first-letter {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li:first-letter {
   text-transform: uppercase;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li span:first-child:after,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li span:first-child:after,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li span:first-child:after,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li span:first-child:after {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li span:first-child:after {
   content: '';
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li i,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li i,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li i,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li i,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li img,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li img,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li img,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li img {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li img {
   position: absolute;
   right: 2%;
   top: -8px;
@@ -6251,20 +6347,36 @@ textarea.materialize-textarea {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li {
   cursor: initial;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li .last,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li .last,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li .last,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li .last {
   position: absolute;
   right: 3rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last p,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li .last p,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li .last p,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li .last p,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li .last p {
   display: inline;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last p label,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p label {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p label,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li .last p label,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li .last p label,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li .last p label,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li .last p label {
   top: -2px;
   -webkit-transform: scale(0.7);
   -khtml-transform: scale(0.7);
@@ -6274,7 +6386,8 @@ textarea.materialize-textarea {
   transform: scale(0.7);
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .container_btn button:hover,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .container_btn button:hover {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .container_btn button:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .container_btn button:hover {
   background-color: #3a6667 !important;
 }
 .ui-page-theme-a .ui-body-inherit .ui-btn {

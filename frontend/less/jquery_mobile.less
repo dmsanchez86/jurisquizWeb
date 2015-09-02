@@ -5,7 +5,7 @@
 .ui-popup-screen{z-index: 19;}
 .ui-popup>.ui-btn-right {right: 10px;top: 11px;}
 .ui-page-theme-a .ui-body-inherit {background-color: #3A6667; height: 90vh;overflow-y: scroll;overflow-x: hidden;
-    .edit_question,.edit_specialty{ background-color: white; padding: 1rem;
+    .edit_question,.edit_specialty,.edit_case{ background-color: white; padding: 1rem;
         .title{font-family: 'DK Mango';font-size: 3.5rem;color: #ee6200;text-align: center;margin: 0; padding-bottom: 1rem;}
         .form_content{
             .input-field{
@@ -13,14 +13,14 @@
             }
             .structure{
                 > div{overflow: visible!important;}
-                .multiple_choice_edit{
+                .multiple_choice_edit,.multiple_choice_edit_case{
                     .input{
                         input{padding-right: 3.8rem;}
                         i,img{position: absolute;right: 3%;top: -8px;bottom: 0;margin: auto;font-size: 1.45rem;line-height: 2.7;cursor: pointer;max-width: 18px; background-color: rgba(0,0,0,.5);
                         }
                     }
                 }
-                .order_questions_edit,.multiple_choice_edit{
+                .order_questions_edit,.multiple_choice_edit,.order_questions_edit_case,.multiple_choice_edit_case{
                     .input{position: relative;
                         i,img{position: absolute; right: 5%; top: -8px; bottom: 0; margin: auto;font-size: 1.45rem; line-height: 2.3;cursor: pointer;max-width: 18px; background-color: rgba(0,0,0,.5);
                         }
@@ -38,7 +38,7 @@
                         }
                     }
                 }
-                .multiple_choice_edit{
+                .multiple_choice_edit,.multiple_choice_edit_case{
                     .sortable{
                         li{cursor: initial;
                             .last{position:absolute; right: 3rem;

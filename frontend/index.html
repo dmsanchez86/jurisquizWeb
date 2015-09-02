@@ -459,7 +459,7 @@
                                     <li class="tab col s3">
                                         <a href="#show_questions" data-role="none">
                                             <div data-position="bottom" data-delay="50" data-tooltip="Mostrar Preguntas"><img src="img/points/list.png"></div>
-                                            <span>Mostrar</span>
+                                            <span>Preguntas</span>
                                         </a>
                                     </li>
                                     <li class="tab col s3">
@@ -639,7 +639,72 @@
                         </div>
                     </div>
                     </div>
-                <a href="#edit_question" data-transition="slidedown" data-position-to="window" class="ui-btn-right  ui-corner-all ui-shadow ui-btn-inline" data-rel="popup" aria-haspopup="true" aria-owns="transitionExample" aria-expanded="false" style="display: none"></a>
+                <div data-role="popup" id="edit_case" style="max-width:97%; width: 580px" class="ui-corner-all">
+                    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <div id="edit_case" class="col s12 edit_case">
+                        <h2 class="title">Editar Caso</h2>
+                        <div class="form_content">
+                            <form id="form_edit_case">
+                                <div class="id" style="display:none">ID <span></span></div>
+                                <div class="input-field col s12">
+                                    <input type="text" id="name_case_edit" data-role="none" placeholder="Nombre Caso"/>
+                                    <label for="name_case_edit">Nombre Caso</label>
+                                </div>
+                                <div class="input-field col s12" style="padding: 1rem 0">
+                                  <textarea id="text_litigation_edit" class="materialize-textarea" style="min-height: 12rem" data-role="none"></textarea>
+                                  <label for="text_litigation_edit" data-role="none" class="active" style="transform: translateY(-100%);">Texto Caso: </label>
+                                </div>
+                                <div class="input-field col s12" style="padding: 1rem 0">
+                                  <textarea id="case_question_edit" class="materialize-textarea" data-role="none"></textarea>
+                                  <label for="case_question_edit" data-role="none" class="active" style="transform: translateY(-100%);">Pregunta: </label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select data-role="none" id="type_question_edit_case">
+                                      <option value="">Seleccione el tipo de pregunta</option>
+                                      <option value="1">Selección Múltiple</option>
+                                      <option value="2">Si / No</option>
+                                      <option value="3">Ordenamiento</option>
+                                    </select>
+                                    <label data-role="none">Tipo Pregunta: </label>
+                                </div>
+                                <div class="input-field col s12" style="margin-top: 0">
+                                  <div class="structure">
+                                      <div class="multiple_choice_edit_case">
+                                          <div class="input">
+                                              <input type="text" name="question_choice" id="question_choice_edit_case" placeholder="Ingrese las opciones:"  style="padding-right:3.8rem;box-sizing: border-box;" data-role="none"/>
+                                              <img src="img/points/input_.png">
+                                          </div>
+                                          <ol id="sortable_choice_edit_case" class="sortable"></ol>
+                                      </div>
+                                      <div class="yes_no_edit_case">
+                                            <span>Respuesta</span>
+                                            <p>
+                                              <input class="with-gap" name="yes_no_edit_case" type="radio" id="yes_answer_edit_case" data-role="none" value="si"/>
+                                              <label for="yes_answer_edit">Si</label>&nbsp;&nbsp;&nbsp;
+                                              <input class="with-gap" name="yes_no_edit" type="radio" id="no_answer_edit" data-role="none" value="no"/>
+                                              <label for="no_answer_edit">No</label>
+                                            </p>
+                                      </div>
+                                      <div class="order_questions_edit_case">
+                                          <div class="input">
+                                              <input type="text" name="question_sortable" id="question_sortable_edit_case" placeholder="Ingrese las preguntas" style="padding-right:3.8rem"/>
+                                              <img src="img/points/input_.png">
+                                          </div>
+                                          <ol id="sortable_edit_case" class="sortable"></ol>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#modify_case">Modificar Caso</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                    
+                <a href="#edit_question" data-transition="fade" data-position-to="window" class="ui-btn-right  ui-corner-all ui-shadow ui-btn-inline" data-rel="popup" aria-haspopup="true" aria-owns="transitionExample" aria-expanded="false" style="display: none"></a>
+                
+                <a href="#edit_case" data-transition="fade" data-position-to="window" class="ui-btn-right  ui-corner-all ui-shadow ui-btn-inline" data-rel="popup" aria-haspopup="true" aria-owns="transitionExample" aria-expanded="false" style="display: none"></a>
             </div>
         </div>
 
