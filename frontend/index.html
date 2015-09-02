@@ -462,6 +462,12 @@
                                             <span>Mostrar</span>
                                         </a>
                                     </li>
+                                    <li class="tab col s3">
+                                        <a href="#show_cases" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Mostrar Preguntas"><img src="img/points/list.png"></div>
+                                            <span>Casos</span>
+                                        </a>
+                                    </li>
                                   </ul>
                                 </div>
                                 <div class="forms_contents">
@@ -549,8 +555,24 @@
                                             <label for="specialty_filter" style="color:#3a6667">Filtrar por especialidad:</label>
                                             <select data-role="none" id="specialty_filter"></select>
                                         </div>
-                                        <ul class="content_question_show" id="content_question_show"></ul>
+                                        <ul class="content_question_show" id="content_question_show" style="min-height: 550px"></ul>
                                         <div class="container_questions" id="container_questions"></div>
+                                    </div>
+                                    <div id="show_cases" class="col s12 show_cases">
+                                        <h2 class="tab_title">Casos Litigio</h2>
+                                        <h4>Filtrar Por:</h4>
+                                        <div>
+                                            <p>
+                                              <input class="with-gap" name="active_questions" type="radio" id="all__questions" data-role="none" value="all" checked/>
+                                              <label for="all__questions">Todos</label>&nbsp;
+                                              <input class="with-gap" name="active_questions" type="radio" id="active_questions" data-role="none" value="actives"/>
+                                              <label for="active_questions">Activos</label>&nbsp;
+                                              <input class="with-gap" name="active_questions" type="radio" id="inactive_questions" data-role="none" value="inactives"/>
+                                              <label for="inactive_questions">Inactivos</label>
+                                            </p>
+                                        </div>
+                                        <ul class="content_cases_show" id="content_cases_show" style="min-height: 550px"></ul>
+                                        <div class="container_cases" id="container_questions"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1517,6 +1539,50 @@
                 </div>
                 <% } %>
                 <nav class="menu_question">
+                    <ul>
+                        <% if(state == 'active'){ %>
+                            <li class="desactivate" title="Desactivar"><span><img src="img/points/warning_.png"></span></li>
+                        <% }else{ %>
+                            <li class="activate" title="Activar"><span><img src="img/points/done_.png"></span></li>
+                        <% } %>
+                        <li class="edit" title="Editar Pregunta"><span><img src="img/points/edit_.png"></span></li>
+                    </ul>
+                </nav>
+            </li>
+        </script>
+        <script type="text/html" id="all_cases_show">
+            <li class="case">
+                <% var options = options_question.split('/'); %>
+                
+                <div>
+                    <span class="title_litigation"><b>Titulo Caso: </b><%= litigio_titulo %></span>
+                </div>
+                <div>
+                    <span class="text_litigation"><b>Texto Caso: </b><%= litigio_text %></span>
+                </div>
+                
+                <div>
+                    <span class="name"><b>Pregunta:</b> <%= question %></span><span class="id" style="display:none"><b>ID:</b> <%= id %></span>
+                </div>
+                <div>
+                    <span class="type_question"><b>Tipo de Pregunta:</b> <%= t_question %></span>
+                </div>
+                <div>
+                    <% var name_type = t_question == "Ordenamiento" ? 'Orden Correcto: ' : 'Respuesta Correcta: '; %>
+                    <span class="answer_question"><b><%= name_type %></b> <%= correct_answer %></span>
+                </div>
+                <% if(t_question == "Selección múltiple"){ %>
+                <div>
+                    <span class="options_question"><b>Opciones:</b></span>
+                    <ol>
+                        <% for(var i = 0; i < options.length; i++){ %>
+                            <% if(options[i] != correct_answer) %>
+                                <li><%= options[i] %></li>
+                        <% } %>
+                    </ol>
+                </div>
+                <% } %>
+                <nav class="menu_case">
                     <ul>
                         <% if(state == 'active'){ %>
                             <li class="desactivate" title="Desactivar"><span><img src="img/points/warning_.png"></span></li>

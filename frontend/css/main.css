@@ -4155,10 +4155,20 @@ html {
   -o-transform: scale(0.7);
   transform: scale(0.7);
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show {
   display: none;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case {
   position: relative;
   padding: 1rem;
   margin-bottom: .15rem;
@@ -4189,24 +4199,89 @@ html {
   -o-perspective: 600px;
   perspective: 600px;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question > div {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question > div,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question > div,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question > div,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question > div,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case > div,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case > div,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case > div,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case > div {
   padding: .05rem .15rem;
   word-break: break-word;
   word-wrap: break-word;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question span b {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case span b {
   color: #3a6667;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question ol {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question ol,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question ol,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question ol,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question ol,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case ol,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case ol,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case ol,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case ol {
   margin-top: .5rem;
   padding-left: 1.5rem;
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover span b,
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus span b {
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus span b {
   color: #ef863e;
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question,
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question {
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus .menu_case {
   background-color: rgba(239, 134, 62, 0.81);
   -webkit-transform: translatex(0);
   -khtml-transform: translatex(0);
@@ -4216,10 +4291,55 @@ html {
   transform: translatex(0);
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question ul li i,
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question ul li i {
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus .menu_case ul li i {
   color: #323232;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case {
   position: absolute;
   background-color: #3a6667;
   right: 0;
@@ -4245,10 +4365,40 @@ html {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul {
   height: 100%;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li {
   min-height: 30px;
   max-height: 35px;
   float: left;
@@ -4256,24 +4406,84 @@ html {
   text-align: center;
   cursor: pointer;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li:first-child:not(.desactivate) span i {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li:first-child:not(.desactivate) span i {
   font-weight: bold;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li span {
   float: left;
   min-height: 30px;
   max-height: 35px;
   width: 100%;
   display: block;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span i {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li span i {
   color: #000;
   font-size: 1.15rem;
   line-height: 1;
   vertical-align: top;
   padding-top: .45rem;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span img {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li span img {
   max-width: 23px;
   vertical-align: 5px;
 }
@@ -5403,35 +5613,40 @@ span[contenteditable] br {
 .container_questions,
 .container_specialties,
 .list_users_content,
-.paginator_notifications {
+.paginator_notifications,
+.container_cases {
   text-align: center;
   margin-top: .5rem;
 }
 .container_questions .jp-current,
 .container_specialties .jp-current,
 .list_users_content .jp-current,
-.paginator_notifications .jp-current {
+.paginator_notifications .jp-current,
+.container_cases .jp-current {
   font-weight: bold;
   color: #ef863e;
 }
 .container_questions .jp-previous,
 .container_specialties .jp-previous,
 .list_users_content .jp-previous,
-.paginator_notifications .jp-previous {
+.paginator_notifications .jp-previous,
+.container_cases .jp-previous {
   display: inline-block;
   margin-right: .5rem;
 }
 .container_questions .jp-next,
 .container_specialties .jp-next,
 .list_users_content .jp-next,
-.paginator_notifications .jp-next {
+.paginator_notifications .jp-next,
+.container_cases .jp-next {
   display: inline-block;
   margin-left: .5rem;
 }
 .container_questions a,
 .container_specialties a,
 .list_users_content a,
-.paginator_notifications a {
+.paginator_notifications a,
+.container_cases a {
   color: #3a6667;
   cursor: pointer;
 }
@@ -5439,10 +5654,12 @@ span[contenteditable] br {
 .container_specialties a:hover,
 .list_users_content a:hover,
 .paginator_notifications a:hover,
+.container_cases a:hover,
 .container_questions a:focus,
 .container_specialties a:focus,
 .list_users_content a:focus,
-.paginator_notifications a:focus {
+.paginator_notifications a:focus,
+.container_cases a:focus {
   color: #ef863e;
 }
 .ui-page-theme-a a:visited,

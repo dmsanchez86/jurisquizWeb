@@ -626,9 +626,9 @@
                         }
                     }
                 }
-                .show_questions{
-                    .content_question_show{ display: none;
-                        .question{position: relative;padding: 1rem; margin-bottom: .15rem; box-shadow: 0 0 1px 0 #3a6667 inset; .border_radius(1px);.transition();.perspective_origin(50% 50%);overflow: hidden; .perspective(600px);
+                .show_questions,.show_cases{
+                    .content_question_show,.content_cases_show{ display: none;
+                        .question,.case{position: relative;padding: 1rem; margin-bottom: .15rem; box-shadow: 0 0 1px 0 #3a6667 inset; .border_radius(1px);.transition();.perspective_origin(50% 50%);overflow: hidden; .perspective(600px);
                             > div{padding: .05rem .15rem;.word_wrap();}
                             span{
                                 b{color: @btn_start;}
@@ -638,7 +638,7 @@
                                 span{
                                     b{color: @before_color;}
                                 }
-                                .menu_question{background-color: rgba(239, 134, 62, 0.81);.transform(translatex(0));
+                                .menu_question,.menu_case{background-color: rgba(239, 134, 62, 0.81);.transform(translatex(0));
                                     ul{
                                         li{
                                             i{color: #323232;}
@@ -646,7 +646,7 @@
                                     }
                                 }
                             }
-                            .menu_question{position: absolute; background-color: @btn_start; right: 0; top: 0; width: 27px; height: 100%;.transform_origin(right center);.transform(translatex(110%)); .transition(all .3s  ease);
+                            .menu_question,.menu_case{position: absolute; background-color: @btn_start; right: 0; top: 0; width: 27px; height: 100%;.transform_origin(right center);.transform(translatex(110%)); .transition(all .3s  ease);
                                 ul{ height: 100%;
                                     li{ min-height: 30px; max-height: 35px; float: left; width: 100%;text-align: center; 
                                         &:first-child:not(.desactivate){
@@ -887,7 +887,7 @@
 span[contenteditable] br {display: none;}
 
 /* Paginator questions */
-.container_questions,.container_specialties,.list_users_content,.paginator_notifications{ text-align: center; margin-top: .5rem;
+.container_questions,.container_specialties,.list_users_content,.paginator_notifications,.container_cases{ text-align: center; margin-top: .5rem;
     .jp-current{font-weight: bold;color: @before_color;}
     .jp-previous{display: inline-block;margin-right: .5rem;}
     .jp-next{display: inline-block;margin-left: .5rem;}
