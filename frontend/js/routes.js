@@ -762,7 +762,7 @@ var router = new $.mobile.Router({
                             respuestas.push(JSON.stringify(itemRespuesta));
                             
                             ++corrects_questions;
-                            //$(this).next().addClass('correct_answer');
+                            $(this).next().addClass('correct_answer');
                         }else{
                             setTimeout(function() { question_status('.start_test','incorrect'); },800);
                             itemRespuesta.pregunta = answer_;
@@ -774,11 +774,11 @@ var router = new $.mobile.Router({
                             
                             //lista de respuestas
                             opciones.each(function(indice, elemento) {
-                                //if ($(elemento).val() === correct_answer)
-                                   //$(elemento).next().addClass('correct_answer');
+                                if ($(elemento).val() === correct_answer)
+                                   $(elemento).next().addClass('correct_answer');
                             });
                             
-                            //$(this).next().addClass('incorrect_answer');
+                            $(this).next().addClass('incorrect_answer');
                         }
                         if(canPreguntas > con){
                             con++;
@@ -3143,6 +3143,7 @@ function evt_update_question(obj){
                 evt_all_questions_show('all',null);
                 
                 setTimeout(function(){
+                    localStorage.removeItem('questions');
                     message(data.message);
                     reset_form_new_question();
                     $('button[data-url="#cancel_question"]').click();
@@ -3709,7 +3710,11 @@ function evt_validate_mode_game(data,name_level,id_game){
                             
                             // if the question is correct
                             if(answer == correct_answer){
-                                question_status('.start_race','correct');
+                                $(this).next().addClass('correct_answer');
+                                
+                                setTimeout(function(){
+                                    question_status('.start_race','correct');
+                                },1000);
                                 
                                 setTimeout(function(){
                                     if(cont){
@@ -3763,7 +3768,18 @@ function evt_validate_mode_game(data,name_level,id_game){
                                     }
                                 },4000);
                             }else{
-                                question_status('.start_race','incorrect');
+                                var opciones = $('.start_race .content_question.active .answers_options .answer input');
+                                
+                                //lista de respuestas
+                                opciones.each(function(indice, elemento) {
+                                    if ($(elemento).val() === correct_answer)
+                                       $(elemento).next().addClass('correct_answer');
+                                });
+                                
+                                $(this).next().addClass('incorrect_answer');
+                                
+                                setTimeout(function(){ question_status('.start_race','incorrect'); },1000);
+                                
                                 setTimeout(function(){ 
                                     $('.start_race .question_result').fadeOut(300).css({'opacity':'0'});
                                     setTimeout(function(){ evt_next_question('.start_race'); },500);
