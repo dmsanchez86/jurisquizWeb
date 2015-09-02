@@ -923,9 +923,8 @@ var router = new $.mobile.Router({
                 //cantidad de Preguntas
                 var canPreguntas = $('#content_startSpeciality .content_question').length;
                 $('.start_specialty div[data-role="header"] .top_questions .content_questions .rank').text((canPreguntas));
-                
                 $('#content_startSpeciality').css({'display':'block','opacity':'1'});
-                $('#content_startSpeciality .content_question').eq(con).addClass('active').fadeIn(500);
+                $('#content_startSpeciality .content_question').eq(con - 1).addClass('active').fadeIn(500);
                 $('.start_specialty .top_questions').fadeIn(500);
 
                 $('#content_startSpeciality .content_question input[type="radio"]').unbind('click').click(function(e){
@@ -936,7 +935,9 @@ var router = new $.mobile.Router({
                     var correct_answer = $('#content_startSpeciality .content_question.active').attr('correct-answer');
                     
                     if(respuesta === correct_answer){
-                        setTimeout(function() { question_status('.start_specialty','correct'); },800);
+                        $(this).next().addClass('correct_answer');
+                        
+                        setTimeout(function() { question_status('.start_specialty','correct'); },1000);
                         itemRespuesta.pregunta = question;
                         itemRespuesta.respuesta= respuesta;
                         itemRespuesta.correcta = true;
@@ -944,7 +945,17 @@ var router = new $.mobile.Router({
                         respuestas.push(JSON.stringify(itemRespuesta));
                        
                     }else{
-                        setTimeout(function() { question_status('.start_specialty','incorrect'); },800);
+                        var opciones = $('.start_specialty .content_question.active .answers_options .answer input');
+                                
+                        //lista de respuestas
+                        opciones.each(function(indice, elemento) {
+                            if ($(elemento).val() === correct_answer)
+                               $(elemento).next().addClass('correct_answer');
+                        });
+                        
+                        $(this).next().addClass('incorrect_answer');
+                        
+                        setTimeout(function() { question_status('.start_specialty','incorrect'); },1000);
                         itemRespuesta.pregunta = question;
                         itemRespuesta.respuesta= respuesta;
                         itemRespuesta.correcta = false;
@@ -953,22 +964,24 @@ var router = new $.mobile.Router({
 
                     if(canPreguntas + 1 > con){
                         var current = $('#content_startSpeciality .content_question.active');
-                        $('#content_startSpeciality .content_question').removeClass('active').fadeOut(500);
+                        
+                        setTimeout(function(){ $('#content_startSpeciality .content_question').removeClass('active').fadeOut(500); },500);
+                        
                         con++;
                         $('.start_specialty .content_start_game').attr('question', (con));
                         setTimeout(function(){
                             setTimeout(function(){
-                                $('.start_specialty .question_result').fadeOut(300).css({'opacity':'0'});
+                                $('.start_specialty .question_result').fadeOut(500).css({'opacity':'0'});
                             },3900);
                             setTimeout(function(){
-                                $('#content_startSpeciality .content_question').eq(con - 1).addClass('active').fadeIn(500);
+                                $('#content_startSpeciality .content_question').eq(con - 1).addClass('active').fadeIn(600);
                                 $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((con));
                             },4000);
                         }, 1000);
                        
                     }
-
-                    if(canPreguntas + 1 == con){
+                    
+                    if(canPreguntas + 1 == con || con >= 11){debugger
                         respuestas.forEach(function(index,element){
                             $("#result_specialty tbody").append(tmpl("template_each_finalGame", JSON.parse(index)));
                         });
