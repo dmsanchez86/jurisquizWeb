@@ -3513,14 +3513,14 @@ function load_cases(filter,ref){
                 $(".content_cases_show").append(tmpl("all_cases_show", i));
                 
                 // click to filter cases for inactives
-                $('.menu_case .desactivate').unbind('click').click(function(){
+                $('.menu_case .desactivate').unbind('click').click(function(){debugger;
                     var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     
                     evt_case('active',id);
                 });
                 
                 // Click to filter cases for actives
-                $('.menu_case .activate').unbind('click').click(function(){
+                $('.menu_case .activate').unbind('click').click(function(){debugger;
                     var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     
                     evt_case('inactive',id);
@@ -3970,7 +3970,7 @@ function evt_question(param, $id){
 
 // Evt to activate or deactivate case
 function evt_case(param, $id){
-    
+    debugger;
     if(param == "inactive")
         loader('Activando Caso');
     else
@@ -3978,7 +3978,7 @@ function evt_case(param, $id){
       
     // ajax to change state question  
     $.ajax({
-        url         : webService + 'case/' + param,
+        url         : webService + 'case_data/' + param,
         type        : 'POST',
         data        : {
             id      : $id
