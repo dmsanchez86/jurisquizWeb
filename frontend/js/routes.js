@@ -723,7 +723,7 @@ var router = new $.mobile.Router({
         var $id_specialty = 1;
         var nameSpecialty = "";
         
-        list = JSON.parse(listSpecialties('actives'));
+        list = listSpecialties('actives');
         
         list.forEach(function(element,index){
             arrayId.push(element.id);
@@ -738,7 +738,7 @@ var router = new $.mobile.Router({
 
         $('.start_test .number_questions').text('1');
         $('.start_test .content_start_game').attr('question','1');
-        $('.start_test .wrapper > div').fadeOut(50);
+        $('.start_test .wrapper > div').fadeOut(500);
         $('.start_test .wrapper .start').fadeIn(500);
         $("#result_test tbody").empty();
         
@@ -746,15 +746,15 @@ var router = new $.mobile.Router({
         $('button[data-url="start_mode_game"]').unbind('click').click(function(){
             cont = true;
             
-            $('.name_specialty span').text('Especialidad: '+nameSpecialty).parent().show();
-            $('.start_test .wrapper .start').fadeOut(500);
+            $('.start_test .wrapper .start').fadeOut(50);
             
             loader('Cargando preguntas');
             
             setTimeout(function(){
+                $('.name_specialty span').text('Especialidad: ' + nameSpecialty).parent().show();
                 $('.start_test div[data-role="header"] .top_questions').fadeIn(500);
                 $('.start_test .wrapper .content_start_game').css({'display':'block','opacity':'1'});
-            },500);
+            },1000);
 
             // ajax to find question by id
             $.ajax({
@@ -790,76 +790,77 @@ var router = new $.mobile.Router({
                     if(canPreguntas < 10)
                         $('.start_test .rank').text(canPreguntas);
 
-                    $('.start_test .content_question').addClass('test_options');
-                    content_questions.eq(0).addClass('active').fadeIn(500);
-                    show_timer(15, '.start_test');
-                    
-                    // Click in the answers options
-                    $('.start_test .content_question.test_options input[type=radio]').unbind('click').click(function(e){
-                        hide_timer();
-                        var answer_ = $('.start_test .content_question.test_options.active input[type=radio]:checked').val();
-                        var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
+                    setTimeout(function() {
+                        $('.start_test .content_question').addClass('test_options');
+                        content_questions.eq(0).addClass('active').css({'display':'block','opacity':'1'});
+                        show_timer(15, '.start_test');
                         
-                        control_mode_test = false;
-                        if(answer_ == correct_answer){
-                            setTimeout(function() { question_status('.start_test', 'correct'); },800);
-                            points = numRespCorrect++ * 0.5;
-                            itemRespuesta.pregunta = answer_;
-                            itemRespuesta.respuesta= correct_answer;
-                            itemRespuesta.correcta = true;
-                            respuestas.push(JSON.stringify(itemRespuesta));
-                            
-                            ++corrects_questions;
-                            $(this).next().addClass('correct_answer');
-                        }else{
-                            setTimeout(function() { question_status('.start_test','incorrect'); },800);
-                            itemRespuesta.pregunta = answer_;
-                            itemRespuesta.respuesta= correct_answer;
-                            itemRespuesta.correcta = false;
-                            respuestas.push(JSON.stringify(itemRespuesta));
-                            
-                            var opciones = $('.start_test .content_question.test_options.active .answers_options .answer input');
-                            
-                            //lista de respuestas
-                            opciones.each(function(indice, elemento) {
-                                if ($(elemento).val() === correct_answer)
-                                   $(elemento).next().addClass('correct_answer');
-                            });
-                            
-                            $(this).next().addClass('incorrect_answer');
-                        }
-                        if(canPreguntas > con){
-                            con++;
-                            
-                            
-                            setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },4000);
-                            setTimeout(function(){ 
-                                if(control_mode_test == false)
-                                    evt_next_question_test('.start_test',corrects_questions);
-                            },4000);
-                        }
-                        
-                        if(con == 10 || con == top){
+                        // Click in the answers options
+                        $('.start_test .content_question.test_options input[type=radio]').unbind('click').click(function(e){
                             hide_timer();
-                            $('#points').text(points);
-                            $('#status').removeClass('success error');
+                            var answer_ = $('.start_test .content_question.test_options.active input[type=radio]:checked').val();
+                            var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
                             
-                            if(points >=3) 
-                                $('#status').text("Pasaste el examen!").addClass('success');
-                            else
-                                $('#status').text("No aprobaste el examen!").addClass('error');
-                                 
-                            $('.start_test .wrapper .content_start_game').css({'display':'block','opacity':'1'});
+                            control_mode_test = false;
+                            if(answer_ == correct_answer){
+                                setTimeout(function() { question_status('.start_test', 'correct'); },800);
+                                points = numRespCorrect++ * 0.5;
+                                itemRespuesta.pregunta = answer_;
+                                itemRespuesta.respuesta= correct_answer;
+                                itemRespuesta.correcta = true;
+                                respuestas.push(JSON.stringify(itemRespuesta));
+                                
+                                ++corrects_questions;
+                                $(this).next().addClass('correct_answer');
+                            }else{
+                                setTimeout(function() { question_status('.start_test','incorrect'); },800);
+                                itemRespuesta.pregunta = answer_;
+                                itemRespuesta.respuesta= correct_answer;
+                                itemRespuesta.correcta = false;
+                                respuestas.push(JSON.stringify(itemRespuesta));
+                                
+                                var opciones = $('.start_test .content_question.test_options.active .answers_options .answer input');
+                                
+                                //lista de respuestas
+                                opciones.each(function(indice, elemento) {
+                                    if ($(elemento).val() === correct_answer)
+                                       $(elemento).next().addClass('correct_answer');
+                                });
+                                
+                                $(this).next().addClass('incorrect_answer');
+                            }
+                            if(canPreguntas > con){
+                                con++;
+                                
+                                
+                                setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },4000);
+                                setTimeout(function(){ 
+                                    if(control_mode_test == false)
+                                        evt_next_question_test('.start_test',corrects_questions);
+                                },4000);
+                            }
                             
-                            cont = false;
-                            respuestas.forEach(function(index,element){
-                                var compiled = tmpl("template_each_finalGame", JSON.parse(index));
-                                $("#result_test tbody").append(compiled);
-                                setTimeout(function(){ $("#result_test").fadeIn(500); show_nav_button(); }, 4000);
-                            });
-                        }
-                    });
-                    
+                            if(con == 10 || con == top){
+                                hide_timer();
+                                $('#points').text(points);
+                                $('#status').removeClass('success error');
+                                
+                                if(points >=3) 
+                                    $('#status').text("Pasaste el examen!").addClass('success');
+                                else
+                                    $('#status').text("No aprobaste el examen!").addClass('error');
+                                     
+                                $('.start_test .wrapper .content_start_game').css({'display':'block','opacity':'1'});
+                                
+                                cont = false;
+                                respuestas.forEach(function(index,element){
+                                    var compiled = tmpl("template_each_finalGame", JSON.parse(index));
+                                    $("#result_test tbody").append(compiled);
+                                    setTimeout(function(){ $("#result_test").fadeIn(500); show_nav_button(); }, 4000);
+                                });
+                            }
+                        });
+                    }, 1000);
                 }
             });
         });
@@ -2360,6 +2361,7 @@ var router = new $.mobile.Router({
 
 //Lista de especialidades
 function listSpecialties(filter){
+    var specialties = [];
     var data = $.ajax({
       method    : "POST",
       async     : false,
@@ -2367,9 +2369,20 @@ function listSpecialties(filter){
       data      : null,
     }).done(function(res){
         data = JSON.parse(res);
+        console.log(data);
+        console.log(data.responseText);
+        
+        data.forEach(function(i,o){
+            if(o < data.length - 1){
+                specialties[o] = i;
+            }
+        });
+        
+        console.log(specialties);
+        
     });
     
-    return data.responseText;
+    return specialties;
 }
 
 // Change the icon mode game depending the gender user
@@ -2422,7 +2435,7 @@ function respuestaFinaltempPregunta(idCase){
     var itemRespuesta = {};
     itemRespuesta.pregunta = question;
     itemRespuesta.respuesta= correct_answer;
-    itemRespuesta.correcta = false;
+    itemRespuesta.correcta = true;
     
     respuestas.push(JSON.stringify(itemRespuesta));
     
@@ -4463,7 +4476,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                             }
                         }
                         
-                        // If the next question is type 3 
+                        // If the next question is type 3 
                         if($('.start_race .content_question.active').next().attr('type-question') == 3 )
                            $('.sortable_answer').sortable();
                     });
@@ -4612,7 +4625,11 @@ function question_status(page_referer,state){
     hide_timer();
     var id_question = $(page_referer + ' .content_question.active').attr('id-question');
     
-    if(state == 'correct'){
+    if(state == 'correct' && page_referer == ".start_test"){
+        $(page_referer + ' .question_result .punctuation em').text('0.5').parent().parent().css('background-image','url(img/done.png)');
+    }if(state == 'correct' && page_referer == ".start_specialty"){
+        $(page_referer + ' .question_result .punctuation em').text('0').parent().parent().css('background-image','url(img/done.png)');
+    }else if(state == 'correct'){
         $(page_referer + ' .question_result .punctuation em').text('1').parent().parent().css('background-image','url(img/done.png)');
     }else{
         $(page_referer + ' .question_result .punctuation em').text('0').parent().parent().css('background-image','url(img/error.png)');
