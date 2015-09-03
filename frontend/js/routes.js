@@ -359,10 +359,6 @@ var router = new $.mobile.Router({
         evt_logout();
 
         hide_timer();
-        
-        questions('.start_race', null);
-        
-        validate_questions();
 
         $('.start_race .levels_content').empty();
         
@@ -388,15 +384,23 @@ var router = new $.mobile.Router({
                     $('.start_race .levels_content').append(tmpl('start_race_categories',i));
                 });
                 
-                var obj = {
-                    id  : localStorage.getItem('id_user')
-                };
-                
-                evt_validate_mode_game(obj,$name_level,$id_level_game);
-                
                 $('.loader').fadeOut(1000);
             }
         });
+        
+        var obj = {
+            id  : localStorage.getItem('id_user')
+        };
+        
+        evt_validate_mode_game(obj,$name_level,$id_level_game);
+        
+        var metadata = {
+            id_level    : $id_level_game
+        };
+        
+        questions('.start_race', null,metadata);
+        
+        validate_questions();
     },
     duel: function(type,match,ui){
         icon_mode_game('.duel','duel');
@@ -4152,15 +4156,27 @@ function evt_specialty(param, $id){
 }
 
 // Evt to get all questions any category
-function questions(page_referer,array){
+function questions(page_referer,array,metadata){
     if(array==null){
+        var $data = {};
+        
+        if(metadata.id_level == 1)
+            $data.load_questions = 'ejecutivo';
+        else if(metadata.id_level == 2)
+            $data.load_questions = 'legislativo';
+        else if(metadata.id_level == 3)
+            $data.load_questions = 'judicial';
+        
+        console.log($data);
+        
         // Ajax to get all questions with state active
         $.ajax({
             url         : webService + 'all_questions/actives',
             type        : 'POST',
-            data        : null,
+            data        : $data,
             success     : function(res){
                 var data = JSON.parse(res);
+                console.log(data);
                 
                 $(page_referer + ' .content_start_game').empty();
                 
@@ -4251,8 +4267,10 @@ function evt_validate_mode_game(data,name_level,id_game){
         data        : data,
         success     : function(res){
             $('.start_race .wrapper > div').hide(50); // hide all divs
+            debugger
             
             data = JSON.parse(res);
+            console.log(data);
             
             var top_questions = 0;
             
@@ -4407,12 +4425,13 @@ function evt_validate_mode_game(data,name_level,id_game){
                 });
             }else{ // when the all levels are complete
                 top_questions = $('#start_race').find('.levels_content').find('.level.active').find('.number_questions').text();
+                
                 $('.start_race .wrapper > div').hide(10);
                 
                 $('.start_race .wrapper .start').fadeIn(500);
                     
                 // button click to start to reply the questions mode race
-                $('button[data-url="start_mode_game"]').unbind('click').click(function(){
+                $('button[data-url="start_mode_game"]').unbind('click').click(function(){debugger
                     loader('Cargando...');
                     
                     cont = true;
@@ -4583,7 +4602,7 @@ function question_status(page_referer,state){
 }
 
 // Event to paint the current level
-function evt_current_level(data,id){
+function evt_current_level(data,id){debugger
     for(var i = 0; i < data.length; i++){
         if(data[i].id_level_game == 1){
             if(data[i].id_level_category == 1){
