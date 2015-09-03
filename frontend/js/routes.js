@@ -292,6 +292,8 @@ var router = new $.mobile.Router({
 
         hide_timer();
         
+        evt_notifications();
+        
         var $id = localStorage.getItem('id_user');
         
         panel_data($id);
@@ -313,6 +315,12 @@ var router = new $.mobile.Router({
                 
                 data.forEach(function(i,o){
                     i.index = o;
+                    
+                    if(i.name == "")
+                        i.name_user = 'Usuario';
+                    else
+                        i.name_user = i.name;
+                    
                     $(".content_friends").append(tmpl("each_user", i));
                 });
                 
@@ -352,6 +360,8 @@ var router = new $.mobile.Router({
         evt_logout();
         
         hide_timer();
+        
+        evt_notifications();
         
         // Evt buttons to dashboard
         $('.content_game button').unbind('click').click(function(e){
@@ -431,6 +441,8 @@ var router = new $.mobile.Router({
 
         hide_timer();
         
+        evt_notifications();
+        
         // Event to start mode duel
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
@@ -449,6 +461,8 @@ var router = new $.mobile.Router({
         
         hide_timer();
         
+        evt_notifications();
+        
         // ajax to get all user less my user
         $.ajax({
             url         : webService + 'users/users_less_me',
@@ -465,6 +479,12 @@ var router = new $.mobile.Router({
                 
                 users.forEach(function(i,o){
                     i.index = o;
+                    
+                    if(i.name == '')
+                        i.name_user = "usuario";
+                    else
+                        i.name_user = i.name;
+                    
                     $('.search_duel .list_users').append(tmpl('each_user_duel',i));
                 });
                 
@@ -675,6 +695,8 @@ var router = new $.mobile.Router({
         
         hide_timer();
         
+        evt_notifications();
+        
         // Event to start mode test
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
@@ -855,6 +877,8 @@ var router = new $.mobile.Router({
 
         evt_logout();
         
+        evt_notifications();
+        
         $(".listTematica").css('opacity','0').empty();
 
         $('.content_game button').unbind('click').click(function(e){
@@ -1034,6 +1058,8 @@ var router = new $.mobile.Router({
         evt_logout();
         
         hide_timer();
+        
+        evt_notifications();
         
         // event to start game litigation
         $('.content_game button').unbind('click').click(function(e){
@@ -1283,6 +1309,8 @@ var router = new $.mobile.Router({
         evt_logout();
         
         hide_timer();
+        
+        evt_notifications();
         
         // hide panels when role is admin
         if(localStorage.getItem('role_user') == 'admin')

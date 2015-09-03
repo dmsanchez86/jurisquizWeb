@@ -7631,6 +7631,44 @@ label.ui-btn {
   .specialties .status .points:before {
     display: none;
   }
+  .dashboard .status .position_user,
+  .friends .status .position_user,
+  .race .status .position_user,
+  .start_race .status .position_user,
+  .duel .status .position_user,
+  .search_duel .status .position_user,
+  .duel_users .status .position_user,
+  .win_duel .status .position_user,
+  .test .status .position_user,
+  .start_test .status .position_user,
+  .specialty .status .position_user,
+  .start_specialty .status .position_user,
+  .litigation .status .position_user,
+  .start_litigation .status .position_user,
+  .profile .status .position_user,
+  .questions .status .position_user,
+  .specialties .status .position_user {
+    font-size: 1.5rem;
+  }
+  .dashboard .status .position_user em,
+  .friends .status .position_user em,
+  .race .status .position_user em,
+  .start_race .status .position_user em,
+  .duel .status .position_user em,
+  .search_duel .status .position_user em,
+  .duel_users .status .position_user em,
+  .win_duel .status .position_user em,
+  .test .status .position_user em,
+  .start_test .status .position_user em,
+  .specialty .status .position_user em,
+  .start_specialty .status .position_user em,
+  .litigation .status .position_user em,
+  .start_litigation .status .position_user em,
+  .profile .status .position_user em,
+  .questions .status .position_user em,
+  .specialties .status .position_user em {
+    font-size: 3.5rem;
+  }
   .ui-header {
     min-height: 70px;
   }
