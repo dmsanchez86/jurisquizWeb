@@ -323,6 +323,22 @@ var router = new $.mobile.Router({
                 });
             }
         });
+        
+        // ajax to get current position user 
+        $.ajax({
+            url     : webService + 'position_user',
+            type    : 'POST',
+            data    : {
+                id  : localStorage.getItem('id_user')
+            },
+            success : function(res){
+                var data = JSON.parse(res);
+                
+                console.log(data);
+                
+                $('.friends .position_user').find('em').text( ( parseInt( data[0].position ) + 1) );
+            }
+        });
     },
     race: function(type,match,ui){
         icon_mode_game('.race','race');
@@ -384,15 +400,15 @@ var router = new $.mobile.Router({
                     $('.start_race .levels_content').append(tmpl('start_race_categories',i));
                 });
                 
+                var obj = {
+                    id  : localStorage.getItem('id_user')
+                };
+                
+                evt_validate_mode_game(obj,$name_level,$id_level_game);
+                
                 $('.loader').fadeOut(1000);
             }
         });
-        
-        var obj = {
-            id  : localStorage.getItem('id_user')
-        };
-        
-        evt_validate_mode_game(obj,$name_level,$id_level_game);
         
         var metadata = {
             id_level    : $id_level_game
@@ -543,6 +559,13 @@ var router = new $.mobile.Router({
                 },
                 success : function(res){
                     var data = JSON.parse(res);
+                    console.log(data);
+                    
+                    if(data[0].duel_questions.split('/').length <= 1){
+                        message('El duelo no se puede cargar por que no se respondieron las preguntas!');
+                        setTimeout(function() { back(); hide_timer(); }, 500);
+                    }
+                    
                     ids_questions_duel = data[0].duel_questions.split('/');
                 }
             });
@@ -4156,12 +4179,14 @@ function questions(page_referer,array,metadata){
     if(array==null){
         var $data = {};
         
-        if(metadata.id_level == 1)
-            $data.load_questions = 'ejecutivo';
-        else if(metadata.id_level == 2)
-            $data.load_questions = 'legislativo';
-        else if(metadata.id_level == 3)
-            $data.load_questions = 'judicial';
+        if(metadata != null){
+            if(metadata.id_level == 1)
+                $data.load_questions = 'ejecutivo';
+            else if(metadata.id_level == 2)
+                $data.load_questions = 'legislativo';
+            else if(metadata.id_level == 3)
+                $data.load_questions = 'judicial';   
+        }
         
         
         // Ajax to get all questions with state active
