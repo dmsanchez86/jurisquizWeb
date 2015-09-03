@@ -1931,6 +1931,7 @@ var router = new $.mobile.Router({
                 },500);
             }
                 
+            // Click to filter questions
             $('input[name="active_questions"]').unbind('change').change(function(){
                 var filter = $('input[name="active_questions"]:checked').val();
                 
@@ -1938,6 +1939,17 @@ var router = new $.mobile.Router({
                 loader('Cargando...');
                 setTimeout(function(){
                     evt_all_questions_show(filter,null);
+                },500);
+            });
+            
+            // Click to filter cases
+            $('input[name="active_cases"]').unbind('change').change(function(){
+                var filter = $('input[name="active_cases"]:checked').val();
+                
+                $('.content_cases_show').hide(50);
+                loader('Cargando...');
+                setTimeout(function(){
+                    evt_all_cases_show(filter,null);
                 },500);
             });
         });
@@ -3517,7 +3529,7 @@ function load_cases(filter,ref){
             });
             
             // Click to edit case
-            $('.menu_case .edit').unbind('click').click(function(){alert();
+            $('.menu_case .edit').unbind('click').click(function(){
                 var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                 
                 $('#form_edit_case .structure > div').hide(50);
