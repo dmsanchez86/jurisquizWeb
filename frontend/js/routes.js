@@ -740,7 +740,7 @@ var router = new $.mobile.Router({
                     var respuestas= [];
                     var itemRespuesta = {};
                     var points = 0;
-                    var top = parseInt($('.start_test .rank').text());
+                    var top = canPreguntas;
                     
                     if(canPreguntas < 10)
                         $('.start_test .rank').text(canPreguntas);
@@ -754,6 +754,7 @@ var router = new $.mobile.Router({
                         hide_timer();
                         var answer_ = $('.start_test .content_question.test_options.active input[type=radio]:checked').val();
                         var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
+                        
                         control_mode_test = false;
                         if(answer_ == correct_answer){
                             setTimeout(function() { question_status('.start_test', 'correct'); },800);
@@ -785,7 +786,7 @@ var router = new $.mobile.Router({
                         if(canPreguntas > con){
                             con++;
                             
-                            $('.start_test .content_question.active .answers_options input').prop('disabled', true);
+                            
                             setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },4000);
                             setTimeout(function(){ 
                                 if(control_mode_test == false)
@@ -793,7 +794,7 @@ var router = new $.mobile.Router({
                             },4000);
                         }
                         
-                        if(con == 10){
+                        if(con == 10 || con == top){
                             hide_timer();
                             $('#points').text(points);
                             $('#status').removeClass('success error');
