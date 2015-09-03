@@ -698,7 +698,7 @@ var router = new $.mobile.Router({
         $("#result_test tbody").empty();
         
         // Click to start to reply the questions mode race
-        $('button[data-url="start_mode_game"]').unbind('click').click(function(){debugger
+        $('button[data-url="start_mode_game"]').unbind('click').click(function(){
             cont = true;
             
             $('.name_specialty span').text('Especialidad: '+nameSpecialty).parent().show();
@@ -756,10 +756,8 @@ var router = new $.mobile.Router({
                         var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
                         control_mode_test = false;
                         if(answer_ == correct_answer){
-                            console.log(points);
                             setTimeout(function() { question_status('.start_test', 'correct'); },800);
                             points = numRespCorrect++ * 0.5;
-                            console.log(points);
                             itemRespuesta.pregunta = answer_;
                             itemRespuesta.respuesta= correct_answer;
                             itemRespuesta.correcta = true;
@@ -985,7 +983,7 @@ var router = new $.mobile.Router({
                        
                     }
                     
-                    if(canPreguntas + 1 == con || con >= 11){debugger
+                    if(canPreguntas + 1 == con || con >= 11){
                         respuestas.forEach(function(index,element){
                             $("#result_specialty tbody").append(tmpl("template_each_finalGame", JSON.parse(index)));
                         });
@@ -1799,7 +1797,7 @@ var router = new $.mobile.Router({
         });
         
         // popup btn modified case
-        $('button[data-url="#modify_case"]').unbind('click').click(function(){debugger;
+        $('button[data-url="#modify_case"]').unbind('click').click(function(){
             var $id_case = $('#form_edit_case .id span').text();
             var $name_case = $('#name_case_edit').val();
             var $text_case = $('#text_litigation_edit').val();
@@ -2965,7 +2963,7 @@ function evt_all_questions_show(filter,ref){
                     
                 // Click to edit question
                 $('.menu_question .edit').unbind('click').click(function(){
-                    debugger
+                    
                     var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     
                     $('#form_edit_question .structure > div').hide(50);
@@ -3495,8 +3493,7 @@ function load_cases(filter,ref){
         type        : 'POST',
         data        : data,
         success     : function(res){
-            var data = JSON.parse(res); 
-            console.log(data);
+            var data = JSON.parse(res);
             
             if(data.length == 0 && filter == 'inactives'){
                 message('No se encontraron casos desactivados!');
@@ -3517,14 +3514,14 @@ function load_cases(filter,ref){
                 $(".content_cases_show").append(tmpl("all_cases_show", i));
                 
                 // click to filter cases for inactives
-                $('.menu_case .desactivate').unbind('click').click(function(){debugger;
+                $('.menu_case .desactivate').unbind('click').click(function(){
                     var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     
                     evt_case('active',id);
                 });
                 
                 // Click to filter cases for actives
-                $('.menu_case .activate').unbind('click').click(function(){debugger;
+                $('.menu_case .activate').unbind('click').click(function(){
                     var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     
                     evt_case('inactive',id);
@@ -3547,7 +3544,6 @@ function load_cases(filter,ref){
                     },
                     success : function(res){
                         var data = JSON.parse(res);
-                        console.log(data);
                         var name_case_edit = $('#name_case_edit');
                         var text_litigation_edit = $('#text_litigation_edit');
                         var case_question = $('#case_question_edit');
@@ -3974,7 +3970,6 @@ function evt_question(param, $id){
 
 // Evt to activate or deactivate case
 function evt_case(param, $id){
-    debugger;
     if(param == "inactive")
         loader('Activando Caso');
     else
@@ -4167,7 +4162,6 @@ function questions(page_referer,array,metadata){
         else if(metadata.id_level == 3)
             $data.load_questions = 'judicial';
         
-        console.log($data);
         
         // Ajax to get all questions with state active
         $.ajax({
@@ -4176,7 +4170,6 @@ function questions(page_referer,array,metadata){
             data        : $data,
             success     : function(res){
                 var data = JSON.parse(res);
-                console.log(data);
                 
                 $(page_referer + ' .content_start_game').empty();
                 
@@ -4267,10 +4260,8 @@ function evt_validate_mode_game(data,name_level,id_game){
         data        : data,
         success     : function(res){
             $('.start_race .wrapper > div').hide(50); // hide all divs
-            debugger
             
             data = JSON.parse(res);
-            console.log(data);
             
             var top_questions = 0;
             
@@ -4431,7 +4422,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                 $('.start_race .wrapper .start').fadeIn(500);
                     
                 // button click to start to reply the questions mode race
-                $('button[data-url="start_mode_game"]').unbind('click').click(function(){debugger
+                $('button[data-url="start_mode_game"]').unbind('click').click(function(){
                     loader('Cargando...');
                     
                     cont = true;
@@ -4602,7 +4593,7 @@ function question_status(page_referer,state){
 }
 
 // Event to paint the current level
-function evt_current_level(data,id){debugger
+function evt_current_level(data,id){
     for(var i = 0; i < data.length; i++){
         if(data[i].id_level_game == 1){
             if(data[i].id_level_category == 1){
