@@ -580,7 +580,7 @@ var router = new $.mobile.Router({
             id_user_1   : $id_user_1,
             id_user_2   : $id_user_2
         };
-
+        
         if($ref == 'accept'){
             $id_user = $id_user_1;
             
@@ -594,12 +594,19 @@ var router = new $.mobile.Router({
                 success : function(res){
                     var data = JSON.parse(res);
                     
-                    if(data[0].duel_questions.split('/').length <= 1){
-                        message('El duelo no se puede cargar por que no se respondieron las preguntas!');
-                        setTimeout(function() { back(); hide_timer(); }, 500);
+                    if(data[0].duel_questions != null){
+                        if(data[0].duel_questions.split('/').length <= 1){
+                            message('El duelo no se puede cargar por que no se respondieron las preguntas!');
+                            setTimeout(function() { back(); hide_timer(); }, 500);
+                        }
+                        
+                        ids_questions_duel = data[0].duel_questions.split('/');
+                    }else{
+                        message('Ocurrio un error con el duelo');
+                        setTimeout(function() { loader('Cargando...'); }, 1000);
+                        setTimeout(function() { $.mobile.changePage('#home',{role:'page',transition: 'fade'}); }, 1500);
+                        setTimeout(function() { location.reload(); }, 1700);
                     }
-                    
-                    ids_questions_duel = data[0].duel_questions.split('/');
                 }
             });
         }else{
@@ -610,6 +617,7 @@ var router = new $.mobile.Router({
                 for(var i = 0; i < questions_duel.length; i++)
                     ids[i] = questions_duel[i].id;
                     
+                
                 // Ajax to insert questions in database 
                 $.ajax({
                     url         : webService + 'questions_duel',
@@ -2378,6 +2386,8 @@ var router = new $.mobile.Router({
         
         show_nav_button();
         
+        evt_notifications();
+        
         $('.win_duel .content_win_duel h1').fadeOut(10);
         $('.win_duel .content_win_duel .winner').fadeOut(10);
         $('.win_duel .content_win_duel .loser').fadeOut(10);
@@ -2823,9 +2833,10 @@ function show_nav_button(){
             var hash = window.location.hash;
             var items = hash.split('&').length;
             
-            if(items > 1){
+            if(items > 2){
                 return;
             }else{
+                control_page = true;
                 $.mobile.changePage('#notifications',{role: 'dialog',transition:"slidedown"});
             
                 // ajax to get all notifications for user
@@ -4407,6 +4418,11 @@ function questions(page_referer,array,metadata){
                         }
                     }
                 }else if(page_referer == '.duel_users'){
+                    if(questions.length == 0){
+                        message('No se cargo el duelo correctamente');
+                        setTimeout(function() { location.reload(); }, 1000);
+                    }
+                    
                     questions.forEach(function(i,o){
                         if(o < 9){
                             i.key = o;
