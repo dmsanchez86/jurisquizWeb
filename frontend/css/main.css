@@ -283,7 +283,29 @@ html {
 .notifications .container_btn:nth-child(even) button:after,
 .report_question .container_btn:nth-child(even) button:after {
   left: 0;
-  right: inherit;
+  top: 50%;
+}
+.home .container_btn:nth-child(even) button:before,
+.register .container_btn:nth-child(even) button:before,
+.dashboard .container_btn:nth-child(even) button:before,
+.race .container_btn:nth-child(even) button:before,
+.start_race .container_btn:nth-child(even) button:before,
+.duel .container_btn:nth-child(even) button:before,
+.search_duel .container_btn:nth-child(even) button:before,
+.duel_users .container_btn:nth-child(even) button:before,
+.terms .container_btn:nth-child(even) button:before,
+.test .container_btn:nth-child(even) button:before,
+.start_test .container_btn:nth-child(even) button:before,
+.specialty .container_btn:nth-child(even) button:before,
+.start_specialty .container_btn:nth-child(even) button:before,
+.litigation .container_btn:nth-child(even) button:before,
+.start_litigation .container_btn:nth-child(even) button:before,
+.questions .container_btn:nth-child(even) button:before,
+.specialties .container_btn:nth-child(even) button:before,
+.notifications .container_btn:nth-child(even) button:before,
+.report_question .container_btn:nth-child(even) button:before {
+  left: 0;
+  bottom: 50%;
 }
 .home .container_btn:nth-child(odd) button:after,
 .register .container_btn:nth-child(odd) button:after,
@@ -304,8 +326,30 @@ html {
 .specialties .container_btn:nth-child(odd) button:after,
 .notifications .container_btn:nth-child(odd) button:after,
 .report_question .container_btn:nth-child(odd) button:after {
-  right: 0;
-  left: inherit;
+  left: 0;
+  top: 0%;
+}
+.home .container_btn:nth-child(odd) button:before,
+.register .container_btn:nth-child(odd) button:before,
+.dashboard .container_btn:nth-child(odd) button:before,
+.race .container_btn:nth-child(odd) button:before,
+.start_race .container_btn:nth-child(odd) button:before,
+.duel .container_btn:nth-child(odd) button:before,
+.search_duel .container_btn:nth-child(odd) button:before,
+.duel_users .container_btn:nth-child(odd) button:before,
+.terms .container_btn:nth-child(odd) button:before,
+.test .container_btn:nth-child(odd) button:before,
+.start_test .container_btn:nth-child(odd) button:before,
+.specialty .container_btn:nth-child(odd) button:before,
+.start_specialty .container_btn:nth-child(odd) button:before,
+.litigation .container_btn:nth-child(odd) button:before,
+.start_litigation .container_btn:nth-child(odd) button:before,
+.questions .container_btn:nth-child(odd) button:before,
+.specialties .container_btn:nth-child(odd) button:before,
+.notifications .container_btn:nth-child(odd) button:before,
+.report_question .container_btn:nth-child(odd) button:before {
+  left: 0;
+  bottom: 0%;
 }
 .home .container_register,
 .register .container_register,
@@ -3784,6 +3828,7 @@ html {
   font-size: 1.55rem;
   margin-top: 0;
   margin-bottom: .5rem;
+  font-weight: bold;
 }
 .panel .panel_content .friends ul,
 .profile .panel_content .friends ul,
@@ -3825,6 +3870,7 @@ html {
 .profile .panel_content .friends li:before {
   position: absolute;
   left: -31px;
+  top: -3px;
   width: 0;
   height: 100%;
   content: '';
@@ -5872,25 +5918,34 @@ ol li {
   background-color: #3a6667;
   position: relative;
 }
-.waves-effect.waves-btn-start:after {
+.waves-effect.waves-btn-start:after,
+.waves-effect.waves-btn-start:before {
   position: absolute;
-  width: 0%;
-  height: 100%;
+  width: 100%;
+  height: 0%;
   content: '';
-  left: 0;
-  top: 0;
-  -webkit-transition: all 0.5s ease;
-  -khtml-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  -khtml-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  -moz-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  -ms-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  -o-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
   z-index: -1;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.17);
+}
+.waves-effect.waves-btn-start:after {
+  left: 0;
+  top: 50%;
+}
+.waves-effect.waves-btn-start:before {
+  left: 0;
+  bottom: 50%;
 }
 .waves-effect.waves-btn-start:hover:after,
-.waves-effect.waves-btn-start:focus:after {
-  width: 100%;
+.waves-effect.waves-btn-start:focus:after,
+.waves-effect.waves-btn-start:hover:before,
+.waves-effect.waves-btn-start:focus:before {
+  height: 50%;
 }
 .waves-effect.waves-btn-start .waves-ripple {
   background-color: rgba(255, 255, 255, 0.55);
@@ -5899,24 +5954,34 @@ ol li {
   background-color: #ee6200;
   position: relative;
 }
-.waves-effect.waves-btn-login:after {
+.waves-effect.waves-btn-login:after,
+.waves-effect.waves-btn-login:before {
   position: absolute;
-  width: 0%;
-  height: 100%;
+  width: 100%;
+  height: 0%;
   content: '';
-  top: 0;
-  -webkit-transition: all 0.5s ease;
-  -khtml-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  -khtml-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  -moz-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  -ms-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  -o-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
+  transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
   z-index: -1;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.17);
+}
+.waves-effect.waves-btn-login:after {
+  left: 0;
+  top: 0%;
+}
+.waves-effect.waves-btn-login:before {
+  left: 0;
+  bottom: 0%;
 }
 .waves-effect.waves-btn-login:hover:after,
-.waves-effect.waves-btn-login:focus:after {
-  width: 100%;
+.waves-effect.waves-btn-login:focus:after,
+.waves-effect.waves-btn-login:hover:before,
+.waves-effect.waves-btn-login:focus:before {
+  height: 50%;
 }
 .waves-effect.waves-btn-login .waves-ripple {
   background-color: rgba(255, 255, 255, 0.55);

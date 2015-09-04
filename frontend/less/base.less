@@ -20,12 +20,14 @@
         }
         &:nth-child(even){
             button{
-                &:after{left: 0;right: inherit;}
+                &:after{left:0;top: 50%; }
+                &:before{left:0;bottom: 50%;}
             }
         }
         &:nth-child(odd){
             button{
-                &:after{right: 0;left: inherit;}
+                &:after{left:0;top: 0%; }
+                &:before{left:0;bottom: 0%;}
             }
         }
     }
@@ -467,12 +469,12 @@
         .friends,.friends a,.friends h4,.friends li,.friends li a{color: @btn_start;font-family: 'DK Mango';}
         .friends{ padding-left: .4rem; position: relative;
             &:before{position: absolute; content: ''; left: -15px; width: 1px; background-color: @btn_start; height: 110%; margin: auto; top: 10px; bottom: 0;}
-            h4{font-size: 1.55rem; margin-top: 0;margin-bottom: .5rem;}
+            h4{font-size: 1.55rem; margin-top: 0;margin-bottom: .5rem;font-weight: bold;}
             ul,li{list-style-type: decimal;font-size: 1.25rem;}
             ul{padding-left: 1.35rem;}
             li{margin: .35rem 0; position: relative; .border_radius(3px); z-index: 2;padding-left:0rem; padding-right: 0;
                 &:hover{cursor: pointer; color: #fff; .text_shadow(0, 0, 2px, #323232)}
-                &:before{position: absolute; left: -31px; width: 0; height: 100%; content: ''; .transition(.5s all ease-in-out);.border_radius(3px);}
+                &:before{position: absolute; left: -31px;top: -3px; width: 0; height: 100%; content: ''; .transition(.5s all ease-in-out);.border_radius(3px);}
                 &:nth-child(odd){
                     &:hover:before{width: 135%; background-color: @btn_start;z-index: -1;}
                 }

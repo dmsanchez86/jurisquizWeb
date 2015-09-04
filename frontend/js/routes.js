@@ -2451,7 +2451,7 @@ function respuestaFinaltempPregunta(idCase){
 // Message to the toast Materialize
 function message(param){
     if(param === "welcome"){
-        Materialize.toast('<div><h3><em>!Bienvenido a Jurizquiz!</em></h3><div><div><p>Click en el boton <b>"Acceder"</b> para entrar al juego!</p></div><div><p>O click en el enlace <b>"Aqui"</b> para registrarse.</p></div>',2800);
+        Materialize.toast('<div><h3><em>!Bienvenido a Jurizquiz!</em></h3><div><div><p>Click en el boton <b>"Acceder"</b> para entrar al juego!</p></div><div><p>O click en el enlace <b>"Aqui"</b> para registrarse.</p></div>',4800);
     }else if(param == "null fields"){
         Materialize.toast('<div class="error"><h2>¡No Pueden Haber Campos Vaciós!</h2></div>',2800);
     }else if(param == "user isn\'t exist"){
