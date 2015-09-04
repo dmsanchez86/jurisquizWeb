@@ -45,6 +45,7 @@ var router = new $.mobile.Router({
     "#questions": {handler: "questions_", events: "s" },
     "#specialties": {handler: "specialties", events: "s" },
     "#report_question": {handler: "report_question", events: "s" },
+    "#win_duel": {handler: "win_duel", events: "s" },
 },{
     home: function(type,match,ui){
         validate_login();
@@ -884,12 +885,15 @@ var router = new $.mobile.Router({
 
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
+            loader('Cargando...');
             var url = $(this).attr('data-url');
-            $.mobile.changePage(url,{role: 'page',transition: 'slide'});
+            $.mobile.changePage(url,{role: 'page',transition: 'fade'});
         });
     },
     start_specialty :function(type,match,ui){
         nav_menu();
+    
+        loader('Cargando...');
         
         remove_drag();
         
@@ -915,8 +919,10 @@ var router = new $.mobile.Router({
                 var data = JSON.parse(response);
                 
                 data.forEach(function(index,element){
-                   var compiled = tmpl("template_each_specialty", index);
-                   $(".listTematica").append(compiled);
+                    if(element < data.length - 1){
+                       var compiled = tmpl("template_each_specialty", index);
+                       $(".listTematica").append(compiled); 
+                    }
                 });
                 
                 $(".listTematica").css('opacity','1');
@@ -927,6 +933,8 @@ var router = new $.mobile.Router({
                     $("#result_specialty").css('opacity','0');
                     setTimeout(function(){ $.mobile.changePage(url, {role: 'page', transition: 'fade'}); },500);
                 });
+                
+                $('.loader').fadeOut(500);
                 
             }
         });       
@@ -2349,6 +2357,16 @@ var router = new $.mobile.Router({
                 });
             }
         });
+    },
+    win_duel : function(type,match,ui){
+        hide_timer();
+        
+        $('.win_duel .content_win_duel').css('opacity','1');
+        
+        show_nav_button();
+
+        // Params
+        var params = router.getParams(match[1]);
     }
 },{ 
   defaultHandler: function(type, ui, page) {
@@ -4627,7 +4645,7 @@ function question_status(page_referer,state){
     
     if(state == 'correct' && page_referer == ".start_test"){
         $(page_referer + ' .question_result .punctuation em').text('0.5').parent().parent().css('background-image','url(img/done.png)');
-    }if(state == 'correct' && page_referer == ".start_specialty"){
+    }else if(state == 'correct' && page_referer == ".start_specialty"){
         $(page_referer + ' .question_result .punctuation em').text('0').parent().parent().css('background-image','url(img/done.png)');
     }else if(state == 'correct'){
         $(page_referer + ' .question_result .punctuation em').text('1').parent().parent().css('background-image','url(img/done.png)');
@@ -4780,15 +4798,14 @@ function evt_next_question_test(page_referer,correct_questions,params){
                 $(page_referer + ' .content_start_game').attr('question',(++number_question));
             
             // if the number questios is equals top questions
-            if(number_question == top_question + 1){
+            if(number_question == top_question + 1){debugger
+                var url = null;
                 hide_timer();
                 current_content.hide(50);
                 
                 $(page_referer + ' .wrapper > div').hide();
                 $(page_referer + ' div[data-role="header"] .top_questions').hide();
                 $(page_referer + ' .wrapper .complete_questions span').text(correct_questions);
-                if(page_referer == '.duel_users')
-                    $(page_referer + ' .wrapper .complete_questions').fadeIn(1000);
                 
                 if(page_referer == '.duel_users' && ids_questions_duel.length > 0){
                     
@@ -4804,12 +4821,14 @@ function evt_next_question_test(page_referer,correct_questions,params){
                         data        : params_,
                         success     : function(res){
                             var data = JSON.parse(res);
+                            console.log(data);
+                            url = '?id_duel=' + data.data_duel.id_duel + '&ref=last';
                             
                             if(data.status != 'OK'){
                                 message(data.message);
                             }else{
                                 message(data.message);
-                                global_timeout = setTimeout(function(){ back(); },10000);
+                                // global_timeout = setTimeout(function(){ back(); },10000);
                             }
                         }
                     });
@@ -4829,11 +4848,13 @@ function evt_next_question_test(page_referer,correct_questions,params){
                         data        : params_,
                         success     : function(res){
                             var data = JSON.parse(res);
+                            console.log(data);
+                            url = '?id_duel=' + data.metadata.id_duel + '&ref=first';
                             
                             if(data.status != 'OK'){
                                 message(data.message);
                             }else{
-                                global_timeout = setTimeout(function(){ back(); },10000);
+                                // global_timeout = setTimeout(function(){ back(); },10000);
                             }
                         }
                     });
@@ -4862,6 +4883,9 @@ function evt_next_question_test(page_referer,correct_questions,params){
                         }
                     });
                 }
+                
+                if(page_referer == '.duel_users')
+                    setTimeout(function(){ window.location = "#win_duel"+url; },1200);
                 
                 $(page_referer + ' .wrapper .complete_questions').unbind('click').click(function(){
                     clearTimeout(global_timeout);
