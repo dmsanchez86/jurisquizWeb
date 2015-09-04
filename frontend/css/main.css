@@ -3472,6 +3472,7 @@ html {
   width: 580px;
   margin: 0 auto;
   font-family: 'DK Mango';
+  display: none;
 }
 .win_duel .content_win_duel .title {
   font-size: 5rem;
@@ -3523,6 +3524,10 @@ html {
 .win_duel .content_win_duel .loser .number_answers span {
   color: #f39d35;
   font-size: 6rem;
+}
+.win_duel .content_win_duel .winner .number_answers div,
+.win_duel .content_win_duel .loser .number_answers div {
+  color: #f39d35;
 }
 .win_duel .content_win_duel .winner {
   background-color: #3a6667;
