@@ -52,14 +52,15 @@ var router = new $.mobile.Router({
     home: function(type,match,ui){
         validate_login();
         
-        clean_login();
-        
         hide_timer();
+        
+        clean_login();
         
         hide_nav_button();
         
         remove_drag();
         
+        // Focus in the txt
         $('#email').focus();
         
         // Button Login
@@ -68,12 +69,13 @@ var router = new $.mobile.Router({
             evt_login();
         });
         
-        // Text
+        // Events input type text
         $('#email,#password').unbind('keyup').keyup(function(e){
             if(e.keyCode == 13)
                 evt_login();
         });
         
+        // show for first time the message to welcome
         var first_view = localStorage.getItem('first_view');
         
         if(first_view == null){
@@ -83,14 +85,15 @@ var router = new $.mobile.Router({
         }
     },
     register: function(type,match,ui){
+        hide_timer();
+        
         clean_register();
         
         hide_nav_button();
         
         remove_drag();
-
-        hide_timer();
         
+        // Library materialize
         $('select').material_select();
         
         // Button Register 
@@ -98,12 +101,13 @@ var router = new $.mobile.Router({
           e.preventDefault();
           evt_register();
         });
-      
+        
+        // Event to back page
         $('button[data-role="back"]').unbind('click').click(function(){
             back();
         });
       
-        // Text
+        // Events input type text
         $('#email_r,#password_r,#password_c').unbind('keyup').keyup(function(e){
             if(e.keyCode == 13)
                 evt_register();
@@ -112,12 +116,13 @@ var router = new $.mobile.Router({
     terms: function(type,match,ui){
         hide_nav_button();
         
-        remove_drag();
-
         hide_timer();
         
+        remove_drag();
+
+        // when user is logged
         if(localStorage.getItem('log') == 'true'){
-            $('.terms .container_btn a').hide();
+            $('.terms .container_btn a').hide(); // hide all containers button
             
             // button to back in terms
             $('.terms .container_btn a').eq(2).show().unbind('click').click(function(){
@@ -130,6 +135,8 @@ var router = new $.mobile.Router({
         }
     },
     dashboard: function(type,match,ui){
+        hide_timer();
+        
         nav_menu();
         
         remove_drag();
@@ -137,79 +144,91 @@ var router = new $.mobile.Router({
         show_nav_button();
         
         evt_logout();
-        
-        hide_timer();
 
         cont = false;
-        // Params
+        
+        // Get parameters the url
         var params = router.getParams(match[1]); 
         
+        // are null
         if(params == null){
             var log = localStorage.getItem('log');
             
-            if(log != 'true'){
-                $.mobile.changePage('#home',{role: 'page',transition: 'slide'});
-            }
+            // if the user isn't logged
+            if(log != 'true')
+                $.mobile.changePage('#home',{role: 'page',transition: 'fade'});
         }else{
+            // get parameter id from url
             var $id = params.user;
         }
         
+        // if the id is null
         if($id == null || $id == undefined || $id == ""){
-            $.mobile.changePage('#home',{role: 'page',transition: 'slide'})
+            $.mobile.changePage('#home',{role: 'page',transition: 'pop'});
         }else{
+            // set variables in local storage
             localStorage.setItem('log','true');
             localStorage.setItem('id_user',$id);
             
+            // Event what load the user data
             panel_data($id);
             
+            // event to get user notifications
             evt_notifications();
         }
         
-        // Events for buttons
+        // Events for buttons games mode
         $('.games button').unbind('click').click(function(e){
-            cont = true;
             e.preventDefault();
+            cont = true;
+            
+            // Get the current url button
             var url = $(this).attr('data-url');
-            $.mobile.changePage(url,{role:'page',transition:'slidefade'});
+            
+            // change page to game mode
+            $.mobile.changePage(url,{role:'page',transition:'fade'});
         });
     },
     dashboard_admin: function(type,match,ui){
-        load_questions_dash();
-
-        nav_menu();
+        hide_timer();
         
         show_nav_button();
         
-        evt_logout();
+        nav_menu();
         
         remove_drag();
 
-        hide_timer();
+        evt_logout();
         
-        // Params
+        // get parameters url
         var params = router.getParams(match[1]); 
         
+        // are null
         if(params == null){
             var log = localStorage.getItem('log');
             
             if(log != 'true')
                 $.mobile.changePage('#home',{role: 'page',transition: 'slide'});
         }else{
+            // get parameter
             var $id = params.user;
         }
         
         if($id == null || $id == undefined || $id == ""){
-            $.mobile.changePage('#home',{role: 'page',transition: 'slide'});
+            $.mobile.changePage('#home',{role: 'page',transition: 'fade'});
         }else{
+            // set varioables on local storage
             localStorage.setItem('log','true');
             localStorage.setItem('id_user',$id);
             
+            // event to get user data
             panel_data($id);
             
+            // event to get user notifications
             evt_notifications();
         }
         
-        // Events for buttons
+        // Events for buttons role admin
         $('.games button').unbind('click').click(function(e){
             e.preventDefault();
             var url = $(this).attr('data-url');   
@@ -217,16 +236,14 @@ var router = new $.mobile.Router({
         });
     },
     notifications: function(type,match,ui){
-        remove_drag();
+        hide_timer();
         
         hide_nav_button();
         
-        hide_timer();
-        
         // Button to accept duel
         $('.btns .accept').unbind('click').click(function(e){
-            var id_duel = $(this).parent().parent().parent().parent().attr('id-duel');
-            var id_notification = $(this).parent().parent().parent().parent().attr('id-notification');
+            var id_duel = $(this).parent().parent().parent().parent().attr('id-duel'); // get id duel
+            var id_notification = $(this).parent().parent().parent().parent().attr('id-notification'); // get id notification current
             
             // ajax to accept duel
             $.ajax({
@@ -240,13 +257,16 @@ var router = new $.mobile.Router({
                     var data = JSON.parse(res);
                     
                     if(data.status == 'OK'){
+                        // show meesage from backend
                         message(data.message);
-                        loader('Cargando Duelo...');
-
-                        $('.duel_users .wrapper .complete_questions').hide();
                         
-                        setTimeout(function(){ $.mobile.changePage('#duel_users?id_duel=' + data.metadata.id + '&id_user_1=' + data.metadata.id_user_1 + '&id_user_2=' + data.metadata.id_user_2 + '&ref=accept' ,{role:'page',transition: 'flip'}); },2000);
+                        // show loader
+                        loader('Cargando Duelo...');
+                        
+                        // change page to accept duel
+                        setTimeout(function(){ $.mobile.changePage('#duel_users?id_duel=' + data.metadata.id + '&id_user_1=' + data.metadata.id_user_1 + '&id_user_2=' + data.metadata.id_user_2 + '&ref=accept' ,{role:'page',transition: 'fade'}); },2000);
                     }else{
+                        // show error message
                         message(data.message);
                     }
                 }
@@ -271,7 +291,7 @@ var router = new $.mobile.Router({
                     
                     if(data.status == 'OK'){
                         message(data.message);
-                        back();
+                        back(); // back to last page visited
                     }else{
                         message(data.message);
                     }
@@ -285,24 +305,12 @@ var router = new $.mobile.Router({
         });
     }, 
     friends: function(type,match,ui){
-        nav_menu();
-        
-        remove_drag();
-        
-        show_nav_button();
-        
-        evt_logout();
-
         hide_timer();
         
-        evt_notifications();
-        
-        var $id = localStorage.getItem('id_user');
-        
-        panel_data($id);
-        
+        // empty content friends
         $('.content_friends').empty();
         
+        // hide panel status if the role user is admin
         if(localStorage.getItem('role_user') == 'admin')
             $('div[data-role="header"] .status').hide(10);
         else
@@ -319,6 +327,7 @@ var router = new $.mobile.Router({
                 data.forEach(function(i,o){
                     i.index = o;
                     
+                    // if the user no have name
                     if(i.name == "")
                         i.name_user = 'Usuario';
                     else
@@ -327,6 +336,7 @@ var router = new $.mobile.Router({
                     $(".content_friends").append(tmpl("each_user", i));
                 });
                 
+                // paginator friends
                 $('.list_users_content').jPages({
                     containerID: "content_friends",
                     perPage: 5,
@@ -350,50 +360,41 @@ var router = new $.mobile.Router({
         });
     },
     race: function(type,match,ui){
-        icon_mode_game('.race','race');
-        
-        nav_menu();
-        
-        remove_drag();
+        hide_timer();
         
         show_nav_button();
         
-        evt_logout();
-        
-        hide_timer();
-        
-        evt_notifications();
+        icon_mode_game('.race','race');
         
         // Evt buttons to dashboard
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
+            
+            var link = $(this).attr('data-url');
+            
             loader('Cargando');
             
             $('.start_race .wrapper > div').hide(50);
             $('.start_race .levels_content').empty();
             
-            var link = $(this).attr('data-url');
             $.mobile.changePage(link,{role: 'page',transition: 'pop'});
         });
     },
     start_race : function(type,match,ui){
-        nav_menu();
-        
-        remove_drag();
-        
-        hide_nav_button();
-        
-        evt_logout();
-
         hide_timer();
 
+        hide_nav_button();
+
+        // empty the icons levels cotent
         $('.start_race .levels_content').empty();
         
+        // remove class active from levels icons
+        $('.start_race .levels_content .level').removeClass('active');
+        
+        // Get params url
         var params = router.getParams(match[1]);
         var $id_level_game = params.id;
         var $name_level = params.level;
-        
-        $('.start_race .levels_content .level').removeClass('active');
         
         // ajax to get categories of each level game
         $.ajax({
@@ -415,34 +416,28 @@ var router = new $.mobile.Router({
                     id  : localStorage.getItem('id_user')
                 };
                 
+                // evet to show icons status level
                 evt_validate_mode_game(obj,$name_level,$id_level_game);
-                
-                $('.loader').fadeOut(1000);
             }
         });
         
+        // var to load question depending level user
         var metadata = {
             id_level    : $id_level_game
         };
         
+        // event to load questions
         questions('.start_race', null,metadata);
         
+        // event to validate questions
         validate_questions();
+        
+        $('.loader').fadeOut(1000);
     },
     duel: function(type,match,ui){
         icon_mode_game('.duel','duel');
-        
-        nav_menu();
-        
-        remove_drag();
-        
-        show_nav_button();
-        
-        evt_logout();
 
         hide_timer();
-        
-        evt_notifications();
         
         // Event to start mode duel
         $('.content_game button').unbind('click').click(function(e){
@@ -452,23 +447,17 @@ var router = new $.mobile.Router({
         });
     },
     search_duel: function(type,match,ui){
-        nav_menu();
-        
-        remove_drag();
+        hide_timer();
         
         show_nav_button();
         
-        evt_logout();
+        // empty container users
+        $('.search_duel .list_users').empty();
         
-        hide_timer();
-        
-        evt_notifications();
-        
-        clearTimeout(global_timeout);
-        
+        // when the variable control page is false after final duel
         if(control_page == false){
             $('.duel_users .content_start_game').empty();
-            setTimeout(function() { hide_timer(); }, 2750);
+            setTimeout(function() { hide_timer(); }, 2600);
         }
         
         // ajax to get all user less my user
@@ -480,14 +469,12 @@ var router = new $.mobile.Router({
             },
             success     : function(res){
                 var data = JSON.parse(res);
-                
-                $('.search_duel .list_users').empty();
-                
-                var users = data.random();
+                var users = data.random(); // random array users
                 
                 users.forEach(function(i,o){
                     i.index = o;
                     
+                    // if the name user is empty
                     if(i.name == '')
                         i.name_user = "usuario";
                     else
@@ -496,8 +483,10 @@ var router = new $.mobile.Router({
                     $('.search_duel .list_users').append(tmpl('each_user_duel',i));
                 });
                 
-                $('.search_duel .list_users').fadeIn(600);
+                // show content users
+                $('.search_duel .list_users').fadeIn(300);
                 
+                // Paginator users duel
                 $('.list_users_content').jPages({
                     containerID: "list_users",
                     perPage: 5,
@@ -505,12 +494,16 @@ var router = new $.mobile.Router({
                 });
                 
                 setTimeout(function() {
+                    // events to challenge user
                     $('.search_duel .duel_link a').unbind('click').click(function(e){
                         e.preventDefault();
                         control_page = true;
-                        var url = $(this).attr('data-url');
-                        var id_friend = url.split('=')[1];
                         
+                        // get variables to create duel
+                        var url = $(this).attr('data-url');
+                        var id_friend = $(this).attr('data-id-user');
+                        
+                        // show loader
                         loader('Retando colega...');
                         
                         // ajax to insert data duel and result duel
@@ -522,66 +515,71 @@ var router = new $.mobile.Router({
                                 id_friend   : id_friend
                             },
                             success : function(res){
-                                $('.loader').fadeOut(500);
+                                $('.loader').fadeOut(300); // hide loader
                                 var response = JSON.parse(res);
-                                
-                                $('.duel_users .wrapper .complete_questions').hide();
 
                                 if(response.status == 'OK'){
                                     message(response.message);
-                                    setTimeout(function(){ loader('Cargando Duelo...'); },2000);
+                                    setTimeout(function(){ loader('Cargando Duelo...'); },1700);
                                     setTimeout(function(){ 
-                                        $.mobile.changePage('#duel_users?id_duel=' + response.data_duel.id + '&id_user_1=' + response.data_duel.id_user_1 + '&id_user_2=' + response.data_duel.id_user_2 ,{role:'page',transition: 'pop'}); 
-                                    },2500);
+                                        $.mobile.changePage('#duel_users?id_duel=' + response.data_duel.id + '&id_user_1=' + response.data_duel.id_user_1 + '&id_user_2=' + response.data_duel.id_user_2 ,{role:'page',transition: 'fade'}); 
+                                    },2200);
                                 }else{
                                     message(response.message);
                                 }
                             }
                         });
                     });
+                    
+                    $('.loader').fadeOut(300); // hide loader
                 }, 300);
             }
         });
     },
     duel_users: function(type,match,ui){
-        if(control_page == false){
+        // if the variable control is active
+        if(control_page == false)
             $.mobile.changePage('#search_duel',{role:'page',transition: 'fade'});
-        }else{
+        else
             control_page = true;
-        }
-        
-        nav_menu();
-        
-        remove_drag();
         
         hide_nav_button();
-        
-        evt_logout();
 
         hide_timer();
+        
+        // Reset texts and variables
+        $('.opponent .image').find('img').attr('src','#');
+        $('.opponent .image').find('span').text('');
+        $('.duel_users .number_questions').text('1');
+        $('.duel_users .content_start_game').attr('question','1');
         
         // Params
         var params = router.getParams(match[1]);
         
         if(params == null){
             var log = localStorage.getItem('log');
-            $.mobile.changePage('#home',{role: 'page',transition: 'slide'});
+            $.mobile.changePage('#home',{role: 'page',transition: 'pop'});
         }else{
-            $('.loader').fadeOut(1000);
+            $('.loader').fadeOut(500); // hide loader
+            
+            // Get variables duel
             var $id_duel = params.id_duel;
             var $id_user_1 = params.id_user_1;
             var $id_user_2 = params.id_user_2;
             var $ref = params.ref;
         }
         
+        // var current id user duel
         var $id_user = '';
         
+        // global varibale duel
         params_url = {
             id_duel     : $id_duel,
             id_user_1   : $id_user_1,
             id_user_2   : $id_user_2
         };
         
+        // the opponent accept duel
         if($ref == 'accept'){
             $id_user = $id_user_1;
             
@@ -594,8 +592,6 @@ var router = new $.mobile.Router({
                 },
                 success : function(res){
                     var data = JSON.parse(res);
-                    console.log(data);
-                    
                     
                     if(data[0].duel_questions != null){
                         if(data[0].duel_questions.split('/').length <= 1){
@@ -608,7 +604,7 @@ var router = new $.mobile.Router({
                         message('Ocurrio un error con el duelo');
                         setTimeout(function() { loader('Cargando...'); }, 1000);
                         setTimeout(function() { $.mobile.changePage('#home',{role:'page',transition: 'fade'}); }, 1500);
-                        setTimeout(function() { location.reload(); }, 1700);
+                        // setTimeout(function() { location.reload(); }, 1700);
                     }
                 }
             });
@@ -620,30 +616,33 @@ var router = new $.mobile.Router({
                 for(var i = 0; i < questions_duel_.length; i++)
                     ids[i] = questions_duel_[i].id;
                     
-                if(questions_duel_.length == 0)
-                    location.reload();
-                
-                // Ajax to insert questions in database 
-                $.ajax({
-                    url         : webService + 'questions_duel',
-                    type        : 'POST',
-                    data        : {
-                        id_duel     : $id_duel,
-                        metadata    : ids.join('/')
-                    },
-                    success     : function(res){
-                        var data = JSON.parse(res);
-                        
-                        if(data.status != 'OK')
-                            message(data.message);
-                    }
-                });
+                if(questions_duel_.length == 0){
+                    // location.reload();
+                    message('No se cargaron las preguntas correctamente!');
+                    setTimeout(function(){ back(); },3000);
+                }else{
+                    // Ajax to insert questions in database 
+                    $.ajax({
+                        url         : webService + 'questions_duel',
+                        type        : 'POST',
+                        data        : {
+                            id_duel     : $id_duel,
+                            metadata    : ids.join('/')
+                        },
+                        success     : function(res){
+                            var data = JSON.parse(res);
+                            
+                            if(data.status != 'OK')
+                                message(data.message);
+                        }
+                    });
+                }
             },500);
         }
         
         corrects_questions = 0;
         correct_answers_user_duel = 0;
-        questions('.duel_users',null);
+        questions('.duel_users', null);
 
         // ajax to get data user
         $.ajax({
@@ -655,6 +654,7 @@ var router = new $.mobile.Router({
             success : function(res){
                 var data = JSON.parse(res);
                 
+                // print opponent data
                 $('.opponent .image').find('img').attr('src','img/levels/level'+ data.level + data.gender +'.png');
                 $('.opponent .image').find('span').text(data.name);
             }
@@ -662,18 +662,16 @@ var router = new $.mobile.Router({
         
         setTimeout(function(){
             // Get all contents of questions
-            $('.duel_users .number_questions').text('1');
-            $('.duel_users .content_start_game').attr('question','1');
             $('.duel_users .content_start_game .content_question').addClass('duel_options');
             var content_questions = $('.duel_users .content_start_game .content_question');
-            content_questions.eq(0).addClass('active').fadeIn(500);
-            hide_timer();
+            content_questions.eq(0).addClass('active').fadeIn(300);
 
             setTimeout(function(){
+                // show the first content question
                 $('.duel_users .wrapper .content_start_game').css({'display':'block','opacity':'1'});
                 setTimeout(function(){
                     cont = true;
-                    show_timer(15, '.duel_users');
+                    show_timer(15, '.duel_users'); // show timer
                     $('.duel_users div[data-role="header"] .top_questions').css({'opacity':'1','display':'flex'});
                 },1000);
             },1000);
@@ -684,17 +682,24 @@ var router = new $.mobile.Router({
                 var answer_ = '';
                 var correct_answer = '';
                 
+                // type question switch
                 if(type_question == 1){
                     answer_ = $('.duel_users .content_question.duel_options.active input[type=radio]:checked').val();
                     correct_answer = $('.duel_users .content_question.duel_options.active').attr('correct-answer');
                     
+                    // if the question is correct
                     if(answer_ == correct_answer){
+                        // show question status
                         question_status('.duel_users','correct');
-                        hide_timer();
+                        
+                        hide_timer(); // hide timer question
+                        
                         ++corrects_questions;
                         ++correct_answers_user_duel;
+                        
                         setTimeout(function(){ $('.duel_users .question_result').fadeOut(300).css({'opacity':'0'}); },4000);
                         global_timeout = setTimeout(function(){
+                            // event to show next question
                             evt_next_question_test('.duel_users', corrects_questions, params_url);
                         },4000);
                     }else{
@@ -709,29 +714,30 @@ var router = new $.mobile.Router({
         },1000);
         
         setTimeout(function() {
-            if($('.duel_users .content_start_game .content_question').length == 0 || $('.duel_users .content_start_game .content_question.active').length == 0){
+            if($('.duel_users .content_start_game .content_question').length == 0 || $('.duel_users .content_start_game .content_question.active').length == 0)
                 location.reload();
-            }else{
+            else
                 console.log("'Todo normal ='D");
-            }
         }, 3500);
     },
     win_duel : function(type,match,ui){
         hide_timer();
         
-        nav_menu();
-        
         show_nav_button();
         
-        evt_notifications();
-        
+        // hide h1 and all divs
         $('.win_duel .content_win_duel h1').fadeOut(10);
         $('.win_duel .content_win_duel .winner').fadeOut(10);
         $('.win_duel .content_win_duel .loser').fadeOut(10);
         $('.win_duel .content_win_duel').css('opacity','0');
         
-
-        // Params
+        // reset texts
+        $('.loser .image,.winner .image').find('img').attr('src','#');
+        $('.loser .name,.winner .name').find('span').text('');
+        $('.loser .correct_answers,.winner .correct_answers').text('0');
+        $('.winner .points').text('0');
+        
+        // get parameters
         var params = router.getParams(match[1]);
         
         var $id_duel = params.id_duel;
@@ -746,6 +752,8 @@ var router = new $.mobile.Router({
             },
             success : function(res){
                 var data = JSON.parse(res);
+                
+                // get variables from backend
                 var id_user_1 = data.metadata.id_user_1;
                 var id_user_2 = data.metadata.id_user_2;
                 var total_1 = data[0].total_corrects_answers_user_1;
@@ -768,10 +776,12 @@ var router = new $.mobile.Router({
                             $('.loser .correct_answers').text(total_1);
                         }
                     });
+                    
+                    // hide content winner
                     $('.win_duel .content_win_duel h1').fadeIn(100);
                     $('.win_duel .content_win_duel .winner').fadeOut(10);
                     $('.win_duel .content_win_duel .loser').fadeIn(1800);
-                }else{
+                }else{ // when the duel is ended for users
                     if(id_win == id_user_1){
                         // ajax to get data user
                         $.ajax({
@@ -783,6 +793,7 @@ var router = new $.mobile.Router({
                             success : function(res){
                                 var data = JSON.parse(res);
                                 
+                                // set data from backend winner
                                 $('.winner .image').find('img').attr('src','img/levels/level'+ data.level + data.gender +'.png');
                                 $('.winner .name').find('span').text(data.name);
                                 $('.winner .correct_answers').text(total_1);
@@ -800,6 +811,7 @@ var router = new $.mobile.Router({
                             success : function(res){
                                 var data = JSON.parse(res);
                                 
+                                // set data from backend losser
                                 $('.loser .image').find('img').attr('src','img/levels/level'+ data.level + data.gender +'.png');
                                 $('.loser .name').find('span').text(data.name);
                                 $('.loser .correct_answers').text(total_2);
@@ -840,6 +852,7 @@ var router = new $.mobile.Router({
                         });
                     }
                     
+                    // show content winner
                     $('.win_duel .content_win_duel h1').fadeIn(100);
                     $('.win_duel .content_win_duel .winner').fadeIn(1800);
                     $('.win_duel .content_win_duel .loser').fadeIn(1800);
@@ -847,28 +860,17 @@ var router = new $.mobile.Router({
             }
         });
         
-        setTimeout(function() {
-            $('.win_duel .content_win_duel').css('opacity','1');
-        }, 1000);
+        setTimeout(function() {  $('.win_duel .content_win_duel').css('opacity','1'); }, 1000); // show content result win duel
         
+        // change state variable control
         control_page = false;
     },
     test :function(type,match,ui){
         icon_mode_game('.test','test');
         
-        nav_menu();
-        
-        remove_drag();
-        
         show_nav_button();
         
-        evt_logout();
-        
         hide_timer();
-        
-        evt_notifications();
-        
-        clearTimeout(global_timeout);
         
         // Event to start mode test
         $('.content_game button').unbind('click').click(function(e){
@@ -881,14 +883,8 @@ var router = new $.mobile.Router({
         });
     },
     start_test :function(type,match,ui){
-        nav_menu();
-        
-        remove_drag();
-        
         hide_nav_button();
         
-        evt_logout();
-
         hide_timer();
 
         var list;
@@ -896,12 +892,13 @@ var router = new $.mobile.Router({
         var $id_specialty = 1;
         var nameSpecialty = "";
         
-        list = listSpecialties('actives');
+        list = listSpecialties('actives'); // get all specialties less litigio
         
         list.forEach(function(element,index){
             arrayId.push(element.id);
         });
         
+        // random specialty
         $id_specialty = arrayId[Math.floor(Math.random() * arrayId.length)];
         
         list.forEach(function(element,index){
@@ -909,22 +906,31 @@ var router = new $.mobile.Router({
                 nameSpecialty = element.name;
         });
 
+        // reset values
         $('.start_test .number_questions').text('1');
         $('.start_test .content_start_game').attr('question','1');
-        $('.start_test .wrapper > div').fadeOut(500);
+        $('.name_specialty span').text('').hide();
+        
+        // hide all divs
+        $('.start_test .wrapper > div').fadeOut(200);
+        
+        // show content to start game mode test
         $('.start_test .wrapper .start').fadeIn(500);
+        
+        // empty table result test
         $("#result_test tbody").empty();
         
-        // Click to start to reply the questions mode race
+        // Click to start to reply the questions mode test
         $('button[data-url="start_mode_game"]').unbind('click').click(function(){
             cont = true;
             
-            $('.start_test .wrapper .start').fadeOut(50);
+            $('.start_test .wrapper .start').fadeOut(50); // hide content start game
             
+            // show loader
             loader('Cargando preguntas');
             
             setTimeout(function(){
-                $('.name_specialty span').text('Especialidad: ' + nameSpecialty).parent().show();
+                $('.name_specialty span').text('Especialidad: ' + nameSpecialty).parent().show(); // print name specialty
                 $('.start_test div[data-role="header"] .top_questions').fadeIn(500);
                 $('.start_test .wrapper .content_start_game').css({'display':'block','opacity':'1'});
             },1000);
@@ -944,11 +950,7 @@ var router = new $.mobile.Router({
                         setTimeout(function() { back(); },2000);
                     }
                     
-                    hide_timer();
-                    
                     questions('.start_test', data);
-                    
-                    $('.loader').fadeOut(1000);
 
                     var content_questions = $('.start_test .content_question');
                     var corrects_questions = 0;
@@ -975,64 +977,85 @@ var router = new $.mobile.Router({
                             var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
                             
                             control_mode_test = false;
+                            
                             if(answer_ == correct_answer){
+                                // show status question
                                 setTimeout(function() { question_status('.start_test', 'correct'); },800);
+                                
+                                // sum points
                                 points = numRespCorrect++ * 0.5;
+                                
+                                // set variables to show table result
                                 itemRespuesta.pregunta = answer_;
                                 itemRespuesta.respuesta= correct_answer;
                                 itemRespuesta.correcta = true;
+                                
                                 respuestas.push(JSON.stringify(itemRespuesta));
                                 
                                 ++corrects_questions;
+                                
+                                // paint correct option
                                 $(this).next().addClass('correct_answer');
                             }else{
+                                // show question status
                                 setTimeout(function() { question_status('.start_test','incorrect'); },800);
+                                
+                                // set variables to show table result
                                 itemRespuesta.pregunta = answer_;
                                 itemRespuesta.respuesta= correct_answer;
                                 itemRespuesta.correcta = false;
                                 respuestas.push(JSON.stringify(itemRespuesta));
                                 
+                                // get options questions
                                 var opciones = $('.start_test .content_question.test_options.active .answers_options .answer input');
                                 
-                                //lista de respuestas
+                                //list answers
                                 opciones.each(function(indice, elemento) {
                                     if ($(elemento).val() === correct_answer)
-                                       $(elemento).next().addClass('correct_answer');
+                                        $(elemento).next().addClass('correct_answer'); // paint the correct option
                                 });
                                 
+                                // paint the incorrect option
                                 $(this).next().addClass('incorrect_answer');
                             }
+                            
+                            // while quantity is minor that con
                             if(canPreguntas > con){
                                 con++;
-                                
-                                
-                                setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },4000);
-                                global_timeout = setTimeout(function(){
-                                        evt_next_question_test('.start_test',corrects_questions);
-                                },4000);
+                                setTimeout(function(){ $('.start_test .question_result').fadeOut(300).css({'opacity':'0'}); },4000); // hide content result state
+                                global_timeout = setTimeout(function(){ evt_next_question_test('.start_test',corrects_questions); },4000);
                             }
                             
+                            // if the top question is ended
                             if(con == 10 || con == top){
-                                hide_timer();
-                                $('#points').text(points);
-                                $('#status').removeClass('success error');
+                                hide_timer(); // hide timer
                                 
+                                // set values in the head table
+                                $('#points').text(points);
+                                $('#status').removeClass('success error'); // remove class
+                                
+                                // win the test
                                 if(points >=3) 
                                     $('#status').text("Pasaste el examen!").addClass('success');
                                 else
                                     $('#status').text("No aprobaste el examen!").addClass('error');
                                      
-                                $('.start_test .wrapper .content_start_game').css({'display':'block','opacity':'1'});
+                                $('.start_test .wrapper .content_start_game').css({'display':'none','opacity':'1'});
                                 
                                 cont = false;
                                 respuestas.forEach(function(index,element){
                                     var compiled = tmpl("template_each_finalGame", JSON.parse(index));
                                     $("#result_test tbody").append(compiled);
-                                    setTimeout(function(){ $("#result_test").fadeIn(500); show_nav_button(); }, 4000);
                                 });
+                                
+                                // show table result
+                                setTimeout(function(){ $("#result_test").fadeIn(500); show_nav_button(); }, 4000);
                             }
                         });
                     }, 1000);
+                    
+                    // hide loader
+                    $('.loader').fadeOut(500);
                 }
             });
         });
@@ -1040,20 +1063,11 @@ var router = new $.mobile.Router({
     specialty :function(type,match,ui){
         icon_mode_game('.specialty','specialty');
         
-        nav_menu();
-        
-        remove_drag();
-        
-        show_nav_button();
-        
         hide_timer();
-
-        evt_logout();
-        
-        evt_notifications();
         
         $(".listTematica").css('opacity','0').empty();
-
+        
+        // event to show all specialties less litigio
         $('.content_game button').unbind('click').click(function(e){
             e.preventDefault();
             loader('Cargando...');
@@ -1062,24 +1076,22 @@ var router = new $.mobile.Router({
         });
     },
     start_specialty :function(type,match,ui){
-        nav_menu();
-    
         loader('Cargando...');
         
-        remove_drag();
-        
-        hide_nav_button();
-        
-        evt_logout();
+        show_nav_button();
         
         hide_timer();
         
+        // hide content list specialties
         $(".listTematica").css('opacity','0').empty();
 
+        // empty table result specialty
         $("#result_specialty tbody").empty();
 
+        // hide contents
         $('.start_specialty .top_questions, #content_startSpeciality').fadeOut(500);
-
+        
+        // ajax to get all specialties
         $.ajax({
             url: webService + "listNamespecialty",
             type: 'POST',
@@ -1096,12 +1108,15 @@ var router = new $.mobile.Router({
                     }
                 });
                 
+                // show content specialties
                 $(".listTematica").css('opacity','1');
 
+                // Event to choose spcialty and start answered
                 $('.listTematica .container_btn button').unbind('click').click(function(e){
                     e.preventDefault();
                     var url = $(this).attr('data-url');
                     $("#result_specialty").css('opacity','0');
+                    loader('Cargando Especialidad...');
                     setTimeout(function(){ $.mobile.changePage(url, {role: 'page', transition: 'fade'}); },500);
                 });
                 
@@ -1111,13 +1126,7 @@ var router = new $.mobile.Router({
         });       
     },
     startGamespeciality :function(type,match,ui){
-        nav_menu();
-        
-        remove_drag();
-        
         hide_nav_button();
-        
-        evt_logout();
 
         hide_timer();
         
@@ -1131,12 +1140,13 @@ var router = new $.mobile.Router({
        
         $('.start_specialty .number_questions').text('1');
         $('.start_specialty .content_start_game').attr('question','1');
-
+        
+        // ajax to find questions by id specialty
         $.ajax({
             url: webService + "find_question",
             type: 'POST',
             data: {
-                id_specialty:params.id
+                id_specialty : params.id
             },
             success: function(response){
                 var data = JSON.parse(response);
@@ -1150,13 +1160,14 @@ var router = new $.mobile.Router({
                     $('#content_startSpeciality').append(tmpl('structure_question',i));
                 });
                     
-                //cantidad de Preguntas
+                // quantity questions
                 var canPreguntas = $('#content_startSpeciality .content_question').length;
                 $('.start_specialty div[data-role="header"] .top_questions .content_questions .rank').text((canPreguntas));
                 $('#content_startSpeciality').css({'display':'block','opacity':'1'});
                 $('#content_startSpeciality .content_question').eq(con - 1).addClass('active').fadeIn(500);
                 $('.start_specialty .top_questions').fadeIn(500);
-
+                
+                // event to start answers
                 $('#content_startSpeciality .content_question input[type="radio"]').unbind('click').click(function(e){
                     var respuesta = $(this).val();
                     var type_question = $('#content_startSpeciality .content_question.active').attr('type-question');
@@ -1168,6 +1179,7 @@ var router = new $.mobile.Router({
                         $(this).next().addClass('correct_answer');
                         
                         setTimeout(function() { question_status('.start_specialty','correct'); },1000);
+                        
                         itemRespuesta.pregunta = question;
                         itemRespuesta.respuesta= respuesta;
                         itemRespuesta.correcta = true;
@@ -1186,6 +1198,7 @@ var router = new $.mobile.Router({
                         $(this).next().addClass('incorrect_answer');
                         
                         setTimeout(function() { question_status('.start_specialty','incorrect'); },1000);
+                        
                         itemRespuesta.pregunta = question;
                         itemRespuesta.respuesta= respuesta;
                         itemRespuesta.correcta = false;
@@ -1195,18 +1208,21 @@ var router = new $.mobile.Router({
                     if(canPreguntas + 1 > con){
                         var current = $('#content_startSpeciality .content_question.active');
                         
-                        setTimeout(function(){ $('#content_startSpeciality .content_question').removeClass('active').fadeOut(500); },500);
+                        setTimeout(function(){ $('#content_startSpeciality .content_question').removeClass('active').fadeOut(300); },300);
                         
                         con++;
+                        
                         $('.start_specialty .content_start_game').attr('question', (con));
+                        
                         setTimeout(function(){
+                            
+                            setTimeout(function(){ $('.start_specialty .question_result').fadeOut(300).css({'opacity':'0'}); },3900);
+                            
                             setTimeout(function(){
-                                $('.start_specialty .question_result').fadeOut(500).css({'opacity':'0'});
-                            },3900);
-                            setTimeout(function(){
-                                $('#content_startSpeciality .content_question').eq(con - 1).addClass('active').fadeIn(600);
+                                $('#content_startSpeciality .content_question').eq(con - 1).addClass('active').fadeIn(300);
                                 $('.start_specialty div[data-role="header"] .top_questions .content_questions .number_questions').text((con));
                             },4000);
+                            
                         }, 1000);
                        
                     }
@@ -1215,31 +1231,25 @@ var router = new $.mobile.Router({
                         respuestas.forEach(function(index,element){
                             $("#result_specialty tbody").append(tmpl("template_each_finalGame", JSON.parse(index)));
                         });
+                        
                         setTimeout(function(){
                             $('.start_specialty .question_result').fadeOut(300).css({'opacity':'0'});
                             $('.start_specialty .top_questions').fadeOut(100);
                             $('#content_startSpeciality').fadeOut();
                         },3900);
+                        
                         setTimeout(function(){ $("#result_specialty").css('opacity','1').fadeIn(500); show_nav_button(); }, 4400);
                     }
                 });
             }
         });
+        
+        $('.loader').fadeOut(500);
     },
     litigation :function(type,match,ui){
         icon_mode_game('.litigation','litigation');
         
-        nav_menu();
-        
-        remove_drag();
-        
-        show_nav_button();
-        
-        evt_logout();
-        
         hide_timer();
-        
-        evt_notifications();
         
         // event to start game litigation
         $('.content_game button').unbind('click').click(function(e){
@@ -1252,17 +1262,12 @@ var router = new $.mobile.Router({
         });
     },
     start_litigation :function(type,match,ui){
-        nav_menu();
-        
-        remove_drag();
-        
-        hide_nav_button();
+        show_nav_button();
         
         hide_timer();
         
-        evt_logout();
-        
-         $.ajax({
+        // ajax to get all cases litigation
+        $.ajax({
             url: webService + "listLitigationCases",
             type: 'POST',
             data: {},
@@ -1290,22 +1295,19 @@ var router = new $.mobile.Router({
         });
     },
     startGamelitigation :function(type,match,ui){
-        nav_menu();
-        
         hide_timer();
         
         hide_nav_button();
         
-        evt_logout();
-        
         var params = router.getParams(match[1]);
         var arrayId = [];
-        var id_case = 1; 
+        var id_case = 0;
 
         $("#content_startLitigation table.resultado").css('opacity','0');
         $("#content_startLitigation table.resultado tbody").empty();
         $("#content_startLitigation .content_question").hide().remove();
         
+        // ajax to get all data case 
         $.ajax({
             url: webService + "all_caseLitigation",
             type: 'POST',
@@ -1480,14 +1482,6 @@ var router = new $.mobile.Router({
         });   
     },
     profile : function(type,match,ui){
-        nav_menu();
-        
-        remove_drag();
-        
-        show_nav_button();
-        
-        evt_logout();
-        
         hide_timer();
         
         evt_notifications();
@@ -1707,14 +1701,6 @@ var router = new $.mobile.Router({
         });
     },
     questions_ : function(type,match,ui){
-        nav_menu();
-        
-        remove_drag();
-        
-        show_nav_button();
-        
-        evt_logout();
-        
         var $id = localStorage.getItem('id_user');
         
         panel_data($id);
@@ -2251,14 +2237,6 @@ var router = new $.mobile.Router({
         $('select').material_select();
     },
     specialties : function(type,match,ui){
-        nav_menu();
-        
-        remove_drag();
-        
-        show_nav_button();
-        
-        evt_logout();
-        
         var $id = localStorage.getItem('id_user');
         
         panel_data($id);
@@ -2643,10 +2621,13 @@ function loader(msg){
 
 // Event validate login
 function validate_login(){
+    // var from local storage
     var log = localStorage.getItem('log');
     var id_user = localStorage.getItem('id_user');
     
+    // when user have logged
     if(log == 'true'){
+        // get variables local storage
         var id = id_user;
         var role = localStorage.getItem('role_user');
         
@@ -2659,11 +2640,13 @@ function validate_login(){
                 $.mobile.changePage('#dashboard?user='+id,{role: 'page',transition: 'fade'});
         });
         
+        // Change text button template login
         if(role == 'admin')
-            $('#home .wrapper .container_btn button').text('Ingresar');
+            $('#home .wrapper .container_btn button').text('¡Ingresar!');
         else
-            $('#home .wrapper .container_btn button').text('Comenzar con las preguntas');
+            $('#home .wrapper .container_btn button').text('¡Comenzar con las preguntas!');
         
+        // set margin 
         $('.home .container_logo').css('margin-top','5.5rem');
 
         $('#home .wrapper .container_btn').hide(1000);
@@ -2680,9 +2663,11 @@ function validate_login(){
 
 // Event login
 function evt_login(){
+    // Get values input text
     var $email = $('#email').val();
     var $password = $('#password').val();
     
+    // Validations
     if($email === ""){
         message('¡ El email no puede estar vacio !');
         $('#email').focus();
@@ -2691,34 +2676,42 @@ function evt_login(){
         $('#password').focus();
     }else{
         loader('Validando...');
+        
+        // Ajax to validate if user is in database
         $.ajax({
-            type: "POST",
-            url: webService+"validate_login",
-            data: {
+            url     : webService+"validate_login",
+            type    : "POST",
+            data    : {
                 email   : $email,
                 pwd     : $password
-            },success:function(response){
+            },
+            success : function(response){
                 var data = JSON.parse(response);
                 
                 if(data.status == "OK"){
-                    $('.loader').fadeOut(1500);
+                    $('.loader').fadeOut(1000);
+                    
+                    localStorage.setItem('role_user',data.role);
+                    localStorage.setItem('gender_user',data.gender);
+                    
+                    var role = data.role;
+                    var url = role == 'admin' ? '#dashboard_admin?user=' + data.id_user : '#dashboard?user=' + data.id_user;
+                    
                     setTimeout(function(){
                         Materialize.toast('<div class="success"><h4>¡'+data.message+'!</h4></div>',1500);
                         clean_login();
-                    },1000);
+                    },500);
                     setTimeout(function(){
-                        var role = data.role;
-                        localStorage.setItem('role_user',data.role);
-                        localStorage.setItem('gender_user',data.gender);
-                        var url = role == 'admin' ? '#dashboard_admin?user=' + data.id_user : '#dashboard?user=' + data.id_user;
-                        $.mobile.changePage(url,{role: 'page',transition:"flip"});
+                        // change page depending role
+                        $.mobile.changePage(url, {role: 'page', transition:"pop"});
                         
-                    },2500);
+                    },1500);
                 }else{
+                    // if the user data is wrong
                     $('.loader').fadeOut(1000);
                     setTimeout(function(){
                         message('user isn\'t exist');
-                    },1200);
+                    },1000);
                 }
             }
         });
@@ -3500,7 +3493,7 @@ function evt_all_cases_show(filter,ref){
 }
 
 // Function that load all questions
-function load_questions_dash(){
+/*function load_questions_dash(){
     var data = {};
     var array = localStorage.getItem('questions');
     if(array == null || array.length == 0){
@@ -3531,7 +3524,7 @@ function load_questions_dash(){
             }
         });
     }
-}
+}*/
 
 // Function that load all questions
 function load_questions(filter,ref){
