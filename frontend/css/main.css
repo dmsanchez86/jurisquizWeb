@@ -6361,10 +6361,9 @@ textarea.materialize-textarea {
   top: 11px;
 }
 .ui-page-theme-a .ui-body-inherit {
-  background-color: #3A6667;
-  height: 90vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question,
 .ui-page-theme-a .ui-body-inherit .edit_specialty,
