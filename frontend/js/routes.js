@@ -234,6 +234,25 @@ var router = new $.mobile.Router({
             var url = $(this).attr('data-url');   
             $.mobile.changePage(url,{role:'page',transition:'fade'});
         });
+        
+        if(localStorage.getItem('questions') != null){
+            var questions_storage = JSON.parse(localStorage.getItem('questions'));
+                
+            questions_storage.forEach(function(i,o){
+                i.t_question = "";
+                
+                if(i.type_question == 1)
+                    i.t_question = "Selección múltiple";
+                else if(i.type_question == 2)
+                    i.t_question = "Si / No";
+                else if(i.type_question == 3)
+                    i.t_question = "Ordenamiento";
+    
+                $(".content_question_show").append(tmpl("all_questions_show", i));
+    
+                questions_storage[o] = i;
+            });
+        }
     },
     notifications: function(type,match,ui){
         hide_timer();
@@ -2535,12 +2554,12 @@ function listSpecialties(filter){
 }
 
 // Change the icon mode game depending the gender user
-function icon_mode_game(page_referer,ref){
+function icon_mode_game(page_referer, ref){
     $(page_referer + ' .content_game .icon_game img').attr('src','img/icons/'+ ref +localStorage.getItem('gender_user')+'.png').css('opacity','1');
 }
 
 // evt timer game mode litigation
-function timerLitigation(time,page_referer,idCase,question){
+function timerLitigation(time, page_referer, idCase, question){
     
     $('.question_time').fadeIn(300).find('em').text(time + 's');
 
@@ -3154,8 +3173,8 @@ function evt_all_questions(filter){
 }
 
 // Event to get all questions
-function evt_all_questions_show(filter,ref){
-    $(".content_question_show").empty();
+function evt_all_questions_show(filter, ref){
+    // $(".content_question_show").empty();
 
     if(localStorage.getItem('questions') == null){
         load_questions(filter, ref);
@@ -3165,22 +3184,6 @@ function evt_all_questions_show(filter,ref){
         }else if(!isNaN(filter)){
             load_questions(filter,'id');
         }else{
-            var questions_storage = JSON.parse(localStorage.getItem('questions'));
-            
-            questions_storage.forEach(function(i,o){
-                i.t_question = "";
-                
-                if(i.type_question == 1)
-                    i.t_question = "Selección múltiple";
-                else if(i.type_question == 2)
-                    i.t_question = "Si / No";
-                else if(i.type_question == 3)
-                    i.t_question = "Ordenamiento";
-    
-                $(".content_question_show").append(tmpl("all_questions_show", i));
-    
-                questions_storage[o] = i;
-            });
             
             // click to filter questions for inactives
             $('.menu_question .desactivate').unbind('click').click(function(){
@@ -3309,7 +3312,6 @@ function evt_all_questions_show(filter,ref){
             $('.content_question_show').show(600);
                 
             setTimeout(function(){
-                localStorage.setItem('questions', JSON.stringify(questions_storage));
                 
                 // paginator questions
                 $(".container_questions").jPages({
@@ -3328,166 +3330,7 @@ function evt_all_questions_show(filter,ref){
 function evt_all_cases_show(filter,ref){
     $(".content_cases_show").empty();
     
-    load_cases(filter,ref);
-    
-    /*if(filter == 'inactives' || filter == 'actives'){
-        load_questions(filter,ref);
-    }else if(!isNaN(filter)){
-        load_questions(filter,'id');
-    }else{
-            var questions_storage = JSON.parse(localStorage.getItem('questions'));
-            questions_storage.forEach(function(i,o){
-                i.t_question = "";
-                
-                if(i.type_question == 1)
-                    i.t_question = "Selección múltiple";
-                else if(i.type_question == 2)
-                    i.t_question = "Si / No";
-                else if(i.type_question == 3)
-                    i.t_question = "Ordenamiento";
-    
-                $(".content_question_show").append(tmpl("all_questions_show", i));
-                
-                // click to filter questions for inactives
-                $('.menu_question .desactivate').unbind('click').click(function(){
-                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    evt_question('active',id);
-                });
-                
-                // Click to filter questions for actives
-                $('.menu_question .activate').unbind('click').click(function(){
-                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    evt_question('inactive',id);
-                });
-                    
-                // Click to edit question
-                $('.menu_question .edit').unbind('click').click(function(){
-                    var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    
-                    $('#form_edit_question .structure > div').hide(50);
-                    
-                    // ajax to get data question
-                    $.ajax({
-                        url     : webService + 'data_question',
-                        type    : 'POST',
-                        data    : {
-                            id  : $id
-                        },
-                        success : function(res){
-                            var data = JSON.parse(res);
-                            var options_specialty = $('#specialty_name_edit option');
-                            var options_type_answers = $('#type_question_edit option');
-                            var options_yes_no = $('input[name="yes_no_edit"]');
-                            
-                            options_yes_no.removeAttr('checked');
-                            
-                            $('#sortable_choice_edit,#sortable_edit').empty();
-                            
-                            for(var i = 0; i < options_specialty.length; i++){
-                                if(data.id_specialty == options_specialty[i].value)
-                                    options_specialty[i].setAttribute('selected','selected');
-                            }
-                            
-                            for(var k = 0; k < options_yes_no.length; k++){
-                                if(data.correct_answer == options_yes_no[k].value)
-                                    options_yes_no[k].setAttribute('checked','checked');
-                            }
-                            
-                            for(var j = 0; j < options_type_answers.length; j++){
-                                if(data.type_question == options_type_answers[j].value){
-                                    options_type_answers[j].setAttribute('selected','selected');
-                                    $('#form_edit_question .structure > div').eq(j - 1).fadeIn(1000);
-                                }
-                            }
-                            
-                            var options_question = data.options_question.split('/');
-                            var correct_answer_edit = data.correct_answer.split('/');
-                            var correct_question = 0;
-                            
-                            if(data.type_question == 1){
-                                options_question.forEach(function(i,o){
-                                    if(i == correct_answer_edit[correct_question]){
-                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" checked="checked" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
-                                        correct_question++;
-                                    }else{
-                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
-                                    }
-                                });
-                                
-                            }else if(data.type_question == 3){
-                                options_question.forEach(function(i,o){
-                                    $('#sortable_edit').append('<li><span>' + i + '</span><img src="img/points/delete_.png"></li>');
-                                });
-                            }
-                            
-                            $('.structure .multiple_choice_edit .input img').unbind('click').click(function(){
-                                var question = $(this).parent().find('input').val();
-                                
-                                evt_append_question_choice_edit(question);
-                            });
-                            
-                            $('.structure .multiple_choice_edit .input input').unbind('keyup').keyup(function(e){
-                                var question = $(this).val();
-                                
-                                if(e.keyCode == 13)
-                                    evt_append_question_choice_edit(question);
-                            });
-                            
-                            $('.structure .order_questions_edit .input img').unbind('click').click(function(){
-                                var question = $(this).parent().find('input').val();
-                                
-                                evt_append_question_edit(question);
-                            });
-                            
-                            $('.structure .order_questions_edit .input input').unbind('keyup').keyup(function(e){
-                                var question = $(this).val();
-                                
-                                if(e.keyCode == 13)
-                                    evt_append_question_edit(question);
-                            });
-                            
-                            $('#form_edit_question .id span').empty().text(data.id);
-                            $('#question_edit').empty().text(data.question);
-                            
-                            $('#sortable_choice_edit li img').unbind('click').click(function(e) {
-                                $(this).parent().remove();
-                                $('.structure .multiple_choice_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
-                                $('.structure .multiple_choice_edit .input input').removeAttr('disabled');
-                                $('.structure .multiple_choice_edit .input img').css('z-index','1');
-                                count_id++;
-                            });
-                            
-                            $('#sortable_edit li img').unbind('click').click(function(e) {
-                                $(this).parent().remove();
-                                $('.structure .order_questions_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas ('+(++count)+')');
-                                $('.structure .order_questions_edit .input input').removeAttr('disabled');
-                                $('.structure .order_questions_edit .input img').css('z-index','1');
-                            });
-                            
-                            $('select').material_select();
-                        }
-                    });
-    
-                    $('a[href="#edit_question"]').click();
-                });
-    
-                questions_storage[o] = i;
-            });
-                    
-            $('.content_question_show').show(600);
-                
-            setTimeout(function(){
-                localStorage.setItem('questions', JSON.stringify(questions_storage));
-                $(".container_questions").jPages({
-                    containerID: "content_question_show",
-                    perPage: 2,
-                    keyBrowse: true,
-                });
-            },500);
-            
-            $('.loader').fadeOut(500);
-        }*/
-    
+    load_cases(filter, ref);
 }
 
 // Function that load all questions
@@ -3562,9 +3405,130 @@ function load_questions(filter,ref){
                     i.t_question = "Ordenamiento";
 
                 questions_storage[o] = i;
-                $(".content_question_show").append(tmpl("all_questions_show", i));
                 
-                // click to filter questions for inactives
+                $(".content_question_show").append(tmpl("all_questions_show", i));
+            });
+            
+            // click to filter questions for inactives
+            $('.menu_question .desactivate').unbind('click').click(function(){
+                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                
+                evt_question('active',id);
+            });
+            
+            // Click to filter questions for actives
+            $('.menu_question .activate').unbind('click').click(function(){
+                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                
+                evt_question('inactive',id);
+            });
+            
+            // Click to edit question
+            $('.menu_question .edit').unbind('click').click(function(){
+                    var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                    
+                    $('#form_edit_question .structure > div').hide(50);
+                    
+                    // ajax to get data question
+                    $.ajax({
+                        url     : webService + 'data_question',
+                        type    : 'POST',
+                        data    : {
+                            id  : $id
+                        },
+                        success : function(res){
+                            var data = JSON.parse(res);
+                            var options_specialty = $('#specialty_name_edit option');
+                            var options_type_answers = $('#type_question_edit option');
+                            var options_yes_no = $('input[name="yes_no_edit"]');
+                            
+                            options_yes_no.removeAttr('checked');
+                            
+                            $('#sortable_choice_edit,#sortable_edit').empty();
+                            
+                            for(var i = 0; i < options_specialty.length; i++){
+                                if(data.id_specialty == options_specialty[i].value)
+                                    options_specialty[i].setAttribute('selected','selected');
+                            }
+                            
+                            for(var k = 0; k < options_yes_no.length; k++){
+                                if(data.correct_answer == options_yes_no[k].value)
+                                    options_yes_no[k].setAttribute('checked','checked');
+                            }
+                            
+                            for(var j = 0; j < options_type_answers.length; j++){
+                                if(data.type_question == options_type_answers[j].value){
+                                    options_type_answers[j].setAttribute('selected','selected');
+                                    $('#form_edit_question .structure > div').eq(j - 1).fadeIn(1000);
+                                }
+                            }
+                            
+                            var options_question = data.options_question.split('/');
+                            var correct_answer_edit = data.correct_answer.split('/');
+                            var correct_question = 0;
+                            
+                            if(data.type_question == 1){
+                                options_question.forEach(function(i,o){
+                                    if(i == correct_answer_edit[correct_question]){
+                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" checked="checked" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                        correct_question++;
+                                    }else{
+                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                    }
+                                });
+                                
+                            }else if(data.type_question == 3){
+                                options_question.forEach(function(i,o){
+                                    $('#sortable_edit').append('<li><span>' + i + '</span><img src="img/points/delete_.png"></li>');
+                                });
+                            }
+                            
+                            $('.structure .multiple_choice_edit_case .input img').unbind('click').click(function(){
+                                var question = $(this).parent().find('input').val();
+                                
+                                evt_append_question_choice_edit(question);
+                            });
+                            
+                            $('.structure .multiple_choice_edit_case .input input').unbind('keyup').keyup(function(e){
+                                var question = $(this).val();
+                                
+                                if(e.keyCode == 13)
+                                    evt_append_question_choice_edit(question);
+                            });
+                            
+                            $('.structure .order_questions_edit_case .input img').unbind('click').click(function(){
+                                var question = $(this).parent().find('input').val();
+                                
+                                evt_append_question_edit(question);
+                            });
+                            
+                            $('.structure .order_questions_edit_case .input input').unbind('keyup').keyup(function(e){
+                                var question = $(this).val();
+                                
+                                if(e.keyCode == 13)
+                                    evt_append_question_edit(question);
+                            });
+                            
+                            $('#form_edit_question .id span').empty().text(data.id);
+                            $('#question_edit').empty().text(data.question);
+                            
+                            $('#sortable_choice_edit li i').unbind('click').click(function(e) {
+                                $(this).parent().remove();
+                                $('.structure .multiple_choice_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
+                                $('.structure .multiple_choice_edit .input input').removeAttr('disabled');
+                                $('.structure .multiple_choice_edit .input img').css('z-index','1');
+                                count_id++;
+                            });
+                            
+                            $('#sortable_edit li i').unbind('click').click(function(e) {
+                                $(this).parent().remove();
+                                $('.structure .order_questions_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas ('+(++count)+')');
+                                $('.structure .order_questions_edit .input input').removeAttr('disabled');
+                                $('.structure .order_questions_edit .input img').css('z-index','1');
+                            });
+                            
+                            $('select').material_select();
+                    // click to filter questions for inactives
                 $('.menu_question .desactivate').unbind('click').click(function(){
                     var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     
@@ -3687,9 +3651,11 @@ function load_questions(filter,ref){
                     });
                     
                     $('a[href="#edit_question"]').click();
+                });    }
+                    });
+                    
+                    $('a[href="#edit_question"]').click();
                 });
-
-            });
             
             $('.content_question_show').show(600);
             
@@ -3706,6 +3672,7 @@ function load_questions(filter,ref){
             $('.loader').fadeOut(500);
         }
     });
+    
 }
 
 // Function that load all questions
@@ -3744,21 +3711,20 @@ function load_cases(filter,ref){
                     i.t_question = "Ordenamiento";
 
                 $(".content_cases_show").append(tmpl("all_cases_show", i));
+            });
+            
+            // click to filter cases for inactives
+            $('.menu_case .desactivate').unbind('click').click(function(){
+                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                 
-                // click to filter cases for inactives
-                $('.menu_case .desactivate').unbind('click').click(function(){
-                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    
-                    evt_case('active',id);
-                });
+                evt_case('active',id);
+            });
+            
+            // Click to filter cases for actives
+            $('.menu_case .activate').unbind('click').click(function(){
+                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                 
-                // Click to filter cases for actives
-                $('.menu_case .activate').unbind('click').click(function(){
-                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    
-                    evt_case('inactive',id);
-                });
-
+                evt_case('inactive',id);
             });
             
             // Click to edit case
@@ -3959,18 +3925,15 @@ function evt_insert_case(obj){
             var data = JSON.parse(res);
             
             if(data.status == "OK"){
-                $('.loader').fadeOut(1500);
                 setTimeout(function(){
                     message(data.message);
                     reset_form_new_question();
                     $('button[data-url="#cancel_question"]').click();
                 },1000);
             }else{
-                $('.loader').fadeOut(1000);
-                setTimeout(function(){
-                    message(data.message);
-                },1200);
+                setTimeout(function(){ message(data.message); },1000);
             }
+            $('.loader').fadeOut(500);
         }
     });
 }
@@ -3988,18 +3951,15 @@ function evt_insert_question(obj){
             var data = JSON.parse(res);
             
             if(data.status == "OK"){
-                $('.loader').fadeOut(1500);
                 setTimeout(function(){
                     message(data.message);
                     reset_form_new_question();
                     $('button[data-url="#cancel_question"]').click();
                 },1000);
             }else{
-                $('.loader').fadeOut(1000);
-                setTimeout(function(){
-                    message(data.message);
-                },1200);
+                setTimeout(function(){ message(data.message); },1200);
             }
+            $('.loader').fadeOut(1000);
         }
     });
 }
@@ -4017,7 +3977,6 @@ function evt_update_question(obj){
             var data = JSON.parse(res);
             
             if(data.status == "OK"){
-                $('.loader').fadeOut(1500);
                 $('#edit_question').find('a').click();
                 
                 evt_all_questions_show('all',null);
@@ -4029,11 +3988,9 @@ function evt_update_question(obj){
                     $('button[data-url="#cancel_question"]').click();
                 },1000);
             }else{
-                $('.loader').fadeOut(1000);
-                setTimeout(function(){
-                    message(data.message);
-                },1200);
+                setTimeout(function(){ message(data.message); }, 1000);
             }
+            $('.loader').fadeOut(1000);
         }
     });
 }
@@ -4051,7 +4008,6 @@ function evt_update_case(obj){
             var data = JSON.parse(res);
             
             if(data.status == "OK"){
-                $('.loader').fadeOut(1500);
                 $('#edit_case').find('a').click();
                 
                 evt_all_cases_show('all',null);
@@ -4062,11 +4018,9 @@ function evt_update_case(obj){
                     $('button[data-url="#cancel_question"]').click();
                 },1000);
             }else{
-                $('.loader').fadeOut(1000);
-                setTimeout(function(){
-                    message(data.message);
-                },1200);
+                setTimeout(function(){ message(data.message); },1000);
             }
+            $('.loader').fadeOut(1000);
         }
     });
 }
@@ -4249,12 +4203,14 @@ function reset_form_new_question(){
 function evt_all_specialties_show(filter){
     $(".content_specialty_show").empty();
     
+    // ajax to get all specialties
     $.ajax({
         url         : webService + 'all_specialties/'+filter,
         type        : 'POST',
         data        : null,
         success     : function(res){
             var data = JSON.parse(res);
+            
             data.forEach(function(i,o){
                     
                 i.mode_game = "";
@@ -4287,18 +4243,22 @@ function evt_all_specialties_show(filter){
                     i.state = "Inactiva";
 
                 $(".content_specialty_show").append(tmpl("all_specialties_show", i));
+            });
+            
+            // event to deactivate specialty
+            $('.menu_specialty .desactivate').unbind('click').click(function(){
+                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                evt_specialty('active',id);
+            });
                 
-                $('.menu_specialty .desactivate').unbind('click').click(function(){
-                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    evt_specialty('active',id);
-                });
-                
-                $('.menu_specialty .activate').unbind('click').click(function(){
-                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    evt_specialty('inactive',id);
-                });
-                
-                $('.menu_specialty .edit').unbind('click').click(function(){
+            // event to activate specialty
+            $('.menu_specialty .activate').unbind('click').click(function(){
+                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                evt_specialty('inactive',id);
+            });
+            
+            // event to edit specialty
+            $('.menu_specialty .edit').unbind('click').click(function(){
                     var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     
                     $('#form_edit_specialty .structure > div').hide(50);
@@ -4333,11 +4293,11 @@ function evt_all_specialties_show(filter){
                     
                     $('a[href="#edit_specialty"]').click();
                 });
-            });
             
             $('.content_specialty_show').show(600);
             
             setTimeout(function(){
+                // paginator specialties
                 $(".container_specialties").jPages({
                     containerID: "content_specialty_show",
                     perPage: 4,
@@ -4358,6 +4318,7 @@ function evt_specialty(param, $id){
     else
         loader('Desactivando Especialidad');
         
+    // ajax to acivate or deactivate specialty
     $.ajax({
         url         : webService + 'specialty/' + param,
         type        : 'POST',
@@ -4383,7 +4344,7 @@ function evt_specialty(param, $id){
 }
 
 // Evt to get all questions any category
-function questions(page_referer,array,metadata){
+function questions(page_referer, array, metadata){
     if(array==null){
         var $data = {};
         
@@ -4395,7 +4356,6 @@ function questions(page_referer,array,metadata){
             else if(metadata.id_level == 3)
                 $data.load_questions = 'judicial';   
         }
-        
         
         // Ajax to get all questions with state active
         $.ajax({
@@ -4428,7 +4388,6 @@ function questions(page_referer,array,metadata){
                         message('No se cargo el duelo correctamente');
                         setTimeout(function() { location.reload(); }, 1000);
                     }
-                    
                     questions.forEach(function(i,o){
                         if(o < 9){
                             i.key = o;
@@ -4436,8 +4395,6 @@ function questions(page_referer,array,metadata){
                             $(page_referer + ' .content_start_game').append(tmpl('structure_question',i));
                         }
                     });
-                    console.log('this');
-                            console.log(questions_duel_);
                 }else{
                     questions.forEach(function(i,o){
                         i.key = o;
@@ -4489,11 +4446,12 @@ function validate_questions(){
                 }
             }
         });
+        
     },500);
 }
 
 // Funtion to validate mode game
-function evt_validate_mode_game(data,name_level,id_game){
+function evt_validate_mode_game(data, name_level, id_game){
     // Ajax to validate current level game user
     $.ajax({
         url         : webService + 'validate_level',
@@ -4665,7 +4623,7 @@ function evt_validate_mode_game(data,name_level,id_game){
                             }
                         }
                         
-                        // If the next question is type 3 
+                        // If the next question is type 3 
                         if($('.start_race .content_question.active').next().attr('type-question') == 3 )
                            $('.sortable_answer').sortable();
                     });
@@ -4810,7 +4768,7 @@ function evt_validate_mode_game(data,name_level,id_game){
 }
 
 // Event when the question is correct
-function question_status(page_referer,state){
+function question_status(page_referer, state){
     hide_timer();
     var id_question = $(page_referer + ' .content_question.active').attr('id-question');
     
@@ -4848,12 +4806,12 @@ function question_status(page_referer,state){
             $('.report_question .content_notifications').css('opacity','1');
         },500);
 
-        $.mobile.changePage('#report_question',{role:'dialog',transition: 'pop'});
+        $.mobile.changePage('#report_question',{role:'dialog',transition: 'slide'});
     });
 }
 
 // Event to paint the current level
-function evt_current_level(data,id){
+function evt_current_level(data, id){
     for(var i = 0; i < data.length; i++){
         if(data[i].id_level_game == 1){
             if(data[i].id_level_category == 1){
@@ -4908,8 +4866,6 @@ function evt_next_question(page_referer){
     else if(page_referer == '.start_race')
         time_question = 20;
     
-    $('.question_time').hide(500);
-    
     if($(page_referer + ' .content_question.active').next().length == 0 && page_referer == '.start_race'){
         var count_questions = 0;
         
@@ -4925,6 +4881,7 @@ function evt_next_question(page_referer){
         },500);
     }else{
         current_content.hide(500);
+        
         setTimeout(function(){
             current_content.remove();
             next_content.addClass('active').fadeIn(500);
@@ -4934,7 +4891,7 @@ function evt_next_question(page_referer){
 }
 
 // Evt to next question mode test
-function evt_next_question_test(page_referer,correct_questions,params){
+function evt_next_question_test(page_referer, correct_questions, params){
     var current_content = $(page_referer + ' .content_question.active');
     var next_content = $(page_referer + ' .content_question.active').next();
     var time_question = 15;
@@ -4943,11 +4900,9 @@ function evt_next_question_test(page_referer,correct_questions,params){
     
     hide_timer();
     
-    $('.question_time').hide(50);
-    
     if($(page_referer + ' .content_question.active').next().length == 0){
         
-        current_content.hide();
+        current_content.fadeOut(500);
         
         questions(page_referer,[]);
         
@@ -4958,12 +4913,13 @@ function evt_next_question_test(page_referer,correct_questions,params){
             setTimeout(function(){ show_timer( time_question, page_referer ); },500);
         },500);
     }else{
-        current_content.hide(500);
+        current_content.fadeOut(500);
         
         var number_question = $(page_referer + ' .content_start_game').attr('question');
         var top_question = parseInt($(page_referer + ' div[data-role="header"] .top_questions .content_questions .rank').text());
         
         setTimeout(function(){
+            
             // if the top question isn't hide
             if($(page_referer + ' div[data-role="header"] .top_questions').css('display') != 'none')
                 $(page_referer + ' .content_start_game').attr('question',(++number_question));
@@ -4972,11 +4928,11 @@ function evt_next_question_test(page_referer,correct_questions,params){
             if(number_question == top_question + 1){
                 $('.win_duel .content_win_duel').css('opacity','0');
                 var url = '';
-                hide_timer();
-                current_content.hide(50);
                 
-                $(page_referer + ' .wrapper > div').hide();
-                $(page_referer + ' div[data-role="header"] .top_questions').hide();
+                current_content.fadeOut(50);
+                
+                $(page_referer + ' .wrapper > div').hide(10);
+                $(page_referer + ' div[data-role="header"] .top_questions').hide(10);
                 $(page_referer + ' .wrapper .complete_questions span').text(correct_questions);
                 
                 if(page_referer == '.duel_users' && ids_questions_duel.length > 0){
@@ -4996,12 +4952,10 @@ function evt_next_question_test(page_referer,correct_questions,params){
                             
                             url = '?id_duel=' + data.data_duel.id_duel + '&ref=last';
                             
-                            if(data.status != 'OK'){
+                            if(data.status != 'OK')
                                 message(data.message);
-                            }else{
+                            else
                                 message(data.message);
-                                // global_timeout = setTimeout(function(){ back(); },10000);
-                            }
                         }
                     });
                     
@@ -5022,12 +4976,9 @@ function evt_next_question_test(page_referer,correct_questions,params){
                             var data = JSON.parse(res);
                             
                             url = '?id_duel=' + data.metadata.id_duel + '&ref=first';
-                            
-                            if(data.status != 'OK'){
+                        
+                            if(data.status != 'OK')
                                 message(data.message);
-                            }else{
-                                // global_timeout = setTimeout(function(){ back(); },10000);
-                            }
                         }
                     });
                     
@@ -5082,7 +5033,7 @@ function show_timer(time, page_referer){
         clearInterval(count_timer);
     }else{
         if(cont){
-            $('.question_time').fadeIn(1000).find('em').text(time+'s');
+            $('.question_time').fadeIn(500).find('em').text(time+'s');
             
             count_timer = setInterval(function(){
                 time--;
@@ -5090,7 +5041,7 @@ function show_timer(time, page_referer){
                 $('.question_time em').text(time+'s');
                 
                 if(time <= 0){
-                    $('.question_time').fadeOut(1000);
+                    $('.question_time').fadeOut(500);
                     
                     if (page_referer == '.start_test') {
                         //$.mobile.changePage('#home',{role: 'page',transition: 'fade'});
@@ -5114,7 +5065,7 @@ function show_timer(time, page_referer){
 // Evt to hide timer question
 function hide_timer(){
     clearInterval(count_timer);
-    $('.question_time').hide(500);
+    $('.question_time').hide(10);
 }
 
 // Function to return number notifications
@@ -5142,9 +5093,7 @@ function evt_notifications(){
 }
 
 // function to back page
-function back(){
-    history.back();
-}
+function back(){ history.back(); }
 
 // Function to remove drag materialize
 function remove_drag(){
