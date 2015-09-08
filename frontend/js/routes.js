@@ -520,6 +520,9 @@ var router = new $.mobile.Router({
                         e.preventDefault();
                         control_page = true;
                         
+                        $('.duel_users .content_start_game').attr('question','1').css({'display':'none','opacity':'0'});
+                        $('.duel_users div[data-role="header"] .top_questions').css({'opacity':'0','display':'none'});
+                        
                         // get variables to create duel
                         var url = $(this).attr('data-url');
                         var id_friend = $(this).attr('data-id-user');
@@ -566,7 +569,7 @@ var router = new $.mobile.Router({
         else
             control_page = true;
         
-        hide_nav_button();
+        hide_nav_button();$('.duel_users .content_start_game').attr('question','1').css({'display':'none','opacity':'0'});
 
         hide_timer();
         
@@ -574,7 +577,8 @@ var router = new $.mobile.Router({
         $('.opponent .image').find('img').attr('src','#');
         $('.opponent .image').find('span').text('');
         $('.duel_users .number_questions').text('1');
-        $('.duel_users .content_start_game').attr('question','1');
+        $('.duel_users .content_start_game').attr('question','1').css({'display':'none','opacity':'0'});
+        $('.duel_users div[data-role="header"] .top_questions').css({'opacity':'0','display':'none'});
         
         // get parameters
         var params = router.getParams(match[1]);
@@ -682,7 +686,7 @@ var router = new $.mobile.Router({
             // Get all contents of questions
             $('.duel_users .content_start_game .content_question').addClass('duel_options');
             var content_questions = $('.duel_users .content_start_game .content_question.duel_options');
-            content_questions.eq(0).addClass('active').fadeIn(300);
+            content_questions.eq(0).addClass('active').css({'display':'block','opacity':'1'});
 
             setTimeout(function(){
                 // show the first content question
