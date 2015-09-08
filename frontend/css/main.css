@@ -5820,6 +5820,7 @@ html {
 .report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications textarea {
   min-height: 5rem;
   color: white;
+  background-color: #3A6667;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send,
 .report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send {
