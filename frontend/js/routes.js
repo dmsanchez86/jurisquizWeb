@@ -478,7 +478,7 @@ var router = new $.mobile.Router({
         // when the variable control page is false after final duel
         if(control_page == false){
             $('.duel_users .content_start_game').empty();
-            setTimeout(function() { hide_timer(); }, 2600);
+            setTimeout(function() { hide_timer(); }, 3200);
         }
         
         // ajax to get all user less my user
