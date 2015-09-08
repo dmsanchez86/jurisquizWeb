@@ -821,8 +821,6 @@ var router = new $.mobile.Router({
                             success : function(res){
                                 var data = JSON.parse(res);
                                 
-                                console.log(data);
-                                
                                 // set data from backend winner
                                 $('.winner .image').find('img').attr('src','img/levels/level'+ data.level + data.gender +'.png');
                                 $('.winner .correct_answers').text(total_1);
@@ -1038,7 +1036,7 @@ var router = new $.mobile.Router({
                         show_timer(40, '.start_test');
                         
                         // Click in the answers options
-                        $('.start_test .content_question.test_options input[type=radio]').unbind('click').click(function(e){
+                        $('.start_test .content_question.test_options input[type=radio]').unbind('click').click(function(e){debugger
                             hide_timer();
                             var answer_ = $('.start_test .content_question.test_options.active input[type=radio]:checked').val();
                             var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
@@ -1121,7 +1119,7 @@ var router = new $.mobile.Router({
                                 setTimeout(function(){ $("#result_test").fadeIn(500); show_nav_button(); }, 4000);
                             }
                         });
-                    }, 1000);
+                    }, 500);
                     
                     // hide loader
                     $('.loader').fadeOut(500);
@@ -1436,8 +1434,6 @@ var router = new $.mobile.Router({
                         var itemRespuesta = {};
                         var respuesta = $(this).val();
                         var idCase = $(this).attr('id-case');
-                        
-                        console.log(id_case);
                         
                         var question = $('#content_startLitigation .content_question#case_'+ idCase+' .pregunta .question').text();
                         var correct_answer = $('#content_startLitigation .content_question#case_'+ idCase).attr('correct-answer');
@@ -4445,7 +4441,6 @@ function questions(page_referer, array, metadata){
             data        : $data,
             success     : function(res){
                 var data = JSON.parse(res);
-                console.log(data.length);
                 
                 $(page_referer + ' .content_start_game').empty();
                 
@@ -4600,7 +4595,6 @@ function evt_validate_mode_game(data, name_level, id_game){
                         var current_question = parseInt($('.start_race .levels_content .level.active .bottom .number_questions .correct_answers').last().attr('correct-answers'));
                         
                         $(this).parent().parent().addClass('active');
-                        console.log($(this).parent().parent());
                         
                         if(type_question == 1){
                             
@@ -4764,7 +4758,6 @@ function evt_validate_mode_game(data, name_level, id_game){
                         var current_question = parseInt($('.start_race .levels_content .level.active .bottom .number_questions .correct_answers').last().attr('correct-answers'));
                         
                         $(this).parent().parent().addClass('active');
-                        console.log($(this).parent().parent());
                         
                         if(type_question == 1){
                             
@@ -4961,6 +4954,7 @@ function evt_next_question(page_referer){
         time_question = 40;
     
     if($(page_referer + ' .content_question.active').next().length == 0 && page_referer == '.start_race'){
+        debugger;
         var count_questions = 0;
         
         current_content.hide();
