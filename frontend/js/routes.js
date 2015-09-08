@@ -1036,7 +1036,7 @@ var router = new $.mobile.Router({
                         show_timer(40, '.start_test');
                         
                         // Click in the answers options
-                        $('.start_test .content_question.test_options input[type=radio]').unbind('click').click(function(e){debugger
+                        $('.start_test .content_question.test_options input[type=radio]').unbind('click').click(function(e){
                             hide_timer();
                             var answer_ = $('.start_test .content_question.test_options.active input[type=radio]:checked').val();
                             var correct_answer = $('.start_test .content_question.test_options.active').attr('correct-answer');
@@ -4491,8 +4491,10 @@ function questions(page_referer, array, metadata){
         var questions = array.random();
         
         questions.forEach(function(i,o){
-            i.key = o;
-            $(page_referer + ' .content_start_game').append(tmpl('structure_question',i));
+            if(o < 11){
+                i.key = o;
+                $(page_referer + ' .content_start_game').append(tmpl('structure_question',i));
+            }
         });
     }
 }
@@ -4954,7 +4956,6 @@ function evt_next_question(page_referer){
         time_question = 40;
     
     if($(page_referer + ' .content_question.active').next().length == 0 && page_referer == '.start_race'){
-        debugger;
         var count_questions = 0;
         
         current_content.hide();
