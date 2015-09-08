@@ -558,6 +558,8 @@ var router = new $.mobile.Router({
         });
     },
     duel_users: function(type,match,ui){
+        loader('Cargando...');
+        
         // if the variable control is active
         if(control_page == false)
             $.mobile.changePage('#search_duel',{role:'page',transition: 'fade'});
@@ -579,8 +581,6 @@ var router = new $.mobile.Router({
         
         if(params == null)
             $.mobile.changePage('#home',{role: 'page',transition: 'pop'});
-        
-        $('.loader').fadeOut(500); // hide loader
             
         // Get variables duel
         var $id_duel = params.id_duel;
@@ -681,7 +681,7 @@ var router = new $.mobile.Router({
         setTimeout(function(){
             // Get all contents of questions
             $('.duel_users .content_start_game .content_question').addClass('duel_options');
-            var content_questions = $('.duel_users .content_start_game .content_question');
+            var content_questions = $('.duel_users .content_start_game .content_question.duel_options');
             content_questions.eq(0).addClass('active').fadeIn(300);
 
             setTimeout(function(){
@@ -691,6 +691,7 @@ var router = new $.mobile.Router({
                     cont = true;
                     show_timer(15, '.duel_users'); // show timer
                     $('.duel_users div[data-role="header"] .top_questions').css({'opacity':'1','display':'flex'});
+                    $('.loader').fadeOut(10);
                 },1000);
             },1000);
             
@@ -729,7 +730,7 @@ var router = new $.mobile.Router({
                     }
                 }
             });
-        },1000);
+        },1500);
         
         setTimeout(function() {
             if($('.duel_users .content_start_game .content_question').length == 0 || $('.duel_users .content_start_game .content_question.active').length == 0)
