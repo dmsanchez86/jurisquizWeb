@@ -3238,7 +3238,7 @@ function evt_all_questions(filter){
 
 // Event to get all questions
 function evt_all_questions_show(filter, ref){
-    $(".content_question_show").empty();debugger
+    $(".content_question_show").empty();
 
     if(localStorage.getItem('questions') == null){
         load_questions(filter, ref);
@@ -4548,7 +4548,7 @@ function evt_validate_mode_game(data, name_level, id_game){
             $('.start_race .wrapper > div').hide(50); // hide all divs
             
             data = JSON.parse(res);
-            debugger;
+            
             var top_questions = 0;
             
             evt_current_level(data,id_game);
