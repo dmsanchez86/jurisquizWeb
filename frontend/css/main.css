@@ -1882,7 +1882,8 @@ html {
 .duel .title_game,
 .test .title_game,
 .specialty .title_game,
-.litigation .title_game {
+.litigation .title_game,
+.start_specialty .title_game {
   float: right;
   margin-right: 1rem;
   height: 100%;
@@ -1891,7 +1892,8 @@ html {
 .duel .title_game h1,
 .test .title_game h1,
 .specialty .title_game h1,
-.litigation .title_game h1 {
+.litigation .title_game h1,
+.start_specialty .title_game h1 {
   margin: 0;
   color: white;
   font-family: 'DK Mango';
@@ -1901,14 +1903,16 @@ html {
 .duel .content_game,
 .test .content_game,
 .specialty .content_game,
-.litigation .content_game {
+.litigation .content_game,
+.start_specialty .content_game {
   margin-top: 5rem;
 }
 .race .content_game .icon_game,
 .duel .content_game .icon_game,
 .test .content_game .icon_game,
 .specialty .content_game .icon_game,
-.litigation .content_game .icon_game {
+.litigation .content_game .icon_game,
+.start_specialty .content_game .icon_game {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -1917,7 +1921,8 @@ html {
 .duel .content_game .icon_game img,
 .test .content_game .icon_game img,
 .specialty .content_game .icon_game img,
-.litigation .content_game .icon_game img {
+.litigation .content_game .icon_game img,
+.start_specialty .content_game .icon_game img {
   max-height: 380px;
   -webkit-transition: all 0.5s ease;
   -khtml-transition: all 0.5s ease;
@@ -1930,7 +1935,8 @@ html {
 .duel .content_game .message_game,
 .test .content_game .message_game,
 .specialty .content_game .message_game,
-.litigation .content_game .message_game {
+.litigation .content_game .message_game,
+.start_specialty .content_game .message_game {
   background-color: #3a6667;
   padding: 1rem 2rem;
   -webkit-border-radius: 5px;
@@ -1948,7 +1954,8 @@ html {
 .duel .content_game .message_game:before,
 .test .content_game .message_game:before,
 .specialty .content_game .message_game:before,
-.litigation .content_game .message_game:before {
+.litigation .content_game .message_game:before,
+.start_specialty .content_game .message_game:before {
   position: absolute;
   border: 2rem solid #ee6200;
   content: '';
@@ -1961,11 +1968,13 @@ html {
 .test .content_game .message_game p,
 .specialty .content_game .message_game p,
 .litigation .content_game .message_game p,
+.start_specialty .content_game .message_game p,
 .race .content_game .message_game b,
 .duel .content_game .message_game b,
 .test .content_game .message_game b,
 .specialty .content_game .message_game b,
-.litigation .content_game .message_game b {
+.litigation .content_game .message_game b,
+.start_specialty .content_game .message_game b {
   font-family: 'DK Mango';
   color: white;
   font-size: 2rem;
@@ -2070,6 +2079,31 @@ html {
 .start_specialty .content_start_game .answers_options,
 .start_litigation .content_start_game .answers_options {
   padding: 1rem 3rem;
+  position: relative;
+}
+.start_race .content_start_game .answers_options:after,
+.search_duel .content_start_game .answers_options:after,
+.duel_users .content_start_game .answers_options:after,
+.start_test .content_start_game .answers_options:after,
+.start_specialty .content_start_game .answers_options:after,
+.start_litigation .content_start_game .answers_options:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  content: '';
+  z-index: 9;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.start_race .content_start_game .answers_options.active:after,
+.search_duel .content_start_game .answers_options.active:after,
+.duel_users .content_start_game .answers_options.active:after,
+.start_test .content_start_game .answers_options.active:after,
+.start_specialty .content_start_game .answers_options.active:after,
+.start_litigation .content_start_game .answers_options.active:after {
+  display: block;
 }
 .start_race .content_start_game .answers_options input[type=radio],
 .search_duel .content_start_game .answers_options input[type=radio],
@@ -2666,6 +2700,7 @@ html {
 .duel_users .wrapper .question_result .content_question .type_question {
   margin: 0 0 .5rem;
   text-align: right;
+  display: none;
 }
 .start_race .wrapper .content_start_game .content_question .type_question span,
 .start_test .wrapper .content_start_game .content_question .type_question span,
@@ -5226,8 +5261,8 @@ html {
 /* Question Time */
 .question_time {
   position: fixed;
-  left: 1%;
-  bottom: 1%;
+  right: 2%;
+  bottom: 2%;
   background-color: rgba(239, 134, 62, 0.5);
   width: 45px;
   height: 45px;
@@ -5238,7 +5273,7 @@ html {
   -o-border-radius: 50%;
   border-radius: 50%;
   text-align: center;
-  z-index: 50;
+  z-index: 8;
   display: none;
   overflow: hidden;
 }
