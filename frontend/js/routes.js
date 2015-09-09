@@ -798,6 +798,7 @@ var router = new $.mobile.Router({
                             var data = JSON.parse(res);
                             
                             $('.loser .image').find('img').attr('src','img/levels/level'+ data.level + data.gender +'.png');
+                            console.log(data);
                             
                             // the name is null
                             if(data.name == "" || data.name.length == 0)
@@ -806,10 +807,10 @@ var router = new $.mobile.Router({
                                 $('.loser .name').find('span').text(data.name);
                             
                             // the points are null
-                            if(data.total_1.length == 0 || data.total_1 == "null" || data.total_1 == null)
-                                $('.winner .correct_answers').text('0');
+                            if(total_1.length == 0 || total_1 == "null" || total_1 == null)
+                                $('.loser .correct_answers').text('0');
                             else
-                                $('.winner .correct_answers').text(data.total_1);
+                                $('.loser .correct_answers').text(total_1);
                         }
                     });
                     
@@ -841,10 +842,10 @@ var router = new $.mobile.Router({
                                     $('.winner .name').find('span').text(data.name);
                                     
                                 // the points are null
-                                if(data.total_1.length == 0 || data.total_1 == "null" || data.total_1 == null)
+                                if(total_1.length == 0 || total_1 == "null" || total_1 == null)
                                     $('.winner .correct_answers').text('0');
                                 else
-                                    $('.winner .correct_answers').text(data.total_1);
+                                    $('.winner .correct_answers').text(total_1);
                             }
                         });
                         
@@ -867,10 +868,10 @@ var router = new $.mobile.Router({
                                     $('.loser .name').find('span').text(data.name);
                                 
                                 // the points are null
-                                if(data.total_2.length == 0 || data.total_2 == "null" || data.total_2 == null)
+                                if(total_2.length == 0 || total_2 == "null" || total_2 == null)
                                     $('.loser .correct_answers').text('0');
                                 else
-                                    $('.loser .correct_answers').text(data.total_2);
+                                    $('.loser .correct_answers').text(total_2);
                             }
                         });
                     }else{
@@ -891,7 +892,7 @@ var router = new $.mobile.Router({
                                 else
                                     $('.loser .name').find('span').text(data.name);
                                 
-                                if(data.total_1.length == 0 || data.total_1 == null || data.total_1 == "null")
+                                if(total_1.length == 0 || total_1 == null || total_1 == "null")
                                     $('.loser .correct_answers').text('0');
                                 else
                                     $('.loser .correct_answers').text(total_1);
@@ -915,7 +916,7 @@ var router = new $.mobile.Router({
                                 else
                                     $('.winner .name').find('span').text(data.name);
                                     
-                                if(data.total_2.length == 0 || data.total_2 == "null" || data.total_2 == null)
+                                if(total_2.length == 0 || total_2 == "null" || total_2 == null)
                                     $('.winner .points').text('0');
                                 else
                                     $('.winner .points').text(total_2);
