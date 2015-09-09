@@ -807,7 +807,7 @@ var router = new $.mobile.Router({
                                 $('.loser .name').find('span').text(data.name);
                             
                             // the points are null
-                            if(total_1.length == 0 || total_1 == "null" || total_1 == null)
+                            if(total_1 == "null" || total_1 == null)
                                 $('.loser .correct_answers').text('0');
                             else
                                 $('.loser .correct_answers').text(total_1);
@@ -819,6 +819,7 @@ var router = new $.mobile.Router({
                     $('.win_duel .content_win_duel .winner').fadeOut(10);
                     $('.win_duel .content_win_duel .loser').fadeIn(1800);
                 }else{ // when the duel is ended for users
+                debugger
                     if(id_win == id_user_1){
                         // ajax to get data user
                         $.ajax({
@@ -842,7 +843,7 @@ var router = new $.mobile.Router({
                                     $('.winner .name').find('span').text(data.name);
                                     
                                 // the points are null
-                                if(total_1.length == 0 || total_1 == "null" || total_1 == null)
+                                if(total_1 == "null" || total_1 == null)
                                     $('.winner .correct_answers').text('0');
                                 else
                                     $('.winner .correct_answers').text(total_1);
@@ -868,7 +869,7 @@ var router = new $.mobile.Router({
                                     $('.loser .name').find('span').text(data.name);
                                 
                                 // the points are null
-                                if(total_2.length == 0 || total_2 == "null" || total_2 == null)
+                                if(total_2 == "null" || total_2 == null)
                                     $('.loser .correct_answers').text('0');
                                 else
                                     $('.loser .correct_answers').text(total_2);
@@ -892,7 +893,7 @@ var router = new $.mobile.Router({
                                 else
                                     $('.loser .name').find('span').text(data.name);
                                 
-                                if(total_1.length == 0 || total_1 == null || total_1 == "null")
+                                if(total_1 == null || total_1 == "null")
                                     $('.loser .correct_answers').text('0');
                                 else
                                     $('.loser .correct_answers').text(total_1);
@@ -916,7 +917,7 @@ var router = new $.mobile.Router({
                                 else
                                     $('.winner .name').find('span').text(data.name);
                                     
-                                if(total_2.length == 0 || total_2 == "null" || total_2 == null)
+                                if(total_2 == "null" || total_2 == null)
                                     $('.winner .points').text('0');
                                 else
                                     $('.winner .points').text(total_2);
