@@ -1609,6 +1609,8 @@ var router = new $.mobile.Router({
             current_username = $('.content_profile .data_user span.username').text();
         },800);
         
+        var $id = localStorage.getItem('id_user');
+        
         // form to save image profile
         form_image.submit(function(e){
             e.preventDefault();
@@ -1617,7 +1619,7 @@ var router = new $.mobile.Router({
             var oData = new FormData($(this)[0]);
             
             oData.append('image_user',image_user);
-            oData.append('id_user',$id);
+            oData.append('id_user', $id);
             
             // ajax to change image user
             $.ajax({
@@ -1647,7 +1649,7 @@ var router = new $.mobile.Router({
             var oData = new FormData($(this)[0]);
             
             oData.append('image_user_biography',image_user);
-            oData.append('id_user',$id);
+            oData.append('id_user', $id);
             
             // ajax to change image biography user
             $.ajax({
