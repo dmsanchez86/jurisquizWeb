@@ -393,6 +393,10 @@ var router = new $.mobile.Router({
 
         // empty the icons levels cotent
         $('.start_race .levels_content').empty();
+       
+       // Empty all contents start games
+        $('.start_race .content_start_game,.start_test .content_start_game,.duel_users .content_start_game').empty();
+        $('.start_specialty .content_start_game .content_question').remove();
         
         // remove class active from levels icons
         $('.start_race .levels_content .level').removeClass('active');
@@ -459,6 +463,10 @@ var router = new $.mobile.Router({
         hide_timer();
         
         show_nav_button();
+        
+        // Empty all contents start games
+        $('.start_race .content_start_game,.start_test .content_start_game,.duel_users .content_start_game').empty();
+        $('.start_specialty .content_start_game .content_question').remove();
         
         // empty container users
         $('.search_duel .list_users').empty();
@@ -955,6 +963,10 @@ var router = new $.mobile.Router({
         var $id_specialty = 1;
         var nameSpecialty = "";
         
+        // Empty all contents start games
+        $('.start_race .content_start_game,.start_test .content_start_game,.duel_users .content_start_game').empty();
+        $('.start_specialty .content_start_game .content_question').remove();
+        
         $('.answers_options').removeClass('active')
         
         list = listSpecialties('actives'); // get all specialties less litigio
@@ -1029,6 +1041,8 @@ var router = new $.mobile.Router({
                     
                     if(canPreguntas < 10)
                         $('.start_test .rank').text(canPreguntas);
+                    else
+                        $('.start_test .rank').text('10');
 
                     setTimeout(function() {
                         $('.start_test .content_question').addClass('test_options');
@@ -1196,6 +1210,10 @@ var router = new $.mobile.Router({
         hide_nav_button();
 
         hide_timer();
+        
+        // Empty all contents start games
+        $('.start_race .content_start_game,.start_test .content_start_game,.duel_users .content_start_game').empty();
+        $('.start_specialty .content_start_game .content_question').remove();
         
         $('.answers_options').removeClass('active')
         
@@ -1372,6 +1390,10 @@ var router = new $.mobile.Router({
         hide_timer();
         
         hide_nav_button();
+        
+        // Empty all contents start games
+        $('.start_race .content_start_game,.start_test .content_start_game,.duel_users .content_start_game').empty();
+        $('.start_specialty .content_start_game .content_question').remove();
         
         // get parameters
         var params = router.getParams(match[1]);
