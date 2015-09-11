@@ -5327,6 +5327,9 @@ html {
 .question_time.time_out:before {
   border: solid 4.5px #c62828;
   border-color: rgba(214, 0, 0, 0.71) rgba(0, 0, 0, 0);
+  -webkit-animation-direction: alternate-reverse;
+  -moz-animation-direction: alternate-reverse;
+  animation-direction: alternate-reverse;
 }
 .question_time.time_out:after {
   background-color: rgba(181, 22, 22, 0.7);

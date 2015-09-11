@@ -806,7 +806,7 @@
     &:after{background-color: rgba(239, 134, 62,.7);z-index: -1;.center_box();.transform(scale(0));.animation(scale 1s infinite ease);content: '';.border_radius(50%);}
     &.time_out{ background-color: rgba(224, 12, 12, 0.5); .animation(scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91));
         span,em{color: #130E0E;}
-        &:before{border: solid 4.5px #c62828; border-color: rgba(214, 0, 0, 0.71) rgba(0,0,0,0);}
+        &:before{border: solid 4.5px #c62828; border-color: rgba(214, 0, 0, 0.71) rgba(0,0,0,0);-webkit-animation-direction: alternate-reverse;-moz-animation-direction: alternate-reverse;animation-direction: alternate-reverse;}
         &:after{background-color: rgba(181, 22, 22, 0.7);}
     }
 }

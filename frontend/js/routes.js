@@ -731,8 +731,6 @@ var router = new $.mobile.Router({
                 var content_questions = $('.duel_users .content_start_game .content_question.duel_options');
                 content_questions.eq(0).addClass('active').css({'display':'block','opacity':'1'});
                 setTimeout(function() { back(); }, 500);
-            }else{
-                console.log("'Todo normal ='D");
             }
         }, 3500);
     },
@@ -788,7 +786,6 @@ var router = new $.mobile.Router({
                             var data = JSON.parse(res);
                             
                             $('.loser .image').find('img').attr('src','img/levels/level'+ data.level + data.gender +'.png');
-                            console.log(data);
                             
                             // the name is null
                             if(data.name == "" || data.name.length == 0)
@@ -2634,45 +2631,6 @@ function icon_mode_game(page_referer, ref){
     $(page_referer + ' .content_game .icon_game img').attr('src','img/icons/'+ ref +localStorage.getItem('gender_user')+'.png').css('opacity','1');
 }
 
-// evt timer game mode litigation
-function timerLitigation(time, page_referer, idCase, question){
-    
-    $('.question_time').fadeIn(300).find('em').text(time + 's');
-
-    var time_question = time;
-
-    count_timer = setInterval(function(){
-        time_question--;
-        
-        $('.question_time em').text(time_question+'s');
-        
-        //si es un caso
-        if(time_question == 0 && question == false){
-            
-            $('.question_time').fadeOut(1000);
-            
-            setTimeout(function(){
-                $(page_referer + idCase+ ' .litigio_titulo').fadeOut(500);
-                setTimeout(function(){ $(page_referer + idCase + ' .pregunta').fadeIn(500); },600);
-                setTimeout(function(){ timerLitigation(30 , page_referer , idCase , true);},500);
-            },500);
-            clearInterval(count_timer);
-            
-        }
-        
-        //si es una pregunta
-        if(time_question == 0 && question == true){
-            $('.question_time').fadeOut(1000);
-            $(page_referer + idCase + ' .pregunta').fadeOut(500);
-            
-            //aqui va la respuesta correcta si el usuario no respondio
-            respuestaFinaltempPregunta(idCase);
-            message('Resultado Final');
-            clearInterval(count_timer);
-        }
-    },1000);
-}
-
 // Function to show question in mode litigation when the time is ended
 function respuestaFinaltempPregunta(idCase){
     var respuestas = [];
@@ -3440,40 +3398,6 @@ function evt_all_cases_show(filter,ref){
     
     load_cases(filter, ref);
 }
-
-// Function that load all questions
-/*function load_questions_dash(){
-    var data = {};
-    var array = localStorage.getItem('questions');
-    if(array == null || array.length == 0){
-        // ajax to get all questions by filter
-        $.ajax({
-            url         : webService + 'all_questions/all',
-            type        : 'POST',
-            data        : data,
-            success     : function(res){
-                var data = JSON.parse(res);
-                
-                var questions_storage = [];
-                
-                data.forEach(function(i,o){
-                    if(i.type_question == 1)
-                        i.t_question = "Selección múltiple";
-                    else if(i.type_question == 2)
-                        i.t_question = "Si / No";
-                    else if(i.type_question == 3)
-                        i.t_question = "Ordenamiento";
-                        
-                    questions_storage[o] = i;
-                });
-                
-                setTimeout(function(){
-                    localStorage.setItem('questions', JSON.stringify(questions_storage));
-                },500);
-            }
-        });
-    }
-}*/
 
 // Function that load all questions
 function load_questions(filter,ref){
@@ -5168,7 +5092,7 @@ function show_timer(time, page_referer){
                 }
                 
                 if(time <= 0){
-                    $('.question_time').fadeOut(50).removeClass('time_out');;
+                    $('.question_time').fadeOut(50).removeClass('time_out');
                     
                     if (page_referer == '.start_test') {
                         //$.mobile.changePage('#home',{role: 'page',transition: 'fade'});
@@ -5187,6 +5111,48 @@ function show_timer(time, page_referer){
             },1000);
         }
     }
+}
+
+// evt timer game mode litigation
+function timerLitigation(time, page_referer, idCase, question){
+    
+    $('.question_time').fadeIn(300).find('em').text(time + 's');
+
+    var time_question = time;
+
+    count_timer = setInterval(function(){
+        time_question--;
+        
+        $('.question_time em').text(time_question+'s');
+        
+        if(time_question < 11){
+            $('.question_time').addClass('time_out');;
+        }
+        
+        //si es un caso
+        if(time_question == 0 && question == false){
+            $('.question_time').fadeOut(50).removeClass('time_out');
+            
+            setTimeout(function(){
+                $(page_referer + idCase+ ' .litigio_titulo').fadeOut(500);
+                setTimeout(function(){ $(page_referer + idCase + ' .pregunta').fadeIn(500); },600);
+                setTimeout(function(){ timerLitigation(30 , page_referer , idCase , true);},500);
+            },500);
+            clearInterval(count_timer);
+            
+        }
+        
+        //si es una pregunta
+        if(time_question == 0 && question == true){
+            $('.question_time').fadeOut(50).removeClass('time_out');
+            $(page_referer + idCase + ' .pregunta').fadeOut(500);
+            
+            //aqui va la respuesta correcta si el usuario no respondio
+            respuestaFinaltempPregunta(idCase);
+            message('Resultado Final');
+            clearInterval(count_timer);
+        }
+    },1000);
 }
 
 // Evt to hide timer question
