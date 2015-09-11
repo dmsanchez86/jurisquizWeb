@@ -2582,47 +2582,7 @@ html {
 .start_race .wrapper .question_result .message label:hover,
 .start_test .wrapper .question_result .message label:hover,
 .start_specialty .wrapper .question_result .message label:hover,
-.duel_users .wrapper .question_result .message label:hover,
-.start_race .wrapper .content_start_game .answers_options label:focus,
-.start_test .wrapper .content_start_game .answers_options label:focus,
-.start_specialty .wrapper .content_start_game .answers_options label:focus,
-.duel_users .wrapper .content_start_game .answers_options label:focus,
-.start_race .wrapper .start .answers_options label:focus,
-.start_test .wrapper .start .answers_options label:focus,
-.start_specialty .wrapper .start .answers_options label:focus,
-.duel_users .wrapper .start .answers_options label:focus,
-.start_race .wrapper .complete_level .answers_options label:focus,
-.start_test .wrapper .complete_level .answers_options label:focus,
-.start_specialty .wrapper .complete_level .answers_options label:focus,
-.duel_users .wrapper .complete_level .answers_options label:focus,
-.start_race .wrapper .no_complete_level .answers_options label:focus,
-.start_test .wrapper .no_complete_level .answers_options label:focus,
-.start_specialty .wrapper .no_complete_level .answers_options label:focus,
-.duel_users .wrapper .no_complete_level .answers_options label:focus,
-.start_race .wrapper .question_result .answers_options label:focus,
-.start_test .wrapper .question_result .answers_options label:focus,
-.start_specialty .wrapper .question_result .answers_options label:focus,
-.duel_users .wrapper .question_result .answers_options label:focus,
-.start_race .wrapper .content_start_game .message label:focus,
-.start_test .wrapper .content_start_game .message label:focus,
-.start_specialty .wrapper .content_start_game .message label:focus,
-.duel_users .wrapper .content_start_game .message label:focus,
-.start_race .wrapper .start .message label:focus,
-.start_test .wrapper .start .message label:focus,
-.start_specialty .wrapper .start .message label:focus,
-.duel_users .wrapper .start .message label:focus,
-.start_race .wrapper .complete_level .message label:focus,
-.start_test .wrapper .complete_level .message label:focus,
-.start_specialty .wrapper .complete_level .message label:focus,
-.duel_users .wrapper .complete_level .message label:focus,
-.start_race .wrapper .no_complete_level .message label:focus,
-.start_test .wrapper .no_complete_level .message label:focus,
-.start_specialty .wrapper .no_complete_level .message label:focus,
-.duel_users .wrapper .no_complete_level .message label:focus,
-.start_race .wrapper .question_result .message label:focus,
-.start_test .wrapper .question_result .message label:focus,
-.start_specialty .wrapper .question_result .message label:focus,
-.duel_users .wrapper .question_result .message label:focus {
+.duel_users .wrapper .question_result .message label:hover {
   background-image: -webkit-radial-gradient(center, #ee6200, #ef863e);
   background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
   background-image: radial-gradient(center, #ee6200, #ef863e);
@@ -5351,6 +5311,26 @@ html {
   -o-border-radius: 50%;
   border-radius: 50%;
 }
+.question_time.time_out {
+  background-color: rgba(224, 12, 12, 0.5);
+  -webkit-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  -khtml-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  -moz-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  -ms-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  -o-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+}
+.question_time.time_out span,
+.question_time.time_out em {
+  color: #130E0E;
+}
+.question_time.time_out:before {
+  border: solid 4.5px #c62828;
+  border-color: rgba(214, 0, 0, 0.71) rgba(0, 0, 0, 0);
+}
+.question_time.time_out:after {
+  background-color: rgba(181, 22, 22, 0.7);
+}
 /* Popup Edit Question or Specialty */
 .popup_edit {
   position: fixed;
@@ -5959,35 +5939,10 @@ ol li {
 .waves-effect.waves-btn-start {
   background-color: #3a6667;
   position: relative;
-}
-.waves-effect.waves-btn-start:after,
-.waves-effect.waves-btn-start:before {
-  position: absolute;
-  width: 100%;
-  height: 0%;
-  content: '';
-  -webkit-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  -khtml-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  -moz-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  -ms-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  -o-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  z-index: -1;
-  background-color: rgba(255, 255, 255, 0.17);
-}
-.waves-effect.waves-btn-start:after {
-  left: 0;
-  top: 50%;
-}
-.waves-effect.waves-btn-start:before {
-  left: 0;
-  bottom: 50%;
-}
-.waves-effect.waves-btn-start:hover:after,
-.waves-effect.waves-btn-start:focus:after,
-.waves-effect.waves-btn-start:hover:before,
-.waves-effect.waves-btn-start:focus:before {
-  height: 50%;
+  /*&:after,&:before{position: absolute;width: 100%; height: 0%; content: '';.transition(all .4s cubic-bezier(0.63, -0.02, 0, -0.08));z-index: -1;background-color: rgba(255,255,255,.17);}
+    &:after{left:0;top: 50%; }
+    &:before{left:0;bottom: 50%;}
+    &:hover:after,&:focus:after,&:hover:before,&:focus:before{height: 50%;}*/
 }
 .waves-effect.waves-btn-start .waves-ripple {
   background-color: rgba(255, 255, 255, 0.55);
@@ -5995,35 +5950,10 @@ ol li {
 .waves-effect.waves-btn-login {
   background-color: #ee6200;
   position: relative;
-}
-.waves-effect.waves-btn-login:after,
-.waves-effect.waves-btn-login:before {
-  position: absolute;
-  width: 100%;
-  height: 0%;
-  content: '';
-  -webkit-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  -khtml-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  -moz-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  -ms-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  -o-transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  transition: all 0.4s cubic-bezier(0.63, -0.02, 0, -0.08);
-  z-index: -1;
-  background-color: rgba(255, 255, 255, 0.17);
-}
-.waves-effect.waves-btn-login:after {
-  left: 0;
-  top: 0%;
-}
-.waves-effect.waves-btn-login:before {
-  left: 0;
-  bottom: 0%;
-}
-.waves-effect.waves-btn-login:hover:after,
-.waves-effect.waves-btn-login:focus:after,
-.waves-effect.waves-btn-login:hover:before,
-.waves-effect.waves-btn-login:focus:before {
-  height: 50%;
+  /*&:after,&:before{position: absolute;width: 100%; height: 0%; content: '';.transition(all .4s cubic-bezier(0.63, -0.02, 0, -0.08));z-index: -1;background-color: rgba(255,255,255,.17);}
+    &:after{left:0;top: 0%; }
+    &:before{left:0;bottom: 0%;}
+    &:hover:after,&:focus:after,&:hover:before,&:focus:before{height: 50%;}*/
 }
 .waves-effect.waves-btn-login .waves-ripple {
   background-color: rgba(255, 255, 255, 0.55);
@@ -8268,5 +8198,62 @@ label.ui-btn {
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1);
+  }
+}
+@keyframes scale_time {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    -khtml-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    -khtml-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+}
+@-moz-keyframes scale_time {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    -khtml-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    -khtml-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+}
+@-webkit-keyframes scale_time {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    -khtml-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    -khtml-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
   }
 }

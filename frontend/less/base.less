@@ -208,7 +208,7 @@
                 input[type=radio]{display: none;}
                 label{ padding-left: 1em; font-family: 'Roboto',Helvetica; font-size: 1.15rem;color: white; text-shadow: none;font-weight: normal; border: thin solid white; position: relative; display: block;.border_radius(.5rem);background-color:transparent;white-space: normal;text-align:justify;padding: 1rem;height: auto;
                     &:before{display: none;}
-                    &:hover,&:focus{background-image: -webkit-radial-gradient(center,@btn_login,@before_color);background-image: -moz-radial-gradient(center,@btn_login,@before_color);background-image: radial-gradient(center,@btn_login,@before_color);border-color: @btn_login;}
+                    &:hover{background-image: -webkit-radial-gradient(center,@btn_login,@before_color);background-image: -moz-radial-gradient(center,@btn_login,@before_color);background-image: radial-gradient(center,@btn_login,@before_color);border-color: @btn_login;}
                     &:active{background-image: -webkit-radial-gradient(center,@before_color,@btn_login);background-image: -moz-radial-gradient(center,@before_color,@btn_login);background-image: radial-gradient(center,@before_color,@btn_login);}
                 }
             }
@@ -802,10 +802,13 @@
     span{ display: inline-block; margin-top: 11px; text-transform: uppercase; font-size: .5rem; font-weight: bold;
         em{font-weight: bold;font-family: 'DK Mango';margin-left: -3px;}
     }
-    &:before{
-        position: absolute; top: 0; left: 0; content: ''; width: 100%; height: 100%;border: solid 4.5px @btn_login; .animation(loading 1s infinite linear);.border_radius(50%);border-color: rgba(238, 98, 0, 0.63) rgba(0,0,0,0);.box_sizing();
-    }
+    &:before{position: absolute; top: 0; left: 0; content: ''; width: 100%; height: 100%;border: solid 4.5px @btn_login; .animation(loading 1s infinite linear);.border_radius(50%);border-color: rgba(238, 98, 0, 0.63) rgba(0,0,0,0);.box_sizing();}
     &:after{background-color: rgba(239, 134, 62,.7);z-index: -1;.center_box();.transform(scale(0));.animation(scale 1s infinite ease);content: '';.border_radius(50%);}
+    &.time_out{ background-color: rgba(224, 12, 12, 0.5); .animation(scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91));
+        span,em{color: #130E0E;}
+        &:before{border: solid 4.5px #c62828; border-color: rgba(214, 0, 0, 0.71) rgba(0,0,0,0);}
+        &:after{background-color: rgba(181, 22, 22, 0.7);}
+    }
 }
 
 /* Popup Edit Question or Specialty */

@@ -58,8 +58,6 @@ var router = new $.mobile.Router({
         
         hide_nav_button();
         
-        remove_drag();
-        
         // Focus in the txt
         $('#email').focus();
         
@@ -91,8 +89,6 @@ var router = new $.mobile.Router({
         
         hide_nav_button();
         
-        remove_drag();
-        
         // Library materialize
         $('select').material_select();
         
@@ -117,8 +113,6 @@ var router = new $.mobile.Router({
         hide_nav_button();
         
         hide_timer();
-        
-        remove_drag();
 
         // when user is logged
         if(localStorage.getItem('log') == 'true'){
@@ -138,8 +132,6 @@ var router = new $.mobile.Router({
         hide_timer();
         
         nav_menu();
-        
-        remove_drag();
         
         show_nav_button();
         
@@ -195,8 +187,6 @@ var router = new $.mobile.Router({
         show_nav_button();
         
         nav_menu();
-        
-        remove_drag();
 
         evt_logout();
         
@@ -2741,6 +2731,8 @@ function validate_login(){
                 $.mobile.changePage('#dashboard_admin?user='+id,{role: 'page',transition: 'fade'});
             else
                 $.mobile.changePage('#dashboard?user='+id,{role: 'page',transition: 'fade'});
+            
+            remove_drag();
         });
         
         // Change text button template login
@@ -2752,13 +2744,15 @@ function validate_login(){
         // set margin 
         $('.home .container_logo').css('margin-top','5.5rem');
 
-        $('#home .wrapper .container_btn').hide(1000);
+        localStorage.removeItem('nav_menu_view');
+
+        // $('#home .wrapper .container_btn').hide(1000);
         $('#home .wrapper .container_register,#home .wrapper .container_login').hide(10);
         $('#home .wrapper .container_btn').eq(0).show(10);
     }else{
         $('.home .container_logo').css('margin-top','1rem');
-        $('#home .wrapper .container_register,#home .wrapper .container_login').show(1000);
-        $('#home .wrapper .container_btn').hide(10);
+        $('#home .wrapper .container_register,#home .wrapper .container_login').show(50);
+        $('#home .wrapper .container_btn').eq(0).hide(10);
         $('#home .wrapper .container_btn').eq(1).show(10);
         $('#home .wrapper .container_btn').eq(3).show(10);
     }
@@ -2834,6 +2828,13 @@ function evt_logout(){
         localStorage.removeItem('role_user');
         localStorage.removeItem('gender_user');
         localStorage.removeItem('first_view_dashboard');
+        localStorage.removeItem('nav_menu_view');
+        
+        $('#home .wrapper .container_btn button').eq(1).text('Acceder');
+        
+        remove_drag();
+            
+        $('#sidenav-overlay').remove();
         
         setTimeout(function(){
             $.mobile.changePage('#home',{role: 'page',transition: 'flow'});
@@ -2992,12 +2993,16 @@ function show_nav_button(){
 
 // Show Nav-Menu
 function nav_menu(){
-    // Nav menu event instanced
-    $('.button_collapse').sideNav({
-      menuWidth: 305,
-      edge: 'left', 
-      closeOnClick: true 
-    });
+    if(localStorage.getItem('nav_menu_view') == null){
+        // Nav menu event instanced
+        $('.button_collapse').sideNav({
+          menuWidth: 305,
+          edge: 'left', 
+          closeOnClick: true 
+        });
+        
+        localStorage.setItem('nav_menu_view','true');
+    }
 }
 
 // Panel Data user
@@ -5013,6 +5018,9 @@ function evt_next_question_test(page_referer, correct_questions, params){
     var params_ = params;
     var count_questions = 0;
     
+    if(page_referer == '.duel_users')
+        time_question = 30;
+    
     hide_timer();
     
     if($(page_referer + ' .content_question.active').next().length == 0){
@@ -5155,8 +5163,12 @@ function show_timer(time, page_referer){
                 
                 $('.question_time em').text(time+'s');
                 
+                if(time < 11){
+                    $('.question_time').addClass('time_out');;
+                }
+                
                 if(time <= 0){
-                    $('.question_time').fadeOut(500);
+                    $('.question_time').fadeOut(50).removeClass('time_out');;
                     
                     if (page_referer == '.start_test') {
                         //$.mobile.changePage('#home',{role: 'page',transition: 'fade'});
@@ -5215,8 +5227,7 @@ function remove_drag(){
     var drags = $('.drag-target');
     
     for(var i = 0; i < drags.length; i++)
-        if(i > 1)
-            $('.drag-target').remove();
+        $('.drag-target').remove();
 }
 
 // Render Templates
