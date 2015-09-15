@@ -3249,21 +3249,8 @@ function evt_all_questions_show(filter, ref){
                 $(".content_question_show").append(tmpl("all_questions_show", i));
     
                 questions_storage[o] = i;
-            });
-            
-            // click to filter questions for inactives
-            $('.menu_question .desactivate').unbind('click').click(function(){
-                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                evt_question('active',id);
-            });
-            
-            // Click to filter questions for actives
-            $('.menu_question .activate').unbind('click').click(function(){
-                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                evt_question('inactive',id);
-            });
                 
-            // Click to edit question
+                // Click to edit question
             $('.menu_question .edit').unbind('click').click(function(){
                     
                     var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
@@ -3308,6 +3295,9 @@ function evt_all_questions_show(filter, ref){
                             var correct_answer_edit = data.correct_answer.split('/');
                             var correct_question = 0;
                             
+                            $('#form_edit_question .id span').empty().text(data.id);
+                            $('#question_edit').empty().text(data.question);
+                            
                             if(data.type_question == 1){
                                 options_question.forEach(function(i,o){
                                     if(i == correct_answer_edit[correct_question]){
@@ -3350,9 +3340,6 @@ function evt_all_questions_show(filter, ref){
                                     evt_append_question_edit(question);
                             });
                             
-                            $('#form_edit_question .id span').empty().text(data.id);
-                            $('#question_edit').empty().text(data.question);
-                            
                             $('#sortable_choice_edit li img').unbind('click').click(function(e) {
                                 $(this).parent().remove();
                                 $('.structure .multiple_choice_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
@@ -3374,6 +3361,19 @@ function evt_all_questions_show(filter, ref){
     
                     $('a[href="#edit_question"]').click();
                 });
+            });
+            
+            // click to filter questions for inactives
+            $('.menu_question .desactivate').unbind('click').click(function(){
+                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                evt_question('active',id);
+            });
+            
+            // Click to filter questions for actives
+            $('.menu_question .activate').unbind('click').click(function(){
+                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                evt_question('inactive',id);
+            });
                     
             $('.content_question_show').show(600);
                 
