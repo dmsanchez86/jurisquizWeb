@@ -806,7 +806,6 @@ var router = new $.mobile.Router({
                     $('.win_duel .content_win_duel .winner').fadeOut(10);
                     $('.win_duel .content_win_duel .loser').fadeIn(1800);
                 }else{ // when the duel is ended for users
-                debugger
                     if(id_win == id_user_1){
                         // ajax to get data user
                         $.ajax({
@@ -2694,10 +2693,12 @@ function validate_login(){
         });
         
         // Change text button template login
-        if(role == 'admin')
+        if(role == 'admin'){
+            localStorage.removeItem("questions");
             $('#home .wrapper .container_btn button').text('¡Ingresar!');
-        else
+        }else{
             $('#home .wrapper .container_btn button').text('¡Comenzar con las preguntas!');
+        }
         
         // set margin 
         $('.home .container_logo').css('margin-top','5.5rem');
@@ -3251,128 +3252,128 @@ function evt_all_questions_show(filter, ref){
                 questions_storage[o] = i;
                 
                 // Click to edit question
-            $('.menu_question .edit').unbind('click').click(function(){
-                    
-                    var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    
-                    $('#form_edit_question .structure > div').hide(50);
-                    
-                    // ajax to get data question
-                    $.ajax({
-                        url     : webService + 'data_question',
-                        type    : 'POST',
-                        data    : {
-                            id  : $id
-                        },
-                        success : function(res){
-                            var data = JSON.parse(res);
-                            var options_specialty = $('#specialty_name_edit option');
-                            var options_type_answers = $('#type_question_edit option');
-                            var options_yes_no = $('input[name="yes_no_edit"]');
-                            
-                            options_yes_no.removeAttr('checked');
-                            
-                            $('#sortable_choice_edit,#sortable_edit').empty();
-                            
-                            for(var i = 0; i < options_specialty.length; i++){
-                                if(data.id_specialty == options_specialty[i].value)
-                                    options_specialty[i].setAttribute('selected','selected');
-                            }
-                            
-                            for(var k = 0; k < options_yes_no.length; k++){
-                                if(data.correct_answer == options_yes_no[k].value)
-                                    options_yes_no[k].setAttribute('checked','checked');
-                            }
-                            
-                            for(var j = 0; j < options_type_answers.length; j++){
-                                if(data.type_question == options_type_answers[j].value){
-                                    options_type_answers[j].setAttribute('selected','selected');
-                                    $('#form_edit_question .structure > div').eq(j - 1).fadeIn(1000);
+                $('.menu_question .edit').unbind('click').click(function(){
+                        
+                        var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                        
+                        $('#form_edit_question .structure > div').hide(50);
+                        
+                        // ajax to get data question
+                        $.ajax({
+                            url     : webService + 'data_question',
+                            type    : 'POST',
+                            data    : {
+                                id  : $id
+                            },
+                            success : function(res){
+                                var data = JSON.parse(res);
+                                var options_specialty = $('#specialty_name_edit option');
+                                var options_type_answers = $('#type_question_edit option');
+                                var options_yes_no = $('input[name="yes_no_edit"]');
+                                
+                                options_yes_no.removeAttr('checked');
+                                
+                                $('#sortable_choice_edit,#sortable_edit').empty();
+                                
+                                for(var i = 0; i < options_specialty.length; i++){
+                                    if(data.id_specialty == options_specialty[i].value)
+                                        options_specialty[i].setAttribute('selected','selected');
                                 }
-                            }
-                            
-                            var options_question = data.options_question.split('/');
-                            var correct_answer_edit = data.correct_answer.split('/');
-                            var correct_question = 0;
-                            
-                            $('#form_edit_question .id span').empty().text(data.id);
-                            $('#question_edit').empty().text(data.question);
-                            
-                            if(data.type_question == 1){
-                                options_question.forEach(function(i,o){
-                                    if(i == correct_answer_edit[correct_question]){
-                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" checked="checked" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
-                                        correct_question++;
-                                    }else{
-                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                
+                                for(var k = 0; k < options_yes_no.length; k++){
+                                    if(data.correct_answer == options_yes_no[k].value)
+                                        options_yes_no[k].setAttribute('checked','checked');
+                                }
+                                
+                                for(var j = 0; j < options_type_answers.length; j++){
+                                    if(data.type_question == options_type_answers[j].value){
+                                        options_type_answers[j].setAttribute('selected','selected');
+                                        $('#form_edit_question .structure > div').eq(j - 1).fadeIn(1000);
                                     }
-                                });
+                                }
                                 
-                            }else if(data.type_question == 3){
-                                options_question.forEach(function(i,o){
-                                    $('#sortable_edit').append('<li><span>' + i + '</span><img src="img/points/delete_.png"></li>');
-                                });
-                            }
-                            
-                            $('.structure .multiple_choice_edit .input img').unbind('click').click(function(){
-                                var question = $(this).parent().find('input').val();
+                                var options_question = data.options_question.split('/');
+                                var correct_answer_edit = data.correct_answer.split('/');
+                                var correct_question = 0;
                                 
-                                evt_append_question_choice_edit(question);
-                            });
-                            
-                            $('.structure .multiple_choice_edit .input input').unbind('keyup').keyup(function(e){
-                                var question = $(this).val();
+                                $('#form_edit_question .id span').empty().text(data.id);
+                                $('#question_edit').empty().text(data.question);
                                 
-                                if(e.keyCode == 13)
+                                if(data.type_question == 1){
+                                    options_question.forEach(function(i,o){
+                                        if(i == correct_answer_edit[correct_question]){
+                                            $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" checked="checked" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                            correct_question++;
+                                        }else{
+                                            $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                        }
+                                    });
+                                    
+                                }else if(data.type_question == 3){
+                                    options_question.forEach(function(i,o){
+                                        $('#sortable_edit').append('<li><span>' + i + '</span><img src="img/points/delete_.png"></li>');
+                                    });
+                                }
+                                
+                                $('.structure .multiple_choice_edit .input img').unbind('click').click(function(){
+                                    var question = $(this).parent().find('input').val();
+                                    
                                     evt_append_question_choice_edit(question);
-                            });
-                            
-                            $('.structure .order_questions_edit .input img').unbind('click').click(function(){
-                                var question = $(this).parent().find('input').val();
+                                });
                                 
-                                evt_append_question_edit(question);
-                            });
-                            
-                            $('.structure .order_questions_edit .input input').unbind('keyup').keyup(function(e){
-                                var question = $(this).val();
+                                $('.structure .multiple_choice_edit .input input').unbind('keyup').keyup(function(e){
+                                    var question = $(this).val();
+                                    
+                                    if(e.keyCode == 13)
+                                        evt_append_question_choice_edit(question);
+                                });
                                 
-                                if(e.keyCode == 13)
+                                $('.structure .order_questions_edit .input img').unbind('click').click(function(){
+                                    var question = $(this).parent().find('input').val();
+                                    
                                     evt_append_question_edit(question);
-                            });
-                            
-                            $('#sortable_choice_edit li img').unbind('click').click(function(e) {
-                                $(this).parent().remove();
-                                $('.structure .multiple_choice_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
-                                $('.structure .multiple_choice_edit .input input').removeAttr('disabled');
-                                $('.structure .multiple_choice_edit .input img').css('z-index','1');
-                                count_id++;
-                            });
-                            
-                            $('#sortable_edit li img').unbind('click').click(function(e) {
-                                $(this).parent().remove();
-                                $('.structure .order_questions_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas ('+(++count)+')');
-                                $('.structure .order_questions_edit .input input').removeAttr('disabled');
-                                $('.structure .order_questions_edit .input img').css('z-index','1');
-                            });
-                            
-                            $('select').material_select();
-                        }
+                                });
+                                
+                                $('.structure .order_questions_edit .input input').unbind('keyup').keyup(function(e){
+                                    var question = $(this).val();
+                                    
+                                    if(e.keyCode == 13)
+                                        evt_append_question_edit(question);
+                                });
+                                
+                                $('#sortable_choice_edit li img').unbind('click').click(function(e) {
+                                    $(this).parent().remove();
+                                    $('.structure .multiple_choice_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
+                                    $('.structure .multiple_choice_edit .input input').removeAttr('disabled');
+                                    $('.structure .multiple_choice_edit .input img').css('z-index','1');
+                                    count_id++;
+                                });
+                                
+                                $('#sortable_edit li img').unbind('click').click(function(e) {
+                                    $(this).parent().remove();
+                                    $('.structure .order_questions_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas ('+(++count)+')');
+                                    $('.structure .order_questions_edit .input input').removeAttr('disabled');
+                                    $('.structure .order_questions_edit .input img').css('z-index','1');
+                                });
+                                
+                                $('select').material_select();
+                            }
+                        });
+        
+                        $('a[href="#edit_question"]').click();
                     });
-    
-                    $('a[href="#edit_question"]').click();
+                    
+                // click to filter questions for inactives
+                $('.menu_question .desactivate').unbind('click').click(function(){
+                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                    evt_question('active',id);
                 });
-            });
-            
-            // click to filter questions for inactives
-            $('.menu_question .desactivate').unbind('click').click(function(){
-                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                evt_question('active',id);
-            });
-            
-            // Click to filter questions for actives
-            $('.menu_question .activate').unbind('click').click(function(){
-                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                evt_question('inactive',id);
+                
+                // Click to filter questions for actives
+                $('.menu_question .activate').unbind('click').click(function(){
+                    var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                    evt_question('inactive',id);
+                });
             });
                     
             $('.content_question_show').show(600);
@@ -3439,128 +3440,8 @@ function load_questions(filter,ref){
                 questions_storage[o] = i;
                 
                 $(".content_question_show").append(tmpl("all_questions_show", i));
-            });
-            
-            // click to filter questions for inactives
-            $('.menu_question .desactivate').unbind('click').click(function(){
-                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                 
-                evt_question('active',id);
-            });
-            
-            // Click to filter questions for actives
-            $('.menu_question .activate').unbind('click').click(function(){
-                var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                
-                evt_question('inactive',id);
-            });
-            
-            // Click to edit question
-            $('.menu_question .edit').unbind('click').click(function(){
-                    var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    
-                    $('#form_edit_question .structure > div').hide(50);
-                    
-                    // ajax to get data question
-                    $.ajax({
-                        url     : webService + 'data_question',
-                        type    : 'POST',
-                        data    : {
-                            id  : $id
-                        },
-                        success : function(res){
-                            var data = JSON.parse(res);
-                            var options_specialty = $('#specialty_name_edit option');
-                            var options_type_answers = $('#type_question_edit option');
-                            var options_yes_no = $('input[name="yes_no_edit"]');
-                            
-                            options_yes_no.removeAttr('checked');
-                            
-                            $('#sortable_choice_edit,#sortable_edit').empty();
-                            
-                            for(var i = 0; i < options_specialty.length; i++){
-                                if(data.id_specialty == options_specialty[i].value)
-                                    options_specialty[i].setAttribute('selected','selected');
-                            }
-                            
-                            for(var k = 0; k < options_yes_no.length; k++){
-                                if(data.correct_answer == options_yes_no[k].value)
-                                    options_yes_no[k].setAttribute('checked','checked');
-                            }
-                            
-                            for(var j = 0; j < options_type_answers.length; j++){
-                                if(data.type_question == options_type_answers[j].value){
-                                    options_type_answers[j].setAttribute('selected','selected');
-                                    $('#form_edit_question .structure > div').eq(j - 1).fadeIn(1000);
-                                }
-                            }
-                            
-                            var options_question = data.options_question.split('/');
-                            var correct_answer_edit = data.correct_answer.split('/');
-                            var correct_question = 0;
-                            
-                            if(data.type_question == 1){
-                                options_question.forEach(function(i,o){
-                                    if(i == correct_answer_edit[correct_question]){
-                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" checked="checked" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
-                                        correct_question++;
-                                    }else{
-                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
-                                    }
-                                });
-                                
-                            }else if(data.type_question == 3){
-                                options_question.forEach(function(i,o){
-                                    $('#sortable_edit').append('<li><span>' + i + '</span><img src="img/points/delete_.png"></li>');
-                                });
-                            }
-                            
-                            $('.structure .multiple_choice_edit_case .input img').unbind('click').click(function(){
-                                var question = $(this).parent().find('input').val();
-                                
-                                evt_append_question_choice_edit(question);
-                            });
-                            
-                            $('.structure .multiple_choice_edit_case .input input').unbind('keyup').keyup(function(e){
-                                var question = $(this).val();
-                                
-                                if(e.keyCode == 13)
-                                    evt_append_question_choice_edit(question);
-                            });
-                            
-                            $('.structure .order_questions_edit_case .input img').unbind('click').click(function(){
-                                var question = $(this).parent().find('input').val();
-                                
-                                evt_append_question_edit(question);
-                            });
-                            
-                            $('.structure .order_questions_edit_case .input input').unbind('keyup').keyup(function(e){
-                                var question = $(this).val();
-                                
-                                if(e.keyCode == 13)
-                                    evt_append_question_edit(question);
-                            });
-                            
-                            $('#form_edit_question .id span').empty().text(data.id);
-                            $('#question_edit').empty().text(data.question);
-                            
-                            $('#sortable_choice_edit li i').unbind('click').click(function(e) {
-                                $(this).parent().remove();
-                                $('.structure .multiple_choice_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
-                                $('.structure .multiple_choice_edit .input input').removeAttr('disabled');
-                                $('.structure .multiple_choice_edit .input img').css('z-index','1');
-                                count_id++;
-                            });
-                            
-                            $('#sortable_edit li i').unbind('click').click(function(e) {
-                                $(this).parent().remove();
-                                $('.structure .order_questions_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas ('+(++count)+')');
-                                $('.structure .order_questions_edit .input input').removeAttr('disabled');
-                                $('.structure .order_questions_edit .input img').css('z-index','1');
-                            });
-                            
-                            $('select').material_select();
-                    // click to filter questions for inactives
+                // click to filter questions for inactives
                 $('.menu_question .desactivate').unbind('click').click(function(){
                     var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                     
@@ -3576,118 +3457,249 @@ function load_questions(filter,ref){
                 
                 // Click to edit question
                 $('.menu_question .edit').unbind('click').click(function(){
-                    var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
-                    
-                    $('#form_edit_question .structure > div').hide(50);
-                    
-                    // ajax to get data question
-                    $.ajax({
-                        url     : webService + 'data_question',
-                        type    : 'POST',
-                        data    : {
-                            id  : $id
-                        },
-                        success : function(res){
-                            var data = JSON.parse(res);
-                            var options_specialty = $('#specialty_name_edit option');
-                            var options_type_answers = $('#type_question_edit option');
-                            var options_yes_no = $('input[name="yes_no_edit"]');
-                            
-                            options_yes_no.removeAttr('checked');
-                            
-                            $('#sortable_choice_edit,#sortable_edit').empty();
-                            
-                            for(var i = 0; i < options_specialty.length; i++){
-                                if(data.id_specialty == options_specialty[i].value)
-                                    options_specialty[i].setAttribute('selected','selected');
-                            }
-                            
-                            for(var k = 0; k < options_yes_no.length; k++){
-                                if(data.correct_answer == options_yes_no[k].value)
-                                    options_yes_no[k].setAttribute('checked','checked');
-                            }
-                            
-                            for(var j = 0; j < options_type_answers.length; j++){
-                                if(data.type_question == options_type_answers[j].value){
-                                    options_type_answers[j].setAttribute('selected','selected');
-                                    $('#form_edit_question .structure > div').eq(j - 1).fadeIn(1000);
+                        var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                        
+                        $('#form_edit_question .structure > div').hide(50);
+                        
+                        // ajax to get data question
+                        $.ajax({
+                            url     : webService + 'data_question',
+                            type    : 'POST',
+                            data    : {
+                                id  : $id
+                            },
+                            success : function(res){
+                                var data = JSON.parse(res);
+                                var options_specialty = $('#specialty_name_edit option');
+                                var options_type_answers = $('#type_question_edit option');
+                                var options_yes_no = $('input[name="yes_no_edit"]');
+                                
+                                options_yes_no.removeAttr('checked');
+                                
+                                $('#sortable_choice_edit,#sortable_edit').empty();
+                                
+                                for(var i = 0; i < options_specialty.length; i++){
+                                    if(data.id_specialty == options_specialty[i].value)
+                                        options_specialty[i].setAttribute('selected','selected');
                                 }
-                            }
-                            
-                            var options_question = data.options_question.split('/');
-                            var correct_answer_edit = data.correct_answer.split('/');
-                            var correct_question = 0;
-                            
-                            if(data.type_question == 1){
-                                options_question.forEach(function(i,o){
-                                    if(i == correct_answer_edit[correct_question]){
-                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" checked="checked" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
-                                        correct_question++;
-                                    }else{
-                                        $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                
+                                for(var k = 0; k < options_yes_no.length; k++){
+                                    if(data.correct_answer == options_yes_no[k].value)
+                                        options_yes_no[k].setAttribute('checked','checked');
+                                }
+                                
+                                for(var j = 0; j < options_type_answers.length; j++){
+                                    if(data.type_question == options_type_answers[j].value){
+                                        options_type_answers[j].setAttribute('selected','selected');
+                                        $('#form_edit_question .structure > div').eq(j - 1).fadeIn(1000);
                                     }
-                                });
+                                }
                                 
-                            }else if(data.type_question == 3){
-                                options_question.forEach(function(i,o){
-                                    $('#sortable_edit').append('<li><span>' + i + '</span><img src="img/points/delete_.png"></li>');
-                                });
-                            }
-                            
-                            $('.structure .multiple_choice_edit_case .input img').unbind('click').click(function(){
-                                var question = $(this).parent().find('input').val();
+                                var options_question = data.options_question.split('/');
+                                var correct_answer_edit = data.correct_answer.split('/');
+                                var correct_question = 0;
                                 
-                                evt_append_question_choice_edit(question);
-                            });
-                            
-                            $('.structure .multiple_choice_edit_case .input input').unbind('keyup').keyup(function(e){
-                                var question = $(this).val();
+                                $('#form_edit_question .id span').empty().text(data.id);
+                                $('#question_edit').empty().text(data.question);
                                 
-                                if(e.keyCode == 13)
+                                if(data.type_question == 1){
+                                    options_question.forEach(function(i,o){
+                                        if(i == correct_answer_edit[correct_question]){
+                                            $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" checked="checked" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                            correct_question++;
+                                        }else{
+                                            $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                        }
+                                    });
+                                    
+                                }else if(data.type_question == 3){
+                                    options_question.forEach(function(i,o){
+                                        $('#sortable_edit').append('<li><span>' + i + '</span><img src="img/points/delete_.png"></li>');
+                                    });
+                                }
+                                
+                                // Click to append option in the options list
+                                $('.structure .multiple_choice_edit_case .input img').unbind('click').click(function(){
+                                    var question = $(this).parent().find('input').val();
+                                    
                                     evt_append_question_choice_edit(question);
-                            });
-                            
-                            $('.structure .order_questions_edit_case .input img').unbind('click').click(function(){
-                                var question = $(this).parent().find('input').val();
+                                });
                                 
-                                evt_append_question_edit(question);
-                            });
-                            
-                            $('.structure .order_questions_edit_case .input input').unbind('keyup').keyup(function(e){
-                                var question = $(this).val();
+                                // Click to append option in the options list
+                                $('.structure .multiple_choice_edit_case .input input').unbind('keyup').keyup(function(e){
+                                    var question = $(this).val();
+                                    
+                                    if(e.keyCode == 13)
+                                        evt_append_question_choice_edit(question);
+                                });
                                 
-                                if(e.keyCode == 13)
+                                 $('.structure .multiple_choice_edit .input input').unbind('keyup').keyup(function(e){
+                                    var question = $(this).val();
+                                    
+                                    if(e.keyCode == 13)
+                                        evt_append_question_choice_edit(question);
+                                });
+                                
+                                $('.structure .order_questions_edit_case .input img').unbind('click').click(function(){
+                                    var question = $(this).parent().find('input').val();
+                                    
                                     evt_append_question_edit(question);
-                            });
-                            
-                            $('#form_edit_question .id span').empty().text(data.id);
-                            $('#question_edit').empty().text(data.question);
-                            
-                            $('#sortable_choice_edit li i').unbind('click').click(function(e) {
-                                $(this).parent().remove();
-                                $('.structure .multiple_choice_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
-                                $('.structure .multiple_choice_edit .input input').removeAttr('disabled');
-                                $('.structure .multiple_choice_edit .input img').css('z-index','1');
-                                count_id++;
-                            });
-                            
-                            $('#sortable_edit li i').unbind('click').click(function(e) {
-                                $(this).parent().remove();
-                                $('.structure .order_questions_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas ('+(++count)+')');
-                                $('.structure .order_questions_edit .input input').removeAttr('disabled');
-                                $('.structure .order_questions_edit .input img').css('z-index','1');
-                            });
-                            
-                            $('select').material_select();
-                        }
+                                });
+                                
+                                $('.structure .order_questions_edit_case .input input').unbind('keyup').keyup(function(e){
+                                    var question = $(this).val();
+                                    
+                                    if(e.keyCode == 13)
+                                        evt_append_question_edit(question);
+                                });
+                                
+                                // Click to remove option form edit question
+                                $('#sortable_choice_edit li img').unbind('click').click(function(e) {
+                                    $(this).parent().remove();
+                                    $('.structure .multiple_choice_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
+                                    $('.structure .multiple_choice_edit .input input').removeAttr('disabled');
+                                    $('.structure .multiple_choice_edit .input img').css('z-index','1');
+                                    count_id++;
+                                });
+                                
+                                // Click to remove option form edit question
+                                $('#sortable_edit li img').unbind('click').click(function(e) {
+                                    $(this).parent().remove();
+                                    $('.structure .order_questions_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas ('+(++count)+')');
+                                    $('.structure .order_questions_edit .input input').removeAttr('disabled');
+                                    $('.structure .order_questions_edit .input img').css('z-index','1');
+                                });
+                                
+                                $('select').material_select();
+                        // click to filter questions for inactives
+                    $('.menu_question .desactivate').unbind('click').click(function(){
+                        var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                        
+                        evt_question('active',id);
                     });
                     
-                    $('a[href="#edit_question"]').click();
-                });    }
+                    // Click to filter questions for actives
+                    $('.menu_question .activate').unbind('click').click(function(){
+                        var id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                        
+                        evt_question('inactive',id);
                     });
                     
-                    $('a[href="#edit_question"]').click();
-                });
+                    // Click to edit question
+                    $('.menu_question .edit').unbind('click').click(function(){
+                        var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
+                        
+                        $('#form_edit_question .structure > div').hide(50);
+                        
+                        // ajax to get data question
+                        $.ajax({
+                            url     : webService + 'data_question',
+                            type    : 'POST',
+                            data    : {
+                                id  : $id
+                            },
+                            success : function(res){
+                                var data = JSON.parse(res);
+                                var options_specialty = $('#specialty_name_edit option');
+                                var options_type_answers = $('#type_question_edit option');
+                                var options_yes_no = $('input[name="yes_no_edit"]');
+                                
+                                options_yes_no.removeAttr('checked');
+                                
+                                $('#sortable_choice_edit,#sortable_edit').empty();
+                                
+                                for(var i = 0; i < options_specialty.length; i++){
+                                    if(data.id_specialty == options_specialty[i].value)
+                                        options_specialty[i].setAttribute('selected','selected');
+                                }
+                                
+                                for(var k = 0; k < options_yes_no.length; k++){
+                                    if(data.correct_answer == options_yes_no[k].value)
+                                        options_yes_no[k].setAttribute('checked','checked');
+                                }
+                                
+                                for(var j = 0; j < options_type_answers.length; j++){
+                                    if(data.type_question == options_type_answers[j].value){
+                                        options_type_answers[j].setAttribute('selected','selected');
+                                        $('#form_edit_question .structure > div').eq(j - 1).fadeIn(1000);
+                                    }
+                                }
+                                
+                                var options_question = data.options_question.split('/');
+                                var correct_answer_edit = data.correct_answer.split('/');
+                                var correct_question = 0;
+                                
+                                if(data.type_question == 1){
+                                    options_question.forEach(function(i,o){
+                                        if(i == correct_answer_edit[correct_question]){
+                                            $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" checked="checked" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                            correct_question++;
+                                        }else{
+                                            $('#sortable_choice_edit').append('<li><span>' + i + '</span><span class="last"><p><input type="checkbox" class="filled-in" id="correct'+ o +'" value="'+i+'"/><label for="correct'+ o +'"></label></p></span><img src="img/points/delete_.png"></li>');
+                                        }
+                                    });
+                                    
+                                }else if(data.type_question == 3){
+                                    options_question.forEach(function(i,o){
+                                        $('#sortable_edit').append('<li><span>' + i + '</span><img src="img/points/delete_.png"></li>');
+                                    });
+                                }
+                                
+                                $('.structure .multiple_choice_edit_case .input img').unbind('click').click(function(){
+                                    var question = $(this).parent().find('input').val();
+                                    
+                                    evt_append_question_choice_edit(question);
+                                });
+                                
+                                $('.structure .multiple_choice_edit_case .input input').unbind('keyup').keyup(function(e){
+                                    var question = $(this).val();
+                                    
+                                    if(e.keyCode == 13)
+                                        evt_append_question_choice_edit(question);
+                                });
+                                
+                                $('.structure .order_questions_edit_case .input img').unbind('click').click(function(){
+                                    var question = $(this).parent().find('input').val();
+                                    
+                                    evt_append_question_edit(question);
+                                });
+                                
+                                $('.structure .order_questions_edit_case .input input').unbind('keyup').keyup(function(e){
+                                    var question = $(this).val();
+                                    
+                                    if(e.keyCode == 13)
+                                        evt_append_question_edit(question);
+                                });
+                                
+                                $('#form_edit_question .id span').empty().text(data.id);
+                                $('#question_edit').empty().text(data.question);
+                                
+                                $('#sortable_choice_edit li i').unbind('click').click(function(e) {
+                                    $(this).parent().remove();
+                                    $('.structure .multiple_choice_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas:');
+                                    $('.structure .multiple_choice_edit .input input').removeAttr('disabled');
+                                    $('.structure .multiple_choice_edit .input img').css('z-index','1');
+                                    count_id++;
+                                });
+                                
+                                $('#sortable_edit li i').unbind('click').click(function(e) {
+                                    $(this).parent().remove();
+                                    $('.structure .order_questions_edit .input input').val('').focus().attr('placeholder','Ingrese las preguntas ('+(++count)+')');
+                                    $('.structure .order_questions_edit .input input').removeAttr('disabled');
+                                    $('.structure .order_questions_edit .input img').css('z-index','1');
+                                });
+                                
+                                $('select').material_select();
+                            }
+                        });
+                        
+                        $('a[href="#edit_question"]').click();
+                    });    }
+                        });
+                        
+                        $('a[href="#edit_question"]').click();
+                    });
+            });
             
             $('.content_question_show').show(600);
             
@@ -4010,11 +4022,10 @@ function evt_update_question(obj){
             
             if(data.status == "OK"){
                 $('#edit_question').find('a').click();
-                
+                localStorage.removeItem('questions');
                 evt_all_questions_show('all',null);
                 
                 setTimeout(function(){
-                    localStorage.removeItem('questions');
                     message(data.message);
                     reset_form_new_question();
                     $('button[data-url="#cancel_question"]').click();
