@@ -580,21 +580,21 @@
                     </div>
                 </div>
                 <div data-role="popup" id="edit_question" style="max-width:97%; width: 580px; background: #3A6667; height: 90vh;overflow-y: scroll;" class="ui-corner-all">
-                    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <a data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
                     <div id="edit_question" class="col s12 edit_question">
                         <h2 class="title">Editar Pregunta</h2>
                         <div class="form_content">
                             <form id="form_edit_question">
                                 <div class="id" style="display:none">ID <span></span></div>
-                                <div class="input-field col s12">
+                                <div class="input-field col s12" style="padding: 1rem 0">
+                                  <textarea id="question_edit" class="materialize-textarea" data-role="none"></textarea>
+                                  <label for="question_edit" data-role="none" class="active" style="transform: translateY(-100%);">Pregunta: </label>
+                                </div>
+                                <div class="input-field col s12" style="padding: 1.2rem 0">
                                     <select data-role="none" id="specialty_name_edit">
                                       <option value="" selected>Seleccione una categoría</option>
                                     </select>
                                     <label data-role="none">Categoría Pregunta: </label>
-                                </div>
-                                <div class="input-field col s12" style="padding: 1rem 0">
-                                  <textarea id="question_edit" class="materialize-textarea" data-role="none"></textarea>
-                                  <label for="question_edit" data-role="none" class="active" style="transform: translateY(-100%);">Pregunta: </label>
                                 </div>
                                 <div class="input-field col s12">
                                     <select data-role="none" id="type_question_edit">
@@ -640,7 +640,7 @@
                     </div>
                     </div>
                 <div data-role="popup" id="edit_case" style="max-width:97%; width: 580px; background: #3A6667; height: 90vh;overflow-y: scroll;" class="ui-corner-all">
-                    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <a data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
                     <div id="edit_case" class="col s12 edit_case">
                         <h2 class="title">Editar Caso</h2>
                         <div class="form_content">
@@ -651,7 +651,7 @@
                                     <label for="name_case_edit">Nombre Caso</label>
                                 </div>
                                 <div class="input-field col s12" style="padding: 1rem 0">
-                                  <textarea id="text_litigation_edit" class="materialize-textarea" style="min-height: 12rem" data-role="none"></textarea>
+                                  <textarea id="text_litigation_edit" class="materialize-textarea" style="min-height: 6.5rem" data-role="none"></textarea>
                                   <label for="text_litigation_edit" data-role="none" class="active" style="transform: translateY(-100%);">Texto Caso: </label>
                                 </div>
                                 <div class="input-field col s12" style="padding: 1rem 0">
