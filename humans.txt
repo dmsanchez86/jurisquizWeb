@@ -1,0 +1,22 @@
+﻿   ___ _   _______ _____ ___________ _   _ _____ ______
+  |_  | | | | ___ \_   _|___  /  _  | | | |_   _|___  /
+    | | | | | |_/ / | |    / /| | | | | | | | |    / / 
+    | | | | |    /  | |   / / | | | | | | | | |   / /  
+/\__/ / |_| | |\ \ _| |_./ /__\ \/' / |_| |_| |_./ /___
+\____/ \___/\_| \_|\___/\_____/\_/\_\\___/ \___/\_____/
+
+/* MAIN */
+  Develop & Main Design: Daniel Mauricio Sanchez
+  Twitter: @dmsanchez86
+  Site: http://github.com/dmsanchez86
+
+/* SITE */
+  Last update: 08/06/2015
+  Doctype: HTML5
+  IDE: Sublime Text 3
+  Technologies: JavaScript, Jquery, LESS, CSS3, Materialize
+
+/* SPECIAL THANKS */
+  Designer: Sebastian Serna
+
+  And, of course, all humanstxt.org team!
