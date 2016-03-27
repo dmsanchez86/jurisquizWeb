@@ -37,17 +37,14 @@
                 height: 567px;
                 overflow: hidden;
                 transition: transform 1s ease;
-                transform: rotateX(0deg) translatey(0px) rotatey(0deg) scale(.4);
+                transform: rotateX(0deg) translatey(0px) rotatey(0deg) scale(1);
                 transform-origin: left top;
                 transition: all .5s ease;
             }
             .content:before{
                 position: absolute;
                 width: 100%;
-<<<<<<< HEAD
                 border: solid thin;
-=======
->>>>>>> 510ceafdbf08116b7539b655a24128bda947d75f
                 transition: height .5s .2s ease-in;
                 top: 0;
                 left: 0;
@@ -62,13 +59,17 @@
                 width: 100%;
                 height: 593px;
                 border: thin solid #ddd;
-                background-color: rgba(130,130,130,.8);
+                background-color: rgba(0,0,0,.2);
                 transition: top 1s .3s ease-out;
                 z-index: 4;
                 transform: rotatex(0deg) translatez(-100px);
             }
             .content:hover:before{
                 height: 593px;
+            }
+            .content:hover:after{
+                top: 0;
+		z-index: -1;
             }
             .content img{
                 position: absolute;

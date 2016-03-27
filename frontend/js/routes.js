@@ -430,7 +430,7 @@ var router = new $.mobile.Router({
         };
         
         // event to load questions
-        questions('.start_race', null,metadata);
+        questions('.start_race', null, metadata);
         
         // event to validate questions
         validate_questions();
@@ -2273,7 +2273,7 @@ var router = new $.mobile.Router({
         });
         
         // Event select filter show questions
-        $('#specialty_filter').unbind('change').change(function(){debugger
+        $('#specialty_filter').unbind('change').change(function(){
             var id_specialty = $(this).val();
             if(id_specialty == "" || id_specialty == 11 || id_specialty == "11"){
                 return;
@@ -3468,7 +3468,7 @@ function load_cases(filter,ref){
             });
             
             // Click to edit case
-            $('.menu_case .edit').unbind('click').click(function(){debugger
+            $('.menu_case .edit').unbind('click').click(function(){
                 var $id = $(this).parent().parent().parent().find('.id').text().split(': ')[1];
                 
                 $('#form_edit_case .structure > div').hide(50);
@@ -4103,9 +4103,8 @@ function questions(page_referer, array, metadata){
                 var questions = data.random();
                 var question_test = [];
                 
-                for (var i = 0; i < 11; i++) {
+                for (var i = 0; i < 11; i++)
                     question_test[i] = questions[i];
-                }
                 
                 if(page_referer == '.duel_users' && ids_questions_duel.length != 0){
                     var count = 0;
@@ -4245,7 +4244,7 @@ function evt_validate_mode_game(data, name_level, id_game){
                     },1000);
                     
                     // Click in the answers to validate which is correct
-                    $('.start_race .content_question input[type=radio],.start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button').unbind('click').click(function(){
+                    $('.start_race .content_question input[type=radio],.start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button').unbind('click').click(function(){debugger
                         var type_question = $('.start_race .content_question.active').attr('type-question');
                         var $id_question = $('.start_race .content_question.active').attr('id-question');
                         var answer = '';
@@ -4289,7 +4288,7 @@ function evt_validate_mode_game(data, name_level, id_game){
                                                 id_level_game       : id_game,
                                                 id_level_category   : parseInt(id_level_category),
                                                 number              : (current_question + 1),
-                                                points              : (++points)
+                                                points              : (points + 5)
                                             };
                                         }
                                         
@@ -4408,7 +4407,7 @@ function evt_validate_mode_game(data, name_level, id_game){
                     },1000);
                     
                     // Click in the answers to validate which is correct
-                    $('.start_race .content_question input[type=radio],.start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button').unbind('click').click(function(){
+                    $('.start_race .content_question input[type=radio],.start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button').unbind('click').click(function(){debugger
                         var type_question = $('.start_race .content_question.active').attr('type-question');
                         var $id_question = $('.start_race .content_question.active').attr('id-question');
                         var answer = '';
