@@ -7,4 +7,5 @@ require_once (ROOT . DS . 'library' . DS . 'bootstrap.php');
 
 $tpl = new RainTPL();
 
+
 ?>
