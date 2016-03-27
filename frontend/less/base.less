@@ -70,7 +70,7 @@
     .status,.levels_content{float: right; height: 97px; width: 300px; .flex_content();
         .points{color: white; font-family: 'DK Mango';font-style: normal;font-weight: normal;text-transform: uppercase;padding-top: .2rem; position: relative;text-align: center;    font-size: 1.5rem; .flex_item(1, 1, 20%);
             &:before{position: absolute; left:-16px; width: 2px; height: 43.1094px; background-color: #fff; content:''; margin: auto; top: -2px;bottom: 0;}
-            em{font-size: 5.5rem;font-family: 'DK Mango';font-style: normal;font-weight: normal;}
+            em{font-size: 5.5rem;font-family: 'DK Mango';font-style: normal;font-weight: normal;line-height: 1;}
         }
         .icon_level {text-align: right;padding: .25rem 1rem .25rem 0;.flex_item(1, 1, 0%);
             img{height: 88px;}
@@ -104,7 +104,7 @@
             &:last-child:after{display: none;}
         }
     }
-    hgroup{ margin: 6rem 0 2rem;
+    hgroup{ margin: 3rem 0 2rem;
         h1,h2{font-size: 1.3rem; text-align: center;margin: 0;line-height: 1;margin-bottom: .5rem;}
     }
     .container_btn{
@@ -147,15 +147,15 @@
 /* Mode-Race */ 
 .race,.duel,.test,.specialty,.litigation,.start_specialty{
     .title_game{ float: right; margin-right: 1rem; height: 100%;
-        h1{margin: 0; color: white; font-family: 'DK Mango'; font-size: 3.3rem;}
+        h1{margin: 0; color: white; font-family: 'DK Mango'; font-size: 4.3rem; line-height: 5.62rem;}
     }
-    .content_game{margin-top: 5rem;
+    .content_game{margin-top: 1rem;
         .icon_game{max-width: 100%;margin: 0 auto;text-align: center;
-            img{max-height: 380px;.transition();}
+            img{max-height: 380px;margin-top: 2.5rem;.transition();}
         }
         .message_game{background-color: @btn_start;padding: 1rem 2rem; .border_radius(5px);max-width: 100%;width: 380px; margin: .8rem auto;position: relative;
             &:before{position: absolute;border: 2rem solid @btn_login;content:''; left: -55px; top: 2rem; border-color: transparent @before_color transparent transparent;}
-            p,b{font-family: 'DK Mango';color: white; font-size: 2rem;text-shadow: none;}
+            p,b{font-family: 'DK Mango';color: white; font-size: 1.9rem;text-shadow: none;}
         }
     }
 }
@@ -485,7 +485,7 @@
             ul{padding-left: 1.35rem;}
             li{margin: .35rem 0; position: relative; .border_radius(3px); z-index: 2;padding-left:0rem; padding-right: 0;
                 &:hover{cursor: pointer; color: #fff; .text_shadow(0, 0, 2px, #323232)}
-                &:before{position: absolute; left: -31px;top: -3px; width: 0; height: 100%; content: ''; .transition(.5s all ease-in-out);.border_radius(3px);}
+                &:before{position: absolute; left: -31px;top: -1px; width: 0; height: 100%; content: ''; .transition(.5s all ease-in-out);.border_radius(3px);}
                 &:nth-child(odd){
                     &:hover:before{width: 135%; background-color: @btn_start;z-index: -1;}
                 }
@@ -848,14 +848,14 @@
                 }
             }
         }
-        &:after{top: 0;left: 0;content: '';width: inherit;height: inherit;.border_radius( 50% );position: absolute;background: #3A6667;.transition( all .1s ease-in-out 0s );}
+        &:after{top: 0;left: 0;content: '';width: inherit;height: inherit;.border_radius( 50% );position: absolute;background: @btn_start;.transition( all .1s ease-in-out 0s );}
         .notifications_link{
             &:after{position: absolute; width: 15px;height: 15px; .border_radius(50% 50% 50% 0);content: attr(data-number-notifications); background: @before_color; color: #fff; font-size: 10px; text-align: center;text-indent: -1px; right: 2px; top: -2px; line-height: 1.5; .text_shadow(0,0,1px,#323232);opacity: 0;.transition();}
             &.hide_notifications{
                 &:after{opacity: 0;}
             }
         }
-        .mask {z-index: 21;.box_shadow(0,0,4px,1px,#fff);color: #fff;width: inherit;height: inherit;cursor: pointer;font-size: 28px;text-align: center;.border_radius( 50% );position: absolute;background: #3A6667;.transition( all .1s ease-in-out 0s );
+        .mask {z-index: 21;.box_shadow(0,0,4px,1px,#fff);color: #fff;width: inherit;height: inherit;cursor: pointer;font-size: 28px;text-align: center;.border_radius( 50% );position: absolute;background: @btn_start;.transition( all .1s ease-in-out 0s );
             img{margin-top: 11px;}
         }
         .nav-item {top: 0;left: 0;z-index: 19;width: 45px;height: 45px;color: #fff;font-size: 24px;.transform( none );line-height: 45px;.border_radius( 50% );position: absolute;text-align: center;.transition( all .3s cubic-bezier(.68, 1.55, .265, 1) ); text-shadow: none;

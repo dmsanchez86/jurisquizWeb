@@ -254,7 +254,7 @@ html {
 .specialties .container_btn button:focus,
 .notifications .container_btn button:focus,
 .report_question .container_btn button:focus {
-  background-color: #3A6667;
+  background-color: #264F50;
   text-shadow: none;
 }
 .home .container_btn:nth-child(even) button:after,
@@ -568,7 +568,7 @@ html {
 .specialties .container_login .content button:focus,
 .notifications .container_login .content button:focus,
 .report_question .container_login .content button:focus {
-  background-color: #EE6200;
+  background-color: #F77113;
   text-shadow: none;
 }
 .home .container_terms,
@@ -1013,6 +1013,7 @@ html {
   font-family: 'DK Mango';
   font-style: normal;
   font-weight: normal;
+  line-height: 1;
 }
 .dashboard .status .icon_level,
 .friends .status .icon_level,
@@ -1638,7 +1639,7 @@ html {
 .specialties hgroup,
 .notifications hgroup,
 .report_question hgroup {
-  margin: 6rem 0 2rem;
+  margin: 3rem 0 2rem;
 }
 .dashboard hgroup h1,
 .friends hgroup h1,
@@ -1737,7 +1738,7 @@ html {
 .profile .content_friends,
 .friends .content_profile,
 .profile .content_profile {
-  background-color: #3A6667;
+  background-color: #264F50;
   -webkit-border-radius: 10px;
   -khtml-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -1757,7 +1758,7 @@ html {
   position: absolute;
   top: -46px;
   right: 3rem;
-  border: 23px solid #3A6667;
+  border: 23px solid #264F50;
   content: '';
   border-top-color: transparent;
   border-left-color: transparent;
@@ -1868,7 +1869,7 @@ html {
 }
 .friends .container_btn button:hover,
 .profile .container_btn button:hover {
-  background-color: #3A6667;
+  background-color: #264F50;
   text-shadow: none;
 }
 /* Mode-Race */
@@ -1891,7 +1892,8 @@ html {
   margin: 0;
   color: white;
   font-family: 'DK Mango';
-  font-size: 3.3rem;
+  font-size: 4.3rem;
+  line-height: 5.62rem;
 }
 .race .content_game,
 .duel .content_game,
@@ -1899,7 +1901,7 @@ html {
 .specialty .content_game,
 .litigation .content_game,
 .start_specialty .content_game {
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 .race .content_game .icon_game,
 .duel .content_game .icon_game,
@@ -1918,6 +1920,7 @@ html {
 .litigation .content_game .icon_game img,
 .start_specialty .content_game .icon_game img {
   max-height: 380px;
+  margin-top: 2.5rem;
   -webkit-transition: all 0.5s ease;
   -khtml-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -1931,7 +1934,7 @@ html {
 .specialty .content_game .message_game,
 .litigation .content_game .message_game,
 .start_specialty .content_game .message_game {
-  background-color: #3A6667;
+  background-color: #264F50;
   padding: 1rem 2rem;
   -webkit-border-radius: 5px;
   -khtml-border-radius: 5px;
@@ -1951,7 +1954,7 @@ html {
 .litigation .content_game .message_game:before,
 .start_specialty .content_game .message_game:before {
   position: absolute;
-  border: 2rem solid #EE6200;
+  border: 2rem solid #F77113;
   content: '';
   left: -55px;
   top: 2rem;
@@ -1971,7 +1974,7 @@ html {
 .start_specialty .content_game .message_game b {
   font-family: 'DK Mango';
   color: white;
-  font-size: 2rem;
+  font-size: 1.9rem;
   text-shadow: none;
 }
 /* Start-Race */
@@ -2001,7 +2004,7 @@ html {
 .start_test .content_start_game .question span,
 .start_specialty .content_start_game .question span,
 .start_litigation .content_start_game .question span {
-  background-color: #3A6667;
+  background-color: #264F50;
   -webkit-border-radius: 15px;
   -khtml-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -2287,7 +2290,7 @@ html {
 .start_test .wrapper .question_result .message,
 .start_specialty .wrapper .question_result .message,
 .duel_users .wrapper .question_result .message {
-  background-color: #3A6667;
+  background-color: #264F50;
   -webkit-border-radius: 15px;
   -khtml-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -2583,10 +2586,10 @@ html {
 .start_test .wrapper .question_result .message label:hover,
 .start_specialty .wrapper .question_result .message label:hover,
 .duel_users .wrapper .question_result .message label:hover {
-  background-image: -webkit-radial-gradient(center, #EE6200, #EF863E);
-  background-image: -moz-radial-gradient(center, #EE6200, #EF863E);
-  background-image: radial-gradient(center, #EE6200, #EF863E);
-  border-color: #EE6200;
+  background-image: -webkit-radial-gradient(center, #F77113, #EF863E);
+  background-image: -moz-radial-gradient(center, #F77113, #EF863E);
+  background-image: radial-gradient(center, #F77113, #EF863E);
+  border-color: #F77113;
 }
 .start_race .wrapper .content_start_game .answers_options label:active,
 .start_test .wrapper .content_start_game .answers_options label:active,
@@ -2628,9 +2631,9 @@ html {
 .start_test .wrapper .question_result .message label:active,
 .start_specialty .wrapper .question_result .message label:active,
 .duel_users .wrapper .question_result .message label:active {
-  background-image: -webkit-radial-gradient(center, #EF863E, #EE6200);
-  background-image: -moz-radial-gradient(center, #EF863E, #EE6200);
-  background-image: radial-gradient(center, #EF863E, #EE6200);
+  background-image: -webkit-radial-gradient(center, #EF863E, #F77113);
+  background-image: -moz-radial-gradient(center, #EF863E, #F77113);
+  background-image: radial-gradient(center, #EF863E, #F77113);
 }
 .start_race .wrapper .content_start_game .content_question .type_question,
 .start_test .wrapper .content_start_game .content_question .type_question,
@@ -2836,7 +2839,7 @@ html {
   display: inline-block;
   text-shadow: none;
   color: white;
-  background-color: #EE6200;
+  background-color: #F77113;
   padding: 1rem;
 }
 .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:hover,
@@ -2896,7 +2899,7 @@ html {
   display: inline-block;
   text-shadow: none;
   color: white;
-  background-color: #3A6667;
+  background-color: #264F50;
 }
 .start_race .wrapper .start .container_btn button:hover,
 .start_test .wrapper .start .container_btn button:hover,
@@ -2938,7 +2941,7 @@ html {
 .start_test .wrapper .question_result,
 .start_specialty .wrapper .question_result,
 .duel_users .wrapper .question_result {
-  background-color: #3A6667;
+  background-color: #264F50;
   padding: 1rem 2rem;
   -webkit-border-radius: 10px;
   -khtml-border-radius: 10px;
@@ -3181,7 +3184,7 @@ html {
 .duel_users .wrapper .complete_questions,
 .duel_users .wrapper .complete_questions {
   padding: 1rem;
-  background-color: #3A6667;
+  background-color: #264F50;
   -webkit-border-radius: 5px;
   -khtml-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -3227,7 +3230,7 @@ html {
 .start_test .wrapper .complete_questions:hover h5 span,
 .duel_users .wrapper .complete_questions:hover h5 span,
 .duel_users .wrapper .complete_questions:hover h5 span {
-  color: #3A6667;
+  color: #264F50;
 }
 /* Start Specialty */
 .start_specialty .content_start_game {
@@ -3292,7 +3295,7 @@ html {
 }
 .search_duel .content_list_users .list_users,
 .duel_users .content_list_users .list_users {
-  background-color: #3A6667;
+  background-color: #264F50;
   padding: 1.3rem 4rem;
   -webkit-border-radius: 5px;
   -khtml-border-radius: 5px;
@@ -3428,7 +3431,7 @@ html {
   margin: 0 auto .5rem;
 }
 .duel_users .content_start_game .number_questions span {
-  color: #EE6200;
+  color: #F77113;
   font-family: 'DK Mango';
   font-size: 1.8rem;
 }
@@ -3436,7 +3439,7 @@ html {
   width: 580px;
   max-width: 100%;
   margin: 1rem auto 1rem;
-  background-color: #3A6667;
+  background-color: #264F50;
   -webkit-border-radius: 15px;
   -khtml-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -3548,7 +3551,7 @@ html {
   color: #F39D35;
 }
 .win_duel .content_win_duel .winner {
-  background-color: #3A6667;
+  background-color: #264F50;
 }
 .win_duel .content_win_duel .winner .message {
   font-size: 1.5rem;
@@ -3597,7 +3600,7 @@ html {
   margin: .25rem 0;
   font-family: 'DK Mango';
   font-size: 4.3rem;
-  color: #EE6200;
+  color: #F77113;
 }
 .terms p {
   padding: .8rem 0;
@@ -3610,7 +3613,7 @@ html {
   width: 380px;
 }
 .terms .container_btn a {
-  background-color: #3A6667;
+  background-color: #264F50;
   margin-bottom: .7rem;
   -webkit-border-radius: 5px;
   -khtml-border-radius: 5px;
@@ -3636,7 +3639,7 @@ html {
 }
 .terms .container_btn a:nth-child(2),
 .terms .container_btn a:nth-child(3) {
-  background-color: #EE6200;
+  background-color: #F77113;
 }
 /* Panel */
 .panel,
@@ -3795,7 +3798,7 @@ html {
 }
 .panel .panel_content .status .points,
 .profile .panel_content .status .points {
-  color: #3A6667;
+  color: #264F50;
   font-family: 'DK Mango';
   -webkit-flex: 1 1 0%;
   -moz-flex: 1 1 0%;
@@ -3833,7 +3836,7 @@ html {
 .profile .panel_content .friends li,
 .panel .panel_content .friends li a,
 .profile .panel_content .friends li a {
-  color: #3A6667;
+  color: #264F50;
   font-family: 'DK Mango';
 }
 .panel .panel_content .friends,
@@ -3847,7 +3850,7 @@ html {
   content: '';
   left: -15px;
   width: 1px;
-  background-color: #3A6667;
+  background-color: #264F50;
   height: 110%;
   margin: auto;
   top: 10px;
@@ -3900,7 +3903,7 @@ html {
 .profile .panel_content .friends li:before {
   position: absolute;
   left: -31px;
-  top: -3px;
+  top: -1px;
   width: 0;
   height: 100%;
   content: '';
@@ -3920,13 +3923,13 @@ html {
 .panel .panel_content .friends li:nth-child(odd):hover:before,
 .profile .panel_content .friends li:nth-child(odd):hover:before {
   width: 135%;
-  background-color: #3A6667;
+  background-color: #264F50;
   z-index: -1;
 }
 .panel .panel_content .friends li:nth-child(even):hover:before,
 .profile .panel_content .friends li:nth-child(even):hover:before {
   width: 135%;
-  background-color: #EE6200;
+  background-color: #F77113;
   z-index: -1;
 }
 .panel .panel_content .friends a,
@@ -3951,8 +3954,8 @@ html {
 }
 .panel .panel_content .levels,
 .profile .panel_content .levels {
-  border-top: thin solid #3A6667;
-  border-bottom: thin solid #3A6667;
+  border-top: thin solid #264F50;
+  border-bottom: thin solid #264F50;
 }
 .panel .panel_content .levels .current_level,
 .profile .panel_content .levels .current_level,
@@ -3965,7 +3968,7 @@ html {
 .panel .panel_content .levels .next_level span,
 .profile .panel_content .levels .next_level span {
   font-family: 'DK Mango';
-  color: #3A6667;
+  color: #264F50;
   font-size: 1.35rem;
   display: block;
 }
@@ -4005,12 +4008,12 @@ html {
   padding: 0;
   background-color: rgba(130, 130, 130, 0.5);
   margin: .45rem auto 1.8rem;
-  -webkit-box-shadow: 0 0 1px 0 #3A6667;
-  -khtml-box-shadow: 0 0 1px 0 #3A6667;
-  -moz-box-shadow: 0 0 1px 0 #3A6667;
-  -ms-box-shadow: 0 0 1px 0 #3A6667;
-  -o-box-shadow: 0 0 1px 0 #3A6667;
-  box-shadow: 0 0 1px 0 #3A6667;
+  -webkit-box-shadow: 0 0 1px 0 #264F50;
+  -khtml-box-shadow: 0 0 1px 0 #264F50;
+  -moz-box-shadow: 0 0 1px 0 #264F50;
+  -ms-box-shadow: 0 0 1px 0 #264F50;
+  -o-box-shadow: 0 0 1px 0 #264F50;
+  box-shadow: 0 0 1px 0 #264F50;
   overflow: hidden;
   -webkit-border-radius: 2px;
   -khtml-border-radius: 2px;
@@ -4221,7 +4224,7 @@ html {
   -o-border-radius: 5px;
   border-radius: 5px;
   padding: 1rem;
-  background-color: #3A6667;
+  background-color: #264F50;
   margin: 1.3rem auto 2rem;
 }
 .questions .content_questions .forms {
@@ -4238,17 +4241,17 @@ html {
 .questions .content_questions .forms .tab_title {
   font-family: 'DK Mango';
   font-size: 3.5rem;
-  color: #EE6200;
+  color: #F77113;
   text-align: center;
   margin-top: .5rem;
 }
 .questions .content_questions .forms .tab_title + h4 {
   font-size: 1rem;
-  color: #3A6667;
+  color: #264F50;
   margin: 0;
 }
 .questions .content_questions .forms .input-field label {
-  color: #3A6667;
+  color: #264F50;
 }
 .questions .content_questions .forms .input-field label.active {
   text-decoration: underline;
@@ -4358,7 +4361,7 @@ html {
 }
 .questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:hover,
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:hover {
-  border-color: #EE6200;
+  border-color: #F77113;
 }
 .questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:first-letter,
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:first-letter {
@@ -4460,7 +4463,7 @@ html {
 .questions .content_questions .forms .forms_contents .show_cases .content_question_show .case span b,
 .questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case span b,
 .questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case span b {
-  color: #3A6667;
+  color: #264F50;
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question ol,
 .questions .content_questions .forms .forms_contents .show_cases .content_question_show .question ol,
@@ -4582,7 +4585,7 @@ html {
 .questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case,
 .questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case {
   position: absolute;
-  background-color: #3A6667;
+  background-color: #264F50;
   right: 0;
   top: 0;
   width: 27px;
@@ -4739,7 +4742,7 @@ html {
   -o-border-radius: 5px;
   border-radius: 5px;
   padding: 1rem;
-  background-color: #3A6667;
+  background-color: #264F50;
   margin: 1.3rem auto 2rem;
 }
 .specialties .content_questions .forms {
@@ -4756,17 +4759,17 @@ html {
 .specialties .content_questions .forms .tab_title {
   font-family: 'DK Mango';
   font-size: 3.5rem;
-  color: #EE6200;
+  color: #F77113;
   text-align: center;
   margin-top: .5rem;
 }
 .specialties .content_questions .forms .tab_title + h4 {
   font-size: 1rem;
-  color: #3A6667;
+  color: #264F50;
   margin: 0;
 }
 .specialties .content_questions .forms .input-field label {
-  color: #3A6667;
+  color: #264F50;
 }
 .specialties .content_questions .forms .input-field label.active {
   text-decoration: underline;
@@ -4855,7 +4858,7 @@ html {
 }
 .specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .input i:hover,
 .specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .input i:hover {
-  color: #EE6200;
+  color: #F77113;
 }
 .specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable,
 .specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable {
@@ -4876,7 +4879,7 @@ html {
 }
 .specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:hover,
 .specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:hover {
-  border-color: #EE6200;
+  border-color: #F77113;
 }
 .specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:after,
 .specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:after {
@@ -4899,7 +4902,7 @@ html {
 }
 .specialties .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li i:hover,
 .specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li i:hover {
-  color: #EE6200;
+  color: #F77113;
 }
 .specialties .content_questions .forms .forms_contents .show_questions .content_question_show,
 .specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show {
@@ -4912,7 +4915,7 @@ html {
   position: relative;
   padding: 1rem;
   margin-bottom: .15rem;
-  box-shadow: 0 0 1px 0 #3A6667 inset;
+  box-shadow: 0 0 1px 0 #264F50 inset;
   -webkit-border-radius: 1px;
   -khtml-border-radius: 1px;
   -moz-border-radius: 1px;
@@ -4951,7 +4954,7 @@ html {
 .specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question span b,
 .specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty span b,
 .specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty span b {
-  color: #3A6667;
+  color: #264F50;
 }
 .specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover span b,
 .specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question:hover span b,
@@ -5014,7 +5017,7 @@ html {
 .specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_specialty,
 .specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_specialty {
   position: absolute;
-  background-color: #3A6667;
+  background-color: #264F50;
   right: 0;
   top: 0;
   width: 27px;
@@ -5262,7 +5265,7 @@ html {
 }
 .question_time span,
 .question_time em {
-  color: #3A6667;
+  color: #264F50;
   -webkit-text-shadow: 0 0 1px #fff;
   -khtml-text-shadow: 0 0 1px #fff;
   -moz-text-shadow: 0 0 1px #fff;
@@ -5290,7 +5293,7 @@ html {
   content: '';
   width: 100%;
   height: 100%;
-  border: solid 4.5px #EE6200;
+  border: solid 4.5px #F77113;
   -webkit-animation: loading 1s infinite linear;
   -khtml-animation: loading 1s infinite linear;
   -moz-animation: loading 1s infinite linear;
@@ -5567,7 +5570,7 @@ html {
   -o-border-radius: 50%;
   border-radius: 50%;
   position: absolute;
-  background: #3A6667;
+  background: #264F50;
   -webkit-transition: all 0.1s ease-in-out 0s;
   -khtml-transition: all 0.1s ease-in-out 0s;
   -moz-transition: all 0.1s ease-in-out 0s;
@@ -5632,7 +5635,7 @@ html {
   -o-border-radius: 50%;
   border-radius: 50%;
   position: absolute;
-  background: #3A6667;
+  background: #264F50;
   -webkit-transition: all 0.1s ease-in-out 0s;
   -khtml-transition: all 0.1s ease-in-out 0s;
   -moz-transition: all 0.1s ease-in-out 0s;
@@ -5681,7 +5684,7 @@ html {
 /* Popup Notifications */
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header,
 .report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header {
-  background-color: #3A6667;
+  background-color: #264F50;
   overflow: auto;
   padding: .85rem 0;
   -webkit-border-radius: 5px 5px 0 0;
@@ -5740,7 +5743,7 @@ html {
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text span,
 .report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text span {
-  color: #EE6200;
+  color: #F77113;
   font-family: 'DK Mango';
   font-size: 1.5rem;
   font-weight: bold;
@@ -5791,7 +5794,7 @@ html {
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  background-color: #3A6667;
+  background-color: #264F50;
   border: none;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns,
@@ -5865,11 +5868,11 @@ html {
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send,
 .report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send {
-  background-color: #EE6200;
+  background-color: #F77113;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send:hover,
 .report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send:hover {
-  background-color: #EE6200;
+  background-color: #F77113;
 }
 span[contenteditable] br {
   display: none;
@@ -5912,7 +5915,7 @@ span[contenteditable] br {
 .list_users_content a,
 .paginator_notifications a,
 .container_cases a {
-  color: #3A6667;
+  color: #264F50;
   cursor: pointer;
 }
 .container_questions a:hover,
@@ -5969,7 +5972,7 @@ ol li {
   background-color: rgba(238, 98, 0, 0.15);
 }
 .waves-effect.waves-btn-start {
-  background-color: #3A6667;
+  background-color: #264F50;
   position: relative;
   /*&:after,&:before{position: absolute;width: 100%; height: 0%; content: '';.transition(all .4s cubic-bezier(0.63, -0.02, 0, -0.08));z-index: -1;background-color: rgba(255,255,255,.17);}
     &:after{left:0;top: 50%; }
@@ -5980,7 +5983,7 @@ ol li {
   background-color: rgba(255, 255, 255, 0.55);
 }
 .waves-effect.waves-btn-login {
-  background-color: #EE6200;
+  background-color: #F77113;
   position: relative;
   /*&:after,&:before{position: absolute;width: 100%; height: 0%; content: '';.transition(all .4s cubic-bezier(0.63, -0.02, 0, -0.08));z-index: -1;background-color: rgba(255,255,255,.17);}
     &:after{left:0;top: 0%; }
@@ -6049,11 +6052,11 @@ input[type="password"]:focus {
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.61);
 }
 [type="radio"].with-gap:checked + label:after {
-  border: 2px solid #3A6667;
-  background-color: #3A6667;
+  border: 2px solid #264F50;
+  background-color: #264F50;
 }
 [type="radio"].with-gap:checked + label:before {
-  border: 2px solid #3A6667;
+  border: 2px solid #264F50;
 }
 .input-field label {
   left: 2rem;
@@ -6128,7 +6131,7 @@ input[type="password"]:focus {
   line-height: 54px;
 }
 .tabs .tab a {
-  color: #EE6200;
+  color: #F77113;
   font-size: .85rem;
   z-index: 0;
   -webkit-text-shadow: 0 0 1px transparent;
@@ -6275,7 +6278,7 @@ input[type="password"]:focus {
 .dropdown-content li > a,
 .dropdown-content li > span {
   font-size: 1.05rem;
-  color: #3A6667;
+  color: #264F50;
 }
 .dropdown-content {
   z-index: 99;
@@ -6514,7 +6517,7 @@ textarea.materialize-textarea {
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li:hover,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li:hover,
 .ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li:hover {
-  border-color: #EE6200;
+  border-color: #F77113;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:first-letter,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li:first-letter,
@@ -6621,13 +6624,13 @@ textarea.materialize-textarea {
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .container_btn button:hover,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .container_btn button:hover,
 .ui-page-theme-a .ui-body-inherit .edit_case .form_content .container_btn button:hover {
-  background-color: #3A6667 !important;
+  background-color: #264F50 !important;
 }
 .ui-page-theme-a .ui-body-inherit .ui-btn {
-  background-color: #3A6667 !important;
+  background-color: #264F50 !important;
 }
 .ui-page-theme-a .ui-body-inherit .ui-btn:hover {
-  background-color: #EE6200 !important;
+  background-color: #F77113 !important;
 }
 .ui-panel {
   width: 22em;
@@ -6642,7 +6645,7 @@ textarea.materialize-textarea {
 }
 .ui-header {
   min-height: 100px;
-  background-color: #3A6667 !important;
+  background-color: #264F50 !important;
 }
 .ui-content {
   padding: 0;
@@ -6900,7 +6903,7 @@ label.ui-btn {
     display: inline-block;
     text-shadow: none;
     color: white;
-    background-color: #EE6200;
+    background-color: #F77113;
     padding: .5rem;
   }
   .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:hover,
@@ -6952,7 +6955,7 @@ label.ui-btn {
     display: inline-block;
     text-shadow: none;
     color: white;
-    background-color: #3A6667;
+    background-color: #264F50;
   }
   .start_race .wrapper .start .container_btn button:hover,
   .start_test .wrapper .start .container_btn button:hover,
@@ -7257,7 +7260,7 @@ label.ui-btn {
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input i:hover,
   .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i:hover,
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i:hover {
-    color: #EE6200;
+    color: #F77113;
   }
   .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable,
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable,
@@ -7285,7 +7288,7 @@ label.ui-btn {
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li:hover,
   .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li:hover,
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:hover {
-    border-color: #EE6200;
+    border-color: #F77113;
   }
   .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:first-letter,
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li:first-letter,
@@ -7316,7 +7319,7 @@ label.ui-btn {
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li i:hover,
   .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li i:hover,
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li i:hover {
-    color: #EE6200;
+    color: #F77113;
   }
   .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li,
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li {
@@ -7343,7 +7346,7 @@ label.ui-btn {
   }
   .ui-page-theme-a .ui-body-inherit .edit_question .form_content .container_btn button:hover,
   .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .container_btn button:hover {
-    background-color: #3A6667 !important;
+    background-color: #264F50 !important;
   }
   .race .container,
   .duel .container,

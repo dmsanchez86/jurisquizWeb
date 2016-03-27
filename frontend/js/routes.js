@@ -21,7 +21,6 @@ var global_timeout = null;
 var mode_race_timeout = null;
 var control_page = true;
 
-
 var router = new $.mobile.Router({
     "#home": {handler: "home", events: "s" },
     "#register": {handler: "register", events: "s" },
@@ -69,8 +68,7 @@ var router = new $.mobile.Router({
         
         // Events input type text
         $('#email,#password').unbind('keyup').keyup(function(e){
-            if(e.keyCode == 13)
-                evt_login();
+            if(e.keyCode == 13) evt_login();
         });
         
         // show for first time the message to welcome
@@ -79,7 +77,7 @@ var router = new $.mobile.Router({
         if(first_view == null){
             // Welcome Message
             message('welcome');
-            localStorage.setItem('first_view',true);
+            localStorage.setItem('first_view', true);
         }
     },
     register: function(type,match,ui){
@@ -148,7 +146,7 @@ var router = new $.mobile.Router({
             
             // if the user isn't logged
             if(log != 'true')
-                $.mobile.changePage('#home',{role: 'page',transition: 'fade'});
+                $.mobile.changePage('#home',{role: 'page',transition: 'flip'});
         }else{
             // get parameter id from url
             var $id = params.user;
@@ -156,11 +154,11 @@ var router = new $.mobile.Router({
         
         // if the id is null
         if($id == null || $id == undefined || $id == ""){
-            $.mobile.changePage('#home',{role: 'page',transition: 'pop'});
+            $.mobile.changePage('#home',{role: 'page',transition: 'flip'});
         }else{
             // set variables in local storage
-            localStorage.setItem('log','true');
-            localStorage.setItem('id_user',$id);
+            localStorage.setItem('log', 'true');
+            localStorage.setItem('id_user', $id);
             
             // Event what load the user data
             panel_data($id);
@@ -178,7 +176,7 @@ var router = new $.mobile.Router({
             var url = $(this).attr('data-url');
             
             // change page to game mode
-            $.mobile.changePage(url,{role:'page',transition:'fade'});
+            $.mobile.changePage(url,{role:'page', transition:'slide'});
         });
     },
     dashboard_admin: function(type,match,ui){
@@ -380,19 +378,13 @@ var router = new $.mobile.Router({
         hide_timer();
 
         hide_nav_button();
-
-        // empty the icons levels cotent
-        $('.start_race .levels_content').empty();
        
        // Empty all contents start games
-        $('.start_race .content_start_game,.start_test .content_start_game,.duel_users .content_start_game').empty();
+        $('.start_race .levels_content,.start_race .content_start_game,.start_test .content_start_game,.duel_users .content_start_game').empty();
         $('.start_specialty .content_start_game .content_question').remove();
         
         // remove class active from levels icons
-        $('.start_race .levels_content .level').removeClass('active');
-        
-        // quit after
-        $('.answers_options').removeClass('active');
+        $('.start_race .levels_content .level,.answers_options').removeClass('active');
         
         // Get params url
         var params = router.getParams(match[1]);
@@ -2701,7 +2693,7 @@ function validate_login(){
         }
         
         // set margin 
-        $('.home .container_logo').css('margin-top','5.5rem');
+        $('.home .container_logo').css('margin-top','4rem');
 
         localStorage.removeItem('nav_menu_view');
 
@@ -3025,7 +3017,7 @@ function panel_data($id){
             
             for (var i = 0; i < data.length; i++) {
                 if(i < 3)
-                    list_users.append('<li>'+data[i].name.split(' ')[0]+' '+data[i].points+'</li>');
+                    list_users.append('<li>'+(data[i].name.split(' ')[0] == "" || data[i].name.split(' ')[0] == null ? "Usuario" : data[i].name.split(' ')[0])+' '+data[i].points+'</li>');
             }
         }
     });
@@ -4223,9 +4215,10 @@ function evt_validate_mode_game(data, name_level, id_game){
                     var content_questions = $('.start_race .content_start_game .content_question');
                     var count_questions = 0;
                     var points = 0;
-                    
+                    debugger
                     $.post(webService + 'points/' + localStorage.getItem('id_user'),{}, function(data){
                         points = parseInt(JSON.parse(data).points);
+                        alert(points);
                     });
                     
                     // Hide the content of this button
@@ -4244,7 +4237,7 @@ function evt_validate_mode_game(data, name_level, id_game){
                     },1000);
                     
                     // Click in the answers to validate which is correct
-                    $('.start_race .content_question input[type=radio],.start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button').unbind('click').click(function(){debugger
+                    $('.start_race .content_question input[type=radio],.start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button').unbind('click').click(function(){
                         var type_question = $('.start_race .content_question.active').attr('type-question');
                         var $id_question = $('.start_race .content_question.active').attr('id-question');
                         var answer = '';
@@ -4407,7 +4400,7 @@ function evt_validate_mode_game(data, name_level, id_game){
                     },1000);
                     
                     // Click in the answers to validate which is correct
-                    $('.start_race .content_question input[type=radio],.start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button').unbind('click').click(function(){debugger
+                    $('.start_race .content_question input[type=radio],.start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button').unbind('click').click(function(){
                         var type_question = $('.start_race .content_question.active').attr('type-question');
                         var $id_question = $('.start_race .content_question.active').attr('id-question');
                         var answer = '';
