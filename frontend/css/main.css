@@ -1,4 +1,3 @@
-@import url('http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic,900,900italic');
 @import url('http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise');
 @import url('http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
 @font-face {
@@ -9,7 +8,7 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url('http://fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2') format('woff2');
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('material-icons.woff2') format('woff2');
 }
 /*
 * Todas las Etiquetas Navegadores
@@ -22,12 +21,6 @@ html {
   padding: 0;
   font-size: 100%;
   font-family: 'Roboto', sans-serif;
-  -webkit-transition: all 0.5s ease;
-  -khtml-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
 }
 /* * Pages * */
 /* ----------------------------------------- */
@@ -49,7 +42,8 @@ html {
 .start_litigation .container_logo,
 .questions .container_logo,
 .specialties .container_logo,
-.notifications .container_logo {
+.notifications .container_logo,
+.report_question .container_logo {
   padding: 1.5rem 0;
 }
 .home .container_logo .content,
@@ -69,7 +63,8 @@ html {
 .start_litigation .container_logo .content,
 .questions .container_logo .content,
 .specialties .container_logo .content,
-.notifications .container_logo .content {
+.notifications .container_logo .content,
+.report_question .container_logo .content {
   width: 380px;
   margin: 0 auto;
   max-width: 100%;
@@ -91,7 +86,8 @@ html {
 .start_litigation .container_logo .content .btn_logo,
 .questions .container_logo .content .btn_logo,
 .specialties .container_logo .content .btn_logo,
-.notifications .container_logo .content .btn_logo {
+.notifications .container_logo .content .btn_logo,
+.report_question .container_logo .content .btn_logo {
   background-color: #f6f6f6;
   height: inherit;
   padding: 0;
@@ -121,7 +117,8 @@ html {
 .start_litigation .container_logo .content .btn_logo div,
 .questions .container_logo .content .btn_logo div,
 .specialties .container_logo .content .btn_logo div,
-.notifications .container_logo .content .btn_logo div {
+.notifications .container_logo .content .btn_logo div,
+.report_question .container_logo .content .btn_logo div {
   background-image: url(../img/logo.png);
   width: 100%;
   min-height: 300px;
@@ -144,7 +141,8 @@ html {
 .start_litigation .container_btn,
 .questions .container_btn,
 .specialties .container_btn,
-.notifications .container_btn {
+.notifications .container_btn,
+.report_question .container_btn {
   text-align: center;
 }
 .home .container_btn button,
@@ -164,7 +162,8 @@ html {
 .start_litigation .container_btn button,
 .questions .container_btn button,
 .specialties .container_btn button,
-.notifications .container_btn button {
+.notifications .container_btn button,
+.report_question .container_btn button {
   width: 380px;
   padding: 1.5rem 0.5rem;
   height: inherit;
@@ -192,7 +191,8 @@ html {
 .start_litigation .container_btn button:hover,
 .questions .container_btn button:hover,
 .specialties .container_btn button:hover,
-.notifications .container_btn button:hover {
+.notifications .container_btn button:hover,
+.report_question .container_btn button:hover {
   color: white;
 }
 .home .container_btn button:focus,
@@ -212,7 +212,8 @@ html {
 .start_litigation .container_btn button:focus,
 .questions .container_btn button:focus,
 .specialties .container_btn button:focus,
-.notifications .container_btn button:focus {
+.notifications .container_btn button:focus,
+.report_question .container_btn button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .home .container_btn button:hover,
@@ -232,7 +233,27 @@ html {
 .start_litigation .container_btn button:hover,
 .questions .container_btn button:hover,
 .specialties .container_btn button:hover,
-.notifications .container_btn button:hover {
+.notifications .container_btn button:hover,
+.report_question .container_btn button:hover,
+.home .container_btn button:focus,
+.register .container_btn button:focus,
+.dashboard .container_btn button:focus,
+.race .container_btn button:focus,
+.start_race .container_btn button:focus,
+.duel .container_btn button:focus,
+.search_duel .container_btn button:focus,
+.duel_users .container_btn button:focus,
+.terms .container_btn button:focus,
+.test .container_btn button:focus,
+.start_test .container_btn button:focus,
+.specialty .container_btn button:focus,
+.start_specialty .container_btn button:focus,
+.litigation .container_btn button:focus,
+.start_litigation .container_btn button:focus,
+.questions .container_btn button:focus,
+.specialties .container_btn button:focus,
+.notifications .container_btn button:focus,
+.report_question .container_btn button:focus {
   background-color: #3a6667;
   text-shadow: none;
 }
@@ -253,9 +274,32 @@ html {
 .start_litigation .container_btn:nth-child(even) button:after,
 .questions .container_btn:nth-child(even) button:after,
 .specialties .container_btn:nth-child(even) button:after,
-.notifications .container_btn:nth-child(even) button:after {
+.notifications .container_btn:nth-child(even) button:after,
+.report_question .container_btn:nth-child(even) button:after {
   left: 0;
-  right: inherit;
+  top: 50%;
+}
+.home .container_btn:nth-child(even) button:before,
+.register .container_btn:nth-child(even) button:before,
+.dashboard .container_btn:nth-child(even) button:before,
+.race .container_btn:nth-child(even) button:before,
+.start_race .container_btn:nth-child(even) button:before,
+.duel .container_btn:nth-child(even) button:before,
+.search_duel .container_btn:nth-child(even) button:before,
+.duel_users .container_btn:nth-child(even) button:before,
+.terms .container_btn:nth-child(even) button:before,
+.test .container_btn:nth-child(even) button:before,
+.start_test .container_btn:nth-child(even) button:before,
+.specialty .container_btn:nth-child(even) button:before,
+.start_specialty .container_btn:nth-child(even) button:before,
+.litigation .container_btn:nth-child(even) button:before,
+.start_litigation .container_btn:nth-child(even) button:before,
+.questions .container_btn:nth-child(even) button:before,
+.specialties .container_btn:nth-child(even) button:before,
+.notifications .container_btn:nth-child(even) button:before,
+.report_question .container_btn:nth-child(even) button:before {
+  left: 0;
+  bottom: 50%;
 }
 .home .container_btn:nth-child(odd) button:after,
 .register .container_btn:nth-child(odd) button:after,
@@ -274,9 +318,32 @@ html {
 .start_litigation .container_btn:nth-child(odd) button:after,
 .questions .container_btn:nth-child(odd) button:after,
 .specialties .container_btn:nth-child(odd) button:after,
-.notifications .container_btn:nth-child(odd) button:after {
-  right: 0;
-  left: inherit;
+.notifications .container_btn:nth-child(odd) button:after,
+.report_question .container_btn:nth-child(odd) button:after {
+  left: 0;
+  top: 0%;
+}
+.home .container_btn:nth-child(odd) button:before,
+.register .container_btn:nth-child(odd) button:before,
+.dashboard .container_btn:nth-child(odd) button:before,
+.race .container_btn:nth-child(odd) button:before,
+.start_race .container_btn:nth-child(odd) button:before,
+.duel .container_btn:nth-child(odd) button:before,
+.search_duel .container_btn:nth-child(odd) button:before,
+.duel_users .container_btn:nth-child(odd) button:before,
+.terms .container_btn:nth-child(odd) button:before,
+.test .container_btn:nth-child(odd) button:before,
+.start_test .container_btn:nth-child(odd) button:before,
+.specialty .container_btn:nth-child(odd) button:before,
+.start_specialty .container_btn:nth-child(odd) button:before,
+.litigation .container_btn:nth-child(odd) button:before,
+.start_litigation .container_btn:nth-child(odd) button:before,
+.questions .container_btn:nth-child(odd) button:before,
+.specialties .container_btn:nth-child(odd) button:before,
+.notifications .container_btn:nth-child(odd) button:before,
+.report_question .container_btn:nth-child(odd) button:before {
+  left: 0;
+  bottom: 0%;
 }
 .home .container_register,
 .register .container_register,
@@ -295,7 +362,8 @@ html {
 .start_litigation .container_register,
 .questions .container_register,
 .specialties .container_register,
-.notifications .container_register {
+.notifications .container_register,
+.report_question .container_register {
   text-align: center;
   margin-top: 1.5rem;
   margin-bottom: 1.3rem;
@@ -318,6 +386,7 @@ html {
 .questions .container_register span,
 .specialties .container_register span,
 .notifications .container_register span,
+.report_question .container_register span,
 .home .container_register span a,
 .register .container_register span a,
 .dashboard .container_register span a,
@@ -335,7 +404,8 @@ html {
 .start_litigation .container_register span a,
 .questions .container_register span a,
 .specialties .container_register span a,
-.notifications .container_register span a {
+.notifications .container_register span a,
+.report_question .container_register span a {
   color: #323232;
   font-size: 1.35rem;
   -webkit-text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
@@ -362,7 +432,8 @@ html {
 .start_litigation .container_register span a,
 .questions .container_register span a,
 .specialties .container_register span a,
-.notifications .container_register span a {
+.notifications .container_register span a,
+.report_question .container_register span a {
   font-weight: 700;
 }
 .home .container_login .content,
@@ -382,7 +453,8 @@ html {
 .start_litigation .container_login .content,
 .questions .container_login .content,
 .specialties .container_login .content,
-.notifications .container_login .content {
+.notifications .container_login .content,
+.report_question .container_login .content {
   width: 380px;
   margin: 0 auto;
   max-width: 100%;
@@ -404,7 +476,8 @@ html {
 .start_litigation .container_login .content button,
 .questions .container_login .content button,
 .specialties .container_login .content button,
-.notifications .container_login .content button {
+.notifications .container_login .content button,
+.report_question .container_login .content button {
   width: 380px;
   padding: 1.5rem 1rem;
   height: inherit;
@@ -432,7 +505,8 @@ html {
 .start_litigation .container_login .content button:hover,
 .questions .container_login .content button:hover,
 .specialties .container_login .content button:hover,
-.notifications .container_login .content button:hover {
+.notifications .container_login .content button:hover,
+.report_question .container_login .content button:hover {
   color: white;
 }
 .home .container_login .content button:focus,
@@ -452,7 +526,8 @@ html {
 .start_litigation .container_login .content button:focus,
 .questions .container_login .content button:focus,
 .specialties .container_login .content button:focus,
-.notifications .container_login .content button:focus {
+.notifications .container_login .content button:focus,
+.report_question .container_login .content button:focus {
   box-shadow: 0 0 0 0 transparent;
 }
 .home .container_login .content button:hover,
@@ -472,7 +547,27 @@ html {
 .start_litigation .container_login .content button:hover,
 .questions .container_login .content button:hover,
 .specialties .container_login .content button:hover,
-.notifications .container_login .content button:hover {
+.notifications .container_login .content button:hover,
+.report_question .container_login .content button:hover,
+.home .container_login .content button:focus,
+.register .container_login .content button:focus,
+.dashboard .container_login .content button:focus,
+.race .container_login .content button:focus,
+.start_race .container_login .content button:focus,
+.duel .container_login .content button:focus,
+.search_duel .container_login .content button:focus,
+.duel_users .container_login .content button:focus,
+.terms .container_login .content button:focus,
+.test .container_login .content button:focus,
+.start_test .container_login .content button:focus,
+.specialty .container_login .content button:focus,
+.start_specialty .container_login .content button:focus,
+.litigation .container_login .content button:focus,
+.start_litigation .container_login .content button:focus,
+.questions .container_login .content button:focus,
+.specialties .container_login .content button:focus,
+.notifications .container_login .content button:focus,
+.report_question .container_login .content button:focus {
   background-color: #ee6200;
   text-shadow: none;
 }
@@ -493,7 +588,8 @@ html {
 .start_litigation .container_terms,
 .questions .container_terms,
 .specialties .container_terms,
-.notifications .container_terms {
+.notifications .container_terms,
+.report_question .container_terms {
   text-align: center;
   margin: 1.5rem 0 2rem;
 }
@@ -514,7 +610,8 @@ html {
 .start_litigation .container_terms span a,
 .questions .container_terms span a,
 .specialties .container_terms span a,
-.notifications .container_terms span a {
+.notifications .container_terms span a,
+.report_question .container_terms span a {
   color: #aaa;
 }
 /* Dashboard */
@@ -535,7 +632,8 @@ html {
 .profile .btn_panel,
 .questions .btn_panel,
 .specialties .btn_panel,
-.notifications .btn_panel {
+.notifications .btn_panel,
+.report_question .btn_panel {
   display: inline-block;
   width: 35px;
   margin-left: 1rem;
@@ -566,7 +664,8 @@ html {
 .profile .btn_panel:after,
 .questions .btn_panel:after,
 .specialties .btn_panel:after,
-.notifications .btn_panel:after {
+.notifications .btn_panel:after,
+.report_question .btn_panel:after {
   position: absolute;
   right: 0;
   width: 2.5px;
@@ -594,7 +693,8 @@ html {
 .profile .btn_panel > div,
 .questions .btn_panel > div,
 .specialties .btn_panel > div,
-.notifications .btn_panel > div {
+.notifications .btn_panel > div,
+.report_question .btn_panel > div {
   border-top: 3.3px solid white;
   margin-bottom: .5rem;
   -webkit-transition: all 0.4s ease;
@@ -621,7 +721,8 @@ html {
 .profile .btn_panel > div:nth-child(1),
 .questions .btn_panel > div:nth-child(1),
 .specialties .btn_panel > div:nth-child(1),
-.notifications .btn_panel > div:nth-child(1) {
+.notifications .btn_panel > div:nth-child(1),
+.report_question .btn_panel > div:nth-child(1) {
   margin-top: 1rem;
 }
 .dashboard .btn_panel.toggle > div:nth-child(1),
@@ -641,7 +742,8 @@ html {
 .profile .btn_panel.toggle > div:nth-child(1),
 .questions .btn_panel.toggle > div:nth-child(1),
 .specialties .btn_panel.toggle > div:nth-child(1),
-.notifications .btn_panel.toggle > div:nth-child(1) {
+.notifications .btn_panel.toggle > div:nth-child(1),
+.report_question .btn_panel.toggle > div:nth-child(1) {
   -webkit-transform: rotate(45deg) translate3d(6px, 9px, 0);
   -khtml-transform: rotate(45deg) translate3d(6px, 9px, 0);
   -moz-transform: rotate(45deg) translate3d(6px, 9px, 0);
@@ -666,7 +768,8 @@ html {
 .profile .btn_panel.toggle > div:nth-child(2),
 .questions .btn_panel.toggle > div:nth-child(2),
 .specialties .btn_panel.toggle > div:nth-child(2),
-.notifications .btn_panel.toggle > div:nth-child(2) {
+.notifications .btn_panel.toggle > div:nth-child(2),
+.report_question .btn_panel.toggle > div:nth-child(2) {
   -webkit-transform: rotate(45deg) translate3d(2px, -1px, 0);
   -khtml-transform: rotate(45deg) translate3d(2px, -1px, 0);
   -moz-transform: rotate(45deg) translate3d(2px, -1px, 0);
@@ -692,7 +795,8 @@ html {
 .profile .btn_panel.toggle > div:nth-child(3),
 .questions .btn_panel.toggle > div:nth-child(3),
 .specialties .btn_panel.toggle > div:nth-child(3),
-.notifications .btn_panel.toggle > div:nth-child(3) {
+.notifications .btn_panel.toggle > div:nth-child(3),
+.report_question .btn_panel.toggle > div:nth-child(3) {
   -webkit-transform: rotate(-45deg) translate3d(6px, -10px, 0);
   -khtml-transform: rotate(-45deg) translate3d(6px, -10px, 0);
   -moz-transform: rotate(-45deg) translate3d(6px, -10px, 0);
@@ -718,6 +822,28 @@ html {
 .questions .status,
 .specialties .status,
 .notifications .status,
+.report_question .status {
+  opacity: 0;
+}
+.dashboard .status,
+.friends .status,
+.race .status,
+.start_race .status,
+.duel .status,
+.search_duel .status,
+.duel_users .status,
+.win_duel .status,
+.test .status,
+.start_test .status,
+.specialty .status,
+.start_specialty .status,
+.litigation .status,
+.start_litigation .status,
+.profile .status,
+.questions .status,
+.specialties .status,
+.notifications .status,
+.report_question .status,
 .dashboard .levels_content,
 .friends .levels_content,
 .race .levels_content,
@@ -735,10 +861,11 @@ html {
 .profile .levels_content,
 .questions .levels_content,
 .specialties .levels_content,
-.notifications .levels_content {
+.notifications .levels_content,
+.report_question .levels_content {
   float: right;
   height: 97px;
-  width: 250px;
+  width: 300px;
   display: -webkit-flex;
   display: -moz-flex;
   display: -o-flex;
@@ -762,6 +889,7 @@ html {
 .questions .status .points,
 .specialties .status .points,
 .notifications .status .points,
+.report_question .status .points,
 .dashboard .levels_content .points,
 .friends .levels_content .points,
 .race .levels_content .points,
@@ -779,7 +907,8 @@ html {
 .profile .levels_content .points,
 .questions .levels_content .points,
 .specialties .levels_content .points,
-.notifications .levels_content .points {
+.notifications .levels_content .points,
+.report_question .levels_content .points {
   color: white;
   font-family: 'DK Mango';
   font-style: normal;
@@ -812,6 +941,7 @@ html {
 .questions .status .points:before,
 .specialties .status .points:before,
 .notifications .status .points:before,
+.report_question .status .points:before,
 .dashboard .levels_content .points:before,
 .friends .levels_content .points:before,
 .race .levels_content .points:before,
@@ -829,7 +959,8 @@ html {
 .profile .levels_content .points:before,
 .questions .levels_content .points:before,
 .specialties .levels_content .points:before,
-.notifications .levels_content .points:before {
+.notifications .levels_content .points:before,
+.report_question .levels_content .points:before {
   position: absolute;
   left: -16px;
   width: 2px;
@@ -858,6 +989,7 @@ html {
 .questions .status .points em,
 .specialties .status .points em,
 .notifications .status .points em,
+.report_question .status .points em,
 .dashboard .levels_content .points em,
 .friends .levels_content .points em,
 .race .levels_content .points em,
@@ -875,7 +1007,8 @@ html {
 .profile .levels_content .points em,
 .questions .levels_content .points em,
 .specialties .levels_content .points em,
-.notifications .levels_content .points em {
+.notifications .levels_content .points em,
+.report_question .levels_content .points em {
   font-size: 5.5rem;
   font-family: 'DK Mango';
   font-style: normal;
@@ -899,6 +1032,7 @@ html {
 .questions .status .icon_level,
 .specialties .status .icon_level,
 .notifications .status .icon_level,
+.report_question .status .icon_level,
 .dashboard .levels_content .icon_level,
 .friends .levels_content .icon_level,
 .race .levels_content .icon_level,
@@ -916,7 +1050,8 @@ html {
 .profile .levels_content .icon_level,
 .questions .levels_content .icon_level,
 .specialties .levels_content .icon_level,
-.notifications .levels_content .icon_level {
+.notifications .levels_content .icon_level,
+.report_question .levels_content .icon_level {
   text-align: right;
   padding: .25rem 1rem .25rem 0;
   -webkit-flex: 1 1 0%;
@@ -942,6 +1077,7 @@ html {
 .questions .status .icon_level img,
 .specialties .status .icon_level img,
 .notifications .status .icon_level img,
+.report_question .status .icon_level img,
 .dashboard .levels_content .icon_level img,
 .friends .levels_content .icon_level img,
 .race .levels_content .icon_level img,
@@ -959,8 +1095,174 @@ html {
 .profile .levels_content .icon_level img,
 .questions .levels_content .icon_level img,
 .specialties .levels_content .icon_level img,
-.notifications .levels_content .icon_level img {
+.notifications .levels_content .icon_level img,
+.report_question .levels_content .icon_level img {
   height: 88px;
+}
+.dashboard .status .position_user,
+.friends .status .position_user,
+.race .status .position_user,
+.start_race .status .position_user,
+.duel .status .position_user,
+.search_duel .status .position_user,
+.duel_users .status .position_user,
+.win_duel .status .position_user,
+.test .status .position_user,
+.start_test .status .position_user,
+.specialty .status .position_user,
+.start_specialty .status .position_user,
+.litigation .status .position_user,
+.start_litigation .status .position_user,
+.profile .status .position_user,
+.questions .status .position_user,
+.specialties .status .position_user,
+.notifications .status .position_user,
+.report_question .status .position_user,
+.dashboard .levels_content .position_user,
+.friends .levels_content .position_user,
+.race .levels_content .position_user,
+.start_race .levels_content .position_user,
+.duel .levels_content .position_user,
+.search_duel .levels_content .position_user,
+.duel_users .levels_content .position_user,
+.win_duel .levels_content .position_user,
+.test .levels_content .position_user,
+.start_test .levels_content .position_user,
+.specialty .levels_content .position_user,
+.start_specialty .levels_content .position_user,
+.litigation .levels_content .position_user,
+.start_litigation .levels_content .position_user,
+.profile .levels_content .position_user,
+.questions .levels_content .position_user,
+.specialties .levels_content .position_user,
+.notifications .levels_content .position_user,
+.report_question .levels_content .position_user {
+  -webkit-flex: 1 1 38%;
+  -moz-flex: 1 1 38%;
+  -o-flex: 1 1 38%;
+  flex: 1 1 38%;
+  text-align: right;
+}
+.dashboard .status .position_user,
+.friends .status .position_user,
+.race .status .position_user,
+.start_race .status .position_user,
+.duel .status .position_user,
+.search_duel .status .position_user,
+.duel_users .status .position_user,
+.win_duel .status .position_user,
+.test .status .position_user,
+.start_test .status .position_user,
+.specialty .status .position_user,
+.start_specialty .status .position_user,
+.litigation .status .position_user,
+.start_litigation .status .position_user,
+.profile .status .position_user,
+.questions .status .position_user,
+.specialties .status .position_user,
+.notifications .status .position_user,
+.report_question .status .position_user,
+.dashboard .levels_content .position_user,
+.friends .levels_content .position_user,
+.race .levels_content .position_user,
+.start_race .levels_content .position_user,
+.duel .levels_content .position_user,
+.search_duel .levels_content .position_user,
+.duel_users .levels_content .position_user,
+.win_duel .levels_content .position_user,
+.test .levels_content .position_user,
+.start_test .levels_content .position_user,
+.specialty .levels_content .position_user,
+.start_specialty .levels_content .position_user,
+.litigation .levels_content .position_user,
+.start_litigation .levels_content .position_user,
+.profile .levels_content .position_user,
+.questions .levels_content .position_user,
+.specialties .levels_content .position_user,
+.notifications .levels_content .position_user,
+.report_question .levels_content .position_user,
+.dashboard .status em,
+.friends .status em,
+.race .status em,
+.start_race .status em,
+.duel .status em,
+.search_duel .status em,
+.duel_users .status em,
+.win_duel .status em,
+.test .status em,
+.start_test .status em,
+.specialty .status em,
+.start_specialty .status em,
+.litigation .status em,
+.start_litigation .status em,
+.profile .status em,
+.questions .status em,
+.specialties .status em,
+.notifications .status em,
+.report_question .status em,
+.dashboard .levels_content em,
+.friends .levels_content em,
+.race .levels_content em,
+.start_race .levels_content em,
+.duel .levels_content em,
+.search_duel .levels_content em,
+.duel_users .levels_content em,
+.win_duel .levels_content em,
+.test .levels_content em,
+.start_test .levels_content em,
+.specialty .levels_content em,
+.start_specialty .levels_content em,
+.litigation .levels_content em,
+.start_litigation .levels_content em,
+.profile .levels_content em,
+.questions .levels_content em,
+.specialties .levels_content em,
+.notifications .levels_content em,
+.report_question .levels_content em {
+  color: white;
+  font-family: 'DK Mango';
+  font-size: 2rem;
+  font-weight: normal;
+}
+.dashboard .status em,
+.friends .status em,
+.race .status em,
+.start_race .status em,
+.duel .status em,
+.search_duel .status em,
+.duel_users .status em,
+.win_duel .status em,
+.test .status em,
+.start_test .status em,
+.specialty .status em,
+.start_specialty .status em,
+.litigation .status em,
+.start_litigation .status em,
+.profile .status em,
+.questions .status em,
+.specialties .status em,
+.notifications .status em,
+.report_question .status em,
+.dashboard .levels_content em,
+.friends .levels_content em,
+.race .levels_content em,
+.start_race .levels_content em,
+.duel .levels_content em,
+.search_duel .levels_content em,
+.duel_users .levels_content em,
+.win_duel .levels_content em,
+.test .levels_content em,
+.start_test .levels_content em,
+.specialty .levels_content em,
+.start_specialty .levels_content em,
+.litigation .levels_content em,
+.start_litigation .levels_content em,
+.profile .levels_content em,
+.questions .levels_content em,
+.specialties .levels_content em,
+.notifications .levels_content em,
+.report_question .levels_content em {
+  font-size: 5.5rem;
 }
 .dashboard .levels_content,
 .friends .levels_content,
@@ -979,7 +1281,8 @@ html {
 .profile .levels_content,
 .questions .levels_content,
 .specialties .levels_content,
-.notifications .levels_content {
+.notifications .levels_content,
+.report_question .levels_content {
   margin-right: 1rem;
   width: inherit;
 }
@@ -1000,7 +1303,8 @@ html {
 .profile .levels_content > div,
 .questions .levels_content > div,
 .specialties .levels_content > div,
-.notifications .levels_content > div {
+.notifications .levels_content > div,
+.report_question .levels_content > div {
   padding: .25rem .15rem;
 }
 .dashboard .levels_content .level,
@@ -1020,7 +1324,8 @@ html {
 .profile .levels_content .level,
 .questions .levels_content .level,
 .specialties .levels_content .level,
-.notifications .levels_content .level {
+.notifications .levels_content .level,
+.report_question .levels_content .level {
   opacity: .5;
   padding-right: 1.5rem;
   position: relative;
@@ -1043,6 +1348,7 @@ html {
 .questions .levels_content .level .top,
 .specialties .levels_content .level .top,
 .notifications .levels_content .level .top,
+.report_question .levels_content .level .top,
 .dashboard .levels_content .level .bottom,
 .friends .levels_content .level .bottom,
 .race .levels_content .level .bottom,
@@ -1060,7 +1366,8 @@ html {
 .profile .levels_content .level .bottom,
 .questions .levels_content .level .bottom,
 .specialties .levels_content .level .bottom,
-.notifications .levels_content .level .bottom {
+.notifications .levels_content .level .bottom,
+.report_question .levels_content .level .bottom {
   text-align: center;
 }
 .dashboard .levels_content .level .top span,
@@ -1081,6 +1388,7 @@ html {
 .questions .levels_content .level .top span,
 .specialties .levels_content .level .top span,
 .notifications .levels_content .level .top span,
+.report_question .levels_content .level .top span,
 .dashboard .levels_content .level .bottom span,
 .friends .levels_content .level .bottom span,
 .race .levels_content .level .bottom span,
@@ -1098,7 +1406,8 @@ html {
 .profile .levels_content .level .bottom span,
 .questions .levels_content .level .bottom span,
 .specialties .levels_content .level .bottom span,
-.notifications .levels_content .level .bottom span {
+.notifications .levels_content .level .bottom span,
+.report_question .levels_content .level .bottom span {
   font-family: 'DK Mango';
   color: white;
   text-shadow: none;
@@ -1121,6 +1430,7 @@ html {
 .questions .levels_content .level .top img,
 .specialties .levels_content .level .top img,
 .notifications .levels_content .level .top img,
+.report_question .levels_content .level .top img,
 .dashboard .levels_content .level .bottom img,
 .friends .levels_content .level .bottom img,
 .race .levels_content .level .bottom img,
@@ -1138,7 +1448,8 @@ html {
 .profile .levels_content .level .bottom img,
 .questions .levels_content .level .bottom img,
 .specialties .levels_content .level .bottom img,
-.notifications .levels_content .level .bottom img {
+.notifications .levels_content .level .bottom img,
+.report_question .levels_content .level .bottom img {
   padding: 0;
   height: 55px;
 }
@@ -1159,7 +1470,8 @@ html {
 .profile .levels_content .level .top,
 .questions .levels_content .level .top,
 .specialties .levels_content .level .top,
-.notifications .levels_content .level .top {
+.notifications .levels_content .level .top,
+.report_question .levels_content .level .top {
   height: 65px;
 }
 .dashboard .levels_content .level .bottom,
@@ -1179,7 +1491,8 @@ html {
 .profile .levels_content .level .bottom,
 .questions .levels_content .level .bottom,
 .specialties .levels_content .level .bottom,
-.notifications .levels_content .level .bottom {
+.notifications .levels_content .level .bottom,
+.report_question .levels_content .level .bottom {
   height: 27px;
   position: relative;
   padding-top: .25rem;
@@ -1201,7 +1514,8 @@ html {
 .profile .levels_content .level .bottom:before,
 .questions .levels_content .level .bottom:before,
 .specialties .levels_content .level .bottom:before,
-.notifications .levels_content .level .bottom:before {
+.notifications .levels_content .level .bottom:before,
+.report_question .levels_content .level .bottom:before {
   position: absolute;
   content: '';
   top: 0;
@@ -1229,7 +1543,8 @@ html {
 .profile .levels_content .level.active,
 .questions .levels_content .level.active,
 .specialties .levels_content .level.active,
-.notifications .levels_content .level.active {
+.notifications .levels_content .level.active,
+.report_question .levels_content .level.active {
   opacity: 1;
 }
 .dashboard .levels_content .level:not(.active) .bottom,
@@ -1249,7 +1564,8 @@ html {
 .profile .levels_content .level:not(.active) .bottom,
 .questions .levels_content .level:not(.active) .bottom,
 .specialties .levels_content .level:not(.active) .bottom,
-.notifications .levels_content .level:not(.active) .bottom {
+.notifications .levels_content .level:not(.active) .bottom,
+.report_question .levels_content .level:not(.active) .bottom {
   opacity: 0;
 }
 .dashboard .levels_content .level:after,
@@ -1269,7 +1585,8 @@ html {
 .profile .levels_content .level:after,
 .questions .levels_content .level:after,
 .specialties .levels_content .level:after,
-.notifications .levels_content .level:after {
+.notifications .levels_content .level:after,
+.report_question .levels_content .level:after {
   position: absolute;
   height: 100%;
   width: 40px;
@@ -1298,7 +1615,8 @@ html {
 .profile .levels_content .level:last-child:after,
 .questions .levels_content .level:last-child:after,
 .specialties .levels_content .level:last-child:after,
-.notifications .levels_content .level:last-child:after {
+.notifications .levels_content .level:last-child:after,
+.report_question .levels_content .level:last-child:after {
   display: none;
 }
 .dashboard hgroup,
@@ -1318,7 +1636,8 @@ html {
 .profile hgroup,
 .questions hgroup,
 .specialties hgroup,
-.notifications hgroup {
+.notifications hgroup,
+.report_question hgroup {
   margin: 6rem 0 2rem;
 }
 .dashboard hgroup h1,
@@ -1339,6 +1658,7 @@ html {
 .questions hgroup h1,
 .specialties hgroup h1,
 .notifications hgroup h1,
+.report_question hgroup h1,
 .dashboard hgroup h2,
 .friends hgroup h2,
 .race hgroup h2,
@@ -1356,7 +1676,8 @@ html {
 .profile hgroup h2,
 .questions hgroup h2,
 .specialties hgroup h2,
-.notifications hgroup h2 {
+.notifications hgroup h2,
+.report_question hgroup h2 {
   font-size: 1.3rem;
   text-align: center;
   margin: 0;
@@ -1380,7 +1701,8 @@ html {
 .profile .container_btn button,
 .questions .container_btn button,
 .specialties .container_btn button,
-.notifications .container_btn button {
+.notifications .container_btn button,
+.report_question .container_btn button {
   padding: .95rem .5rem;
   font-weight: normal;
   margin: .5rem 0;
@@ -1402,7 +1724,8 @@ html {
 .profile .games,
 .questions .games,
 .specialties .games,
-.notifications .games {
+.notifications .games,
+.report_question .games {
   margin-bottom: 1.5rem;
 }
 /* Home */
@@ -1454,7 +1777,11 @@ html {
 .friends .content_friends .friend:last-child,
 .profile .content_friends .friend:last-child,
 .friends .content_profile .friend:last-child,
-.profile .content_profile .friend:last-child {
+.profile .content_profile .friend:last-child,
+.friends .content_friends .friend:nth-child(5n+5),
+.profile .content_friends .friend:nth-child(5n+5),
+.friends .content_profile .friend:nth-child(5n+5),
+.profile .content_profile .friend:nth-child(5n+5) {
   border-color: transparent;
 }
 .friends .content_friends .friend *,
@@ -1545,18 +1872,41 @@ html {
   text-shadow: none;
 }
 /* Mode-Race */
+.race .title_game,
+.duel .title_game,
+.test .title_game,
+.specialty .title_game,
+.litigation .title_game,
+.start_specialty .title_game {
+  float: right;
+  margin-right: 1rem;
+  height: 100%;
+}
+.race .title_game h1,
+.duel .title_game h1,
+.test .title_game h1,
+.specialty .title_game h1,
+.litigation .title_game h1,
+.start_specialty .title_game h1 {
+  margin: 0;
+  color: white;
+  font-family: 'DK Mango';
+  font-size: 3.3rem;
+}
 .race .content_game,
 .duel .content_game,
 .test .content_game,
 .specialty .content_game,
-.litigation .content_game {
+.litigation .content_game,
+.start_specialty .content_game {
   margin-top: 5rem;
 }
 .race .content_game .icon_game,
 .duel .content_game .icon_game,
 .test .content_game .icon_game,
 .specialty .content_game .icon_game,
-.litigation .content_game .icon_game {
+.litigation .content_game .icon_game,
+.start_specialty .content_game .icon_game {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -1565,7 +1915,8 @@ html {
 .duel .content_game .icon_game img,
 .test .content_game .icon_game img,
 .specialty .content_game .icon_game img,
-.litigation .content_game .icon_game img {
+.litigation .content_game .icon_game img,
+.start_specialty .content_game .icon_game img {
   max-height: 380px;
   -webkit-transition: all 0.5s ease;
   -khtml-transition: all 0.5s ease;
@@ -1578,7 +1929,8 @@ html {
 .duel .content_game .message_game,
 .test .content_game .message_game,
 .specialty .content_game .message_game,
-.litigation .content_game .message_game {
+.litigation .content_game .message_game,
+.start_specialty .content_game .message_game {
   background-color: #3a6667;
   padding: 1rem 2rem;
   -webkit-border-radius: 5px;
@@ -1596,7 +1948,8 @@ html {
 .duel .content_game .message_game:before,
 .test .content_game .message_game:before,
 .specialty .content_game .message_game:before,
-.litigation .content_game .message_game:before {
+.litigation .content_game .message_game:before,
+.start_specialty .content_game .message_game:before {
   position: absolute;
   border: 2rem solid #ee6200;
   content: '';
@@ -1609,11 +1962,13 @@ html {
 .test .content_game .message_game p,
 .specialty .content_game .message_game p,
 .litigation .content_game .message_game p,
+.start_specialty .content_game .message_game p,
 .race .content_game .message_game b,
 .duel .content_game .message_game b,
 .test .content_game .message_game b,
 .specialty .content_game .message_game b,
-.litigation .content_game .message_game b {
+.litigation .content_game .message_game b,
+.start_specialty .content_game .message_game b {
   font-family: 'DK Mango';
   color: white;
   font-size: 2rem;
@@ -1718,6 +2073,31 @@ html {
 .start_specialty .content_start_game .answers_options,
 .start_litigation .content_start_game .answers_options {
   padding: 1rem 3rem;
+  position: relative;
+}
+.start_race .content_start_game .answers_options:after,
+.search_duel .content_start_game .answers_options:after,
+.duel_users .content_start_game .answers_options:after,
+.start_test .content_start_game .answers_options:after,
+.start_specialty .content_start_game .answers_options:after,
+.start_litigation .content_start_game .answers_options:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  content: '';
+  z-index: 9;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.start_race .content_start_game .answers_options.active:after,
+.search_duel .content_start_game .answers_options.active:after,
+.duel_users .content_start_game .answers_options.active:after,
+.start_test .content_start_game .answers_options.active:after,
+.start_specialty .content_start_game .answers_options.active:after,
+.start_litigation .content_start_game .answers_options.active:after {
+  display: block;
 }
 .start_race .content_start_game .answers_options input[type=radio],
 .search_duel .content_start_game .answers_options input[type=radio],
@@ -1789,12 +2169,6 @@ html {
 .start_specialty .wrapper .question_result,
 .duel_users .wrapper .question_result {
   overflow: visible!important;
-  -webkit-transform: scale(0);
-  -khtml-transform: scale(0);
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  -o-transform: scale(0);
-  transform: scale(0);
   -webkit-transition: all 0.5s cubic-bezier(0.4, 0.18, 0, 0.94);
   -khtml-transition: all 0.5s cubic-bezier(0.4, 0.18, 0, 0.94);
   -moz-transition: all 0.5s cubic-bezier(0.4, 0.18, 0, 0.94);
@@ -1818,6 +2192,18 @@ html {
   width: 100%;
   padding: .5rem .25rem;
   display: none;
+}
+.start_race .wrapper .content_start_game,
+.start_test .wrapper .content_start_game,
+.start_specialty .wrapper .content_start_game,
+.duel_users .wrapper .content_start_game {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  -khtml-transition: opacity 0.5s ease;
+  -moz-transition: opacity 0.5s ease;
+  -ms-transition: opacity 0.5s ease;
+  -o-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 .start_race .wrapper .content_start_game,
 .start_test .wrapper .content_start_game,
@@ -2196,47 +2582,7 @@ html {
 .start_race .wrapper .question_result .message label:hover,
 .start_test .wrapper .question_result .message label:hover,
 .start_specialty .wrapper .question_result .message label:hover,
-.duel_users .wrapper .question_result .message label:hover,
-.start_race .wrapper .content_start_game .answers_options label:focus,
-.start_test .wrapper .content_start_game .answers_options label:focus,
-.start_specialty .wrapper .content_start_game .answers_options label:focus,
-.duel_users .wrapper .content_start_game .answers_options label:focus,
-.start_race .wrapper .start .answers_options label:focus,
-.start_test .wrapper .start .answers_options label:focus,
-.start_specialty .wrapper .start .answers_options label:focus,
-.duel_users .wrapper .start .answers_options label:focus,
-.start_race .wrapper .complete_level .answers_options label:focus,
-.start_test .wrapper .complete_level .answers_options label:focus,
-.start_specialty .wrapper .complete_level .answers_options label:focus,
-.duel_users .wrapper .complete_level .answers_options label:focus,
-.start_race .wrapper .no_complete_level .answers_options label:focus,
-.start_test .wrapper .no_complete_level .answers_options label:focus,
-.start_specialty .wrapper .no_complete_level .answers_options label:focus,
-.duel_users .wrapper .no_complete_level .answers_options label:focus,
-.start_race .wrapper .question_result .answers_options label:focus,
-.start_test .wrapper .question_result .answers_options label:focus,
-.start_specialty .wrapper .question_result .answers_options label:focus,
-.duel_users .wrapper .question_result .answers_options label:focus,
-.start_race .wrapper .content_start_game .message label:focus,
-.start_test .wrapper .content_start_game .message label:focus,
-.start_specialty .wrapper .content_start_game .message label:focus,
-.duel_users .wrapper .content_start_game .message label:focus,
-.start_race .wrapper .start .message label:focus,
-.start_test .wrapper .start .message label:focus,
-.start_specialty .wrapper .start .message label:focus,
-.duel_users .wrapper .start .message label:focus,
-.start_race .wrapper .complete_level .message label:focus,
-.start_test .wrapper .complete_level .message label:focus,
-.start_specialty .wrapper .complete_level .message label:focus,
-.duel_users .wrapper .complete_level .message label:focus,
-.start_race .wrapper .no_complete_level .message label:focus,
-.start_test .wrapper .no_complete_level .message label:focus,
-.start_specialty .wrapper .no_complete_level .message label:focus,
-.duel_users .wrapper .no_complete_level .message label:focus,
-.start_race .wrapper .question_result .message label:focus,
-.start_test .wrapper .question_result .message label:focus,
-.start_specialty .wrapper .question_result .message label:focus,
-.duel_users .wrapper .question_result .message label:focus {
+.duel_users .wrapper .question_result .message label:hover {
   background-image: -webkit-radial-gradient(center, #ee6200, #ef863e);
   background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
   background-image: radial-gradient(center, #ee6200, #ef863e);
@@ -2308,6 +2654,7 @@ html {
 .duel_users .wrapper .question_result .content_question .type_question {
   margin: 0 0 .5rem;
   text-align: right;
+  display: none;
 }
 .start_race .wrapper .content_start_game .content_question .type_question span,
 .start_test .wrapper .content_start_game .content_question .type_question span,
@@ -2604,7 +2951,7 @@ html {
   margin: 1.5rem auto 0;
   height: auto;
   position: absolute;
-  top: -30px;
+  top: -10px;
   left: 0;
   right: 0;
   -webkit-transform: scale(1);
@@ -2853,6 +3200,13 @@ html {
 .duel_users .wrapper .complete_questions:hover h5 span {
   color: #3a6667;
 }
+/* Start Specialty */
+.start_specialty .content_start_game {
+  margin-top: 0.5rem;
+}
+.start_specialty .content_start_game .question:after {
+  display: none;
+}
 /* Duel Users */
 .duel_users div[data-role='header'] .top_questions {
   position: absolute;
@@ -2918,6 +3272,7 @@ html {
   -o-border-radius: 5px;
   border-radius: 5px;
   position: relative;
+  display: none;
 }
 .search_duel .content_list_users .list_users:after,
 .duel_users .content_list_users .list_users:after {
@@ -2934,7 +3289,9 @@ html {
   padding: .25rem 0;
 }
 .search_duel .content_list_users .list_users .user:last-child,
-.duel_users .content_list_users .list_users .user:last-child {
+.duel_users .content_list_users .list_users .user:last-child,
+.search_duel .content_list_users .list_users .user:nth-child(5n+5),
+.duel_users .content_list_users .list_users .user:nth-child(5n+5) {
   border-color: transparent;
 }
 .search_duel .content_list_users .list_users .user .image_user,
@@ -3090,6 +3447,13 @@ html {
 /* Win-Duel */
 .win_duel .content_win_duel {
   margin: 1.5rem 0 1rem;
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  -khtml-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 .win_duel .content_win_duel > h1,
 .win_duel .content_win_duel > div {
@@ -3097,6 +3461,7 @@ html {
   width: 580px;
   margin: 0 auto;
   font-family: 'DK Mango';
+  display: none;
 }
 .win_duel .content_win_duel .title {
   font-size: 5rem;
@@ -3148,6 +3513,10 @@ html {
 .win_duel .content_win_duel .loser .number_answers span {
   color: #f39d35;
   font-size: 6rem;
+}
+.win_duel .content_win_duel .winner .number_answers div,
+.win_duel .content_win_duel .loser .number_answers div {
+  color: #f39d35;
 }
 .win_duel .content_win_duel .winner {
   background-color: #3a6667;
@@ -3376,7 +3745,7 @@ html {
 }
 .panel .panel_content,
 .profile .panel_content {
-  padding: 2rem .35rem 2rem;
+  padding: 0rem .35rem 2rem;
 }
 .panel .panel_content .status,
 .profile .panel_content .status {
@@ -3460,6 +3829,7 @@ html {
   font-size: 1.55rem;
   margin-top: 0;
   margin-bottom: .5rem;
+  font-weight: bold;
 }
 .panel .panel_content .friends ul,
 .profile .panel_content .friends ul,
@@ -3501,6 +3871,7 @@ html {
 .profile .panel_content .friends li:before {
   position: absolute;
   left: -31px;
+  top: -3px;
   width: 0;
   height: 100%;
   content: '';
@@ -3618,6 +3989,7 @@ html {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px;
+  display: none;
 }
 .profile .content_profile:after {
   border-color: transparent;
@@ -3725,7 +4097,8 @@ html {
   text-shadow: 0 0 1px #323232;
   text-transform: uppercase;
 }
-.profile .content_profile .panel_header:hover .form_biography {
+.profile .content_profile .panel_header:hover .form_biography,
+.profile .content_profile .panel_header:focus .form_biography {
   opacity: 1;
 }
 .profile .content_profile .form_biography {
@@ -3771,6 +4144,9 @@ html {
 }
 .profile .content_profile .form_biography form label + div {
   display: none;
+}
+.profile .content_profile .form_biography form label img {
+  max-width: 34px;
 }
 .profile .content_profile .panel_content {
   background-color: #fff;
@@ -3918,20 +4294,19 @@ html {
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .input {
   position: relative;
 }
-.questions .content_questions .forms .forms_contents .new_question .structure .order_questions .input i,
-.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .input i {
+.questions .content_questions .forms .forms_contents .new_question .structure .order_questions .input img,
+.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .input img {
   position: absolute;
   right: 5%;
-  top: 0;
+  top: -15px;
   bottom: 0;
   margin: auto;
   font-size: 1.45rem;
   line-height: 2.3;
   cursor: pointer;
-}
-.questions .content_questions .forms .forms_contents .new_question .structure .order_questions .input i:hover,
-.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .input i:hover {
-  color: #ee6200;
+  max-width: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
 }
 .questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable,
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable {
@@ -3950,6 +4325,7 @@ html {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
   cursor: move;
+  list-style-type: decimal;
 }
 .questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li:hover,
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:hover {
@@ -3959,8 +4335,8 @@ html {
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li:first-letter {
   text-transform: uppercase;
 }
-.questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li i,
-.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li i {
+.questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li img,
+.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li img {
   position: absolute;
   right: 2%;
   top: 0;
@@ -3969,10 +4345,8 @@ html {
   font-size: 1rem;
   line-height: 2;
   cursor: pointer;
-}
-.questions .content_questions .forms .forms_contents .new_question .structure .order_questions .sortable li i:hover,
-.questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li i:hover {
-  color: #ee6200;
+  max-width: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .questions .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li {
   cursor: initial;
@@ -3993,16 +4367,24 @@ html {
   -o-transform: scale(0.7);
   transform: scale(0.7);
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show {
+  display: none;
+}
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case {
   position: relative;
   padding: 1rem;
   margin-bottom: .15rem;
-  -webkit-box-shadow: 0 0 1px 0 #3a6667;
-  -khtml-box-shadow: 0 0 1px 0 #3a6667;
-  -moz-box-shadow: 0 0 1px 0 #3a6667;
-  -ms-box-shadow: 0 0 1px 0 #3a6667;
-  -o-box-shadow: 0 0 1px 0 #3a6667;
-  box-shadow: 0 0 1px 0 #3a6667;
+  box-shadow: 0 0 1px 0 #3a6667 inset;
   -webkit-border-radius: 1px;
   -khtml-border-radius: 1px;
   -moz-border-radius: 1px;
@@ -4029,24 +4411,89 @@ html {
   -o-perspective: 600px;
   perspective: 600px;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question > div {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question > div,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question > div,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question > div,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question > div,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case > div,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case > div,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case > div,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case > div {
   padding: .05rem .15rem;
   word-break: break-word;
   word-wrap: break-word;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question span b {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case span b {
   color: #3a6667;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question ol {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question ol,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question ol,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question ol,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question ol,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case ol,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case ol,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case ol,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case ol {
   margin-top: .5rem;
   padding-left: 1.5rem;
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover span b,
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus span b {
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus span b,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus span b,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus span b {
   color: #ef863e;
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question,
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question {
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus .menu_case {
   background-color: rgba(239, 134, 62, 0.81);
   -webkit-transform: translatex(0);
   -khtml-transform: translatex(0);
@@ -4056,10 +4503,55 @@ html {
   transform: translatex(0);
 }
 .questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_question ul li i,
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question ul li i {
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus .menu_question ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:hover .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case:focus .menu_case ul li i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case:focus .menu_case ul li i {
   color: #323232;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case {
   position: absolute;
   background-color: #3a6667;
   right: 0;
@@ -4085,10 +4577,40 @@ html {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul {
   height: 100%;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li {
   min-height: 30px;
   max-height: 35px;
   float: left;
@@ -4096,22 +4618,86 @@ html {
   text-align: center;
   cursor: pointer;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li:first-child:not(.desactivate) span i {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li:first-child:not(.desactivate) span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li:first-child:not(.desactivate) span i {
   font-weight: bold;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li span,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li span {
   float: left;
   min-height: 30px;
   max-height: 35px;
   width: 100%;
   display: block;
 }
-.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span i {
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li span i,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li span i {
   color: #000;
   font-size: 1.15rem;
   line-height: 1;
   vertical-align: top;
   padding-top: .45rem;
+}
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_question ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .question .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .question .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .question .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_question_show .case .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_question_show .case .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_questions .content_cases_show .case .menu_case ul li span img,
+.questions .content_questions .forms .forms_contents .show_cases .content_cases_show .case .menu_case ul li span img {
+  max-width: 23px;
+  vertical-align: 5px;
 }
 /* Specialties */
 .specialties .content_questions {
@@ -4286,6 +4872,10 @@ html {
 .specialties .content_questions .forms .forms_contents .new_question .structure .multiple_choice .sortable li i:hover {
   color: #ee6200;
 }
+.specialties .content_questions .forms .forms_contents .show_questions .content_question_show,
+.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show {
+  display: none;
+}
 .specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question,
 .specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question,
 .specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty,
@@ -4293,12 +4883,7 @@ html {
   position: relative;
   padding: 1rem;
   margin-bottom: .15rem;
-  -webkit-box-shadow: 0 0 1px 0 #3a6667;
-  -khtml-box-shadow: 0 0 1px 0 #3a6667;
-  -moz-box-shadow: 0 0 1px 0 #3a6667;
-  -ms-box-shadow: 0 0 1px 0 #3a6667;
-  -o-box-shadow: 0 0 1px 0 #3a6667;
-  box-shadow: 0 0 1px 0 #3a6667;
+  box-shadow: 0 0 1px 0 #3a6667 inset;
   -webkit-border-radius: 1px;
   -khtml-border-radius: 1px;
   -moz-border-radius: 1px;
@@ -4487,6 +5072,17 @@ html {
   vertical-align: top;
   padding-top: .45rem;
 }
+.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_question ul li span img,
+.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_question ul li span img,
+.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_question ul li span img,
+.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_question ul li span img,
+.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .question .menu_specialty ul li span img,
+.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .question .menu_specialty ul li span img,
+.specialties .content_questions .forms .forms_contents .show_questions .content_question_show .specialty .menu_specialty ul li span img,
+.specialties .content_questions .forms .forms_contents .show_questions .content_specialty_show .specialty .menu_specialty ul li span img {
+  max-width: 23px;
+  vertical-align: 5px;
+}
 /* Panel Notifications */
 .panel_notification {
   display: none;
@@ -4619,11 +5215,11 @@ html {
 /* Question Time */
 .question_time {
   position: fixed;
-  left: 2%;
+  right: 2%;
   bottom: 2%;
-  background-color: rgba(239, 134, 62, 0.79);
-  width: 80px;
-  height: 80px;
+  background-color: rgba(239, 134, 62, 0.5);
+  width: 45px;
+  height: 45px;
   -webkit-border-radius: 50%;
   -khtml-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -4631,7 +5227,7 @@ html {
   -o-border-radius: 50%;
   border-radius: 50%;
   text-align: center;
-  z-index: 50;
+  z-index: 8;
   display: none;
   overflow: hidden;
 }
@@ -4644,13 +5240,13 @@ html {
   -ms-text-shadow: 0 0 1px #ffffff;
   -o-text-shadow: 0 0 1px #ffffff;
   text-shadow: 0 0 1px #ffffff;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 .question_time span {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 11px;
   text-transform: uppercase;
-  font-size: .8rem;
+  font-size: .5rem;
   font-weight: bold;
 }
 .question_time span em {
@@ -4678,7 +5274,7 @@ html {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
-  border-color: rgba(238, 98, 0, 0.83) rgba(0, 0, 0, 0);
+  border-color: rgba(238, 98, 0, 0.63) rgba(0, 0, 0, 0);
   -webkit-box-sizing: border-box;
   -khtml-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -4687,7 +5283,7 @@ html {
   box-sizing: border-box;
 }
 .question_time:after {
-  background-color: #ef863e;
+  background-color: rgba(239, 134, 62, 0.7);
   z-index: -1;
   position: absolute;
   bottom: 0;
@@ -4714,6 +5310,29 @@ html {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
+}
+.question_time.time_out {
+  background-color: rgba(224, 12, 12, 0.5);
+  -webkit-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  -khtml-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  -moz-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  -ms-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  -o-animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+  animation: scale_time 0.35s 3 cubic-bezier(0.25, 0.1, 0.18, 0.91);
+}
+.question_time.time_out span,
+.question_time.time_out em {
+  color: #130E0E;
+}
+.question_time.time_out:before {
+  border: solid 4.5px #c62828;
+  border-color: rgba(214, 0, 0, 0.71) rgba(0, 0, 0, 0);
+  -webkit-animation-direction: alternate-reverse;
+  -moz-animation-direction: alternate-reverse;
+  animation-direction: alternate-reverse;
+}
+.question_time.time_out:after {
+  background-color: rgba(181, 22, 22, 0.7);
 }
 /* Popup Edit Question or Specialty */
 .popup_edit {
@@ -4834,6 +5453,9 @@ html {
   -o-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
 }
+.nav_button .nav img {
+  max-width: 24px;
+}
 .nav_button .nav.active .mask {
   background: #21494A;
   -webkit-transform: rotate(-135deg) translate(15px, -3px);
@@ -4848,6 +5470,10 @@ html {
   -ms-box-shadow: 0 0 2px 0 rgba(255, 255, 255, 0.3);
   -o-box-shadow: 0 0 2px 0 rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 2px 0 rgba(255, 255, 255, 0.3);
+}
+.nav_button .nav.active .mask img {
+  margin-top: 11px;
+  margin-bottom: 2px;
 }
 .nav_button .nav.active:after {
   -webkit-box-shadow: 0 0 2px 0 #ffffff;
@@ -4985,6 +5611,9 @@ html {
   -o-transition: all 0.1s ease-in-out 0s;
   transition: all 0.1s ease-in-out 0s;
 }
+.nav_button .nav .mask img {
+  margin-top: 11px;
+}
 .nav_button .nav .nav-item {
   top: 0;
   left: 0;
@@ -5021,7 +5650,8 @@ html {
   color: #ef863e;
 }
 /* Popup Notifications */
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header {
   background-color: #3a6667;
   overflow: auto;
   padding: .85rem 0;
@@ -5032,7 +5662,8 @@ html {
   -o-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header .title {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header .title,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .header .title {
   font-size: 3rem;
   font-family: 'DK Mango';
   color: white;
@@ -5046,13 +5677,17 @@ html {
   line-height: 1;
   margin: .5rem 0 0;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content {
   padding: 1rem;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications {
   margin-bottom: 1rem;
+  opacity: 0;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification {
   margin: .25rem 0 0;
   -webkit-box-shadow: 0 0 1px 0px #999999 inset;
   -khtml-box-shadow: 0 0 1px 0px #999999 inset;
@@ -5070,16 +5705,19 @@ html {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text {
   text-align: center;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text span {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text span,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .text span {
   color: #ee6200;
   font-family: 'DK Mango';
   font-size: 1.5rem;
   font-weight: bold;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask {
   position: absolute;
   top: 0;
   left: 0;
@@ -5090,11 +5728,15 @@ html {
   cursor: pointer;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover,
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:focus {
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover,
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:focus,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:focus {
   background-color: rgba(130, 130, 130, 0.15) !important;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover .panel,
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:focus .panel {
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:hover .panel,
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:focus .panel,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask:focus .panel {
   -webkit-transform: translatex(0);
   -khtml-transform: translatex(0);
   -moz-transform: translatex(0);
@@ -5102,7 +5744,8 @@ html {
   -o-transform: translatex(0);
   transform: translatex(0);
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel {
   position: absolute;
   right: 0;
   top: 0;
@@ -5122,11 +5765,13 @@ html {
   background-color: #3a6667;
   border: none;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns {
   text-align: center;
   cursor: pointer;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span {
   display: block;
   padding: 0 .5rem;
   height: 100%;
@@ -5143,11 +5788,15 @@ html {
   color: white;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover,
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:focus {
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover,
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:focus,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:focus {
   color: #ef863e;
 }
 .notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover i,
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:focus i {
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:hover i,
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:focus i,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span:focus i {
   color: #ef863e;
   -webkit-text-shadow: 0 0 1px #3a6667;
   -khtml-text-shadow: 0 0 1px #3a6667;
@@ -5156,7 +5805,8 @@ html {
   -o-text-shadow: 0 0 1px #3a6667;
   text-shadow: 0 0 1px #3a6667;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span i {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span i,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span i {
   font-size: 1.2rem;
   line-height: 1;
   -webkit-transition: all 0.5s ease;
@@ -5174,18 +5824,116 @@ html {
   text-shadow: 0 0 1px #323232;
   color: white;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications textarea {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span img,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications .notification .mask .panel .btns span img {
+  max-width: 20px;
+}
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications textarea,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .content_notifications textarea {
   min-height: 5rem;
   color: white;
+  background-color: #3A6667;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn:first-child button {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send {
   background-color: #ee6200;
 }
-.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn:first-child button:hover {
+.notifications.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send:hover,
+.report_question.ui-page.ui-page-theme-a.ui-dialog.ui-page-active .content .container_btn .send:hover {
   background-color: #ee6200;
 }
 span[contenteditable] br {
   display: none;
+}
+/* Paginator questions */
+.container_questions,
+.container_specialties,
+.list_users_content,
+.paginator_notifications,
+.container_cases {
+  text-align: center;
+  margin-top: .5rem;
+}
+.container_questions .jp-current,
+.container_specialties .jp-current,
+.list_users_content .jp-current,
+.paginator_notifications .jp-current,
+.container_cases .jp-current {
+  font-weight: bold;
+  color: #ef863e;
+}
+.container_questions .jp-previous,
+.container_specialties .jp-previous,
+.list_users_content .jp-previous,
+.paginator_notifications .jp-previous,
+.container_cases .jp-previous {
+  display: inline-block;
+  margin-right: .5rem;
+}
+.container_questions .jp-next,
+.container_specialties .jp-next,
+.list_users_content .jp-next,
+.paginator_notifications .jp-next,
+.container_cases .jp-next {
+  display: inline-block;
+  margin-left: .5rem;
+}
+.container_questions a,
+.container_specialties a,
+.list_users_content a,
+.paginator_notifications a,
+.container_cases a {
+  color: #3a6667;
+  cursor: pointer;
+}
+.container_questions a:hover,
+.container_specialties a:hover,
+.list_users_content a:hover,
+.paginator_notifications a:hover,
+.container_cases a:hover,
+.container_questions a:focus,
+.container_specialties a:focus,
+.list_users_content a:focus,
+.paginator_notifications a:focus,
+.container_cases a:focus {
+  color: #ef863e;
+}
+.ui-page-theme-a a:visited,
+html .ui-bar-a a:visited,
+html .ui-body-a a:visited,
+html body .ui-group-theme-a a:visited {
+  color: #3A6667;
+}
+.ui-page-theme-a a,
+html .ui-bar-a a,
+html .ui-body-a a,
+html body .ui-group-theme-a a {
+  color: #3A6667;
+  font-weight: 700;
+}
+ol li {
+  list-style-type: circle;
+}
+.name_specialty {
+  text-align: center;
+  margin: .25rem 0;
+}
+.name_specialty span {
+  color: #FFFFFF;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'DK Mango';
+  text-shadow: 0 0 2px #EF863E;
+  display: inline-block;
+  background-color: #E3813D;
+  padding: .6rem .5rem .1rem;
+  line-height: 1;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
 }
 /* Materialize Custom */
 .waves-effect.waves-logo .waves-ripple {
@@ -5194,25 +5942,10 @@ span[contenteditable] br {
 .waves-effect.waves-btn-start {
   background-color: #3a6667;
   position: relative;
-}
-.waves-effect.waves-btn-start:after {
-  position: absolute;
-  width: 0%;
-  height: 100%;
-  content: '';
-  left: 0;
-  top: 0;
-  -webkit-transition: all 0.5s ease;
-  -khtml-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  z-index: -1;
-  background-color: rgba(255, 255, 255, 0.25);
-}
-.waves-effect.waves-btn-start:hover:after {
-  width: 100%;
+  /*&:after,&:before{position: absolute;width: 100%; height: 0%; content: '';.transition(all .4s cubic-bezier(0.63, -0.02, 0, -0.08));z-index: -1;background-color: rgba(255,255,255,.17);}
+    &:after{left:0;top: 50%; }
+    &:before{left:0;bottom: 50%;}
+    &:hover:after,&:focus:after,&:hover:before,&:focus:before{height: 50%;}*/
 }
 .waves-effect.waves-btn-start .waves-ripple {
   background-color: rgba(255, 255, 255, 0.55);
@@ -5220,24 +5953,10 @@ span[contenteditable] br {
 .waves-effect.waves-btn-login {
   background-color: #ee6200;
   position: relative;
-}
-.waves-effect.waves-btn-login:after {
-  position: absolute;
-  width: 0%;
-  height: 100%;
-  content: '';
-  top: 0;
-  -webkit-transition: all 0.5s ease;
-  -khtml-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  z-index: -1;
-  background-color: rgba(255, 255, 255, 0.25);
-}
-.waves-effect.waves-btn-login:hover:after {
-  width: 100%;
+  /*&:after,&:before{position: absolute;width: 100%; height: 0%; content: '';.transition(all .4s cubic-bezier(0.63, -0.02, 0, -0.08));z-index: -1;background-color: rgba(255,255,255,.17);}
+    &:after{left:0;top: 0%; }
+    &:before{left:0;bottom: 0%;}
+    &:hover:after,&:focus:after,&:hover:before,&:focus:before{height: 50%;}*/
 }
 .waves-effect.waves-btn-login .waves-ripple {
   background-color: rgba(255, 255, 255, 0.55);
@@ -5290,7 +6009,7 @@ input[type="password"]:focus:not([readonly]) {
 input[type="email"]:focus:not([readonly]) + label,
 input[type="text"]:focus:not([readonly]) + label,
 input[type="password"]:focus:not([readonly]) + label {
-  opacity: 0;
+  opacity: 1;
 }
 input[type="email"]:focus,
 input[type="text"]:focus,
@@ -5482,6 +6201,11 @@ input[type="password"]:focus {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+.tabs .tab a > div img {
+  max-width: 20px;
+  margin-top: 1.2rem;
+  margin-left: -8px;
+}
 .tabs .tab a > div,
 .tabs .tab a span {
   vertical-align: top;
@@ -5600,18 +6324,19 @@ textarea.materialize-textarea {
   top: 11px;
 }
 .ui-page-theme-a .ui-body-inherit {
-  background-color: #3A6667;
-  height: 90vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question,
-.ui-page-theme-a .ui-body-inherit .edit_specialty {
+.ui-page-theme-a .ui-body-inherit .edit_specialty,
+.ui-page-theme-a .ui-body-inherit .edit_case {
   background-color: white;
   padding: 1rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .title,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .title {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .title,
+.ui-page-theme-a .ui-body-inherit .edit_case .title {
   font-family: 'DK Mango';
   font-size: 3.5rem;
   color: #ee6200;
@@ -5620,68 +6345,122 @@ textarea.materialize-textarea {
   padding-bottom: 1rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .input-field label,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .input-field label {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .input-field label,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .input-field label {
   color: #3a6667;
   left: 1rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure > div,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure > div {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure > div,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure > div {
   overflow: visible!important;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input input,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input input {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input input,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input input,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input input {
   padding-right: 3.8rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input img {
   position: absolute;
   right: 3%;
-  top: 0;
+  top: -8px;
   bottom: 0;
   margin: auto;
   font-size: 1.45rem;
   line-height: 2.7;
   cursor: pointer;
-}
-.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i:hover,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i:hover {
-  color: #ef863e;
+  max-width: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .input,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input {
   position: relative;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input i,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .input i,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .input img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .input img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .input img {
   position: absolute;
   right: 5%;
-  top: 0;
+  top: -8px;
   bottom: 0;
   margin: auto;
   font-size: 1.45rem;
   line-height: 2.3;
   cursor: pointer;
-}
-.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .input i:hover,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .input i:hover,
-.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .input i:hover,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .input i:hover {
-  color: #ee6200;
+  max-width: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable {
   padding-left: 1.5rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li {
   position: relative;
   padding: .5rem 0;
   margin-bottom: .5rem;
@@ -5696,56 +6475,112 @@ textarea.materialize-textarea {
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:hover,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li:hover,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li:hover,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:hover {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li:hover {
   border-color: #ee6200;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li:first-letter,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li:first-letter,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li:first-letter,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:first-letter {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li:first-letter,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li:first-letter {
   text-transform: uppercase;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li span:first-child:after,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li span:first-child:after,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li span:first-child:after,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li span:first-child:after {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li span:first-child:after,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li span:first-child:after {
   content: '';
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li i,
 .ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li i,
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li i,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li i {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li i,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .order_questions_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li img,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li img {
   position: absolute;
   right: 2%;
-  top: 0;
+  top: -8px;
   bottom: 0;
   margin: auto;
   font-size: 1rem;
   line-height: 2;
   cursor: pointer;
-}
-.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .order_questions_edit .sortable li i:hover,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .order_questions_edit .sortable li i:hover,
-.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li i:hover,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li i:hover {
-  color: #ee6200;
+  max-width: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li {
   cursor: initial;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li .last,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li .last,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li .last,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li .last {
   position: absolute;
   right: 3rem;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last p,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li .last p,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li .last p,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li .last p,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li .last p {
   display: inline;
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit .sortable li .last p label,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p label {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit .sortable li .last p label,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit .sortable li .last p label,
+.ui-page-theme-a .ui-body-inherit .edit_question .form_content .structure .multiple_choice_edit_case .sortable li .last p label,
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .structure .multiple_choice_edit_case .sortable li .last p label,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .structure .multiple_choice_edit_case .sortable li .last p label {
   top: -2px;
   -webkit-transform: scale(0.7);
   -khtml-transform: scale(0.7);
@@ -5755,7 +6590,8 @@ textarea.materialize-textarea {
   transform: scale(0.7);
 }
 .ui-page-theme-a .ui-body-inherit .edit_question .form_content .container_btn button:hover,
-.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .container_btn button:hover {
+.ui-page-theme-a .ui-body-inherit .edit_specialty .form_content .container_btn button:hover,
+.ui-page-theme-a .ui-body-inherit .edit_case .form_content .container_btn button:hover {
   background-color: #3a6667 !important;
 }
 .ui-page-theme-a .ui-body-inherit .ui-btn {
@@ -5781,6 +6617,7 @@ textarea.materialize-textarea {
 }
 .ui-content {
   padding: 0;
+  overflow: visible;
 }
 .ui-panel-dismiss-open.ui-panel-dismiss-position-left {
   display: none;
@@ -5810,17 +6647,53 @@ label.ui-btn {
 }
 @media (max-width: 480px) {
   .start_race .wrapper .content_start_game .question,
+  .start_test .wrapper .content_start_game .question,
+  .duel_users .wrapper .content_start_game .question,
+  .start_specialty .wrapper .content_start_game .question,
   .start_race .wrapper .start .question,
+  .start_test .wrapper .start .question,
+  .duel_users .wrapper .start .question,
+  .start_specialty .wrapper .start .question,
   .start_race .wrapper .complete_level .question,
+  .start_test .wrapper .complete_level .question,
+  .duel_users .wrapper .complete_level .question,
+  .start_specialty .wrapper .complete_level .question,
   .start_race .wrapper .no_complete_level .question,
+  .start_test .wrapper .no_complete_level .question,
+  .duel_users .wrapper .no_complete_level .question,
+  .start_specialty .wrapper .no_complete_level .question,
   .start_race .wrapper .content_start_game .answers_options,
+  .start_test .wrapper .content_start_game .answers_options,
+  .duel_users .wrapper .content_start_game .answers_options,
+  .start_specialty .wrapper .content_start_game .answers_options,
   .start_race .wrapper .start .answers_options,
+  .start_test .wrapper .start .answers_options,
+  .duel_users .wrapper .start .answers_options,
+  .start_specialty .wrapper .start .answers_options,
   .start_race .wrapper .complete_level .answers_options,
+  .start_test .wrapper .complete_level .answers_options,
+  .duel_users .wrapper .complete_level .answers_options,
+  .start_specialty .wrapper .complete_level .answers_options,
   .start_race .wrapper .no_complete_level .answers_options,
+  .start_test .wrapper .no_complete_level .answers_options,
+  .duel_users .wrapper .no_complete_level .answers_options,
+  .start_specialty .wrapper .no_complete_level .answers_options,
   .start_race .wrapper .content_start_game .message,
+  .start_test .wrapper .content_start_game .message,
+  .duel_users .wrapper .content_start_game .message,
+  .start_specialty .wrapper .content_start_game .message,
   .start_race .wrapper .start .message,
+  .start_test .wrapper .start .message,
+  .duel_users .wrapper .start .message,
+  .start_specialty .wrapper .start .message,
   .start_race .wrapper .complete_level .message,
-  .start_race .wrapper .no_complete_level .message {
+  .start_test .wrapper .complete_level .message,
+  .duel_users .wrapper .complete_level .message,
+  .start_specialty .wrapper .complete_level .message,
+  .start_race .wrapper .no_complete_level .message,
+  .start_test .wrapper .no_complete_level .message,
+  .duel_users .wrapper .no_complete_level .message,
+  .start_specialty .wrapper .no_complete_level .message {
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -5830,57 +6703,165 @@ label.ui-btn {
     padding: 1rem .5rem;
   }
   .start_race .wrapper .content_start_game .question,
+  .start_test .wrapper .content_start_game .question,
+  .duel_users .wrapper .content_start_game .question,
+  .start_specialty .wrapper .content_start_game .question,
   .start_race .wrapper .start .question,
+  .start_test .wrapper .start .question,
+  .duel_users .wrapper .start .question,
+  .start_specialty .wrapper .start .question,
   .start_race .wrapper .complete_level .question,
-  .start_race .wrapper .no_complete_level .question {
-    font-size: 1.25rem;
+  .start_test .wrapper .complete_level .question,
+  .duel_users .wrapper .complete_level .question,
+  .start_specialty .wrapper .complete_level .question,
+  .start_race .wrapper .no_complete_level .question,
+  .start_test .wrapper .no_complete_level .question,
+  .duel_users .wrapper .no_complete_level .question,
+  .start_specialty .wrapper .no_complete_level .question {
+    font-size: 1.05rem;
     text-align: center;
   }
   .start_race .wrapper .content_start_game .answers_options,
+  .start_test .wrapper .content_start_game .answers_options,
+  .duel_users .wrapper .content_start_game .answers_options,
+  .start_specialty .wrapper .content_start_game .answers_options,
   .start_race .wrapper .start .answers_options,
+  .start_test .wrapper .start .answers_options,
+  .duel_users .wrapper .start .answers_options,
+  .start_specialty .wrapper .start .answers_options,
   .start_race .wrapper .complete_level .answers_options,
+  .start_test .wrapper .complete_level .answers_options,
+  .duel_users .wrapper .complete_level .answers_options,
+  .start_specialty .wrapper .complete_level .answers_options,
   .start_race .wrapper .no_complete_level .answers_options,
+  .start_test .wrapper .no_complete_level .answers_options,
+  .duel_users .wrapper .no_complete_level .answers_options,
+  .start_specialty .wrapper .no_complete_level .answers_options,
   .start_race .wrapper .content_start_game .message,
+  .start_test .wrapper .content_start_game .message,
+  .duel_users .wrapper .content_start_game .message,
+  .start_specialty .wrapper .content_start_game .message,
   .start_race .wrapper .start .message,
+  .start_test .wrapper .start .message,
+  .duel_users .wrapper .start .message,
+  .start_specialty .wrapper .start .message,
   .start_race .wrapper .complete_level .message,
-  .start_race .wrapper .no_complete_level .message {
-    padding: 1rem .5rem .5rem;
+  .start_test .wrapper .complete_level .message,
+  .duel_users .wrapper .complete_level .message,
+  .start_specialty .wrapper .complete_level .message,
+  .start_race .wrapper .no_complete_level .message,
+  .start_test .wrapper .no_complete_level .message,
+  .duel_users .wrapper .no_complete_level .message,
+  .start_specialty .wrapper .no_complete_level .message {
+    padding: 1rem .35rem .35rem;
   }
   .start_race .wrapper .content_start_game .answers_options label,
+  .start_test .wrapper .content_start_game .answers_options label,
+  .duel_users .wrapper .content_start_game .answers_options label,
+  .start_specialty .wrapper .content_start_game .answers_options label,
   .start_race .wrapper .start .answers_options label,
+  .start_test .wrapper .start .answers_options label,
+  .duel_users .wrapper .start .answers_options label,
+  .start_specialty .wrapper .start .answers_options label,
   .start_race .wrapper .complete_level .answers_options label,
+  .start_test .wrapper .complete_level .answers_options label,
+  .duel_users .wrapper .complete_level .answers_options label,
+  .start_specialty .wrapper .complete_level .answers_options label,
   .start_race .wrapper .no_complete_level .answers_options label,
+  .start_test .wrapper .no_complete_level .answers_options label,
+  .duel_users .wrapper .no_complete_level .answers_options label,
+  .start_specialty .wrapper .no_complete_level .answers_options label,
   .start_race .wrapper .content_start_game .message label,
+  .start_test .wrapper .content_start_game .message label,
+  .duel_users .wrapper .content_start_game .message label,
+  .start_specialty .wrapper .content_start_game .message label,
   .start_race .wrapper .start .message label,
+  .start_test .wrapper .start .message label,
+  .duel_users .wrapper .start .message label,
+  .start_specialty .wrapper .start .message label,
   .start_race .wrapper .complete_level .message label,
-  .start_race .wrapper .no_complete_level .message label {
-    font-size: 1.15rem;
+  .start_test .wrapper .complete_level .message label,
+  .duel_users .wrapper .complete_level .message label,
+  .start_specialty .wrapper .complete_level .message label,
+  .start_race .wrapper .no_complete_level .message label,
+  .start_test .wrapper .no_complete_level .message label,
+  .duel_users .wrapper .no_complete_level .message label,
+  .start_specialty .wrapper .no_complete_level .message label {
+    font-size: 1rem;
     padding: .5rem;
   }
   .start_race .wrapper .content_start_game .content_question .type_question,
+  .start_test .wrapper .content_start_game .content_question .type_question,
+  .duel_users .wrapper .content_start_game .content_question .type_question,
+  .start_specialty .wrapper .content_start_game .content_question .type_question,
   .start_race .wrapper .start .content_question .type_question,
+  .start_test .wrapper .start .content_question .type_question,
+  .duel_users .wrapper .start .content_question .type_question,
+  .start_specialty .wrapper .start .content_question .type_question,
   .start_race .wrapper .complete_level .content_question .type_question,
-  .start_race .wrapper .no_complete_level .content_question .type_question {
+  .start_test .wrapper .complete_level .content_question .type_question,
+  .duel_users .wrapper .complete_level .content_question .type_question,
+  .start_specialty .wrapper .complete_level .content_question .type_question,
+  .start_race .wrapper .no_complete_level .content_question .type_question,
+  .start_test .wrapper .no_complete_level .content_question .type_question,
+  .duel_users .wrapper .no_complete_level .content_question .type_question,
+  .start_specialty .wrapper .no_complete_level .content_question .type_question {
     margin: 0 0 .5rem;
     text-align: left;
   }
   .start_race .wrapper .content_start_game .content_question .type_question span,
+  .start_test .wrapper .content_start_game .content_question .type_question span,
+  .duel_users .wrapper .content_start_game .content_question .type_question span,
+  .start_specialty .wrapper .content_start_game .content_question .type_question span,
   .start_race .wrapper .start .content_question .type_question span,
+  .start_test .wrapper .start .content_question .type_question span,
+  .duel_users .wrapper .start .content_question .type_question span,
+  .start_specialty .wrapper .start .content_question .type_question span,
   .start_race .wrapper .complete_level .content_question .type_question span,
-  .start_race .wrapper .no_complete_level .content_question .type_question span {
+  .start_test .wrapper .complete_level .content_question .type_question span,
+  .duel_users .wrapper .complete_level .content_question .type_question span,
+  .start_specialty .wrapper .complete_level .content_question .type_question span,
+  .start_race .wrapper .no_complete_level .content_question .type_question span,
+  .start_test .wrapper .no_complete_level .content_question .type_question span,
+  .duel_users .wrapper .no_complete_level .content_question .type_question span,
+  .start_specialty .wrapper .no_complete_level .content_question .type_question span {
     font-size: 1rem;
   }
   .start_race .wrapper .content_start_game .content_question .sortable_answer li,
+  .start_test .wrapper .content_start_game .content_question .sortable_answer li,
+  .duel_users .wrapper .content_start_game .content_question .sortable_answer li,
+  .start_specialty .wrapper .content_start_game .content_question .sortable_answer li,
   .start_race .wrapper .start .content_question .sortable_answer li,
+  .start_test .wrapper .start .content_question .sortable_answer li,
+  .duel_users .wrapper .start .content_question .sortable_answer li,
+  .start_specialty .wrapper .start .content_question .sortable_answer li,
   .start_race .wrapper .complete_level .content_question .sortable_answer li,
-  .start_race .wrapper .no_complete_level .content_question .sortable_answer li {
+  .start_test .wrapper .complete_level .content_question .sortable_answer li,
+  .duel_users .wrapper .complete_level .content_question .sortable_answer li,
+  .start_specialty .wrapper .complete_level .content_question .sortable_answer li,
+  .start_race .wrapper .no_complete_level .content_question .sortable_answer li,
+  .start_test .wrapper .no_complete_level .content_question .sortable_answer li,
+  .duel_users .wrapper .no_complete_level .content_question .sortable_answer li,
+  .start_specialty .wrapper .no_complete_level .content_question .sortable_answer li {
     padding: .5rem;
     font-size: 1.15rem;
   }
   .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button,
+  .start_test .wrapper .content_start_game .content_question .sortable_answer + .container_btn button,
+  .duel_users .wrapper .content_start_game .content_question .sortable_answer + .container_btn button,
+  .start_specialty .wrapper .content_start_game .content_question .sortable_answer + .container_btn button,
   .start_race .wrapper .start .content_question .sortable_answer + .container_btn button,
+  .start_test .wrapper .start .content_question .sortable_answer + .container_btn button,
+  .duel_users .wrapper .start .content_question .sortable_answer + .container_btn button,
+  .start_specialty .wrapper .start .content_question .sortable_answer + .container_btn button,
   .start_race .wrapper .complete_level .content_question .sortable_answer + .container_btn button,
-  .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button {
+  .start_test .wrapper .complete_level .content_question .sortable_answer + .container_btn button,
+  .duel_users .wrapper .complete_level .content_question .sortable_answer + .container_btn button,
+  .start_specialty .wrapper .complete_level .content_question .sortable_answer + .container_btn button,
+  .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button,
+  .start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button,
+  .duel_users .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button,
+  .start_specialty .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button {
     width: 380px;
     padding: 1.5rem 0.5rem;
     height: inherit;
@@ -5894,18 +6875,45 @@ label.ui-btn {
     padding: .5rem;
   }
   .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:hover,
+  .start_test .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:hover,
+  .duel_users .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:hover,
+  .start_specialty .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:hover,
   .start_race .wrapper .start .content_question .sortable_answer + .container_btn button:hover,
+  .start_test .wrapper .start .content_question .sortable_answer + .container_btn button:hover,
+  .duel_users .wrapper .start .content_question .sortable_answer + .container_btn button:hover,
+  .start_specialty .wrapper .start .content_question .sortable_answer + .container_btn button:hover,
   .start_race .wrapper .complete_level .content_question .sortable_answer + .container_btn button:hover,
-  .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover {
+  .start_test .wrapper .complete_level .content_question .sortable_answer + .container_btn button:hover,
+  .duel_users .wrapper .complete_level .content_question .sortable_answer + .container_btn button:hover,
+  .start_specialty .wrapper .complete_level .content_question .sortable_answer + .container_btn button:hover,
+  .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover,
+  .start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover,
+  .duel_users .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover,
+  .start_specialty .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:hover {
     color: white;
   }
   .start_race .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:focus,
+  .start_test .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:focus,
+  .duel_users .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:focus,
+  .start_specialty .wrapper .content_start_game .content_question .sortable_answer + .container_btn button:focus,
   .start_race .wrapper .start .content_question .sortable_answer + .container_btn button:focus,
+  .start_test .wrapper .start .content_question .sortable_answer + .container_btn button:focus,
+  .duel_users .wrapper .start .content_question .sortable_answer + .container_btn button:focus,
+  .start_specialty .wrapper .start .content_question .sortable_answer + .container_btn button:focus,
   .start_race .wrapper .complete_level .content_question .sortable_answer + .container_btn button:focus,
-  .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus {
+  .start_test .wrapper .complete_level .content_question .sortable_answer + .container_btn button:focus,
+  .duel_users .wrapper .complete_level .content_question .sortable_answer + .container_btn button:focus,
+  .start_specialty .wrapper .complete_level .content_question .sortable_answer + .container_btn button:focus,
+  .start_race .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus,
+  .start_test .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus,
+  .duel_users .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus,
+  .start_specialty .wrapper .no_complete_level .content_question .sortable_answer + .container_btn button:focus {
     box-shadow: 0 0 0 0 transparent;
   }
-  .start_race .wrapper .start .container_btn button {
+  .start_race .wrapper .start .container_btn button,
+  .start_test .wrapper .start .container_btn button,
+  .duel_users .wrapper .start .container_btn button,
+  .start_specialty .wrapper .start .container_btn button {
     width: 380px;
     padding: 1.5rem 0.5rem;
     height: inherit;
@@ -5917,64 +6925,111 @@ label.ui-btn {
     color: white;
     background-color: #3a6667;
   }
-  .start_race .wrapper .start .container_btn button:hover {
+  .start_race .wrapper .start .container_btn button:hover,
+  .start_test .wrapper .start .container_btn button:hover,
+  .duel_users .wrapper .start .container_btn button:hover,
+  .start_specialty .wrapper .start .container_btn button:hover {
     color: white;
   }
-  .start_race .wrapper .start .container_btn button:focus {
+  .start_race .wrapper .start .container_btn button:focus,
+  .start_test .wrapper .start .container_btn button:focus,
+  .duel_users .wrapper .start .container_btn button:focus,
+  .start_specialty .wrapper .start .container_btn button:focus {
     box-shadow: 0 0 0 0 transparent;
   }
   .start_race .wrapper .complete_level .message,
-  .start_race .wrapper .no_complete_level .message {
+  .start_test .wrapper .complete_level .message,
+  .duel_users .wrapper .complete_level .message,
+  .start_specialty .wrapper .complete_level .message,
+  .start_race .wrapper .no_complete_level .message,
+  .start_test .wrapper .no_complete_level .message,
+  .duel_users .wrapper .no_complete_level .message,
+  .start_specialty .wrapper .no_complete_level .message {
     font-size: 1.5rem;
   }
-  .start_race .levels_content {
+  .start_race .levels_content,
+  .start_test .levels_content,
+  .duel_users .levels_content,
+  .start_specialty .levels_content {
     margin-right: 0rem;
     height: 68px;
   }
-  .start_race .levels_content > div {
+  .start_race .levels_content > div,
+  .start_test .levels_content > div,
+  .duel_users .levels_content > div,
+  .start_specialty .levels_content > div {
     padding: .25rem .15rem;
   }
-  .start_race .levels_content .level {
+  .start_race .levels_content .level,
+  .start_test .levels_content .level,
+  .duel_users .levels_content .level,
+  .start_specialty .levels_content .level {
     padding-right: .85rem;
     position: relative;
   }
   .start_race .levels_content .level .top img,
-  .start_race .levels_content .level .bottom img {
+  .start_test .levels_content .level .top img,
+  .duel_users .levels_content .level .top img,
+  .start_specialty .levels_content .level .top img,
+  .start_race .levels_content .level .bottom img,
+  .start_test .levels_content .level .bottom img,
+  .duel_users .levels_content .level .bottom img,
+  .start_specialty .levels_content .level .bottom img {
     padding: 0;
     height: 22px;
   }
-  .start_race .levels_content .level .top {
+  .start_race .levels_content .level .top,
+  .start_test .levels_content .level .top,
+  .duel_users .levels_content .level .top,
+  .start_specialty .levels_content .level .top {
     height: inherit;
     margin-top: 5px;
   }
-  .start_race .levels_content .level .top .name {
+  .start_race .levels_content .level .top .name,
+  .start_test .levels_content .level .top .name,
+  .duel_users .levels_content .level .top .name,
+  .start_specialty .levels_content .level .top .name {
     font-size: .83rem;
   }
-  .start_race .levels_content .level:after {
+  .start_race .levels_content .level:after,
+  .start_test .levels_content .level:after,
+  .duel_users .levels_content .level:after,
+  .start_specialty .levels_content .level:after {
     background-size: 60%;
     background-position: center;
     width: 22px;
   }
   .start_test div[data-role='header'] .top_questions,
-  .duel_users div[data-role='header'] .top_questions {
+  .duel_users div[data-role='header'] .top_questions,
+  .start_specialty div[data-role='header'] .top_questions {
     width: 230px;
   }
   .start_test div[data-role='header'] .top_questions .content_questions span,
-  .duel_users div[data-role='header'] .top_questions .content_questions span {
+  .duel_users div[data-role='header'] .top_questions .content_questions span,
+  .start_specialty div[data-role='header'] .top_questions .content_questions span {
     font-size: 3.5rem;
     line-height: 1.4;
   }
   .start_test div[data-role='header'] .top_questions .opponent .image,
-  .duel_users div[data-role='header'] .top_questions .opponent .image {
+  .duel_users div[data-role='header'] .top_questions .opponent .image,
+  .start_specialty div[data-role='header'] .top_questions .opponent .image {
     margin-top: .05rem;
   }
   .start_test div[data-role='header'] .top_questions .opponent .image img,
-  .duel_users div[data-role='header'] .top_questions .opponent .image img {
+  .duel_users div[data-role='header'] .top_questions .opponent .image img,
+  .start_specialty div[data-role='header'] .top_questions .opponent .image img {
     max-height: 45px;
   }
   .start_test div[data-role='header'] .top_questions .opponent .image span,
-  .duel_users div[data-role='header'] .top_questions .opponent .image span {
+  .duel_users div[data-role='header'] .top_questions .opponent .image span,
+  .start_specialty div[data-role='header'] .top_questions .opponent .image span {
     font-size: .8rem;
+  }
+  .start_specialty div[data-role="header"] .top_questions {
+    width: 135px!important;
+  }
+  .start_specialty div[data-role="header"] .top_questions .content_questions span {
+    font-size: 3.5rem!important;
   }
   .search_duel .content_list_users .title {
     font-size: 3.3rem;
@@ -6342,6 +7397,10 @@ label.ui-btn {
   .dashboard_admin .container .games {
     margin: 0;
   }
+  .dashboard hgroup,
+  .dashboard_admin hgroup {
+    margin: 1.5rem 0 1rem;
+  }
   .nav_button {
     -webkit-transform: scale(0.7);
     -khtml-transform: scale(0.7);
@@ -6529,6 +7588,7 @@ label.ui-btn {
   .questions .status,
   .specialties .status {
     height: 68px;
+    width: 230px;
   }
   .dashboard .status .icon_level img,
   .friends .status .icon_level img,
@@ -6610,6 +7670,44 @@ label.ui-btn {
   .specialties .status .points:before {
     display: none;
   }
+  .dashboard .status .position_user,
+  .friends .status .position_user,
+  .race .status .position_user,
+  .start_race .status .position_user,
+  .duel .status .position_user,
+  .search_duel .status .position_user,
+  .duel_users .status .position_user,
+  .win_duel .status .position_user,
+  .test .status .position_user,
+  .start_test .status .position_user,
+  .specialty .status .position_user,
+  .start_specialty .status .position_user,
+  .litigation .status .position_user,
+  .start_litigation .status .position_user,
+  .profile .status .position_user,
+  .questions .status .position_user,
+  .specialties .status .position_user {
+    font-size: 1.5rem;
+  }
+  .dashboard .status .position_user em,
+  .friends .status .position_user em,
+  .race .status .position_user em,
+  .start_race .status .position_user em,
+  .duel .status .position_user em,
+  .search_duel .status .position_user em,
+  .duel_users .status .position_user em,
+  .win_duel .status .position_user em,
+  .test .status .position_user em,
+  .start_test .status .position_user em,
+  .specialty .status .position_user em,
+  .start_specialty .status .position_user em,
+  .litigation .status .position_user em,
+  .start_litigation .status .position_user em,
+  .profile .status .position_user em,
+  .questions .status .position_user em,
+  .specialties .status .position_user em {
+    font-size: 3.5rem;
+  }
   .ui-header {
     min-height: 70px;
   }
@@ -6664,9 +7762,6 @@ label.ui-btn {
   .panel .panel_content {
     padding: 1rem .35rem 2rem;
   }
-  .dashboard hgroup {
-    margin: 2rem 0 2rem;
-  }
   .friends .content_friends .friend .score_friend,
   .friends .content_friends .friend .name_friend {
     margin: 0;
@@ -6688,26 +7783,32 @@ label.ui-btn {
     padding: 0;
   }
   .start_race .content_start_game,
-  .search_duel .content_start_game {
+  .search_duel .content_start_game,
+  .start_test .content_start_game {
     margin-top: 2rem;
   }
   .start_race .content_start_game .question,
   .search_duel .content_start_game .question,
+  .start_test .content_start_game .question,
   .start_race .content_start_game .answers_options,
-  .search_duel .content_start_game .answers_options {
+  .search_duel .content_start_game .answers_options,
+  .start_test .content_start_game .answers_options {
     padding: 1rem .8rem;
   }
   .start_race .content_start_game .question,
-  .search_duel .content_start_game .question {
-    font-size: 2rem;
+  .search_duel .content_start_game .question,
+  .start_test .content_start_game .question {
+    font-size: 1.2rem;
   }
   .start_race .content_start_game .answers_options,
-  .search_duel .content_start_game .answers_options {
-    padding: 1rem;
+  .search_duel .content_start_game .answers_options,
+  .start_test .content_start_game .answers_options {
+    padding: .65rem;
   }
   .start_race .content_start_game .answers_options label,
-  .search_duel .content_start_game .answers_options label {
-    font-size: 1.2rem;
+  .search_duel .content_start_game .answers_options label,
+  .start_test .content_start_game .answers_options label {
+    font-size: 1rem;
   }
   .home .container_logo,
   .register .container_logo,
@@ -7076,12 +8177,12 @@ label.ui-btn {
     transform: scale(0);
   }
   to {
-    -webkit-transform: scale(2);
-    -khtml-transform: scale(2);
-    -moz-transform: scale(2);
-    -ms-transform: scale(2);
-    -o-transform: scale(2);
-    transform: scale(2);
+    -webkit-transform: scale(1);
+    -khtml-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
   }
 }
 @-webkit-keyframes scale {
@@ -7094,11 +8195,68 @@ label.ui-btn {
     transform: scale(0);
   }
   to {
-    -webkit-transform: scale(2);
-    -khtml-transform: scale(2);
-    -moz-transform: scale(2);
-    -ms-transform: scale(2);
-    -o-transform: scale(2);
-    transform: scale(2);
+    -webkit-transform: scale(1);
+    -khtml-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scale_time {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    -khtml-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    -khtml-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+}
+@-moz-keyframes scale_time {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    -khtml-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    -khtml-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+}
+@-webkit-keyframes scale_time {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    -khtml-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    -khtml-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
   }
 }

@@ -11,13 +11,13 @@
 }
 
 @media(max-width: 480px){
-    .start_race{
+    .start_race,.start_test,.duel_users,.start_specialty{
         .wrapper{
             .content_start_game,.start,.complete_level,.no_complete_level{
                 .question,.answers_options,.message{.border_radius(10px); padding: 1rem .5rem;}
-                .question{font-size: 1.25rem;text-align: center;}
-                .answers_options,.message{padding: 1rem .5rem .5rem;
-                    label{ font-size: 1.15rem;padding: .5rem;}
+                .question{font-size: 1.05rem;text-align: center;}
+                .answers_options,.message{padding: 1rem .35rem .35rem;
+                    label{ font-size: 1rem;padding: .5rem;}
                 }
                 .content_question{
                     .type_question{margin: 0 0 .5rem;text-align: left;
@@ -53,7 +53,7 @@
             }
         }
     }
-    .start_test,.duel_users{
+    .start_test,.duel_users,.start_specialty{
         div[data-role='header']{
             .top_questions{width: 230px;
                 .content_questions{
@@ -64,6 +64,15 @@
                         img{max-height: 45px;}
                         span{font-size: .8rem;}
                     }
+                }
+            }
+        }
+    }
+    .start_specialty{
+        div[data-role="header"]{
+            .top_questions{width: 135px!important;
+                .content_questions{
+                    span{font-size: 3.5rem!important;}
                 }
             }
         }
@@ -235,6 +244,7 @@
         .container{padding: 0 .5rem;
             .games{margin: 0;}
         }
+        hgroup {margin: 1.5rem 0 1rem;}
     }
     .nav_button{.transform(scale(.7));}
     .dashboard,.friends,.race,.start_race,.duel,.search_duel,.duel_users,.win_duel,.test,.start_test,.specialty,.start_specialty,.litigation,.start_litigation,.profile,.questions,.specialties{
@@ -251,13 +261,16 @@
                 }
             }
         }
-        .status{height: 68px;
+        .status{height: 68px; width: 230px;
             .icon_level{
                 img{height: 56px;}
             }
             .points{text-align: right;.flex_item(1, 1, 48%);
                 em{font-size: 3.5rem;}
                 &:before{display: none;}
+            }
+            .position_user{font-size: 1.5rem;
+                em{font-size: 3.5rem;}
             }
         }
     }
@@ -282,9 +295,6 @@
     .panel {
         .panel_content {padding: 1rem .35rem 2rem;}
     }
-    .dashboard{
-        hgroup {margin: 2rem 0 2rem;}
-    }
     .friends{
          .content_friends {
              .friend {
@@ -298,12 +308,12 @@
             }
          }
     }
-    .start_race,.search_duel{
+    .start_race,.search_duel,.start_test{
         .content_start_game{ margin-top: 2rem;
             .question,.answers_options{padding: 1rem .8rem;}
-            .question{font-size: 2rem;}
-            .answers_options{padding: 1rem;
-                label{ font-size: 1.2rem;}
+            .question{font-size: 1.2rem;}
+            .answers_options{padding: .65rem;
+                label{ font-size: 1rem;}
             }
         } 
     }

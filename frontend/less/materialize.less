@@ -2,15 +2,19 @@
 .waves-effect.waves-logo .waves-ripple {background-color: @btn_ripple_orange;}
 
 .waves-effect.waves-btn-start{background-color: @btn_start; position: relative;
-    &:after{position: absolute; width: 0%; height: 100%; content: '';left:0;top: 0; .transition();z-index: -1;background-color: rgba(255,255,255,.25);}
-    &:hover:after{width: 100%;}
+    /*&:after,&:before{position: absolute;width: 100%; height: 0%; content: '';.transition(all .4s cubic-bezier(0.63, -0.02, 0, -0.08));z-index: -1;background-color: rgba(255,255,255,.17);}
+    &:after{left:0;top: 50%; }
+    &:before{left:0;bottom: 50%;}
+    &:hover:after,&:focus:after,&:hover:before,&:focus:before{height: 50%;}*/
 }
 
 .waves-effect.waves-btn-start .waves-ripple{background-color: @btn_ripple;}
 
 .waves-effect.waves-btn-login{background-color: @btn_login; position: relative;
-    &:after{position: absolute; width: 0%; height: 100%; content: '';top: 0; .transition();z-index: -1;background-color: rgba(255,255,255,.25);}
-    &:hover:after{width: 100%;}
+    /*&:after,&:before{position: absolute;width: 100%; height: 0%; content: '';.transition(all .4s cubic-bezier(0.63, -0.02, 0, -0.08));z-index: -1;background-color: rgba(255,255,255,.17);}
+    &:after{left:0;top: 0%; }
+    &:before{left:0;bottom: 0%;}
+    &:hover:after,&:focus:after,&:hover:before,&:focus:before{height: 50%;}*/
 }
 
 .waves-effect.waves-btn-login .waves-ripple{background-color: @btn_ripple;}
@@ -25,7 +29,7 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
     &:focus::-webkit-input-placeholder,
     &:focus::input-placeholder{color: red!important;}
     &:focus:not([readonly]){border-color: transparent;box-shadow: 0 0 0 0 transparent;
-        +label{opacity: 0;}
+        +label{opacity: 1;}
     }
     &:focus{box-shadow: 0; background-color: rgba(212, 212, 212, 0.63);color: #332E2E;text-shadow: 0 0 1px rgba(0, 0, 0, 0.61);}
 }
@@ -81,6 +85,7 @@ input[type="password"]{background-color: @txt;border-color: transparent;padding:
             }
             > div{display: inline; height: 100%; 
                 i{line-height: 3.4;font-size: 1rem;.transition();}
+                img{max-width: 20px;margin-top: 1.2rem;margin-left: -8px;}
             }
             > div, span{vertical-align: top;}
             span{position: relative;

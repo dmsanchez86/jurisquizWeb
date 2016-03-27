@@ -4,17 +4,11 @@
         
         <!-- Metas -->
         <meta charset="utf-8">
-        <meta name="language" content="Spanish">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Script-Type" content="text/javascript">
-        <meta http-equiv="Content-Style-Type" content="text/css">
-        <meta name="author" content="Daniel Mauricio Sanchez">
-        <meta http-equic="Cache-Control" content="no-store">
-        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
         <!-- Page Title -->
-        <title>Jurisquiz -- Game</title>
+        <title>Jurisquiz -- Juego de Preguntas</title>
         
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="img/favicon.png">
@@ -31,13 +25,18 @@
         
         <!-- Librarys JavaScript -->
         <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jpages.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.mobile.router.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/materialize.min.js"></script>
+        <!--[if lt IE 9]>
+          <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <![endif]-->
         
     </head>
     <body>
+
         <!-- Page Home -->
         <div data-role="page" id="home" class="home" data-title="Jurisquiz - Juego de Preguntas">
             <div class="container">
@@ -53,13 +52,13 @@
                         <button type="button" id="btn_start" class="waves-effect waves-btn-start btn btn_start">Comienza con las Preguntas</button>
                     </div>
                     <div class="container_register">
-                        <span>Aún No Tienes Cuenta? Crear Una <a href="register.html" data-transition="pop">Aqui</a></span>
+                        <span>¿Aún No Tienes Cuenta? Crear Una <a href="#register" data-transition="pop">Aquí.</a></span>
                     </div>
                     <div class="container_login">
                         <div class="content">
                             <form class="col s12">
                                 <div class="input-field col s12">
-                                  <input id="email" type="email" class="validate" placeholder="Correo"  data-role="none" autocomplete="on">
+                                  <input id="email" type="email" class="validate" placeholder="Correo / Usuario"  data-role="none" autocomplete="on">
                                 </div>
                                 <div class="input-field col s12">
                                   <input id="password" type="password" class="validate" placeholder="Contraseña" data-role="none">
@@ -71,12 +70,1368 @@
                         </div>
                     </div>
                     <div class="container_terms">
-                        <span><a href="terms.html">Políticas de Uso</a></span>
+                        <span><a href="#terms">Políticas de Uso</a></span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Page Dashboard User -->
+        <div data-role="page" id="dashboard" class="dashboard" data-title="Jurisquiz - Dashboard" >
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="status">
+                    <div class="points">
+                        <em></em> puntos
+                    </div>
+                    <div class="icon_level">
+                        <img src="?" class="responsive-img"></img>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="games">
+                        <hgroup>
+                            <h1 class="question">¿ Como quieres jugar ?</h1>
+                            <h2 class="title">Prueba una de nuestras 5 opciones</h2>
+                        </hgroup>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#race">Carrera</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#test">Examen</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#specialty">Especialidad</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#litigation">Litigio</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#duel">Reto</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Dashboard Admin -->
+        <div data-role="page" id="dashboard_admin" class="dashboard" data-title="Jurisquiz - Dashboard Admin" >
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="games">
+                        <hgroup>
+                            <h1 class="question">- Bienvenido Administrador -</h1>
+                            <h2 class="title">Prueba una de nuestras opciones</h2>
+                        </hgroup>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#specialties" data-role="none">Especialidades</button>
+                        </div>
+                        <div class="container_btn">
+                            <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#questions" data-role="none">Preguntas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Duel -->
+        <div id="duel" class="duel" data-role="page" data-title="Duel Mode - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="title_game">
+                    <h1>Reto</h1>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        Dos jugadores responden las mismas preguntas. 
+                                        El que responda de forma más rápida y acertada gana el reto.<br>
+                                        <b>¡Desafía a tus colegas!</b>
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#search_duel">Retar Usuario</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Duel Users -->
+        <div id="duel_users" class="duel_users" data-role="page" data-title="Duel Users - Jurisquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="top_questions">
+                    <div class="opponent">
+                        <div class="image">
+                            <img src="img/levels/level1M.png" class="responsive-img image_opponent">
+                            <span class="name_opponent"></span>
+                        </div>
+                    </div>
+                    <div class="content_questions">
+                        <span class="number_questions">1</span><span> / </span> 
+                        <span class="rank">8</span>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="content_start_game" question="1"></div>
+                        <div class="question_result">
+                            <article>
+                                <div class="row">
+                                    <div class="col s6">
+                                        <div class="punctuation">
+                                            <span><em>0</em> Punto</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="report_question">
+                                            <img src="img/report.png" class="responsive-img">
+                                            <span>Denunciar</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="advertising">
+                                            <img src="img/advertising.png" class="responsive-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="complete_questions">
+                            <h3>Terminaste las preguntas del duelo</h3>
+                            <h5>¡Tuviste <span class="correct_answers">0</span> Respuestas correctas</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Friends -->
+        <div id="friends" class="friends" data-role="page" data-title="Friends - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="status">
+                    <div class="position_user">
+                        Eres el N°<em></em>
+                    </div>
+                    <div class="icon_level">
+                        <img src="#" class="responsive-img"></img>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_friends" id="content_friends" style="min-height: auto;margin-bottom: 0"></div>
+                    <div class="list_users_content"></div>
+                </div>
+            </div>
+        </div>
         
+        <!-- Page Litigation-->
+        <div id="litigation" class="litigation" data-role="page" data-title="Litigation Mode">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="title_game">
+                    <h1>Litigio</h1>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        Se te va a presentar un caso, y una pregunta relacionada con el caso.
+                                        Tanto el tiempo de estudio del caso, como de respuesta a la pregunta están limitados.<br>
+                                        <b>¡Resuelve el caso!</b>
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#startGamelitigation">Exponer Caso</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Notifications -->
+        <div data-role="page" id="notifications" class="notifications" data-url="notifications" style="min-height: 951px;">
+            <div class="header">
+                <h4 class="title">Notificaciones</h4>
+            </div>
+            <div class="content">
+                <div class="content_notifications" id="content_notifications"></div> 
+                <div class="paginator_notifications"></div>
+                <div class="container_btn">
+                    <button type="button" class="waves-effect waves-btn-start btn btn_start">Volver</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Profile -->
+        <div id="profile" class="profile" data-role="page" data-title="Profile User - Jurisquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="status">
+                    <div class="points">
+                        <em></em> puntos
+                    </div>
+                    <div class="icon_level">
+                        <img src="#" class="responsive-img"></img>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_profile">
+                        <header class="panel_header">
+                            <div class="information_user">
+                                <div class="row" style="margin: 0">
+                                    <div class="col m4 s4" style="padding:0">
+                                        <div class="image_user">
+                                            <form id="form_image" name="form_image" class="form_image">
+                                                <label for="image_user"><img src="#" class="responsive-img tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cambiar Imagen Perfil"></label>
+                                                <input type="file" name="image_user" id="image_user"/>
+                                            </form>
+                                        </div>
+                                        <span class="name_file"></span>
+                                    </div>
+                                    <div class="col m8 s8" style="padding: 0 ">
+                                        <div class="data_user">
+                                            <span class="name tooltipped" contenteditable data-position="left" data-delay="50" data-tooltip="Cambiar Nombre">Name</span>
+                                            <span class="username tooltipped" contenteditable data-position="left" data-delay="50" data-tooltip="Cambiar Nombre de Usuario">Username</span>
+                                            <span class="email">Email</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form_biography">
+                                <form id="form_image_biography" name="form_image_biography">
+                                    <label for="image_biography_user" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cambiar Imagen Biografía"><img src="img/points/settings_.png"></label>
+                                    <input type="file" name="image_biography_user" id="image_biography_user"/>
+                                </form>
+                            </div>
+                        </header>
+                        <section class="panel_content" style="padding-top: 1rem">
+                            <article class="levels">
+                                <div class="row">
+                                    <div class="col m4 s4">
+                                        <div class="current_level">
+                                            <span style="font-weight: bold;">Estas</span>
+                                            <img src="#" class="responsive-img"></img>
+                                            <span>Nivel</span>
+                                        </div>
+                                    </div>
+                                    <div class="col m4 s4">
+                                        <div class="arrow">
+                                            <img src="img/arrow.png" class="responsive-img"></img>
+                                        </div>
+                                    </div>
+                                    <div class="col m4 s4">
+                                        <div class="next_level">
+                                            <span style="font-weight: bold;">Siguiente</span>
+                                            <img src="#" class="responsive-img"></img>
+                                            <span>Nivel</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article>
+                                <div class="row">
+                                    <div class="col m1" style="padding: 0">&nbsp;</div>
+                                    <div class="col m10 s12" style="padding: 0">
+                                        <div class="form">
+                                            <label for="gender_profile" style="color: #323232">Cambiar Genero</label>
+                                            <select data-role="none" id="gender_profile">
+                                              <option value="">Genero</option>
+                                              <option value="M">Masculino</option>
+                                              <option value="F">Femenino</option>
+                                            </select>
+                                            <form>
+                                                <div class="input-field">
+                                                    <input type="password" name="current_password" placeholder="Contraseña Actual" id="current_password" data-role="none"/>
+                                                </div>
+                                                <div class="input-field">
+                                                    <input type="password" name="new_password" placeholder="Contraseña Nueva" id="new_password" data-role="none"/>
+                                                </div>
+                                                <div class="input-field">
+                                                    <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" id="confirm_password" data-role="none" style=""/>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col m1" style="padding: 0">&nbsp;</div>
+                                </div>
+                            </article>
+                            <article>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_login" id="btn_change_password">Cambiar Contraseña</button>
+                                </div>
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Questions -->
+        <div id="questions" class="questions" data-role="page" data-title="Questions - Jurisquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_questions">
+                        <div class="forms">
+                            <div class="row" style="margin: 0">
+                                <div class="col s12" style="padding: 0">
+                                  <ul class="tabs">
+                                    <li class="tab col s3">
+                                        <a href="#new_question" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Nueva Pregunta"><img src="img/points/add_.png"></div>
+                                            <span>Nueva</span>
+                                        </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a href="#show_questions" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Mostrar Preguntas"><img src="img/points/list.png"></div>
+                                            <span>Preguntas</span>
+                                        </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a href="#show_cases" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Mostrar Preguntas"><img src="img/points/list.png"></div>
+                                            <span>Casos</span>
+                                        </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="forms_contents">
+                                    <div id="new_question" class="col s12 new_question" style="min-height: 750px;">
+                                        <h2 class="tab_title">Nueva Pregunta</h2>
+                                        <div class="form_content">
+                                            <form id="form_new_question">
+                                                <div class="input-field col s12">
+                                                    <select data-role="none" id="specialty_name">
+                                                      <option value="" selected>Seleccione una categoría</option>
+                                                    </select>
+                                                    <label data-role="none">Categoría Pregunta: </label>
+                                                </div>
+                                                <div class="input-field col s12 title_litigation" style="display: none">
+                                                  <input id="title_litigation" type="text" class="" data-role="none" style="border-bottom: 1px solid #9e9e9e;">
+                                                  <label for="title_litigation" data-role="none">Titulo del caso: </label>
+                                                </div>
+                                                <div class="input-field col s12 text_litigation" style="display: none">
+                                                  <textarea id="text_litigation" class="materialize-textarea" data-role="none"></textarea>
+                                                  <label for="text_litigation" data-role="none">Texto del caso: </label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                  <textarea id="question" class="materialize-textarea" data-role="none"></textarea>
+                                                  <label for="question" data-role="none">Pregunta: </label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <select data-role="none" id="type_question">
+                                                      <option value="">Seleccione el tipo de pregunta</option>
+                                                      <option value="1">Selección Múltiple</option>
+                                                      <option value="2">Si / No</option>
+                                                      <option value="3">Ordenamiento</option>
+                                                    </select>
+                                                    <label data-role="none">Tipo Pregunta: </label>
+                                                </div>
+                                                <div class="input-field col s12" style="margin-top: 0">
+                                                  <div class="structure">
+                                                      <div class="multiple_choice">
+                                                          <div class="input">
+                                                              <input type="text" name="question_choice" id="question_choice" placeholder="Ingrese las opciones:"  style="padding-right:3.8rem" data-role="none"/>
+                                                              <img src="img/points/input_.png">
+                                                          </div>
+                                                          <ol id="sortable_choice" class="sortable">
+                                                          </ol>
+                                                      </div>
+                                                      <div class="yes_no">
+                                                            <span>Respuesta</span>
+                                                            <p>
+                                                              <input class="with-gap" name="yes_no" type="radio" id="yes_answer" data-role="none" value="yes"/>
+                                                              <label for="yes_answer">Si</label>&nbsp;&nbsp;&nbsp;
+                                                              <input class="with-gap" name="yes_no" type="radio" id="no_answer" data-role="none" value="no"/>
+                                                              <label for="no_answer">No</label>
+                                                            </p>
+                                                      </div>
+                                                      <div class="order_questions">
+                                                          <div class="input">
+                                                              <input type="text" name="question_sortable" id="question_sortable" placeholder="Ingrese las preguntas" style="padding-right:3.8rem" data-role="none"/>
+                                                              <img src="img/points/input_.png">
+                                                          </div>
+                                                          <ol id="sortable" class="sortable">
+                                                          </ol>
+                                                      </div>
+                                                  </div>
+                                                </div>
+                                                <div class="container_btn">
+                                                    <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#create_question">Crear Pregunta</button>
+                                                </div>
+                                                <div class="container_btn">
+                                                    <button type="reset" class="waves-effect waves-btn-start btn btn_register" data-url="#cancel_question">Cancelar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div id="show_questions" class="col s12 show_questions">
+                                        <h2 class="tab_title">Todas Las Preguntas</h2>
+                                        <h4>Filtrar Por:</h4>
+                                        <div>
+                                            <p>
+                                              <input class="with-gap" name="active_questions" type="radio" id="all__questions" data-role="none" value="all" checked/>
+                                              <label for="all__questions">Todas</label>&nbsp;
+                                              <input class="with-gap" name="active_questions" type="radio" id="active_questions" data-role="none" value="actives"/>
+                                              <label for="active_questions">Activas</label>&nbsp;
+                                              <input class="with-gap" name="active_questions" type="radio" id="inactive_questions" data-role="none" value="inactives"/>
+                                              <label for="inactive_questions">Inactivas</label>
+                                            </p>
+                                            <label for="specialty_filter" style="color:#3a6667">Filtrar por especialidad:</label>
+                                            <select data-role="none" id="specialty_filter"></select>
+                                        </div>
+                                        <ul class="content_question_show" id="content_question_show" style="min-height: 550px"></ul>
+                                        <div class="container_questions" id="container_questions"></div>
+                                    </div>
+                                    <div id="show_cases" class="col s12 show_cases">
+                                        <h2 class="tab_title">Casos Litigio</h2>
+                                        <h4>Filtrar Por:</h4>
+                                        <div>
+                                            <p>
+                                              <input class="with-gap" name="active_cases" type="radio" id="all_cases" data-role="none" value="all" checked/>
+                                              <label for="all_cases">Todos</label>&nbsp;
+                                              <input class="with-gap" name="active_cases" type="radio" id="active_cases" data-role="none" value="actives"/>
+                                              <label for="active_cases">Activos</label>&nbsp;
+                                              <input class="with-gap" name="active_cases" type="radio" id="inactive_cases" data-role="none" value="inactives"/>
+                                              <label for="inactive_cases">Inactivos</label>
+                                            </p>
+                                        </div>
+                                        <ul class="content_cases_show" id="content_cases_show" style="min-height: 550px"></ul>
+                                        <div class="container_cases" id="container_questions"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-role="popup" id="edit_question" style="max-width:97%; width: 580px; background: #3A6667; height: 90vh;overflow-y: scroll;" class="ui-corner-all">
+                    <a data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <div id="edit_question" class="col s12 edit_question">
+                        <h2 class="title">Editar Pregunta</h2>
+                        <div class="form_content">
+                            <form id="form_edit_question">
+                                <div class="id" style="display:none">ID <span></span></div>
+                                <div class="input-field col s12" style="padding: 1rem 0">
+                                  <textarea id="question_edit" class="materialize-textarea" data-role="none"></textarea>
+                                  <label for="question_edit" data-role="none" class="active" style="transform: translateY(-100%);">Pregunta: </label>
+                                </div>
+                                <div class="input-field col s12" style="padding: 1.2rem 0">
+                                    <select data-role="none" id="specialty_name_edit">
+                                      <option value="" selected>Seleccione una categoría</option>
+                                    </select>
+                                    <label data-role="none">Categoría Pregunta: </label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select data-role="none" id="type_question_edit">
+                                      <option value="">Seleccione el tipo de pregunta</option>
+                                      <option value="1">Selección Múltiple</option>
+                                      <option value="2">Si / No</option>
+                                      <option value="3">Ordenamiento</option>
+                                    </select>
+                                    <label data-role="none">Tipo Pregunta: </label>
+                                </div>
+                                <div class="input-field col s12" style="margin-top: 0">
+                                  <div class="structure">
+                                      <div class="multiple_choice_edit">
+                                          <div class="input">
+                                              <input type="text" name="question_choice" id="question_choice_edit" placeholder="Ingrese las opciones:"  style="padding-right:3.8rem;box-sizing: border-box;" data-role="none"/>
+                                              <img src="img/points/input_.png">
+                                          </div>
+                                          <ol id="sortable_choice_edit" class="sortable"></ol>
+                                      </div>
+                                      <div class="yes_no_edit">
+                                            <span>Respuesta</span>
+                                            <p>
+                                              <input class="with-gap" name="yes_no_edit" type="radio" id="yes_answer_edit" data-role="none" value="si"/>
+                                              <label for="yes_answer_edit">Si</label>&nbsp;&nbsp;&nbsp;
+                                              <input class="with-gap" name="yes_no_edit" type="radio" id="no_answer_edit" data-role="none" value="no"/>
+                                              <label for="no_answer_edit">No</label>
+                                            </p>
+                                      </div>
+                                      <div class="order_questions_edit">
+                                          <div class="input">
+                                              <input type="text" name="question_sortable" id="question_sortable_edit" placeholder="Ingrese las preguntas" style="padding-right:3.8rem"/>
+                                              <img src="img/points/input_.png">
+                                          </div>
+                                          <ol id="sortable_edit" class="sortable"></ol>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#modify_question">Modificar Pregunta</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                <div data-role="popup" id="edit_case" style="max-width:97%; width: 580px; background: #3A6667; height: 90vh;overflow-y: scroll;" class="ui-corner-all">
+                    <a data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                    <div id="edit_case" class="col s12 edit_case">
+                        <h2 class="title">Editar Caso</h2>
+                        <div class="form_content">
+                            <form id="form_edit_case">
+                                <div class="id" style="display:none">ID <span></span></div>
+                                <div class="input-field col s12">
+                                    <input type="text" id="name_case_edit" data-role="none" placeholder="Nombre Caso"/>
+                                    <label for="name_case_edit">Nombre Caso</label>
+                                </div>
+                                <div class="input-field col s12" style="padding: 1rem 0">
+                                  <textarea id="text_litigation_edit" class="materialize-textarea" style="min-height: 6.5rem" data-role="none"></textarea>
+                                  <label for="text_litigation_edit" data-role="none" class="active" style="transform: translateY(-100%);">Texto Caso: </label>
+                                </div>
+                                <div class="input-field col s12" style="padding: 1rem 0">
+                                  <textarea id="case_question_edit" class="materialize-textarea" data-role="none"></textarea>
+                                  <label for="case_question_edit" data-role="none" class="active" style="transform: translateY(-100%);">Pregunta: </label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select data-role="none" id="type_question_edit_case">
+                                      <option value="">Seleccione el tipo de pregunta</option>
+                                      <option value="1">Selección Múltiple</option>
+                                      <option value="2">Si / No</option>
+                                      <option value="3">Ordenamiento</option>
+                                    </select>
+                                    <label data-role="none">Tipo Pregunta: </label>
+                                </div>
+                                <div class="input-field col s12" style="margin-top: 0">
+                                  <div class="structure">
+                                      <div class="multiple_choice_edit_case">
+                                          <div class="input">
+                                              <input type="text" name="question_choice" id="question_choice_edit_case" placeholder="Ingrese las opciones:"  style="padding-right:3.8rem;box-sizing: border-box;" data-role="none"/>
+                                              <img src="img/points/input_.png">
+                                          </div>
+                                          <ol id="sortable_choice_edit_case" class="sortable"></ol>
+                                      </div>
+                                      <div class="yes_no_edit_case">
+                                            <span>Respuesta</span>
+                                            <p>
+                                              <input class="with-gap" name="yes_no_edit_case" type="radio" id="yes_answer_edit_case" data-role="none" value="si"/>
+                                              <label for="yes_answer_edit">Si</label>&nbsp;&nbsp;&nbsp;
+                                              <input class="with-gap" name="yes_no_edit" type="radio" id="no_answer_edit" data-role="none" value="no"/>
+                                              <label for="no_answer_edit">No</label>
+                                            </p>
+                                      </div>
+                                      <div class="order_questions_edit_case">
+                                          <div class="input">
+                                              <input type="text" name="question_sortable" id="question_sortable_edit_case" placeholder="Ingrese las preguntas" style="padding-right:3.8rem"/>
+                                              <img src="img/points/input_.png">
+                                          </div>
+                                          <ol id="sortable_edit_case" class="sortable"></ol>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#modify_case">Modificar Caso</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                    
+                <a href="#edit_question" data-transition="fade" data-position-to="window" class="ui-btn-right  ui-corner-all ui-shadow ui-btn-inline" data-rel="popup" aria-haspopup="true" aria-owns="transitionExample" aria-expanded="false" style="display: none"></a>
+                
+                <a href="#edit_case" data-transition="fade" data-position-to="window" class="ui-btn-right  ui-corner-all ui-shadow ui-btn-inline" data-rel="popup" aria-haspopup="true" aria-owns="transitionExample" aria-expanded="false" style="display: none"></a>
+            </div>
+        </div>
+
+        <!-- Page Race -->
+        <div id="race" class="race" data-role="page" data-title="Race Mode - Jurisquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="title_game">
+                    <h1>Carrera</h1>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        En carrera podrás ser Congresista, Presidente o Magistrado. 
+                                        Selecciona la carrera que más te guste, y por cada 20 respuestas acertadas tienes un ascenso.<br>
+                                        <b>¡Asciende en tu carrera!</b>
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_race?level=executive&id=1">Iniciar en Ejecutivo</button>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_race?level=legislative&id=2">Iniciar en Legislativo</button>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_race?level=judicial&id=3">Iniciar en Judicial</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Register -->
+        <div data-role="page" id="register" class="register" data-title="Jurisquiz - Registro">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="container_logo">
+                        <div class="content">
+                            <a href="#home" class="btn_logo" data-transition="fade">
+                                <img src="img/logo.png" alt="Logo Jurisquiz" title="Jurisquiz" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="container_btn">
+                        <button type="button" class="waves-effect waves-btn-start btn btn_start" data-role="back">Volver</button>
+                    </div>
+                    <div class="container_login">
+                        <div class="content">
+                            <form class="col s12">
+                                <div class="input-field col s12">
+                                  <input id="email_r" type="email" class="validate" placeholder="Correo Eléctronico" data-role="none">
+                                </div>
+                                <div class="input-field col s12">
+                                  <input id="password_r" type="password" class="validate" placeholder="Contraseña" data-role="none">
+                                </div>
+                                <div class="input-field col s12">
+                                  <input id="password_c" type="password" class="validate" placeholder="Confirmar Contraseña" data-role="none">
+                                </div>
+                                <div class="input-field col s12">
+                                    <select data-role="none" id="gender_user">
+                                      <option value="" disabled selected>Seleccione un genero</option>
+                                      <option value="M">Masculino</option>
+                                      <option value="F">Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-login btn btn_register">Registrarse</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container_terms">
+                        <span><a href="#terms">Políticas de Uso</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Report question -->
+        <div data-role="page" id="report_question" class="report_question" data-url="#report_question" style="min-height: 951px;">
+            <div class="header">
+                <h4 class="title">Que pasa con esta pregunta</h4>
+            </div>
+            <div class="content">
+                <div class="content_notifications">
+                    <textarea id="error_message_question" placeholder="Cuentanos que error hay en la pregunta"></textarea>
+                </div> 
+                <div class="container_btn">
+                    <button type="button" class="waves-effect waves-btn-start btn btn_start send">Enviar</button>
+                </div>
+                <div class="container_btn">
+                    <button type="button" class="waves-effect waves-btn-start btn btn_start back">Volver</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Search Duel -->
+        <div id="search_duel" class="search_duel" data-role="page" data-title="Search Duel - Jurisquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_list_users">
+                        <h1 class="title">Colegas conectados</h1>
+                        <div class="list_users" id="list_users"></div>
+                        <div class="list_users_content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Specialties -->
+        <div id="specialties" class="specialties" data-role="page" data-title="Especialties - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_questions">
+                        <div class="forms">
+                            <div class="row" style="margin: 0">
+                                <div class="col s12" style="padding: 0">
+                                  <ul class="tabs">
+                                    <li class="tab col s3">
+                                        <a href="#new_specialty" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Nueva Pregunta"><img src="img/points/add_.png"></div>
+                                            <span>Nueva</span>
+                                        </a>
+                                    </li>
+                                    <li class="tab col s3">
+                                        <a href="#show_specialties" data-role="none">
+                                            <div data-position="bottom" data-delay="50" data-tooltip="Mostrar Preguntas"><img src="img/points/list.png"></div>
+                                            <span>Mostrar</span>
+                                        </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="forms_contents">
+                                    <div id="new_specialty" class="col s12 new_question">
+                                        <h2 class="tab_title">Nueva Especialidad</h2>
+                                        <div class="form_content">
+                                            <form id="form_new_specialty">
+                                                <div class="input-field col s12">
+                                                  <textarea id="name_specialty" class="materialize-textarea" data-role="none"></textarea>
+                                                  <label for="name_specialty" data-role="none">Nombre: </label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <select data-role="none" id="mode_game_context">
+                                                    </select>
+                                                    <label data-role="none">Modo de Juego: </label>
+                                                </div>
+                                                <div class="input-field col s12 level_game" style="display: none">
+                                                    <select data-role="none" id="level_game_context">
+                                                    </select>
+                                                    <label data-role="none">Nivel Juego: </label>
+                                                </div>
+                                                <div class="container_btn">
+                                                    <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#create_specialty">Crear Especialidad</button>
+                                                </div>
+                                                <div class="container_btn">
+                                                    <button type="reset" class="waves-effect waves-btn-start btn btn_register" data-url="#cancel_specialty">Cancelar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div id="show_specialties" class="col s12 show_questions">
+                                        <h2 class="tab_title">Todas Las Especialidades</h2>
+                                        <h4>Filtrar Por:</h4>
+                                        <div>
+                                            <p>
+                                              <input class="with-gap" name="active_specialties" type="radio" id="all__specialties" data-role="none" value="all" checked/>
+                                              <label for="all__specialties">Todas</label>&nbsp;
+                                              <input class="with-gap" name="active_specialties" type="radio" id="active_specialties" data-role="none" value="actives"/>
+                                              <label for="active_specialties">Activas</label>&nbsp;
+                                              <input class="with-gap" name="active_specialties" type="radio" id="inactive_specialties" data-role="none" value="inactives"/>
+                                              <label for="inactive_specialties">Inactivas</label>
+                                            </p>
+                                        </div>
+                                        <ul class="content_specialty_show" id="content_specialty_show"></ul>
+                                        <div class="container_specialties"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-role="popup" id="edit_specialty" style="max-width:97%; width: 580px; background: #3A6667; height: 90vh;overflow-y: scroll;" class="ui-corner-all">
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                <div id="edit_specialty" class="col s12 edit_specialty">
+                    <h2 class="title">Editar Especialidad</h2>
+                    <div class="form_content">
+                        <form id="form_edit_specialty">
+                            <div class="id" style="display:none">ID <span></span></div>
+                            <div class="input-field col s12">
+                              <textarea id="name_specialty_edit" class="materialize-textarea" data-role="none"></textarea>
+                              <label for="name_specialty_edit" data-role="none" style="transform: translateY(-209%);">Nombre: </label>
+                            </div>
+                            <div class="input-field col s12" style="padding: 1rem 0">
+                                <select data-role="none" id="mode_game_context_edit">
+                                </select>
+                                <label data-role="none">Modo de Juego: </label>
+                            </div>
+                            <div class="input-field col s12 level_game_edit" style="display: none">
+                                <select data-role="none" id="level_game_context_edit">
+                                </select>
+                                <label data-role="none">Nivel Juego: </label>
+                            </div>
+                            <div class="container_btn">
+                                <button type="button" class="waves-effect waves-btn-login btn btn_register" data-url="#modify_specialty">Modificar Especialidad</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <a href="#edit_specialty" data-transition="fade" data-position-to="window" class="ui-btn-right  ui-corner-all ui-shadow ui-btn-inline" data-rel="popup" aria-haspopup="true" aria-owns="transitionExample" aria-expanded="false" style="display: none"></a>
+        </div>
+
+        <!-- Page Specialty-->
+        <div id="specialty" class="specialty" data-role="page" data-title="Specialty Mode">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="title_game">
+                    <h1>Especialidad</h1>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        Selecciona la especialidad que quieras, 
+                                        y las preguntas se presentan de forma aleatoria e indefinida, sólo de esa especialidad.<br>
+                                        <b>¡Juega Indefinidamente!</b>
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_specialty">Escoger Tématica</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Start Game litigation -->
+        <div id="startGamelitigation" class="start_specialty" data-role="page" data-title="Start Game litigation - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="title_game">
+                    <h1>Caso</h1>
+                </div>
+                
+            </div>
+            
+            <div data-role="content">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="content_start_game" id="content_startLitigation">
+                            <div class="volver">
+                                <div class="question">
+                                       Volver a jugar?
+                                </div>
+                            
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="#start_litigation">
+                                        Ok
+                                    </button>
+                                </div>
+                            </div>
+                           <table class="resultado">
+                                <thead>
+                                  <tr>
+                                      <th data-field="pregunta">Pregunta</th>
+                                      <th data-field="respuesta">Respuesta</th>
+                                      <th data-field="correcta">Correcta</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="3">
+                                            <div class="container_btn">
+                                                <button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-id="<%= id %>" style="max-width: 270px;"> Siguente Caso
+                                                </button>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Start Game Specialty -->
+        <div id="startGamespeciality" class="start_specialty" data-role="page" data-title="Start Game Specialty - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="top_questions">
+                    <div class="content_questions">
+                        <span class="number_questions">0</span><span> / </span>
+                        <span class="rank"></span>
+                    </div>
+                </div>
+            </div>
+           
+            <div data-role="content">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="content_start_game" id="content_startSpeciality"></div>
+                        <table class="resultado" id="result_specialty">
+                            <thead>
+                              <tr>
+                                  <th data-field="pregunta">Pregunta</th>
+                                  <th data-field="respuesta">Respuesta</th>
+                                  <th data-field="correcta">Correcta</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              
+                            </tbody>
+                        </table>
+                        <div class="question_result">
+                                <article>
+                                    <div class="row">
+                                        <div class="col s6">
+                                            <div class="punctuation">
+                                                <span><em>0</em> Punto</span>
+                                            </div>
+                                        </div>
+                                        <div class="col s6">
+                                            <div class="report_question">
+                                                <img src="img/report.png" class="responsive-img">
+                                                <span>Denunciar</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="advertising">
+                                                <img src="img/advertising.png" class="responsive-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Start Litigation -->
+        <div id="start_litigation" class="start_litigation" data-role="page" data-title="Start Litigation - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+           <div data-role="content">
+                <div class="container">
+                    <div class="content_start_game">
+                            <div class="question">
+                                   Lista de casos
+                            </div>
+                            <div id="listCases"></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Star Race -->
+        <div id="start_race" class="start_race" data-role="page" data-title="Start Race - Jurisquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="levels_content"></div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="start">
+                            <div class="container_btn">
+                                <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="start_mode_game" data-role="none">Comenzar Con las Preguntas</button>
+                            </div>
+                        </div>
+                        <div class="content_start_game"></div>
+                        <div class="question_result">
+                            <article>
+                                <div class="row">
+                                    <div class="col s6">
+                                        <div class="punctuation">
+                                            <span><em>0</em> Punto</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="report_question">
+                                            <img src="img/report.png" class="responsive-img">
+                                            <span>Denunciar</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="advertising">
+                                            <img src="img/advertising.png" class="responsive-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="complete_level">
+                            <div class="message">Ya completaste este nivel</div>
+                        </div>
+                        <div class="no_complete_level">
+                            <div class="message">Aun no haz desbloqueado este nivel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Start Specialty -->
+        <div id="start_specialty" class="start_specialty" data-role="page" data-title="Start Specialty - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_start_game">
+                        <div class="question">Lista Especialidades</div>
+                        <div class="listTematica"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Start Test -->
+        <div id="start_test" class="start_test" data-role="page" data-title="Start Test - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="top_questions">
+                    <div class="content_questions">
+                        <span class="number_questions">1</span><span> / </span> 
+                        <span class="rank">10</span>
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="start">
+                            <div class="container_btn">
+                                <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="start_mode_game" data-role="none">Comenzar Con El Examen</button>
+                            </div>
+                        </div>
+                        <div class="name_specialty">
+                            <span></span>
+                        </div>
+                        <div class="content_start_game" id="content_startTest" question="1"></div>
+                        <div class="question_result">
+                            <article>
+                                <div class="row">
+                                    <div class="col s6">
+                                        <div class="punctuation">
+                                            <span><em>1</em> Punto</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="report_question">
+                                            <img src="img/report.png" class="responsive-img">
+                                            <span>Denunciar</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="advertising">
+                                            <img src="img/advertising.png" class="responsive-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <table class="resultado" id="result_test">
+                            <thead>
+                                 <tr>
+                                    <th>Tu puntuación es:</th>
+                                    <th id="points"></th>
+                                    <th id="status"></th>
+                                </tr>
+                                  <tr>
+                                      <th data-field="pregunta">Pregunta</th>
+                                      <th data-field="respuesta">Respuesta</th>
+                                      <th data-field="correcta">Correcta</th>
+                                  </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <div class="complete_questions">
+                            <h3>Terminaste las preguntas del modo examen</h3>
+                            <h5>¡Tuviste <span class="correct_answers">0</span> Respuestas correctas - Ganaste <span class="points">0</span> Puntos!</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Test-->
+        <div id="test" class="test" data-role="page" data-title="Test Mode">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <div class="title_game">
+                    <h1>Examen</h1>
+                </div>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_game">
+                        <div class="row">
+                            <div class="col s6" style="padding: 0">
+                                <div class="icon_game">
+                                    <img src="img/icon_blank.png" class="responsive-img" style="opacity: 0">
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="message_game">
+                                    <p>
+                                        Responde las preguntas. Al igual que en la universidad, 
+                                        dependiendo de las respuestas acertadas, puedes ganar o perder el examen.<br>
+                                        <b>¡Gana el examen!</b>
+                                    </p>
+                                </div>
+                                <div class="container_btn">
+                                    <button type="button" class="waves-effect waves-btn-start btn btn_register" data-url="#start_test">Comenzar Modo Examen</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Terms -->
+        <div data-role="page" id="terms" class="terms" data-title="Términos y Condiciones - Jurisquiz" >
+            <div data-role="content">   
+                <div class="container_terms">
+                    <div class="container_logo">
+                        <div class="content">
+                            <a href="#home" class="btn_logo" data-transition="fade">
+                                <img src="img/logo.png" alt="Logo Jurisquiz" title="Jurisquiz" class="responsive-img">
+                            </a>
+                        </div>
+                    </div>
+                    <h1 class="title">Políticas de Uso</h1>
+                    <p>
+                        Teniendo en cuenta las herramientas tecnológicas de las que
+        				disponemos hoy en día, y vislumbrando la posibilidad de que
+        				las personas dediquen más tiempo al estudio es que nace
+        				“jurisquiz”, es un instrumento que, a través del juego, ofrece
+        				nuevas oportunidades de acercarse al estudio del derecho de
+        				una forma amena, agradable y competitiva, de forma tal que
+        				la persona al mismo tiempo que juega, aprende, potenciando
+        				la posibilidad de mejorar sus resultados académicos y labores,
+        				brindando una nueva forma de ver y entender el derecho,
+        				otorgando disponibilidad inmediata de estudio en cualquier
+        				momento del día, mejorando su vida personal porque al
+        				disponer de más conocimiento se está más seguro sí mismo, y
+        				entregando mejores abogados a la sociedad, que tengan mayor
+        				capacidad de análisis y comprendan más y mejor los
+        				fenómenos jurídicos.<br><br>
+        				Las preguntas fueron elaboradas por abogados especialistas en
+        				sus distintas áreas y corresponden a la actualidad del
+        				conocimiento del derecho; para la elaboración de las mismas
+        				nos atenemos a la estricta literalidad de las leyes, códigos,
+        				decretos, jurisprudencia y doctrina.
+        			</p>
+                    <div class="container_btn">
+                        <a href="#home">Iniciar Sesión</a>
+                        <a href="#register">Registrarse</a>
+                        <a href="#" data-role="back" class="back">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Win Duel  -->
+        <div id="win_duel" class="win_duel" data-role="page" data-title="Win Duel - Jurizquiz">
+            <div data-role="header">
+                <a href="#" data-activates="slide-out" data-role="none" class="btn_panel button_collapse">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+            </div>
+            <div data-role="content">
+                <div class="container">
+                    <div class="content_win_duel">
+                        <h1 class="title">Resultados</h1>
+                        <div class="winner">
+                            <div class="row" style="margin: 0">
+                                <div class="col s3">
+                                    <div class="image">
+                                        <img src="#" class="responsive-img">
+                                    </div>
+                                    <div class="name">
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="col s5">
+                                    <div class="arrow">
+                                        <img src="img/arrow_big.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s4" style="padding: 0">
+                                    <div class="number_answers">
+                                        <span><span class="correct_answers">0</span> / 8</span>
+                                        <div>Buenas</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 0">
+                                <div class="message">
+                                    Ha Ganado <em class="points">0</em> puntos
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loser">
+                            <div class="row" style="margin: 0">
+                                <div class="col s3">
+                                    <div class="image">
+                                        <img src="#" class="responsive-img">
+                                    </div>
+                                    <div class="name">
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="col s5">
+                                    <div class="arrow">
+                                        <img src="img/arrow_big.png" class="responsive-img">
+                                    </div>
+                                </div>
+                                <div class="col s4" style="padding: 0">
+                                    <div class="number_answers">
+                                        <span><span class="correct_answers">0</span> / 8</span>
+                                        <div>Buenas</div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Panel Notification -->
         <div class="panel_notification">
             <div class="content_panel">
@@ -130,7 +1485,7 @@
                         <div class="row" style="margin: 0">
                             <div class="col m4 s4" style="padding:0">
                                 <div class="image_user">
-                                    <img src="media/profile_users/defaul_user.png" class="responsive-img">
+                                    <img src="http://98.142.105.122/~jurisquiz/frontend/media/profile_users/defaul_user.png" class="responsive-img">
                                 </div>
                             </div>
                             <div class="col m8 s8" style="padding: 0 ">
@@ -161,7 +1516,7 @@
                                 <h4 class=title"">Colegas</h4>
                                 <ul>
                                 </ul>
-                                <a href="friends.html">Ver Todos...</a>
+                                <a href="#friends">Ver Todos...</a>
                             </div>
                         </div>
                     </div>
@@ -170,7 +1525,7 @@
                     <div class="row">
                         <div class="col m4 s4">
                             <div class="current_level">
-                                <img src="img/level1.png" class="responsive-img"></img>
+                                <img src="#" class="responsive-img"></img>
                                 <span>Nivel </span>
                             </div>
                         </div>
@@ -181,7 +1536,7 @@
                         </div>
                         <div class="col m4 s4">
                             <div class="next_level">
-                                <img src="img/level2.png" class="responsive-img"></img>
+                                <img src="#" class="responsive-img"></img>
                                 <span>Nivel </span>
                             </div>
                         </div>
@@ -199,38 +1554,28 @@
         <!-- Nav-Button -->
         <div class="nav_button">
             <div class="nav">
-    			<a href="profile.html" class="nav-item nav-count-1" title="Perfil"><i class="material-icons">perm_identity</i><span class="invisible"></span></a>
-    			<a href="#dashboard" class="nav-item nav-count-2" title="Dashboard"><i class="material-icons">dashboard</i><span class="invisible"></span></a>
-    			<a href="friends.html" class="nav-item nav-count-3" title="Colegas"><i class="material-icons">supervisor_account</i><span class="invisible"></span></a>
-    			<a href="#notifications" class="nav-item nav-count-4 notifications_link" title="Notificaciones" data-number-notifications=""><i class="material-icons">info</i><span class="invisible"></span></a>
-    			<a href="#" class="mask"><i class="material-icons">add</i></a>
-    		</div>
+                <a href="#profile" class="nav-item nav-count-1" title="Perfil"><img src="img/points/profile_.png"></a>
+                <a href="#dashboard" class="nav-item nav-count-2" title="Dashboard"><img src="img/points/dashboard_.png"></a>
+                <a href="#friends" class="nav-item nav-count-3" title="Colegas"><img src="img/points/supervisor_.png"></a>
+                <a href="#notifications" class="nav-item nav-count-4 notifications_link" title="Notificaciones" data-number-notifications=""><img src="img/points/info_.png"></a>
+                <a href="#" class="mask"><img src="img/points/add_.png"></a>
+            </div>
         </div>
         
         <!-- Edit Question or Specialty -->
         <div class="popup_edit">
             <div class="outside"></div>
             <div class="wrapper">
-                <div class="content">
-                    
-                </div>
+                <div class="content"></div>
             </div>
         </div>
         
         <!-- Scripts -->
-        <script>
-            $(document).bind("mobileinit", function(){
-              $.mobile.touchOverflowEnabled = true;
-            });
-            $(document).ready(function(){
-                $('.tooltipped').tooltip({delay: 10});
-            });
-        </script>
-        <script type="text/javascript" src="js/nav.js"></script>
         <script type="text/javascript" src="js/routes.js?v=78678tu7y5t"></script>
         
         <!-- Templates -->
         <script type="text/html" id="each_user">
+        
             <div class="friend">
                 <div class="row" style="margin:0">
                     <div class="col s3">
@@ -240,13 +1585,11 @@
                     </div>
                     <div class="col s6">
                         <div class="name_friend">
-                            <em><%= (++index) %>. </em> <%= name %>
+                            <em><%= (++index) %>. </em> <%= name_user %>
                         </div>
                     </div>
                     <div class="col s3">
-                        <div class="score_friend">
-                            <%= points %>
-                        </div>
+                        <div class="score_friend"><%= points %></div>
                     </div>
                 </div>
             </div>
@@ -261,16 +1604,11 @@
             <option value="<%= id %>"><%= question %> ( <%= mode_game %> )</option>
         </script>
         <script type="text/html" id="all_questions_show">
-            <div class="question">
-                <%
-                    var options = options_question.split('/');
-                %>
+            <li class="question">
+                <% var options = options_question.split('/'); %>
             
                 <div>
-                    <span class="name"><b>Pregunta:</b> <%= question %></span> | <span class="id"><b>ID:</b> <%= id %></span>
-                </div>
-                <div>
-                    <span class="mode_game"><b>Especialidad:</b> <%= id_specialty %></span> | <span><b>Estado: </b><%= state %></span>
+                    <span class="name"><b>Pregunta:</b> <%= question %></span><span class="id" style="display:none"><b>ID:</b> <%= id %></span>
                 </div>
                 <div>
                     <span class="type_question"><b>Tipo de Pregunta:</b> <%= t_question %></span>
@@ -283,32 +1621,71 @@
                 <div>
                     <span class="options_question"><b>Opciones:</b></span>
                     <ol>
-                        <%
-                        
-                        for(var i = 0; i < options.length; i++){ %>
+                        <% for(var i = 0; i < options.length; i++){ %>
                             <% if(options[i] != correct_answer) %>
                                 <li><%= options[i] %></li>
-                        <% }
-                        
-                        %>
+                        <% } %>
                     </ol>
                 </div>
                 <% } %>
                 <nav class="menu_question">
                     <ul>
-                        <!-- <li><span><i class="material-icons">delete</i></span></li> -->
-                        <% if(state == 'Activa'){ %>
-                            <li class="desactivate" title="Desactivar"><span><i class="material-icons">warning</i></span></li>
+                        <% if(state == 'active'){ %>
+                            <li class="desactivate" title="Desactivar"><span><img src="img/points/warning_.png"></span></li>
                         <% }else{ %>
-                            <li class="activate" title="Activar"><span><i class="material-icons">done</i></span></li>
+                            <li class="activate" title="Activar"><span><img src="img/points/done_.png"></span></li>
                         <% } %>
-                        <li class="edit" title="Editar Pregunta"><span><i class="material-icons">edit</i></span></li>
+                        <li class="edit" title="Editar Pregunta"><span><img src="img/points/edit_.png"></span></li>
                     </ul>
                 </nav>
-            </div>
+            </li>
+        </script>
+        <script type="text/html" id="all_cases_show">
+            <li class="case">
+                <% var options = options_question.split('/'); %>
+                
+                <div>
+                    <span class="title_litigation"><b>Titulo Caso: </b><%= litigio_titulo %></span>
+                </div>
+                <div>
+                    <span class="text_litigation"><b>Texto Caso: </b><%= litigio_text %></span>
+                </div>
+                
+                <div>
+                    <span class="name"><b>Pregunta:</b> <%= question %></span><span class="id" style="display:none"><b>ID:</b> <%= id %></span>
+                </div>
+                <div>
+                    <span class="type_question"><b>Tipo de Pregunta:</b> <%= t_question %></span>
+                </div>
+                <div>
+                    <% var name_type = t_question == "Ordenamiento" ? 'Orden Correcto: ' : 'Respuesta Correcta: '; %>
+                    <span class="answer_question"><b><%= name_type %></b> <%= correct_answer %></span>
+                </div>
+                <% if(t_question == "Selección múltiple"){ %>
+                <div>
+                    <span class="options_question"><b>Opciones:</b></span>
+                    <ol>
+                        <% for(var i = 0; i < options.length; i++){ %>
+                            <% if(options[i] != correct_answer) %>
+                                <li><%= options[i] %></li>
+                        <% } %>
+                    </ol>
+                </div>
+                <% } %>
+                <nav class="menu_case">
+                    <ul>
+                        <% if(state == 'active'){ %>
+                            <li class="desactivate" title="Desactivar"><span><img src="img/points/warning_.png"></span></li>
+                        <% }else{ %>
+                            <li class="activate" title="Activar"><span><img src="img/points/done_.png"></span></li>
+                        <% } %>
+                        <li class="edit" title="Editar Pregunta"><span><img src="img/points/edit_.png"></span></li>
+                    </ul>
+                </nav>
+            </li>
         </script>
         <script type="text/html" id="all_specialties_show">
-            <div class="specialty">
+            <li class="specialty">
                 <div>
                     <span class="name"><b>Especialidad:</b> <%= name %></span> | <span class="id"><b>ID:</b> <%= id %></span>
                 </div>
@@ -320,16 +1697,15 @@
                 </div>
                 <nav class="menu_specialty">
                     <ul>
-                        <!-- <li><span><i class="material-icons">delete</i></span></li> -->
                         <% if(state == 'Activa'){ %>
-                            <li class="desactivate" title="Desactivar"><span><i class="material-icons">warning</i></span></li>
+                            <li class="desactivate" title="Desactivar"><span><img src="img/points/warning_.png"></span></li>
                         <% }else{ %>
-                            <li class="activate" title="Activar"><span><i class="material-icons">done</i></span></li>
+                            <li class="activate" title="Activar"><span><img src="img/points/done_.png"></span></li>
                         <% } %>
-                        <li class="edit" title="Editar Pregunta"><span><i class="material-icons">edit</i></span></li>
+                        <li class="edit" title="Editar Pregunta"><span><img src="img/points/edit_.png"></span></li>
                     </ul>
                 </nav>
-            </div>
+            </li>
         </script>
         <script type="text/html" id="template_edit_question">
             <div class="form_content">
@@ -424,14 +1800,14 @@
         </script>
         <script type="text/html" id="template_each_specialty">
             <div class="container_btn">
-            	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="startGamespeciality.html?id=<%= id %>"><%= name %>
-            	</button>
+                <button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="#startGamespeciality?id=<%= id %>"><%= name %>
+                </button>
             </div>
         </script>
         <script type="text/html" id="template_each_litigationCase">
             <div class="container_btn">
-            	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="startGamelitigation.html?id=<%= id %>"><%= litigio_titulo %>
-            	</button>
+                <button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-url="#startGamelitigation?id=<%= id %>"><%= litigio_titulo %>
+                </button>
             </div>
         </script>
         <script type="text/html" id="structure_litigation">
@@ -441,11 +1817,7 @@
                     <div  class="question litigio_titulo">
                         <p>
                             <%= litigio_text  %>
-                        </p> 
-                        <div class="container_btn">
-                        	<button type="button" class="waves-effect waves-btn-start btn btn_register ui-btn ui-shadow ui-corner-all" data-id="<%= id %>"> Siguente Caso <i class="large material-icons">skip_next</i>
-                        	</button>
-                        </div>
+                        </p>
                     </div>
                 <% } %>
                 <div class="pregunta">
@@ -495,21 +1867,20 @@
                 <% } %>
                 </div>
             </div>
-            
         </script>
         <script type="text/html" id="template_each_finalGame">
             <% if (correcta) {%>
                 <tr class="correcto">
                     <td> <%= pregunta %> </td>
                     <td> <%= respuesta %> </td>
-                    <td><i class="material-icons dp48">done</i></td>
+                    <td><img src="img/points/done_.png" style="max-width: 18px;background-color: rgba(0,0,0,.4);"></td>
                   
                 </tr>
             <%} else{ %>
                  <tr class="errada">
                     <td> <%= pregunta %> </td>
                     <td> <%= respuesta %> </td>
-                    <td><i class="material-icons dp48">error</i></td>
+                    <td><img src="img/points/warning_.png" style="max-width: 18px;background-color: rgba(0,0,0,.4);"></td>
                   
                 </tr>
             <% } %>
@@ -524,12 +1895,12 @@
                     </div>
                     <div class="col s5">
                         <div class="name_user">
-                            <em><%= (++index) %>. </em> <%= name %>
+                            <em><%= (++index) %>. </em> <%= name_user %>
                         </div>
                     </div>
                     <div class="col s5" style="padding: 0">
                         <div class="duel_link">
-                            <a href="#" data-url="duel_users.html?id=<%= id_user %>">Retar</a>
+                            <a href="#" data-id-user="<%= id_user %>" data-url="#duel_users?id=<%= id_user %>">Retar</a>
                         </div>
                     </div>
                 </div>
@@ -545,32 +1916,33 @@
                 }
             %>
             <div class="notification" id-duel="<%= metadata %>" id-notification="<%= id %>">
-	            <div class="text">
-	                <span><%= notification %></span>
-	            </div>
-	            <div class="mask" style="<%= show %>">
-	                <div class="panel">
-	                    <div class="btns">
+                <div class="text">
+                    <span><%= notification %></span>
+                </div>
+                <div class="mask" style="<%= show %>">
+                    <div class="panel">
+                        <div class="btns">
                                 <%
                                 
-    	                            if(state == 'inactive'){ %>
-    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptada">Aceptada <i class="material-icons">thumb_up</i></span>
-    	                            <% } else if(state == 'reject'){ %>
-    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada">Rechazada <i class="material-icons">thumb_down</i></span>
-    	                            <% } else if(state == 'win'){ %>
-    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada">Ganador <i class="material-icons">done</i></span>
-    	                            <% } else if(state == 'loss'){ %>
-    	                                <span class="success" data-url="duel_users.html?id_user="<%= id_user %> title="Rechazada">Perdedor <i class="material-icons">error</i></span>
-    	                            <%  } else { %>
-    	                                <span class="accept" data-url="duel_users.html?id_user="<%= id_user %> title="Aceptar">Aceptar <i class="material-icons">trending_flat</i></span>
-    	                                <span class="reject" title="Rechazar">Rechazar <i class="material-icons">warning</i></span>
-    	                            <% } 
-	                            
+                                    if(state == 'inactive'){ %>
+                                        <span class="success" data-url="#duel_users?id_user="<%= id_user %> title="Aceptada">Aceptada <img src="img/points/thumb_up_.png"></span>
+                                    <% } else if(state == 'reject'){ %>
+                                        <span class="success" data-url="#duel_users?id_user="<%= id_user %> title="Rechazada">Rechazada <img src="img/points/thumb_down_.png"></span>
+                                    <% } else if(state == 'win'){ %>
+                                        <span class="success" data-url="#duel_users?id_user="<%= id_user %> title="Rechazada">Ganador <img src="img/points/done_.png"></span>
+                                    <% } else if(state == 'loss'){ %>
+                                        <span class="success" data-url="#duel_users?id_user="<%= id_user %> title="Rechazada">Perdedor <img src="img/points/warning_.png"></span>
+                                    <%  } else { %>
+                                        <span class="accept" data-url="#duel_users?id_user="<%= id_user %> title="Aceptar">Aceptar <img src="img/points/trending.png"></span>
+                                        <span class="reject" title="Rechazar">Rechazar <img src="img/points/warning_.png"></span>
+                                    <% } 
+                                
                                 %>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </script>
+        
     </body>
 </html>

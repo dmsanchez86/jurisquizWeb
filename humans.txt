@@ -7,8 +7,8 @@
 
 /* MAIN */
   Develop & Main Design: Daniel Mauricio Sanchez
-  Twitter: @d_anielsanchez
-  Site: http://github.com/dmsanchez86
+  Twitter: @dmsanchez86
+  Site: http://dmsanchez86.github.io/
 
 /* SITE */
   Last update: 08/06/2015

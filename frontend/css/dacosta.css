@@ -1,4 +1,4 @@
-.start_specialty, table.resultado{
+table.resultado{
     display:none;
 }
 .start_specialty div[data-role='header'] .top_questions {
@@ -17,22 +17,24 @@
     font-style: italic;
 }
 
-.start_specialty table.resultado > tbody > tr.correcto{
+table.resultado > tbody > tr.correcto{
     background-color: #3a6667;
     color: #FFF;
 }
 
-.start_specialty table.resultado > tbody > tr > td:last-child{
+table.resultado > tbody > tr > td:last-child{
     text-align:center;
     color:#FFF;
 }
-.start_specialty table.resultado > tbody > tr.errada > td:last-child{
+table.resultado > tbody > tr.errada > td:last-child{
     color: #3a6667;
 }
-.start_specialty table.resultado > tbody > tr > td {
+table.resultado > tbody > tr > td {
     border-radius: 0px;
 }
 
+#status.success{color: #1FDF01;}
+#status.error{color: #E11E00;}
 
 #content_startLitigation .content_question .question > .container_btn > .waves-effect.waves-btn-start {
     background-color: #ef863e;
@@ -45,15 +47,15 @@
     display:none;
 }
 
-.correct_answer{
-    background-image: -webkit-radial-gradient(center, #01DF01, #3ADF00);
-    background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
-    background-image: radial-gradient(center, #ee6200, #ef863e);
-    border-color: #ee6200;
+.correct_answer,.correct_answer:hover{
+    background-image: -webkit-radial-gradient(center, #01DF01, #3ADF00)!important;
+    background-image: -moz-radial-gradient(center, #ee6200, #ef863e)!important;
+    background-image: radial-gradient(center, #ee6200, #ef863e)!important;
+    border-color: #1FDF01!important;
 }
-.incorrect_answer{
-    background-image: -webkit-radial-gradient(center, #E86000, #DE0101);
-    background-image: -moz-radial-gradient(center, #ee6200, #ef863e);
-    background-image: radial-gradient(center, #ee6200, #ef863e);
-    border-color: #ee6200;
+.incorrect_answer,.incorrect_answer:hover{
+    background-image: -webkit-radial-gradient(center, #AF200C, #DE0101)!important;
+    background-image: -moz-radial-gradient(center, #AF200C, #DE0101)!important;
+    background-image: radial-gradient(center, #AF200C, #DE0101)!important;
+    border-color: #E11E00!important;
 }
